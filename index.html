@@ -2,10 +2,12 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
-    <title>ALBE DIGITAL | Разработка сайтов под ключ — премиум дизайн, SEO, продвижение</title>
-    <meta name="description" content="Albe Digital — разработка сайтов под ключ в Москве. Премиум дизайн, SEO-оптимизация, AI-решения, мобильные приложения. Калькулятор стоимости, поддержка 24/7.">
-    <meta name="keywords" content="разработка сайтов под ключ, премиум дизайн, seo продвижение, albe digital, создание сайтов">
+    <!-- Запрет зума для мобильных, но с правильным viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>ALBE DIGITAL | Разработка сайтов в Москве под ключ</title>
+    <!-- Улучшенное Description с привязкой к Москве и ключами -->
+    <meta name="description" content="Разработка сайтов под ключ в Москве от ALBE digital. Премиум дизайн, SEO-продвижение, AI и мобильные приложения. Калькулятор стоимости, гарантия результата. Закажите сайт, который приносит прибыль.">
+    <meta name="keywords" content="разработка сайтов москва, создание сайтов под ключ, премиум дизайн, seo продвижение, albe digital">
     <meta name="author" content="Albe Digital">
     <meta name="robots" content="index, follow">
     <meta name="google-site-verification" content="ВАШ_GOOGLE_КОД">
@@ -13,13 +15,17 @@
     <link rel="canonical" href="https://albe.su/">
     <link rel="alternate" href="https://albe.su/" hreflang="ru-ru">
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
-    <meta property="og:title" content="ALBE DIGITAL — разработка сайтов под ключ, премиум дизайн">
-    <meta property="og:description" content="Разработка сайтов, дизайн, SEO, AI, мобильные приложения. Калькулятор стоимости, прозрачные цены, инновации.">
-    <meta property="og:image" content="https://albe.su/og.webp">
+    <meta property="og:title" content="ALBE DIGITAL — разработка сайтов под ключ в Москве">
+    <meta property="og:description" content="Комплексная разработка сайтов, дизайн, SEO и AI для вашего бизнеса. Прозрачные цены и поддержка 24/7.">
+    <meta property="og:image" content="https://albe.su/og-image.webp">
     <meta property="og:url" content="https://albe.su/">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="theme-color" content="#0D1117">
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23F5B700'/%3E%3Ctext x='20' y='28' font-size='24' text-anchor='middle' fill='black' font-weight='500'%3EA%3C/text%3E%3C/svg%3E">
+    
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
     <style>
@@ -148,7 +154,6 @@
             transition: 0.3s;
         }
         
-        /* Мобильное меню - фиксированное, не выезжает */
         @media (max-width: 768px) {
             .nav-menu { 
                 position: fixed; 
@@ -318,6 +323,7 @@
         .time-breakdown-item span:first-child { color: #F5B700; }
 
         .mission-wrapper { display: flex; gap: 50px; align-items: center; flex-wrap: wrap; }
+        .mission-text p { margin-bottom: 1rem; }
         .mission-photos { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
         .mission-photo { height: 200px; display: flex; align-items: center; justify-content: center; color: #F5B700; background-size: cover; background-position: center; }
         .faq-item { margin-bottom: 18px; }
@@ -340,7 +346,6 @@
         .totop:hover { background: white; transform: translateY(-4px); }
         .seo-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
         
-        /* УЛУЧШЕННАЯ МОБИЛЬНАЯ АДАПТАЦИЯ - полный запрет прокрутки */
         @media (max-width: 1024px) {
             .container, .header .container, .hero .container { padding: 0 30px; }
             .services-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
@@ -348,67 +353,35 @@
         }
         
         @media (max-width: 768px) {
-            html, body { 
-                overflow-x: hidden !important; 
-                width: 100% !important;
-                position: relative;
-            }
-            .container, .header .container, .hero .container { 
-                padding: 0 20px; 
-                overflow-x: hidden !important;
-            }
+            html, body { overflow-x: hidden !important; width: 100% !important; position: relative; }
+            .container, .header .container, .hero .container { padding: 0 20px; overflow-x: hidden !important; }
             .section { padding: 60px 0; }
             .hero { padding: 40px 0; min-height: auto; }
-            
             h1 { font-size: 2.8rem; line-height: 1.2; margin-bottom: 1rem; word-break: break-word; }
             h2 { font-size: 1.8rem; margin-bottom: 1.5rem; }
             h3 { font-size: 1.3rem; }
             .hero-desc { font-size: 1rem; margin: 1rem 0 1.5rem; }
             .hero-tag { font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 1rem; }
-            
             .code-rain { display: none; }
-            
-            /* Фикс бургер-меню */
             .burger { display: flex; }
-            
             .hero-grid { gap: 30px; }
-            .hero-stats { 
-                flex-direction: column; 
-                gap: 16px; 
-                align-items: flex-start; 
-                width: 100%; 
-                padding: 20px;
-            }
+            .hero-stats { flex-direction: column; gap: 16px; align-items: flex-start; width: 100%; padding: 20px; }
             .stat-item { width: 100%; text-align: left; }
             .stat-number { font-size: 2rem; }
             .stat-label { font-size: 0.8rem; }
-            
-            .hero-buttons { 
-                flex-direction: column; 
-                align-items: stretch; 
-                width: 100%; 
-                gap: 12px;
-            }
-            .btn-primary, .btn-outline { 
-                width: 100%; 
-                justify-content: center; 
-                padding: 12px 20px;
-                font-size: 0.9rem;
-            }
-            
+            .hero-buttons { flex-direction: column; align-items: stretch; width: 100%; gap: 12px; }
+            .btn-primary, .btn-outline { width: 100%; justify-content: center; padding: 12px 20px; font-size: 0.9rem; }
             .services-grid { grid-template-columns: 1fr; gap: 20px; }
             .portfolio-grid { grid-template-columns: 1fr; gap: 24px; }
             .portfolio-image { height: 200px; font-size: 1.3rem; }
             .steps-container { flex-direction: column; gap: 20px; }
             .step-card { flex: none; width: 100%; padding: 24px; }
             .step-num { font-size: 2rem; margin-bottom: 0.5rem; }
-            
             .competences-grid { flex-direction: column; gap: 20px; margin: 20px 0; }
             .competence-card { padding: 24px; }
             .competence-card h3 { font-size: 1.5rem; margin-bottom: 12px; }
             .competence-tech-list { gap: 8px; margin-top: 16px; }
             .tech-item { padding: 6px 14px; font-size: 0.8rem; }
-            
             .calculator-card { padding: 24px; margin: 20px 0; }
             .calculator-two-columns { flex-direction: column; gap: 24px; }
             .calculator-right { padding: 20px; }
@@ -418,35 +391,23 @@
             .calc-option { width: 100%; text-align: center; padding: 10px 16px; font-size: 0.9rem; }
             .calc-total-block { padding: 16px; }
             .calc-price { font-size: 1.4rem; word-break: break-word; }
-            
             .mission-wrapper { flex-direction: column; gap: 30px; }
             .mission-text p { font-size: 0.95rem; }
             .mission-photos { grid-template-columns: repeat(2, 1fr); gap: 16px; }
             .mission-photo { height: 150px; font-size: 0.9rem; }
-            
             .faq-question { padding: 18px 20px; font-size: 1rem; }
             .faq-answer { padding: 0 20px 20px 20px; font-size: 0.9rem; }
-            
             .cover-content { padding: 32px 24px; width: 95%; }
             .cover-content h2 { font-size: 1.6rem; margin-bottom: 0.5rem; }
             .cover-content p { font-size: 0.9rem; margin-bottom: 1.5rem; }
             input, textarea { padding: 12px 16px; font-size: 0.9rem; margin-bottom: 16px; }
-            
             .footer { padding: 40px 0 24px; }
             .footer-grid { flex-direction: column; gap: 30px; text-align: center; align-items: center; }
             .footer-logo { font-size: 1.4rem; }
             .footer p { font-size: 0.8rem; }
-            
             .totop { width: 40px; height: 40px; font-size: 1.4rem; bottom: 20px; right: 20px; }
             .logo { font-size: 1.6rem; }
-            
-            /* Запрет любых выезжающих элементов */
-            img, video, iframe, .tech-tooltip, .hero-stats, .service-card, 
-            .portfolio-card, .step-card, .competence-card, .calculator-card,
-            .mission-photo, .faq-item, .cover-content {
-                max-width: 100% !important;
-                overflow-x: hidden !important;
-            }
+            img, video, iframe, .tech-tooltip, .hero-stats, .service-card, .portfolio-card, .step-card, .competence-card, .calculator-card, .mission-photo, .faq-item, .cover-content { max-width: 100% !important; overflow-x: hidden !important; }
         }
         
         @media (max-width: 480px) {
@@ -519,7 +480,7 @@
             <div class="hero-grid">
                 <div class="hero-content">
                     <div class="hero-tag">DIGITAL AGENCY</div>
-                    <h1>Разработка сайтов под ключ</h1>
+                    <h1>Разработка сайтов в Москве под ключ</h1>
                     <p class="hero-desc"><strong>ALBE digital — создаём сайты, которые приносят прибыль.</strong> Премиум дизайн, безупречный код, AI-решения, мобильные приложения и SEO-стратегия для роста вашего бизнеса.</p>
                     <div class="hero-buttons">
                         <a href="#calculator" class="btn-primary">Рассчитать проект</a>
@@ -605,8 +566,16 @@
         <div class="container">
             <h2>Почему выбирают нас</h2>
             <div class="mission-wrapper">
-                <div class="mission-text"><p>ALBE digital — стратегический партнёр, разрабатывающий продукты, которые масштабируют бизнес. Каждый проект сопровождается SEO-проработкой и техническим аудитом, гарантируя высокие позиции в поисковых системах.</p><p style="margin-top:20px;">Наши клиенты получают прирост трафика до 300% за 6 месяцев. Внедряем AI-решения и мобильные приложения для автоматизации продаж.</p></div>
-                <div class="mission-photos"><div class="mission-photo">команда</div><div class="mission-photo">процесс</div><div class="mission-photo">результат</div><div class="mission-photo">клиенты</div></div>
+                <div class="mission-text">
+                    <p>ALBE digital — это стратегический партнёр, а не просто подрядчик. Мы разрабатываем продукты, которые масштабируют бизнес и увеличивают прибыль. Каждый проект сопровождается глубокой SEO-проработкой и техническим аудитом, что гарантирует высокие позиции в поисковых системах с первых недель после запуска.</p>
+                    <p>Наши клиенты из ритейла, финтеха и образования получают прирост органического трафика до 300% за 6 месяцев. Мы внедряем AI-решения для автоматизации маркетинга и продаж, а также разрабатываем мобильные приложения, повышающие лояльность аудитории.</p>
+                </div>
+                <div class="mission-photos">
+                    <div class="mission-photo">команда</div>
+                    <div class="mission-photo">процесс</div>
+                    <div class="mission-photo">результат</div>
+                    <div class="mission-photo">клиенты</div>
+                </div>
             </div>
         </div>
     </section>
@@ -635,11 +604,12 @@
 <footer class="footer">
     <div class="container">
         <div class="footer-grid">
-            <div><div class="footer-logo">ALBE digital</div><p>Digital agency премиального уровня.</p></div>
-            <div><h4 style="color:#F5B700;">Контакты</h4><p><a href="tel:+79959870353">+7 995 987 0353</a></p><p><a href="mailto:hello@albe.su">hello@albe.su</a></p></div>
+            <div><div class="footer-logo">ALBE digital</div><p>Digital agency премиального уровня. Более 10 лет разрабатываем проекты в Москве и по всей России.</p></div>
+            <div><h4 style="color:#F5B700;">Контакты</h4><p><a href="tel:+79959870353">+7 995 987 0353</a></p><p><a href="mailto:hello@albe.su">hello@albe.su</a></p><p>Москва, Цветной бульвар</p></div>
             <div><h4 style="color:#F5B700;">Навигация</h4><p><a href="#services">Услуги</a></p><p><a href="#portfolio">Портфолио</a></p><p><a href="#calculator">Калькулятор</a></p><p><a href="#contact">Контакты</a></p></div>
         </div>
-        <hr><p style="text-align:center;">© 2025 ALBE digital — разработка, дизайн, AI, SEO. <a href="/privacy/">Политика конфиденциальности</a></p>
+        <hr style="border-color:#1E2A32; margin: 32px 0 20px;">
+        <p style="text-align: center;">© 2025 ALBE digital — разработка, дизайн, AI, SEO. <a href="/privacy/">Политика конфиденциальности</a></p>
     </div>
 </footer>
 
@@ -723,7 +693,6 @@
     if(burgerBtn) {
         burgerBtn.addEventListener('click', function() {
             mobileMenu.classList.toggle('active');
-            // Небольшая анимация бургера
             const spans = burgerBtn.querySelectorAll('span');
             if(mobileMenu.classList.contains('active')) {
                 spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
@@ -750,7 +719,7 @@
     const form=document.getElementById('mainForm'), stat=document.getElementById('formStatus');
     if(form){ form.addEventListener('submit',(e)=>{ e.preventDefault(); const name=document.getElementById('userName')?.value.trim(), phone=document.getElementById('userPhone')?.value.trim(), email=document.getElementById('userEmail')?.value.trim(); if(!name||!phone||!email){ stat.innerHTML='<div style="background:#990000; padding:12px;">Заполните все поля</div>'; setTimeout(()=>stat.innerHTML='',3000); return; } stat.innerHTML='<div style="background:#F5B700; color:black; padding:12px;">Спасибо! Менеджер свяжется с вами.</div>'; form.reset(); setTimeout(()=>stat.innerHTML='',5000); }); }
     const toTop=document.getElementById('toTopBtn'); window.addEventListener('scroll',()=>{ if(toTop) toTop.style.display=window.scrollY>400?'flex':'none'; }); if(toTop){ toTop.style.display='none'; toTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'})); }
-    const schema={"@context":"https://schema.org","@graph":[{"@type":"ProfessionalService","name":"ALBE digital","url":"https://albe.su/","address":{"@type":"PostalAddress","addressLocality":"Москва"},"contactPoint":{"@type":"ContactPoint","telephone":"+79959870353","contactType":"sales"},"sameAs":["https://t.me/albe_web"],"priceRange":"от 120 000 ₽"},{"@type":"WebSite","url":"https://albe.su/","potentialAction":{"@type":"SearchAction","target":"https://albe.su/search?q={search_term_string}","query-input":"required name=search_term_string"}}]};
+    const schema={"@context":"https://schema.org","@graph":[{"@type":"ProfessionalService","name":"ALBE digital","url":"https://albe.su/","address":{"@type":"PostalAddress","addressLocality":"Москва, Россия"},"contactPoint":{"@type":"ContactPoint","telephone":"+79959870353","contactType":"sales","availableLanguage":"Russian"},"sameAs":["https://t.me/albe_web"],"priceRange":"от 120 000 ₽"},{"@type":"WebSite","url":"https://albe.su/","potentialAction":{"@type":"SearchAction","target":"https://albe.su/search?q={search_term_string}","query-input":"required name=search_term_string"}}]};
     const sc=document.createElement('script'); sc.type='application/ld+json'; sc.textContent=JSON.stringify(schema); document.head.appendChild(sc);
 </script>
 </body>
