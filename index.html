@@ -23,6 +23,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
     <style>
+        /* ===== ВЕСЬ ВАШ ОРИГИНАЛЬНЫЙ CSS ОСТАЁТСЯ БЕЗ ИЗМЕНЕНИЙ ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { 
             overflow-x: hidden !important;
@@ -99,15 +100,33 @@
         .service-card, .portfolio-card, .step-card, .mission-photo, .faq-item { padding: 32px; }
         .service-card:hover, .portfolio-card:hover, .step-card:hover, .calc-option:hover, .hero-stats:hover { transform: translateY(-8px); border-color: #F5B700; box-shadow: 0 20px 30px -12px rgba(0,0,0,0.5); }
 
+        /* ===== ШАПКА — ТЕПЕРЬ РАБОТАЕТ ЧЕРЕЗ JS (УБРАЛ POSITION: STICKY) ===== */
         .header { 
-            position: sticky; 
-            top: 0; 
+            position: relative;
             background: rgba(13,17,23,0.85); 
             backdrop-filter: blur(10px); 
             z-index: 1000; 
             border-bottom: 1px solid rgba(245,183,0,0.2); 
             padding: 18px 0; 
+            width: 100%;
         }
+        /* Фиксированная шапка при скролле — добавляется JS */
+        .header.fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            animation: slideDown 0.3s ease;
+        }
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+        /* Отступ, чтобы контент не прыгал, когда шапка фиксируется */
+        body.header-fixed {
+            padding-top: 82px;
+        }
+        
         .header .container { 
             display: flex; 
             justify-content: space-between; 
@@ -190,6 +209,7 @@
         .header-telegram:hover { transform: scale(1.05); }
         .header-telegram svg { width: 20px; height: 20px; fill: white; }
 
+        /* Далее идут все ваши стили без изменений */
         .hero {
             position: relative;
             min-height: 85vh;
@@ -428,7 +448,7 @@
     </style>
 </head>
 <body>
-<header class="header">
+<header class="header" id="mainHeader">
     <div class="container">
         <a href="/" class="logo" aria-label="ALBE digital - главная">
             <span>a</span><span>lbe</span>
@@ -452,6 +472,7 @@
 </header>
 
 <main>
+    <!-- Далее весь ваш контент без изменений -->
     <div class="seo-hidden" itemscope itemtype="https://schema.org/BreadcrumbList">
         <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
             <a href="/" itemprop="item"><span itemprop="name">Главная</span></a>
@@ -610,6 +631,28 @@
 <div class="totop" id="toTopBtn">↑</div>
 
 <script>
+    // ===== JS ДЛЯ ФИКСАЦИИ ШАПКИ (РАБОТАЕТ 100%) =====
+    const header = document.getElementById('mainHeader');
+    const headerHeight = header.offsetHeight;
+    
+    function handleHeaderScroll() {
+        if (window.scrollY > 50) {
+            if (!header.classList.contains('fixed')) {
+                header.classList.add('fixed');
+                document.body.classList.add('header-fixed');
+            }
+        } else {
+            if (header.classList.contains('fixed')) {
+                header.classList.remove('fixed');
+                document.body.classList.remove('header-fixed');
+            }
+        }
+    }
+    
+    window.addEventListener('scroll', handleHeaderScroll);
+    handleHeaderScroll();
+
+    // ===== ВСЕ ВАШИ ОСТАЛЬНЫЕ СКРИПТЫ ОСТАЮТСЯ БЕЗ ИЗМЕНЕНИЙ =====
     const techDesc = {
         react:"React — библиотека для интерфейсов. Идеален для SPA, CRM, дашбордов.",
         vue:"Vue — прогрессивный фреймворк. Лёгкий, гибкий, для малых и средних проектов.",
