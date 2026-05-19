@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
     <title>ALBE DIGITAL | Разработка сайтов под ключ — премиум дизайн, SEO, продвижение</title>
     <meta name="description" content="Albe Digital — разработка сайтов под ключ в Москве. Премиум дизайн, SEO-оптимизация, AI-решения, мобильные приложения. Калькулятор стоимости, поддержка 24/7.">
     <meta name="keywords" content="разработка сайтов под ключ, премиум дизайн, seo продвижение, albe digital, создание сайтов">
@@ -24,6 +24,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { 
+            overflow-x: hidden !important;
+            max-width: 100% !important;
+            position: relative;
+            width: 100%;
+        }
         body { 
             font-family: 'Inter', sans-serif; 
             background-color: #0D1117; 
@@ -31,8 +37,9 @@
             line-height: 1.5; 
             font-weight: 400; 
             scroll-behavior: smooth; 
-            overflow-x: hidden;
-            max-width: 100%;
+            overflow-x: hidden !important;
+            max-width: 100vw;
+            position: relative;
         }
         body::before { 
             content: ""; 
@@ -52,7 +59,7 @@
             padding: 0 40px; 
             position: relative; 
             z-index: 2; 
-            overflow-x: hidden;
+            overflow-x: hidden !important;
         }
         h1, h2, h3, .stat-number, .step-num { font-weight: 500; letter-spacing: -0.02em; }
         h1 { font-size: 7rem; line-height: 1.05; margin-bottom: 1.5rem; font-weight: 400; letter-spacing: -0.02em; color: #FFFFFF; word-break: break-word; }
@@ -118,11 +125,56 @@
         .logo span:first-child { color: #F5B700; }
         .logo span:last-child { color: #FFFFFF; }
         
-        .nav-menu { display: flex; gap: 2rem; align-items: center; }
+        .nav-menu { 
+            display: flex; 
+            gap: 2rem; 
+            align-items: center; 
+            transition: none;
+        }
         .nav-link { color: #FFFFFF; text-decoration: none; font-weight: 400; transition: 0.2s; white-space: nowrap; }
         .nav-link:hover { color: #F5B700; }
-        .burger { display: none; flex-direction: column; cursor: pointer; gap: 6px; z-index: 1001; }
-        .burger span { width: 28px; height: 2px; background: #F5B700; transition: 0.3s; }
+        .burger { 
+            display: none; 
+            flex-direction: column; 
+            cursor: pointer; 
+            gap: 6px; 
+            z-index: 1002; 
+            position: relative;
+        }
+        .burger span { 
+            width: 28px; 
+            height: 2px; 
+            background: #F5B700; 
+            transition: 0.3s;
+        }
+        
+        /* Мобильное меню - фиксированное, не выезжает */
+        @media (max-width: 768px) {
+            .nav-menu { 
+                position: fixed; 
+                top: 0;
+                right: -280px; 
+                background: rgba(13,17,23,0.98); 
+                backdrop-filter: blur(12px);
+                flex-direction: column; 
+                width: 260px; 
+                height: 100vh; 
+                padding: 80px 24px 30px; 
+                transition: right 0.3s ease-out; 
+                border-left: 2px solid #F5B700; 
+                z-index: 1001; 
+                gap: 1.5rem;
+                align-items: flex-start;
+                overflow-y: auto;
+                box-shadow: -5px 0 25px rgba(0,0,0,0.5);
+            }
+            .nav-menu.active { 
+                right: 0; 
+            }
+            .nav-link { white-space: normal; font-size: 1.1rem; padding: 8px 0; width: 100%; }
+            .burger { display: flex; z-index: 1002; }
+            .header-telegram { margin-left: 0; margin-top: 10px; }
+        }
         
         .header-telegram {
             display: inline-flex;
@@ -288,7 +340,7 @@
         .totop:hover { background: white; transform: translateY(-4px); }
         .seo-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
         
-        /* ========== УЛУЧШЕННАЯ МОБИЛЬНАЯ АДАПТАЦИЯ ========== */
+        /* УЛУЧШЕННАЯ МОБИЛЬНАЯ АДАПТАЦИЯ - полный запрет прокрутки */
         @media (max-width: 1024px) {
             .container, .header .container, .hero .container { padding: 0 30px; }
             .services-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
@@ -296,8 +348,15 @@
         }
         
         @media (max-width: 768px) {
-            body { overflow-x: hidden; }
-            .container, .header .container, .hero .container { padding: 0 20px; overflow-x: hidden; }
+            html, body { 
+                overflow-x: hidden !important; 
+                width: 100% !important;
+                position: relative;
+            }
+            .container, .header .container, .hero .container { 
+                padding: 0 20px; 
+                overflow-x: hidden !important;
+            }
             .section { padding: 60px 0; }
             .hero { padding: 40px 0; min-height: auto; }
             
@@ -309,29 +368,8 @@
             
             .code-rain { display: none; }
             
-            /* Бургер-меню */
-            .nav-menu { 
-                position: fixed; 
-                top: 0;
-                right: -100%; 
-                background: rgba(13,17,23,0.98); 
-                backdrop-filter: blur(12px);
-                flex-direction: column; 
-                width: 80%; 
-                max-width: 300px;
-                height: 100vh; 
-                padding: 80px 24px 30px; 
-                transition: 0.3s ease-in-out; 
-                border-left: 2px solid #F5B700; 
-                z-index: 1000; 
-                gap: 1.5rem;
-                align-items: flex-start;
-                overflow-y: auto;
-            }
-            .nav-menu.active { right: 0; }
-            .nav-link { white-space: normal; font-size: 1.1rem; padding: 8px 0; width: 100%; }
-            .burger { display: flex; z-index: 1001; position: relative; }
-            .header-telegram { margin-left: 0; margin-top: 10px; }
+            /* Фикс бургер-меню */
+            .burger { display: flex; }
             
             .hero-grid { gap: 30px; }
             .hero-stats { 
@@ -402,9 +440,13 @@
             .totop { width: 40px; height: 40px; font-size: 1.4rem; bottom: 20px; right: 20px; }
             .logo { font-size: 1.6rem; }
             
-            /* Убираем всё, что может вызвать горизонтальную прокрутку */
-            img, video, iframe, .tech-tooltip { max-width: 100%; }
-            .hero-stats, .service-card, .portfolio-card, .step-card, .competence-card, .calculator-card { overflow-x: hidden; }
+            /* Запрет любых выезжающих элементов */
+            img, video, iframe, .tech-tooltip, .hero-stats, .service-card, 
+            .portfolio-card, .step-card, .competence-card, .calculator-card,
+            .mission-photo, .faq-item, .cover-content {
+                max-width: 100% !important;
+                overflow-x: hidden !important;
+            }
         }
         
         @media (max-width: 480px) {
@@ -448,7 +490,9 @@
                 <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.6-1.38-.97-2.23-1.56-.99-.69-.35-1.07.22-1.69.15-.15 2.8-2.57 2.85-2.79.01-.06.02-.14-.05-.2-.07-.06-.18-.04-.26-.02-.12.03-1.97 1.25-5.57 3.68-.53.36-1.01.54-1.44.53-.47-.01-1.38-.27-2.06-.49-.84-.27-1.51-.42-1.45-.89.03-.25.37-.5 1.03-.76 4.04-1.76 6.73-2.92 8.09-3.48 3.85-1.59 4.65-1.86 5.17-1.87.12 0 .37.03.54.2.14.14.17.32.19.54-.04.18-.06.46-.09.78z" fill="white"/></svg>
             </a>
         </nav>
-        <div class="burger" id="burgerBtn"><span></span><span></span><span></span></div>
+        <div class="burger" id="burgerBtn">
+            <span></span><span></span><span></span>
+        </div>
     </div>
 </header>
 
@@ -673,9 +717,34 @@
     document.querySelectorAll('#calcComplexity .calc-option').forEach(o=>{ o.addEventListener('click',()=>{ complexity=o.getAttribute('data-complex'); document.querySelectorAll('#calcComplexity .calc-option').forEach(c=>c.classList.remove('selected')); o.classList.add('selected'); upd(); }); });
     document.querySelector('#calcComplexity .calc-option[data-complex="simple"]').classList.add('selected');
     upd();
-    const burger=document.getElementById('burgerBtn'), nav=document.getElementById('navMenu');
-    if(burger) burger.addEventListener('click',()=>nav.classList.toggle('active'));
-    document.querySelectorAll('.nav-link').forEach(l=>l.addEventListener('click',()=>nav.classList.remove('active')));
+    
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mobileMenu = document.getElementById('navMenu');
+    if(burgerBtn) {
+        burgerBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+            // Небольшая анимация бургера
+            const spans = burgerBtn.querySelectorAll('span');
+            if(mobileMenu.classList.contains('active')) {
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+    }
+    document.querySelectorAll('.nav-link').forEach(l => l.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        const spans = burgerBtn.querySelectorAll('span');
+        if(spans) {
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+        }
+    }));
     document.querySelectorAll('a[href^="#"]').forEach(a=>{ a.addEventListener('click',function(e){ const href=this.getAttribute('href'); if(href==="#"||href==="") return; const t=document.querySelector(href); if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth'}); } }); });
     document.querySelectorAll('.faq-question').forEach(b=>{ b.addEventListener('click',()=>{ b.classList.toggle('active'); b.nextElementSibling?.classList.toggle('active'); }); });
     const form=document.getElementById('mainForm'), stat=document.getElementById('formStatus');
