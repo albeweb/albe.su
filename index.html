@@ -13,7 +13,7 @@
     <link rel="sitemap" type="application/xml" href="sitemap.xml">
     <meta property="og:title" content="ALBE DIGITAL — разработка сайтов под ключ, премиум дизайн">
     <meta property="og:description" content="Разработка сайтов, дизайн, SEO, AI, мобильные приложения. Калькулятор стоимости, прозрачные цены, инновации.">
-    <meta property="og:image" content="https://albe.su/og-image.webp">
+    <meta property="og:image" content="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg">
     <meta property="og:url" content="https://albe.su/">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="theme-color" content="#0D1117">
@@ -28,7 +28,6 @@
     <link rel="stylesheet" href="style.css">
     
     <style>
-        /* Дополнительные стили для кнопок "Подробнее" */
         .section-header {
             display: flex;
             justify-content: space-between;
@@ -71,16 +70,50 @@
             transform: translateX(4px);
         }
         
-        /* Для секции калькулятора и миссии — кнопка внизу справа */
-        .calculator-more-wrapper {
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 2rem;
+        /* Стили для изображений портфолио */
+        .portfolio-image {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 1;
         }
-        .mission-more-wrapper {
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 1rem;
+        .portfolio-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+            border-top-left-radius: 28px;
+            z-index: -1;
+        }
+        
+        /* Стили для изображений миссии */
+        .mission-photo {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #F5B700;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 1;
+            font-weight: 600;
+        }
+        .mission-photo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            border-top-left-radius: 28px;
+            border-bottom-right-radius: 28px;
+            z-index: -1;
         }
         
         @media (max-width: 768px) {
@@ -182,7 +215,7 @@
             </div>
         </section>
 
-        <!-- ПОРТФОЛИО -->
+        <!-- ПОРТФОЛИО С КАРТИНКАМИ -->
         <section id="portfolio" class="section">
             <div class="container">
                 <div class="section-header">
@@ -190,9 +223,18 @@
                     <a href="portfolio.html" class="section-more-btn">Все проекты</a>
                 </div>
                 <div class="portfolio-grid">
-                    <div class="portfolio-card"><div class="portfolio-image">NEO BANK</div><div class="portfolio-info"><h3>NeoBank Platform</h3><p>Рост активных клиентов +210%</p></div></div>
-                    <div class="portfolio-card"><div class="portfolio-image">AI RECOMMEND</div><div class="portfolio-info"><h3>AI рекомендательная система</h3><p>Рост конверсии +34%</p></div></div>
-                    <div class="portfolio-card"><div class="portfolio-image">MOBILE APP</div><div class="portfolio-info"><h3>FitTrack приложение</h3><p>50k+ установок</p></div></div>
+                    <div class="portfolio-card">
+                        <div class="portfolio-image" style="background-image: url('https://images.pexels.com/photos/2183296/pexels-photo-2183296.jpeg');">NEO BANK</div>
+                        <div class="portfolio-info"><h3>NeoBank Platform</h3><p>Рост активных клиентов +210%</p></div>
+                    </div>
+                    <div class="portfolio-card">
+                        <div class="portfolio-image" style="background-image: url('https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg');">AI RECOMMEND</div>
+                        <div class="portfolio-info"><h3>AI рекомендательная система</h3><p>Рост конверсии +34%</p></div>
+                    </div>
+                    <div class="portfolio-card">
+                        <div class="portfolio-image" style="background-image: url('https://images.pexels.com/photos/699122/pexels-photo-699122.jpeg');">MOBILE APP</div>
+                        <div class="portfolio-info"><h3>FitTrack приложение</h3><p>50k+ установок</p></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -249,7 +291,7 @@
             </div>
         </section>
 
-        <!-- МИССИЯ -->
+        <!-- МИССИЯ С КАРТИНКАМИ -->
         <section class="section">
             <div class="container">
                 <div class="section-header">
@@ -262,10 +304,10 @@
                         <p>Наши клиенты из ритейла, финтеха и образования получают прирост органического трафика до 300% за 6 месяцев. Мы внедряем AI-решения для автоматизации маркетинга и продаж, а также разрабатываем мобильные приложения, повышающие лояльность аудитории. Работаем с брендами по всей России.</p>
                     </div>
                     <div class="mission-photos">
-                        <div class="mission-photo">команда</div>
-                        <div class="mission-photo">процесс</div>
-                        <div class="mission-photo">результат</div>
-                        <div class="mission-photo">клиенты</div>
+                        <div class="mission-photo" style="background-image: url('https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg');">команда</div>
+                        <div class="mission-photo" style="background-image: url('https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg');">процесс</div>
+                        <div class="mission-photo" style="background-image: url('https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg');">результат</div>
+                        <div class="mission-photo" style="background-image: url('https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg');">клиенты</div>
                     </div>
                 </div>
             </div>
