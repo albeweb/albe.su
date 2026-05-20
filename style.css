@@ -1,4 +1,3 @@
-/* ===== RESET & BASE ===== */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body { 
     overflow-x: hidden !important;
@@ -39,7 +38,6 @@ body::before {
     overflow-x: hidden !important;
 }
 
-/* ===== ЗАГОЛОВКИ ===== */
 h1, h2, h3, .stat-number, .step-num, .hero-tag, .hero-title-line2, 
 .service-card h3, .portfolio-info h3, .step-card h3, .competence-card h3, 
 .calc-label, .stack-explanation h4, .faq-question, .footer-logo, .footer h4,
@@ -85,7 +83,6 @@ h3 {
     font-family: 'Manrope', sans-serif;
 }
 
-/* ===== ОСНОВНОЙ ТЕКСТ ===== */
 p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-card p,
 .mission-text p, .faq-answer, .footer p, .footer a, .tech-item, .calc-option,
 .time-breakdown-item, .stack-explanation p, input, textarea, .stat-label {
@@ -95,10 +92,8 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
 }
 .hero-desc strong, .stat-number { font-family: 'Manrope', sans-serif; }
 
-/* ===== СЕКЦИИ ===== */
 .section { padding: 100px 0; border-bottom: 1px solid rgba(245,183,0,0.1); }
 
-/* ===== КНОПКИ И КАРТОЧКИ ===== */
 .btn-primary, .btn-outline, .service-card, .portfolio-card, .step-card, .mission-photo, .faq-item, .cover-content, .calculator-card, .calc-option, .competence-card {
     background: rgba(18, 24, 32, 0.85);
     backdrop-filter: blur(2px);
@@ -128,7 +123,6 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
 .service-card, .portfolio-card, .step-card, .mission-photo, .faq-item { padding: 32px; }
 .service-card:hover, .portfolio-card:hover, .step-card:hover, .calc-option:hover { transform: translateY(-8px); border-color: #F5B700; box-shadow: 0 20px 30px -12px rgba(0,0,0,0.5); }
 
-/* ===== ШАПКА ===== */
 .header { 
     position: relative;
     background: rgba(13,17,23,0.85); 
@@ -208,7 +202,6 @@ body.header-fixed { padding-top: 82px; }
 .header-telegram:hover { transform: scale(1.05); }
 .header-telegram svg { width: 20px; height: 20px; fill: white; }
 
-/* ===== БАННЕР ===== */
 .hero {
     position: relative;
     min-height: 100vh;
@@ -373,11 +366,9 @@ body.header-fixed { padding-top: 82px; }
 
 @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-/* ===== УСЛУГИ ===== */
 .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; margin-top: 48px; }
 .service-card h3 { font-size: 1.6rem; margin-bottom: 1rem; }
 
-/* ===== ПОРТФОЛИО ===== */
 .portfolio-grid { 
     display: grid; 
     grid-template-columns: repeat(3, 1fr); 
@@ -402,12 +393,10 @@ body.header-fixed { padding-top: 82px; }
 }
 .portfolio-info { padding: 0; margin-top: 20px; }
 
-/* ===== ПРОЦЕСС ===== */
 .steps-container { display: flex; flex-wrap: wrap; gap: 32px; margin-top: 40px; }
 .step-card { flex: 1 1 200px; }
 .step-num { font-size: 2.6rem; font-weight: 500; color: #F5B700; margin-bottom: 1rem; opacity: 0.8; }
 
-/* ===== КОМПЕТЕНЦИИ ===== */
 .competences-grid { display: flex; flex-wrap: wrap; gap: 30px; margin: 40px 0; }
 .competence-card { flex: 1 1 280px; padding: 28px 24px; transition: all 0.3s; cursor: default; }
 .competence-card h3 { font-size: 1.8rem; margin-bottom: 20px; font-weight: 500; color: #F5B700; }
@@ -448,7 +437,6 @@ body.header-fixed { padding-top: 82px; }
 }
 .tech-tooltip strong { color: #F5B700; font-weight: 500; }
 
-/* ===== КАЛЬКУЛЯТОР ===== */
 .calculator-card { padding: 40px; margin: 40px 0; }
 .calculator-two-columns { display: flex; gap: 40px; flex-wrap: wrap; }
 .calculator-left { flex: 1; min-width: 280px; }
@@ -466,13 +454,11 @@ body.header-fixed { padding-top: 82px; }
 .time-breakdown-item { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.85rem; flex-wrap: wrap; gap: 8px; }
 .time-breakdown-item span:first-child { color: #F5B700; }
 
-/* ===== МИССИЯ ===== */
 .mission-wrapper { display: flex; gap: 50px; align-items: center; flex-wrap: wrap; }
 .mission-text p { margin-bottom: 1rem; }
 .mission-photos { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .mission-photo { height: 200px; display: flex; align-items: center; justify-content: center; color: #F5B700; background-size: cover; background-position: center; font-family: 'Manrope', sans-serif; font-weight: 500; }
 
-/* ===== FAQ ===== */
 .faq-item { margin-bottom: 18px; }
 .faq-question { width: 100%; text-align: left; background: none; border: none; padding: 22px 28px; font-size: 1.15rem; font-weight: 500; color: #F5B700; cursor: pointer; display: flex; justify-content: space-between; }
 .faq-answer { padding: 0 28px 28px 28px; color: #B0C4DE; display: none; }
@@ -480,7 +466,6 @@ body.header-fixed { padding-top: 82px; }
 .faq-question::after { content: '+'; font-size: 1.5rem; font-weight: 300; }
 .faq-question.active::after { content: '−'; }
 
-/* ===== КОНТАКТЫ ===== */
 .fullscreen-cover { min-height: 85vh; background-image: url('https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1600'); background-size: cover; background-attachment: fixed; background-position: center; position: relative; display: flex; align-items: center; justify-content: center; }
 .cover-overlay { position: absolute; inset: 0; background: rgba(13,17,23,0.92); }
 .cover-content { position: relative; max-width: 550px; width: 90%; padding: 48px; text-align: center; }
@@ -488,7 +473,6 @@ body.header-fixed { padding-top: 82px; }
 input, textarea { width: 100%; padding: 14px 18px; background: #0A0F14; border: 1px solid #2A3A44; color: white; margin-bottom: 22px; transition: 0.2s; border-radius: 0; }
 input:focus, textarea:focus { outline: none; border-color: #F5B700; }
 
-/* ===== ФУТЕР ===== */
 .footer { background: #080C10; padding: 56px 0 32px; border-top: 1px solid rgba(245,183,0,0.15); }
 .footer-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; }
 .footer-logo { color: #F5B700; font-size: 1.6rem; font-weight: 500; }
@@ -498,7 +482,6 @@ input:focus, textarea:focus { outline: none; border-color: #F5B700; }
 .totop:hover { background: white; transform: translateY(-4px); }
 .seo-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
 
-/* ===== АДАПТИВ ===== */
 @media (max-width: 1600px) {
     h1 { font-size: 8rem; }
     .hero-title-line2 { font-size: 3.4rem; }
