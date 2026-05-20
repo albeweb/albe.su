@@ -29,21 +29,23 @@ function initTechTooltips() {
     let timeout = null;
     
     document.querySelectorAll('.tech-item').forEach(el => {
-        el.addEventListener('mouseenter', e => {
-            const d = techDesc[el.getAttribute('data-tech')] || "Современная технология";
-            tooltip.innerHTML = `<strong>${el.innerText}</strong><br>${d}`;
+        el.addEventListener('mouseenter', function(e) {
+            const tech = this.getAttribute('data-tech');
+            const d = techDesc[tech] || "Современная технология";
+            tooltip.innerHTML = '<strong>' + this.innerText + '</strong><br>' + d;
             tooltip.style.opacity = '1';
-            const r = el.getBoundingClientRect();
-            let left = r.right + 15, top = r.top + r.height / 2 - 50;
-            if (left + 380 > innerWidth) left = r.left - 390;
+            const r = this.getBoundingClientRect();
+            let left = r.right + 15;
+            let top = r.top + r.height / 2 - 50;
+            if (left + 380 > window.innerWidth) left = r.left - 390;
             if (top < 10) top = 10;
-            if (top + 150 > innerHeight) top = innerHeight - 160;
+            if (top + 150 > window.innerHeight) top = window.innerHeight - 160;
             tooltip.style.left = left + 'px';
             tooltip.style.top = top + 'px';
             if (timeout) clearTimeout(timeout);
         });
-        el.addEventListener('mouseleave', () => {
-            timeout = setTimeout(() => { tooltip.style.opacity = '0'; }, 150);
+        el.addEventListener('mouseleave', function() {
+            timeout = setTimeout(function() { tooltip.style.opacity = '0'; }, 150);
         });
     });
 }
@@ -77,127 +79,169 @@ function getRec(serv) {
 function updateCalculator() {
     let h = 0;
     for (let s of selected) h += sh[s];
-    let fin = Math.round(h * cm[complexity]), cost = fin * rate;
-    let servList = Array.from(selected).map(s => ({ design: "Дизайн", front: "Frontend", back: "Backend", seo: "SEO", cms: "CMS", crm: "CRM", ai: "AI", mobile: "Мобильное", support: "Поддержка" }[s])).join(", ") || "—";
+    let fin = Math.round(h * cm[complexity]);
+    let cost = fin * rate;
+    let servList = Array.from(selected).map(function(s) {
+        var names = { design: "Дизайн", front: "Frontend", back: "Backend", seo: "SEO", cms: "CMS", crm: "CRM", ai: "AI", mobile: "Мобильное", support: "Поддержка" };
+        return names[s];
+    }).join(", ");
+    if (servList === "") servList = "—";
     
-    const priceEl = document.getElementById('calcPrice');
-    const hoursEl = document.getElementById('calcHoursInfo');
+    var priceEl = document.getElementById('calcPrice');
+    var hoursEl = document.getElementById('calcHoursInfo');
     if (priceEl) priceEl.innerHTML = cost.toLocaleString() + ' ₽';
-    if (hoursEl) hoursEl.innerHTML = `✔ Услуги: ${servList}<br>✔ Сложность: ${complexity === 'simple' ? 'Старт' : complexity === 'medium' ? 'Бизнес' : complexity === 'high' ? 'Премиум' : 'Enterprise'}<br>✔ Часы: ${h} ч × ${cm[complexity]} = ${fin} ч.`;
+    if (hoursEl) hoursEl.innerHTML = '✔ Услуги: ' + servList + '<br>✔ Сложность: ' + (complexity === 'simple' ? 'Старт' : complexity === 'medium' ? 'Бизнес' : complexity === 'high' ? 'Премиум' : 'Enterprise') + '<br>✔ Часы: ' + h + ' ч × ' + cm[complexity] + ' = ' + fin + ' ч.';
     
-    let rec = getRec(selected);
-    let phases = [
-        { n: "Аналитика и прототип", b: 10, m: 1.2 }, { n: "Дизайн", b: selected.has('design') ? 20 : 0, m: 1 },
-        { n: "Frontend", b: selected.has('front') ? 30 : 0, m: 1 }, { n: "Backend", b: selected.has('back') ? 40 : 0, m: 1 },
-        { n: "SEO", b: selected.has('seo') ? 15 : 0, m: 1 }, { n: "CMS", b: selected.has('cms') ? 25 : 0, m: 1 },
-        { n: "CRM/ERP", b: selected.has('crm') ? 60 : 0, m: 1 }, { n: "AI/ML", b: selected.has('ai') ? 90 : 0, m: 1 },
-        { n: "Мобильное", b: selected.has('mobile') ? 120 : 0, m: 1 }, { n: "Поддержка", b: selected.has('support') ? 8 : 0, m: 1 },
-        { n: "Тестирование", b: 15, m: 1.3 }, { n: "Деплой", b: 8, m: 1.1 }
+    var rec = getRec(selected);
+    var phases = [
+        { n: "Аналитика и прототип", b: 10, m: 1.2 },
+        { n: "Дизайн", b: selected.has('design') ? 20 : 0, m: 1 },
+        { n: "Frontend", b: selected.has('front') ? 30 : 0, m: 1 },
+        { n: "Backend", b: selected.has('back') ? 40 : 0, m: 1 },
+        { n: "SEO", b: selected.has('seo') ? 15 : 0, m: 1 },
+        { n: "CMS", b: selected.has('cms') ? 25 : 0, m: 1 },
+        { n: "CRM/ERP", b: selected.has('crm') ? 60 : 0, m: 1 },
+        { n: "AI/ML", b: selected.has('ai') ? 90 : 0, m: 1 },
+        { n: "Мобильное", b: selected.has('mobile') ? 120 : 0, m: 1 },
+        { n: "Поддержка", b: selected.has('support') ? 8 : 0, m: 1 },
+        { n: "Тестирование", b: 15, m: 1.3 },
+        { n: "Деплой", b: 8, m: 1.1 }
     ];
-    let br = [], tot = 0;
-    phases.forEach(p => { if (p.b > 0) { let hh = Math.round(p.b * p.m * cm[complexity]); br.push({ name: p.n, h: hh }); tot += hh; } });
+    var br = [], tot = 0;
+    for (var i = 0; i < phases.length; i++) {
+        var p = phases[i];
+        if (p.b > 0) {
+            var hh = Math.round(p.b * p.m * cm[complexity]);
+            br.push({ name: p.n, h: hh });
+            tot += hh;
+        }
+    }
     if (tot < fin && fin - tot > 5) br.push({ name: "Управление проектом", h: fin - tot });
-    else if (tot > fin && br.length) { br[0].h -= tot - fin; if (br[0].h < 0) br[0].h = 0; }
-    br = br.filter(b => b.h > 0);
-    let timeHtml = `<div class="time-breakdown"><h4>Распределение ${fin} часов:</h4>`;
-    br.forEach(b => { timeHtml += `<div class="time-breakdown-item"><span>${b.name}</span><span>${b.h} ч</span></div>`; });
-    timeHtml += `</div>`;
+    else if (tot > fin && br.length) {
+        br[0].h -= tot - fin;
+        if (br[0].h < 0) br[0].h = 0;
+    }
+    br = br.filter(function(b) { return b.h > 0; });
+    var timeHtml = '<div class="time-breakdown"><h4>Распределение ' + fin + ' часов:</h4>';
+    for (var i = 0; i < br.length; i++) {
+        timeHtml += '<div class="time-breakdown-item"><span>' + br[i].name + '</span><span>' + br[i].h + ' ч</span></div>';
+    }
+    timeHtml += '</div>';
     
-    const stackEl = document.getElementById('stackExplanation');
+    var stackEl = document.getElementById('stackExplanation');
     if (stackEl) {
-        stackEl.innerHTML = h === 0 ? `<h4>Рекомендуемый стек</h4><p>Выберите услуги для расчёта</p>` :
-            `<h4>Рекомендуемый стек</h4><p><strong>${rec.rec}</strong></p><h4>Преимущества</h4><p>${rec.exp}</p>${timeHtml}<p style="margin-top:12px; font-size:0.85rem;">Выбор технологий основан на потребностях вашего проекта.</p>`;
+        if (h === 0) {
+            stackEl.innerHTML = '<h4>Рекомендуемый стек</h4><p>Выберите услуги для расчёта</p>';
+        } else {
+            stackEl.innerHTML = '<h4>Рекомендуемый стек</h4><p><strong>' + rec.rec + '</strong></p><h4>Преимущества</h4><p>' + rec.exp + '</p>' + timeHtml + '<p style="margin-top:12px; font-size:0.85rem;">Выбор технологий основан на потребностях вашего проекта.</p>';
+        }
     }
 }
 
 function initCalculator() {
-    document.querySelectorAll('#calcServices .calc-option').forEach(o => {
-        o.addEventListener('click', () => {
-            let s = o.getAttribute('data-service');
+    var serviceOptions = document.querySelectorAll('#calcServices .calc-option');
+    for (var i = 0; i < serviceOptions.length; i++) {
+        var o = serviceOptions[i];
+        o.addEventListener('click', function() {
+            var s = this.getAttribute('data-service');
             if (selected.has(s)) {
                 selected.delete(s);
-                o.classList.remove('selected');
+                this.classList.remove('selected');
             } else {
                 selected.add(s);
-                o.classList.add('selected');
+                this.classList.add('selected');
             }
             updateCalculator();
         });
-    });
-    document.querySelectorAll('#calcComplexity .calc-option').forEach(o => {
-        o.addEventListener('click', () => {
-            complexity = o.getAttribute('data-complex');
-            document.querySelectorAll('#calcComplexity .calc-option').forEach(c => c.classList.remove('selected'));
-            o.classList.add('selected');
+    }
+    
+    var complexityOptions = document.querySelectorAll('#calcComplexity .calc-option');
+    for (var i = 0; i < complexityOptions.length; i++) {
+        var o = complexityOptions[i];
+        o.addEventListener('click', function() {
+            complexity = this.getAttribute('data-complex');
+            var allOptions = document.querySelectorAll('#calcComplexity .calc-option');
+            for (var j = 0; j < allOptions.length; j++) {
+                allOptions[j].classList.remove('selected');
+            }
+            this.classList.add('selected');
             updateCalculator();
         });
-    });
-    const defaultComplexity = document.querySelector('#calcComplexity .calc-option[data-complex="simple"]');
+    }
+    
+    var defaultComplexity = document.querySelector('#calcComplexity .calc-option[data-complex="simple"]');
     if (defaultComplexity) defaultComplexity.classList.add('selected');
     updateCalculator();
 }
 
 // ===== ПЛАВНЫЙ СКРОЛЛ =====
 function initSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-        a.addEventListener('click', function (e) {
-            const href = this.getAttribute('href');
+    var links = document.querySelectorAll('a[href^="#"]');
+    for (var i = 0; i < links.length; i++) {
+        var a = links[i];
+        a.addEventListener('click', function(e) {
+            var href = this.getAttribute('href');
             if (href === "#" || href === "") return;
-            const target = document.querySelector(href);
+            var target = document.querySelector(href);
             if (target) {
                 e.preventDefault();
                 target.scrollIntoView({ behavior: 'smooth' });
             }
         });
-    });
+    }
 }
 
 // ===== FAQ =====
 function initFaq() {
-    document.querySelectorAll('.faq-question').forEach(b => {
-        b.addEventListener('click', () => {
-            b.classList.toggle('active');
-            b.nextElementSibling?.classList.toggle('active');
+    var questions = document.querySelectorAll('.faq-question');
+    for (var i = 0; i < questions.length; i++) {
+        var b = questions[i];
+        b.addEventListener('click', function() {
+            this.classList.toggle('active');
+            var answer = this.nextElementSibling;
+            if (answer) answer.classList.toggle('active');
         });
-    });
+    }
 }
 
 // ===== ФОРМА =====
 function initForm() {
-    const form = document.getElementById('mainForm');
-    const stat = document.getElementById('formStatus');
+    var form = document.getElementById('mainForm');
+    var stat = document.getElementById('formStatus');
     if (form) {
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', function(e) {
             e.preventDefault();
-            const name = document.getElementById('userName')?.value.trim();
-            const phone = document.getElementById('userPhone')?.value.trim();
-            const email = document.getElementById('userEmail')?.value.trim();
+            var name = document.getElementById('userName') ? document.getElementById('userName').value.trim() : '';
+            var phone = document.getElementById('userPhone') ? document.getElementById('userPhone').value.trim() : '';
+            var email = document.getElementById('userEmail') ? document.getElementById('userEmail').value.trim() : '';
             if (!name || !phone || !email) {
                 if (stat) stat.innerHTML = '<div style="background:#990000; padding:12px;">Заполните все поля</div>';
-                setTimeout(() => { if (stat) stat.innerHTML = ''; }, 3000);
+                setTimeout(function() { if (stat) stat.innerHTML = ''; }, 3000);
                 return;
             }
             if (stat) stat.innerHTML = '<div style="background:#F5B700; color:black; padding:12px;">Спасибо! Менеджер свяжется с вами.</div>';
             form.reset();
-            setTimeout(() => { if (stat) stat.innerHTML = ''; }, 5000);
+            setTimeout(function() { if (stat) stat.innerHTML = ''; }, 5000);
         });
     }
 }
 
 // ===== КНОПКА НАВЕРХ =====
 function initToTop() {
-    const toTop = document.getElementById('toTopBtn');
+    var toTop = document.getElementById('toTopBtn');
     if (!toTop) return;
-    window.addEventListener('scroll', () => {
+    window.addEventListener('scroll', function() {
         toTop.style.display = window.scrollY > 400 ? 'flex' : 'none';
     });
     toTop.style.display = 'none';
-    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    toTop.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 }
 
 // ===== СХЕМА =====
 function addSchema() {
-    const schema = {
+    var schema = {
         "@context": "https://schema.org",
         "@graph": [
             {
@@ -229,14 +273,14 @@ function addSchema() {
             }
         ]
     };
-    const sc = document.createElement('script');
+    var sc = document.createElement('script');
     sc.type = 'application/ld+json';
     sc.textContent = JSON.stringify(schema);
     document.head.appendChild(sc);
 }
 
-// ===== ЗАПУСК ВСЕХ ИНИЦИАЛИЗАЦИЙ ПОСЛЕ ЗАГРУЗКИ СТРАНИЦЫ =====
-document.addEventListener('DOMContentLoaded', () => {
+// ===== ЗАПУСК ВСЕХ ИНИЦИАЛИЗАЦИЙ =====
+document.addEventListener('DOMContentLoaded', function() {
     initTechTooltips();
     initCalculator();
     initSmoothScroll();
@@ -244,5 +288,4 @@ document.addEventListener('DOMContentLoaded', () => {
     initForm();
     initToTop();
     addSchema();
-});
 });
