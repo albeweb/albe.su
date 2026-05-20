@@ -3,115 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Политика конфиденциальности | ALBE DIGITAL</title>
-    <meta name="description" content="Политика обработки персональных данных ALBE digital. Как мы собираем, используем и защищаем ваши данные.">
+    <title>ALBE DIGITAL | Политика конфиденциальности</title>
+    <meta name="description" content="Политика конфиденциальности ALBE digital. Сбор и обработка персональных данных.">
     <meta name="robots" content="noindex, follow">
     <link rel="canonical" href="https://albe.su/privacy.html">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23F5B700'/%3E%3Ctext x='20' y='28' font-size='24' text-anchor='middle' fill='black' font-weight='500'%3EA%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background-color: #0D1117; color: #E6EDF5; line-height: 1.5; font-weight: 400; }
-        body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E"); background-repeat: repeat; pointer-events: none; z-index: 1; }
-        .container { max-width: 1280px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 2; }
-        .header { position: relative; background: rgba(13,17,23,0.85); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid rgba(245,183,0,0.2); padding: 18px 0; }
-        .header.fixed { position: fixed; top: 0; left: 0; right: 0; animation: slideDown 0.3s ease; }
-        @keyframes slideDown { from { transform: translateY(-100%); } to { transform: translateY(0); } }
-        body.header-fixed { padding-top: 82px; }
-        .header .container { display: flex; justify-content: space-between; align-items: center; padding: 0 40px; }
-        .logo { font-family: 'Zen Dots', monospace; font-size: 2.2rem; font-weight: 400; text-decoration: none; letter-spacing: 1px; }
-        .logo span:first-child { color: #F5B700; }
-        .logo span:last-child { color: #FFFFFF; }
-        .nav-menu { display: flex; gap: 2rem; align-items: center; }
-        .nav-link { color: #FFFFFF; text-decoration: none; font-weight: 400; transition: 0.2s; white-space: nowrap; }
-        .nav-link:hover { color: #F5B700; }
-        .burger { display: none; flex-direction: column; cursor: pointer; gap: 6px; z-index: 1002; }
-        .burger span { width: 28px; height: 2px; background: #F5B700; transition: 0.3s; }
-        @media (max-width: 768px) {
-            .nav-menu { position: fixed; top: 0; right: -280px; background: rgba(13,17,23,0.98); backdrop-filter: blur(12px); flex-direction: column; width: 260px; height: 100vh; padding: 80px 24px 30px; transition: right 0.3s ease-out; border-left: 2px solid #F5B700; z-index: 1001; gap: 1.5rem; align-items: flex-start; overflow-y: auto; }
-            .nav-menu.active { right: 0; }
-            .nav-link { white-space: normal; font-size: 1.1rem; padding: 8px 0; width: 100%; }
-            .burger { display: flex; }
-            .header-telegram { margin-left: 0; margin-top: 10px; }
-        }
-        .header-telegram { display: inline-flex; align-items: center; justify-content: center; background: #27A6E5; width: 36px; height: 36px; border-radius: 50%; transition: transform 0.2s; margin-left: 8px; }
-        .header-telegram svg { width: 20px; height: 20px; fill: white; }
-        .privacy-content { max-width: 900px; margin: 0 auto; padding: 60px 0; }
-        .privacy-content h2 { margin-top: 40px; margin-bottom: 20px; color: #F5B700; }
-        .privacy-content p { margin-bottom: 16px; }
-        .footer { background: #080C10; padding: 56px 0 32px; border-top: 1px solid rgba(245,183,0,0.15); }
-        .footer-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; }
-        .footer-logo { color: #F5B700; font-size: 1.6rem; font-weight: 500; font-family: 'Zen Dots', monospace; }
-        .footer a { color: #B0C4DE; text-decoration: none; transition: 0.2s; }
-        .footer a:hover { color: #F5B700; }
-        .totop { position: fixed; bottom: 30px; right: 30px; background: #F5B700; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; font-size: 1.8rem; color: #0D1117; border-top-left-radius: 24px; border-bottom-right-radius: 24px; transition: 0.2s; z-index: 99; }
-        @media (max-width: 768px) { .container { padding: 0 20px; } }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="header" id="mainHeader">
-    <div class="container">
-        <a href="/" class="logo"><span>a</span><span>lbe</span></a>
-        <nav class="nav-menu" id="navMenu">
-            <a href="/" class="nav-link">Главная</a>
-            <a href="/portfolio.html" class="nav-link">Портфолио</a>
-            <a href="/services.html" class="nav-link">Услуги</a>
-            <a href="/contacts.html" class="nav-link">Контакты</a>
-            <a href="tel:+79959870353" class="btn-outline" style="padding: 6px 20px;">+7 995 987 0353</a>
-            <a href="https://t.me/albe_web" target="_blank" class="header-telegram"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.6-1.38-.97-2.23-1.56-.99-.69-.35-1.07.22-1.69.15-.15 2.8-2.57 2.85-2.79.01-.06.02-.14-.05-.2-.07-.06-.18-.04-.26-.02-.12.03-1.97 1.25-5.57 3.68-.53.36-1.01.54-1.44.53-.47-.01-1.38-.27-2.06-.49-.84-.27-1.51-.42-1.45-.89.03-.25.37-.5 1.03-.76 4.04-1.76 6.73-2.92 8.09-3.48 3.85-1.59 4.65-1.86 5.17-1.87.12 0 .37.03.54.2.14.14.17.32.19.54-.04.18-.06.46-.09.78z" fill="white"/></svg></a>
-        </nav>
-        <div class="burger" id="burgerBtn"><span></span><span></span><span></span></div>
-    </div>
-</header>
-
-<main class="container">
-    <div class="privacy-content">
-        <h1>Политика конфиденциальности</h1>
-        <p>Настоящая Политика конфиденциальности персональных данных (далее — Политика) действует в отношении всей информации, которую ALBE digital может получить о пользователе во время использования сайта.</p>
-        
-        <h2>1. Определение терминов</h2>
-        <p>1.1. В настоящей Политике используются следующие термины:<br>
-        1.1.1. «Персональные данные» — любая информация, относящаяся к прямо или косвенно определенному физическому лицу.<br>
-        1.1.2. «Обработка персональных данных» — любое действие (операция) с персональными данными.</p>
-        
-        <h2>2. Цели сбора персональной информации</h2>
-        <p>ALBE digital собирает и обрабатывает персональные данные пользователей в следующих целях:<br>
-        — Идентификация пользователя для связи с ним (форма обратной связи, заявка на звонок);<br>
-        — Предоставление пользователю информации об услугах компании;<br>
-        — Улучшение качества работы сайта и его содержания.</p>
-        
-        <h2>3. Условия обработки персональных данных</h2>
-        <p>3.1. Обработка персональных данных осуществляется на законной и справедливой основе.<br>
-        3.2. ALBE digital принимает необходимые организационные и технические меры для защиты персональных данных от неправомерного доступа.</p>
-        
-        <h2>4. Сроки обработки и хранения персональных данных</h2>
-        <p>Персональные данные обрабатываются до достижения целей обработки, после чего уничтожаются.</p>
-        
-        <h2>5. Заключительные положения</h2>
-        <p>Пользователь может получить любые разъяснения по интересующим вопросам, касающимся обработки его персональных данных, обратившись в ALBE digital по электронной почте: <a href="mailto:hello@albe.su">hello@albe.su</a>.</p>
-        <p>Дата обновления: 20.05.2025</p>
-    </div>
-</main>
-
-<footer class="footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div><div class="footer-logo">ALBE digital</div><p>Digital agency премиального уровня.</p></div>
-            <div><h4 style="color:#F5B700;">Контакты</h4><p><a href="tel:+79959870353">+7 995 987 0353</a></p><p><a href="mailto:hello@albe.su">hello@albe.su</a></p></div>
-            <div><h4 style="color:#F5B700;">Навигация</h4><p><a href="/">Главная</a></p><p><a href="/portfolio.html">Портфолио</a></p><p><a href="/services.html">Услуги</a></p><p><a href="/contacts.html">Контакты</a></p></div>
-        </div>
-        <hr><p style="text-align: center;">© 2025 ALBE digital — разработка, дизайн, AI, SEO. <a href="/privacy.html">Политика конфиденциальности</a></p>
-    </div>
-</footer>
-<div class="totop" id="toTopBtn">↑</div>
-<script>
-    const headerEl = document.querySelector('.header');
-    function handleScroll() { if (window.scrollY > 50) { if (!headerEl.classList.contains('fixed')) { headerEl.classList.add('fixed'); document.body.classList.add('header-fixed'); } } else { if (headerEl.classList.contains('fixed')) { headerEl.classList.remove('fixed'); document.body.classList.remove('header-fixed'); } } }
-    window.addEventListener('scroll', handleScroll); handleScroll();
-    const burger = document.getElementById('burgerBtn'); const menu = document.getElementById('navMenu');
-    if (burger) { burger.addEventListener('click', () => { menu.classList.toggle('active'); const spans = burger.querySelectorAll('span'); if (menu.classList.contains('active')) { spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)'; spans[1].style.opacity = '0'; spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)'; } else { spans[0].style.transform = 'none'; spans[1].style.opacity = '1'; spans[2].style.transform = 'none'; } }); document.querySelectorAll('.nav-link').forEach(l => l.addEventListener('click', () => menu.classList.remove('active'))); }
-    const toTopBtn = document.getElementById('toTopBtn'); window.addEventListener('scroll', () => { if (toTopBtn) toTopBtn.style.display = window.scrollY > 400 ? 'flex' : 'none'; }); if (toTopBtn) toTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-</script>
+    <div id="header-placeholder"></div>
+    
+    <main>
+        <section class="section">
+            <div class="container">
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <h1>Политика конфиденциальности</h1>
+                    <p>Последнее обновление: 1 января 2025 г.</p>
+                    
+                    <h3 style="color: #F5B700; margin: 2rem 0 1rem;">1. Сбор информации</h3>
+                    <p>Мы собираем информацию, которую вы предоставляете при заполнении формы на сайте: имя, телефон, email.</p>
+                    
+                    <h3 style="color: #F5B700; margin: 2rem 0 1rem;">2. Использование информации</h3>
+                    <p>Ваши данные используются только для связи с вами и ответа на запросы. Мы не передаём данные третьим лицам.</p>
+                    
+                    <h3 style="color: #F5B700; margin: 2rem 0 1rem;">3. Защита данных</h3>
+                    <p>Мы принимаем разумные меры для защиты вашей информации от несанкционированного доступа.</p>
+                    
+                    <h3 style="color: #F5B700; margin: 2rem 0 1rem;">4. Ваши права</h3>
+                    <p>Вы можете запросить удаление своих данных, написав нам на hello@albe.su</p>
+                    
+                    <hr style="border-color:#2A3A44; margin: 3rem 0;">
+                    <p>По всем вопросам: <a href="mailto:hello@albe.su">hello@albe.su</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <div id="footer-placeholder"></div>
+    <div class="totop" id="toTopBtn">↑</div>
+    
+    <script src="header-loader.js"></script>
+    <script src="common.js"></script>
 </body>
 </html>
