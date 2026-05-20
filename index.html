@@ -20,7 +20,11 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="theme-color" content="#0D1117">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23F5B700'/%3E%3Ctext x='20' y='28' font-size='24' text-anchor='middle' fill='black' font-weight='500'%3EA%3C/text%3E%3C/svg%3E">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Manrope для заголовков (не очень жирный) -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Inter для основного текста -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Zen Dots только для логотипа albe -->
     <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -30,8 +34,9 @@
             position: relative;
             width: 100%;
         }
+        /* ОСНОВНОЙ ТЕКСТ — INTER */
         body { 
-            font-family: 'Montserrat', sans-serif; 
+            font-family: 'Inter', sans-serif; 
             background-color: #0D1117; 
             color: #E6EDF5; 
             line-height: 1.5; 
@@ -63,10 +68,27 @@
             overflow-x: hidden !important;
         }
         
-        h1, h2, h3, .stat-number, .step-num { 
-            font-weight: 500; 
-            letter-spacing: -0.02em; 
+        /* ЗАГОЛОВКИ — MANROPE (НЕ ОЧЕНЬ ЖИРНЫЙ) */
+        h1, h2, h3, .stat-number, .step-num, .hero-tag, .hero-title-line1, .hero-title-line2, 
+        .service-card h3, .portfolio-info h3, .step-card h3, .competence-card h3, 
+        .calc-label, .stack-explanation h4, .faq-question, .footer-logo, .footer h4,
+        .cover-content h2, .quote-text, .service-badge, .nav-link, .btn-primary, .btn-outline {
+            font-family: 'Manrope', sans-serif;
+            font-weight: 500;
+            letter-spacing: -0.02em;
         }
+        
+        /* НЕМНОГО УМЕНЬШАЕМ ЖИРНОСТЬ ДЛЯ НЕКОТОРЫХ ЭЛЕМЕНТОВ */
+        .hero-title-line1, .hero-title-line2 {
+            font-weight: 400;
+        }
+        .service-badge, .quote-text {
+            font-weight: 400;
+        }
+        .btn-primary, .btn-outline {
+            font-weight: 500;
+        }
+        
         h1 { 
             font-size: 7rem; 
             line-height: 1.05; 
@@ -75,7 +97,6 @@
             letter-spacing: -0.02em; 
             color: #FFFFFF; 
             word-break: break-word; 
-            font-family: 'Montserrat', sans-serif;
         }
         h2 { 
             font-size: 3.8rem; 
@@ -83,7 +104,6 @@
             font-weight: 500; 
             position: relative; 
             display: inline-block;
-            font-family: 'Montserrat', sans-serif;
         }
         h2::after { 
             content: ''; 
@@ -98,13 +118,21 @@
             font-weight: 500; 
             font-size: 1.4rem; 
             margin-bottom: 0.75rem; 
-            font-family: 'Montserrat', sans-serif;
         }
-        p, .hero-desc, .service-card p { 
-            font-weight: 400; 
-            color: #B0C4DE; 
-            font-family: 'Montserrat', sans-serif;
+        
+        /* ОСНОВНОЙ ТЕКСТ — INTER */
+        p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-card p,
+        .mission-text p, .faq-answer, .footer p, .footer a, .tech-item, .calc-option,
+        .time-breakdown-item, .stack-explanation p, input, textarea, .stat-label {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            color: #B0C4DE;
         }
+        
+        .hero-desc strong, .stat-number {
+            font-family: 'Manrope', sans-serif;
+        }
+        
         .section { padding: 100px 0; border-bottom: 1px solid rgba(245,183,0,0.1); }
 
         .btn-primary, .btn-outline, .service-card, .portfolio-card, .step-card, .mission-photo, .faq-item, .cover-content, .calculator-card, .calc-option, .competence-card {
@@ -123,14 +151,12 @@
             justify-content: center;
             gap: 12px;
             padding: 14px 36px;
-            font-weight: 500;
             font-size: 1rem;
             cursor: pointer;
             text-decoration: none;
             background: #F5B700;
             color: #0D1117;
             border: 1px solid #F5B700;
-            font-family: 'Montserrat', sans-serif;
         }
         .btn-outline { background: transparent; color: #FFFFFF; border-color: rgba(255,255,255,0.4); }
         .btn-primary:hover { background: transparent; color: #F5B700; border-color: #F5B700; }
@@ -187,10 +213,10 @@
         .nav-link { 
             color: #FFFFFF; 
             text-decoration: none; 
-            font-weight: 400; 
             transition: 0.2s; 
             white-space: nowrap;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 500;
         }
         .nav-link:hover { color: #F5B700; }
         .burger { 
@@ -314,7 +340,6 @@
             line-height: 1.2;
             letter-spacing: -0.02em;
             margin-bottom: 8px;
-            font-family: 'Montserrat', sans-serif;
         }
         .stat-label {
             font-size: 0.9rem;
@@ -322,23 +347,36 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: 400;
-            font-family: 'Montserrat', sans-serif;
         }
         
         .hero-tag { 
-            font-size: 1.1rem; font-weight: 400; letter-spacing: 6px; margin-bottom: 2rem; 
-            color: #F5B700; text-transform: uppercase; opacity: 0.9; display: inline-block; 
-            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem; 
+            font-weight: 500;
+            letter-spacing: 6px; 
+            margin-bottom: 2rem; 
+            color: #F5B700; 
+            text-transform: uppercase; 
+            opacity: 0.9; 
+            display: inline-block; 
         }
         .hero-title-line1 {
-            display: block; font-size: 9rem; font-weight: 400; letter-spacing: -0.02em;
-            color: #FFFFFF; line-height: 1; margin-bottom: 0.5rem; text-transform: uppercase;
-            font-family: 'Montserrat', sans-serif;
+            display: block; 
+            font-size: 9rem; 
+            font-weight: 400; 
+            letter-spacing: -0.02em;
+            color: #FFFFFF; 
+            line-height: 1; 
+            margin-bottom: 0.5rem; 
+            text-transform: uppercase;
         }
         .hero-title-line2 {
-            display: block; font-size: 3.8rem; font-weight: 400; letter-spacing: -0.01em;
-            color: rgba(255, 255, 255, 0.85); line-height: 1.2; margin-bottom: 2rem;
-            font-family: 'Montserrat', sans-serif;
+            display: block; 
+            font-size: 3.8rem; 
+            font-weight: 400; 
+            letter-spacing: -0.01em;
+            color: rgba(255, 255, 255, 0.85); 
+            line-height: 1.2; 
+            margin-bottom: 2rem;
         }
         
         .services-badges {
@@ -362,7 +400,6 @@
             transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             cursor: default;
             letter-spacing: 0.3px;
-            font-family: 'Montserrat', sans-serif;
         }
         .service-badge:hover {
             border-color: #F5B700;
@@ -375,8 +412,12 @@
         .hero-buttons { display: flex; gap: 24px; margin-top: 2rem; flex-wrap: wrap; }
         .hero-quote { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(245, 183, 0, 0.25); }
         .quote-text {
-            font-size: 1rem; font-weight: 400; color: #F5B700; letter-spacing: 1.5px;
-            text-transform: uppercase; display: inline-block; font-family: 'Montserrat', sans-serif;
+            font-size: 1rem; 
+            font-weight: 400; 
+            color: #F5B700; 
+            letter-spacing: 1.5px;
+            text-transform: uppercase; 
+            display: inline-block;
         }
         
         @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
@@ -384,7 +425,7 @@
         /* КОМПЕТЕНЦИИ */
         .competences-grid { display: flex; flex-wrap: wrap; gap: 30px; margin: 40px 0; }
         .competence-card { flex: 1 1 280px; padding: 28px 24px; transition: all 0.3s; cursor: default; }
-        .competence-card h3 { font-size: 1.8rem; margin-bottom: 20px; font-weight: 500; color: #F5B700; font-family: 'Montserrat', sans-serif; }
+        .competence-card h3 { font-size: 1.8rem; margin-bottom: 20px; font-weight: 500; color: #F5B700; }
         .competence-tech-list { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
         .tech-item {
             position: relative;
@@ -398,7 +439,6 @@
             cursor: help;
             transition: all 0.2s;
             width: fit-content;
-            font-family: 'Montserrat', sans-serif;
         }
         .tech-item:hover { border-color: #F5B700; background: rgba(245,183,0,0.1); transform: translateX(4px); }
         .tech-tooltip {
@@ -420,15 +460,14 @@
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.2s;
-            font-family: 'Montserrat', sans-serif;
         }
         .tech-tooltip strong { color: #F5B700; font-weight: 500; }
 
         /* УСЛУГИ */
         .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; margin-top: 48px; }
-        .service-card h3 { font-size: 1.6rem; margin-bottom: 1rem; font-family: 'Montserrat', sans-serif; }
+        .service-card h3 { font-size: 1.6rem; margin-bottom: 1rem; }
         
-        /* ===== ПОРТФОЛИО — КАРТОЧКИ ШИРЕ, 3 ШТУКИ НА ЭКРАН ===== */
+        /* ПОРТФОЛИО */
         .portfolio-grid { 
             display: grid; 
             grid-template-columns: repeat(3, 1fr); 
@@ -448,15 +487,15 @@
             font-size: 1.8rem; 
             color: #F5B700; 
             border-top-left-radius: 28px; 
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 500;
         }
         .portfolio-info { padding: 0; margin-top: 20px; }
-        .portfolio-info h3 { font-family: 'Montserrat', sans-serif; }
         
         /* ПРОЦЕСС */
         .steps-container { display: flex; flex-wrap: wrap; gap: 32px; margin-top: 40px; }
         .step-card { flex: 1 1 200px; }
-        .step-num { font-size: 2.6rem; font-weight: 500; color: #F5B700; margin-bottom: 1rem; opacity: 0.8; font-family: 'Montserrat', sans-serif; }
+        .step-num { font-size: 2.6rem; font-weight: 500; color: #F5B700; margin-bottom: 1rem; opacity: 0.8; }
 
         /* КАЛЬКУЛЯТОР */
         .calculator-card { padding: 40px; margin: 40px 0; }
@@ -464,28 +503,28 @@
         .calculator-left { flex: 1; min-width: 280px; }
         .calculator-right { flex: 1; min-width: 280px; background: rgba(10,14,19,0.5); padding: 28px; border-left: 3px solid #F5B700; }
         .calc-group { margin-bottom: 30px; }
-        .calc-label { display: block; margin-bottom: 12px; font-weight: 500; color: #F5B700; font-family: 'Montserrat', sans-serif; }
+        .calc-label { display: block; margin-bottom: 12px; font-weight: 500; color: #F5B700; }
         .calc-options { display: flex; flex-wrap: wrap; gap: 12px; }
-        .calc-option { background: #11181F; padding: 10px 20px; cursor: pointer; font-weight: 400; border-top-left-radius: 20px; border-bottom-right-radius: 20px; font-family: 'Montserrat', sans-serif; }
+        .calc-option { background: #11181F; padding: 10px 20px; cursor: pointer; font-weight: 400; border-top-left-radius: 20px; border-bottom-right-radius: 20px; }
         .calc-option.selected { background: #F5B700; color: #0D1117; border-color: #F5B700; }
         .calc-total-block { margin-top: 24px; padding: 20px; background: #0A0F14; border-left: 3px solid #F5B700; }
-        .calc-price { font-size: 1.8rem; font-weight: 600; color: #F5B700; word-break: break-word; font-family: 'Montserrat', sans-serif; }
-        .stack-explanation { font-size: 0.95rem; line-height: 1.6; color: #B0C4DE; font-family: 'Montserrat', sans-serif; }
-        .stack-explanation h4 { color: #F5B700; margin: 0 0 12px 0; font-size: 1.2rem; font-family: 'Montserrat', sans-serif; }
+        .calc-price { font-size: 1.8rem; font-weight: 600; color: #F5B700; word-break: break-word; font-family: 'Manrope', sans-serif; }
+        .stack-explanation { font-size: 0.95rem; line-height: 1.6; color: #B0C4DE; }
+        .stack-explanation h4 { color: #F5B700; margin: 0 0 12px 0; font-size: 1.2rem; }
         .time-breakdown { margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(245,183,0,0.2); }
-        .time-breakdown-item { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.85rem; flex-wrap: wrap; gap: 8px; font-family: 'Montserrat', sans-serif; }
+        .time-breakdown-item { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.85rem; flex-wrap: wrap; gap: 8px; }
         .time-breakdown-item span:first-child { color: #F5B700; }
 
         /* МИССИЯ */
         .mission-wrapper { display: flex; gap: 50px; align-items: center; flex-wrap: wrap; }
-        .mission-text p { margin-bottom: 1rem; font-family: 'Montserrat', sans-serif; }
+        .mission-text p { margin-bottom: 1rem; }
         .mission-photos { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-        .mission-photo { height: 200px; display: flex; align-items: center; justify-content: center; color: #F5B700; background-size: cover; background-position: center; font-family: 'Montserrat', sans-serif; }
+        .mission-photo { height: 200px; display: flex; align-items: center; justify-content: center; color: #F5B700; background-size: cover; background-position: center; font-family: 'Manrope', sans-serif; font-weight: 500; }
         
         /* FAQ */
         .faq-item { margin-bottom: 18px; }
-        .faq-question { width: 100%; text-align: left; background: none; border: none; padding: 22px 28px; font-size: 1.15rem; font-weight: 500; color: #F5B700; cursor: pointer; display: flex; justify-content: space-between; font-family: 'Montserrat', sans-serif; }
-        .faq-answer { padding: 0 28px 28px 28px; color: #B0C4DE; display: none; font-family: 'Montserrat', sans-serif; }
+        .faq-question { width: 100%; text-align: left; background: none; border: none; padding: 22px 28px; font-size: 1.15rem; font-weight: 500; color: #F5B700; cursor: pointer; display: flex; justify-content: space-between; }
+        .faq-answer { padding: 0 28px 28px 28px; color: #B0C4DE; display: none; }
         .faq-answer.active { display: block; }
         .faq-question::after { content: '+'; font-size: 1.5rem; font-weight: 300; }
         .faq-question.active::after { content: '−'; }
@@ -494,22 +533,21 @@
         .fullscreen-cover { min-height: 85vh; background-image: url('https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1600'); background-size: cover; background-attachment: fixed; background-position: center; position: relative; display: flex; align-items: center; justify-content: center; }
         .cover-overlay { position: absolute; inset: 0; background: rgba(13,17,23,0.92); }
         .cover-content { position: relative; max-width: 550px; width: 90%; padding: 48px; text-align: center; }
-        .cover-content h2 { font-size: 3.8rem; margin-bottom: 1rem; font-family: 'Montserrat', sans-serif; }
-        input, textarea { width: 100%; padding: 14px 18px; background: #0A0F14; border: 1px solid #2A3A44; color: white; margin-bottom: 22px; font-family: 'Montserrat', sans-serif; transition: 0.2s; border-radius: 0; }
+        .cover-content h2 { font-size: 3.8rem; margin-bottom: 1rem; }
+        input, textarea { width: 100%; padding: 14px 18px; background: #0A0F14; border: 1px solid #2A3A44; color: white; margin-bottom: 22px; transition: 0.2s; border-radius: 0; }
         input:focus, textarea:focus { outline: none; border-color: #F5B700; }
         
         /* ФУТЕР */
         .footer { background: #080C10; padding: 56px 0 32px; border-top: 1px solid rgba(245,183,0,0.15); }
         .footer-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; }
-        .footer-logo { color: #F5B700; font-size: 1.6rem; font-weight: 500; font-family: 'Montserrat', sans-serif; }
-        .footer a { color: #B0C4DE; text-decoration: none; transition: 0.2s; font-family: 'Montserrat', sans-serif; }
+        .footer-logo { color: #F5B700; font-size: 1.6rem; font-weight: 500; }
+        .footer a { color: #B0C4DE; text-decoration: none; transition: 0.2s; }
         .footer a:hover { color: #F5B700; }
-        .footer p, .footer h4 { font-family: 'Montserrat', sans-serif; }
-        .totop { position: fixed; bottom: 30px; right: 30px; background: #F5B700; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; font-size: 1.8rem; color: #0D1117; border-top-left-radius: 24px; border-bottom-right-radius: 24px; transition: 0.2s; z-index: 99; font-family: 'Montserrat', sans-serif; }
+        .totop { position: fixed; bottom: 30px; right: 30px; background: #F5B700; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; font-size: 1.8rem; color: #0D1117; border-top-left-radius: 24px; border-bottom-right-radius: 24px; transition: 0.2s; z-index: 99; font-family: 'Manrope', sans-serif; font-weight: 500; }
         .totop:hover { background: white; transform: translateY(-4px); }
         .seo-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
         
-        /* АДАПТИВ */
+        /* АДАПТИВ — БЕЗ ИЗМЕНЕНИЙ */
         @media (max-width: 1600px) {
             .hero-title-line1 { font-size: 8rem; }
             .hero-title-line2 { font-size: 3.4rem; }
@@ -540,7 +578,6 @@
             .stat-item { min-width: 220px; padding: 20px 28px; }
             .stat-number { font-size: 2.5rem; }
             .services-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
-            /* На планшетах портфолио — 2 карточки */
             .portfolio-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
             .portfolio-image { height: 220px; font-size: 1.4rem; }
         }
@@ -583,7 +620,6 @@
             .stat-item:hover { transform: translateY(-5px); translateX: 0; }
             .hero-quote { text-align: center; }
             .services-grid { grid-template-columns: 1fr; gap: 20px; }
-            /* На мобилках портфолио — 1 карточка */
             .portfolio-grid { grid-template-columns: 1fr; gap: 25px; }
             .portfolio-image { height: 220px; font-size: 1.4rem; }
         }
@@ -780,7 +816,7 @@
         </div>
     </section>
 
-    <!-- ПОРТФОЛИО — 3 КАРТОЧКИ НА ВСЮ ШИРИНУ -->
+    <!-- ПОРТФОЛИО -->
     <section id="portfolio" class="section">
         <div class="container">
             <h2>Избранные проекты</h2>
