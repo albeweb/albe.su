@@ -5,7 +5,7 @@ function loadComponent(elementId, filePath, callback) {
     
     fetch(filePath)
         .then(response => {
-            if (!response.ok) throw new Error(`Failed to load ${filePath}`);
+            if (!response.ok) throw new Error('Failed to load ' + filePath);
             return response.text();
         })
         .then(data => {
@@ -20,7 +20,6 @@ function loadComponent(elementId, filePath, callback) {
 
 // Инициализация функционала шапки
 function initHeader() {
-    // Фиксация шапки при скролле
     const header = document.getElementById('mainHeader');
     if (header) {
         function handleHeaderScroll() {
@@ -40,11 +39,9 @@ function initHeader() {
         handleHeaderScroll();
     }
     
-    // Бургер-меню
     const burgerBtn = document.getElementById('burgerBtn');
     const mobileMenu = document.getElementById('navMenu');
     if (burgerBtn && mobileMenu) {
-        // Клонируем, чтобы убрать старые обработчики
         const newBurger = burgerBtn.cloneNode(true);
         burgerBtn.parentNode.replaceChild(newBurger, burgerBtn);
         
@@ -62,7 +59,6 @@ function initHeader() {
             }
         });
         
-        // Закрытие меню при клике на ссылку
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('active');
@@ -79,6 +75,6 @@ function initHeader() {
 
 // Запуск загрузки
 document.addEventListener('DOMContentLoaded', () => {
-    loadComponent('header-placeholder', '/components/header.html', initHeader);
-    loadComponent('footer-placeholder', '/components/footer.html');
+    loadComponent('header-placeholder', 'header.html', initHeader);
+    loadComponent('footer-placeholder', 'footer.html');
 });
