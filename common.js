@@ -191,17 +191,41 @@ function initSmoothScroll() {
     }
 }
 
-// ===== FAQ =====
+// ===== FAQ — ИСПРАВЛЕННАЯ ВЕРСИЯ (РАБОТАЕТ ЧЕРЕЗ ДЕЛЕГИРОВАНИЕ) =====
 function initFaq() {
-    var questions = document.querySelectorAll('.faq-question');
-    for (var i = 0; i < questions.length; i++) {
-        var b = questions[i];
-        b.addEventListener('click', function() {
-            this.classList.toggle('active');
-            var answer = this.nextElementSibling;
-            if (answer) answer.classList.toggle('active');
-        });
-    }
+    // Ищем контейнер с вопросами
+    var faqGrid = document.querySelector('.faq-grid');
+    if (!faqGrid) return;
+    
+    // Используем делегирование — один обработчик на весь блок
+    faqGrid.addEventListener('click', function(e) {
+        // Находим кнопку вопроса (клик мог быть на дочернем элементе)
+        var button = e.target.closest('.faq-question');
+        if (!button) return;
+        
+        e.preventDefault();
+        
+        // Находим родительский .faq-item и ответ внутри него
+        var item = button.closest('.faq-item');
+        var answer = item.querySelector('.faq-answer');
+        var isActive = answer.classList.contains('active');
+        
+        // Закрываем все ответы
+        var allAnswers = document.querySelectorAll('.faq-answer');
+        for (var i = 0; i < allAnswers.length; i++) {
+            allAnswers[i].classList.remove('active');
+        }
+        var allButtons = document.querySelectorAll('.faq-question');
+        for (var i = 0; i < allButtons.length; i++) {
+            allButtons[i].classList.remove('active');
+        }
+        
+        // Открываем текущий, если он не был открыт
+        if (!isActive) {
+            answer.classList.add('active');
+            button.classList.add('active');
+        }
+    });
 }
 
 // ===== ФОРМА =====
@@ -214,12 +238,20 @@ function initForm() {
             var name = document.getElementById('userName') ? document.getElementById('userName').value.trim() : '';
             var phone = document.getElementById('userPhone') ? document.getElementById('userPhone').value.trim() : '';
             var email = document.getElementById('userEmail') ? document.getElementById('userEmail').value.trim() : '';
+            var telegram = document.getElementById('userTelegram') ? document.getElementById('userTelegram').value.trim() : '';
+            var msg = document.getElementById('userMsg') ? document.getElementById('userMsg').value.trim() : '';
+            var comment = document.getElementById('userComment') ? document.getElementById('userComment').value.trim() : '';
+            
             if (!name || !phone || !email) {
-                if (stat) stat.innerHTML = '<div style="background:#990000; padding:12px;">Заполните все поля</div>';
-                setTimeout(function() { if (stat) stat.innerHTML = ''; }, 3000);
+                if (stat) stat.innerHTML = '<div style="background:#990000; padding:12px; border-radius:8px;">Заполните все обязательные поля (Имя, Телефон, Email)</div>';
+                setTimeout(function() { if (stat) stat.innerHTML = ''; }, 4000);
                 return;
             }
-            if (stat) stat.innerHTML = '<div style="background:#F5B700; color:black; padding:12px;">Спасибо! Менеджер свяжется с вами.</div>';
+            
+            // Логируем данные (здесь можно добавить отправку на сервер)
+            console.log('Заявка:', { name, phone, email, telegram, msg, comment });
+            
+            if (stat) stat.innerHTML = '<div style="background:#F5B700; color:#0D1117; padding:12px; border-radius:8px;">Спасибо! Менеджер свяжется с вами в ближайшее время.</div>';
             form.reset();
             setTimeout(function() { if (stat) stat.innerHTML = ''; }, 5000);
         });
@@ -237,6 +269,64 @@ function initToTop() {
     toTop.addEventListener('click', function() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+}
+
+// ===== ФИКСАЦИЯ ШАПКИ =====
+function initHeaderFixed() {
+    var header = document.getElementById('mainHeader');
+    if (!header) return;
+    
+    function handleHeaderScroll() {
+        if (window.scrollY > 50) {
+            if (!header.classList.contains('fixed')) {
+                header.classList.add('fixed');
+                document.body.classList.add('header-fixed');
+            }
+        } else {
+            if (header.classList.contains('fixed')) {
+                header.classList.remove('fixed');
+                document.body.classList.remove('header-fixed');
+            }
+        }
+    }
+    
+    window.addEventListener('scroll', handleHeaderScroll);
+    handleHeaderScroll();
+}
+
+// ===== МОБИЛЬНОЕ МЕНЮ =====
+function initMobileMenu() {
+    var burgerBtn = document.getElementById('burgerBtn');
+    var mobileMenu = document.getElementById('navMenu');
+    
+    if (burgerBtn && mobileMenu) {
+        burgerBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+            var spans = burgerBtn.querySelectorAll('span');
+            if (mobileMenu.classList.contains('active')) {
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+        
+        var navLinks = document.querySelectorAll('.nav-link');
+        for (var i = 0; i < navLinks.length; i++) {
+            navLinks[i].addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                var spans = burgerBtn.querySelectorAll('span');
+                if (spans) {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+        }
+    }
 }
 
 // ===== СХЕМА =====
@@ -277,6 +367,36 @@ function addSchema() {
     sc.type = 'application/ld+json';
     sc.textContent = JSON.stringify(schema);
     document.head.appendChild(sc);
+    
+    // Добавляем FAQ Schema для расширенных сниппетов
+    var faqItems = document.querySelectorAll('.faq-item');
+    if (faqItems.length > 0) {
+        var faqSchema = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": []
+        };
+        for (var i = 0; i < faqItems.length; i++) {
+            var question = faqItems[i].querySelector('.faq-question');
+            var answer = faqItems[i].querySelector('.faq-answer');
+            if (question && answer) {
+                faqSchema.mainEntity.push({
+                    "@type": "Question",
+                    "name": question.innerText.replace('+', '').replace('−', '').trim(),
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": answer.innerText.trim()
+                    }
+                });
+            }
+        }
+        if (faqSchema.mainEntity.length > 0) {
+            var faqSc = document.createElement('script');
+            faqSc.type = 'application/ld+json';
+            faqSc.textContent = JSON.stringify(faqSchema);
+            document.head.appendChild(faqSc);
+        }
+    }
 }
 
 // ===== ЗАПУСК ВСЕХ ИНИЦИАЛИЗАЦИЙ =====
@@ -287,5 +407,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initFaq();
     initForm();
     initToTop();
+    initHeaderFixed();
+    initMobileMenu();
     addSchema();
 });
