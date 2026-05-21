@@ -153,7 +153,7 @@
             background: rgba(0,0,0,0.35);
         }
         
-        /* СТИЛИ ДЛЯ FAQ В 2 СТОЛБЦА */
+        /* СТИЛИ ДЛЯ FAQ В 2 СТОЛБЦА — ИСПРАВЛЕННЫЕ */
         .faq-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -168,16 +168,6 @@
         .faq-question {
             width: 100%;
             text-align: left;
-            background: none;
-            border: none;
-            padding: 22px 28px;
-            font-size: 1.05rem;
-            font-weight: 500;
-            color: #F5B700;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            font-family: inherit;
             background: rgba(18, 24, 32, 0.85);
             backdrop-filter: blur(2px);
             border: 1px solid rgba(245, 183, 0, 0.2);
@@ -185,11 +175,31 @@
             border-bottom-right-radius: 28px;
             border-top-right-radius: 0;
             border-bottom-left-radius: 0;
+            padding: 22px 28px;
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: #F5B700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: inherit;
             transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
         }
         .faq-question:hover {
             border-color: #F5B700;
             transform: translateY(-2px);
+        }
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            font-weight: 300;
+            transition: transform 0.3s;
+            flex-shrink: 0;
+            margin-left: 15px;
+        }
+        .faq-question.active::after {
+            content: '−';
         }
         .faq-answer {
             padding: 0 28px 24px 28px;
@@ -202,21 +212,15 @@
             border-bottom: 1px solid rgba(245, 183, 0, 0.2);
             border-bottom-left-radius: 28px;
             border-bottom-right-radius: 28px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            margin-top: -1px;
         }
         .faq-answer.active {
             display: block;
         }
-        .faq-question::after {
-            content: '+';
-            font-size: 1.5rem;
-            font-weight: 300;
-            transition: transform 0.3s;
-        }
-        .faq-question.active::after {
-            content: '−';
-        }
         
-        /* НОВЫЕ СТИЛИ ДЛЯ БЛОКА КОНТАКТОВ — В ЕДИНОМ СТИЛЕ */
+        /* СТИЛИ ДЛЯ БЛОКА КОНТАКТОВ — В ЕДИНОМ СТИЛЕ */
         .contact-section {
             padding: 100px 0;
             background: linear-gradient(135deg, #0A0E12 0%, #0D1117 100%);
@@ -239,6 +243,11 @@
             font-size: 2.4rem;
             margin-bottom: 1rem;
             text-align: center;
+            position: relative;
+            display: inline-block;
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
         }
         .contact-card h2::after {
             content: '';
@@ -249,13 +258,6 @@
             width: 70px;
             height: 2px;
             background: #F5B700;
-        }
-        .contact-card h2 {
-            position: relative;
-            display: inline-block;
-            width: auto;
-            margin-left: auto;
-            margin-right: auto;
         }
         .contact-desc {
             text-align: center;
@@ -626,29 +628,34 @@
     <script src="common.js"></script>
     
     <script>
-        // Скрипт для FAQ аккордеона
-        document.querySelectorAll('.faq-question').forEach(button => {
-            button.addEventListener('click', () => {
-                const answer = button.nextElementSibling;
-                const isActive = answer.classList.contains('active');
-                
-                // Закрываем все остальные
-                document.querySelectorAll('.faq-answer').forEach(ans => {
-                    ans.classList.remove('active');
+        // Скрипт для FAQ аккордеона — ИСПРАВЛЕННЫЙ
+        (function() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const currentAnswer = this.nextElementSibling;
+                    const isCurrentlyActive = currentAnswer.classList.contains('active');
+                    
+                    // Закрываем все вопросы
+                    document.querySelectorAll('.faq-answer').forEach(answer => {
+                        answer.classList.remove('active');
+                    });
+                    document.querySelectorAll('.faq-question').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    // Если текущий вопрос был закрыт — открываем его
+                    if (!isCurrentlyActive) {
+                        currentAnswer.classList.add('active');
+                        this.classList.add('active');
+                    }
                 });
-                document.querySelectorAll('.faq-question').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                
-                // Открываем текущий, если он был закрыт
-                if (!isActive) {
-                    answer.classList.add('active');
-                    button.classList.add('active');
-                }
             });
-        });
+        })();
         
-        // Дополнительный скрипт для формы, если common.js не обрабатывает
+        // Дополнительный скрипт для формы
         (function() {
             const form = document.getElementById('mainForm');
             const statusDiv = document.getElementById('formStatus');
