@@ -25,356 +25,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
     
+    <link rel="stylesheet" href="style.css">
+    
     <style>
-        /* ===== RESET & BASE ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0D1117;
-            color: #E6EDF5;
-            line-height: 1.5;
-            font-weight: 400;
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-            background-repeat: repeat;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 40px;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* ===== TYPOGRAPHY ===== */
-        h1, h2, h3, .stat-number, .step-num {
-            font-weight: 600;
-            letter-spacing: -0.02em;
-        }
-
-        h1 {
-            font-size: 5rem;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-            color: #FFFFFF;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            font-weight: 600;
-            position: relative;
-            display: inline-block;
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 0;
-            width: 70px;
-            height: 3px;
-            background: #F5B700;
-        }
-
-        h3 {
-            font-weight: 600;
-            font-size: 1.3rem;
-            margin-bottom: 0.75rem;
-        }
-
-        p {
-            color: #B0C4DE;
-        }
-
-        /* ===== HEADER ===== */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(13, 17, 23, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(245, 183, 0, 0.2);
-            padding: 16px 0;
-            transition: all 0.3s ease;
-        }
-
-        .header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Zen Dots', monospace;
-            font-size: 1.8rem;
-            font-weight: 400;
-            text-decoration: none;
-            letter-spacing: 1px;
-        }
-
-        .logo span:first-child { color: #F5B700; }
-        .logo span:last-child { color: #FFFFFF; }
-
-        .nav-menu {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-link {
-            color: #FFFFFF;
-            text-decoration: none;
-            font-weight: 500;
-            transition: 0.2s;
-        }
-
-        .nav-link:hover {
-            color: #F5B700;
-        }
-
-        .burger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 6px;
-        }
-
-        .burger span {
-            width: 28px;
-            height: 2px;
-            background: #F5B700;
-            transition: 0.3s;
-        }
-
-        /* ===== HERO SECTION ===== */
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background: radial-gradient(circle at 20% 30%, #11161F, #0A0E12);
-            padding: 120px 0 80px;
-            overflow: hidden;
-        }
-
-        .code-rain {
-            position: absolute;
-            right: 0;
-            top: 0;
-            width: 50%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.2;
-            font-family: 'Monaco', 'Courier New', monospace;
-            font-size: 14px;
-            overflow: hidden;
-        }
-
-        .code-line {
-            white-space: nowrap;
-            position: absolute;
-            transform: translateY(-100%);
-            opacity: 0;
-            animation: fall 12s linear infinite;
-        }
-
-        @keyframes fall {
-            0% { transform: translateY(-100%); opacity: 0; }
-            10% { opacity: 0.6; }
-            90% { opacity: 0.4; }
-            100% { transform: translateY(100vh); opacity: 0; }
-        }
-
-        .hero-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 40px;
-        }
-
-        .hero-content {
-            flex: 1;
-            max-width: 700px;
-        }
-
-        .hero-tag {
-            font-size: 1rem;
-            font-weight: 500;
-            letter-spacing: 4px;
-            margin-bottom: 1.5rem;
-            color: #F5B700;
-            text-transform: uppercase;
-        }
-
-        .hero-title-line1 {
-            font-size: 5rem;
-            font-weight: 800;
-            line-height: 1;
-            color: #FFFFFF;
-            margin-bottom: 0.5rem;
-        }
-
-        .hero-title-line2 {
-            font-size: 3rem;
-            font-weight: 400;
-            color: #F5B700;
-            display: block;
-            margin-bottom: 2rem;
-        }
-
-        .services-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin: 2rem 0;
-        }
-
-        .service-badge {
-            background: rgba(245, 183, 0, 0.1);
-            border: 1px solid rgba(245, 183, 0, 0.3);
-            padding: 8px 18px;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: #F5B700;
-            transition: all 0.3s;
-        }
-
-        .service-badge:hover {
-            background: rgba(245, 183, 0, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            margin: 2rem 0;
-        }
-
-        .btn-primary, .btn-outline {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 14px 36px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.35s;
-            border-top-left-radius: 28px;
-            border-bottom-right-radius: 28px;
-        }
-
-        .btn-primary {
-            background: #F5B700;
-            color: #0D1117;
-            border: 1px solid #F5B700;
-        }
-
-        .btn-primary:hover {
-            background: transparent;
-            color: #F5B700;
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: #FFFFFF;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-        }
-
-        .btn-outline:hover {
-            border-color: #F5B700;
-            background: rgba(245, 183, 0, 0.1);
-            color: #F5B700;
-        }
-
-        .hero-quote {
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(245, 183, 0, 0.2);
-        }
-
-        .quote-text {
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            color: #B0C4DE;
-        }
-
-        .hero-stats {
-            background: rgba(18, 24, 32, 0.85);
-            backdrop-filter: blur(2px);
-            border: 1px solid rgba(245, 183, 0, 0.2);
-            border-top-left-radius: 28px;
-            border-bottom-right-radius: 28px;
-            padding: 32px 40px;
-            display: flex;
-            gap: 48px;
-            flex-wrap: wrap;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #F5B700;
-        }
-
-        .stat-label {
-            font-size: 0.8rem;
-            color: #B0C4DE;
-            text-transform: uppercase;
-        }
-
-        /* ===== SECTIONS ===== */
-        .section {
-            padding: 80px 0;
-            border-bottom: 1px solid rgba(245, 183, 0, 0.1);
-        }
-
         .section-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
             flex-wrap: wrap;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
-
         .section-header h2 {
             margin-bottom: 0;
         }
-
         .section-more-btn {
+            font-family: 'Manrope', sans-serif;
             font-weight: 500;
             font-size: 0.9rem;
             color: #F5B700;
@@ -383,384 +48,163 @@
             border: 1px solid rgba(245, 183, 0, 0.4);
             border-top-left-radius: 24px;
             border-bottom-right-radius: 24px;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
             gap: 8px;
             background: rgba(18, 24, 32, 0.6);
+            backdrop-filter: blur(4px);
         }
-
         .section-more-btn:hover {
             border-color: #F5B700;
             background: rgba(245, 183, 0, 0.1);
             transform: translateY(-2px);
+            color: #F5B700;
         }
-
         .section-more-btn::after {
             content: '→';
+            font-size: 1rem;
             transition: transform 0.2s;
         }
-
         .section-more-btn:hover::after {
             transform: translateX(4px);
         }
-
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .service-card {
-            background: rgba(18, 24, 32, 0.85);
-            backdrop-filter: blur(2px);
-            border: 1px solid rgba(245, 183, 0, 0.2);
-            border-top-left-radius: 28px;
-            border-bottom-right-radius: 28px;
-            padding: 32px;
-            transition: all 0.35s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-color: #F5B700;
-        }
-
-        /* Portfolio Grid */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .portfolio-card {
-            background: rgba(18, 24, 32, 0.85);
-            border: 1px solid rgba(245, 183, 0, 0.2);
-            border-top-left-radius: 28px;
-            border-bottom-right-radius: 28px;
-            overflow: hidden;
-            transition: all 0.35s;
-        }
-
-        .portfolio-card:hover {
-            transform: translateY(-5px);
-            border-color: #F5B700;
-        }
-
+        
+        /* Стили для изображений портфолио */
         .portfolio-image {
-            height: 250px;
             background-size: cover;
             background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
+            background-repeat: no-repeat;
             color: white;
             text-shadow: 0 2px 10px rgba(0,0,0,0.5);
             position: relative;
+            z-index: 1;
         }
-
         .portfolio-image::before {
             content: '';
             position: absolute;
-            inset: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(0,0,0,0.4);
-        }
-
-        .portfolio-image > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        .portfolio-info {
-            padding: 24px;
-        }
-
-        /* Steps */
-        .steps-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-        }
-
-        .step-card {
-            background: rgba(18, 24, 32, 0.85);
-            border: 1px solid rgba(245, 183, 0, 0.2);
             border-top-left-radius: 28px;
-            border-bottom-right-radius: 28px;
-            padding: 32px;
-            transition: all 0.35s;
+            z-index: -1;
         }
-
-        .step-card:hover {
-            transform: translateY(-5px);
-            border-color: #F5B700;
-        }
-
-        .step-num {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #F5B700;
-            margin-bottom: 1rem;
-        }
-
-        /* Competences */
-        .competences-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-        }
-
-        .competence-card {
-            background: rgba(18, 24, 32, 0.85);
-            border: 1px solid rgba(245, 183, 0, 0.2);
-            border-top-left-radius: 28px;
-            border-bottom-right-radius: 28px;
-            padding: 28px;
-            transition: all 0.35s;
-        }
-
-        .competence-card:hover {
-            transform: translateY(-5px);
-            border-color: #F5B700;
-        }
-
-        .competence-tech-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .tech-item {
-            background: rgba(245, 183, 0, 0.1);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            cursor: help;
-            transition: all 0.2s;
-        }
-
-        .tech-item:hover {
-            background: rgba(245, 183, 0, 0.3);
-            transform: translateX(3px);
-        }
-
-        /* Calculator */
-        .calculator-card {
-            background: rgba(18, 24, 32, 0.85);
-            border: 1px solid rgba(245, 183, 0, 0.2);
-            border-top-left-radius: 28px;
-            border-bottom-right-radius: 28px;
-            padding: 40px;
-        }
-
-        .calculator-two-columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
-
-        .calc-group {
-            margin-bottom: 30px;
-        }
-
-        .calc-label {
-            color: #F5B700;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .calc-options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .calc-option {
-            background: #0A0F14;
-            padding: 10px 20px;
-            cursor: pointer;
-            border: 1px solid #2A3A44;
-            border-top-left-radius: 20px;
-            border-bottom-right-radius: 20px;
-            transition: all 0.2s;
-        }
-
-        .calc-option.selected {
-            background: #F5B700;
-            color: #0D1117;
-            border-color: #F5B700;
-        }
-
-        .calc-total-block {
-            background: #0A0F14;
-            padding: 24px;
-            border-left: 3px solid #F5B700;
-            margin-top: 20px;
-        }
-
-        .calc-price {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #F5B700;
-        }
-
-        .calculator-right {
-            background: rgba(10, 14, 19, 0.5);
-            padding: 28px;
-            border-left: 3px solid #F5B700;
-        }
-
-        /* Mission */
+        
+        /* Стили для блока "Почему выбирают нас" — сетка 2×2 */
         .mission-grid-wrapper {
             display: flex;
             gap: 50px;
             align-items: stretch;
         }
-
         .mission-text {
             flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
-
+        .mission-text p {
+            margin-bottom: 1rem;
+        }
         .mission-grid {
             flex: 1;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 24px;
         }
-
         .mission-grid-card {
             height: 200px;
             background-size: cover;
             background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.2rem;
+            background-repeat: no-repeat;
             color: #F5B700;
             text-shadow: 0 2px 5px rgba(0,0,0,0.5);
             position: relative;
+            z-index: 1;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             border-top-left-radius: 28px;
             border-bottom-right-radius: 28px;
-            transition: all 0.35s;
+            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            cursor: default;
         }
-
         .mission-grid-card::before {
             content: '';
             position: absolute;
-            inset: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(0,0,0,0.5);
             border-top-left-radius: 28px;
             border-bottom-right-radius: 28px;
+            z-index: -1;
+            transition: all 0.35s ease;
         }
-
-        .mission-grid-card span {
-            position: relative;
-            z-index: 1;
-        }
-
         .mission-grid-card:hover {
             transform: translateY(-5px);
+            border-color: #F5B700;
+            box-shadow: 0 15px 30px -12px rgba(0,0,0,0.5);
         }
-
-        /* FAQ */
-        .faq-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
+        .mission-grid-card:hover::before {
+            background: rgba(0,0,0,0.35);
         }
-
-        .faq-item {
-            background: rgba(18, 24, 32, 0.85);
-            border: 1px solid rgba(245, 183, 0, 0.2);
-            border-top-left-radius: 28px;
-            border-bottom-right-radius: 28px;
-            overflow: hidden;
-        }
-
-        .faq-question {
-            width: 100%;
-            text-align: left;
-            background: none;
-            border: none;
-            padding: 22px 28px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #F5B700;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            font-family: inherit;
-            transition: all 0.3s;
-        }
-
-        .faq-question:hover {
-            background: rgba(245, 183, 0, 0.05);
-        }
-
-        .faq-question::after {
-            content: '+';
-            font-size: 1.5rem;
-            font-weight: 300;
-        }
-
-        .faq-question.active::after {
-            content: '−';
-        }
-
-        .faq-answer {
-            padding: 0 28px 28px 28px;
-            color: #B0C4DE;
-            display: none;
-            line-height: 1.6;
-        }
-
-        .faq-answer.active {
-            display: block;
-        }
-
-        .faq-answer strong {
-            color: #F5B700;
-        }
-
-        /* Contact */
+        
+        /* НОВЫЕ СТИЛИ ДЛЯ БЛОКА КОНТАКТОВ — В ЕДИНОМ СТИЛЕ */
         .contact-section {
             padding: 100px 0;
             background: linear-gradient(135deg, #0A0E12 0%, #0D1117 100%);
             border-top: 1px solid rgba(245, 183, 0, 0.1);
             border-bottom: 1px solid rgba(245, 183, 0, 0.1);
         }
-
         .contact-card {
             background: rgba(18, 24, 32, 0.85);
             backdrop-filter: blur(2px);
             border: 1px solid rgba(245, 183, 0, 0.2);
             border-top-left-radius: 28px;
             border-bottom-right-radius: 28px;
+            border-top-right-radius: 0;
+            border-bottom-left-radius: 0;
             padding: 48px 56px;
             max-width: 800px;
             margin: 0 auto;
         }
-
         .contact-card h2 {
+            font-size: 2.4rem;
+            margin-bottom: 1rem;
             text-align: center;
-            display: block;
         }
-
         .contact-card h2::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
             left: 50%;
             transform: translateX(-50%);
+            width: 70px;
+            height: 2px;
+            background: #F5B700;
         }
-
+        .contact-card h2 {
+            position: relative;
+            display: inline-block;
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
+        }
         .contact-desc {
             text-align: center;
+            color: #B0C4DE;
             margin-bottom: 2rem;
+            font-size: 1rem;
         }
-
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
         .contact-form input,
         .contact-form textarea {
             width: 100%;
@@ -771,682 +215,338 @@
             margin-bottom: 22px;
             font-family: inherit;
             transition: 0.2s;
+            border-radius: 0;
         }
-
         .contact-form input:focus,
         .contact-form textarea:focus {
             outline: none;
             border-color: #F5B700;
         }
-
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
         }
-
-        /* Footer */
-        .footer {
-            background: #080C10;
-            padding: 48px 0 32px;
-            border-top: 1px solid rgba(245, 183, 0, 0.15);
+        .contact-form button {
+            width: 100%;
+            margin-top: 10px;
         }
-
-        .footer-grid {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 40px;
+        .form-status {
+            margin-top: 16px;
+            text-align: center;
+            font-size: 0.9rem;
         }
-
-        .footer-logo {
-            font-family: 'Zen Dots', monospace;
-            font-size: 1.5rem;
-            color: #F5B700;
-            margin-bottom: 12px;
-        }
-
-        .footer a {
-            color: #B0C4DE;
-            text-decoration: none;
-            transition: 0.2s;
-        }
-
-        .footer a:hover {
-            color: #F5B700;
-        }
-
-        .totop {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #F5B700;
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 1.8rem;
-            color: #0D1117;
-            border-top-left-radius: 24px;
-            border-bottom-right-radius: 24px;
-            transition: 0.2s;
-            z-index: 99;
-        }
-
-        .totop:hover {
-            transform: translateY(-4px);
-            background: #FFFFFF;
-        }
-
-        /* ===== MEDIA QUERIES ===== */
-        @media (max-width: 1024px) {
-            .services-grid,
-            .portfolio-grid,
-            .steps-container,
-            .competences-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .hero-title-line1 { font-size: 3.5rem; }
-            .hero-title-line2 { font-size: 2rem; }
-        }
-
-        @media (max-width: 768px) {
-            .container { padding: 0 20px; }
-            .nav-menu {
-                position: fixed;
-                top: 0;
-                right: -280px;
-                background: rgba(13, 17, 23, 0.98);
+        
+        @media (max-width: 900px) {
+            .mission-grid-wrapper {
                 flex-direction: column;
-                width: 260px;
-                height: 100vh;
-                padding: 80px 24px;
-                transition: right 0.3s;
-                border-left: 2px solid #F5B700;
-                z-index: 1001;
+                gap: 30px;
             }
-            .nav-menu.active { right: 0; }
-            .burger { display: flex; }
-            .hero-wrapper { flex-direction: column; }
-            .hero-stats { width: 100%; justify-content: center; }
-            .services-grid,
-            .portfolio-grid,
-            .steps-container,
-            .competences-grid {
-                grid-template-columns: 1fr;
+            .mission-text {
+                text-align: center;
             }
-            .calculator-two-columns { grid-template-columns: 1fr; }
-            .mission-grid-wrapper { flex-direction: column; }
-            .form-row { grid-template-columns: 1fr; gap: 0; }
-            .contact-card { padding: 32px 24px; }
-            h1 { font-size: 2.5rem; }
-            h2 { font-size: 1.8rem; }
         }
-
+        
+        @media (max-width: 768px) {
+            .mission-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .mission-grid-card {
+                height: 180px;
+            }
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .section-more-btn {
+                align-self: flex-start;
+            }
+            .contact-card {
+                padding: 32px 24px;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .contact-card h2 {
+                font-size: 1.8rem;
+            }
+        }
+        
         @media (max-width: 480px) {
-            .hero-title-line1 { font-size: 2.2rem; }
-            .hero-title-line2 { font-size: 1.3rem; }
-            .hero-buttons { flex-direction: column; }
-            .btn-primary, .btn-outline { width: 100%; justify-content: center; }
-            .hero-stats { gap: 24px; padding: 24px; }
-            .stat-number { font-size: 1.6rem; }
-            .contact-card { padding: 24px 16px; }
+            .contact-card {
+                padding: 24px 20px;
+            }
+            .contact-card h2 {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-
-<header class="header">
-    <div class="container">
-        <a href="/" class="logo">
-            <span>a</span><span>lbe</span>
-        </a>
-        <nav class="nav-menu" id="navMenu">
-            <a href="#services" class="nav-link">Услуги</a>
-            <a href="#portfolio" class="nav-link">Портфолио</a>
-            <a href="#process" class="nav-link">Процесс</a>
-            <a href="#competences" class="nav-link">Компетенции</a>
-            <a href="#calculator" class="nav-link">Калькулятор</a>
-            <a href="#contact" class="nav-link">Контакты</a>
-        </nav>
-        <div class="burger" id="burgerBtn">
-            <span></span><span></span><span></span>
-        </div>
-    </div>
-</header>
-
-<main>
-    <!-- БАННЕР -->
-    <section class="hero">
-        <div class="code-rain" aria-hidden="true">
-            <div class="code-line" style="left: 5%; animation-duration: 12s; animation-delay: 0s;">&lt;div class="digital"&gt;&lt;/div&gt;</div>
-            <div class="code-line" style="left: 15%; animation-duration: 10s; animation-delay: 2s;">const future = await ai();</div>
-            <div class="code-line" style="left: 25%; animation-duration: 14s; animation-delay: 1s;">import { design } from 'agency';</div>
-            <div class="code-line" style="left: 35%; animation-duration: 9s; animation-delay: 4s;">function createProduct() { return ∞; }</div>
-            <div class="code-line" style="left: 45%; animation-duration: 15s; animation-delay: 0.5s;">.digital-agency { opacity: 1; }</div>
-            <div class="code-line" style="left: 55%; animation-duration: 11s; animation-delay: 3s;">npm install premium-website</div>
-            <div class="code-line" style="left: 65%; animation-duration: 13s; animation-delay: 5s;">&lt;SEO speed="fast" /&gt;</div>
-            <div class="code-line" style="left: 75%; animation-duration: 8s; animation-delay: 2.5s;">git commit -m "launch success"</div>
-            <div class="code-line" style="left: 85%; animation-duration: 16s; animation-delay: 1.5s;">const website = new ALBE();</div>
-        </div>
-        
-        <div class="container">
-            <div class="hero-wrapper">
-                <div class="hero-content">
-                    <div class="hero-tag">DIGITAL AGENCY</div>
-                    <div class="hero-title-line1">РАЗРАБОТКА</div>
-                    <span class="hero-title-line2">сайтов под ключ</span>
-                    
-                    <div class="services-badges">
-                        <span class="service-badge">Премиум дизайн</span>
-                        <span class="service-badge">Безупречный код</span>
-                        <span class="service-badge">Мобильные приложения</span>
-                        <span class="service-badge">AI решения</span>
-                        <span class="service-badge">UI/UX проектирование</span>
-                        <span class="service-badge">SEO стратегия</span>
-                        <span class="service-badge">Веб-разработка</span>
-                        <span class="service-badge">E-commerce</span>
-                        <span class="service-badge">CRM интеграция</span>
-                        <span class="service-badge">24/7 поддержка</span>
-                    </div>
-                    
-                    <div class="hero-buttons">
-                        <a href="#calculator" class="btn-primary">Рассчитать проект</a>
-                        <a href="#portfolio" class="btn-outline">Портфолио</a>
+    <div id="header-placeholder"></div>
+    
+    <main>
+        <!-- БАННЕР -->
+        <section class="hero">
+            <div class="code-rain" aria-hidden="true">
+                <div class="code-line" style="left: 5%; animation-duration: 12s; animation-delay: 0s;">&lt;div class="digital"&gt;&lt;/div&gt;</div>
+                <div class="code-line" style="left: 15%; animation-duration: 10s; animation-delay: 2s;">const future = await ai();</div>
+                <div class="code-line" style="left: 25%; animation-duration: 14s; animation-delay: 1s;">import { design } from 'agency';</div>
+                <div class="code-line" style="left: 35%; animation-duration: 9s; animation-delay: 4s;">function createProduct() { return ∞; }</div>
+                <div class="code-line" style="left: 45%; animation-duration: 15s; animation-delay: 0.5s;">.digital-agency { opacity: 1; }</div>
+                <div class="code-line" style="left: 55%; animation-duration: 11s; animation-delay: 3s;">npm install premium-website</div>
+                <div class="code-line" style="left: 65%; animation-duration: 13s; animation-delay: 5s;">&lt;SEO speed="fast" /&gt;</div>
+                <div class="code-line" style="left: 75%; animation-duration: 8s; animation-delay: 2.5s;">git commit -m "launch success"</div>
+                <div class="code-line" style="left: 85%; animation-duration: 16s; animation-delay: 1.5s;">const website = new ALBE();</div>
+                <div class="code-line" style="left: 10%; animation-duration: 11s; animation-delay: 6s;">&lt;React.StrictMode&gt;</div>
+                <div class="code-line" style="left: 20%; animation-duration: 13s; animation-delay: 3.5s;">function App() { return &lt;Hero /&gt;; }</div>
+                <div class="code-line" style="left: 30%; animation-duration: 9.5s; animation-delay: 7s;">.btn-gold { background: #F5B700; }</div>
+                <div class="code-line" style="left: 40%; animation-duration: 14.5s; animation-delay: 1s;">export default async function build()</div>
+                <div class="code-line" style="left: 50%; animation-duration: 12.5s; animation-delay: 4.5s;">import { SEO, Analytics } from '@/lib'</div>
+                <div class="code-line" style="left: 60%; animation-duration: 10.5s; animation-delay: 8s;">const meta = { title: "ALBE digital" }</div>
+                <div class="code-line" style="left: 70%; animation-duration: 15.5s; animation-delay: 2s;">@keyframes fadeIn { from { opacity: 0; } }</div>
+                <div class="code-line" style="left: 80%; animation-duration: 11.5s; animation-delay: 5.5s;">&lt;meta name="viewport" /&gt;</div>
+                <div class="code-line" style="left: 90%; animation-duration: 13.5s; animation-delay: 0.8s;">console.log("ALBE launched")</div>
+            </div>
+            
+            <div class="container">
+                <div class="hero-wrapper">
+                    <div class="hero-content">
+                        <div class="hero-top">
+                            <div class="hero-tag">DIGITAL AGENCY</div>
+                            <h1 class="hero-title-line1">РАЗРАБОТКА</h1>
+                            <span class="hero-title-line2">сайтов под ключ</span>
+                            
+                            <div class="services-badges">
+                                <span class="service-badge">Премиум дизайн</span>
+                                <span class="service-badge">Безупречный код</span>
+                                <span class="service-badge">Мобильные приложения</span>
+                                <span class="service-badge">AI решения</span>
+                                <span class="service-badge">UI/UX проектирование</span>
+                                <span class="service-badge">SEO стратегия</span>
+                                <span class="service-badge">Веб-разработка</span>
+                                <span class="service-badge">E-commerce</span>
+                                <span class="service-badge">CRM интеграция</span>
+                                <span class="service-badge">24/7 поддержка</span>
+                            </div>
+                        </div>
+                        <div class="hero-bottom">
+                            <div class="hero-buttons">
+                                <a href="#calculator" class="btn-primary">Рассчитать проект</a>
+                                <a href="#portfolio" class="btn-outline">Портфолио</a>
+                            </div>
+                            <div class="hero-quote">
+                                <span class="quote-text">В ALBE МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ — МЫ СОЗДАЕМ БИЗНЕС</span>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="hero-quote">
-                        <span class="quote-text">В ALBE МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ — МЫ СОЗДАЕМ БИЗНЕС</span>
+                    <div class="hero-stats">
+                        <div class="stat-item"><div class="stat-number">10+</div><div class="stat-label">лет опыта</div></div>
+                        <div class="stat-item"><div class="stat-number">150+</div><div class="stat-label">проектов</div></div>
+                        <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">поддержка</div></div>
+                        <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">результат</div></div>
                     </div>
                 </div>
-                
-                <div class="hero-stats">
-                    <div class="stat-item"><div class="stat-number">7+</div><div class="stat-label">лет опыта</div></div>
-                    <div class="stat-item"><div class="stat-number">150+</div><div class="stat-label">проектов</div></div>
-                    <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">поддержка</div></div>
-                    <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">результат</div></div>
+            </div>
+        </section>
+
+        <!-- УСЛУГИ -->
+        <section id="services" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Эксклюзивные решения</h2>
+                    <a href="services.html" class="section-more-btn">Все услуги</a>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card"><h3>Веб-разработка</h3><p>Современный стек: React, Vue, Node.js, Laravel. Высокая производительность и масштабируемость.</p></div>
+                    <div class="service-card"><h3>Иммерсивный дизайн</h3><p>Микровзаимодействия, 3D-сцены, анимация. Визуальный язык, который запоминается.</p></div>
+                    <div class="service-card"><h3>E‑commerce платформы</h3><p>Интернет-магазины с конверсией 15%+, интеграция с 1С, CRM и маркетплейсами.</p></div>
+                    <div class="service-card"><h3>SEO & аналитика</h3><p>Полная оптимизация: от семантики до лидерских позиций в Яндексе и Google.</p></div>
+                    <div class="service-card"><h3>AI & Machine Learning</h3><p>Чат-боты, рекомендательные системы, аналитика данных, генеративный AI.</p></div>
+                    <div class="service-card"><h3>Мобильные приложения</h3><p>iOS, Android, React Native, Flutter. Полный цикл от идеи до публикации.</p></div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- УСЛУГИ -->
-    <section id="services" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Эксклюзивные решения</h2>
-                <a href="#" class="section-more-btn">Все услуги</a>
-            </div>
-            <div class="services-grid">
-                <div class="service-card"><h3>Веб-разработка</h3><p>Современный стек: React, Vue, Node.js, Laravel. Высокая производительность и масштабируемость.</p></div>
-                <div class="service-card"><h3>Иммерсивный дизайн</h3><p>Микровзаимодействия, 3D-сцены, анимация. Визуальный язык, который запоминается.</p></div>
-                <div class="service-card"><h3>E‑commerce платформы</h3><p>Интернет-магазины с конверсией 15%+, интеграция с 1С, CRM и маркетплейсами.</p></div>
-                <div class="service-card"><h3>SEO & аналитика</h3><p>Полная оптимизация: от семантики до лидерских позиций в Яндексе и Google.</p></div>
-                <div class="service-card"><h3>AI & Machine Learning</h3><p>Чат-боты, рекомендательные системы, аналитика данных, генеративный AI.</p></div>
-                <div class="service-card"><h3>Мобильные приложения</h3><p>iOS, Android, React Native, Flutter. Полный цикл от идеи до публикации.</p></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ПОРТФОЛИО -->
-    <section id="portfolio" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Избранные проекты</h2>
-                <a href="#" class="section-more-btn">Все проекты</a>
-            </div>
-            <div class="portfolio-grid">
-                <div class="portfolio-card">
-                    <div class="portfolio-image" style="background-image: url('https://images.pexels.com/photos/2183296/pexels-photo-2183296.jpeg');">NEO BANK</div>
-                    <div class="portfolio-info"><h3>NeoBank Platform</h3><p>Рост активных клиентов +210%</p></div>
+        <!-- ПОРТФОЛИО С КАРТИНКАМИ -->
+        <section id="portfolio" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Избранные проекты</h2>
+                    <a href="portfolio.html" class="section-more-btn">Все проекты</a>
                 </div>
-                <div class="portfolio-card">
-                    <div class="portfolio-image" style="background-image: url('https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg');">AI RECOMMEND</div>
-                    <div class="portfolio-info"><h3>AI рекомендательная система</h3><p>Рост конверсии +34%</p></div>
-                </div>
-                <div class="portfolio-card">
-                    <div class="portfolio-image" style="background-image: url('https://images.pexels.com/photos/699122/pexels-photo-699122.jpeg');">MOBILE APP</div>
-                    <div class="portfolio-info"><h3>FitTrack приложение</h3><p>50k+ установок</p></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ПРОЦЕСС -->
-    <section id="process" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Как мы создаём лидеров рынка</h2>
-                <a href="#" class="section-more-btn">Подробнее</a>
-            </div>
-            <div class="steps-container">
-                <div class="step-card"><div class="step-num">01</div><h3>Аналитика</h3><p>Изучаем нишу, конкурентов, ЦА. Формируем KPI.</p></div>
-                <div class="step-card"><div class="step-num">02</div><h3>Прототипирование</h3><p>Интерактивные прототипы, тестирование гипотез.</p></div>
-                <div class="step-card"><div class="step-num">03</div><h3>Дизайн & код</h3><p>Пиксель-перфект, чистый код, ежедневные билды.</p></div>
-                <div class="step-card"><div class="step-num">04</div><h3>SEO & запуск</h3><p>Техническая SEO-оптимизация, деплой, мониторинг.</p></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- КОМПЕТЕНЦИИ -->
-    <section id="competences" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Наши компетенции</h2>
-                <a href="#" class="section-more-btn">Подробнее</a>
-            </div>
-            <div class="competences-grid">
-                <div class="competence-card"><h3>Frontend</h3><p>Интерфейсы, которые продают</p><div class="competence-tech-list"><div class="tech-item">React / Next.js</div><div class="tech-item">Vue 3 / Nuxt</div><div class="tech-item">TypeScript</div><div class="tech-item">GSAP</div><div class="tech-item">Three.js</div></div></div>
-                <div class="competence-card"><h3>Backend</h3><p>Надёжная архитектура</p><div class="competence-tech-list"><div class="tech-item">Node.js / Nest.js</div><div class="tech-item">Python / Django</div><div class="tech-item">Laravel</div><div class="tech-item">PostgreSQL</div><div class="tech-item">Docker / K8s</div></div></div>
-                <div class="competence-card"><h3>Дизайн</h3><p>UI/UX & брендинг</p><div class="competence-tech-list"><div class="tech-item">Figma</div><div class="tech-item">UI/UX Research</div><div class="tech-item">Motion Design</div><div class="tech-item">3D Art</div><div class="tech-item">Adobe Suite</div></div></div>
-                <div class="competence-card"><h3>SEO / Data</h3><p>Рост трафика и продаж</p><div class="competence-tech-list"><div class="tech-item">SEO-аудит</div><div class="tech-item">Метрика / GA4</div><div class="tech-item">Кластеризация</div><div class="tech-item">Core Web Vitals</div><div class="tech-item">SEMrush</div></div></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- КАЛЬКУЛЯТОР -->
-    <section id="calculator" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Калькулятор стоимости</h2>
-                <a href="#" class="section-more-btn">Все услуги</a>
-            </div>
-            <div class="calculator-card">
-                <div class="calculator-two-columns">
-                    <div class="calculator-left">
-                        <div class="calc-group"><div class="calc-label">Услуги:</div><div class="calc-options" id="calcServices"><div data-service="design" class="calc-option">Дизайн (UI/UX)</div><div data-service="front" class="calc-option">Frontend</div><div data-service="back" class="calc-option">Backend</div><div data-service="seo" class="calc-option">SEO</div><div data-service="cms" class="calc-option">CMS</div><div data-service="crm" class="calc-option">CRM / ERP</div><div data-service="ai" class="calc-option">AI / ML</div><div data-service="mobile" class="calc-option">Мобильное приложение</div><div data-service="support" class="calc-option">Техподдержка</div></div></div>
-                        <div class="calc-group"><div class="calc-label">Сложность:</div><div class="calc-options" id="calcComplexity"><div data-complex="simple" class="calc-option">Старт (Лендинг)</div><div data-complex="medium" class="calc-option">Бизнес (Сайт услуг)</div><div data-complex="high" class="calc-option">Премиум (Магазин)</div><div data-complex="enterprise" class="calc-option">Enterprise (Портал)</div></div></div>
-                        <div class="calc-total-block"><div class="calc-price" id="calcPrice">0 ₽</div><div id="calcHoursInfo" style="font-size:0.85rem; color:#B0C4DE;"></div></div>
+                <div class="portfolio-grid">
+                    <div class="portfolio-card">
+                        <div class="portfolio-image" style="background-image: url('https://images.pexels.com/photos/2183296/pexels-photo-2183296.jpeg');">NEO BANK</div>
+                        <div class="portfolio-info"><h3>NeoBank Platform</h3><p>Рост активных клиентов +210%</p></div>
                     </div>
-                    <div class="calculator-right stack-explanation" id="stackExplanation"><h4>Рекомендуемый стек</h4><p>Выберите услуги для расчёта</p></div>
+                    <div class="portfolio-card">
+                        <div class="portfolio-image" style="background-image: url('https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg');">AI RECOMMEND</div>
+                        <div class="portfolio-info"><h3>AI рекомендательная система</h3><p>Рост конверсии +34%</p></div>
+                    </div>
+                    <div class="portfolio-card">
+                        <div class="portfolio-image" style="background-image: url('https://images.pexels.com/photos/699122/pexels-photo-699122.jpeg');">MOBILE APP</div>
+                        <div class="portfolio-info"><h3>FitTrack приложение</h3><p>50k+ установок</p></div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- МИССИЯ -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Почему выбирают нас</h2>
-                <a href="#" class="section-more-btn">О компании</a>
-            </div>
-            <div class="mission-grid-wrapper">
-                <div class="mission-text">
-                    <p>ALBE digital — это стратегический партнёр, а не просто подрядчик. Мы разрабатываем продукты, которые масштабируют бизнес и увеличивают прибыль. Каждый проект сопровождается глубокой SEO-проработкой и техническим аудитом, что гарантирует высокие позиции в поисковых системах с первых недель после запуска.</p>
-                    <p>Наши клиенты из ритейла, финтеха и образования получают прирост органического трафика до 300% за 6 месяцев. Мы внедряем AI-решения для автоматизации маркетинга и продаж, а также разрабатываем мобильные приложения, повышающие лояльность аудитории. Работаем с брендами по всей России.</p>
+        <!-- ПРОЦЕСС -->
+        <section id="process" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Как мы создаём лидеров рынка</h2>
+                    <a href="services.html" class="section-more-btn">Подробнее</a>
                 </div>
-                <div class="mission-grid">
-                    <div class="mission-grid-card" style="background-image: url('https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg');"><span>команда</span></div>
-                    <div class="mission-grid-card" style="background-image: url('https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg');"><span>процесс</span></div>
-                    <div class="mission-grid-card" style="background-image: url('https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg');"><span>результат</span></div>
-                    <div class="mission-grid-card" style="background-image: url('https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg');"><span>клиенты</span></div>
+                <div class="steps-container">
+                    <div class="step-card"><div class="step-num">01</div><h3>Аналитика</h3><p>Изучаем нишу, конкурентов, ЦА. Формируем KPI.</p></div>
+                    <div class="step-card"><div class="step-num">02</div><h3>Прототипирование</h3><p>Интерактивные прототипы, тестирование гипотез.</p></div>
+                    <div class="step-card"><div class="step-num">03</div><h3>Дизайн & код</h3><p>Пиксель-перфект, чистый код, ежедневные билды.</p></div>
+                    <div class="step-card"><div class="step-num">04</div><h3>SEO & запуск</h3><p>Техническая SEO-оптимизация, деплой, мониторинг.</p></div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- FAQ — РАСШИРЕННЫЙ SEO-ОПТИМИЗИРОВАННЫЙ БЛОК -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Часто задаваемые вопросы</h2>
-                <a href="#" class="section-more-btn">Все FAQ</a>
+        <!-- КОМПЕТЕНЦИИ -->
+        <section id="competences" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Наши компетенции</h2>
+                    <a href="services.html" class="section-more-btn">Подробнее</a>
+                </div>
+                <div class="competences-grid">
+                    <div class="competence-card"><h3>Frontend</h3><p>Интерфейсы, которые продают</p><div class="competence-tech-list"><div class="tech-item" data-tech="react">React / Next.js</div><div class="tech-item" data-tech="vue">Vue 3 / Nuxt</div><div class="tech-item" data-tech="ts">TypeScript</div><div class="tech-item" data-tech="gsap">GSAP</div><div class="tech-item" data-tech="three">Three.js</div></div></div>
+                    <div class="competence-card"><h3>Backend</h3><p>Надёжная архитектура</p><div class="competence-tech-list"><div class="tech-item" data-tech="node">Node.js / Nest.js</div><div class="tech-item" data-tech="python">Python / Django</div><div class="tech-item" data-tech="laravel">Laravel</div><div class="tech-item" data-tech="postgres">PostgreSQL</div><div class="tech-item" data-tech="docker">Docker / K8s</div></div></div>
+                    <div class="competence-card"><h3>Дизайн</h3><p>UI/UX & брендинг</p><div class="competence-tech-list"><div class="tech-item" data-tech="figma">Figma</div><div class="tech-item" data-tech="uiux">UI/UX Research</div><div class="tech-item" data-tech="motion">Motion Design</div><div class="tech-item" data-tech="3d">3D Art</div><div class="tech-item" data-tech="adobe">Adobe Suite</div></div></div>
+                    <div class="competence-card"><h3>SEO / Data</h3><p>Рост трафика и продаж</p><div class="competence-tech-list"><div class="tech-item" data-tech="audit">SEO-аудит</div><div class="tech-item" data-tech="metrika">Метрика / GA4</div><div class="tech-item" data-tech="cluster">Кластеризация</div><div class="tech-item" data-tech="core">Core Web Vitals</div><div class="tech-item" data-tech="semrush">SEMrush</div></div></div>
+                </div>
             </div>
-            <div class="faq-list" itemscope itemtype="https://schema.org/FAQPage">
-                <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="faq-question" itemprop="name">Сколько стоит разработка сайта под ключ в 2025 году?</button>
-                    <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">
-                            <p>Стоимость <strong>разработки сайта под ключ</strong> зависит от сложности, количества страниц и необходимого функционала. Наш <strong>калькулятор стоимости</strong> позволяет получить предварительную оценку за 1 минуту. Базовые цены:</p>
-                            <ul>
-                                <li><strong>Лендинг (сайт-визитка)</strong> — от 120 000 ₽</li>
-                                <li><strong>Корпоративный сайт</strong> — от 250 000 ₽</li>
-                                <li><strong>Интернет-магазин</strong> — от 450 000 ₽</li>
-                                <li><strong>CRM / ERP система</strong> — от 800 000 ₽</li>
-                                <li><strong>Мобильное приложение</strong> — от 600 000 ₽</li>
-                            </ul>
-                            <p>Точная стоимость <strong>разработки сайта</strong> рассчитывается индивидуально после анализа технического задания. <a href="#calculator" style="color:#F5B700;">Рассчитать стоимость →</a></p>
+        </section>
+
+        <!-- КАЛЬКУЛЯТОР -->
+        <section id="calculator" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Калькулятор стоимости</h2>
+                    <a href="services.html" class="section-more-btn">Все услуги</a>
+                </div>
+                <div class="calculator-card">
+                    <div class="calculator-two-columns">
+                        <div class="calculator-left">
+                            <div class="calc-group"><div class="calc-label">Услуги:</div><div class="calc-options" id="calcServices"><div data-service="design" class="calc-option">Дизайн (UI/UX)</div><div data-service="front" class="calc-option">Frontend</div><div data-service="back" class="calc-option">Backend</div><div data-service="seo" class="calc-option">SEO</div><div data-service="cms" class="calc-option">CMS</div><div data-service="crm" class="calc-option">CRM / ERP</div><div data-service="ai" class="calc-option">AI / ML</div><div data-service="mobile" class="calc-option">Мобильное приложение</div><div data-service="support" class="calc-option">Техподдержка</div></div></div>
+                            <div class="calc-group"><div class="calc-label">Сложность:</div><div class="calc-options" id="calcComplexity"><div data-complex="simple" class="calc-option">Старт (Лендинг)</div><div data-complex="medium" class="calc-option">Бизнес (Сайт услуг)</div><div data-complex="high" class="calc-option">Премиум (Магазин)</div><div data-complex="enterprise" class="calc-option">Enterprise (Портал)</div></div></div>
+                            <div class="calc-total-block"><div class="calc-price" id="calcPrice">0 ₽</div><div id="calcHoursInfo" style="font-size:0.85rem; color:#B0C4DE;"></div></div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="faq-question" itemprop="name">Какие технологии и фреймворки вы используете для веб-разработки?</button>
-                    <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">
-                            <p>В <strong>ALBE digital</strong> мы используем современный стек технологий для <strong>создания сайтов и веб-приложений</strong>:</p>
-                            <ul>
-                                <li><strong>Frontend:</strong> React, Next.js, Vue 3, Nuxt, TypeScript, Tailwind CSS, GSAP для анимаций, Three.js для 3D-графики</li>
-                                <li><strong>Backend:</strong> Node.js (Nest.js), Python (Django), PHP (Laravel), PostgreSQL, MongoDB</li>
-                                <li><strong>DevOps:</strong> Docker, Kubernetes, CI/CD, AWS, Yandex Cloud</li>
-                                <li><strong>Мобильная разработка:</strong> React Native, Flutter, Swift (iOS), Kotlin (Android)</li>
-                            </ul>
-                            <p>Выбор технологий всегда обусловлен задачами проекта: мы подбираем оптимальный стек для <strong>высокой производительности, SEO-оптимизации и масштабируемости</strong>.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="faq-question" itemprop="name">Как долго длится разработка сайта под ключ?</button>
-                    <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">
-                            <p>Сроки <strong>разработки сайта</strong> зависят от типа проекта и его сложности:</p>
-                            <ul>
-                                <li><strong>Лендинг</strong> — 2-4 недели</li>
-                                <li><strong>Корпоративный сайт</strong> — 4-8 недель</li>
-                                <li><strong>Интернет-магазин</strong> — 6-12 недель</li>
-                                <li><strong>Сложный веб-портал / CRM</strong> — от 12 недель</li>
-                                <li><strong>Мобильное приложение</strong> — 3-6 месяцев</li>
-                            </ul>
-                            <p>Мы работаем по гибкой методологии с ежедневными отчётами и демонстрацией промежуточных результатов. Вы всегда видите актуальный статус проекта в нашем <strong>трекере задач</strong>.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="faq-question" itemprop="name">Вы даёте гарантию на SEO-продвижение?</button>
-                    <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">
-                            <p><strong>Да, гарантируем результат по SEO!</strong> Наши услуги <strong>SEO-продвижения сайтов</strong> включают:</p>
-                            <ul>
-                                <li>Гарантию выполнения KPI по трафику и позициям (прописывается в договоре)</li>
-                                <li>Прирост органического поискового трафика от 50% за 3 месяца</li>
-                                <li>Выход в ТОП-10 по целевым запросам</li>
-                                <li>Полную <strong>техническую SEO-оптимизацию</strong> сайта под требования Яндекса и Google</li>
-                                <li>Регулярную отчётность в Яндекс.Метрике и Google Analytics 4</li>
-                            </ul>
-                            <p>Мы внедряем <strong>AI-инструменты</strong> для сбора семантического ядра, кластеризации запросов и анализа конкурентов, что даёт преимущество в продвижении.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="faq-question" itemprop="name">Разрабатываете ли вы мобильные приложения под iOS и Android?</button>
-                    <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">
-                            <p><strong>Да, мы разрабатываем мобильные приложения</strong> под все платформы:</p>
-                            <ul>
-                                <li><strong>iOS</strong> (Swift, SwiftUI) — нативные приложения для iPhone и iPad</li>
-                                <li><strong>Android</strong> (Kotlin, Jetpack Compose) — приложения для Google Play</li>
-                                <li><strong>Кроссплатформенная разработка</strong> (React Native, Flutter) — одно приложение под iOS и Android с экономией бюджета до 40%</li>
-                            </ul>
-                            <p>Полный цикл: от <strong>UI/UX проектирования</strong> и прототипирования до публикации в App Store и Google Play. Также обеспечиваем <strong>техническую поддержку</strong> и обновления приложений.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="faq-question" itemprop="name">Что входит в услугу «разработка сайта под ключ»?</button>
-                    <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">
-                            <p><strong>Разработка сайта под ключ от ALBE digital</strong> включает полный цикл создания готового digital-продукта:</p>
-                            <ul>
-                                <li>Анализ бизнеса, целевой аудитории и конкурентов</li>
-                                <li><strong>UI/UX проектирование</strong> — создание прототипов и дизайна</li>
-                                <li><strong>Вёрстка и фронтенд-разработка</strong> (адаптив под все устройства)</li>
-                                <li><strong>Бэкенд-разработка</strong> (админ-панель, базы данных, API)</li>
-                                <li><strong>SEO-оптимизация</strong> (технический аудит, настройка метатегов, структуры URL)</li>
-                                <li>Настройка аналитики (Яндекс.Метрика, GA4)</li>
-                                <li>Тестирование и отладка</li>
-                                <li>Размещение на хостинге и передача исходного кода</li>
-                                <li><strong>Техническая поддержка 24/7</strong> в течение месяца после запуска</li>
-                            </ul>
-                            <p>Вы получаете полностью готовый к работе сайт, который приносит заявки и продажи.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="faq-question" itemprop="name">Как происходит оплата разработки сайта?</button>
-                    <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">
-                            <p>Для вашего удобства мы предлагаем гибкие условия оплаты <strong>разработки сайта</strong>:</p>
-                            <ul>
-                                <li><strong>Поэтапная оплата</strong> — разбивка на 3-4 платежа в соответствии с этапами работ (аналитика → дизайн → разработка → запуск)</li>
-                                <li><strong>Предоплата 50%</strong> — стандартная схема для небольших проектов</li>
-                                <li><strong>Постоплата</strong> — для крупных корпоративных клиентов по индивидуальному согласованию</li>
-                            </ul>
-                            <p>Оплата принимается безналичным расчётом на юридическое лицо с предоставлением закрывающих документов (акты, счета, договор).</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="faq-question" itemprop="name">Помогаете ли вы с выбором хостинга и домена?</button>
-                    <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">
-                            <p><strong>Да, мы помогаем на всех этапах</strong> запуска сайта в интернет:</p>
-                            <ul>
-                                <li>Поможем подобрать надёжный <strong>хостинг для сайта</strong> (рекомендуем REG.RU, Beget, Timeweb, а также облачные решения на Yandex Cloud/AWS)</li>
-                                <li>Поможем зарегистрировать <strong>доменное имя</strong> (рекомендации по выбору, проверка истории домена)</li>
-                                <li>Произведём полную настройку сервера, SSL-сертификата, почты на домене</li>
-                                <li>Настроим резервное копирование и мониторинг доступности сайта 24/7</li>
-                            </ul>
-                            <p>Вы получаете полностью настроенный и защищённый сайт, готовый к приёму посетителей.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="faq-question" itemprop="name">Есть ли у вас примеры работ и отзывы клиентов?</button>
-                    <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">
-                            <p><strong>Да, наше портфолио содержит более 150 успешно реализованных проектов</strong> в различных нишах: ритейл, финтех, образование, логистика, недвижимость, медицина.</p>
-                            <p>Мы работали с такими брендами и компаниями по всей России. Каждый проект сопровождался полным циклом <strong>разработки сайта, SEO-продвижения и интеграции AI-решений</strong>.</p>
-                            <p><a href="#portfolio" style="color:#F5B700;">Посмотреть портфолио работ →</a></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="faq-question" itemprop="name">Предоставляете ли вы техническую поддержку после запуска сайта?</button>
-                    <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">
-                            <p><strong>Да, мы обеспечиваем техническую поддержку 24/7</strong> после запуска вашего сайта. В услуги поддержки входит:</p>
-                            <ul>
-                                <li>Мониторинг доступности и скорости работы сайта</li>
-                                <li>Обновление CMS, плагинов и библиотек</li>
-                                <li>Резервное копирование данных</li>
-                                <li>Внесение мелких правок в контент</li>
-                                <li>Анализ ошибок и их оперативное исправление</li>
-                                <li>Консультации по работе с сайтом</li>
-                            </ul>
-                            <p>Вы можете выбрать пакет поддержки на месяц или заключить долгосрочный договор обслуживания. Наши клиенты получают приоритетную поддержку в Telegram и по электронной почте.</p>
-                        </div>
+                        <div class="calculator-right stack-explanation" id="stackExplanation"><h4>Рекомендуемый стек</h4><p>Выберите услуги для расчёта</p></div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- КОНТАКТЫ -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <div class="contact-card">
-                <h2>Начнём проект?</h2>
-                <p class="contact-desc">Оставьте заявку — Мы свяжемся с вами в течение 3 часов</p>
-                
-                <form id="mainForm" class="contact-form">
-                    <div class="form-row">
-                        <input type="text" id="userName" placeholder="Имя *" required>
-                        <input type="tel" id="userPhone" placeholder="Телефон *" required>
+        <!-- МИССИЯ — ПЕРЕДЕЛАННЫЙ БЛОК: СЛЕВА ТЕКСТ, СПРАВА СЕТКА 2×2 -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Почему выбирают нас</h2>
+                    <a href="about.html" class="section-more-btn">О компании</a>
+                </div>
+                <div class="mission-grid-wrapper">
+                    <div class="mission-text">
+                        <p>ALBE digital — это стратегический партнёр, а не просто подрядчик. Мы разрабатываем продукты, которые масштабируют бизнес и увеличивают прибыль. Каждый проект сопровождается глубокой SEO-проработкой и техническим аудитом, что гарантирует высокие позиции в поисковых системах с первых недель после запуска.</p>
+                        <p>Наши клиенты из ритейла, финтеха и образования получают прирост органического трафика до 300% за 6 месяцев. Мы внедряем AI-решения для автоматизации маркетинга и продаж, а также разрабатываем мобильные приложения, повышающие лояльность аудитории. Работаем с брендами по всей России.</p>
                     </div>
-                    <div class="form-row">
-                        <input type="email" id="userEmail" placeholder="Email *" required>
-                        <input type="text" id="userTelegram" placeholder="Telegram (username)">
+                    <div class="mission-grid">
+                        <div class="mission-grid-card" style="background-image: url('https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg');">команда</div>
+                        <div class="mission-grid-card" style="background-image: url('https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg');">процесс</div>
+                        <div class="mission-grid-card" style="background-image: url('https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg');">результат</div>
+                        <div class="mission-grid-card" style="background-image: url('https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg');">клиенты</div>
                     </div>
-                    <textarea rows="4" id="userMsg" placeholder="Опишите задачу"></textarea>
-                    <textarea rows="3" id="userComment" placeholder="Комментарий (дополнительные пожелания)"></textarea>
-                    <button type="submit" class="btn-primary">Отправить заявку</button>
-                    <div id="formStatus" class="form-status"></div>
-                </form>
+                </div>
             </div>
-        </div>
-    </section>
-</main>
+        </section>
 
-<footer class="footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div>
-                <div class="footer-logo">ALBE digital</div>
-                <p>Digital agency премиального уровня. Разработка сайтов, дизайн, AI, SEO.</p>
+        <!-- FAQ -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Часто задаваемые вопросы</h2>
+                    <a href="services.html" class="section-more-btn">Подробнее</a>
+                </div>
+                <div class="faq-list">
+                    <div class="faq-item"><button class="faq-question">Сколько стоит разработка сайта?</button><div class="faq-answer">Стоимость рассчитывается в калькуляторе. Лендинг от 120 000 ₽, интернет-магазин от 450 000 ₽.</div></div>
+                    <div class="faq-item"><button class="faq-question">Даёте гарантию на SEO?</button><div class="faq-answer">Да, гарантируем выполнение KPI по трафику и позициям.</div></div>
+                    <div class="faq-item"><button class="faq-question">Разрабатываете мобильные приложения?</button><div class="faq-answer">Да, iOS, Android, кроссплатформа, полный цикл.</div></div>
+                </div>
             </div>
-            <div>
-                <h4 style="color: #F5B700; margin-bottom: 12px;">Контакты</h4>
-                <p><a href="mailto:albe.web@yandex.ru">albe.web@yandex.ru</a></p>
-                <p><a href="https://t.me/albe_web" target="_blank">Telegram: @albe_web</a></p>
-            </div>
-            <div>
-                <h4 style="color: #F5B700; margin-bottom: 12px;">Документы</h4>
-                <p><a href="#">Политика конфиденциальности</a></p>
-                <p><a href="#">Пользовательское соглашение</a></p>
-            </div>
-        </div>
-        <hr style="border-color: #1E2A32; margin: 32px 0 20px;">
-        <p style="text-align: center;">© 2025-2026 ALBE digital — разработка, дизайн, AI, SEO</p>
-    </div>
-</footer>
+        </section>
 
-<div class="totop" id="toTopBtn">↑</div>
-
-<script>
-    // Бургер-меню
-    const burgerBtn = document.getElementById('burgerBtn');
-    const navMenu = document.getElementById('navMenu');
-    if (burgerBtn && navMenu) {
-        burgerBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            const spans = burgerBtn.querySelectorAll('span');
-            if (navMenu.classList.contains('active')) {
-                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-                spans[1].style.opacity = '0';
-                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
-            } else {
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
+        <!-- КОНТАКТЫ — ПЕРЕДЕЛАННЫЙ БЛОК В ЕДИНОМ СТИЛЕ -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="contact-card">
+                    <h2>Начнём проект?</h2>
+                    <p class="contact-desc">Оставьте заявку — стратег свяжется с вами в течение 3 часов</p>
+                    
+                    <form id="mainForm" class="contact-form">
+                        <div class="form-row">
+                            <input type="text" id="userName" placeholder="Имя *" required>
+                            <input type="tel" id="userPhone" placeholder="Телефон *" required>
+                        </div>
+                        <div class="form-row">
+                            <input type="email" id="userEmail" placeholder="Email *" required>
+                            <input type="text" id="userTelegram" placeholder="Telegram (username)">
+                        </div>
+                        <textarea rows="4" id="userMsg" placeholder="Опишите задачу"></textarea>
+                        <textarea rows="3" id="userComment" placeholder="Комментарий (дополнительные пожелания)"></textarea>
+                        <button type="submit" class="btn-primary">Отправить заявку</button>
+                        <div id="formStatus" class="form-status"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <div id="footer-placeholder"></div>
+    <div class="totop" id="toTopBtn">↑</div>
+    
+    <script src="header-loader.js"></script>
+    <script src="common.js"></script>
+    
+    <script>
+        // Дополнительный скрипт для формы, если common.js не обрабатывает
+        (function() {
+            const form = document.getElementById('mainForm');
+            const statusDiv = document.getElementById('formStatus');
+            
+            if (form && statusDiv) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('userName')?.value.trim();
+                    const phone = document.getElementById('userPhone')?.value.trim();
+                    const email = document.getElementById('userEmail')?.value.trim();
+                    
+                    if (!name || !phone || !email) {
+                        statusDiv.innerHTML = '<div style="background: #990000; padding: 12px; border-radius: 8px;">Пожалуйста, заполните обязательные поля (Имя, Телефон, Email)</div>';
+                        setTimeout(() => statusDiv.innerHTML = '', 4000);
+                        return;
+                    }
+                    
+                    statusDiv.innerHTML = '<div style="background: #F5B700; color: #0D1117; padding: 12px; border-radius: 8px;">Спасибо! Менеджер свяжется с вами в ближайшее время.</div>';
+                    form.reset();
+                    setTimeout(() => statusDiv.innerHTML = '', 5000);
+                });
             }
-        });
-    }
-
-    // FAQ аккордеон
-    document.querySelectorAll('.faq-question').forEach(btn => {
-        btn.addEventListener('click', () => {
-            btn.classList.toggle('active');
-            const answer = btn.nextElementSibling;
-            answer.classList.toggle('active');
-        });
-    });
-
-    // Калькулятор
-    const rate = 2000;
-    const sh = {
-        design: 20, front: 30, back: 40, seo: 15,
-        cms: 25, crm: 60, ai: 90, mobile: 120, support: 8
-    };
-    const cm = { simple: 1, medium: 1.5, high: 2.2, enterprise: 3.5 };
-    let selected = new Set();
-    let complexity = "simple";
-
-    function updateCalculator() {
-        let h = 0;
-        for (let s of selected) h += sh[s] || 0;
-        let fin = Math.round(h * cm[complexity]);
-        let cost = fin * rate;
-        document.getElementById('calcPrice').innerHTML = cost.toLocaleString() + ' ₽';
-        document.getElementById('calcHoursInfo').innerHTML = `Часов: ${fin} ч`;
-        
-        let stackHtml = '<h4>Рекомендуемый стек</h4>';
-        if (selected.has('front') || selected.has('design')) {
-            stackHtml += '<p><strong>Frontend:</strong> React / Next.js, TypeScript, Tailwind CSS</p>';
-        }
-        if (selected.has('back')) {
-            stackHtml += '<p><strong>Backend:</strong> Node.js / Python + PostgreSQL</p>';
-        }
-        if (selected.has('mobile')) {
-            stackHtml += '<p><strong>Mobile:</strong> React Native / Flutter</p>';
-        }
-        if (selected.has('ai')) {
-            stackHtml += '<p><strong>AI/ML:</strong> Python, TensorFlow, OpenAI API</p>';
-        }
-        if (selected.size === 0) {
-            stackHtml += '<p>Выберите услуги для расчёта</p>';
-        }
-        document.getElementById('stackExplanation').innerHTML = stackHtml;
-    }
-
-    document.querySelectorAll('#calcServices .calc-option').forEach(opt => {
-        opt.addEventListener('click', () => {
-            const service = opt.getAttribute('data-service');
-            if (selected.has(service)) {
-                selected.delete(service);
-                opt.classList.remove('selected');
-            } else {
-                selected.add(service);
-                opt.classList.add('selected');
-            }
-            updateCalculator();
-        });
-    });
-
-    document.querySelectorAll('#calcComplexity .calc-option').forEach(opt => {
-        opt.addEventListener('click', () => {
-            complexity = opt.getAttribute('data-complex');
-            document.querySelectorAll('#calcComplexity .calc-option').forEach(c => c.classList.remove('selected'));
-            opt.classList.add('selected');
-            updateCalculator();
-        });
-    });
-    document.querySelector('#calcComplexity .calc-option[data-complex="simple"]').classList.add('selected');
-    updateCalculator();
-
-    // Форма
-    const form = document.getElementById('mainForm');
-    const statusDiv = document.getElementById('formStatus');
-    if (form && statusDiv) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('userName')?.value.trim();
-            const phone = document.getElementById('userPhone')?.value.trim();
-            const email = document.getElementById('userEmail')?.value.trim();
-            if (!name || !phone || !email) {
-                statusDiv.innerHTML = '<div style="background: #990000; padding: 12px;">Заполните обязательные поля</div>';
-                setTimeout(() => statusDiv.innerHTML = '', 4000);
-                return;
-            }
-            statusDiv.innerHTML = '<div style="background: #F5B700; color: #0D1117; padding: 12px;">Спасибо! Менеджер свяжется с вами.</div>';
-            form.reset();
-            setTimeout(() => statusDiv.innerHTML = '', 5000);
-        });
-    }
-
-    // Кнопка наверх
-    const toTop = document.getElementById('toTopBtn');
-    window.addEventListener('scroll', () => {
-        if (toTop) toTop.style.display = window.scrollY > 400 ? 'flex' : 'none';
-    });
-    if (toTop) {
-        toTop.style.display = 'none';
-        toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-    }
-
-    // Плавная прокрутка
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href === "#" || href === "") return;
-            const target = document.querySelector(href);
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-    });
-</script>
-
+        })();
+    </script>
 </body>
 </html>
