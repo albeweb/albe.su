@@ -3,20 +3,273 @@
         <a href="/" class="logo" aria-label="ALBE digital - главная">
             <span>a</span><span>lbe</span>
         </a>
+        
         <nav class="nav-menu" id="navMenu">
-            <a href="#services" class="nav-link">Услуги</a>
-            <a href="#portfolio" class="nav-link">Портфолио</a>
-            <a href="#process" class="nav-link">Процесс</a>
-            <a href="#competences" class="nav-link">Компетенции</a>
+            <!-- УСЛУГИ (с подменю) -->
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link">Услуги</a>
+                <div class="dropdown-menu">
+                    <a href="/services.html" class="dropdown-link">Все услуги</a>
+                    <a href="#webdev" class="dropdown-link">Веб-разработка</a>
+                    <a href="#design" class="dropdown-link">Премиум дизайн</a>
+                    <a href="#ecommerce" class="dropdown-link">E‑commerce</a>
+                    <a href="#seo" class="dropdown-link">SEO & аналитика</a>
+                    <a href="#ai" class="dropdown-link">AI & Machine Learning</a>
+                    <a href="#mobile" class="dropdown-link">Мобильные приложения</a>
+                </div>
+            </div>
+            
+            <!-- ПОРТФОЛИО -->
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link">Портфолио</a>
+                <div class="dropdown-menu">
+                    <a href="/portfolio.html" class="dropdown-link">Все проекты</a>
+                    <a href="#bank" class="dropdown-link">NeoBank Platform</a>
+                    <a href="#ai-recommend" class="dropdown-link">AI рекомендации</a>
+                    <a href="#fittrack" class="dropdown-link">FitTrack приложение</a>
+                </div>
+            </div>
+            
+            <!-- КОМПАНИЯ (с подменю) -->
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link">Компания</a>
+                <div class="dropdown-menu">
+                    <a href="/about.html" class="dropdown-link">О компании</a>
+                    <a href="#process" class="dropdown-link">Процесс работы</a>
+                    <a href="#competences" class="dropdown-link">Компетенции</a>
+                    <a href="#team" class="dropdown-link">Команда</a>
+                </div>
+            </div>
+            
+            <!-- КАЛЬКУЛЯТОР -->
             <a href="#calculator" class="nav-link">Калькулятор</a>
-            <a href="#contact" class="nav-link">Контакты</a>
-            <!-- Номер телефона полностью удалён -->
+            
+            <!-- FAQ -->
+            <a href="#faq" class="nav-link">FAQ</a>
+            
+            <!-- КОНТАКТЫ (с подменю) -->
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link">Контакты</a>
+                <div class="dropdown-menu">
+                    <a href="#contact" class="dropdown-link">Связаться с нами</a>
+                    <a href="https://t.me/albe_web" target="_blank" class="dropdown-link">Telegram</a>
+                    <a href="mailto:albe.web@yandex.ru" class="dropdown-link">Email: albe.web@yandex.ru</a>
+                    <a href="/privacy.html" class="dropdown-link">Политика конфиденциальности</a>
+                    <a href="/terms.html" class="dropdown-link">Пользовательское соглашение</a>
+                </div>
+            </div>
+            
+            <!-- TELEGRAM (самолётик) -->
             <a href="https://t.me/albe_web" target="_blank" class="header-telegram" aria-label="Telegram">
-                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.6-1.38-.97-2.23-1.56-.99-.69-.35-1.07.22-1.69.15-.15 2.8-2.57 2.85-2.79.01-.06.02-.14-.05-.2-.07-.06-.18-.04-.26-.02-.12.03-1.97 1.25-5.57 3.68-.53.36-1.01.54-1.44.53-.47-.01-1.38-.27-2.06-.49-.84-.27-1.51-.42-1.45-.89.03-.25.37-.5 1.03-.76 4.04-1.76 6.73-2.92 8.09-3.48 3.85-1.59 4.65-1.86 5.17-1.87.12 0 .37.03.54.2.14.14.17.32.19.54-.04.18-.06.46-.09.78z" fill="white"/></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22.2642 2.42759C22.1168 2.27497 21.9026 2.20195 21.6872 2.23039L1.84337 5.60234C1.61374 5.6332 1.41451 5.76868 1.3055 5.96691C1.19649 6.16514 1.19022 6.40204 1.28818 6.60564L5.29148 14.7505L9.1406 20.2598C9.27029 20.4355 9.46761 20.5474 9.68431 20.5676C9.901 20.5877 10.1162 20.514 10.2766 20.3648L14.4192 16.5004L20.5354 21.6721C20.6855 21.8019 20.8773 21.8737 21.0758 21.8736C21.1609 21.8735 21.2465 21.8607 21.3285 21.8356C21.5869 21.7622 21.7941 21.5667 21.8837 21.3135L23.9922 2.92804C24.0278 2.72742 23.9735 2.52125 23.8372 2.36642C23.7009 2.2116 23.5008 2.12548 23.2897 2.13444C23.2797 2.13493 23.2699 2.13588 23.2601 2.1373C22.3926 2.26452 21.4542 2.43902 22.2642 2.42759Z" fill="white"/>
+                </svg>
             </a>
         </nav>
+        
         <div class="burger" id="burgerBtn">
             <span></span><span></span><span></span>
         </div>
     </div>
 </header>
+
+<style>
+/* Стили для многоуровневого меню */
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    color: #FFFFFF;
+    text-decoration: none;
+    transition: 0.2s;
+    white-space: nowrap;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+    padding: 8px 0;
+    display: inline-block;
+}
+
+.nav-link:hover {
+    color: #F5B700;
+}
+
+/* Выпадающее меню */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgba(13, 17, 23, 0.98);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(245, 183, 0, 0.2);
+    border-top-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    min-width: 220px;
+    padding: 12px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.nav-item:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-link {
+    display: block;
+    padding: 10px 20px;
+    color: #E6EDF5;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.dropdown-link:hover {
+    background: rgba(245, 183, 0, 0.1);
+    color: #F5B700;
+    padding-left: 28px;
+}
+
+/* Стрелка для пунктов с подменю */
+.has-dropdown > .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.has-dropdown > .nav-link::after {
+    content: '▼';
+    font-size: 0.7rem;
+    transition: transform 0.3s ease;
+}
+
+.has-dropdown:hover > .nav-link::after {
+    transform: rotate(180deg);
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -320px;
+        background: rgba(13, 17, 23, 0.98);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        width: 280px;
+        height: 100vh;
+        padding: 80px 24px 30px;
+        transition: right 0.3s ease-out;
+        border-left: 2px solid #F5B700;
+        z-index: 1001;
+        gap: 0;
+        align-items: flex-start;
+        overflow-y: auto;
+    }
+    
+    .nav-menu.active {
+        right: 0;
+    }
+    
+    .nav-item {
+        width: 100%;
+    }
+    
+    .nav-link {
+        padding: 12px 0;
+        font-size: 1rem;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .has-dropdown > .nav-link::after {
+        content: '▼';
+        font-size: 0.8rem;
+    }
+    
+    .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        display: none;
+        background: rgba(255, 255, 255, 0.05);
+        border: none;
+        padding: 0 0 12px 16px;
+        min-width: auto;
+        margin-top: 0;
+    }
+    
+    .nav-item.open .dropdown-menu {
+        display: block;
+    }
+    
+    .dropdown-link {
+        padding: 10px 16px;
+        white-space: normal;
+    }
+    
+    .header-telegram {
+        margin-top: 16px;
+        margin-left: 0;
+    }
+}
+</style>
+
+<script>
+// Мобильное меню с открытием подменю
+(function() {
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mobileMenu = document.getElementById('navMenu');
+    
+    if (burgerBtn && mobileMenu) {
+        burgerBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+            const spans = burgerBtn.querySelectorAll('span');
+            if (mobileMenu.classList.contains('active')) {
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+        
+        // Для мобильных: клик по пункту с подменю открывает его
+        const dropdownItems = document.querySelectorAll('.has-dropdown');
+        dropdownItems.forEach(item => {
+            const link = item.querySelector('.nav-link');
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    item.classList.toggle('open');
+                }
+            });
+        });
+        
+        // Закрытие меню при клике на ссылку (кроме подменю на мобильных)
+        const navLinks = document.querySelectorAll('.nav-link, .dropdown-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768 && !this.closest('.has-dropdown')) {
+                    mobileMenu.classList.remove('active');
+                    const spans = burgerBtn.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+        });
+    }
+})();
+</script>
