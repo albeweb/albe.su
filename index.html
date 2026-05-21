@@ -153,7 +153,134 @@
             background: rgba(0,0,0,0.35);
         }
         
-        /* НОВЫЕ СТИЛИ ДЛЯ БЛОКА КОНТАКТОВ — В ЕДИНОМ СТИЛЕ */
+        /* СТИЛИ ДЛЯ FAQ — 2 КОЛОНКИ */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .faq-item {
+            margin-bottom: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            padding: 22px 28px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #F5B700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            font-family: inherit;
+            background: rgba(18, 24, 32, 0.85);
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(245, 183, 0, 0.2);
+            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border-top-left-radius: 28px;
+            border-bottom-right-radius: 28px;
+            border-top-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+        .faq-question:hover {
+            border-color: #F5B700;
+            transform: translateY(-2px);
+        }
+        .faq-answer {
+            padding: 0 28px 28px 28px;
+            color: #B0C4DE;
+            display: none;
+            background: rgba(18, 24, 32, 0.85);
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(245, 183, 0, 0.2);
+            border-top: none;
+            border-top-left-radius: 0;
+            border-bottom-right-radius: 28px;
+            border-top-right-radius: 0;
+            border-bottom-left-radius: 0;
+            margin-top: -2px;
+        }
+        .faq-answer.active {
+            display: block;
+        }
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            font-weight: 300;
+            transition: transform 0.3s;
+        }
+        .faq-question.active::after {
+            content: '−';
+        }
+        
+        @media (max-width: 900px) {
+            .mission-grid-wrapper {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .mission-text {
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .faq-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .mission-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .mission-grid-card {
+                height: 180px;
+            }
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .section-more-btn {
+                align-self: flex-start;
+            }
+            .contact-card {
+                padding: 32px 24px;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .contact-card h2 {
+                font-size: 1.8rem;
+            }
+            .faq-question {
+                padding: 18px 20px;
+                font-size: 0.95rem;
+            }
+            .faq-answer {
+                padding: 0 20px 20px 20px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .contact-card {
+                padding: 24px 20px;
+            }
+            .contact-card h2 {
+                font-size: 1.5rem;
+            }
+            .faq-question {
+                padding: 16px 18px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* СТИЛИ ДЛЯ БЛОКА КОНТАКТОВ — В ЕДИНОМ СТИЛЕ */
         .contact-section {
             padding: 100px 0;
             background: linear-gradient(135deg, #0A0E12 0%, #0D1117 100%);
@@ -240,53 +367,6 @@
             text-align: center;
             font-size: 0.9rem;
         }
-        
-        @media (max-width: 900px) {
-            .mission-grid-wrapper {
-                flex-direction: column;
-                gap: 30px;
-            }
-            .mission-text {
-                text-align: center;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .mission-grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-            .mission-grid-card {
-                height: 180px;
-            }
-            .section-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-            }
-            .section-more-btn {
-                align-self: flex-start;
-            }
-            .contact-card {
-                padding: 32px 24px;
-            }
-            .form-row {
-                grid-template-columns: 1fr;
-                gap: 0;
-            }
-            .contact-card h2 {
-                font-size: 1.8rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .contact-card {
-                padding: 24px 20px;
-            }
-            .contact-card h2 {
-                font-size: 1.5rem;
-            }
-        }
     </style>
 </head>
 <body>
@@ -349,7 +429,7 @@
                     </div>
                     
                     <div class="hero-stats">
-                        <div class="stat-item"><div class="stat-number">10+</div><div class="stat-label">лет опыта</div></div>
+                        <div class="stat-item"><div class="stat-number">7+</div><div class="stat-label">лет опыта</div></div>
                         <div class="stat-item"><div class="stat-number">150+</div><div class="stat-label">проектов</div></div>
                         <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">поддержка</div></div>
                         <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">результат</div></div>
@@ -474,17 +554,46 @@
             </div>
         </section>
 
-        <!-- FAQ -->
+        <!-- FAQ — 8 ВОПРОСОВ В 2 СТОЛБЦА -->
         <section class="section">
             <div class="container">
                 <div class="section-header">
                     <h2>Часто задаваемые вопросы</h2>
                     <a href="services.html" class="section-more-btn">Подробнее</a>
                 </div>
-                <div class="faq-list">
-                    <div class="faq-item"><button class="faq-question">Сколько стоит разработка сайта?</button><div class="faq-answer">Стоимость рассчитывается в калькуляторе. Лендинг от 120 000 ₽, интернет-магазин от 450 000 ₽.</div></div>
-                    <div class="faq-item"><button class="faq-question">Даёте гарантию на SEO?</button><div class="faq-answer">Да, гарантируем выполнение KPI по трафику и позициям.</div></div>
-                    <div class="faq-item"><button class="faq-question">Разрабатываете мобильные приложения?</button><div class="faq-answer">Да, iOS, Android, кроссплатформа, полный цикл.</div></div>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <button class="faq-question">Сколько стоит разработка сайта под ключ?</button>
+                        <div class="faq-answer">Стоимость разработки сайта рассчитывается индивидуально в нашем калькуляторе. Лендинг от 120 000 ₽, корпоративный сайт от 250 000 ₽, интернет-магазин от 450 000 ₽. Окончательная цена зависит от сложности, количества функций и выбранного стека технологий.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Какие сроки разработки сайта?</button>
+                        <div class="faq-answer">Сроки разработки сайта под ключ составляют от 3 до 12 недель в зависимости от сложности проекта. Лендинг разрабатывается за 2-3 недели, интернет-магазин — 6-8 недель, сложные порталы и CRM системы — от 10 недель. Мы всегда соблюдаем дедлайны.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Даёте гарантию на SEO продвижение?</button>
+                        <div class="faq-answer">Да, мы гарантируем выполнение KPI по SEO продвижению. Заключаем договор с чёткими показателями: рост трафика, улучшение позиций по целевым запросам, увеличение конверсии. При недостижении результатов проводим дополнительную оптимизацию за наш счёт.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Разрабатываете мобильные приложения?</button>
+                        <div class="faq-answer">Да, мы разрабатываем мобильные приложения под iOS, Android и кроссплатформенные решения на React Native и Flutter. Полный цикл: от идеи и дизайна до публикации в App Store и Google Play. Интегрируем с вашим сайтом и CRM.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Как происходит SEO оптимизация сайта?</button>
+                        <div class="faq-answer">SEO оптимизация включает: технический аудит, сбор семантического ядра, оптимизацию метатегов и контента, улучшение Core Web Vitals, настройку Яндекс.Метрики и Google Analytics, проработку коммерческих факторов. Регулярно отчитываемся по позициям и трафику.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Используете ли вы AI и нейросети?</button>
+                        <div class="faq-answer">Да, мы активно внедряем AI решения: чат-боты для автоматизации поддержки, рекомендательные системы, генеративный AI для контента, аналитику данных и прогнозирование. Нейросети помогают ускорить разработку и повысить качество продуктов.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Предоставляете техническую поддержку?</button>
+                        <div class="faq-answer">Да, у нас есть круглосуточная техническая поддержка 24/7. Обслуживание включает: устранение ошибок, обновление CMS и плагинов, бэкапы, мониторинг безопасности, доработки функционала. Выбирайте пакет поддержки под ваш бюджет.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Как начать проект с ALBE digital?</button>
+                        <div class="faq-answer">Просто оставьте заявку на сайте или напишите в Telegram. Мы проведём бесплатную консультацию, проанализируем ваш бизнес и потребности, предложим оптимальное решение и сроки. После согласования концепции подготовим договор и начнём разработку.</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -522,6 +631,31 @@
     <script src="common.js"></script>
     
     <script>
+        // Работа FAQ аккордеона
+        (function() {
+            const faqButtons = document.querySelectorAll('.faq-question');
+            faqButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const isActive = answer.classList.contains('active');
+                    
+                    // Закрываем все ответы
+                    document.querySelectorAll('.faq-answer').forEach(ans => {
+                        ans.classList.remove('active');
+                    });
+                    document.querySelectorAll('.faq-question').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    // Открываем текущий, если он не был открыт
+                    if (!isActive) {
+                        answer.classList.add('active');
+                        this.classList.add('active');
+                    }
+                });
+            });
+        })();
+
         // Дополнительный скрипт для формы, если common.js не обрабатывает
         (function() {
             const form = document.getElementById('mainForm');
