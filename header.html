@@ -37,7 +37,6 @@
                     <a href="/about.html" class="dropdown-link">О компании</a>
                     <a href="#process" class="dropdown-link">Процесс работы</a>
                     <a href="#competences" class="dropdown-link">Компетенции</a>
-                    <a href="#team" class="dropdown-link">Команда</a>
                 </div>
             </div>
             
@@ -74,7 +73,7 @@
 </header>
 
 <style>
-/* Стили для многоуровневого меню */
+/* Стили для многоуровневого меню — БЕЗ СКРОЛЛА В ХЕДЕРЕ */
 .nav-item {
     position: relative;
 }
@@ -94,7 +93,7 @@
     color: #F5B700;
 }
 
-/* Выпадающее меню — ПОВЕРХ ВСЕГО КОНТЕНТА */
+/* Выпадающее меню — при наведении */
 .dropdown-menu {
     position: absolute;
     top: 100%;
@@ -108,16 +107,18 @@
     padding: 12px 0;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
+    transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.2s ease;
+    transform: translateY(-8px);
     z-index: 9999;
     box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
 }
 
 .nav-item:hover .dropdown-menu {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+    pointer-events: auto;
 }
 
 .dropdown-link {
@@ -147,7 +148,7 @@
 .has-dropdown > .nav-link::after {
     content: '▼';
     font-size: 0.7rem;
-    transition: transform 0.3s ease;
+    transition: transform 0.2s ease;
     font-family: monospace;
 }
 
@@ -155,24 +156,32 @@
     transform: rotate(180deg);
 }
 
-/* Убедимся, что шапка имеет высокий z-index */
+/* Шапка — фиксированная, но без скролла */
 .header {
-    position: relative;
-    z-index: 10000;
-    background: rgba(13, 17, 23, 0.95);
-    backdrop-filter: blur(10px);
-}
-
-/* Фиксированная шапка при скролле */
-.header.fixed {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
+    background: rgba(13, 17, 23, 0.95);
+    backdrop-filter: blur(10px);
     z-index: 10000;
+    border-bottom: 1px solid rgba(245, 183, 0, 0.2);
+    padding: 18px 0;
+    width: 100%;
 }
 
-/* Мобильная адаптация */
+/* Отступ для body, чтобы контент не уходил под шапку */
+body {
+    padding-top: 82px;
+}
+
+/* Убираем дублирующиеся стили из common.js */
+.header.fixed {
+    /* Убираем анимацию, так как шапка всегда фиксирована */
+    position: fixed;
+}
+
+/* Мобильная адаптация — без скролла в хедере */
 @media (max-width: 768px) {
     .nav-menu {
         position: fixed;
@@ -220,10 +229,6 @@
         transform: none;
     }
     
-    .has-dropdown:hover > .nav-link::after {
-        transform: none;
-    }
-    
     .dropdown-menu {
         position: static;
         opacity: 1;
@@ -239,6 +244,7 @@
         margin-top: 0;
         box-shadow: none;
         z-index: auto;
+        pointer-events: auto;
     }
     
     .nav-item.open .dropdown-menu {
@@ -293,7 +299,7 @@
             }
         });
         
-        // Закрытие меню при клике на ссылку (кроме подменю на мобильных)
+        // Закрытие меню при клике на ссылку
         const navLinks = document.querySelectorAll('.dropdown-link');
         navLinks.forEach(link => {
             link.addEventListener('click', function() {
@@ -310,5 +316,4 @@
         });
     }
 })();
-</script>
 </script>
