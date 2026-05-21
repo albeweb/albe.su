@@ -191,15 +191,25 @@ function initSmoothScroll() {
     }
 }
 
-// ===== FAQ — ИСПРАВЛЕННАЯ ВЕРСИЯ (РАБОТАЕТ ЧЕРЕЗ ДЕЛЕГИРОВАНИЕ) =====
+// ===== FAQ — ИСПРАВЛЕННАЯ ВЕРСИЯ (ЗАКРЫВАЕТ ВСЕ ПРИ ЗАГРУЗКЕ) =====
 function initFaq() {
+    // Принудительно закрываем все вопросы при загрузке
+    var allAnswers = document.querySelectorAll('.faq-answer');
+    for (var i = 0; i < allAnswers.length; i++) {
+        allAnswers[i].classList.remove('active');
+    }
+    var allQuestions = document.querySelectorAll('.faq-question');
+    for (var i = 0; i < allQuestions.length; i++) {
+        allQuestions[i].classList.remove('active');
+    }
+    
     // Ищем контейнер с вопросами
     var faqGrid = document.querySelector('.faq-grid');
     if (!faqGrid) return;
     
     // Используем делегирование — один обработчик на весь блок
     faqGrid.addEventListener('click', function(e) {
-        // Находим кнопку вопроса (клик мог быть на дочернем элементе)
+        // Находим кнопку вопроса
         var button = e.target.closest('.faq-question');
         if (!button) return;
         
@@ -207,7 +217,11 @@ function initFaq() {
         
         // Находим родительский .faq-item и ответ внутри него
         var item = button.closest('.faq-item');
+        if (!item) return;
+        
         var answer = item.querySelector('.faq-answer');
+        if (!answer) return;
+        
         var isActive = answer.classList.contains('active');
         
         // Закрываем все ответы
@@ -248,7 +262,6 @@ function initForm() {
                 return;
             }
             
-            // Логируем данные (здесь можно добавить отправку на сервер)
             console.log('Заявка:', { name, phone, email, telegram, msg, comment });
             
             if (stat) stat.innerHTML = '<div style="background:#F5B700; color:#0D1117; padding:12px; border-radius:8px;">Спасибо! Менеджер свяжется с вами в ближайшее время.</div>';
@@ -368,7 +381,7 @@ function addSchema() {
     sc.textContent = JSON.stringify(schema);
     document.head.appendChild(sc);
     
-    // Добавляем FAQ Schema для расширенных сниппетов
+    // FAQ Schema
     var faqItems = document.querySelectorAll('.faq-item');
     if (faqItems.length > 0) {
         var faqSchema = {
