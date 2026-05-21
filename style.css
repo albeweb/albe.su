@@ -169,26 +169,24 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     transform: translateX(4px);
 }
 
-/* ===== СТИЛИ ДЛЯ ИЗОБРАЖЕНИЙ ПОРТФОЛИО ===== */
-.portfolio-image {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: white;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-    position: relative;
-    z-index: 1;
-}
-.portfolio-image::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
+/* ===== СТИЛИ ДЛЯ КАРТИНОК ПОРТФОЛИО (ЧЕРЕЗ IMG) ===== */
+.portfolio-card .portfolio-image {
     width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.4);
+    height: 280px;
+    object-fit: cover;
+    display: block;
     border-top-left-radius: 28px;
-    z-index: -1;
+    background: linear-gradient(145deg, #1A212B, #0B1015);
+}
+
+/* ===== СТИЛИ ДЛЯ КАРТИНОК МИССИИ (ЧЕРЕЗ IMG) ===== */
+.mission-grid .mission-grid-card {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    border-top-left-radius: 28px;
+    border-bottom-right-radius: 28px;
 }
 
 /* ===== СТИЛИ ДЛЯ БЛОКА "ПОЧЕМУ ВЫБИРАЮТ НАС" ===== */
@@ -211,45 +209,6 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
-}
-.mission-grid-card {
-    height: 200px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: #F5B700;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
-    position: relative;
-    z-index: 1;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-top-left-radius: 28px;
-    border-bottom-right-radius: 28px;
-    transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    cursor: default;
-}
-.mission-grid-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    border-top-left-radius: 28px;
-    border-bottom-right-radius: 28px;
-    z-index: -1;
-    transition: all 0.35s ease;
-}
-.mission-grid-card:hover {
-    transform: translateY(-5px);
-    border-color: #F5B700;
-    box-shadow: 0 15px 30px -12px rgba(0,0,0,0.5);
-}
-.mission-grid-card:hover::before {
-    background: rgba(0,0,0,0.35);
 }
 
 /* ===== СТИЛИ ДЛЯ FAQ ===== */
@@ -658,18 +617,6 @@ body.header-fixed { padding-top: 82px; }
     flex-direction: column;
     width: 100%;
 }
-.portfolio-image { 
-    height: 280px; 
-    background: linear-gradient(145deg, #1A212B, #0B1015); 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    font-size: 1.8rem; 
-    color: #F5B700; 
-    border-top-left-radius: 28px; 
-    font-family: 'Manrope', sans-serif;
-    font-weight: 500;
-}
 .portfolio-info { padding: 0; margin-top: 20px; }
 
 .steps-container { display: flex; flex-wrap: wrap; gap: 32px; margin-top: 40px; }
@@ -733,11 +680,6 @@ body.header-fixed { padding-top: 82px; }
 .time-breakdown-item { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.85rem; flex-wrap: wrap; gap: 8px; }
 .time-breakdown-item span:first-child { color: #F5B700; }
 
-.mission-wrapper { display: flex; gap: 50px; align-items: center; flex-wrap: wrap; }
-.mission-text p { margin-bottom: 1rem; }
-.mission-photos { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-.mission-photo { height: 200px; display: flex; align-items: center; justify-content: center; color: #F5B700; background-size: cover; background-position: center; font-family: 'Manrope', sans-serif; font-weight: 500; }
-
 .fullscreen-cover { min-height: 85vh; background-image: url('https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1600'); background-size: cover; background-attachment: fixed; background-position: center; position: relative; display: flex; align-items: center; justify-content: center; }
 .cover-overlay { position: absolute; inset: 0; background: rgba(13,17,23,0.92); }
 .cover-content { position: relative; max-width: 550px; width: 90%; padding: 48px; text-align: center; }
@@ -758,7 +700,7 @@ input:focus, textarea:focus { outline: none; border-color: #F5B700; }
     h1 { font-size: 8rem; }
     .hero-title-line2 { font-size: 3.4rem; }
     h2 { font-size: 3.4rem; }
-    .portfolio-image { height: 260px; font-size: 1.6rem; }
+    .portfolio-card .portfolio-image { height: 260px; }
 }
 @media (max-width: 1400px) {
     .container, .header .container, .hero .container { padding: 0 60px; }
@@ -770,7 +712,7 @@ input:focus, textarea:focus { outline: none; border-color: #F5B700; }
     .stat-item { min-width: 240px; padding: 24px 32px; }
     .stat-number { font-size: 2.8rem; }
     .portfolio-grid { gap: 30px; }
-    .portfolio-image { height: 240px; font-size: 1.5rem; }
+    .portfolio-card .portfolio-image { height: 240px; }
 }
 @media (max-width: 1200px) {
     .container, .header .container, .hero .container { padding: 0 50px; }
@@ -783,7 +725,7 @@ input:focus, textarea:focus { outline: none; border-color: #F5B700; }
     .stat-number { font-size: 2.5rem; }
     .services-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
     .portfolio-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
-    .portfolio-image { height: 220px; font-size: 1.4rem; }
+    .portfolio-card .portfolio-image { height: 220px; }
 }
 @media (max-width: 1024px) {
     .container, .header .container, .hero .container { padding: 0 40px; }
@@ -795,7 +737,7 @@ input:focus, textarea:focus { outline: none; border-color: #F5B700; }
     .stat-item { min-width: 200px; padding: 18px 24px; }
     .stat-number { font-size: 2.2rem; }
     .portfolio-grid { gap: 25px; }
-    .portfolio-image { height: 200px; font-size: 1.3rem; }
+    .portfolio-card .portfolio-image { height: 200px; }
 }
 @media (max-width: 900px) {
     .container, .header .container, .hero .container { padding: 0 30px; }
@@ -823,7 +765,7 @@ input:focus, textarea:focus { outline: none; border-color: #F5B700; }
     .hero-quote { text-align: center; }
     .services-grid { grid-template-columns: 1fr; gap: 20px; }
     .portfolio-grid { grid-template-columns: 1fr; gap: 25px; }
-    .portfolio-image { height: 220px; font-size: 1.4rem; }
+    .portfolio-card .portfolio-image { height: 220px; }
     .mission-grid-wrapper {
         flex-direction: column;
         gap: 30px;
@@ -855,7 +797,7 @@ input:focus, textarea:focus { outline: none; border-color: #F5B700; }
     .hero-quote { margin-top: 1.5rem; }
     .quote-text { font-size: 0.8rem; letter-spacing: 1px; }
     .portfolio-grid { gap: 20px; }
-    .portfolio-image { height: 200px; font-size: 1.3rem; }
+    .portfolio-card .portfolio-image { height: 200px; }
     .steps-container { flex-direction: column; gap: 20px; }
     .step-card { flex: none; width: 100%; padding: 24px; }
     .step-num { font-size: 2rem; margin-bottom: 0.5rem; }
@@ -869,14 +811,11 @@ input:focus, textarea:focus { outline: none; border-color: #F5B700; }
     .calc-option { width: 100%; text-align: center; padding: 10px 16px; font-size: 0.9rem; }
     .calc-total-block { padding: 16px; }
     .calc-price { font-size: 1.4rem; }
-    .mission-wrapper { flex-direction: column; gap: 30px; }
-    .mission-photos { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-    .mission-photo { height: 150px; font-size: 0.9rem; }
     .mission-grid {
         grid-template-columns: 1fr;
         gap: 16px;
     }
-    .mission-grid-card {
+    .mission-grid .mission-grid-card {
         height: 180px;
     }
     .faq-grid {
@@ -929,8 +868,8 @@ input:focus, textarea:focus { outline: none; border-color: #F5B700; }
     .quote-text { font-size: 0.7rem; }
     .service-card, .portfolio-card, .step-card, .faq-item { padding: 20px; }
     .service-card h3 { font-size: 1.3rem; }
-    .portfolio-image { height: 180px; font-size: 1.2rem; }
-    .mission-photo { height: 120px; }
+    .portfolio-card .portfolio-image { height: 180px; }
+    .mission-grid .mission-grid-card { height: 120px; }
     .calculator-card { padding: 16px; }
     .cover-content { padding: 20px 16px; }
     .cover-content h2 { font-size: 1.3rem; }
