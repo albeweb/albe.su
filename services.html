@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>ALBE DIGITAL | Услуги — разработка сайтов, дизайн, SEO, AI</title>
-    <meta name="description" content="Услуги ALBE digital: веб-разработка, дизайн, SEO, AI, мобильные приложения. Полный цикл создания цифровых продуктов.">
-    <meta name="keywords" content="услуги albe digital, разработка сайтов, seo продвижение, ai решения, мобильные приложения">
+    <title>ALBE DIGITAL | Услуги — разработка сайтов, дизайн, SEO, AI, мобильные приложения</title>
+    <meta name="description" content="ALBE digital предлагает полный спектр услуг: разработка сайтов под ключ, премиум дизайн, SEO продвижение, AI решения, мобильные приложения, CRM интеграция, техподдержка 24/7. Индивидуальный подход к каждому проекту.">
+    <meta name="keywords" content="услуги albe digital, разработка сайтов под ключ, премиум дизайн, seo продвижение, ai решения, мобильные приложения, веб-разработка, интернет-магазин, crm интеграция, техническая поддержка">
     <meta name="author" content="Albe Digital">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://albe.su/services.html">
-    <meta property="og:title" content="ALBE DIGITAL — Услуги">
-    <meta property="og:description" content="Разработка сайтов, дизайн, SEO, AI, мобильные приложения. Полный цикл.">
-    <meta property="og:image" content="https://albe.su/og-image.webp">
+    <meta property="og:title" content="ALBE DIGITAL — Услуги | Разработка сайтов, SEO, AI">
+    <meta property="og:description" content="Полный цикл создания цифровых продуктов: разработка сайтов, премиум дизайн, SEO продвижение, AI решения, мобильные приложения.">
+    <meta property="og:image" content="images/bank.avif">
     <meta property="og:url" content="https://albe.su/services.html">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="theme-color" content="#0D1117">
@@ -24,40 +24,159 @@
     <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
+    
+    <style>
+        .services-detailed {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(245, 183, 0, 0.15);
+        }
+        .services-detailed h3 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            color: #F5B700;
+        }
+        .services-detailed h3:first-of-type {
+            margin-top: 0;
+        }
+        .services-detailed p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+        .services-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0 2rem;
+        }
+        .services-list li {
+            color: #B0C4DE;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .services-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #F5B700;
+        }
+        .price-note {
+            background: rgba(18, 24, 32, 0.85);
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(245, 183, 0, 0.2);
+            border-top-left-radius: 28px;
+            border-bottom-right-radius: 28px;
+            padding: 32px;
+            margin-top: 2rem;
+        }
+        .price-note h4 {
+            color: #F5B700;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        @media (max-width: 768px) {
+            .services-list {
+                grid-template-columns: 1fr;
+            }
+            .services-detailed h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <div id="header-placeholder"></div>
     
     <main>
+        <!-- ============================================ -->
+        <!-- БЛОК 1: ЗАГОЛОВОК И ОПИСАНИЕ -->
+        <!-- ============================================ -->
         <section class="section">
             <div class="container">
                 <h1>Наши услуги</h1>
-                <p class="hero-desc" style="font-size: 1.2rem; margin-bottom: 3rem; max-width: 700px;">Полный цикл создания цифровых продуктов — от идеи до масштабирования.</p>
+                <p class="hero-desc" style="font-size: 1.2rem; margin-bottom: 2rem; max-width: 700px;">Полный цикл создания цифровых продуктов — от идеи до масштабирования. Мы разрабатываем сайты, приложения и AI-решения, которые приносят прибыль вашему бизнесу.</p>
                 
+                <!-- ============================================ -->
+                <!-- БЛОК 2: ОСНОВНЫЕ УСЛУГИ (6 карточек) -->
+                <!-- ============================================ -->
                 <div class="services-grid">
-                    <div class="service-card">
-                        <h3>Веб-разработка</h3>
-                        <p>Современный стек: React, Vue, Node.js, Laravel. Высокая производительность и масштабируемость.</p>
+                    <div class="service-card" itemscope itemtype="https://schema.org/Service">
+                        <h3 itemprop="name">Веб-разработка</h3>
+                        <p itemprop="description">Современный стек: React, Vue, Node.js, Laravel. Высокая производительность и масштабируемость.</p>
                     </div>
-                    <div class="service-card">
-                        <h3>Иммерсивный дизайн</h3>
-                        <p>Микровзаимодействия, 3D-сцены, анимация. Визуальный язык, который запоминается.</p>
+                    <div class="service-card" itemscope itemtype="https://schema.org/Service">
+                        <h3 itemprop="name">Иммерсивный дизайн</h3>
+                        <p itemprop="description">Микровзаимодействия, 3D-сцены, анимация. Визуальный язык, который запоминается.</p>
                     </div>
-                    <div class="service-card">
-                        <h3>E‑commerce платформы</h3>
-                        <p>Интернет-магазины с конверсией 15%+, интеграция с 1С, CRM и маркетплейсами.</p>
+                    <div class="service-card" itemscope itemtype="https://schema.org/Service">
+                        <h3 itemprop="name">E‑commerce платформы</h3>
+                        <p itemprop="description">Интернет-магазины с конверсией 15%+, интеграция с 1С, CRM и маркетплейсами.</p>
                     </div>
-                    <div class="service-card">
-                        <h3>SEO & аналитика</h3>
-                        <p>Полная оптимизация: от семантики до лидерских позиций в Яндексе и Google.</p>
+                    <div class="service-card" itemscope itemtype="https://schema.org/Service">
+                        <h3 itemprop="name">SEO & аналитика</h3>
+                        <p itemprop="description">Полная оптимизация: от семантики до лидерских позиций в Яндексе и Google.</p>
                     </div>
-                    <div class="service-card">
-                        <h3>AI & Machine Learning</h3>
-                        <p>Чат-боты, рекомендательные системы, аналитика данных, генеративный AI.</p>
+                    <div class="service-card" itemscope itemtype="https://schema.org/Service">
+                        <h3 itemprop="name">AI & Machine Learning</h3>
+                        <p itemprop="description">Чат-боты, рекомендательные системы, аналитика данных, генеративный AI.</p>
                     </div>
-                    <div class="service-card">
-                        <h3>Мобильные приложения</h3>
-                        <p>iOS, Android, React Native, Flutter. Полный цикл от идеи до публикации.</p>
+                    <div class="service-card" itemscope itemtype="https://schema.org/Service">
+                        <h3 itemprop="name">Мобильные приложения</h3>
+                        <p itemprop="description">iOS, Android, React Native, Flutter. Полный цикл от идеи до публикации.</p>
+                    </div>
+                </div>
+                
+                <!-- ============================================ -->
+                <!-- БЛОК 3: РАСШИРЕННОЕ SEO-ОПИСАНИЕ УСЛУГ -->
+                <!-- ============================================ -->
+                <div class="services-detailed">
+                    <h3>Разработка сайтов под ключ</h3>
+                    <p>Мы создаём сайты, которые работают на ваш бизнес. <strong>Разработка сайтов под ключ</strong> включает в себя всё: от анализа целевой аудитории до технической поддержки после запуска. Наши сайты получают высокие позиции в поисковых системах благодаря правильной SEO-оптимизации и современному стеку технологий.</p>
+                    <p>Вы получаете не просто красивый сайт, а полноценный маркетинговый инструмент, который привлекает клиентов и увеличивает продажи. Мы работаем с бизнесом любого масштаба — от стартапов до крупных корпораций.</p>
+                    
+                    <h3>Что входит в разработку сайта:</h3>
+                    <ul class="services-list">
+                        <li>Анализ ниши и конкурентов</li>
+                        <li>Проектирование UX/UI и создание прототипов</li>
+                        <li>Дизайн сайта с учётом вашего бренда</li>
+                        <li>Вёрстка и программирование на современном стеке</li>
+                        <li>Наполнение контентом и тестирование</li>
+                        <li>SEO-оптимизация перед запуском</li>
+                        <li>Обучение работе с сайтом</li>
+                        <li>Техническая поддержка 24/7 после запуска</li>
+                    </ul>
+                    
+                    <h3>Премиум дизайн сайтов</h3>
+                    <p><strong>Премиум дизайн сайтов</strong> — это не просто красивая картинка. Это продуманная пользовательская логика, микровзаимодействия, анимация и уникальный визуальный язык, который выделяет ваш бренд среди конкурентов. Наши дизайнеры создают интерфейсы, которые интуитивно понятны и вызывают доверие у посетителей.</p>
+                    <p>Мы используем современные инструменты: Figma, Adobe Suite, After Effects. Каждый проект получает уникальный дизайн, разработанный специально под задачи вашего бизнеса.</p>
+                    
+                    <h3>SEO продвижение под ключ</h3>
+                    <p><strong>SEO продвижение под ключ</strong> — это комплекс работ, направленных на вывод вашего сайта в топ поисковых систем. Мы проводим глубокий SEO-аудит, собираем семантическое ядро, оптимизируем контент и техническую составляющую сайта.</p>
+                    <p>Результаты SEO-продвижения: рост органического трафика до 300% за 6 месяцев, улучшение позиций по целевым запросам, увеличение конверсии. Мы гарантируем выполнение KPI и регулярно отчитываемся о проделанной работе.</p>
+                    
+                    <h3>AI и нейросети для бизнеса</h3>
+                    <p>Внедрение <strong>AI решений для бизнеса</strong> позволяет автоматизировать рутинные задачи, повысить качество обслуживания клиентов и увеличить прибыль. Мы разрабатываем чат-ботов, рекомендательные системы, системы прогнозирования продаж и генеративный AI для контента.</p>
+                    <p>Нейросети помогают анализировать большие объёмы данных, предсказывать поведение клиентов и автоматизировать маркетинговые кампании. Это технологии будущего, доступные вашему бизнесу уже сегодня.</p>
+                    
+                    <h3>Мобильные приложения</h3>
+                    <p>Разработка мобильных приложений под iOS и Android — ещё одно наше ключевое направление. Мы создаём кроссплатформенные приложения на React Native и Flutter, что позволяет сэкономить бюджет и ускорить выход на рынок.</p>
+                    <p>Приложения помогают повысить лояльность аудитории, увеличить частоту покупок и создать дополнительный канал коммуникации с клиентами. Полный цикл: от идеи до публикации в App Store и Google Play.</p>
+                    
+                    <h3>CRM интеграция и автоматизация</h3>
+                    <p>Интеграция вашего сайта с CRM-системой позволяет автоматизировать обработку заявок, вести учёт клиентов и анализировать эффективность продаж. Мы настраиваем связь с amoCRM, Bitrix24, RetailCRM и другими популярными системами.</p>
+                    <p>Автоматизация маркетинга и продаж — это сокращение ручного труда, повышение скорости обработки заявок и увеличение конверсии. Ваши менеджеры получают все данные о клиентах в одном месте.</p>
+                    
+                    <h3>Техническая поддержка 24/7</h3>
+                    <p>Мы предоставляем круглосуточную техническую поддержку сайтов. Наши специалисты следят за работой вашего ресурса, оперативно устраняют ошибки, обновляют CMS и плагины, делают резервные копии и обеспечивают безопасность от взломов.</p>
+                    <p>Вы можете выбрать пакет поддержки под ваш бюджет — от базового до расширенного с ежемесячной доработкой функционала.</p>
+                    
+                    <!-- Блок с ценами для SEO -->
+                    <div class="price-note">
+                        <h4>Стоимость услуг ALBE digital</h4>
+                        <p>Цены на разработку сайта рассчитываются индивидуально в <a href="index.html#calculator" style="color: #F5B700;">калькуляторе</a> на главной странице.</p>
+                        <p>Ориентировочная стоимость: лендинг от 120 000 ₽, корпоративный сайт от 250 000 ₽, интернет-магазин от 450 000 ₽, мобильное приложение от 600 000 ₽, AI решение от 350 000 ₽.</p>
+                        <p>Для точного расчёта оставьте заявку — мы подготовим коммерческое предложение в течение 3 часов.</p>
                     </div>
                 </div>
             </div>
