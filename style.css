@@ -83,11 +83,14 @@ h3 {
     font-family: 'Manrope', sans-serif;
 }
 
+/* ===== УВЕЛИЧЕННЫЙ ШРИФТ ОПИСАНИЯ ===== */
 p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-card p,
 .mission-text p, .faq-answer, .footer p, .footer a, .tech-item, .calc-option,
 .time-breakdown-item, .stack-explanation p, input, textarea, .stat-label {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
+    font-size: 1.0625rem;
+    line-height: 1.65;
     color: #B0C4DE;
 }
 .hero-desc strong, .stat-number { font-family: 'Manrope', sans-serif; }
@@ -594,10 +597,18 @@ input:focus, textarea:focus { outline: none; border-color: #F5B700; }
     .mission-photos { grid-template-columns: repeat(2, 1fr); gap: 16px; }
     .mission-photo { height: 150px; font-size: 0.9rem; }
     .faq-question { padding: 18px 20px; font-size: 1rem; }
-    .faq-answer { padding: 0 20px 20px 20px; font-size: 0.9rem; }
+    .faq-answer { padding: 0 20px 20px 20px; font-size: 0.95rem; }
     .footer { padding: 40px 0 24px; }
     .footer-grid { flex-direction: column; gap: 30px; text-align: center; align-items: center; }
     .logo { font-size: 1.6rem; }
+    
+    /* Увеличенный шрифт описания на планшетах */
+    p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-card p,
+    .mission-text p, .faq-answer, .footer p, .tech-item, .calc-option, .stack-explanation p,
+    .stat-label {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
 }
 @media (max-width: 480px) {
     .container, .header .container, .hero .container { padding: 0 16px; }
@@ -619,5 +630,13 @@ input:focus, textarea:focus { outline: none; border-color: #F5B700; }
     .cover-content { padding: 20px 16px; }
     .cover-content h2 { font-size: 1.3rem; }
     .btn-primary, .btn-outline { padding: 10px 16px; font-size: 0.85rem; }
+    
+    /* Увеличенный шрифт описания на телефонах */
+    p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-card p,
+    .mission-text p, .faq-answer, .footer p, .tech-item, .calc-option, .stack-explanation p,
+    .stat-label {
+        font-size: 0.95rem;
+        line-height: 1.55;
+    }
 }
 .text-gold { color: #F5B700; }
