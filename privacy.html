@@ -3,59 +3,392 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>ALBE DIGITAL | Политика конфиденциальности</title>
-    <meta name="description" content="Политика конфиденциальности ALBE digital. Сбор и обработка персональных данных.">
-    <meta name="keywords" content="политика конфиденциальности, персональные данные">
+    <title>ALBE DIGITAL | Пользовательское соглашение</title>
+    <meta name="description" content="Пользовательское соглашение ALBE digital. Условия использования сайта, оказания услуг, ответственность сторон.">
+    <meta name="keywords" content="пользовательское соглашение, оферта, условия использования, albe digital">
     <meta name="author" content="Albe Digital">
     <meta name="robots" content="noindex, follow">
-    <link rel="canonical" href="https://albe.su/privacy.html">
-    <meta property="og:title" content="ALBE DIGITAL — Политика конфиденциальности">
-    <meta property="og:description" content="Политика конфиденциальности ALBE digital.">
-    <meta property="og:url" content="https://albe.su/privacy.html">
+    <link rel="canonical" href="https://albe.su/terms.html">
+    <meta property="og:title" content="ALBE DIGITAL — Пользовательское соглашение">
+    <meta property="og:description" content="Условия использования сайта и оказания услуг ALBE digital.">
+    <meta property="og:url" content="https://albe.su/terms.html">
     <meta name="theme-color" content="#0D1117">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23F5B700'/%3E%3Ctext x='20' y='28' font-size='24' text-anchor='middle' fill='black' font-weight='500'%3EA%3C/text%3E%3C/svg%3E">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0D1117;
+            color: #E6EDF5;
+            line-height: 1.6;
+            font-weight: 400;
+            scroll-behavior: smooth;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #FFFFFF;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            margin: 2rem 0 1rem;
+            font-weight: 500;
+            color: #F5B700;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.75rem;
+            font-weight: 500;
+            color: #E6EDF5;
+        }
+
+        p, li {
+            color: #B0C4DE;
+            margin-bottom: 1rem;
+        }
+
+        .section {
+            padding: 80px 0;
+            min-height: 100vh;
+        }
+
+        .content-card {
+            background: rgba(18, 24, 32, 0.85);
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(245, 183, 0, 0.2);
+            border-top-left-radius: 28px;
+            border-bottom-right-radius: 28px;
+            border-top-right-radius: 0;
+            border-bottom-left-radius: 0;
+            padding: 48px 56px;
+        }
+
+        .last-updated {
+            font-size: 0.85rem;
+            color: #F5B700;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(245, 183, 0, 0.2);
+            display: inline-block;
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: rgba(245, 183, 0, 0.15);
+            margin: 2rem 0;
+        }
+
+        .contact-info {
+            background: rgba(10, 14, 19, 0.6);
+            border-left: 3px solid #F5B700;
+            padding: 24px 32px;
+            margin: 2rem 0;
+            border-radius: 0;
+            border-top-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        .contact-info a {
+            color: #F5B700;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        ul, ol {
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(245, 183, 0, 0.15);
+            color: #F5B700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-right: 8px;
+        }
+
+        .totop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #F5B700;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            font-size: 1.8rem;
+            color: #0D1117;
+            border-top-left-radius: 24px;
+            border-bottom-right-radius: 24px;
+            transition: 0.2s;
+            z-index: 99;
+        }
+
+        .totop:hover {
+            background: white;
+            transform: translateY(-4px);
+        }
+
+        .footer {
+            background: #080C10;
+            padding: 48px 0 32px;
+            border-top: 1px solid rgba(245, 183, 0, 0.15);
+        }
+
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-logo {
+            color: #F5B700;
+            font-size: 1.6rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .footer a {
+            color: #B0C4DE;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .footer a:hover {
+            color: #F5B700;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            .content-card {
+                padding: 28px 24px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.3rem;
+            }
+            .section {
+                padding: 40px 0;
+            }
+            .footer-grid {
+                flex-direction: column;
+                text-align: center;
+                gap: 24px;
+            }
+            .totop {
+                width: 40px;
+                height: 40px;
+                font-size: 1.4rem;
+                bottom: 20px;
+                right: 20px;
+            }
+            .contact-info {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content-card {
+                padding: 20px 16px;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+            h2 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div id="header-placeholder"></div>
-    
-    <main>
-        <section class="section">
-            <div class="container">
-                <div style="max-width: 900px;">
-                    <h1>Политика конфиденциальности</h1>
-                    <p class="hero-desc" style="font-size: 0.9rem; margin-bottom: 2rem;">Последнее обновление: 1 января 2025 г.</p>
-                    
-                    <h2>1. Сбор информации</h2>
-                    <p class="hero-desc">Мы собираем информацию, которую вы предоставляете при заполнении формы на сайте: имя, телефон, email.</p>
-                    
-                    <h2>2. Использование информации</h2>
-                    <p class="hero-desc">Ваши данные используются только для связи с вами и ответа на запросы. Мы не передаём данные третьим лицам.</p>
-                    
-                    <h2>3. Защита данных</h2>
-                    <p class="hero-desc">Мы принимаем разумные меры для защиты вашей информации от несанкционированного доступа.</p>
-                    
-                    <h2>4. Ваши права</h2>
-                    <p class="hero-desc">Вы можете запросить удаление своих данных, написав нам на hello@albe.su</p>
-                    
-                    <hr style="border-color:#2A3A44; margin: 3rem 0;">
-                    <p class="hero-desc" style="font-size: 0.9rem;">По всем вопросам: <a href="mailto:hello@albe.su" style="color: #F5B700; text-decoration: none;">hello@albe.su</a></p>
+
+<div id="header-placeholder"></div>
+
+<main>
+    <section class="section">
+        <div class="container">
+            <div class="content-card">
+                <div class="last-updated">Последнее обновление: 20 мая 2026 г.</div>
+                
+                <h1>Пользовательское соглашение</h1>
+                <p style="font-size: 1rem; margin-bottom: 2rem;">Настоящее Соглашение регулирует отношения между ALBE digital и пользователями сайта https://albe.su</p>
+
+                <h2>1. Общие положения</h2>
+                <p>1.1. Настоящее Пользовательское соглашение (далее — «Соглашение») является официальным документом, определяющим условия использования сайта https://albe.su (далее — «Сайт») и получения услуг, предоставляемых ALBE digital (далее — «Исполнитель», «Компания», «Мы»).</p>
+                <p>1.2. Использование Сайта означает полное и безоговорочное принятие Пользователем условий настоящего Соглашения. Если Вы не согласны с условиями Соглашения, пожалуйста, покиньте Сайт.</p>
+                <p>1.3. Компания оставляет за собой право вносить изменения в Соглашение без предварительного уведомления Пользователя. Актуальная версия всегда доступна по адресу https://albe.su/terms.html.</p>
+
+                <h2>2. Термины и определения</h2>
+                <p><span class="badge">2.1</span> <strong>Сайт</strong> — совокупность веб-страниц, расположенных в сети Интернет по адресу https://albe.su.</p>
+                <p><span class="badge">2.2</span> <strong>Пользователь</strong> — любое физическое или юридическое лицо, осуществляющее доступ к Сайту и использующее его функциональные возможности.</p>
+                <p><span class="badge">2.3</span> <strong>Услуги</strong> — разработка сайтов, дизайн, SEO-продвижение, создание мобильных приложений, AI-решения и сопутствующие работы, предоставляемые Компанией.</p>
+                <p><span class="badge">2.4</span> <strong>Заявка</strong> — заполненная Пользователем форма обратной связи на Сайте с указанием контактных данных и описанием задачи.</p>
+
+                <div class="contact-info">
+                    <strong>Контактная информация:</strong><br>
+                    Email: <a href="mailto:albe.web@yandex.ru">albe.web@yandex.ru</a><br>
+                    Telegram: <a href="https://t.me/albe_web" target="_blank">@albe_web</a>
                 </div>
+
+                <h2>3. Предмет Соглашения</h2>
+                <p>3.1. Компания предоставляет Пользователю возможность ознакомления с информацией об услугах, портфолио, ценами, а также возможность направления заявки на оказание услуг.</p>
+                <p>3.2. Договорные отношения между Компанией и Пользователем (Заказчиком) по оказанию конкретных услуг оформляются отдельным договором (коммерческим предложением, акцептированным Заказчиком, либо полноценным контрактом).</p>
+                <p>3.3. Информация, представленная на Сайте (включая цены, сроки, описание услуг), носит ознакомительный характер и не является публичной офертой, за исключением случаев, прямо указанных на Сайте.</p>
+
+                <h2>4. Права и обязанности Пользователя</h2>
+                <p>4.1. Пользователь обязуется:</p>
+                <ul>
+                    <li>предоставлять достоверную и актуальную информацию при заполнении заявок и форм на Сайте;</li>
+                    <li>не использовать Сайт для распространения вредоносного ПО, спама, а также для любых незаконных действий;</li>
+                    <li>не нарушать авторские права Компании и третьих лиц на материалы, размещённые на Сайте;</li>
+                    <li>не предпринимать действий, которые могут нарушить работоспособность Сайта.</li>
+                </ul>
+                <p>4.2. Пользователь вправе:</p>
+                <ul>
+                    <li>свободно просматривать информацию, размещённую на Сайте;</li>
+                    <li>направлять заявки на расчёт стоимости и консультацию;</li>
+                    <li>обращаться в Компанию по контактам, указанным в Соглашении, для уточнения условий сотрудничества.</li>
+                </ul>
+
+                <h2>5. Права и обязанности Исполнителя (ALBE digital)</h2>
+                <p>5.1. Компания обязуется:</p>
+                <ul>
+                    <li>обеспечить круглосуточный доступ к Сайту, за исключением времени проведения технических работ (о чём может быть объявлено заранее);</li>
+                    <li>обрабатывать заявки Пользователей в разумные сроки (обычно в течение 3 рабочих часов);</li>
+                    <li>не разглашать персональные данные Пользователей третьим лицам, за исключением случаев, предусмотренных законодательством РФ;</li>
+                    <li>предоставлять актуальную информацию об услугах и ценах.</li>
+                </ul>
+                <p>5.2. Компания вправе:</p>
+                <ul>
+                    <li>временно приостанавливать работу Сайта для проведения профилактических и технических работ;</li>
+                    <li>изменять структуру, дизайн, контент и функциональные возможности Сайта;</li>
+                    <li>отказать в оказании услуг Пользователю, если предложенные им условия или требования противоречат законодательству или возможностям Компании (с обязательным уведомлением Пользователя).</li>
+                </ul>
+
+                <h2>6. Условия оказания услуг</h2>
+                <p>6.1. Оформление заявки через форму на Сайте является основанием для связи с Пользователем с целью уточнения деталей проекта и подготовки коммерческого предложения.</p>
+                <p>6.2. Договор на оказание услуг считается заключённым после подписания сторонами соответствующего документа (договор, акцептованное коммерческое предложение, счет).</p>
+                <p>6.3. Калькулятор стоимости на Сайте предоставляет предварительную оценку стоимости услуг и не является точной сметой. Окончательная стоимость рассчитывается индивидуально после анализа технического задания.</p>
+                <p>6.4. Сроки выполнения работ фиксируются в договоре и зависят от сложности проекта, своевременности предоставления информации и материалов со стороны Заказчика.</p>
+
+                <h2>7. Интеллектуальная собственность</h2>
+                <p>7.1. Все материалы, размещённые на Сайте (тексты, изображения, логотипы, дизайн, видео, программный код), являются объектами интеллектуальной собственности ALBE digital или используются на законных основаниях с согласия правообладателей.</p>
+                <p>7.2. Запрещается копирование, распространение, модификация или иное использование материалов Сайта без письменного разрешения Компании.</p>
+                <p>7.3. Исключительные права на разработанный Компанией сайт или приложение переходят к Заказчику после полной оплаты услуг в соответствии с условиями договора.</p>
+
+                <h2>8. Ответственность сторон</h2>
+                <p>8.1. Компания не несёт ответственности за любые убытки, возникшие в результате использования или невозможности использования Сайта, включая технические сбои, ошибки, вирусы, перерывы в работе.</p>
+                <p>8.2. Компания не несёт ответственности за достоверность информации, предоставленной Пользователем при заполнении заявок.</p>
+                <p>8.3. В случае неисполнения или ненадлежащего исполнения обязательств по договору на оказание услуг, стороны несут ответственность в соответствии с действующим законодательством РФ и условиями заключённого договора.</p>
+                <p>8.4. Максимальный размер ответственности Компании по любому требованию, связанному с оказанием услуг, ограничивается суммой, уплаченной Заказчиком по конкретному договору.</p>
+
+                <h2>9. Конфиденциальность и персональные данные</h2>
+                <p>9.1. Обработка персональных данных Пользователей осуществляется в соответствии с Федеральным законом № 152-ФЗ «О персональных данных» и Политикой конфиденциальности Компании.</p>
+                <p>9.2. Компания может использовать предоставленную Пользователем контактную информацию для направления информационных и рекламных материалов (с возможностью отказа Пользователя от таких уведомлений).</p>
+                <p>9.3. Пользователь вправе запросить удаление или изменение своих персональных данных, направив соответствующий запрос на адрес albe.web@yandex.ru или в Telegram @albe_web.</p>
+
+                <h2>10. Заключительные положения</h2>
+                <p>10.1. Настоящее Соглашение регулируется и толкуется в соответствии с законодательством Российской Федерации.</p>
+                <p>10.2. Все споры и разногласия, возникающие из настоящего Соглашения или в связи с ним, подлежат разрешению путём переговоров. При недостижении согласия — в судебном порядке по месту нахождения Компании (г. Москва).</p>
+                <p>10.3. Если какое-либо из положений Соглашения будет признано недействительным или не имеющим юридической силы, это не влияет на действительность остальных положений.</p>
+                <p>10.4. Соглашение вступает в силу для каждого Пользователя с момента начала использования Сайта.</p>
+
+                <hr>
+
+                <h2>Реквизиты и контакты</h2>
+                <div class="contact-info">
+                    <p><strong>ALBE digital</strong></p>
+                    <p>Юридический адрес: г. Москва, Цветной бульвар</p>
+                    <p>Email для официальных обращений: <a href="mailto:albe.web@yandex.ru">albe.web@yandex.ru</a></p>
+                    <p>Telegram: <a href="https://t.me/albe_web" target="_blank">@albe_web</a></p>
+                    <p>Сайт: https://albe.su</p>
+                </div>
+
+                <p style="font-size: 0.85rem; color: #6B8CA8; margin-top: 2rem; text-align: center;">
+                    © 2025-2026 ALBE digital. Все права защищены.
+                </p>
             </div>
-        </section>
-    </main>
-    
-    <div id="footer-placeholder"></div>
-    <div class="totop" id="toTopBtn">↑</div>
-    
-    <script src="header-loader.js"></script>
-    <script src="common.js"></script>
+        </div>
+    </section>
+</main>
+
+<div id="footer-placeholder"></div>
+
+<div class="totop" id="toTopBtn">↑</div>
+
+<script src="header-loader.js"></script>
+<script src="common.js"></script>
+
+<script>
+    // ===== Кнопка "Наверх" =====
+    const toTop = document.getElementById('toTopBtn');
+    if (toTop) {
+        window.addEventListener('scroll', () => {
+            toTop.style.display = window.scrollY > 400 ? 'flex' : 'none';
+        });
+        toTop.style.display = 'none';
+        toTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+</script>
+
 </body>
 </html>
