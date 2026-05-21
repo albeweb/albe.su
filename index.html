@@ -92,7 +92,7 @@
             z-index: -1;
         }
         
-        /* НОВЫЕ СТИЛИ ДЛЯ БЛОКА "ПОЧЕМУ ВЫБИРАЮТ НАС" — СЕТКА 2×2 */
+        /* Стили для блока "Почему выбирают нас" — сетка 2×2 */
         .mission-grid-wrapper {
             display: flex;
             gap: 50px;
@@ -153,6 +153,94 @@
             background: rgba(0,0,0,0.35);
         }
         
+        /* НОВЫЕ СТИЛИ ДЛЯ БЛОКА КОНТАКТОВ — В ЕДИНОМ СТИЛЕ */
+        .contact-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #0A0E12 0%, #0D1117 100%);
+            border-top: 1px solid rgba(245, 183, 0, 0.1);
+            border-bottom: 1px solid rgba(245, 183, 0, 0.1);
+        }
+        .contact-card {
+            background: rgba(18, 24, 32, 0.85);
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(245, 183, 0, 0.2);
+            border-top-left-radius: 28px;
+            border-bottom-right-radius: 28px;
+            border-top-right-radius: 0;
+            border-bottom-left-radius: 0;
+            padding: 48px 56px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .contact-card h2 {
+            font-size: 2.4rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .contact-card h2::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 2px;
+            background: #F5B700;
+        }
+        .contact-card h2 {
+            position: relative;
+            display: inline-block;
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .contact-desc {
+            text-align: center;
+            color: #B0C4DE;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 14px 18px;
+            background: #0A0F14;
+            border: 1px solid #2A3A44;
+            color: white;
+            margin-bottom: 22px;
+            font-family: inherit;
+            transition: 0.2s;
+            border-radius: 0;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #F5B700;
+        }
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .contact-form button {
+            width: 100%;
+            margin-top: 10px;
+        }
+        .form-status {
+            margin-top: 16px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
         @media (max-width: 900px) {
             .mission-grid-wrapper {
                 flex-direction: column;
@@ -171,9 +259,6 @@
             .mission-grid-card {
                 height: 180px;
             }
-        }
-        
-        @media (max-width: 768px) {
             .section-header {
                 flex-direction: column;
                 align-items: flex-start;
@@ -181,6 +266,25 @@
             }
             .section-more-btn {
                 align-self: flex-start;
+            }
+            .contact-card {
+                padding: 32px 24px;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .contact-card h2 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .contact-card {
+                padding: 24px 20px;
+            }
+            .contact-card h2 {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -209,7 +313,7 @@
                 <div class="code-line" style="left: 60%; animation-duration: 10.5s; animation-delay: 8s;">const meta = { title: "ALBE digital" }</div>
                 <div class="code-line" style="left: 70%; animation-duration: 15.5s; animation-delay: 2s;">@keyframes fadeIn { from { opacity: 0; } }</div>
                 <div class="code-line" style="left: 80%; animation-duration: 11.5s; animation-delay: 5.5s;">&lt;meta name="viewport" /&gt;</div>
-                <div class="code-line" style="left: 90%; animation-duration: 13.5s; animation-delay: 0.8s;">console.log("🚀 ALBE launched")</div>
+                <div class="code-line" style="left: 90%; animation-duration: 13.5s; animation-delay: 0.8s;">console.log("ALBE launched")</div>
             </div>
             
             <div class="container">
@@ -385,13 +489,28 @@
             </div>
         </section>
 
-        <!-- КОНТАКТЫ -->
-        <section id="contact" class="fullscreen-cover">
-            <div class="cover-overlay"></div>
-            <div class="cover-content">
-                <h2 style="color:#F5B700;">Начнём проект?</h2>
-                <p>Оставьте заявку — стратег свяжется с вами в течение 3 часов.</p>
-                <form id="mainForm"><input type="text" id="userName" placeholder="Имя *" required><input type="tel" id="userPhone" placeholder="Телефон *" required><input type="email" id="userEmail" placeholder="Email *" required><textarea rows="4" id="userMsg" placeholder="Опишите задачу"></textarea><button type="submit" class="btn-primary" style="width:100%;">Отправить</button><div id="formStatus"></div></form>
+        <!-- КОНТАКТЫ — ПЕРЕДЕЛАННЫЙ БЛОК В ЕДИНОМ СТИЛЕ -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="contact-card">
+                    <h2>Начнём проект?</h2>
+                    <p class="contact-desc">Оставьте заявку — стратег свяжется с вами в течение 3 часов</p>
+                    
+                    <form id="mainForm" class="contact-form">
+                        <div class="form-row">
+                            <input type="text" id="userName" placeholder="Имя *" required>
+                            <input type="tel" id="userPhone" placeholder="Телефон *" required>
+                        </div>
+                        <div class="form-row">
+                            <input type="email" id="userEmail" placeholder="Email *" required>
+                            <input type="text" id="userTelegram" placeholder="Telegram (username)">
+                        </div>
+                        <textarea rows="4" id="userMsg" placeholder="Опишите задачу"></textarea>
+                        <textarea rows="3" id="userComment" placeholder="Комментарий (дополнительные пожелания)"></textarea>
+                        <button type="submit" class="btn-primary">Отправить заявку</button>
+                        <div id="formStatus" class="form-status"></div>
+                    </form>
+                </div>
             </div>
         </section>
     </main>
@@ -401,5 +520,33 @@
     
     <script src="header-loader.js"></script>
     <script src="common.js"></script>
+    
+    <script>
+        // Дополнительный скрипт для формы, если common.js не обрабатывает
+        (function() {
+            const form = document.getElementById('mainForm');
+            const statusDiv = document.getElementById('formStatus');
+            
+            if (form && statusDiv) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('userName')?.value.trim();
+                    const phone = document.getElementById('userPhone')?.value.trim();
+                    const email = document.getElementById('userEmail')?.value.trim();
+                    
+                    if (!name || !phone || !email) {
+                        statusDiv.innerHTML = '<div style="background: #990000; padding: 12px; border-radius: 8px;">Пожалуйста, заполните обязательные поля (Имя, Телефон, Email)</div>';
+                        setTimeout(() => statusDiv.innerHTML = '', 4000);
+                        return;
+                    }
+                    
+                    statusDiv.innerHTML = '<div style="background: #F5B700; color: #0D1117; padding: 12px; border-radius: 8px;">Спасибо! Менеджер свяжется с вами в ближайшее время.</div>';
+                    form.reset();
+                    setTimeout(() => statusDiv.innerHTML = '', 5000);
+                });
+            }
+        })();
+    </script>
 </body>
 </html>
