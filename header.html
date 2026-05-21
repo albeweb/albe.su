@@ -4,7 +4,6 @@
             <span>a</span><span>lbe</span>
         </a>
         
-        <!-- Кнопка МЕНЮ -->
         <button class="menu-btn" id="menuBtn" aria-label="Открыть меню">
             МЕНЮ
             <span class="menu-btn-icon">
@@ -13,7 +12,6 @@
             </span>
         </button>
         
-        <!-- Полноэкранное меню, открывающееся сверху -->
         <div class="fullscreen-menu" id="fullscreenMenu">
             <div class="fullscreen-menu-inner">
                 <button class="menu-close" id="menuClose" aria-label="Закрыть меню">✕</button>
@@ -39,7 +37,6 @@
             </div>
         </div>
         
-        <!-- Старая навигация (скрыта) -->
         <nav class="nav-menu" id="navMenu" style="display: none;">
             <a href="#services" class="nav-link">Услуги</a>
             <a href="#portfolio" class="nav-link">Портфолио</a>
@@ -59,59 +56,40 @@
 </header>
 
 <script>
-// Полноэкранное меню — гарантированно работает
 (function() {
-    // Получаем элементы
     var menuBtn = document.getElementById('menuBtn');
     var fullscreenMenu = document.getElementById('fullscreenMenu');
     var menuClose = document.getElementById('menuClose');
     
-    // Функция открытия меню
-    function openMenu() {
-        if (fullscreenMenu) {
+    if (menuBtn && fullscreenMenu) {
+        menuBtn.onclick = function(e) {
+            e.preventDefault();
             fullscreenMenu.classList.add('active');
-            document.body.style.overflow = 'hidden'; // блокируем скролл
-        }
+            document.body.style.overflow = 'hidden';
+        };
     }
     
-    // Функция закрытия меню
-    function closeMenu() {
-        if (fullscreenMenu) {
-            fullscreenMenu.classList.remove('active');
-            document.body.style.overflow = ''; // возвращаем скролл
-        }
-    }
-    
-    // Открытие по клику на кнопку МЕНЮ
-    if (menuBtn) {
-        menuBtn.addEventListener('click', openMenu);
-    }
-    
-    // Закрытие по крестику
     if (menuClose) {
-        menuClose.addEventListener('click', closeMenu);
+        menuClose.onclick = function(e) {
+            e.preventDefault();
+            fullscreenMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        };
     }
     
-    // Закрытие по клику на любую ссылку в меню
     var navLinks = document.querySelectorAll('.fullscreen-nav-link');
     for (var i = 0; i < navLinks.length; i++) {
-        navLinks[i].addEventListener('click', closeMenu);
+        navLinks[i].onclick = function() {
+            fullscreenMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        };
     }
     
-    // Закрытие по клавише ESC
-    document.addEventListener('keydown', function(e) {
+    document.onkeydown = function(e) {
         if (e.key === 'Escape' && fullscreenMenu && fullscreenMenu.classList.contains('active')) {
-            closeMenu();
+            fullscreenMenu.classList.remove('active');
+            document.body.style.overflow = '';
         }
-    });
-    
-    // Закрытие при клике на фон (по желанию)
-    if (fullscreenMenu) {
-        fullscreenMenu.addEventListener('click', function(e) {
-            if (e.target === fullscreenMenu) {
-                closeMenu();
-            }
-        });
-    }
+    };
 })();
 </script>
