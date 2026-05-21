@@ -61,34 +61,31 @@
     var fullscreenMenu = document.getElementById('fullscreenMenu');
     var menuClose = document.getElementById('menuClose');
     
-    if (menuBtn && fullscreenMenu) {
-        menuBtn.onclick = function(e) {
-            e.preventDefault();
+    function openMenu() {
+        if (fullscreenMenu) {
             fullscreenMenu.classList.add('active');
             document.body.style.overflow = 'hidden';
-        };
+        }
     }
     
-    if (menuClose) {
-        menuClose.onclick = function(e) {
-            e.preventDefault();
+    function closeMenu() {
+        if (fullscreenMenu) {
             fullscreenMenu.classList.remove('active');
             document.body.style.overflow = '';
-        };
+        }
     }
+    
+    if (menuBtn) menuBtn.onclick = openMenu;
+    if (menuClose) menuClose.onclick = closeMenu;
     
     var navLinks = document.querySelectorAll('.fullscreen-nav-link');
     for (var i = 0; i < navLinks.length; i++) {
-        navLinks[i].onclick = function() {
-            fullscreenMenu.classList.remove('active');
-            document.body.style.overflow = '';
-        };
+        navLinks[i].onclick = closeMenu;
     }
     
     document.onkeydown = function(e) {
         if (e.key === 'Escape' && fullscreenMenu && fullscreenMenu.classList.contains('active')) {
-            fullscreenMenu.classList.remove('active');
-            document.body.style.overflow = '';
+            closeMenu();
         }
     };
 })();
