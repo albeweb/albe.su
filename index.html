@@ -153,6 +153,69 @@
             background: rgba(0,0,0,0.35);
         }
         
+        /* СТИЛИ ДЛЯ FAQ В 2 СТОЛБЦА */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .faq-item {
+            margin-bottom: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            padding: 22px 28px;
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: #F5B700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            font-family: inherit;
+            background: rgba(18, 24, 32, 0.85);
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(245, 183, 0, 0.2);
+            border-top-left-radius: 28px;
+            border-bottom-right-radius: 28px;
+            border-top-right-radius: 0;
+            border-bottom-left-radius: 0;
+            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .faq-question:hover {
+            border-color: #F5B700;
+            transform: translateY(-2px);
+        }
+        .faq-answer {
+            padding: 0 28px 24px 28px;
+            color: #B0C4DE;
+            display: none;
+            background: rgba(18, 24, 32, 0.85);
+            backdrop-filter: blur(2px);
+            border-left: 1px solid rgba(245, 183, 0, 0.2);
+            border-right: 1px solid rgba(245, 183, 0, 0.2);
+            border-bottom: 1px solid rgba(245, 183, 0, 0.2);
+            border-bottom-left-radius: 28px;
+            border-bottom-right-radius: 28px;
+        }
+        .faq-answer.active {
+            display: block;
+        }
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            font-weight: 300;
+            transition: transform 0.3s;
+        }
+        .faq-question.active::after {
+            content: '−';
+        }
+        
         /* НОВЫЕ СТИЛИ ДЛЯ БЛОКА КОНТАКТОВ — В ЕДИНОМ СТИЛЕ */
         .contact-section {
             padding: 100px 0;
@@ -249,6 +312,10 @@
             .mission-text {
                 text-align: center;
             }
+            .faq-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
         }
         
         @media (max-width: 768px) {
@@ -276,6 +343,14 @@
             }
             .contact-card h2 {
                 font-size: 1.8rem;
+            }
+            .faq-question {
+                padding: 18px 20px;
+                font-size: 0.95rem;
+            }
+            .faq-answer {
+                padding: 0 20px 20px 20px;
+                font-size: 0.9rem;
             }
         }
         
@@ -474,17 +549,46 @@
             </div>
         </section>
 
-        <!-- FAQ -->
+        <!-- FAQ — 8 ВОПРОСОВ В 2 СТОЛБЦА -->
         <section class="section">
             <div class="container">
                 <div class="section-header">
                     <h2>Часто задаваемые вопросы</h2>
                     <a href="services.html" class="section-more-btn">Подробнее</a>
                 </div>
-                <div class="faq-list">
-                    <div class="faq-item"><button class="faq-question">Сколько стоит разработка сайта?</button><div class="faq-answer">Стоимость рассчитывается в калькуляторе. Лендинг от 120 000 ₽, интернет-магазин от 450 000 ₽.</div></div>
-                    <div class="faq-item"><button class="faq-question">Даёте гарантию на SEO?</button><div class="faq-answer">Да, гарантируем выполнение KPI по трафику и позициям.</div></div>
-                    <div class="faq-item"><button class="faq-question">Разрабатываете мобильные приложения?</button><div class="faq-answer">Да, iOS, Android, кроссплатформа, полный цикл.</div></div>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <button class="faq-question">Сколько стоит разработка сайта под ключ?</button>
+                        <div class="faq-answer">Стоимость рассчитывается в калькуляторе. Лендинг от 120 000 ₽, интернет-магазин от 450 000 ₽, корпоративный портал от 800 000 ₽. Точная цена зависит от функционала и сложности проекта.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Какие сроки разработки сайта?</button>
+                        <div class="faq-answer">Лендинг — от 14 дней, сайт услуг — от 30 дней, интернет-магазин — от 45 дней, сложные порталы от 60 дней. Сроки обсуждаются индивидуально.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Даёте гарантию на SEO продвижение?</button>
+                        <div class="faq-answer">Да, гарантируем выполнение KPI по трафику и позициям. Закрепляем обязательства в договоре. Первые результаты видны через 2-3 месяца.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Разрабатываете мобильные приложения под iOS и Android?</button>
+                        <div class="faq-answer">Да, разрабатываем нативные приложения под iOS (Swift) и Android (Kotlin), а также кроссплатформенные решения на React Native и Flutter. Полный цикл от идеи до публикации в App Store и Google Play.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Входит ли техподдержка в стоимость?</button>
+                        <div class="faq-answer">Техподдержка оплачивается отдельно или входит в расширенный пакет услуг. Базовое обслуживание от 15 000 ₽/месяц. Включено: обновления, бэкапы, мониторинг 24/7, консультации.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Какие технологии вы используете для разработки?</button>
+                        <div class="faq-answer">Frontend: React, Next.js, Vue, TypeScript, GSAP, Three.js. Backend: Node.js, Python/Django, Laravel, PostgreSQL, Docker, Kubernetes. Выбираем стек под задачи проекта.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Помогаете с наполнением контентом?</button>
+                        <div class="faq-answer">Да, предоставляем услуги копирайтинга, создания контент-плана, подбора семантического ядра, SEO-оптимизации текстов. Также помогаем с фото- и видеоконтентом.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Что входит в премиум дизайн сайта?</button>
+                        <div class="faq-answer">Премиум дизайн включает: уникальный визуальный язык, кастомную анимацию, микроинтеракции, адаптив под все устройства, UI/UX исследования, создание дизайн-системы, 3D-элементы по желанию.</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -522,6 +626,28 @@
     <script src="common.js"></script>
     
     <script>
+        // Скрипт для FAQ аккордеона
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const answer = button.nextElementSibling;
+                const isActive = answer.classList.contains('active');
+                
+                // Закрываем все остальные
+                document.querySelectorAll('.faq-answer').forEach(ans => {
+                    ans.classList.remove('active');
+                });
+                document.querySelectorAll('.faq-question').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Открываем текущий, если он был закрыт
+                if (!isActive) {
+                    answer.classList.add('active');
+                    button.classList.add('active');
+                }
+            });
+        });
+        
         // Дополнительный скрипт для формы, если common.js не обрабатывает
         (function() {
             const form = document.getElementById('mainForm');
