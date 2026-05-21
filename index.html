@@ -92,8 +92,29 @@
             z-index: -1;
         }
         
-        /* Стили для изображений миссии */
-        .mission-photo {
+        /* НОВЫЕ СТИЛИ ДЛЯ БЛОКА "ПОЧЕМУ ВЫБИРАЮТ НАС" — СЕТКА 2×2 */
+        .mission-grid-wrapper {
+            display: flex;
+            gap: 50px;
+            align-items: stretch;
+        }
+        .mission-text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .mission-text p {
+            margin-bottom: 1rem;
+        }
+        .mission-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        .mission-grid-card {
+            height: 200px;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -102,8 +123,15 @@
             position: relative;
             z-index: 1;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-top-left-radius: 28px;
+            border-bottom-right-radius: 28px;
+            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            cursor: default;
         }
-        .mission-photo::before {
+        .mission-grid-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -114,6 +142,35 @@
             border-top-left-radius: 28px;
             border-bottom-right-radius: 28px;
             z-index: -1;
+            transition: all 0.35s ease;
+        }
+        .mission-grid-card:hover {
+            transform: translateY(-5px);
+            border-color: #F5B700;
+            box-shadow: 0 15px 30px -12px rgba(0,0,0,0.5);
+        }
+        .mission-grid-card:hover::before {
+            background: rgba(0,0,0,0.35);
+        }
+        
+        @media (max-width: 900px) {
+            .mission-grid-wrapper {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .mission-text {
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mission-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .mission-grid-card {
+                height: 180px;
+            }
         }
         
         @media (max-width: 768px) {
@@ -291,23 +348,23 @@
             </div>
         </section>
 
-        <!-- МИССИЯ С КАРТИНКАМИ -->
+        <!-- МИССИЯ — ПЕРЕДЕЛАННЫЙ БЛОК: СЛЕВА ТЕКСТ, СПРАВА СЕТКА 2×2 -->
         <section class="section">
             <div class="container">
                 <div class="section-header">
                     <h2>Почему выбирают нас</h2>
                     <a href="about.html" class="section-more-btn">О компании</a>
                 </div>
-                <div class="mission-wrapper">
+                <div class="mission-grid-wrapper">
                     <div class="mission-text">
                         <p>ALBE digital — это стратегический партнёр, а не просто подрядчик. Мы разрабатываем продукты, которые масштабируют бизнес и увеличивают прибыль. Каждый проект сопровождается глубокой SEO-проработкой и техническим аудитом, что гарантирует высокие позиции в поисковых системах с первых недель после запуска.</p>
                         <p>Наши клиенты из ритейла, финтеха и образования получают прирост органического трафика до 300% за 6 месяцев. Мы внедряем AI-решения для автоматизации маркетинга и продаж, а также разрабатываем мобильные приложения, повышающие лояльность аудитории. Работаем с брендами по всей России.</p>
                     </div>
-                    <div class="mission-photos">
-                        <div class="mission-photo" style="background-image: url('https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg');">команда</div>
-                        <div class="mission-photo" style="background-image: url('https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg');">процесс</div>
-                        <div class="mission-photo" style="background-image: url('https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg');">результат</div>
-                        <div class="mission-photo" style="background-image: url('https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg');">клиенты</div>
+                    <div class="mission-grid">
+                        <div class="mission-grid-card" style="background-image: url('https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg');">команда</div>
+                        <div class="mission-grid-card" style="background-image: url('https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg');">процесс</div>
+                        <div class="mission-grid-card" style="background-image: url('https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg');">результат</div>
+                        <div class="mission-grid-card" style="background-image: url('https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg');">клиенты</div>
                     </div>
                 </div>
             </div>
