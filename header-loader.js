@@ -20,6 +20,7 @@ function loadComponent(elementId, filePath, callback) {
 
 // Инициализация функционала шапки
 function initHeader() {
+    // Фиксация шапки при скролле
     const header = document.getElementById('mainHeader');
     if (header) {
         function handleHeaderScroll() {
@@ -39,37 +40,67 @@ function initHeader() {
         handleHeaderScroll();
     }
     
-    const burgerBtn = document.getElementById('burgerBtn');
-    const mobileMenu = document.getElementById('navMenu');
-    if (burgerBtn && mobileMenu) {
-        const newBurger = burgerBtn.cloneNode(true);
-        burgerBtn.parentNode.replaceChild(newBurger, burgerBtn);
+    // ===== НОВОЕ МЕНЮ (кнопка МЕНЮ) =====
+    const menuBtn = document.getElementById('menuBtn');
+    const fullscreenMenu = document.getElementById('fullscreenMenu');
+    const menuClose = document.getElementById('menuClose');
+    
+    if (menuBtn && fullscreenMenu) {
+        // Удаляем старые обработчики через клонирование
+        const newMenuBtn = menuBtn.cloneNode(true);
+        menuBtn.parentNode.replaceChild(newMenuBtn, menuBtn);
         
-        newBurger.addEventListener('click', function() {
-            mobileMenu.classList.toggle('active');
-            const spans = newBurger.querySelectorAll('span');
-            if (mobileMenu.classList.contains('active')) {
-                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-                spans[1].style.opacity = '0';
-                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
-            } else {
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
+        newMenuBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            fullscreenMenu.style.height = '100%';
+            document.body.style.overflow = 'hidden';
+        });
+    }
+    
+    if (menuClose) {
+        const newMenuClose = menuClose.cloneNode(true);
+        menuClose.parentNode.replaceChild(newMenuClose, menuClose);
+        
+        newMenuClose.addEventListener('click', function() {
+            const fm = document.getElementById('fullscreenMenu');
+            if (fm) {
+                fm.style.height = '0';
+                document.body.style.overflow = '';
             }
         });
-        
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                const spans = newBurger.querySelectorAll('span');
-                if (spans) {
-                    spans[0].style.transform = 'none';
-                    spans[1].style.opacity = '1';
-                    spans[2].style.transform = 'none';
-                }
-            });
+    }
+    
+    // Закрытие меню по клику на ссылки
+    const navLinks = document.querySelectorAll('.fullscreen-nav a');
+    navLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+            const fm = document.getElementById('fullscreenMenu');
+            if (fm) {
+                fm.style.height = '0';
+                document.body.style.overflow = '';
+            }
         });
+    });
+    
+    // Закрытие по ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const fm = document.getElementById('fullscreenMenu');
+            if (fm && fm.style.height === '100%') {
+                fm.style.height = '0';
+                document.body.style.overflow = '';
+            }
+        }
+    });
+    
+    // ===== СТАРОЕ МЕНЮ (бургер) — оставляем на всякий случай, но скрываем =====
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mobileMenu = document.getElementById('navMenu');
+    
+    if (burgerBtn && mobileMenu) {
+        // Скрываем старую кнопку и меню, так как используем новое
+        burgerBtn.style.display = 'none';
+        mobileMenu.style.display = 'none';
     }
 }
 
