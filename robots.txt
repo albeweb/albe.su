@@ -1,3 +1,39 @@
+# Разрешаем всем роботам индексацию
 User-agent: *
 Allow: /
+
+# Запрещаем индексацию служебных файлов
+Disallow: /header-loader.js
+Disallow: /common.js
+Disallow: /style.css
+
+# НЕ блокируем /images/ — оставляем для SEO картинок
+
+# Указываем путь к sitemap
 Sitemap: https://albe.su/sitemap.xml
+
+# Основной хост сайта
+Host: https://albe.su
+
+# Задержка между запросами
+Crawl-delay: 1
+
+# Настройки для Яндекс
+User-agent: Yandex
+Allow: /
+Crawl-delay: 2
+
+# Настройки для Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Картинки — разрешаем
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: YandexImages
+Allow: /
+
+# Чистим кэш роботов от UTM-меток
+Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content
