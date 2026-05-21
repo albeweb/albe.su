@@ -28,11 +28,17 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- ============================================ -->
+    <!-- БЛОК 1: ШАПКА (ПОДГРУЖАЕТСЯ ИЗ header-loader.js) -->
+    <!-- ============================================ -->
     <div id="header-placeholder"></div>
     
     <main>
-        <!-- БАННЕР -->
+        <!-- ============================================ -->
+        <!-- БЛОК 2: ГЛАВНЫЙ ЭКРАН (HERO / БАННЕР) -->
+        <!-- ============================================ -->
         <section class="hero">
+            <!-- Код-дождь (декоративная анимация) -->
             <div class="code-rain" aria-hidden="true">
                 <div class="code-line" style="left: 5%; animation-duration: 12s; animation-delay: 0s;">&lt;div class="digital"&gt;&lt;/div&gt;</div>
                 <div class="code-line" style="left: 15%; animation-duration: 10s; animation-delay: 2s;">const future = await ai();</div>
@@ -56,12 +62,14 @@
             
             <div class="container">
                 <div class="hero-wrapper">
+                    <!-- Левая часть: текст и кнопки -->
                     <div class="hero-content">
                         <div class="hero-top">
                             <div class="hero-tag">DIGITAL AGENCY</div>
                             <h1 class="hero-title-line1">РАЗРАБОТКА</h1>
                             <span class="hero-title-line2">сайтов под ключ</span>
                             
+                            <!-- Бейджики услуг -->
                             <div class="services-badges">
                                 <span class="service-badge">Премиум дизайн</span>
                                 <span class="service-badge">Безупречный код</span>
@@ -86,6 +94,7 @@
                         </div>
                     </div>
                     
+                    <!-- Правая часть: статистика -->
                     <div class="hero-stats">
                         <div class="stat-item"><div class="stat-number">7+</div><div class="stat-label">лет опыта</div></div>
                         <div class="stat-item"><div class="stat-number">150+</div><div class="stat-label">проектов</div></div>
@@ -96,13 +105,17 @@
             </div>
         </section>
 
-        <!-- УСЛУГИ -->
+        <!-- ============================================ -->
+        <!-- БЛОК 3: УСЛУГИ (services) -->
+        <!-- ============================================ -->
         <section id="services" class="section">
             <div class="container">
+                <!-- Заголовок с кнопкой "Все услуги" -->
                 <div class="section-header">
                     <h2>Эксклюзивные решения</h2>
                     <a href="services.html" class="section-more-btn">Все услуги</a>
                 </div>
+                <!-- Сетка карточек услуг -->
                 <div class="services-grid">
                     <div class="service-card"><h3>Веб-разработка</h3><p>Современный стек: React, Vue, Node.js, Laravel. Высокая производительность и масштабируемость.</p></div>
                     <div class="service-card"><h3>Иммерсивный дизайн</h3><p>Микровзаимодействия, 3D-сцены, анимация. Визуальный язык, который запоминается.</p></div>
@@ -114,14 +127,19 @@
             </div>
         </section>
 
-        <!-- ПОРТФОЛИО С ЛОКАЛЬНЫМИ КАРТИНКАМИ AVIF -->
+        <!-- ============================================ -->
+        <!-- БЛОК 4: ПОРТФОЛИО (portfolio) -->
+        <!-- ============================================ -->
         <section id="portfolio" class="section">
             <div class="container">
+                <!-- Заголовок с кнопкой "Все проекты" -->
                 <div class="section-header">
                     <h2>Избранные проекты</h2>
                     <a href="portfolio.html" class="section-more-btn">Все проекты</a>
                 </div>
+                <!-- Сетка карточек портфолио -->
                 <div class="portfolio-grid">
+                    <!-- Проект 1: NeoBank -->
                     <div class="portfolio-card">
                         <picture>
                             <source srcset="images/bank.avif" type="image/avif">
@@ -129,6 +147,7 @@
                         </picture>
                         <div class="portfolio-info"><h3>NeoBank Platform</h3><p>Рост активных клиентов +210%</p></div>
                     </div>
+                    <!-- Проект 2: AI рекомендации -->
                     <div class="portfolio-card">
                         <picture>
                             <source srcset="images/ai.avif" type="image/avif">
@@ -136,6 +155,7 @@
                         </picture>
                         <div class="portfolio-info"><h3>AI рекомендательная система</h3><p>Рост конверсии +34%</p></div>
                     </div>
+                    <!-- Проект 3: Мобильное приложение -->
                     <div class="portfolio-card">
                         <picture>
                             <source srcset="images/app.avif" type="image/avif">
@@ -147,13 +167,17 @@
             </div>
         </section>
 
-        <!-- ПРОЦЕСС -->
+        <!-- ============================================ -->
+        <!-- БЛОК 5: ПРОЦЕСС РАБОТЫ (process) -->
+        <!-- ============================================ -->
         <section id="process" class="section">
             <div class="container">
+                <!-- Заголовок с кнопкой "Подробнее" -->
                 <div class="section-header">
                     <h2>Как мы создаём лидеров рынка</h2>
                     <a href="services.html" class="section-more-btn">Подробнее</a>
                 </div>
+                <!-- Этапы работы -->
                 <div class="steps-container">
                     <div class="step-card"><div class="step-num">01</div><h3>Аналитика</h3><p>Изучаем нишу, конкурентов, ЦА. Формируем KPI.</p></div>
                     <div class="step-card"><div class="step-num">02</div><h3>Прототипирование</h3><p>Интерактивные прототипы, тестирование гипотез.</p></div>
@@ -163,54 +187,140 @@
             </div>
         </section>
 
-        <!-- КОМПЕТЕНЦИИ -->
+        <!-- ============================================ -->
+        <!-- БЛОК 6: КОМПЕТЕНЦИИ (competences) -->
+        <!-- ============================================ -->
         <section id="competences" class="section">
             <div class="container">
+                <!-- Заголовок с кнопкой "Подробнее" -->
                 <div class="section-header">
                     <h2>Наши компетенции</h2>
                     <a href="services.html" class="section-more-btn">Подробнее</a>
                 </div>
+                <!-- Сетка технологий -->
                 <div class="competences-grid">
-                    <div class="competence-card"><h3>Frontend</h3><p>Интерфейсы, которые продают</p><div class="competence-tech-list"><div class="tech-item" data-tech="react">React / Next.js</div><div class="tech-item" data-tech="vue">Vue 3 / Nuxt</div><div class="tech-item" data-tech="ts">TypeScript</div><div class="tech-item" data-tech="gsap">GSAP</div><div class="tech-item" data-tech="three">Three.js</div></div></div>
-                    <div class="competence-card"><h3>Backend</h3><p>Надёжная архитектура</p><div class="competence-tech-list"><div class="tech-item" data-tech="node">Node.js / Nest.js</div><div class="tech-item" data-tech="python">Python / Django</div><div class="tech-item" data-tech="laravel">Laravel</div><div class="tech-item" data-tech="postgres">PostgreSQL</div><div class="tech-item" data-tech="docker">Docker / K8s</div></div></div>
-                    <div class="competence-card"><h3>Дизайн</h3><p>UI/UX & брендинг</p><div class="competence-tech-list"><div class="tech-item" data-tech="figma">Figma</div><div class="tech-item" data-tech="uiux">UI/UX Research</div><div class="tech-item" data-tech="motion">Motion Design</div><div class="tech-item" data-tech="3d">3D Art</div><div class="tech-item" data-tech="adobe">Adobe Suite</div></div></div>
-                    <div class="competence-card"><h3>SEO / Data</h3><p>Рост трафика и продаж</p><div class="competence-tech-list"><div class="tech-item" data-tech="audit">SEO-аудит</div><div class="tech-item" data-tech="metrika">Метрика / GA4</div><div class="tech-item" data-tech="cluster">Кластеризация</div><div class="tech-item" data-tech="core">Core Web Vitals</div><div class="tech-item" data-tech="semrush">SEMrush</div></div></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- КАЛЬКУЛЯТОР -->
-        <section id="calculator" class="section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Калькулятор стоимости</h2>
-                    <a href="services.html" class="section-more-btn">Все услуги</a>
-                </div>
-                <div class="calculator-card">
-                    <div class="calculator-two-columns">
-                        <div class="calculator-left">
-                            <div class="calc-group"><div class="calc-label">Услуги:</div><div class="calc-options" id="calcServices"><div data-service="design" class="calc-option">Дизайн (UI/UX)</div><div data-service="front" class="calc-option">Frontend</div><div data-service="back" class="calc-option">Backend</div><div data-service="seo" class="calc-option">SEO</div><div data-service="cms" class="calc-option">CMS</div><div data-service="crm" class="calc-option">CRM / ERP</div><div data-service="ai" class="calc-option">AI / ML</div><div data-service="mobile" class="calc-option">Мобильное приложение</div><div data-service="support" class="calc-option">Техподдержка</div></div></div>
-                            <div class="calc-group"><div class="calc-label">Сложность:</div><div class="calc-options" id="calcComplexity"><div data-complex="simple" class="calc-option">Старт (Лендинг)</div><div data-complex="medium" class="calc-option">Бизнес (Сайт услуг)</div><div data-complex="high" class="calc-option">Премиум (Магазин)</div><div data-complex="enterprise" class="calc-option">Enterprise (Портал)</div></div></div>
-                            <div class="calc-total-block"><div class="calc-price" id="calcPrice">0 ₽</div><div id="calcHoursInfo" style="font-size:0.85rem; color:#B0C4DE;"></div></div>
+                    <!-- Frontend -->
+                    <div class="competence-card">
+                        <h3>Frontend</h3>
+                        <p>Интерфейсы, которые продают</p>
+                        <div class="competence-tech-list">
+                            <div class="tech-item" data-tech="react">React / Next.js</div>
+                            <div class="tech-item" data-tech="vue">Vue 3 / Nuxt</div>
+                            <div class="tech-item" data-tech="ts">TypeScript</div>
+                            <div class="tech-item" data-tech="gsap">GSAP</div>
+                            <div class="tech-item" data-tech="three">Three.js</div>
                         </div>
-                        <div class="calculator-right stack-explanation" id="stackExplanation"><h4>Рекомендуемый стек</h4><p>Выберите услуги для расчёта</p></div>
+                    </div>
+                    <!-- Backend -->
+                    <div class="competence-card">
+                        <h3>Backend</h3>
+                        <p>Надёжная архитектура</p>
+                        <div class="competence-tech-list">
+                            <div class="tech-item" data-tech="node">Node.js / Nest.js</div>
+                            <div class="tech-item" data-tech="python">Python / Django</div>
+                            <div class="tech-item" data-tech="laravel">Laravel</div>
+                            <div class="tech-item" data-tech="postgres">PostgreSQL</div>
+                            <div class="tech-item" data-tech="docker">Docker / K8s</div>
+                        </div>
+                    </div>
+                    <!-- Дизайн -->
+                    <div class="competence-card">
+                        <h3>Дизайн</h3>
+                        <p>UI/UX & брендинг</p>
+                        <div class="competence-tech-list">
+                            <div class="tech-item" data-tech="figma">Figma</div>
+                            <div class="tech-item" data-tech="uiux">UI/UX Research</div>
+                            <div class="tech-item" data-tech="motion">Motion Design</div>
+                            <div class="tech-item" data-tech="3d">3D Art</div>
+                            <div class="tech-item" data-tech="adobe">Adobe Suite</div>
+                        </div>
+                    </div>
+                    <!-- SEO / Data -->
+                    <div class="competence-card">
+                        <h3>SEO / Data</h3>
+                        <p>Рост трафика и продаж</p>
+                        <div class="competence-tech-list">
+                            <div class="tech-item" data-tech="audit">SEO-аудит</div>
+                            <div class="tech-item" data-tech="metrika">Метрика / GA4</div>
+                            <div class="tech-item" data-tech="cluster">Кластеризация</div>
+                            <div class="tech-item" data-tech="core">Core Web Vitals</div>
+                            <div class="tech-item" data-tech="semrush">SEMrush</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- МИССИЯ С ЛОКАЛЬНЫМИ КАРТИНКАМИ AVIF -->
+        <!-- ============================================ -->
+        <!-- БЛОК 7: КАЛЬКУЛЯТОР СТОИМОСТИ (calculator) -->
+        <!-- ============================================ -->
+        <section id="calculator" class="section">
+            <div class="container">
+                <!-- Заголовок с кнопкой "Все услуги" -->
+                <div class="section-header">
+                    <h2>Калькулятор стоимости</h2>
+                    <a href="services.html" class="section-more-btn">Все услуги</a>
+                </div>
+                <!-- Калькулятор -->
+                <div class="calculator-card">
+                    <div class="calculator-two-columns">
+                        <!-- Левая колонка: выбор услуг -->
+                        <div class="calculator-left">
+                            <div class="calc-group">
+                                <div class="calc-label">Услуги:</div>
+                                <div class="calc-options" id="calcServices">
+                                    <div data-service="design" class="calc-option">Дизайн (UI/UX)</div>
+                                    <div data-service="front" class="calc-option">Frontend</div>
+                                    <div data-service="back" class="calc-option">Backend</div>
+                                    <div data-service="seo" class="calc-option">SEO</div>
+                                    <div data-service="cms" class="calc-option">CMS</div>
+                                    <div data-service="crm" class="calc-option">CRM / ERP</div>
+                                    <div data-service="ai" class="calc-option">AI / ML</div>
+                                    <div data-service="mobile" class="calc-option">Мобильное приложение</div>
+                                    <div data-service="support" class="calc-option">Техподдержка</div>
+                                </div>
+                            </div>
+                            <div class="calc-group">
+                                <div class="calc-label">Сложность:</div>
+                                <div class="calc-options" id="calcComplexity">
+                                    <div data-complex="simple" class="calc-option">Старт (Лендинг)</div>
+                                    <div data-complex="medium" class="calc-option">Бизнес (Сайт услуг)</div>
+                                    <div data-complex="high" class="calc-option">Премиум (Магазин)</div>
+                                    <div data-complex="enterprise" class="calc-option">Enterprise (Портал)</div>
+                                </div>
+                            </div>
+                            <div class="calc-total-block">
+                                <div class="calc-price" id="calcPrice">0 ₽</div>
+                                <div id="calcHoursInfo" style="font-size:0.85rem; color:#B0C4DE;"></div>
+                            </div>
+                        </div>
+                        <!-- Правая колонка: рекомендуемый стек -->
+                        <div class="calculator-right stack-explanation" id="stackExplanation">
+                            <h4>Рекомендуемый стек</h4>
+                            <p>Выберите услуги для расчёта</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- БЛОК 8: ПОЧЕМУ ВЫБИРАЮТ НАС (миссия) -->
+        <!-- ============================================ -->
         <section class="section">
             <div class="container">
+                <!-- Заголовок с кнопкой "О компании" -->
                 <div class="section-header">
                     <h2>Почему выбирают нас</h2>
                     <a href="about.html" class="section-more-btn">О компании</a>
                 </div>
                 <div class="mission-grid-wrapper">
+                    <!-- Текстовая часть -->
                     <div class="mission-text">
                         <p>ALBE digital — это стратегический партнёр, а не просто подрядчик. Мы разрабатываем продукты, которые масштабируют бизнес и увеличивают прибыль. Каждый проект сопровождается глубокой SEO-проработкой и техническим аудитом, что гарантирует высокие позиции в поисковых системах с первых недель после запуска.</p>
                         <p>Наши клиенты из ритейла, финтеха и образования получают прирост органического трафика до 300% за 6 месяцев. Мы внедряем AI-решения для автоматизации маркетинга и продаж, а также разрабатываем мобильные приложения, повышающие лояльность аудитории. Работаем с брендами по всей России.</p>
                     </div>
+                    <!-- Сетка картинок 2×2 -->
                     <div class="mission-grid">
                         <picture>
                             <source srcset="images/bank.avif" type="image/avif">
@@ -233,42 +343,54 @@
             </div>
         </section>
 
-        <!-- FAQ — 8 ВОПРОСОВ В 2 СТОЛБЦА -->
+        <!-- ============================================ -->
+        <!-- БЛОК 9: ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ (FAQ) -->
+        <!-- ============================================ -->
         <section class="section">
             <div class="container">
+                <!-- Заголовок с кнопкой "Подробнее" -->
                 <div class="section-header">
                     <h2>Часто задаваемые вопросы</h2>
                     <a href="services.html" class="section-more-btn">Подробнее</a>
                 </div>
+                <!-- Сетка FAQ 2×2 (8 вопросов) -->
                 <div class="faq-grid">
+                    <!-- Вопрос 1 -->
                     <div class="faq-item">
                         <button class="faq-question">Сколько стоит разработка сайта под ключ?</button>
                         <div class="faq-answer">Стоимость разработки сайта рассчитывается индивидуально в нашем калькуляторе. Лендинг от 120 000 ₽, корпоративный сайт от 250 000 ₽, интернет-магазин от 450 000 ₽. Окончательная цена зависит от сложности, количества функций и выбранного стека технологий.</div>
                     </div>
+                    <!-- Вопрос 2 -->
                     <div class="faq-item">
                         <button class="faq-question">Какие сроки разработки сайта?</button>
                         <div class="faq-answer">Сроки разработки сайта под ключ составляют от 3 до 12 недель в зависимости от сложности проекта. Лендинг разрабатывается за 2-3 недели, интернет-магазин — 6-8 недель, сложные порталы и CRM системы — от 10 недель. Мы всегда соблюдаем дедлайны.</div>
                     </div>
+                    <!-- Вопрос 3 -->
                     <div class="faq-item">
                         <button class="faq-question">Даёте гарантию на SEO продвижение?</button>
                         <div class="faq-answer">Да, мы гарантируем выполнение KPI по SEO продвижению. Заключаем договор с чёткими показателями: рост трафика, улучшение позиций по целевым запросам, увеличение конверсии. При недостижении результатов проводим дополнительную оптимизацию за наш счёт.</div>
                     </div>
+                    <!-- Вопрос 4 -->
                     <div class="faq-item">
                         <button class="faq-question">Разрабатываете мобильные приложения?</button>
                         <div class="faq-answer">Да, мы разрабатываем мобильные приложения под iOS, Android и кроссплатформенные решения на React Native и Flutter. Полный цикл: от идеи и дизайна до публикации в App Store и Google Play. Интегрируем с вашим сайтом и CRM.</div>
                     </div>
+                    <!-- Вопрос 5 -->
                     <div class="faq-item">
                         <button class="faq-question">Как происходит SEO оптимизация сайта?</button>
                         <div class="faq-answer">SEO оптимизация включает: технический аудит, сбор семантического ядра, оптимизацию метатегов и контента, улучшение Core Web Vitals, настройку Яндекс.Метрики и Google Analytics, проработку коммерческих факторов. Регулярно отчитываемся по позициям и трафику.</div>
                     </div>
+                    <!-- Вопрос 6 -->
                     <div class="faq-item">
                         <button class="faq-question">Используете ли вы AI и нейросети?</button>
                         <div class="faq-answer">Да, мы активно внедряем AI решения: чат-боты для автоматизации поддержки, рекомендательные системы, генеративный AI для контента, аналитику данных и прогнозирование. Нейросети помогают ускорить разработку и повысить качество продуктов.</div>
                     </div>
+                    <!-- Вопрос 7 -->
                     <div class="faq-item">
                         <button class="faq-question">Предоставляете техническую поддержку?</button>
                         <div class="faq-answer">Да, у нас есть круглосуточная техническая поддержка 24/7. Обслуживание включает: устранение ошибок, обновление CMS и плагинов, бэкапы, мониторинг безопасности, доработки функционала. Выбирайте пакет поддержки под ваш бюджет.</div>
                     </div>
+                    <!-- Вопрос 8 -->
                     <div class="faq-item">
                         <button class="faq-question">Как начать проект с ALBE digital?</button>
                         <div class="faq-answer">Просто оставьте заявку на сайте или напишите в Telegram. Мы проведём бесплатную консультацию, проанализируем ваш бизнес и потребности, предложим оптимальное решение и сроки. После согласования концепции подготовим договор и начнём разработку.</div>
@@ -277,7 +399,9 @@
             </div>
         </section>
 
-        <!-- КОНТАКТЫ -->
+        <!-- ============================================ -->
+        <!-- БЛОК 10: ФОРМА СВЯЗИ (контакты) -->
+        <!-- ============================================ -->
         <section id="contact" class="contact-section">
             <div class="container">
                 <div class="contact-card">
@@ -302,10 +426,20 @@
             </div>
         </section>
     </main>
-    
+
+    <!-- ============================================ -->
+    <!-- БЛОК 11: ПОДВАЛ (footer) -->
+    <!-- ============================================ -->
     <div id="footer-placeholder"></div>
+    
+    <!-- ============================================ -->
+    <!-- БЛОК 12: КНОПКА НАВЕРХ (to top) -->
+    <!-- ============================================ -->
     <div class="totop" id="toTopBtn">↑</div>
     
+    <!-- ============================================ -->
+    <!-- БЛОК 13: ПОДКЛЮЧЕНИЕ СКРИПТОВ -->
+    <!-- ============================================ -->
     <script src="header-loader.js"></script>
     <script src="common.js"></script>
 </body>
