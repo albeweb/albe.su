@@ -1,4 +1,4 @@
-// Загрузка шапки и подвала
+// Загрузка компонентов
 function loadComponent(elementId, filePath, callback) {
     const placeholder = document.getElementById(elementId);
     if (!placeholder) return;
@@ -18,7 +18,7 @@ function loadComponent(elementId, filePath, callback) {
         });
 }
 
-// Инициализация функционала шапки
+// Инициализация функционала шапки и меню
 function initHeader() {
     // Фиксация шапки при скролле
     const header = document.getElementById('mainHeader');
@@ -40,65 +40,74 @@ function initHeader() {
         handleHeaderScroll();
     }
     
-    // ===== НОВОЕ МЕНЮ (кнопка МЕНЮ) =====
+    // Инициализация кнопки МЕНЮ и оверлея
     const menuBtn = document.getElementById('menuBtn');
-    const fullscreenMenu = document.getElementById('fullscreenMenu');
-    const menuClose = document.getElementById('menuClose');
+    const overlay = document.getElementById('myMenuOverlay');
+    const closeBtn = document.getElementById('myMenuClose');
     
-    if (menuBtn && fullscreenMenu) {
+    if (menuBtn && overlay) {
         // Удаляем старые обработчики через клонирование
         const newMenuBtn = menuBtn.cloneNode(true);
         menuBtn.parentNode.replaceChild(newMenuBtn, menuBtn);
         
         newMenuBtn.addEventListener('click', function(e) {
             e.preventDefault();
-            fullscreenMenu.style.height = '100%';
+            overlay.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         });
     }
     
-    if (menuClose) {
-        const newMenuClose = menuClose.cloneNode(true);
-        menuClose.parentNode.replaceChild(newMenuClose, menuClose);
+    if (closeBtn) {
+        const newCloseBtn = closeBtn.cloneNode(true);
+        closeBtn.parentNode.replaceChild(newCloseBtn, closeBtn);
         
-        newMenuClose.addEventListener('click', function() {
-            const fm = document.getElementById('fullscreenMenu');
-            if (fm) {
-                fm.style.height = '0';
+        newCloseBtn.addEventListener('click', function() {
+            const ov = document.getElementById('myMenuOverlay');
+            if (ov) {
+                ov.style.display = 'none';
                 document.body.style.overflow = '';
             }
         });
     }
     
     // Закрытие меню по клику на ссылки
-    const navLinks = document.querySelectorAll('.fullscreen-nav a');
-    navLinks.forEach(function(link) {
-        link.addEventListener('click', function() {
-            const fm = document.getElementById('fullscreenMenu');
-            if (fm) {
-                fm.style.height = '0';
+    if (overlay) {
+        const navLinks = overlay.querySelectorAll('a');
+        navLinks.forEach(function(link) {
+            link.addEventListener('click', function() {
+                const ov = document.getElementById('myMenuOverlay');
+                if (ov) {
+                    ov.style.display = 'none';
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+        
+        // Закрытие по клику на фон
+        overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) {
+                overlay.style.display = 'none';
                 document.body.style.overflow = '';
             }
         });
-    });
+    }
     
     // Закрытие по ESC
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
-            const fm = document.getElementById('fullscreenMenu');
-            if (fm && fm.style.height === '100%') {
-                fm.style.height = '0';
+            const ov = document.getElementById('myMenuOverlay');
+            if (ov && ov.style.display === 'flex') {
+                ov.style.display = 'none';
                 document.body.style.overflow = '';
             }
         }
     });
     
-    // ===== СТАРОЕ МЕНЮ (бургер) — оставляем на всякий случай, но скрываем =====
+    // ===== СТАРОЕ МЕНЮ (бургер) — скрываем =====
     const burgerBtn = document.getElementById('burgerBtn');
     const mobileMenu = document.getElementById('navMenu');
     
     if (burgerBtn && mobileMenu) {
-        // Скрываем старую кнопку и меню, так как используем новое
         burgerBtn.style.display = 'none';
         mobileMenu.style.display = 'none';
     }
@@ -108,4 +117,5 @@ function initHeader() {
 document.addEventListener('DOMContentLoaded', () => {
     loadComponent('header-placeholder', 'header.html', initHeader);
     loadComponent('footer-placeholder', 'footer.html');
+    loadComponent('menu-placeholder', 'menu.html');  // Загружаем отдельное меню
 });
