@@ -120,7 +120,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
 .btn-outline { background: transparent; color: #FFFFFF; border-color: rgba(255,255,255,0.4); }
 .btn-primary:hover { background: transparent; color: #F5B700; border-color: #F5B700; }
 .btn-outline:hover { border-color: #F5B700; background: rgba(245,183,0,0.1); color: #F5B700; }
-.service-card, .portfolio-card, .step-card, .mission-photo, .faq-item { padding: 32px; }
+.service-card, .portfolio-card, .step-card, .mission-photo { padding: 32px; }
 .service-card:hover, .portfolio-card:hover, .step-card:hover, .calc-option:hover { transform: translateY(-8px); border-color: #F5B700; box-shadow: 0 20px 30px -12px rgba(0,0,0,0.5); }
 
 .header { 
@@ -459,12 +459,76 @@ body.header-fixed { padding-top: 82px; }
 .mission-photos { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .mission-photo { height: 200px; display: flex; align-items: center; justify-content: center; color: #F5B700; background-size: cover; background-position: center; font-family: 'Manrope', sans-serif; font-weight: 500; }
 
-.faq-item { margin-bottom: 18px; }
-.faq-question { width: 100%; text-align: left; background: none; border: none; padding: 22px 28px; font-size: 1.15rem; font-weight: 500; color: #F5B700; cursor: pointer; display: flex; justify-content: space-between; }
-.faq-answer { padding: 0 28px 28px 28px; color: #B0C4DE; display: none; }
-.faq-answer.active { display: block; }
-.faq-question::after { content: '+'; font-size: 1.5rem; font-weight: 300; }
-.faq-question.active::after { content: '−'; }
+/* ===== FAQ СТИЛИ — 2 КОЛОНКИ, РАБОТАЮЩИЙ АККОРДЕОН ===== */
+.faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.faq-item {
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    background: rgba(18, 24, 32, 0.85);
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(245, 183, 0, 0.2);
+    transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    border-top-left-radius: 28px;
+    border-bottom-right-radius: 28px;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    overflow: hidden;
+}
+.faq-item:hover {
+    border-color: #F5B700;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.5);
+}
+.faq-question {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 22px 28px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #F5B700;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Manrope', sans-serif;
+    transition: all 0.3s ease;
+}
+.faq-question:hover {
+    background: rgba(245, 183, 0, 0.05);
+}
+.faq-question::after {
+    content: '+';
+    font-size: 1.5rem;
+    font-weight: 300;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+    margin-left: 12px;
+    color: #F5B700;
+}
+.faq-question.active::after {
+    content: '−';
+}
+.faq-answer {
+    padding: 0 28px;
+    color: #B0C4DE;
+    display: none;
+    line-height: 1.6;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    border-top: none;
+    transition: all 0.3s ease;
+}
+.faq-answer.active {
+    display: block;
+    padding: 0 28px 28px 28px;
+}
 
 .fullscreen-cover { min-height: 85vh; background-image: url('https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1600'); background-size: cover; background-attachment: fixed; background-position: center; position: relative; display: flex; align-items: center; justify-content: center; }
 .cover-overlay { position: absolute; inset: 0; background: rgba(13,17,23,0.92); }
@@ -593,8 +657,14 @@ input:focus, textarea:focus { outline: none; border-color: #F5B700; }
     .mission-wrapper { flex-direction: column; gap: 30px; }
     .mission-photos { grid-template-columns: repeat(2, 1fr); gap: 16px; }
     .mission-photo { height: 150px; font-size: 0.9rem; }
-    .faq-question { padding: 18px 20px; font-size: 1rem; }
-    .faq-answer { padding: 0 20px 20px 20px; font-size: 0.9rem; }
+    /* FAQ мобильная адаптация */
+    .faq-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .faq-question { padding: 18px 20px; font-size: 0.95rem; }
+    .faq-answer { font-size: 0.9rem; }
+    .faq-answer.active { padding: 0 20px 20px 20px; }
     .footer { padding: 40px 0 24px; }
     .footer-grid { flex-direction: column; gap: 30px; text-align: center; align-items: center; }
     .logo { font-size: 1.6rem; }
@@ -611,7 +681,7 @@ input:focus, textarea:focus { outline: none; border-color: #F5B700; }
     .stat-number { font-size: 1.6rem; }
     .service-badge { padding: 5px 12px; font-size: 0.65rem; }
     .quote-text { font-size: 0.7rem; }
-    .service-card, .portfolio-card, .step-card, .faq-item { padding: 20px; }
+    .service-card, .portfolio-card, .step-card { padding: 20px; }
     .service-card h3 { font-size: 1.3rem; }
     .portfolio-image { height: 180px; font-size: 1.2rem; }
     .mission-photo { height: 120px; }
@@ -619,5 +689,9 @@ input:focus, textarea:focus { outline: none; border-color: #F5B700; }
     .cover-content { padding: 20px 16px; }
     .cover-content h2 { font-size: 1.3rem; }
     .btn-primary, .btn-outline { padding: 10px 16px; font-size: 0.85rem; }
+    .faq-question { padding: 14px 16px; font-size: 0.85rem; }
+    .faq-question::after { font-size: 1.2rem; }
+    .faq-answer { font-size: 0.85rem; }
+    .faq-answer.active { padding: 0 16px 16px 16px; }
 }
 .text-gold { color: #F5B700; }
