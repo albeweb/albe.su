@@ -19,7 +19,7 @@
                 </div>
             </div>
             
-            <!-- ПОРТФОЛИО -->
+            <!-- ПОРТФОЛИО (с подменю) -->
             <div class="nav-item has-dropdown">
                 <a href="#" class="nav-link">Портфолио</a>
                 <div class="dropdown-menu">
@@ -94,23 +94,24 @@
     color: #F5B700;
 }
 
-/* Выпадающее меню */
+/* Выпадающее меню — ПОВЕРХ ВСЕГО КОНТЕНТА */
 .dropdown-menu {
     position: absolute;
     top: 100%;
     left: 0;
     background: rgba(13, 17, 23, 0.98);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(245, 183, 0, 0.2);
+    border: 1px solid rgba(245, 183, 0, 0.3);
     border-top-left-radius: 16px;
     border-bottom-right-radius: 16px;
-    min-width: 220px;
+    min-width: 240px;
     padding: 12px 0;
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.3s ease;
-    z-index: 100;
+    z-index: 9999;
+    box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.5);
 }
 
 .nav-item:hover .dropdown-menu {
@@ -147,10 +148,28 @@
     content: '▼';
     font-size: 0.7rem;
     transition: transform 0.3s ease;
+    font-family: monospace;
 }
 
 .has-dropdown:hover > .nav-link::after {
     transform: rotate(180deg);
+}
+
+/* Убедимся, что шапка имеет высокий z-index */
+.header {
+    position: relative;
+    z-index: 10000;
+    background: rgba(13, 17, 23, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+/* Фиксированная шапка при скролле */
+.header.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10000;
 }
 
 /* Мобильная адаптация */
@@ -167,7 +186,7 @@
         padding: 80px 24px 30px;
         transition: right 0.3s ease-out;
         border-left: 2px solid #F5B700;
-        z-index: 1001;
+        z-index: 10001;
         gap: 0;
         align-items: flex-start;
         overflow-y: auto;
@@ -175,6 +194,11 @@
     
     .nav-menu.active {
         right: 0;
+    }
+    
+    .burger {
+        z-index: 10002;
+        position: relative;
     }
     
     .nav-item {
@@ -193,6 +217,11 @@
     .has-dropdown > .nav-link::after {
         content: '▼';
         font-size: 0.8rem;
+        transform: none;
+    }
+    
+    .has-dropdown:hover > .nav-link::after {
+        transform: none;
     }
     
     .dropdown-menu {
@@ -203,9 +232,13 @@
         display: none;
         background: rgba(255, 255, 255, 0.05);
         border: none;
+        border-left: 1px solid rgba(245, 183, 0, 0.3);
+        border-radius: 0;
         padding: 0 0 12px 16px;
         min-width: auto;
         margin-top: 0;
+        box-shadow: none;
+        z-index: auto;
     }
     
     .nav-item.open .dropdown-menu {
@@ -249,27 +282,33 @@
         const dropdownItems = document.querySelectorAll('.has-dropdown');
         dropdownItems.forEach(item => {
             const link = item.querySelector('.nav-link');
-            link.addEventListener('click', function(e) {
-                if (window.innerWidth <= 768) {
-                    e.preventDefault();
-                    item.classList.toggle('open');
-                }
-            });
+            if (link) {
+                link.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        item.classList.toggle('open');
+                    }
+                });
+            }
         });
         
         // Закрытие меню при клике на ссылку (кроме подменю на мобильных)
-        const navLinks = document.querySelectorAll('.nav-link, .dropdown-link');
+        const navLinks = document.querySelectorAll('.dropdown-link');
         navLinks.forEach(link => {
             link.addEventListener('click', function() {
-                if (window.innerWidth <= 768 && !this.closest('.has-dropdown')) {
+                if (window.innerWidth <= 768) {
                     mobileMenu.classList.remove('active');
                     const spans = burgerBtn.querySelectorAll('span');
-                    spans[0].style.transform = 'none';
-                    spans[1].style.opacity = '1';
-                    spans[2].style.transform = 'none';
+                    if (spans) {
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    }
                 }
             });
         });
     }
 })();
+</script>
 </script>
