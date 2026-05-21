@@ -28,12 +28,6 @@
     <link rel="stylesheet" href="style.css">
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         .section-header {
             display: flex;
             justify-content: space-between;
@@ -159,28 +153,16 @@
             background: rgba(0,0,0,0.35);
         }
         
-        /* СТИЛИ ДЛЯ FAQ — 2 КОЛОНКИ, РАБОТАЮЩИЙ АККОРДЕОН */
+        /* СТИЛИ ДЛЯ FAQ — 2 КОЛОНКИ */
         .faq-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
         }
         .faq-item {
-            margin: 0;
-            background: rgba(18, 24, 32, 0.85);
-            backdrop-filter: blur(2px);
-            border: 1px solid rgba(245, 183, 0, 0.2);
-            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            border-top-left-radius: 28px;
-            border-bottom-right-radius: 28px;
-            border-top-right-radius: 0;
-            border-bottom-left-radius: 0;
-            overflow: hidden;
-        }
-        .faq-item:hover {
-            border-color: #F5B700;
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.5);
+            margin-bottom: 0;
+            display: flex;
+            flex-direction: column;
         }
         .faq-question {
             width: 100%;
@@ -194,52 +176,61 @@
             cursor: pointer;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            font-family: 'Manrope', sans-serif;
-            transition: all 0.3s ease;
+            font-family: inherit;
+            background: rgba(18, 24, 32, 0.85);
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(245, 183, 0, 0.2);
+            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border-top-left-radius: 28px;
+            border-bottom-right-radius: 28px;
+            border-top-right-radius: 0;
+            border-bottom-left-radius: 0;
         }
         .faq-question:hover {
-            background: rgba(245, 183, 0, 0.05);
+            border-color: #F5B700;
+            transform: translateY(-2px);
+        }
+        .faq-answer {
+            padding: 0 28px 28px 28px;
+            color: #B0C4DE;
+            display: none;
+            background: rgba(18, 24, 32, 0.85);
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(245, 183, 0, 0.2);
+            border-top: none;
+            border-top-left-radius: 0;
+            border-bottom-right-radius: 28px;
+            border-top-right-radius: 0;
+            border-bottom-left-radius: 0;
+            margin-top: -2px;
+        }
+        .faq-answer.active {
+            display: block;
         }
         .faq-question::after {
             content: '+';
             font-size: 1.5rem;
             font-weight: 300;
-            transition: transform 0.3s ease;
-            flex-shrink: 0;
-            margin-left: 12px;
-            color: #F5B700;
+            transition: transform 0.3s;
         }
         .faq-question.active::after {
             content: '−';
         }
-        .faq-answer {
-            padding: 0 28px;
-            color: #B0C4DE;
-            display: none;
-            line-height: 1.6;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-        }
-        .faq-answer.active {
-            display: block;
-            padding: 0 28px 28px 28px;
+        
+        @media (max-width: 900px) {
+            .mission-grid-wrapper {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .mission-text {
+                text-align: center;
+            }
         }
         
         @media (max-width: 768px) {
             .faq-grid {
                 grid-template-columns: 1fr;
                 gap: 16px;
-            }
-            .faq-question {
-                padding: 18px 20px;
-                font-size: 0.95rem;
-            }
-            .faq-answer {
-                font-size: 0.9rem;
-            }
-            .faq-answer.active {
-                padding: 0 20px 20px 20px;
             }
             .mission-grid {
                 grid-template-columns: 1fr;
@@ -256,22 +247,40 @@
             .section-more-btn {
                 align-self: flex-start;
             }
+            .contact-card {
+                padding: 32px 24px;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .contact-card h2 {
+                font-size: 1.8rem;
+            }
+            .faq-question {
+                padding: 18px 20px;
+                font-size: 0.95rem;
+            }
+            .faq-answer {
+                padding: 0 20px 20px 20px;
+                font-size: 0.9rem;
+            }
         }
         
         @media (max-width: 480px) {
+            .contact-card {
+                padding: 24px 20px;
+            }
+            .contact-card h2 {
+                font-size: 1.5rem;
+            }
             .faq-question {
-                padding: 14px 16px;
-                font-size: 0.85rem;
-            }
-            .faq-question::after {
-                font-size: 1.2rem;
-            }
-            .faq-answer.active {
-                padding: 0 16px 16px 16px;
+                padding: 16px 18px;
+                font-size: 0.9rem;
             }
         }
         
-        /* СТИЛИ ДЛЯ БЛОКА КОНТАКТОВ */
+        /* СТИЛИ ДЛЯ БЛОКА КОНТАКТОВ — В ЕДИНОМ СТИЛЕ */
         .contact-section {
             padding: 100px 0;
             background: linear-gradient(135deg, #0A0E12 0%, #0D1117 100%);
@@ -294,11 +303,6 @@
             font-size: 2.4rem;
             margin-bottom: 1rem;
             text-align: center;
-            position: relative;
-            display: inline-block;
-            width: auto;
-            margin-left: auto;
-            margin-right: auto;
         }
         .contact-card h2::after {
             content: '';
@@ -309,6 +313,13 @@
             width: 70px;
             height: 2px;
             background: #F5B700;
+        }
+        .contact-card h2 {
+            position: relative;
+            display: inline-block;
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
         }
         .contact-desc {
             text-align: center;
@@ -356,36 +367,35 @@
             text-align: center;
             font-size: 0.9rem;
         }
-        
-        @media (max-width: 768px) {
-            .contact-card {
-                padding: 32px 24px;
-            }
-            .form-row {
-                grid-template-columns: 1fr;
-                gap: 0;
-            }
-            .contact-card h2 {
-                font-size: 1.8rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .contact-card {
-                padding: 24px 20px;
-            }
-            .contact-card h2 {
-                font-size: 1.5rem;
-            }
-        }
     </style>
 </head>
 <body>
     <div id="header-placeholder"></div>
     
     <main>
-        <!-- БАННЕР (сокращён для наглядности, но структура сохранена) -->
+        <!-- БАННЕР -->
         <section class="hero">
+            <div class="code-rain" aria-hidden="true">
+                <div class="code-line" style="left: 5%; animation-duration: 12s; animation-delay: 0s;">&lt;div class="digital"&gt;&lt;/div&gt;</div>
+                <div class="code-line" style="left: 15%; animation-duration: 10s; animation-delay: 2s;">const future = await ai();</div>
+                <div class="code-line" style="left: 25%; animation-duration: 14s; animation-delay: 1s;">import { design } from 'agency';</div>
+                <div class="code-line" style="left: 35%; animation-duration: 9s; animation-delay: 4s;">function createProduct() { return ∞; }</div>
+                <div class="code-line" style="left: 45%; animation-duration: 15s; animation-delay: 0.5s;">.digital-agency { opacity: 1; }</div>
+                <div class="code-line" style="left: 55%; animation-duration: 11s; animation-delay: 3s;">npm install premium-website</div>
+                <div class="code-line" style="left: 65%; animation-duration: 13s; animation-delay: 5s;">&lt;SEO speed="fast" /&gt;</div>
+                <div class="code-line" style="left: 75%; animation-duration: 8s; animation-delay: 2.5s;">git commit -m "launch success"</div>
+                <div class="code-line" style="left: 85%; animation-duration: 16s; animation-delay: 1.5s;">const website = new ALBE();</div>
+                <div class="code-line" style="left: 10%; animation-duration: 11s; animation-delay: 6s;">&lt;React.StrictMode&gt;</div>
+                <div class="code-line" style="left: 20%; animation-duration: 13s; animation-delay: 3.5s;">function App() { return &lt;Hero /&gt;; }</div>
+                <div class="code-line" style="left: 30%; animation-duration: 9.5s; animation-delay: 7s;">.btn-gold { background: #F5B700; }</div>
+                <div class="code-line" style="left: 40%; animation-duration: 14.5s; animation-delay: 1s;">export default async function build()</div>
+                <div class="code-line" style="left: 50%; animation-duration: 12.5s; animation-delay: 4.5s;">import { SEO, Analytics } from '@/lib'</div>
+                <div class="code-line" style="left: 60%; animation-duration: 10.5s; animation-delay: 8s;">const meta = { title: "ALBE digital" }</div>
+                <div class="code-line" style="left: 70%; animation-duration: 15.5s; animation-delay: 2s;">@keyframes fadeIn { from { opacity: 0; } }</div>
+                <div class="code-line" style="left: 80%; animation-duration: 11.5s; animation-delay: 5.5s;">&lt;meta name="viewport" /&gt;</div>
+                <div class="code-line" style="left: 90%; animation-duration: 13.5s; animation-delay: 0.8s;">console.log("ALBE launched")</div>
+            </div>
+            
             <div class="container">
                 <div class="hero-wrapper">
                     <div class="hero-content">
@@ -393,11 +403,18 @@
                             <div class="hero-tag">DIGITAL AGENCY</div>
                             <h1 class="hero-title-line1">РАЗРАБОТКА</h1>
                             <span class="hero-title-line2">сайтов под ключ</span>
+                            
                             <div class="services-badges">
                                 <span class="service-badge">Премиум дизайн</span>
                                 <span class="service-badge">Безупречный код</span>
                                 <span class="service-badge">Мобильные приложения</span>
                                 <span class="service-badge">AI решения</span>
+                                <span class="service-badge">UI/UX проектирование</span>
+                                <span class="service-badge">SEO стратегия</span>
+                                <span class="service-badge">Веб-разработка</span>
+                                <span class="service-badge">E-commerce</span>
+                                <span class="service-badge">CRM интеграция</span>
+                                <span class="service-badge">24/7 поддержка</span>
                             </div>
                         </div>
                         <div class="hero-bottom">
@@ -405,8 +422,12 @@
                                 <a href="#calculator" class="btn-primary">Рассчитать проект</a>
                                 <a href="#portfolio" class="btn-outline">Портфолио</a>
                             </div>
+                            <div class="hero-quote">
+                                <span class="quote-text">В ALBE МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ — МЫ СОЗДАЕМ БИЗНЕС</span>
+                            </div>
                         </div>
                     </div>
+                    
                     <div class="hero-stats">
                         <div class="stat-item"><div class="stat-number">7+</div><div class="stat-label">лет опыта</div></div>
                         <div class="stat-item"><div class="stat-number">150+</div><div class="stat-label">проектов</div></div>
@@ -425,17 +446,17 @@
                     <a href="services.html" class="section-more-btn">Все услуги</a>
                 </div>
                 <div class="services-grid">
-                    <div class="service-card"><h3>Веб-разработка</h3><p>Современный стек: React, Vue, Node.js, Laravel.</p></div>
-                    <div class="service-card"><h3>Иммерсивный дизайн</h3><p>Микровзаимодействия, 3D-сцены, анимация.</p></div>
-                    <div class="service-card"><h3>E‑commerce платформы</h3><p>Интернет-магазины с конверсией 15%+.</p></div>
-                    <div class="service-card"><h3>SEO & аналитика</h3><p>Полная оптимизация до лидерских позиций.</p></div>
-                    <div class="service-card"><h3>AI & Machine Learning</h3><p>Чат-боты, рекомендательные системы.</p></div>
-                    <div class="service-card"><h3>Мобильные приложения</h3><p>iOS, Android, React Native, Flutter.</p></div>
+                    <div class="service-card"><h3>Веб-разработка</h3><p>Современный стек: React, Vue, Node.js, Laravel. Высокая производительность и масштабируемость.</p></div>
+                    <div class="service-card"><h3>Иммерсивный дизайн</h3><p>Микровзаимодействия, 3D-сцены, анимация. Визуальный язык, который запоминается.</p></div>
+                    <div class="service-card"><h3>E‑commerce платформы</h3><p>Интернет-магазины с конверсией 15%+, интеграция с 1С, CRM и маркетплейсами.</p></div>
+                    <div class="service-card"><h3>SEO & аналитика</h3><p>Полная оптимизация: от семантики до лидерских позиций в Яндексе и Google.</p></div>
+                    <div class="service-card"><h3>AI & Machine Learning</h3><p>Чат-боты, рекомендательные системы, аналитика данных, генеративный AI.</p></div>
+                    <div class="service-card"><h3>Мобильные приложения</h3><p>iOS, Android, React Native, Flutter. Полный цикл от идеи до публикации.</p></div>
                 </div>
             </div>
         </section>
 
-        <!-- ПОРТФОЛИО -->
+        <!-- ПОРТФОЛИО С КАРТИНКАМИ -->
         <section id="portfolio" class="section">
             <div class="container">
                 <div class="section-header">
@@ -483,10 +504,10 @@
                     <a href="services.html" class="section-more-btn">Подробнее</a>
                 </div>
                 <div class="competences-grid">
-                    <div class="competence-card"><h3>Frontend</h3><p>Интерфейсы, которые продают</p><div class="competence-tech-list"><div class="tech-item" data-tech="react">React / Next.js</div><div class="tech-item" data-tech="vue">Vue 3 / Nuxt</div><div class="tech-item" data-tech="ts">TypeScript</div></div></div>
-                    <div class="competence-card"><h3>Backend</h3><p>Надёжная архитектура</p><div class="competence-tech-list"><div class="tech-item" data-tech="node">Node.js / Nest.js</div><div class="tech-item" data-tech="python">Python / Django</div><div class="tech-item" data-tech="laravel">Laravel</div></div></div>
-                    <div class="competence-card"><h3>Дизайн</h3><p>UI/UX & брендинг</p><div class="competence-tech-list"><div class="tech-item" data-tech="figma">Figma</div><div class="tech-item" data-tech="uiux">UI/UX Research</div><div class="tech-item" data-tech="motion">Motion Design</div></div></div>
-                    <div class="competence-card"><h3>SEO / Data</h3><p>Рост трафика и продаж</p><div class="competence-tech-list"><div class="tech-item" data-tech="audit">SEO-аудит</div><div class="tech-item" data-tech="metrika">Метрика / GA4</div><div class="tech-item" data-tech="core">Core Web Vitals</div></div></div>
+                    <div class="competence-card"><h3>Frontend</h3><p>Интерфейсы, которые продают</p><div class="competence-tech-list"><div class="tech-item" data-tech="react">React / Next.js</div><div class="tech-item" data-tech="vue">Vue 3 / Nuxt</div><div class="tech-item" data-tech="ts">TypeScript</div><div class="tech-item" data-tech="gsap">GSAP</div><div class="tech-item" data-tech="three">Three.js</div></div></div>
+                    <div class="competence-card"><h3>Backend</h3><p>Надёжная архитектура</p><div class="competence-tech-list"><div class="tech-item" data-tech="node">Node.js / Nest.js</div><div class="tech-item" data-tech="python">Python / Django</div><div class="tech-item" data-tech="laravel">Laravel</div><div class="tech-item" data-tech="postgres">PostgreSQL</div><div class="tech-item" data-tech="docker">Docker / K8s</div></div></div>
+                    <div class="competence-card"><h3>Дизайн</h3><p>UI/UX & брендинг</p><div class="competence-tech-list"><div class="tech-item" data-tech="figma">Figma</div><div class="tech-item" data-tech="uiux">UI/UX Research</div><div class="tech-item" data-tech="motion">Motion Design</div><div class="tech-item" data-tech="3d">3D Art</div><div class="tech-item" data-tech="adobe">Adobe Suite</div></div></div>
+                    <div class="competence-card"><h3>SEO / Data</h3><p>Рост трафика и продаж</p><div class="competence-tech-list"><div class="tech-item" data-tech="audit">SEO-аудит</div><div class="tech-item" data-tech="metrika">Метрика / GA4</div><div class="tech-item" data-tech="cluster">Кластеризация</div><div class="tech-item" data-tech="core">Core Web Vitals</div><div class="tech-item" data-tech="semrush">SEMrush</div></div></div>
                 </div>
             </div>
         </section>
@@ -501,8 +522,8 @@
                 <div class="calculator-card">
                     <div class="calculator-two-columns">
                         <div class="calculator-left">
-                            <div class="calc-group"><div class="calc-label">Услуги:</div><div class="calc-options" id="calcServices"><div data-service="design" class="calc-option">Дизайн (UI/UX)</div><div data-service="front" class="calc-option">Frontend</div><div data-service="back" class="calc-option">Backend</div><div data-service="seo" class="calc-option">SEO</div></div></div>
-                            <div class="calc-group"><div class="calc-label">Сложность:</div><div class="calc-options" id="calcComplexity"><div data-complex="simple" class="calc-option">Старт (Лендинг)</div><div data-complex="medium" class="calc-option">Бизнес (Сайт услуг)</div><div data-complex="high" class="calc-option">Премиум (Магазин)</div></div></div>
+                            <div class="calc-group"><div class="calc-label">Услуги:</div><div class="calc-options" id="calcServices"><div data-service="design" class="calc-option">Дизайн (UI/UX)</div><div data-service="front" class="calc-option">Frontend</div><div data-service="back" class="calc-option">Backend</div><div data-service="seo" class="calc-option">SEO</div><div data-service="cms" class="calc-option">CMS</div><div data-service="crm" class="calc-option">CRM / ERP</div><div data-service="ai" class="calc-option">AI / ML</div><div data-service="mobile" class="calc-option">Мобильное приложение</div><div data-service="support" class="calc-option">Техподдержка</div></div></div>
+                            <div class="calc-group"><div class="calc-label">Сложность:</div><div class="calc-options" id="calcComplexity"><div data-complex="simple" class="calc-option">Старт (Лендинг)</div><div data-complex="medium" class="calc-option">Бизнес (Сайт услуг)</div><div data-complex="high" class="calc-option">Премиум (Магазин)</div><div data-complex="enterprise" class="calc-option">Enterprise (Портал)</div></div></div>
                             <div class="calc-total-block"><div class="calc-price" id="calcPrice">0 ₽</div><div id="calcHoursInfo" style="font-size:0.85rem; color:#B0C4DE;"></div></div>
                         </div>
                         <div class="calculator-right stack-explanation" id="stackExplanation"><h4>Рекомендуемый стек</h4><p>Выберите услуги для расчёта</p></div>
@@ -511,7 +532,7 @@
             </div>
         </section>
 
-        <!-- МИССИЯ -->
+        <!-- МИССИЯ — ПЕРЕДЕЛАННЫЙ БЛОК: СЛЕВА ТЕКСТ, СПРАВА СЕТКА 2×2 -->
         <section class="section">
             <div class="container">
                 <div class="section-header">
@@ -520,8 +541,8 @@
                 </div>
                 <div class="mission-grid-wrapper">
                     <div class="mission-text">
-                        <p>ALBE digital — это стратегический партнёр, а не просто подрядчик. Мы разрабатываем продукты, которые масштабируют бизнес и увеличивают прибыль.</p>
-                        <p>Наши клиенты из ритейла, финтеха и образования получают прирост органического трафика до 300% за 6 месяцев.</p>
+                        <p>ALBE digital — это стратегический партнёр, а не просто подрядчик. Мы разрабатываем продукты, которые масштабируют бизнес и увеличивают прибыль. Каждый проект сопровождается глубокой SEO-проработкой и техническим аудитом, что гарантирует высокие позиции в поисковых системах с первых недель после запуска.</p>
+                        <p>Наши клиенты из ритейла, финтеха и образования получают прирост органического трафика до 300% за 6 месяцев. Мы внедряем AI-решения для автоматизации маркетинга и продаж, а также разрабатываем мобильные приложения, повышающие лояльность аудитории. Работаем с брендами по всей России.</p>
                     </div>
                     <div class="mission-grid">
                         <div class="mission-grid-card" style="background-image: url('https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg');">команда</div>
@@ -533,56 +554,57 @@
             </div>
         </section>
 
-        <!-- FAQ — ГАРАНТИРОВАННО РАБОТАЮЩИЙ АККОРДЕОН -->
+        <!-- FAQ — 8 ВОПРОСОВ В 2 СТОЛБЦА -->
         <section class="section">
             <div class="container">
                 <div class="section-header">
                     <h2>Часто задаваемые вопросы</h2>
                     <a href="services.html" class="section-more-btn">Подробнее</a>
                 </div>
-                <div class="faq-grid" id="faqGrid">
+                <div class="faq-grid">
                     <div class="faq-item">
                         <button class="faq-question">Сколько стоит разработка сайта под ключ?</button>
-                        <div class="faq-answer">Стоимость разработки сайта рассчитывается индивидуально в нашем калькуляторе. Лендинг от 120 000 ₽, корпоративный сайт от 250 000 ₽, интернет-магазин от 450 000 ₽.</div>
+                        <div class="faq-answer">Стоимость разработки сайта рассчитывается индивидуально в нашем калькуляторе. Лендинг от 120 000 ₽, корпоративный сайт от 250 000 ₽, интернет-магазин от 450 000 ₽. Окончательная цена зависит от сложности, количества функций и выбранного стека технологий.</div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-question">Какие сроки разработки сайта?</button>
-                        <div class="faq-answer">Сроки разработки сайта под ключ составляют от 3 до 12 недель в зависимости от сложности проекта. Лендинг разрабатывается за 2-3 недели, интернет-магазин — 6-8 недель.</div>
+                        <div class="faq-answer">Сроки разработки сайта под ключ составляют от 3 до 12 недель в зависимости от сложности проекта. Лендинг разрабатывается за 2-3 недели, интернет-магазин — 6-8 недель, сложные порталы и CRM системы — от 10 недель. Мы всегда соблюдаем дедлайны.</div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-question">Даёте гарантию на SEO продвижение?</button>
-                        <div class="faq-answer">Да, мы гарантируем выполнение KPI по SEO продвижению. Заключаем договор с чёткими показателями: рост трафика, улучшение позиций, увеличение конверсии.</div>
+                        <div class="faq-answer">Да, мы гарантируем выполнение KPI по SEO продвижению. Заключаем договор с чёткими показателями: рост трафика, улучшение позиций по целевым запросам, увеличение конверсии. При недостижении результатов проводим дополнительную оптимизацию за наш счёт.</div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-question">Разрабатываете мобильные приложения?</button>
-                        <div class="faq-answer">Да, мы разрабатываем мобильные приложения под iOS, Android и кроссплатформенные решения на React Native и Flutter. Полный цикл от идеи до публикации.</div>
+                        <div class="faq-answer">Да, мы разрабатываем мобильные приложения под iOS, Android и кроссплатформенные решения на React Native и Flutter. Полный цикл: от идеи и дизайна до публикации в App Store и Google Play. Интегрируем с вашим сайтом и CRM.</div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-question">Как происходит SEO оптимизация сайта?</button>
-                        <div class="faq-answer">SEO оптимизация включает: технический аудит, сбор семантического ядра, оптимизацию метатегов и контента, улучшение Core Web Vitals.</div>
+                        <div class="faq-answer">SEO оптимизация включает: технический аудит, сбор семантического ядра, оптимизацию метатегов и контента, улучшение Core Web Vitals, настройку Яндекс.Метрики и Google Analytics, проработку коммерческих факторов. Регулярно отчитываемся по позициям и трафику.</div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-question">Используете ли вы AI и нейросети?</button>
-                        <div class="faq-answer">Да, мы активно внедряем AI решения: чат-боты для автоматизации поддержки, рекомендательные системы, генеративный AI для контента.</div>
+                        <div class="faq-answer">Да, мы активно внедряем AI решения: чат-боты для автоматизации поддержки, рекомендательные системы, генеративный AI для контента, аналитику данных и прогнозирование. Нейросети помогают ускорить разработку и повысить качество продуктов.</div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-question">Предоставляете техническую поддержку?</button>
-                        <div class="faq-answer">Да, у нас есть круглосуточная техническая поддержка 24/7. Обслуживание включает: устранение ошибок, обновление CMS, бэкапы, мониторинг безопасности.</div>
+                        <div class="faq-answer">Да, у нас есть круглосуточная техническая поддержка 24/7. Обслуживание включает: устранение ошибок, обновление CMS и плагинов, бэкапы, мониторинг безопасности, доработки функционала. Выбирайте пакет поддержки под ваш бюджет.</div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-question">Как начать проект с ALBE digital?</button>
-                        <div class="faq-answer">Просто оставьте заявку на сайте или напишите в Telegram. Проведём бесплатную консультацию, проанализируем бизнес, предложим оптимальное решение.</div>
+                        <div class="faq-answer">Просто оставьте заявку на сайте или напишите в Telegram. Мы проведём бесплатную консультацию, проанализируем ваш бизнес и потребности, предложим оптимальное решение и сроки. После согласования концепции подготовим договор и начнём разработку.</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- КОНТАКТЫ -->
+        <!-- КОНТАКТЫ — ПЕРЕДЕЛАННЫЙ БЛОК В ЕДИНОМ СТИЛЕ -->
         <section id="contact" class="contact-section">
             <div class="container">
                 <div class="contact-card">
                     <h2>Начнём проект?</h2>
                     <p class="contact-desc">Оставьте заявку — стратег свяжется с вами в течение 3 часов</p>
+                    
                     <form id="mainForm" class="contact-form">
                         <div class="form-row">
                             <input type="text" id="userName" placeholder="Имя *" required>
@@ -608,72 +630,33 @@
     <script src="header-loader.js"></script>
     <script src="common.js"></script>
     
-    <!-- ГАРАНТИРОВАННО РАБОТАЮЩИЙ СКРИПТ ДЛЯ FAQ -->
     <script>
+        // Работа FAQ аккордеона
         (function() {
-            // Функция инициализации аккордеона
-            function initFaqAccordion() {
-                var faqItems = document.querySelectorAll('.faq-item');
-                console.log('Найдено FAQ элементов:', faqItems.length);
-                
-                for (var i = 0; i < faqItems.length; i++) {
-                    var item = faqItems[i];
-                    var question = item.querySelector('.faq-question');
-                    var answer = item.querySelector('.faq-answer');
+            const faqButtons = document.querySelectorAll('.faq-question');
+            faqButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const isActive = answer.classList.contains('active');
                     
-                    if (question && answer) {
-                        // Убираем старые обработчики через клонирование
-                        var newQuestion = question.cloneNode(true);
-                        question.parentNode.replaceChild(newQuestion, question);
-                        
-                        // Закрываем все ответы изначально
-                        answer.classList.remove('active');
-                        newQuestion.classList.remove('active');
-                        
-                        newQuestion.addEventListener('click', function(e) {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            
-                            var currentItem = this.closest('.faq-item');
-                            var currentAnswer = currentItem.querySelector('.faq-answer');
-                            var isActive = currentAnswer.classList.contains('active');
-                            
-                            // Закрываем все
-                            var allAnswers = document.querySelectorAll('.faq-answer');
-                            for (var j = 0; j < allAnswers.length; j++) {
-                                allAnswers[j].classList.remove('active');
-                            }
-                            var allQuestions = document.querySelectorAll('.faq-question');
-                            for (var j = 0; j < allQuestions.length; j++) {
-                                allQuestions[j].classList.remove('active');
-                            }
-                            
-                            // Открываем текущий, если он был закрыт
-                            if (!isActive) {
-                                currentAnswer.classList.add('active');
-                                this.classList.add('active');
-                            }
-                            
-                            console.log('FAQ клик, активен:', !isActive);
-                        });
+                    // Закрываем все ответы
+                    document.querySelectorAll('.faq-answer').forEach(ans => {
+                        ans.classList.remove('active');
+                    });
+                    document.querySelectorAll('.faq-question').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    // Открываем текущий, если он не был открыт
+                    if (!isActive) {
+                        answer.classList.add('active');
+                        this.classList.add('active');
                     }
-                }
-            }
-            
-            // Запускаем после полной загрузки DOM
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', initFaqAccordion);
-            } else {
-                initFaqAccordion();
-            }
-            
-            // Дополнительный запуск через небольшую задержку на случай динамической подгрузки
-            setTimeout(initFaqAccordion, 500);
+                });
+            });
         })();
-    </script>
-    
-    <script>
-        // Простая обработка формы
+
+        // Дополнительный скрипт для формы, если common.js не обрабатывает
         (function() {
             const form = document.getElementById('mainForm');
             const statusDiv = document.getElementById('formStatus');
@@ -695,20 +678,6 @@
                     statusDiv.innerHTML = '<div style="background: #F5B700; color: #0D1117; padding: 12px; border-radius: 8px;">Спасибо! Менеджер свяжется с вами в ближайшее время.</div>';
                     form.reset();
                     setTimeout(() => statusDiv.innerHTML = '', 5000);
-                });
-            }
-        })();
-        
-        // Кнопка наверх
-        (function() {
-            const toTop = document.getElementById('toTopBtn');
-            if (toTop) {
-                window.addEventListener('scroll', function() {
-                    toTop.style.display = window.scrollY > 400 ? 'flex' : 'none';
-                });
-                toTop.style.display = 'none';
-                toTop.addEventListener('click', function() {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
             }
         })();

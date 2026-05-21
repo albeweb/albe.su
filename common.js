@@ -90,7 +90,7 @@ function updateCalculator() {
     var priceEl = document.getElementById('calcPrice');
     var hoursEl = document.getElementById('calcHoursInfo');
     if (priceEl) priceEl.innerHTML = cost.toLocaleString() + ' ₽';
-    if (hoursEl) hoursEl.innerHTML = 'Услуги: ' + servList + '<br>Сложность: ' + (complexity === 'simple' ? 'Старт' : complexity === 'medium' ? 'Бизнес' : complexity === 'high' ? 'Премиум' : 'Enterprise') + '<br>Часы: ' + h + ' ч × ' + cm[complexity] + ' = ' + fin + ' ч.';
+    if (hoursEl) hoursEl.innerHTML = '✔ Услуги: ' + servList + '<br>✔ Сложность: ' + (complexity === 'simple' ? 'Старт' : complexity === 'medium' ? 'Бизнес' : complexity === 'high' ? 'Премиум' : 'Enterprise') + '<br>✔ Часы: ' + h + ' ч × ' + cm[complexity] + ' = ' + fin + ' ч.';
     
     var rec = getRec(selected);
     var phases = [
@@ -191,74 +191,35 @@ function initSmoothScroll() {
     }
 }
 
-// ===== FAQ — ИСПРАВЛЕННЫЙ АККОРДЕОН (РАБОТАЕТ КОРРЕКТНО) =====
+// ===== FAQ =====
 function initFaq() {
-    var faqItems = document.querySelectorAll('.faq-item');
-    
-    for (var i = 0; i < faqItems.length; i++) {
-        var item = faqItems[i];
-        var question = item.querySelector('.faq-question');
-        var answer = item.querySelector('.faq-answer');
-        
-        if (question && answer) {
-            // Убеждаемся, что изначально всё закрыто
-            answer.classList.remove('active');
-            question.classList.remove('active');
-            
-            question.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                var currentAnswer = this.nextElementSibling;
-                var isActive = currentAnswer.classList.contains('active');
-                
-                // Закрываем все вопросы
-                var allAnswers = document.querySelectorAll('.faq-answer');
-                for (var j = 0; j < allAnswers.length; j++) {
-                    allAnswers[j].classList.remove('active');
-                }
-                var allQuestions = document.querySelectorAll('.faq-question');
-                for (var j = 0; j < allQuestions.length; j++) {
-                    allQuestions[j].classList.remove('active');
-                }
-                
-                // Если текущий не был открыт — открываем его
-                if (!isActive) {
-                    currentAnswer.classList.add('active');
-                    this.classList.add('active');
-                }
-            });
-        }
+    var questions = document.querySelectorAll('.faq-question');
+    for (var i = 0; i < questions.length; i++) {
+        var b = questions[i];
+        b.addEventListener('click', function() {
+            this.classList.toggle('active');
+            var answer = this.nextElementSibling;
+            if (answer) answer.classList.toggle('active');
+        });
     }
 }
 
-// ===== ФОРМА — С ДОПОЛНИТЕЛЬНЫМИ ПОЛЯМИ (TELEGRAM, КОММЕНТАРИЙ) =====
+// ===== ФОРМА =====
 function initForm() {
     var form = document.getElementById('mainForm');
     var stat = document.getElementById('formStatus');
-    
     if (form) {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
-            
             var name = document.getElementById('userName') ? document.getElementById('userName').value.trim() : '';
             var phone = document.getElementById('userPhone') ? document.getElementById('userPhone').value.trim() : '';
             var email = document.getElementById('userEmail') ? document.getElementById('userEmail').value.trim() : '';
-            var telegram = document.getElementById('userTelegram') ? document.getElementById('userTelegram').value.trim() : '';
-            var msg = document.getElementById('userMsg') ? document.getElementById('userMsg').value.trim() : '';
-            var comment = document.getElementById('userComment') ? document.getElementById('userComment').value.trim() : '';
-            
             if (!name || !phone || !email) {
-                if (stat) stat.innerHTML = '<div style="background:#990000; padding:12px; border-radius:8px;">Пожалуйста, заполните обязательные поля (Имя, Телефон, Email)</div>';
-                setTimeout(function() { if (stat) stat.innerHTML = ''; }, 4000);
+                if (stat) stat.innerHTML = '<div style="background:#990000; padding:12px;">Заполните все поля</div>';
+                setTimeout(function() { if (stat) stat.innerHTML = ''; }, 3000);
                 return;
             }
-            
-            // Здесь можно добавить отправку данных на сервер через fetch / XMLHttpRequest
-            // Для примера просто выводим сообщение об успехе и логируем в консоль
-            console.log('Заявка отправлена:', { name, phone, email, telegram, msg, comment });
-            
-            if (stat) stat.innerHTML = '<div style="background:#F5B700; color:#0D1117; padding:12px; border-radius:8px;">Спасибо! Менеджер свяжется с вами в ближайшее время.</div>';
+            if (stat) stat.innerHTML = '<div style="background:#F5B700; color:black; padding:12px;">Спасибо! Менеджер свяжется с вами.</div>';
             form.reset();
             setTimeout(function() { if (stat) stat.innerHTML = ''; }, 5000);
         });
@@ -278,66 +239,7 @@ function initToTop() {
     });
 }
 
-// ===== ФИКСАЦИЯ ШАПКИ =====
-function initHeaderFixed() {
-    var header = document.getElementById('mainHeader');
-    if (!header) return;
-    
-    function handleHeaderScroll() {
-        if (window.scrollY > 50) {
-            if (!header.classList.contains('fixed')) {
-                header.classList.add('fixed');
-                document.body.classList.add('header-fixed');
-            }
-        } else {
-            if (header.classList.contains('fixed')) {
-                header.classList.remove('fixed');
-                document.body.classList.remove('header-fixed');
-            }
-        }
-    }
-    
-    window.addEventListener('scroll', handleHeaderScroll);
-    handleHeaderScroll();
-}
-
-// ===== МОБИЛЬНОЕ МЕНЮ (БУРГЕР) =====
-function initMobileMenu() {
-    var burgerBtn = document.getElementById('burgerBtn');
-    var mobileMenu = document.getElementById('navMenu');
-    
-    if (burgerBtn && mobileMenu) {
-        burgerBtn.addEventListener('click', function() {
-            mobileMenu.classList.toggle('active');
-            var spans = burgerBtn.querySelectorAll('span');
-            if (mobileMenu.classList.contains('active')) {
-                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-                spans[1].style.opacity = '0';
-                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
-            } else {
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
-            }
-        });
-        
-        // Закрываем меню при клике на ссылку
-        var navLinks = document.querySelectorAll('.nav-link');
-        for (var i = 0; i < navLinks.length; i++) {
-            navLinks[i].addEventListener('click', function() {
-                mobileMenu.classList.remove('active');
-                var spans = burgerBtn.querySelectorAll('span');
-                if (spans) {
-                    spans[0].style.transform = 'none';
-                    spans[1].style.opacity = '1';
-                    spans[2].style.transform = 'none';
-                }
-            });
-        }
-    }
-}
-
-// ===== СХЕМА (JSON-LD) =====
+// ===== СХЕМА =====
 function addSchema() {
     var schema = {
         "@context": "https://schema.org",
@@ -375,36 +277,6 @@ function addSchema() {
     sc.type = 'application/ld+json';
     sc.textContent = JSON.stringify(schema);
     document.head.appendChild(sc);
-    
-    // Дополнительная FAQ схема для расширенных сниппетов
-    var faqSchema = {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": []
-    };
-    
-    var faqItems = document.querySelectorAll('.faq-item');
-    for (var i = 0; i < faqItems.length; i++) {
-        var questionEl = faqItems[i].querySelector('.faq-question');
-        var answerEl = faqItems[i].querySelector('.faq-answer');
-        if (questionEl && answerEl) {
-            faqSchema.mainEntity.push({
-                "@type": "Question",
-                "name": questionEl.innerText.replace('+', '').replace('−', '').trim(),
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": answerEl.innerText.trim()
-                }
-            });
-        }
-    }
-    
-    if (faqSchema.mainEntity.length > 0) {
-        var faqSc = document.createElement('script');
-        faqSc.type = 'application/ld+json';
-        faqSc.textContent = JSON.stringify(faqSchema);
-        document.head.appendChild(faqSc);
-    }
 }
 
 // ===== ЗАПУСК ВСЕХ ИНИЦИАЛИЗАЦИЙ =====
@@ -415,7 +287,5 @@ document.addEventListener('DOMContentLoaded', function() {
     initFaq();
     initForm();
     initToTop();
-    initHeaderFixed();
-    initMobileMenu();
     addSchema();
 });
