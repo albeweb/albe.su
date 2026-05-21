@@ -163,6 +163,20 @@
             margin-bottom: 0;
             display: flex;
             flex-direction: column;
+            background: rgba(18, 24, 32, 0.85);
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(245, 183, 0, 0.2);
+            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border-top-left-radius: 28px;
+            border-bottom-right-radius: 28px;
+            border-top-right-radius: 0;
+            border-bottom-left-radius: 0;
+            overflow: hidden;
+        }
+        .faq-item:hover {
+            border-color: #F5B700;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.5);
         }
         .faq-question {
             width: 100%;
@@ -176,45 +190,38 @@
             cursor: pointer;
             display: flex;
             justify-content: space-between;
-            font-family: inherit;
-            background: rgba(18, 24, 32, 0.85);
-            backdrop-filter: blur(2px);
-            border: 1px solid rgba(245, 183, 0, 0.2);
-            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            border-top-left-radius: 28px;
-            border-bottom-right-radius: 28px;
-            border-top-right-radius: 0;
-            border-bottom-left-radius: 0;
+            align-items: center;
+            font-family: 'Manrope', sans-serif;
+            transition: all 0.3s ease;
         }
         .faq-question:hover {
-            border-color: #F5B700;
-            transform: translateY(-2px);
-        }
-        .faq-answer {
-            padding: 0 28px 28px 28px;
-            color: #B0C4DE;
-            display: none;
-            background: rgba(18, 24, 32, 0.85);
-            backdrop-filter: blur(2px);
-            border: 1px solid rgba(245, 183, 0, 0.2);
-            border-top: none;
-            border-top-left-radius: 0;
-            border-bottom-right-radius: 28px;
-            border-top-right-radius: 0;
-            border-bottom-left-radius: 0;
-            margin-top: -2px;
-        }
-        .faq-answer.active {
-            display: block;
+            background: rgba(245, 183, 0, 0.05);
         }
         .faq-question::after {
             content: '+';
             font-size: 1.5rem;
             font-weight: 300;
-            transition: transform 0.3s;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 12px;
+            color: #F5B700;
         }
         .faq-question.active::after {
             content: '−';
+        }
+        .faq-answer {
+            padding: 0 28px;
+            color: #B0C4DE;
+            display: none;
+            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            border-top: none;
+            transition: all 0.3s ease;
+        }
+        .faq-answer.active {
+            display: block;
+            padding: 0 28px 28px 28px;
         }
         
         @media (max-width: 900px) {
@@ -247,40 +254,35 @@
             .section-more-btn {
                 align-self: flex-start;
             }
-            .contact-card {
-                padding: 32px 24px;
-            }
-            .form-row {
-                grid-template-columns: 1fr;
-                gap: 0;
-            }
-            .contact-card h2 {
-                font-size: 1.8rem;
-            }
             .faq-question {
                 padding: 18px 20px;
                 font-size: 0.95rem;
             }
             .faq-answer {
-                padding: 0 20px 20px 20px;
                 font-size: 0.9rem;
+            }
+            .faq-answer.active {
+                padding: 0 20px 20px 20px;
             }
         }
         
         @media (max-width: 480px) {
-            .contact-card {
-                padding: 24px 20px;
-            }
-            .contact-card h2 {
-                font-size: 1.5rem;
-            }
             .faq-question {
-                padding: 16px 18px;
-                font-size: 0.9rem;
+                padding: 14px 16px;
+                font-size: 0.85rem;
+            }
+            .faq-question::after {
+                font-size: 1.2rem;
+            }
+            .faq-answer {
+                font-size: 0.85rem;
+            }
+            .faq-answer.active {
+                padding: 0 16px 16px 16px;
             }
         }
         
-        /* СТИЛИ ДЛЯ БЛОКА КОНТАКТОВ — В ЕДИНОМ СТИЛЕ */
+        /* СТИЛИ ДЛЯ БЛОКА КОНТАКТОВ */
         .contact-section {
             padding: 100px 0;
             background: linear-gradient(135deg, #0A0E12 0%, #0D1117 100%);
@@ -303,6 +305,11 @@
             font-size: 2.4rem;
             margin-bottom: 1rem;
             text-align: center;
+            position: relative;
+            display: inline-block;
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
         }
         .contact-card h2::after {
             content: '';
@@ -313,13 +320,6 @@
             width: 70px;
             height: 2px;
             background: #F5B700;
-        }
-        .contact-card h2 {
-            position: relative;
-            display: inline-block;
-            width: auto;
-            margin-left: auto;
-            margin-right: auto;
         }
         .contact-desc {
             text-align: center;
@@ -366,6 +366,28 @@
             margin-top: 16px;
             text-align: center;
             font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-card {
+                padding: 32px 24px;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .contact-card h2 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .contact-card {
+                padding: 24px 20px;
+            }
+            .contact-card h2 {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -532,7 +554,7 @@
             </div>
         </section>
 
-        <!-- МИССИЯ — ПЕРЕДЕЛАННЫЙ БЛОК: СЛЕВА ТЕКСТ, СПРАВА СЕТКА 2×2 -->
+        <!-- МИССИЯ -->
         <section class="section">
             <div class="container">
                 <div class="section-header">
@@ -554,7 +576,7 @@
             </div>
         </section>
 
-        <!-- FAQ — 8 ВОПРОСОВ В 2 СТОЛБЦА -->
+        <!-- FAQ — 8 ВОПРОСОВ В 2 СТОЛБЦА (РАБОТАЮЩИЙ АККОРДЕОН) -->
         <section class="section">
             <div class="container">
                 <div class="section-header">
@@ -598,7 +620,7 @@
             </div>
         </section>
 
-        <!-- КОНТАКТЫ — ПЕРЕДЕЛАННЫЙ БЛОК В ЕДИНОМ СТИЛЕ -->
+        <!-- КОНТАКТЫ -->
         <section id="contact" class="contact-section">
             <div class="container">
                 <div class="contact-card">
@@ -631,32 +653,47 @@
     <script src="common.js"></script>
     
     <script>
-        // Работа FAQ аккордеона
+        // ===== РАБОТАЮЩИЙ FAQ АККОРДЕОН =====
         (function() {
-            const faqButtons = document.querySelectorAll('.faq-question');
-            faqButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const answer = this.nextElementSibling;
-                    const isActive = answer.classList.contains('active');
+            // Находим все кнопки вопросов
+            var faqButtons = document.querySelectorAll('.faq-question');
+            
+            for (var i = 0; i < faqButtons.length; i++) {
+                var button = faqButtons[i];
+                
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Находим родительский .faq-item и внутри него ответ
+                    var parentItem = this.closest('.faq-item');
+                    if (!parentItem) return;
+                    
+                    var answer = parentItem.querySelector('.faq-answer');
+                    if (!answer) return;
+                    
+                    var isActive = answer.classList.contains('active');
                     
                     // Закрываем все ответы
-                    document.querySelectorAll('.faq-answer').forEach(ans => {
-                        ans.classList.remove('active');
-                    });
-                    document.querySelectorAll('.faq-question').forEach(btn => {
-                        btn.classList.remove('active');
-                    });
+                    var allAnswers = document.querySelectorAll('.faq-answer');
+                    for (var j = 0; j < allAnswers.length; j++) {
+                        allAnswers[j].classList.remove('active');
+                    }
+                    var allQuestions = document.querySelectorAll('.faq-question');
+                    for (var j = 0; j < allQuestions.length; j++) {
+                        allQuestions[j].classList.remove('active');
+                    }
                     
-                    // Открываем текущий, если он не был открыт
+                    // Если текущий не был открыт — открываем его
                     if (!isActive) {
                         answer.classList.add('active');
                         this.classList.add('active');
                     }
                 });
-            });
+            }
         })();
 
-        // Дополнительный скрипт для формы, если common.js не обрабатывает
+        // ===== ФОРМА =====
         (function() {
             const form = document.getElementById('mainForm');
             const statusDiv = document.getElementById('formStatus');
@@ -668,6 +705,9 @@
                     const name = document.getElementById('userName')?.value.trim();
                     const phone = document.getElementById('userPhone')?.value.trim();
                     const email = document.getElementById('userEmail')?.value.trim();
+                    const telegram = document.getElementById('userTelegram')?.value.trim();
+                    const msg = document.getElementById('userMsg')?.value.trim();
+                    const comment = document.getElementById('userComment')?.value.trim();
                     
                     if (!name || !phone || !email) {
                         statusDiv.innerHTML = '<div style="background: #990000; padding: 12px; border-radius: 8px;">Пожалуйста, заполните обязательные поля (Имя, Телефон, Email)</div>';
@@ -675,9 +715,26 @@
                         return;
                     }
                     
+                    // Логируем данные в консоль (здесь можно добавить отправку на сервер)
+                    console.log('Заявка:', { name, phone, email, telegram, msg, comment });
+                    
                     statusDiv.innerHTML = '<div style="background: #F5B700; color: #0D1117; padding: 12px; border-radius: 8px;">Спасибо! Менеджер свяжется с вами в ближайшее время.</div>';
                     form.reset();
                     setTimeout(() => statusDiv.innerHTML = '', 5000);
+                });
+            }
+        })();
+
+        // ===== КНОПКА НАВЕРХ =====
+        (function() {
+            const toTop = document.getElementById('toTopBtn');
+            if (toTop) {
+                window.addEventListener('scroll', function() {
+                    toTop.style.display = window.scrollY > 400 ? 'flex' : 'none';
+                });
+                toTop.style.display = 'none';
+                toTop.addEventListener('click', function() {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
             }
         })();
