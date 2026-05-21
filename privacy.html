@@ -181,6 +181,79 @@
             transform: translateY(-4px);
         }
 
+        .header {
+            position: relative;
+            background: rgba(13, 17, 23, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(245, 183, 0, 0.2);
+            padding: 18px 0;
+            width: 100%;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo {
+            font-family: 'Zen Dots', monospace;
+            font-size: 2rem;
+            font-weight: 400;
+            text-decoration: none;
+            letter-spacing: 1px;
+            flex-shrink: 0;
+        }
+
+        .logo span:first-child { color: #F5B700; }
+        .logo span:last-child { color: #FFFFFF; }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: 400;
+            transition: 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-link:hover {
+            color: #F5B700;
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 8px 24px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            cursor: pointer;
+            text-decoration: none;
+            background: transparent;
+            color: #FFFFFF;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-top-left-radius: 28px;
+            border-bottom-right-radius: 28px;
+            border-top-right-radius: 0;
+            border-bottom-left-radius: 0;
+            transition: all 0.35s;
+        }
+
+        .btn-outline:hover {
+            border-color: #F5B700;
+            background: rgba(245, 183, 0, 0.1);
+            color: #F5B700;
+        }
+
         .footer {
             background: #080C10;
             padding: 48px 0 32px;
@@ -227,6 +300,15 @@
             .section {
                 padding: 40px 0;
             }
+            .header .container {
+                padding: 0 20px;
+            }
+            .nav-menu {
+                display: none;
+            }
+            .logo {
+                font-size: 1.6rem;
+            }
             .footer-grid {
                 flex-direction: column;
                 text-align: center;
@@ -259,7 +341,19 @@
 </head>
 <body>
 
-<div id="header-placeholder"></div>
+<header class="header">
+    <div class="container">
+        <a href="/" class="logo">
+            <span>a</span><span>lbe</span>
+        </a>
+        <nav class="nav-menu">
+            <a href="/#services" class="nav-link">Услуги</a>
+            <a href="/#portfolio" class="nav-link">Портфолио</a>
+            <a href="/#calculator" class="nav-link">Калькулятор</a>
+            <a href="/#contact" class="nav-link">Контакты</a>
+        </nav>
+    </div>
+</header>
 
 <main>
     <section class="section">
@@ -369,14 +463,57 @@
     </section>
 </main>
 
-<div id="footer-placeholder"></div>
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-logo">ALBE digital</div>
+                <p>Digital agency премиального уровня. Разработка сайтов, дизайн, AI, SEO.</p>
+            </div>
+            <div>
+                <h4 style="color: #F5B700; margin-bottom: 12px;">Контакты</h4>
+                <p><a href="mailto:albe.web@yandex.ru">albe.web@yandex.ru</a></p>
+                <p><a href="https://t.me/albe_web" target="_blank">Telegram: @albe_web</a></p>
+            </div>
+            <div>
+                <h4 style="color: #F5B700; margin-bottom: 12px;">Документы</h4>
+                <p><a href="/privacy.html">Политика конфиденциальности</a></p>
+                <p><a href="/terms.html">Пользовательское соглашение</a></p>
+            </div>
+        </div>
+        <hr style="border-color: #1E2A32; margin: 32px 0 20px;">
+        <p style="text-align: center;">© 2026 ALBE digital — разработка, дизайн, AI, SEO</p>
+    </div>
+</footer>
 
 <div class="totop" id="toTopBtn">↑</div>
 
-<script src="header-loader.js"></script>
-<script src="common.js"></script>
-
 <script>
+    // ===== Фиксация шапки при скролле =====
+    const header = document.querySelector('.header');
+    if (header) {
+        function handleHeaderScroll() {
+            if (window.scrollY > 50) {
+                if (!header.classList.contains('fixed')) {
+                    header.style.position = 'fixed';
+                    header.style.top = '0';
+                    header.style.left = '0';
+                    header.style.right = '0';
+                    document.body.style.paddingTop = header.offsetHeight + 'px';
+                    header.classList.add('fixed');
+                }
+            } else {
+                if (header.classList.contains('fixed')) {
+                    header.style.position = 'relative';
+                    document.body.style.paddingTop = '0';
+                    header.classList.remove('fixed');
+                }
+            }
+        }
+        window.addEventListener('scroll', handleHeaderScroll);
+        handleHeaderScroll();
+    }
+
     // ===== Кнопка "Наверх" =====
     const toTop = document.getElementById('toTopBtn');
     if (toTop) {
