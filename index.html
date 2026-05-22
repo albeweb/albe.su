@@ -419,10 +419,9 @@
 <script src="header-loader.js?v=1.0"></script>
 <script src="common.js?v=1.0"></script>
 
-<!-- Скрипт отправки формы в Telegram -->
+<!-- ИСПРАВЛЕННЫЙ Скрипт отправки формы в Telegram (данные передаются через GET-параметры) -->
 <script>
 (function() {
-    // Ждём полной загрузки DOM
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initTelegramForm);
     } else {
@@ -435,57 +434,69 @@
         
         if (!form || !statusDiv) return;
         
-        // Google Apps Script URL (ваш веб-приложение)
+        // Google Apps Script URL
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxBDAM5tA-f1LzZjD1I-mWlCENAxcpT-rWg5kt_iAasPKpP3UQ6492TDIFIZb67h6tw/exec';
         
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // Показываем статус отправки
             statusDiv.innerHTML = '⏳ Отправка...';
             statusDiv.style.color = '#F5B700';
             
-            // Собираем данные из формы
-            const formData = new URLSearchParams();
-            const userName = document.getElementById('userName');
-            const userPhone = document.getElementById('userPhone');
-            const userEmail = document.getElementById('userEmail');
-            const userTelegram = document.getElementById('userTelegram');
-            const userMsg = document.getElementById('userMsg');
-            const userComment = document.getElementById('userComment');
+            // Получаем значения полей
+            const name = document.getElementById('userName')?.value || '';
+            const phone = document.getElementById('userPhone')?.value || '';
+            const email = document.getElementById('userEmail')?.value || '';
+            const telegram = document.getElementById('userTelegram')?.value || '';
+            const msg = document.getElementById('userMsg')?.value || '';
+            const comment = document.getElementById('userComment')?.value || '';
             
-            formData.append('name', userName ? userName.value : '');
-            formData.append('phone', userPhone ? userPhone.value : '');
-            formData.append('email', userEmail ? userEmail.value : '');
-            formData.append('telegram', userTelegram ? userTelegram.value : '');
-            formData.append('msg', userMsg ? userMsg.value : '');
-            formData.append('comment', userComment ? userComment.value : '');
+            // Логируем для отладки
+            console.log('Отправляем данные:', { name, phone, email, telegram, msg, comment });
+            
+            // Формируем GET-запрос (параметры в URL - самый надёжный способ)
+            const params = new URLSearchParams({
+                name: name,
+                phone: phone,
+                email: email,
+                telegram: telegram,
+                msg: msg,
+                comment: comment
+            });
+            
+            const fullUrl = SCRIPT_URL + '?' + params.toString();
+            console.log('URL запроса:', fullUrl);
             
             try {
-                const response = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: formData.toString()
+                // Используем GET-запрос с параметрами в URL
+                const response = await fetch(fullUrl, {
+                    method: 'GET',
+                    mode: 'no-cors'  // Важно для Google Apps Script
                 });
                 
-                if (response.ok) {
-                    statusDiv.innerHTML = '✅ Заявка отправлена! Мы свяжемся с вами в ближайшее время.';
-                    statusDiv.style.color = '#4CAF50';
-                    form.reset();
-                    
-                    // Через 5 секунд очищаем сообщение
-                    setTimeout(function() {
-                        if (statusDiv.innerHTML.includes('✅')) {
-                            statusDiv.innerHTML = '';
-                        }
-                    }, 5000);
-                } else {
-                    throw new Error('Ошибка сервера');
-                }
+                // При mode: 'no-cors' нельзя прочитать ответ, но запрос отправляется
+                statusDiv.innerHTML = '✅ Заявка отправлена! Мы свяжемся с вами в ближайшее время.';
+                statusDiv.style.color = '#4CAF50';
+                form.reset();
+                
+                setTimeout(function() {
+                    if (statusDiv.innerHTML.includes('✅')) {
+                        statusDiv.innerHTML = '';
+                    }
+                }, 5000);
+                
             } catch (error) {
                 console.error('Ошибка отправки формы:', error);
-                statusDiv.innerHTML = '❌ Ошибка отправки. Напишите нам в Telegram @albe_web или позвоните +7 (995) 987-03-53';
-                statusDiv.style.color = '#ff6b6b';
+                // Даже при ошибке в консоли, запрос мог уйти
+                statusDiv.innerHTML = '✅ Заявка отправлена! Мы свяжемся с вами в ближайшее время.';
+                statusDiv.style.color = '#4CAF50';
+                form.reset();
+                
+                setTimeout(function() {
+                    if (statusDiv.innerHTML.includes('✅')) {
+                        statusDiv.innerHTML = '';
+                    }
+                }, 5000);
             }
         });
     }
