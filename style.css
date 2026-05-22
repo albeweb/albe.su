@@ -596,18 +596,18 @@ body.header-fixed { padding-top: 82px; }
 }
 
 .hero-title-line1 {
-    font-size: 8rem;
+    font-size: 10rem;
     font-weight: 500;
     color: #FFFFFF;
     display: block;
-    line-height: 1.1;
+    line-height: 1.3;
 }
 
 .hero-title-line2 {
     font-size: 6rem;
     font-weight: 500;
     display: block;
-    line-height: 1.1;
+    line-height: 1.2;
     margin-top: 0.2rem;
 }
 
@@ -624,11 +624,11 @@ body.header-fixed { padding-top: 82px; }
 }
 
 .hero-title-line3 {
-    font-size: 10rem;
+    font-size: 6rem;
     font-weight: 500;
     color: #FFFFFF;
     display: block;
-    line-height: 1.1;
+    line-height: 1.3;
     margin-top: 0.2rem;
 }
 
