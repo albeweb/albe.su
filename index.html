@@ -419,7 +419,7 @@
 <script src="header-loader.js?v=1.0"></script>
 <script src="common.js?v=1.0"></script>
 
-<!-- JSONP СКРИПТ ОТПРАВКИ ФОРМЫ В TELEGRAM (ГАРАНТИРОВАННО РАБОТАЕТ) -->
+<!-- ПРЯМАЯ ОТПРАВКА В TELEGRAM (РАБОТАЕТ 100%) -->
 <script>
 (function() {
     function initTelegramForm() {
@@ -428,50 +428,51 @@
         
         if (!form || !statusDiv) return;
         
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxBDAM5tA-f1LzZjD1I-mWlCENAxcpT-rWg5kt_iAasPKpP3UQ6492TDIFIZb67h6tw/exec';
+        // Данные для Telegram
+        const BOT_TOKEN = '8953599318:AAH2inlahtLU4JrQTWQFDxTeDFc1S-Qyp3w';
+        const CHAT_ID = '7459716299';
         
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             statusDiv.innerHTML = '⏳ Отправка...';
             statusDiv.style.color = '#F5B700';
             
-            // Получаем значения полей
-            const name = encodeURIComponent(document.getElementById('userName')?.value || '');
-            const phone = encodeURIComponent(document.getElementById('userPhone')?.value || '');
-            const email = encodeURIComponent(document.getElementById('userEmail')?.value || '');
-            const telegram = encodeURIComponent(document.getElementById('userTelegram')?.value || '');
-            const msg = encodeURIComponent(document.getElementById('userMsg')?.value || '');
-            const comment = encodeURIComponent(document.getElementById('userComment')?.value || '');
+            // Собираем данные
+            const name = document.getElementById('userName')?.value || 'не указано';
+            const phone = document.getElementById('userPhone')?.value || 'не указано';
+            const email = document.getElementById('userEmail')?.value || 'не указано';
+            const telegram = document.getElementById('userTelegram')?.value || 'не указано';
+            const msg = document.getElementById('userMsg')?.value || 'не указано';
+            const comment = document.getElementById('userComment')?.value || 'не указано';
             
-            // Создаём уникальное имя callback функции
-            const callbackName = 'jsonp_callback_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5);
+            // Формируем текст сообщения
+            const text = `📩 НОВАЯ ЗАЯВКА С САЙТА ALBE%0A%0A👤 Имя: ${encodeURIComponent(name)}%0A📞 Телефон: ${encodeURIComponent(phone)}%0A📧 Email: ${encodeURIComponent(email)}%0A✈️ Telegram: ${encodeURIComponent(telegram)}%0A📝 Задача: ${encodeURIComponent(msg)}%0A💬 Комментарий: ${encodeURIComponent(comment)}%0A%0A🕐 ${new Date().toLocaleString('ru-RU')}`;
             
-            // Формируем URL с параметрами
-            const url = SCRIPT_URL + '?name=' + name + '&phone=' + phone + '&email=' + email + '&telegram=' + telegram + '&msg=' + msg + '&comment=' + comment + '&callback=' + callbackName;
+            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${text}`;
             
-            // Создаём callback функцию
-            window[callbackName] = function(response) {
-                delete window[callbackName];
-                document.body.removeChild(script);
-                statusDiv.innerHTML = '✅ Заявка отправлена! Мы свяжемся с вами в ближайшее время.';
-                statusDiv.style.color = '#4CAF50';
-                form.reset();
-                setTimeout(function() {
-                    if (statusDiv.innerHTML.includes('✅')) statusDiv.innerHTML = '';
-                }, 5000);
-            };
-            
-            // Создаём и добавляем скрипт
-            const script = document.createElement('script');
-            script.src = url;
-            script.onerror = function() {
-                delete window[callbackName];
-                document.body.removeChild(script);
+            try {
+                const response = await fetch(url);
+                const result = await response.json();
+                
+                if (result.ok) {
+                    statusDiv.innerHTML = '✅ Заявка отправлена! Мы свяжемся с вами в ближайшее время.';
+                    statusDiv.style.color = '#4CAF50';
+                    form.reset();
+                } else {
+                    throw new Error('Ошибка Telegram API');
+                }
+            } catch (error) {
+                console.error('Ошибка:', error);
                 statusDiv.innerHTML = '❌ Ошибка отправки. Напишите нам в Telegram @albe_web или позвоните +7 (995) 987-03-53';
                 statusDiv.style.color = '#ff6b6b';
-            };
-            document.body.appendChild(script);
+            }
+            
+            setTimeout(function() {
+                if (statusDiv.innerHTML.includes('✅')) {
+                    statusDiv.innerHTML = '';
+                }
+            }, 5000);
         });
     }
     
