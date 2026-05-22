@@ -40,13 +40,13 @@ function initHeader() {
     }
 }
 
-// ===== НОВАЯ ФУНКЦИЯ ДЛЯ БУРГЕР-МЕНЮ =====
+// ===== ИНИЦИАЛИЗАЦИЯ БУРГЕР-МЕНЮ =====
 function initBurgerMenu() {
     const burgerBtn = document.getElementById('burgerBtn');
     const navMenu = document.getElementById('navMenu');
     
     if (burgerBtn && navMenu) {
-        // Убираем старые обработчики через клонирование
+        // Убираем старые обработчики
         const newBurger = burgerBtn.cloneNode(true);
         burgerBtn.parentNode.replaceChild(newBurger, burgerBtn);
         
@@ -78,16 +78,18 @@ function initBurgerMenu() {
                 }
             });
         });
+        
+        console.log('Бургер-меню инициализировано');
     } else {
-        console.log('Бургер или меню не найдены');
+        console.warn('Бургер или меню не найдены');
     }
 }
 
 // Запуск загрузки
 document.addEventListener('DOMContentLoaded', () => {
     loadComponent('header-placeholder', 'header.html', () => {
-        initHeader();      // фиксация шапки
-        initBurgerMenu();  // ← ВАЖНО: инициализация бургера
+        initHeader();        // фиксация шапки
+        initBurgerMenu();    // ← ВАЖНО: бургер-меню
     });
     loadComponent('footer-placeholder', 'footer.html');
 });
