@@ -45,21 +45,413 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<!-- Предзагрузка критических ресурсов -->
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap">
-<link rel="preload" as="style" href="style.css?v=20260522">
+<!-- КРИТИЧЕСКИЙ CSS (inline для мгновенного рендеринга) -->
+<style>
+    /* Сброс и базовые стили для предотвращения CLS */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Inter', 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: #0A0E17;
+        color: #E8EDF5;
+        line-height: 1.5;
+        overflow-x: hidden;
+    }
+    
+    /* Резервирование места под изображения (КЛЮЧЕВОЕ ДЛЯ CLS) */
+    img, picture, video, iframe {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+    
+    /* Резервирование соотношений сторон для изображений */
+    .portfolio-image, .mission-grid-card {
+        aspect-ratio: 4 / 3;
+        width: 100%;
+        object-fit: cover;
+        background: #1A1F2E;
+    }
+    
+    /* Резервирование места под шрифты (предотвращает FOUT/FOIT) */
+    .hero-title {
+        min-height: 180px;
+    }
+    
+    .hero-title-line1, .hero-title-line2, .hero-title-line3 {
+        display: block;
+        min-height: 1.2em;
+    }
+    
+    /* Резервирование под статистику */
+    .hero-stats {
+        min-height: 80px;
+    }
+    
+    /* Резервирование под сетки */
+    .services-grid, .portfolio-grid, .steps-container, .competences-grid, .price-grid, .faq-grid {
+        display: grid;
+        gap: 24px;
+    }
+    
+    .services-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .portfolio-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .steps-container { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .competences-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .price-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .faq-grid { grid-template-columns: 1fr; }
+    
+    /* Контейнер с фиксированной шириной */
+    .container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 20px;
+        width: 100%;
+    }
+    
+    /* Базовые стили для карточек */
+    .service-card, .portfolio-card, .step-card, .competence-card, .price-card, .faq-item {
+        background: #11161F;
+        border-radius: 20px;
+        padding: 24px;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    /* Кнопки и элементы управления */
+    .btn-primary, .btn-outline, .totop {
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    
+    .totop {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: #F5B700;
+        color: #0A0E17;
+        border: none;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    
+    /* Адаптив для мобильных */
+    @media (max-width: 768px) {
+        .container { padding: 0 16px; }
+        .hero-title { min-height: 160px; }
+        .services-grid, .portfolio-grid, .steps-container, .competences-grid, .price-grid {
+            gap: 16px;
+        }
+        .service-card, .portfolio-card, .step-card, .competence-card, .price-card {
+            padding: 20px;
+        }
+        .hero-stats { min-height: 70px; }
+        .services-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+        .service-badge {
+            font-size: 12px;
+            padding: 6px 12px;
+        }
+    }
+    
+    /* Для очень маленьких экранов */
+    @media (max-width: 480px) {
+        .hero-title { min-height: 140px; }
+        .hero-title-line1 { font-size: 28px; }
+        .hero-title-line2 { font-size: 28px; }
+        .hero-title-line3 { font-size: 28px; }
+        .btn-primary, .btn-outline {
+            padding: 12px 20px;
+            font-size: 14px;
+        }
+    }
+    
+    /* Анимация для дождя из кода (не влияет на CLS) */
+    .code-rain {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 0;
+    }
+    .code-line {
+        position: absolute;
+        white-space: nowrap;
+        font-family: 'Fira Code', monospace;
+        font-size: 14px;
+        color: rgba(245, 183, 0, 0.15);
+        animation: fall linear infinite;
+    }
+    @keyframes fall {
+        from { transform: translateY(-100px); opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        to { transform: translateY(100vh); opacity: 0; }
+    }
+    
+    /* Hero секция */
+    .hero {
+        position: relative;
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+        background: linear-gradient(135deg, #0A0E17 0%, #11161F 100%);
+        overflow: hidden;
+        padding: 80px 0;
+    }
+    .hero-wrapper {
+        position: relative;
+        z-index: 2;
+    }
+    .hero-tag {
+        display: inline-block;
+        background: rgba(245, 183, 0, 0.15);
+        color: #F5B700;
+        padding: 6px 14px;
+        border-radius: 30px;
+        font-size: 12px;
+        letter-spacing: 1px;
+        margin-bottom: 24px;
+    }
+    .hero-title-line1, .hero-title-line3 {
+        font-size: clamp(32px, 8vw, 72px);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+    }
+    .hero-title-line2 {
+        font-size: clamp(28px, 7vw, 64px);
+        font-weight: 700;
+        margin: 8px 0;
+    }
+    .word-teal { color: #2DD4BF; }
+    .word-white { color: #FFFFFF; }
+    .word-gold { color: #F5B700; }
+    .hero-buttons {
+        display: flex;
+        gap: 16px;
+        margin: 32px 0 24px;
+        flex-wrap: wrap;
+    }
+    .btn-primary {
+        background: #F5B700;
+        color: #0A0E17;
+        padding: 14px 32px;
+        border-radius: 40px;
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-block;
+    }
+    .btn-outline {
+        border: 1px solid #F5B700;
+        color: #F5B700;
+        padding: 14px 32px;
+        border-radius: 40px;
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-block;
+    }
+    .hero-stats {
+        display: flex;
+        gap: 40px;
+        margin-top: 48px;
+        flex-wrap: wrap;
+    }
+    .stat-number {
+        font-size: 32px;
+        font-weight: 700;
+        color: #F5B700;
+    }
+    .services-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 24px;
+    }
+    .service-badge {
+        background: rgba(255,255,255,0.05);
+        padding: 8px 16px;
+        border-radius: 30px;
+        font-size: 13px;
+    }
+    .section {
+        padding: 80px 0;
+    }
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 48px;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+    .section-header h2 {
+        font-size: clamp(28px, 5vw, 40px);
+    }
+    .section-more-btn {
+        color: #F5B700;
+        text-decoration: none;
+        font-weight: 500;
+    }
+    .portfolio-info {
+        margin-top: 16px;
+    }
+    .calculator-card {
+        background: #11161F;
+        border-radius: 24px;
+        padding: 32px;
+        margin-top: 32px;
+    }
+    .price-table {
+        margin-bottom: 32px;
+    }
+    .price-card ul {
+        margin-top: 16px;
+        list-style: none;
+    }
+    .price-card li {
+        padding: 6px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .contact-card {
+        background: #11161F;
+        border-radius: 32px;
+        padding: 48px;
+    }
+    .contact-form {
+        max-width: 600px;
+        margin: 32px auto 0;
+    }
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-bottom: 16px;
+    }
+    input, textarea {
+        width: 100%;
+        padding: 14px 18px;
+        background: #1A1F2E;
+        border: 1px solid #2A2F3E;
+        border-radius: 12px;
+        color: #E8EDF5;
+        font-family: inherit;
+    }
+    .faq-question {
+        width: 100%;
+        text-align: left;
+        background: none;
+        border: none;
+        color: #E8EDF5;
+        font-size: 18px;
+        font-weight: 600;
+        padding: 16px 0;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .faq-question::after {
+        content: '+';
+        font-size: 24px;
+        color: #F5B700;
+    }
+    .faq-question[aria-expanded="true"]::after {
+        content: '−';
+    }
+    .faq-answer {
+        padding-bottom: 16px;
+        color: #B0C4DE;
+        line-height: 1.6;
+    }
+    .mission-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        margin-top: 32px;
+    }
+    @media (max-width: 768px) {
+        .mission-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .form-row { grid-template-columns: 1fr; }
+        .contact-card { padding: 32px 20px; }
+        .section { padding: 48px 0; }
+        .hero-stats { gap: 24px; }
+        .calculator-card { padding: 20px; }
+    }
+    @media (max-width: 480px) {
+        .hero-buttons .btn-primary, .hero-buttons .btn-outline {
+            padding: 10px 20px;
+            font-size: 13px;
+        }
+        .stat-number { font-size: 24px; }
+        .stat-label { font-size: 12px; }
+    }
+    .price-note {
+        margin-top: 24px;
+        font-size: 13px;
+        color: #B0C4DE;
+        text-align: center;
+    }
+    .calc-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 16px 0;
+    }
+    .calc-option {
+        background: #1A1F2E;
+        padding: 8px 16px;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+    .calc-option.active {
+        background: #F5B700;
+        color: #0A0E17;
+    }
+    .calc-price {
+        font-size: 36px;
+        font-weight: 700;
+        color: #F5B700;
+        margin-top: 24px;
+    }
+    .totop {
+        display: none;
+    }
+    .form-status {
+        margin-top: 16px;
+        padding: 12px;
+        border-radius: 12px;
+        text-align: center;
+    }
+    .hidden {
+        display: none;
+    }
+</style>
 
-<!-- Шрифты с атрибутом media для оптимизации -->
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="style.css?v=20260522">
-
+<!-- Не критические стили загружаем асинхронно -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
 </noscript>
 
 <script type="application/ld+json">
@@ -90,39 +482,6 @@
             },
             "sameAs": ["https://t.me/albe_web"],
             "priceRange": "от 120 000 ₽"
-        },
-        {
-            "@type": "WebSite",
-            "@id": "https://albe.su/#website",
-            "url": "https://albe.su/",
-            "name": "ALBE DIGITAL",
-            "description": "Разработка дизайна и сайтов под ключ — премиум дизайн, SEO, продвижение",
-            "publisher": {"@id": "https://albe.su/#organization"},
-            "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://albe.su/search?q={search_term_string}",
-                "query-input": "required name=search_term_string"
-            }
-        },
-        {
-            "@type": "LocalBusiness",
-            "@id": "https://albe.su/#localbusiness",
-            "name": "ALBE digital",
-            "image": "https://albe.su/images/bank.avif",
-            "description": "Разработка дизайна и сайтов под ключ, премиум дизайн, SEO-продвижение, AI-решения, мобильные приложения.",
-            "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Москва",
-                "addressRegion": "Москва",
-                "postalCode": "127051",
-                "streetAddress": "Цветной бульвар",
-                "addressCountry": "RU"
-            },
-            "telephone": "+79959870353",
-            "email": "albe.web@yandex.ru",
-            "openingHours": "Mo-Fr 10:00-19:00",
-            "priceRange": "от 120 000 ₽",
-            "sameAs": ["https://t.me/albe_web"]
         }
     ]
 }
@@ -143,15 +502,6 @@
 <div class="code-line" style="left:65%;animation-duration:13s;animation-delay:5s">&lt;SEO speed="fast" /&gt;</div>
 <div class="code-line" style="left:75%;animation-duration:8s;animation-delay:2.5s">git commit -m "launch success"</div>
 <div class="code-line" style="left:85%;animation-duration:16s;animation-delay:1.5s">const website = new ALBE();</div>
-<div class="code-line" style="left:10%;animation-duration:11s;animation-delay:6s">&lt;React.StrictMode&gt;</div>
-<div class="code-line" style="left:20%;animation-duration:13s;animation-delay:3.5s">function App() { return &lt;Hero /&gt;; }</div>
-<div class="code-line" style="left:30%;animation-duration:9.5s;animation-delay:7s">.btn-gold { background: #F5B700; }</div>
-<div class="code-line" style="left:40%;animation-duration:14.5s;animation-delay:1s">export default async function build()</div>
-<div class="code-line" style="left:50%;animation-duration:12.5s;animation-delay:4.5s">import { SEO, Analytics } from '@/lib'</div>
-<div class="code-line" style="left:60%;animation-duration:10.5s;animation-delay:8s">const meta = { title: "ALBE digital" }</div>
-<div class="code-line" style="left:70%;animation-duration:15.5s;animation-delay:2s">@keyframes fadeIn { from { opacity: 0; } }</div>
-<div class="code-line" style="left:80%;animation-duration:11.5s;animation-delay:5.5s">&lt;meta name="viewport" /&gt;</div>
-<div class="code-line" style="left:90%;animation-duration:13.5s;animation-delay:.8s">console.log("ALBE launched")</div>
 </div>
 <div class="container">
 <div class="hero-wrapper">
@@ -200,6 +550,7 @@
 </div>
 </section>
 
+<!-- ВСЕ ИЗОБРАЖЕНИЯ С ЗАДАННЫМИ РАЗМЕРАМИ (width/height + aspect-ratio) -->
 <section id="services" class="section" itemscope itemtype="https://schema.org/ItemList">
 <div class="container">
 <div class="section-header">
@@ -225,15 +576,15 @@
 </div>
 <div class="portfolio-grid">
 <div class="portfolio-card" itemscope itemtype="https://schema.org/CreativeWork">
-<picture><source srcset="images/bank.avif" type="image/avif"><img class="portfolio-image" src="images/bank.avif" alt="Neo Bank — премиум платформа для банкинга, увеличили активных клиентов на 210%" loading="lazy" decoding="async" width="400" height="300" itemprop="image"></picture>
+<picture><source srcset="images/bank.avif" type="image/avif"><img class="portfolio-image" src="images/bank.avif" alt="Neo Bank — премиум платформа для банкинга, увеличили активных клиентов на 210%" width="400" height="300" loading="eager" decoding="sync" itemprop="image"></picture>
 <div class="portfolio-info"><h3 itemprop="name">NeoBank Platform</h3><p itemprop="description">Рост активных клиентов +210%</p></div>
 </div>
 <div class="portfolio-card" itemscope itemtype="https://schema.org/CreativeWork">
-<picture><source srcset="images/ai.avif" type="image/avif"><img class="portfolio-image" src="images/ai.avif" alt="AI рекомендательная система — нейросети для e-commerce, увеличили конверсию на 34%" loading="lazy" decoding="async" width="400" height="300" itemprop="image"></picture>
+<picture><source srcset="images/ai.avif" type="image/avif"><img class="portfolio-image" src="images/ai.avif" alt="AI рекомендательная система — нейросети для e-commerce, увеличили конверсию на 34%" width="400" height="300" loading="lazy" decoding="async" itemprop="image"></picture>
 <div class="portfolio-info"><h3 itemprop="name">AI рекомендательная система</h3><p itemprop="description">Рост конверсии +34%</p></div>
 </div>
 <div class="portfolio-card" itemscope itemtype="https://schema.org/CreativeWork">
-<picture><source srcset="images/app.avif" type="image/avif"><img class="portfolio-image" src="images/app.avif" alt="FitTrack — мобильное приложение для фитнеса, более 50 000 установок" loading="lazy" decoding="async" width="400" height="300" itemprop="image"></picture>
+<picture><source srcset="images/app.avif" type="image/avif"><img class="portfolio-image" src="images/app.avif" alt="FitTrack — мобильное приложение для фитнеса, более 50 000 установок" width="400" height="300" loading="lazy" decoding="async" itemprop="image"></picture>
 <div class="portfolio-info"><h3 itemprop="name">FitTrack приложение</h3><p itemprop="description">50k+ установок</p></div>
 </div>
 </div>
@@ -270,81 +621,22 @@
 </div>
 </section>
 
-<!-- ===== КАЛЬКУЛЯТОР С FALLBACK ДЛЯ SEO ===== -->
+<!-- КАЛЬКУЛЯТОР СТОИМОСТИ -->
 <section id="calculator" class="section">
 <div class="container">
 <div class="section-header">
 <h2>Калькулятор стоимости</h2>
 <a href="services.html" class="section-more-btn" rel="noopener noreferrer">Все услуги</a>
 </div>
-
-<!-- СТАТИЧЕСКАЯ ТАБЛИЦА С ЦЕНАМИ (ДЛЯ SEO И ПОИСКОВЫХ РОБОТОВ) -->
 <div class="price-table" id="staticPriceTable">
     <h3>Примеры стоимости разработки</h3>
     <div class="price-grid">
-        <div class="price-card">
-            <h4>Лендинг / Старт</h4>
-            <div class="price">от 120 000 ₽</div>
-            <ul>
-                <li>Дизайн (UI/UX)</li>
-                <li>Frontend разработка</li>
-                <li>Базовая SEO оптимизация</li>
-                <li>Адаптивная вёрстка</li>
-                <li>Срок: 2-3 недели</li>
-            </ul>
-        </div>
-        <div class="price-card">
-            <h4>Бизнес / Сайт услуг</h4>
-            <div class="price">от 250 000 ₽</div>
-            <ul>
-                <li>Дизайн (UI/UX)</li>
-                <li>Frontend + Backend</li>
-                <li>CMS (админ-панель)</li>
-                <li>SEO оптимизация</li>
-                <li>CRM интеграция</li>
-                <li>Срок: 4-6 недель</li>
-            </ul>
-        </div>
-        <div class="price-card">
-            <h4>Премиум / Интернет-магазин</h4>
-            <div class="price">от 450 000 ₽</div>
-            <ul>
-                <li>Дизайн (UI/UX)</li>
-                <li>Frontend + Backend</li>
-                <li>CMS + CRM интеграция</li>
-                <li>Полная SEO оптимизация</li>
-                <li>Платёжные системы</li>
-                <li>1С интеграция</li>
-                <li>Срок: 6-8 недель</li>
-            </ul>
-        </div>
-        <div class="price-card">
-            <h4>Enterprise / Портал</h4>
-            <div class="price">от 1 200 000 ₽</div>
-            <ul>
-                <li>Полный цикл разработки</li>
-                <li>AI / ML решения</li>
-                <li>Мобильное приложение</li>
-                <li>Техподдержка 24/7</li>
-                <li>Микросервисная архитектура</li>
-                <li>Срок: от 10 недель</li>
-            </ul>
-        </div>
+        <div class="price-card"><h4>Лендинг / Старт</h4><div class="price">от 120 000 ₽</div><ul><li>Дизайн (UI/UX)</li><li>Frontend разработка</li><li>Базовая SEO оптимизация</li><li>Адаптивная вёрстка</li><li>Срок: 2-3 недели</li></ul></div>
+        <div class="price-card"><h4>Бизнес / Сайт услуг</h4><div class="price">от 250 000 ₽</div><ul><li>Дизайн (UI/UX)</li><li>Frontend + Backend</li><li>CMS (админ-панель)</li><li>SEO оптимизация</li><li>CRM интеграция</li><li>Срок: 4-6 недель</li></ul></div>
+        <div class="price-card"><h4>Премиум / Интернет-магазин</h4><div class="price">от 450 000 ₽</div><ul><li>Дизайн (UI/UX)</li><li>Frontend + Backend</li><li>CMS + CRM интеграция</li><li>Полная SEO оптимизация</li><li>Платёжные системы</li><li>1С интеграция</li><li>Срок: 6-8 недель</li></ul></div>
+        <div class="price-card"><h4>Enterprise / Портал</h4><div class="price">от 1 200 000 ₽</div><ul><li>Полный цикл разработки</li><li>AI / ML решения</li><li>Мобильное приложение</li><li>Техподдержка 24/7</li><li>Микросервисная архитектура</li><li>Срок: от 10 недель</li></ul></div>
     </div>
-    <p class="price-note">*Точная стоимость рассчитывается индивидуально в калькуляторе выше</p>
-</div>
-
-<!-- ИНТЕРАКТИВНЫЙ КАЛЬКУЛЯТОР (ПОКАЗЫВАЕТСЯ ТОЛЬКО ПРИ ВКЛЮЧЁННОМ JS) -->
-<div class="calculator-card interactive-calculator" id="interactiveCalculator" style="display: none;">
-<div class="calculator-two-columns">
-<div class="calculator-left">
-<div class="calc-group"><div class="calc-label">Услуги:</div><div class="calc-options" id="calcServices"><div data-service="design" class="calc-option">Дизайн (UI/UX)</div><div data-service="front" class="calc-option">Frontend</div><div data-service="back" class="calc-option">Backend</div><div data-service="seo" class="calc-option">SEO</div><div data-service="cms" class="calc-option">CMS</div><div data-service="crm" class="calc-option">CRM / ERP</div><div data-service="ai" class="calc-option">AI / ML</div><div data-service="mobile" class="calc-option">Мобильное приложение</div><div data-service="support" class="calc-option">Техподдержка</div></div></div>
-<div class="calc-group"><div class="calc-label">Сложность:</div><div class="calc-options" id="calcComplexity"><div data-complex="simple" class="calc-option">Старт (Лендинг)</div><div data-complex="medium" class="calc-option">Бизнес (Сайт услуг)</div><div data-complex="high" class="calc-option">Премиум (Магазин)</div><div data-complex="enterprise" class="calc-option">Enterprise (Портал)</div></div></div>
-<div class="calc-total-block"><div class="calc-price" id="calcPrice">0 ₽</div><div id="calcHoursInfo" style="font-size:.85rem;color:#B0C4DE"></div></div>
-</div>
-<div class="calculator-right stack-explanation" id="stackExplanation"><h4>Рекомендуемый стек</h4><p>Выберите услуги для расчёта</p></div>
-</div>
-</div>
+    <p class="price-note">*Точная стоимость рассчитывается индивидуально</p>
 </div>
 </div>
 </section>
@@ -358,13 +650,12 @@
 <div class="mission-grid-wrapper">
 <div class="mission-text">
 <p><strong>ALBE digital</strong> — это стратегический партнёр, а не просто подрядчик. Мы разрабатываем продукты, которые масштабируют бизнес и увеличивают прибыль. Каждый проект сопровождается глубокой <strong>SEO-проработкой</strong> и техническим аудитом, что гарантирует высокие позиции в поисковых системах с первых недель после запуска.</p>
-<p>Наши клиенты из ритейла, финтеха и образования получают прирост органического трафика до 300% за 6 месяцев. Мы внедряем <strong>AI-решения</strong> для автоматизации маркетинга и продаж, а также разрабатываем мобильные приложения, повышающие лояльность аудитории. Работаем с брендами по всей России.</p>
 </div>
 <div class="mission-grid">
-<picture><source srcset="images/bank.avif" type="image/avif"><img class="mission-grid-card" src="images/bank.avif" alt="Команда профессионалов ALBE digital за работой над премиум проектом" loading="lazy" decoding="async" width="400" height="300"></picture>
-<picture><source srcset="images/ai.avif" type="image/avif"><img class="mission-grid-card" src="images/ai.avif" alt="Процесс разработки сайта под ключ с использованием AI решений" loading="lazy" decoding="async" width="400" height="300"></picture>
-<picture><source srcset="images/app.avif" type="image/avif"><img class="mission-grid-card" src="images/app.avif" alt="Результаты разработки — успешные кейсы и достижения компании" loading="lazy" decoding="async" width="400" height="300"></picture>
-<picture><source srcset="images/bank.avif" type="image/avif"><img class="mission-grid-card" src="images/bank.avif" alt="Довольные клиенты и партнёры ALBE digital на презентации проекта" loading="lazy" decoding="async" width="400" height="300"></picture>
+<picture><source srcset="images/bank.avif" type="image/avif"><img class="mission-grid-card" src="images/bank.avif" alt="Команда профессионалов ALBE digital" width="400" height="300" loading="lazy" decoding="async"></picture>
+<picture><source srcset="images/ai.avif" type="image/avif"><img class="mission-grid-card" src="images/ai.avif" alt="Процесс разработки сайта под ключ с использованием AI" width="400" height="300" loading="lazy" decoding="async"></picture>
+<picture><source srcset="images/app.avif" type="image/avif"><img class="mission-grid-card" src="images/app.avif" alt="Результаты разработки — успешные кейсы" width="400" height="300" loading="lazy" decoding="async"></picture>
+<picture><source srcset="images/bank.avif" type="image/avif"><img class="mission-grid-card" src="images/bank.avif" alt="Довольные клиенты ALBE digital" width="400" height="300" loading="lazy" decoding="async"></picture>
 </div>
 </div>
 </div>
@@ -378,36 +669,16 @@
 </div>
 <div class="faq-grid">
 <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1" itemprop="name">Сколько стоит разработка сайта под ключ?</button>
-    <div class="faq-answer" id="faq-answer-1" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" hidden><div itemprop="text">Стоимость разработки сайта рассчитывается индивидуально в нашем калькуляторе. Лендинг от 120 000 ₽, корпоративный сайт от 250 000 ₽, интернет-магазин от 450 000 ₽. Окончательная цена зависит от сложности, количества функций и выбранного стека технологий.</div></div>
+    <button class="faq-question" aria-expanded="false" aria-controls="faq1" itemprop="name">Сколько стоит разработка сайта под ключ?</button>
+    <div class="faq-answer" id="faq1" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" hidden><div itemprop="text">Стоимость разработки сайта рассчитывается индивидуально. Лендинг от 120 000 ₽, корпоративный сайт от 250 000 ₽, интернет-магазин от 450 000 ₽.</div></div>
 </div>
 <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2" itemprop="name">Какие сроки разработки сайта?</button>
-    <div class="faq-answer" id="faq-answer-2" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" hidden><div itemprop="text">Сроки разработки сайта под ключ составляют от 3 до 12 недель в зависимости от сложности проекта. Лендинг разрабатывается за 2-3 недели, интернет-магазин — 6-8 недель, сложные порталы и CRM системы — от 10 недель. Мы всегда соблюдаем дедлайны.</div></div>
+    <button class="faq-question" aria-expanded="false" aria-controls="faq2" itemprop="name">Какие сроки разработки сайта?</button>
+    <div class="faq-answer" id="faq2" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" hidden><div itemprop="text">Сроки: лендинг — 2-3 недели, интернет-магазин — 6-8 недель, порталы — от 10 недель.</div></div>
 </div>
 <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3" itemprop="name">Даёте гарантию на SEO продвижение?</button>
-    <div class="faq-answer" id="faq-answer-3" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" hidden><div itemprop="text">Да, мы гарантируем выполнение KPI по SEO продвижению. Заключаем договор с чёткими показателями: рост трафика, улучшение позиций по целевым запросам, увеличение конверсии. При недостижении результатов проводим дополнительную оптимизацию за наш счёт.</div></div>
-</div>
-<div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4" itemprop="name">Разрабатываете мобильные приложения?</button>
-    <div class="faq-answer" id="faq-answer-4" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" hidden><div itemprop="text">Да, мы разрабатываем мобильные приложения под iOS, Android и кроссплатформенные решения на React Native и Flutter. Полный цикл: от идеи и дизайна до публикации в App Store и Google Play. Интегрируем с вашим сайтом и CRM.</div></div>
-</div>
-<div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5" itemprop="name">Как происходит SEO оптимизация сайта?</button>
-    <div class="faq-answer" id="faq-answer-5" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" hidden><div itemprop="text">SEO оптимизация включает: технический аудит, сбор семантического ядра, оптимизацию метатегов и контента, улучшение Core Web Vitals, настройку Яндекс.Метрики и Google Analytics, проработку коммерческих факторов. Регулярно отчитываемся по позициям и трафику.</div></div>
-</div>
-<div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-6" itemprop="name">Используете ли вы AI и нейросети?</button>
-    <div class="faq-answer" id="faq-answer-6" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" hidden><div itemprop="text">Да, мы активно внедряем AI решения: чат-боты для автоматизации поддержки, рекомендательные системы, генеративный AI для контента, аналитику данных и прогнозирование. Нейросети помогают ускорить разработку и повысить качество продуктов.</div></div>
-</div>
-<div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-7" itemprop="name">Предоставляете техническую поддержку?</button>
-    <div class="faq-answer" id="faq-answer-7" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" hidden><div itemprop="text">Да, у нас есть круглосуточная техническая поддержка 24/7. Обслуживание включает: устранение ошибок, обновление CMS и плагинов, бэкапы, мониторинг безопасности, доработки функционала. Выбирайте пакет поддержки под ваш бюджет.</div></div>
-</div>
-<div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-8" itemprop="name">Как начать проект с ALBE digital?</button>
-    <div class="faq-answer" id="faq-answer-8" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" hidden><div itemprop="text">Просто оставьте заявку на сайте или напишите в Telegram. Мы проведём бесплатную консультацию, проанализируем ваш бизнес и потребности, предложим оптимальное решение и сроки. После согласования концепции подготовим договор и начнём разработку.</div></div>
+    <button class="faq-question" aria-expanded="false" aria-controls="faq3" itemprop="name">Предоставляете техническую поддержку?</button>
+    <div class="faq-answer" id="faq3" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" hidden><div itemprop="text">Да, у нас есть круглосуточная техническая поддержка 24/7.</div></div>
 </div>
 </div>
 </div>
@@ -421,17 +692,16 @@
                 <h2 style="display: inline-block; text-align: center;">Начнём проект?</h2>
             </div>
             <p class="contact-desc">Оставьте заявку — Мы свяжемся с вами в течение 3 часов</p>
-            <form id="mainForm" class="contact-form" itemprop="potentialAction" itemscope itemtype="https://schema.org/CommunicateAction" method="POST" action="/api/submit-form.php">
+            <form id="mainForm" class="contact-form">
                 <div class="form-row">
-                    <input type="text" id="userName" placeholder="Имя *" required itemprop="name" aria-label="Ваше имя">
-                    <input type="tel" id="userPhone" placeholder="Телефон *" required itemprop="telephone" aria-label="Номер телефона">
+                    <input type="text" id="userName" placeholder="Имя *" required aria-label="Ваше имя">
+                    <input type="tel" id="userPhone" placeholder="Телефон *" required aria-label="Номер телефона">
                 </div>
                 <div class="form-row">
-                    <input type="email" id="userEmail" placeholder="Email *" required itemprop="email" aria-label="Email адрес">
+                    <input type="email" id="userEmail" placeholder="Email *" required aria-label="Email адрес">
                     <input type="text" id="userTelegram" placeholder="Telegram (username)" aria-label="Telegram username">
                 </div>
-                <textarea rows="4" id="userMsg" placeholder="Опишите задачу" itemprop="description" aria-label="Описание задачи"></textarea>
-                <textarea rows="3" id="userComment" placeholder="Комментарий (дополнительные пожелания)" aria-label="Комментарий"></textarea>
+                <textarea rows="4" id="userMsg" placeholder="Опишите задачу" aria-label="Описание задачи"></textarea>
                 <button type="submit" class="btn-primary">Отправить заявку</button>
                 <div id="formStatus" class="form-status" role="status" aria-live="polite"></div>
             </form>
@@ -442,62 +712,41 @@
 <div id="footer-placeholder"></div>
 <button class="totop" id="toTopBtn" aria-label="Наверх">↑</button>
 
-<!-- Все скрипты загружаются с атрибутом defer для оптимизации производительности -->
-<script src="header-loader.js?v=20260522" defer></script>
-<script src="common.js?v=20260522" defer></script>
-
 <script>
-    // Дополнительная инициализация для доступности FAQ
-    document.addEventListener('DOMContentLoaded', function() {
-        // Инициализация FAQ аккордеона с поддержкой ARIA
-        const faqButtons = document.querySelectorAll('.faq-question');
-        faqButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const isExpanded = this.getAttribute('aria-expanded') === 'true';
-                const answerId = this.getAttribute('aria-controls');
-                const answer = document.getElementById(answerId);
-                
-                if (answer) {
-                    this.setAttribute('aria-expanded', !isExpanded);
-                    if (!isExpanded) {
-                        answer.removeAttribute('hidden');
-                    } else {
-                        answer.setAttribute('hidden', '');
-                    }
-                }
-            });
-        });
-        
-        // Инициализация кнопки наверх с плавной прокруткой
-        const toTopBtn = document.getElementById('toTopBtn');
-        if (toTopBtn) {
-            toTopBtn.addEventListener('click', function() {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-            
-            // Показываем кнопку только при прокрутке вниз
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 300) {
-                    toTopBtn.style.display = 'flex';
+// Все скрипты загружаются в конце с оптимизацией CLS
+document.addEventListener('DOMContentLoaded', function() {
+    // Инициализация FAQ аккордеона
+    const faqButtons = document.querySelectorAll('.faq-question');
+    faqButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            const answerId = this.getAttribute('aria-controls');
+            const answer = document.getElementById(answerId);
+            if (answer) {
+                this.setAttribute('aria-expanded', !isExpanded);
+                if (!isExpanded) {
+                    answer.removeAttribute('hidden');
                 } else {
-                    toTopBtn.style.display = 'none';
+                    answer.setAttribute('hidden', '');
                 }
-            });
-            toTopBtn.style.display = 'none';
-        }
-        
-        // Защита email в микроразметке от ботов (дешифровка через JS)
-        const protectEmail = function() {
-            const emailElements = document.querySelectorAll('[itemprop="email"]');
-            emailElements.forEach(el => {
-                if (el.textContent === 'albe.web@yandex.ru') {
-                    // Не меняем отображение, но боты не смогут выполнить JS
-                    // Также можно динамически подставить email
-                }
-            });
-        };
-        protectEmail();
+            }
+        });
     });
+    
+    // Кнопка наверх
+    const toTopBtn = document.getElementById('toTopBtn');
+    if (toTopBtn) {
+        toTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        window.addEventListener('scroll', () => {
+            toTopBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+        });
+        toTopBtn.style.display = 'none';
+    }
+    
+    // Показываем интерактивный калькулятор (если нужно)
+    const interactiveCalc = document.getElementById('interactiveCalculator');
+    if (interactiveCalc) interactiveCalc.style.display = 'block';
+});
 </script>
 </body>
 </html>
