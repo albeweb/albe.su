@@ -41,7 +41,7 @@ body::before {
     overflow-x: hidden !important;
 }
 
-h1, h2, h3, .stat-number, .step-num, .hero-tag, .hero-title-line2,
+h1, h2, h3, .stat-number, .step-num, .hero-tag, .hero-title,
 .service-card h3, .portfolio-info h3, .step-card h3, .competence-card h3,
 .calc-label, .stack-explanation h4, .faq-question, .footer-logo, .footer h4,
 .cover-content h2, .quote-text, .service-badge, .nav-link, .btn-primary, .btn-outline,
@@ -51,9 +51,10 @@ h1, h2, h3, .stat-number, .step-num, .hero-tag, .hero-title-line2,
     letter-spacing: -0.02em;
 }
 
-.hero-title-line2, .service-badge, .quote-text { font-weight: 400; }
+.service-badge, .quote-text { font-weight: 400; }
 .btn-primary, .btn-outline { font-weight: 500; }
 
+/* СТАРЫЙ СТИЛЬ h1 (для других страниц, если нужен) */
 h1 {
     font-size: 9rem;
     line-height: 1;
@@ -507,6 +508,9 @@ body.header-fixed { padding-top: 82px; }
     box-shadow: 0 0 20px rgba(20, 198, 176, 0.4);
 }
 
+/* ============================================ */
+/* HERO БАННЕР — СТИЛИ ДЛЯ НОВОГО H1 (.hero-title) */
+/* ============================================ */
 .hero {
     position: relative;
     min-height: 100vh;
@@ -574,6 +578,45 @@ body.header-fixed { padding-top: 82px; }
     justify-content: space-between;
 }
 
+.hero-top {
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-bottom {
+    margin-top: auto;
+}
+
+/* НОВЫЙ ОСНОВНОЙ ЗАГОЛОВОК H1 В HERO-БАННЕРЕ */
+.hero-title {
+    font-size: 5rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+    font-family: 'Manrope', sans-serif;
+}
+
+/* Адаптивные размеры для .hero-title */
+@media (max-width: 1400px) {
+    .hero-title { font-size: 4rem; }
+}
+@media (max-width: 1200px) {
+    .hero-title { font-size: 3.5rem; }
+}
+@media (max-width: 900px) {
+    .hero-title { font-size: 2.8rem; margin-bottom: 1rem; }
+}
+@media (max-width: 768px) {
+    .hero-title { font-size: 2.2rem; margin-bottom: 0.8rem; }
+}
+@media (max-width: 480px) {
+    .hero-title { font-size: 1.8rem; }
+}
+
+/* СТАРЫЕ СТИЛИ .hero-title-line1 И .hero-title-line2 — УДАЛЕНЫ, Т.К. БОЛЬШЕ НЕ ИСПОЛЬЗУЮТСЯ */
+
 .hero-stats {
     flex-shrink: 0;
     display: flex;
@@ -632,16 +675,6 @@ body.header-fixed { padding-top: 82px; }
     text-transform: uppercase;
     opacity: 0.9;
     display: inline-block;
-}
-
-.hero-title-line2 {
-    display: block;
-    font-size: 3.8rem;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    color: rgba(255, 255, 255, 0.85);
-    line-height: 1.2;
-    margin-bottom: 2rem;
 }
 
 .services-badges {
@@ -1054,7 +1087,6 @@ body.header-fixed { padding-top: 82px; }
 
 @media (max-width: 1600px) {
     h1 { font-size: 8rem; }
-    .hero-title-line2 { font-size: 3.4rem; }
     h2 { font-size: 3.4rem; }
     .portfolio-card .portfolio-image { height: 260px; }
 }
@@ -1062,7 +1094,6 @@ body.header-fixed { padding-top: 82px; }
 @media (max-width: 1400px) {
     .container, .header .container, .hero .container { padding: 0 60px; }
     h1 { font-size: 7rem; }
-    .hero-title-line2 { font-size: 3rem; }
     h2 { font-size: 3rem; }
     .hero-content { max-width: 52%; }
     .hero-wrapper { gap: 60px; }
@@ -1074,7 +1105,6 @@ body.header-fixed { padding-top: 82px; }
 @media (max-width: 1200px) {
     .container, .header .container, .hero .container { padding: 0 50px; }
     h1 { font-size: 6rem; }
-    .hero-title-line2 { font-size: 2.6rem; }
     h2 { font-size: 2.6rem; }
     .hero-content { max-width: 50%; }
     .stat-item { min-width: 220px; padding: 20px 28px; }
@@ -1086,7 +1116,6 @@ body.header-fixed { padding-top: 82px; }
 @media (max-width: 1024px) {
     .container, .header .container, .hero .container { padding: 0 40px; }
     h1 { font-size: 5rem; }
-    .hero-title-line2 { font-size: 2.2rem; }
     h2 { font-size: 2.2rem; }
     .hero-content { max-width: 48%; }
     .stat-item { min-width: 200px; padding: 18px 24px; }
@@ -1100,7 +1129,7 @@ body.header-fixed { padding-top: 82px; }
     .hero-content { max-width: 100%; text-align: center; }
     .hero-top { align-items: center; }
     h1 { font-size: 4.5rem; white-space: normal; }
-    .hero-title-line2 { font-size: 2rem; white-space: normal; }
+    h2 { font-size: 2rem; }
     .hero-tag { display: block; text-align: center; }
     .services-badges, .hero-buttons { justify-content: center; }
     .hero-stats { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 20px; }
@@ -1117,7 +1146,6 @@ body.header-fixed { padding-top: 82px; }
     .section { padding: 60px 0; }
     .hero { padding: 40px 0; min-height: auto; }
     h1 { font-size: 3.5rem; }
-    .hero-title-line2 { font-size: 1.7rem; margin-bottom: 1.5rem; }
     h2 { font-size: 1.8rem; }
     h3 { font-size: 1.3rem; }
     .code-rain { display: none; }
@@ -1211,7 +1239,6 @@ body.header-fixed { padding-top: 82px; }
     .container, .header .container, .hero .container { padding: 0 16px; }
     .section { padding: 40px 0; }
     h1 { font-size: 2.5rem; }
-    .hero-title-line2 { font-size: 1.3rem; }
     h2 { font-size: 1.5rem; }
     h2::after { width: 50px; bottom: -8px; }
     .hero-tag { font-size: 0.7rem; letter-spacing: 4px; }
