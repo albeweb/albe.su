@@ -596,7 +596,7 @@ body.header-fixed { padding-top: 82px; }
 }
 
 .hero-title-line1 {
-    font-size: 5rem;
+    font-size: 7rem;
     font-weight: 500;
     color: #FFFFFF;
     display: block;
@@ -604,7 +604,7 @@ body.header-fixed { padding-top: 82px; }
 }
 
 .hero-title-line2 {
-    font-size: 5rem;
+    font-size: 6rem;
     font-weight: 500;
     display: block;
     line-height: 1.1;
@@ -624,7 +624,7 @@ body.header-fixed { padding-top: 82px; }
 }
 
 .hero-title-line3 {
-    font-size: 5rem;
+    font-size: 7rem;
     font-weight: 500;
     color: #FFFFFF;
     display: block;
