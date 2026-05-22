@@ -173,6 +173,25 @@ function initCalculator() {
     updateCalculator();
 }
 
+// ===== КАЛЬКУЛЯТОР С FALLBACK ДЛЯ SEO =====
+function initCalculatorWithFallback() {
+    const staticTable = document.getElementById('staticPriceTable');
+    const interactiveCalc = document.getElementById('interactiveCalculator');
+    
+    if (staticTable && interactiveCalc) {
+        // Скрываем статическую таблицу
+        staticTable.style.display = 'none';
+        // Показываем интерактивный калькулятор
+        interactiveCalc.style.display = 'block';
+        // Инициализируем калькулятор
+        initCalculator();
+    } else if (interactiveCalc) {
+        // Если нет статической таблицы, просто показываем калькулятор
+        interactiveCalc.style.display = 'block';
+        initCalculator();
+    }
+}
+
 // ===== ПЛАВНЫЙ СКРОЛЛ =====
 function initSmoothScroll() {
     var links = document.querySelectorAll('a[href^="#"]');
@@ -292,10 +311,10 @@ function initHeaderFixed() {
     handleHeaderScroll();
 }
 
-// ===== ЗАПУСК ВСЕХ ИНИЦИАЛИЗАЦИЙ (БЕЗ MOBILE MENU — ОН В header-loader.js) =====
+// ===== ЗАПУСК ВСЕХ ИНИЦИАЛИЗАЦИЙ =====
 document.addEventListener('DOMContentLoaded', function() {
     initTechTooltips();
-    initCalculator();
+    initCalculatorWithFallback();  // ← заменяет initCalculator()
     initSmoothScroll();
     initFaq();
     initForm();
