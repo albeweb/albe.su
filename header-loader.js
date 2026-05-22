@@ -46,15 +46,11 @@ function initBurgerMenu() {
     const navMenu = document.getElementById('navMenu');
     
     if (burgerBtn && navMenu) {
-        // Убираем старые обработчики
-        const newBurger = burgerBtn.cloneNode(true);
-        burgerBtn.parentNode.replaceChild(newBurger, burgerBtn);
-        
-        newBurger.addEventListener('click', function(e) {
+        burgerBtn.addEventListener('click', function(e) {
             e.preventDefault();
             navMenu.classList.toggle('active');
             
-            const spans = newBurger.querySelectorAll('span');
+            const spans = burgerBtn.querySelectorAll('span');
             if (navMenu.classList.contains('active')) {
                 spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
                 spans[1].style.opacity = '0';
@@ -66,11 +62,10 @@ function initBurgerMenu() {
             }
         });
         
-        // Закрытие меню при клике на ссылку
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
-                const spans = newBurger.querySelectorAll('span');
+                const spans = burgerBtn.querySelectorAll('span');
                 if (spans) {
                     spans[0].style.transform = 'none';
                     spans[1].style.opacity = '1';
@@ -81,15 +76,17 @@ function initBurgerMenu() {
         
         console.log('Бургер-меню инициализировано');
     } else {
-        console.warn('Бургер или меню не найдены');
+        console.warn('Бургер или меню не найдены, повторная попытка...');
+        // Повторяем попытку через 50 мс (DOM может ещё не обновиться)
+        setTimeout(initBurgerMenu, 50);
     }
 }
 
 // Запуск загрузки
 document.addEventListener('DOMContentLoaded', () => {
     loadComponent('header-placeholder', 'header.html', () => {
-        initHeader();        // фиксация шапки
-        initBurgerMenu();    // ← ВАЖНО: бургер-меню
+        initHeader();
+        initBurgerMenu();
     });
     loadComponent('footer-placeholder', 'footer.html');
 });
