@@ -18,12 +18,30 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0D1117">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23F5B700'/%3E%3Ctext x='20' y='28' font-size='24' text-anchor='middle' fill='black' font-weight='500'%3EA%3C/text%3E%3C/svg%3E">
+
+<!-- DNS Prefetch для ускорения -->
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
+
+<!-- Предзагрузка критических ресурсов -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap">
+<link rel="preload" as="style" href="style.css">
+
+<!-- Шрифты с атрибутом media для оптимизации -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="style.css">
+
+<noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
+</noscript>
+
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -177,15 +195,15 @@
 </div>
 <div class="portfolio-grid">
 <div class="portfolio-card" itemscope itemtype="https://schema.org/CreativeWork">
-<picture><source srcset="images/bank.avif" type="image/avif"><img class="portfolio-image" src="images/bank.avif" alt="Neo Bank — разработка премиум сайта для банковского сектора" loading="lazy" itemprop="image"></picture>
+<picture><source srcset="images/bank.avif" type="image/avif"><img class="portfolio-image" src="images/bank.avif" alt="Neo Bank — разработка премиум сайта для банковского сектора" loading="lazy" decoding="async" width="400" height="300" itemprop="image"></picture>
 <div class="portfolio-info"><h3 itemprop="name">NeoBank Platform</h3><p itemprop="description">Рост активных клиентов +210%</p></div>
 </div>
 <div class="portfolio-card" itemscope itemtype="https://schema.org/CreativeWork">
-<picture><source srcset="images/ai.avif" type="image/avif"><img class="portfolio-image" src="images/ai.avif" alt="AI рекомендательная система — разработка нейросетей для бизнеса" loading="lazy" itemprop="image"></picture>
+<picture><source srcset="images/ai.avif" type="image/avif"><img class="portfolio-image" src="images/ai.avif" alt="AI рекомендательная система — разработка нейросетей для бизнеса" loading="lazy" decoding="async" width="400" height="300" itemprop="image"></picture>
 <div class="portfolio-info"><h3 itemprop="name">AI рекомендательная система</h3><p itemprop="description">Рост конверсии +34%</p></div>
 </div>
 <div class="portfolio-card" itemscope itemtype="https://schema.org/CreativeWork">
-<picture><source srcset="images/app.avif" type="image/avif"><img class="portfolio-image" src="images/app.avif" alt="FitTrack — разработка мобильного приложения для фитнеса" loading="lazy" itemprop="image"></picture>
+<picture><source srcset="images/app.avif" type="image/avif"><img class="portfolio-image" src="images/app.avif" alt="FitTrack — разработка мобильного приложения для фитнеса" loading="lazy" decoding="async" width="400" height="300" itemprop="image"></picture>
 <div class="portfolio-info"><h3 itemprop="name">FitTrack приложение</h3><p itemprop="description">50k+ установок</p></div>
 </div>
 </div>
@@ -219,13 +237,73 @@
 </div>
 </div>
 </section>
+
+<!-- ===== КАЛЬКУЛЯТОР С FALLBACK ДЛЯ SEO ===== -->
 <section id="calculator" class="section">
 <div class="container">
 <div class="section-header">
 <h2>Калькулятор стоимости</h2>
 <a href="services.html" class="section-more-btn">Все услуги</a>
 </div>
-<div class="calculator-card">
+
+<!-- СТАТИЧЕСКАЯ ТАБЛИЦА С ЦЕНАМИ (ДЛЯ SEO И ПОИСКОВЫХ РОБОТОВ) -->
+<div class="price-table" id="staticPriceTable">
+    <h3>Примеры стоимости разработки</h3>
+    <div class="price-grid">
+        <div class="price-card">
+            <h4>Лендинг / Старт</h4>
+            <div class="price">от 120 000 ₽</div>
+            <ul>
+                <li>Дизайн (UI/UX)</li>
+                <li>Frontend разработка</li>
+                <li>Базовая SEO оптимизация</li>
+                <li>Адаптивная вёрстка</li>
+                <li>Срок: 2-3 недели</li>
+            </ul>
+        </div>
+        <div class="price-card">
+            <h4>Бизнес / Сайт услуг</h4>
+            <div class="price">от 250 000 ₽</div>
+            <ul>
+                <li>Дизайн (UI/UX)</li>
+                <li>Frontend + Backend</li>
+                <li>CMS (админ-панель)</li>
+                <li>SEO оптимизация</li>
+                <li>CRM интеграция</li>
+                <li>Срок: 4-6 недель</li>
+            </ul>
+        </div>
+        <div class="price-card">
+            <h4>Премиум / Интернет-магазин</h4>
+            <div class="price">от 450 000 ₽</div>
+            <ul>
+                <li>Дизайн (UI/UX)</li>
+                <li>Frontend + Backend</li>
+                <li>CMS + CRM интеграция</li>
+                <li>Полная SEO оптимизация</li>
+                <li>Платёжные системы</li>
+                <li>1С интеграция</li>
+                <li>Срок: 6-8 недель</li>
+            </ul>
+        </div>
+        <div class="price-card">
+            <h4>Enterprise / Портал</h4>
+            <div class="price">от 1 200 000 ₽</div>
+            <ul>
+                <li>Полный цикл разработки</li>
+                <li>AI / ML решения</li>
+                <li>Мобильное приложение</li>
+                <li>Техподдержка 24/7</li>
+                <li>Микросервисная архитектура</li>
+                <li>Срок: от 10 недель</li>
+            </ul>
+        </div>
+    </div>
+    <p class="price-note">*Точная стоимость рассчитывается индивидуально в калькуляторе выше</p>
+</div>
+
+<!-- ИНТЕРАКТИВНЫЙ КАЛЬКУЛЯТОР (ПОКАЗЫВАЕТСЯ ТОЛЬКО ПРИ ВКЛЮЧЁННОМ JS) -->
+<div class="calculator-card interactive-calculator" id="interactiveCalculator" style="display: none;">
 <div class="calculator-two-columns">
 <div class="calculator-left">
 <div class="calc-group"><div class="calc-label">Услуги:</div><div class="calc-options" id="calcServices"><div data-service="design" class="calc-option">Дизайн (UI/UX)</div><div data-service="front" class="calc-option">Frontend</div><div data-service="back" class="calc-option">Backend</div><div data-service="seo" class="calc-option">SEO</div><div data-service="cms" class="calc-option">CMS</div><div data-service="crm" class="calc-option">CRM / ERP</div><div data-service="ai" class="calc-option">AI / ML</div><div data-service="mobile" class="calc-option">Мобильное приложение</div><div data-service="support" class="calc-option">Техподдержка</div></div></div>
@@ -237,6 +315,7 @@
 </div>
 </div>
 </section>
+
 <section class="section">
 <div class="container">
 <div class="section-header">
@@ -249,10 +328,10 @@
 <p>Наши клиенты из ритейла, финтеха и образования получают прирост органического трафика до 300% за 6 месяцев. Мы внедряем AI-решения для автоматизации маркетинга и продаж, а также разрабатываем мобильные приложения, повышающие лояльность аудитории. Работаем с брендами по всей России.</p>
 </div>
 <div class="mission-grid">
-<picture><source srcset="images/bank.avif" type="image/avif"><img class="mission-grid-card" src="images/bank.avif" alt="Наша команда профессионалов ALBE digital" loading="lazy"></picture>
-<picture><source srcset="images/ai.avif" type="image/avif"><img class="mission-grid-card" src="images/ai.avif" alt="Процесс разработки сайтов под ключ" loading="lazy"></picture>
-<picture><source srcset="images/app.avif" type="image/avif"><img class="mission-grid-card" src="images/app.avif" alt="Результаты нашей работы — кейсы и достижения" loading="lazy"></picture>
-<picture><source srcset="images/bank.avif" type="image/avif"><img class="mission-grid-card" src="images/bank.avif" alt="Наши довольные клиенты и партнёры" loading="lazy"></picture>
+<picture><source srcset="images/bank.avif" type="image/avif"><img class="mission-grid-card" src="images/bank.avif" alt="Наша команда профессионалов ALBE digital" loading="lazy" decoding="async" width="400" height="300"></picture>
+<picture><source srcset="images/ai.avif" type="image/avif"><img class="mission-grid-card" src="images/ai.avif" alt="Процесс разработки сайтов под ключ" loading="lazy" decoding="async" width="400" height="300"></picture>
+<picture><source srcset="images/app.avif" type="image/avif"><img class="mission-grid-card" src="images/app.avif" alt="Результаты нашей работы — кейсы и достижения" loading="lazy" decoding="async" width="400" height="300"></picture>
+<picture><source srcset="images/bank.avif" type="image/avif"><img class="mission-grid-card" src="images/bank.avif" alt="Наши довольные клиенты и партнёры" loading="lazy" decoding="async" width="400" height="300"></picture>
 </div>
 </div>
 </div>
