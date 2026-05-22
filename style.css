@@ -1,1156 +1,422 @@
-/* ============================================ */
-/* ALBE DIGITAL - ОСНОВНОЙ CSS */
-/* ============================================ */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-    background: #0A0D14;
-    color: #FFFFFF;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-    line-height: 1.5;
-    overflow-x: hidden;
-}
-
-.container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 24px;
-}
-
-/* ===== ТИПОГРАФИКА ===== */
-h1, h2, h3, h4, .hero-tag, .stat-number {
-    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-}
-
-h2 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    background: linear-gradient(135deg, #FFFFFF 0%, #B0C4DE 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    letter-spacing: -0.02em;
-}
-
-.section {
-    padding: 80px 0;
-    position: relative;
-}
-
-.section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 48px;
-    flex-wrap: wrap;
-    gap: 16px;
-}
-
-.section-more-btn {
-    color: #F5B700;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
-    font-size: 0.9rem;
-}
-
-.section-more-btn:hover {
-    color: #FFD54F;
-}
-
-/* ===== HERO СЕКЦИЯ ===== */
-.hero {
-    min-height: 90vh;
-    display: flex;
-    align-items: center;
-    position: relative;
-    background: linear-gradient(135deg, #0A0D14 0%, #0F121A 100%);
-    overflow: hidden;
-}
-
-.code-rain {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    opacity: 0.08;
-    overflow: hidden;
-}
-
-.code-line {
-    position: absolute;
-    white-space: nowrap;
-    font-family: 'Fira Code', monospace;
-    font-size: 0.8rem;
-    color: #F5B700;
-    animation: float linear infinite;
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-    10% {
-        opacity: 1;
-    }
-    90% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(100vh);
-        opacity: 0;
-    }
-}
-
-.hero-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
-    position: relative;
-    z-index: 2;
-}
-
-.hero-content {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-}
-
-.hero-top {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-.hero-tag {
-    display: inline-block;
-    padding: 6px 14px;
-    background: rgba(245, 183, 0, 0.12);
-    border: 1px solid rgba(245, 183, 0, 0.3);
-    border-radius: 40px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 2px;
-    color: #F5B700;
-    width: fit-content;
-    font-family: 'Zen Dots', monospace;
-}
-
-.hero-title {
-    font-size: clamp(2.8rem, 6vw, 4.5rem);
-    font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: -0.03em;
-}
-
-.hero-title-line1,
-.hero-title-line2,
-.hero-title-line3 {
-    display: block;
-}
-
-.hero-title-line1 {
-    color: #FFFFFF;
-}
-
-.word-teal {
-    color: #5CE1E6;
-}
-
-.word-white {
-    color: #FFFFFF;
-}
-
-.word-gold {
-    background: linear-gradient(135deg, #F5B700, #FFD54F);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.services-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 8px;
-}
-
-.service-badge {
-    padding: 6px 14px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 40px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: #B0C4DE;
-    transition: all 0.3s;
-}
-
-.service-badge:hover {
-    border-color: rgba(245, 183, 0, 0.5);
-    color: #F5B700;
-}
-
-.hero-bottom {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.btn-primary {
-    background: #F5B700;
-    color: #0A0D14;
-    padding: 14px 32px;
-    border-radius: 40px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s;
-    display: inline-block;
-    border: none;
-    cursor: pointer;
-    font-size: 0.9rem;
-}
-
-.btn-primary:hover {
-    background: #FFD54F;
-    transform: translateY(-2px);
-}
-
-.btn-outline {
-    border: 2px solid rgba(245, 183, 0, 0.5);
-    color: #F5B700;
-    padding: 14px 32px;
-    border-radius: 40px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s;
-    display: inline-block;
-    background: transparent;
-    cursor: pointer;
-    font-size: 0.9rem;
-}
-
-.btn-outline:hover {
-    border-color: #F5B700;
-    background: rgba(245, 183, 0, 0.1);
-}
-
-.hero-quote {
-    padding: 16px 24px;
-    border-left: 3px solid #F5B700;
-    background: rgba(255, 255, 255, 0.02);
-}
-
-.quote-text {
-    font-size: 0.85rem;
-    letter-spacing: 1px;
-    color: #B0C4DE;
-    font-weight: 400;
-}
-
-.hero-stats {
-    display: flex;
-    gap: 48px;
-    padding-top: 32px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.stat-item {
-    text-align: left;
-}
-
-.stat-number {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #F5B700;
-    font-family: 'Zen Dots', monospace;
-}
-
-.stat-label {
-    font-size: 0.8rem;
-    color: #8892B0;
-    margin-top: 4px;
-}
-
-/* ===== СЕРВИСЫ ===== */
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
-}
-
-.service-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 24px;
-    padding: 28px;
-    transition: all 0.3s;
-    backdrop-filter: blur(10px);
-}
-
-.service-card:hover {
-    border-color: rgba(245, 183, 0, 0.3);
-    transform: translateY(-4px);
-}
-
-.service-card h3 {
-    font-size: 1.3rem;
-    margin-bottom: 12px;
-    color: #FFFFFF;
-}
-
-.service-card p {
-    color: #8892B0;
-    line-height: 1.6;
-    font-size: 0.9rem;
-}
-
-/* ===== ПОРТФОЛИО ===== */
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 28px;
-}
-
-.portfolio-card {
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 20px;
-    overflow: hidden;
-    transition: all 0.3s;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.portfolio-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(245, 183, 0, 0.3);
-}
-
-.portfolio-image {
-    width: 100%;
-    height: 240px;
-    object-fit: cover;
-    transition: transform 0.3s;
-}
-
-.portfolio-card:hover .portfolio-image {
-    transform: scale(1.02);
-}
-
-.portfolio-info {
-    padding: 20px;
-}
-
-.portfolio-info h3 {
-    font-size: 1.2rem;
-    margin-bottom: 6px;
-}
-
-.portfolio-info p {
-    color: #8892B0;
-    font-size: 0.85rem;
-}
-
-/* ===== ПРОЦЕСС ===== */
-.steps-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 24px;
-}
-
-.step-card {
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 20px;
-    padding: 28px;
-    text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.step-num {
-    font-size: 2.5rem;
-    font-weight: 800;
-    background: linear-gradient(135deg, #F5B700, #FFD54F);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    margin-bottom: 16px;
-    font-family: 'Zen Dots', monospace;
-}
-
-.step-card h3 {
-    margin-bottom: 10px;
-}
-
-.step-card p {
-    color: #8892B0;
-    font-size: 0.85rem;
-}
-
-/* ===== КОМПЕТЕНЦИИ ===== */
-.competences-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 24px;
-}
-
-.competence-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 20px;
-    padding: 24px;
-    transition: all 0.3s;
-}
-
-.competence-card:hover {
-    border-color: rgba(245, 183, 0, 0.3);
-}
-
-.competence-card h3 {
-    font-size: 1.2rem;
-    margin-bottom: 8px;
-}
-
-.competence-card > p {
-    color: #8892B0;
-    font-size: 0.8rem;
-    margin-bottom: 20px;
-}
-
-.competence-tech-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.tech-item {
-    padding: 4px 12px;
-    background: rgba(245, 183, 0, 0.1);
-    border-radius: 20px;
-    font-size: 0.7rem;
-    color: #F5B700;
-    font-weight: 500;
-}
-
-/* ===== КАЛЬКУЛЯТОР ===== */
-.price-table {
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 24px;
-    padding: 32px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.price-table h3 {
-    margin-bottom: 24px;
-    font-size: 1.3rem;
-}
-
-.price-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 24px;
-}
-
-.price-card {
-    background: rgba(255, 255, 255, 0.02);
-    border-radius: 16px;
-    padding: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.price-card h4 {
-    font-size: 1.1rem;
-    margin-bottom: 12px;
-}
-
-.price {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: #F5B700;
-    margin-bottom: 16px;
-}
-
-.price-card ul {
-    list-style: none;
-}
-
-.price-card li {
-    font-size: 0.8rem;
-    color: #8892B0;
-    padding: 4px 0;
-    padding-left: 20px;
-    position: relative;
-}
-
-.price-card li::before {
-    content: "—";
-    position: absolute;
-    left: 0;
-    color: #F5B700;
-}
-
-.price-note {
-    font-size: 0.75rem;
-    color: #8892B0;
-    margin-top: 20px;
-    text-align: center;
-}
-
-.calculator-card {
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 24px;
-    padding: 32px;
-    margin-top: 32px;
-}
-
-.calculator-two-columns {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-}
-
-.calc-label {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #F5B700;
-    margin-bottom: 16px;
-}
-
-.calc-options {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.calc-option {
-    padding: 8px 16px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 40px;
-    font-size: 0.8rem;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.calc-option.active {
-    background: #F5B700;
-    color: #0A0D14;
-    border-color: #F5B700;
-}
-
-.calc-total-block {
-    margin-top: 24px;
-    padding-top: 24px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.calc-price {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #F5B700;
-}
-
-.stack-explanation {
-    background: rgba(255, 255, 255, 0.02);
-    border-radius: 16px;
-    padding: 20px;
-}
-
-/* ===== MISSION GRID ===== */
-.mission-grid-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: start;
-}
-
-.mission-text p {
-    color: #8892B0;
-    margin-bottom: 20px;
-    line-height: 1.7;
-}
-
-.mission-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-}
-
-.mission-grid-card {
-    width: 100%;
-    height: auto;
-    border-radius: 16px;
-    aspect-ratio: 4/3;
-    object-fit: cover;
-}
-
-/* ===== FAQ ===== */
-.faq-grid {
-    display: grid;
-    gap: 16px;
-}
-
-.faq-item {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
-    overflow: hidden;
-}
-
-.faq-question {
-    width: 100%;
-    padding: 20px 24px;
-    background: transparent;
-    border: none;
-    text-align: left;
-    font-size: 1rem;
-    font-weight: 500;
-    color: #FFFFFF;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.faq-question::after {
-    content: "+";
-    font-size: 1.3rem;
-    color: #F5B700;
-}
-
-.faq-item.active .faq-question::after {
-    content: "−";
-}
-
-.faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-    padding: 0 24px;
-    color: #8892B0;
-    line-height: 1.6;
-}
-
-.faq-item.active .faq-answer {
-    max-height: 300px;
-    padding: 0 24px 20px 24px;
-}
-
-/* ===== КОНТАКТЫ ===== */
-.contact-section {
-    padding: 80px 0;
-    background: linear-gradient(135deg, #0A0D14 0%, #0F121A 100%);
-}
-
-.contact-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 32px;
-    padding: 48px;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.contact-desc {
-    text-align: center;
-    color: #8892B0;
-    margin-bottom: 32px;
-}
-
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.form-row {
-    display: flex;
-    gap: 20px;
-}
-
-.contact-form input,
-.contact-form textarea {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 14px 18px;
-    color: #FFFFFF;
-    font-family: inherit;
-    width: 100%;
-    transition: all 0.3s;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    outline: none;
-    border-color: #F5B700;
-}
-
-.form-status {
-    text-align: center;
-    font-size: 0.85rem;
-}
-
-/* ===== TOTOP ===== */
-.totop {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 48px;
-    height: 48px;
-    background: #F5B700;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #0A0D14;
-    z-index: 100;
-}
-
-.totop.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* ===== АНИМАЦИИ ===== */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.service-card, .portfolio-card, .step-card, .competence-card {
-    animation: fadeInUp 0.5s ease forwards;
-}
-
-/* ===== АДАПТИВ ===== */
-@media (max-width: 1024px) {
-    .container {
-        padding: 0 20px;
-    }
-    
-    h2 {
-        font-size: 2rem;
-    }
-    
-    .mission-grid-wrapper {
-        grid-template-columns: 1fr;
-        gap: 32px;
-    }
-    
-    .calculator-two-columns {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-}
-
-/* ============================================ */
-/* МОБИЛЬНАЯ ОПТИМИЗАЦИЯ (только для экранов до 768px) */
-/* Ускоряем FCP и LCP до зеленой зоны */
-/* ============================================ */
-
-@media (max-width: 768px) {
-
-    /* 1. Отключаем анимацию "code-rain" на мобильных - основной ускоритель FCP */
-    .code-rain {
-        display: none !important;
-    }
-
-    /* 2. Убираем тяжёлые фоновые эффекты */
-    .hero {
-        background: #0B0E13 !important;
-    }
-
-    /* 3. Оптимизация hero-секции - уменьшаем отступы и ускоряем рендеринг */
-    .hero-content {
-        padding: 1rem 0 !important;
-    }
-    
-    .section {
-        padding: 48px 0 !important;
-    }
-
-    .hero-title {
-        font-size: clamp(1.8rem, 7vw, 2.5rem) !important;
-        line-height: 1.2 !important;
-    }
-
-    .hero-title-line1,
-    .hero-title-line2,
-    .hero-title-line3 {
-        display: block;
-        white-space: normal;
-    }
-
-    /* 4. Уменьшаем количество сервисных бейджей для ускорения LCP */
-    .services-badges {
-        max-height: none !important;
-        overflow: visible !important;
-    }
-    
-    /* Показываем только первые 6 бейджей, остальные скрываем для ускорения */
-    .service-badge:nth-child(n+7) {
-        display: none !important;
-    }
-
-    /* 5. Оптимизация изображений - принудительное масштабирование без лишних перерисовок */
-    .portfolio-image,
-    .mission-grid-card {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 4/3;
-        object-fit: cover;
-        transform: translateZ(0);
-        will-change: auto;
-    }
-
-    /* 6. Ускоряем сетку портфолио - одна колонка вместо трёх */
-    .portfolio-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 1rem !important;
-    }
-    
-    .portfolio-card {
-        width: 100% !important;
-        margin-bottom: 0 !important;
-    }
-
-    /* 7. Оптимизация сетки сервисов и компетенций */
-    .services-grid {
-        gap: 0.75rem !important;
-    }
-    
-    .services-grid {
-        grid-template-columns: 1fr !important;
-    }
-    
-    .service-card,
-    .competence-card {
-        padding: 1rem !important;
-        transform: translateZ(0);
-    }
-
-    /* 8. Шаги процесса - вертикальная структура для ускорения */
-    .steps-container {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 0.75rem !important;
-    }
-    
-    .step-card {
-        width: 100% !important;
-        padding: 1rem !important;
-    }
-
-    /* 9. Сетка цен - одна колонка */
-    .price-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 1rem !important;
-    }
-    
-    .price-card {
-        width: 100% !important;
-        margin: 0 !important;
-    }
-    
-    .price-table {
-        padding: 20px !important;
-    }
-
-    /* 10. FAQ секция - ускоряем анимацию аккордеона */
-    .faq-item {
-        transform: translateZ(0);
-        backface-visibility: hidden;
-    }
-    
-    .faq-question {
-        padding: 14px 18px !important;
-        font-size: 0.9rem !important;
-    }
-
-    /* 11. Форма - оптимизация для мобильных */
-    .form-row {
-        flex-direction: column !important;
-        gap: 0.75rem !important;
-    }
-    
-    .form-row input {
-        width: 100% !important;
-    }
-
-    /* 12. Контактная карточка */
-    .contact-card {
-        padding: 1.5rem !important;
-    }
-
-    /* 13. Hero статистика - уменьшаем количество элементов */
-    .hero-stats {
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 0.75rem !important;
-    }
-    
-    .stat-number {
-        font-size: 1.3rem !important;
-    }
-    
-    .stat-label {
-        font-size: 0.7rem !important;
-    }
-
-    /* 14. Отключаем hover-эффекты на мобильных (они вызывают перерисовку) */
-    .service-card:hover,
-    .competence-card:hover,
-    .portfolio-card:hover,
-    .step-card:hover,
-    .price-card:hover,
-    .faq-item:hover {
-        transform: none !important;
-        transition: none !important;
-    }
-    
-    .portfolio-card:hover .portfolio-image {
-        transform: none !important;
-    }
-
-    /* 15. Оптимизация кнопок */
-    .hero-buttons {
-        flex-direction: column !important;
-        gap: 0.75rem !important;
-    }
-    
-    .btn-primary,
-    .btn-outline {
-        width: 100% !important;
-        text-align: center !important;
-        padding: 0.75rem 1rem !important;
-    }
-
-    /* 16. Ускоряем загрузку шрифтов - используем system fonts на мобильных */
-    body,
-    .hero-title,
-    .service-card h3,
-    .competence-card h3,
-    .price-card h4,
-    .faq-question {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif !important;
-    }
-    
-    /* Сохраняем Zen Dots только для акцентных элементов при загрузке */
-    .hero-tag,
-    .stat-number {
-        font-family: 'Zen Dots', -apple-system, BlinkMacSystemFont, sans-serif !important;
-        font-display: swap;
-    }
-
-    /* 17. Отключаем сложные тени и blur-эффекты */
-    .service-card,
-    .competence-card,
-    .portfolio-card,
-    .price-card {
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
-        backdrop-filter: none !important;
-    }
-
-    /* 18. Оптимизация для сетки компетенций - 2 колонки вместо 4 */
-    .competences-grid {
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 0.75rem !important;
-    }
-    
-    .competence-card {
-        padding: 0.875rem !important;
-    }
-    
-    .competence-card h3 {
-        font-size: 1rem !important;
-    }
-    
-    .tech-item {
-        font-size: 0.65rem !important;
-        padding: 3px 8px !important;
-    }
-
-    /* 19. Mission grid - 2x2 */
-    .mission-grid {
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 0.5rem !important;
-    }
-    
-    .mission-text p {
-        font-size: 0.85rem !important;
-    }
-
-    /* 20. Hero quote - уменьшаем размер и убираем эффекты */
-    .hero-quote {
-        font-size: 0.8rem !important;
-        padding: 0.75rem !important;
-    }
-
-    .quote-text {
-        font-size: 0.7rem !important;
-    }
-    
-    .hero-tag {
-        font-size: 0.65rem !important;
-        padding: 4px 10px !important;
-    }
-
-    /* 21. Ускорение скролла */
-    html, body {
-        scroll-behavior: auto !important;
-    }
-
-    /* 22. Оптимизация градиентов */
-    .word-gold {
-        background: linear-gradient(135deg, #F5B700, #FFD54F) !important;
-        -webkit-background-clip: text !important;
-        background-clip: text !important;
-    }
-    
-    h2 {
-        font-size: 1.6rem !important;
-    }
-    
-    .section-header {
-        margin-bottom: 28px !important;
-    }
-    
-    .calculator-card {
-        padding: 20px !important;
-    }
-    
-    .calc-option {
-        font-size: 0.7rem !important;
-        padding: 6px 12px !important;
-    }
-    
-    .calc-price {
-        font-size: 1.5rem !important;
-    }
-    
-    .totop {
-        bottom: 16px !important;
-        right: 16px !important;
-        width: 40px !important;
-        height: 40px !important;
-        font-size: 1.2rem !important;
-    }
-}
-
-/* ============================================ */
-/* ОПТИМИЗАЦИЯ ДЛЯ ОЧЕНЬ МАЛЕНЬКИХ ЭКРАНОВ (до 480px) */
-/* ============================================ */
-
-@media (max-width: 480px) {
-    .container {
-        padding: 0 16px !important;
-    }
-    
-    .hero-stats {
-        gap: 0.5rem !important;
-    }
-    
-    .competences-grid {
-        gap: 0.5rem !important;
-    }
-    
-    .service-badge {
-        font-size: 0.65rem !important;
-        padding: 4px 10px !important;
-    }
-    
-    .services-badges {
-        gap: 6px !important;
-    }
-    
-    .price {
-        font-size: 1.3rem !important;
-    }
-    
-    .price-card li {
-        font-size: 0.7rem !important;
-    }
-    
-    .step-num {
-        font-size: 1.8rem !important;
-    }
-    
-    .step-card h3 {
-        font-size: 1rem !important;
-    }
-    
-    .contact-card {
-        padding: 1.25rem !important;
-    }
-}
-
-/* ===== ПОДВАЛ (если есть) ===== */
-footer {
-    background: #06080E;
-    padding: 48px 0 24px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* ===== УТИЛИТЫ ===== */
-.text-center {
-    text-align: center;
-}
-
-.mt-2 {
-    margin-top: 8px;
-}
-
-.mt-3 {
-    margin-top: 16px;
-}
-
-.mt-4 {
-    margin-top: 24px;
-}
-
-.mb-2 {
-    margin-bottom: 8px;
-}
-
-.mb-3 {
-    margin-bottom: 16px;
-}
-
-.mb-4 {
-    margin-bottom: 24px;
-}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ALBE DIGITAL | Разработка дизайна и сайтов под ключ — премиум, SEO, AI</title>
+<meta name="description" content="ALBE digital — разработка дизайна и сайтов под ключ. Премиум дизайн, SEO-продвижение, AI-решения, мобильные приложения. Калькулятор стоимости, поддержка 24/7.">
+<meta name="keywords" content="разработка сайтов под ключ, премиум дизайн, seo продвижение, albe digital, создание сайтов, разработка дизайна">
+<meta name="author" content="Albe Digital">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://albe.su/">
+<link rel="alternate" href="https://albe.su/" hreflang="ru-ru">
+<link rel="sitemap" type="application/xml" href="sitemap.xml">
+<meta property="og:title" content="ALBE DIGITAL — разработка дизайна и сайтов под ключ">
+<meta property="og:description" content="Разработка дизайна и сайтов, SEO, AI, мобильные приложения. Калькулятор стоимости, прозрачные цены.">
+<meta property="og:image" content="images/bank.avif">
+<meta property="og:url" content="https://albe.su/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0D1117">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23F5B700'/%3E%3Ctext x='20' y='28' font-size='24' text-anchor='middle' fill='black' font-weight='500'%3EA%3C/text%3E%3C/svg%3E">
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+    ym(109373410, 'init', {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true,
+        ecommerce:"dataLayer"
+    });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/109373410" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+<!-- DNS Prefetch для ускорения -->
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Предзагрузка критических ресурсов -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap">
+<link rel="preload" as="style" href="style.css?v=1.0">
+
+<!-- Шрифты с атрибутом media для оптимизации -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="style.css?v=1.0">
+
+<noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
+</noscript>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://albe.su/#organization",
+            "name": "ALBE digital",
+            "url": "https://albe.su/",
+            "logo": "https://albe.su/favicon.ico",
+            "description": "Разработка дизайна и сайтов под ключ, премиум дизайн, SEO-продвижение, AI-решения, мобильные приложения.",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Москва",
+                "addressRegion": "Москва",
+                "postalCode": "127051",
+                "streetAddress": "Цветной бульвар",
+                "addressCountry": "RU"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+79959870353",
+                "contactType": "sales",
+                "availableLanguage": "Russian",
+                "email": "albe.web@yandex.ru"
+            },
+            "sameAs": ["https://t.me/albe_web"],
+            "priceRange": "от 120 000 ₽"
+        },
+        {
+            "@type": "WebSite",
+            "@id": "https://albe.su/#website",
+            "url": "https://albe.su/",
+            "name": "ALBE DIGITAL",
+            "description": "Разработка дизайна и сайтов под ключ — премиум дизайн, SEO, продвижение",
+            "publisher": {"@id": "https://albe.su/#organization"},
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://albe.su/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+            }
+        },
+        {
+            "@type": "LocalBusiness",
+            "@id": "https://albe.su/#localbusiness",
+            "name": "ALBE digital",
+            "image": "https://albe.su/images/bank.avif",
+            "description": "Разработка дизайна и сайтов под ключ, премиум дизайн, SEO-продвижение, AI-решения, мобильные приложения.",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Москва",
+                "addressRegion": "Москва",
+                "postalCode": "127051",
+                "streetAddress": "Цветной бульвар",
+                "addressCountry": "RU"
+            },
+            "telephone": "+79959870353",
+            "email": "albe.web@yandex.ru",
+            "openingHours": "Mo-Fr 10:00-19:00",
+            "priceRange": "от 120 000 ₽",
+            "sameAs": ["https://t.me/albe_web"]
+        }
+    ]
+}
+</script>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<main>
+<!-- БАННЕР С МНОГОСТРОЧНЫМ ЦВЕТНЫМ ЗАГОЛОВКОМ В H1 -->
+<section class="hero">
+<div class="code-rain" aria-hidden="true">
+<div class="code-line" style="left:5%;animation-duration:12s;animation-delay:0s">&lt;div class="digital"&gt;&lt;/div&gt;</div>
+<div class="code-line" style="left:15%;animation-duration:10s;animation-delay:2s">const future = await ai();</div>
+<div class="code-line" style="left:25%;animation-duration:14s;animation-delay:1s">import { design } from 'agency';</div>
+<div class="code-line" style="left:35%;animation-duration:9s;animation-delay:4s">function createProduct() { return ∞; }</div>
+<div class="code-line" style="left:45%;animation-duration:15s;animation-delay:.5s">.digital-agency { opacity: 1; }</div>
+<div class="code-line" style="left:55%;animation-duration:11s;animation-delay:3s">npm install premium-website</div>
+<div class="code-line" style="left:65%;animation-duration:13s;animation-delay:5s">&lt;SEO speed="fast" /&gt;</div>
+<div class="code-line" style="left:75%;animation-duration:8s;animation-delay:2.5s">git commit -m "launch success"</div>
+<div class="code-line" style="left:85%;animation-duration:16s;animation-delay:1.5s">const website = new ALBE();</div>
+<div class="code-line" style="left:10%;animation-duration:11s;animation-delay:6s">&lt;React.StrictMode&gt;</div>
+<div class="code-line" style="left:20%;animation-duration:13s;animation-delay:3.5s">function App() { return &lt;Hero /&gt;; }</div>
+<div class="code-line" style="left:30%;animation-duration:9.5s;animation-delay:7s">.btn-gold { background: #F5B700; }</div>
+<div class="code-line" style="left:40%;animation-duration:14.5s;animation-delay:1s">export default async function build()</div>
+<div class="code-line" style="left:50%;animation-duration:12.5s;animation-delay:4.5s">import { SEO, Analytics } from '@/lib'</div>
+<div class="code-line" style="left:60%;animation-duration:10.5s;animation-delay:8s">const meta = { title: "ALBE digital" }</div>
+<div class="code-line" style="left:70%;animation-duration:15.5s;animation-delay:2s">@keyframes fadeIn { from { opacity: 0; } }</div>
+<div class="code-line" style="left:80%;animation-duration:11.5s;animation-delay:5.5s">&lt;meta name="viewport" /&gt;</div>
+<div class="code-line" style="left:90%;animation-duration:13.5s;animation-delay:.8s">console.log("ALBE launched")</div>
+</div>
+<div class="container">
+<div class="hero-wrapper">
+<div class="hero-content">
+<div class="hero-top">
+<div class="hero-tag">DIGITAL AGENCY</div>
+<h1 class="hero-title">
+    <span class="hero-title-line1">РАЗРАБОТКА</span>
+    <span class="hero-title-line2">
+        <span class="word-teal">дизайна</span>
+        <span class="word-white">и</span>
+        <span class="word-gold">сайтов</span>
+    </span>
+    <span class="hero-title-line3">ПОД КЛЮЧ</span>
+</h1>
+<div class="services-badges">
+<span class="service-badge">Премиум дизайн</span>
+<span class="service-badge">Безупречный код</span>
+<span class="service-badge">Мобильные приложения</span>
+<span class="service-badge">AI решения</span>
+<span class="service-badge">UI/UX проектирование</span>
+<span class="service-badge">SEO стратегия</span>
+<span class="service-badge">Веб-разработка</span>
+<span class="service-badge">E-commerce</span>
+<span class="service-badge">CRM интеграция</span>
+<span class="service-badge">24/7 поддержка</span>
+</div>
+</div>
+<div class="hero-bottom">
+<div class="hero-buttons">
+<a href="#calculator" class="btn-primary">Рассчитать проект</a>
+<a href="#portfolio" class="btn-outline">Портфолио</a>
+</div>
+<div class="hero-quote">
+<span class="quote-text">В ALBE МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ — МЫ СОЗДАЕМ БИЗНЕС</span>
+</div>
+</div>
+</div>
+<div class="hero-stats">
+<div class="stat-item"><div class="stat-number">7+</div><div class="stat-label">лет опыта</div></div>
+<div class="stat-item"><div class="stat-number">150+</div><div class="stat-label">проектов</div></div>
+<div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">поддержка</div></div>
+<div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">результат</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="services" class="section" itemscope itemtype="https://schema.org/ItemList">
+<div class="container">
+<div class="section-header">
+<h2 itemprop="name">Эксклюзивные решения</h2>
+<a href="services.html" class="section-more-btn">Все услуги</a>
+</div>
+<div class="services-grid">
+<div class="service-card" itemscope itemtype="https://schema.org/Service"><h3 itemprop="name">Веб-разработка</h3><p itemprop="description">Современный стек: React, Vue, Node.js, Laravel. Высокая производительность и масштабируемость.</p></div>
+<div class="service-card" itemscope itemtype="https://schema.org/Service"><h3 itemprop="name">Иммерсивный дизайн</h3><p itemprop="description">Микровзаимодействия, 3D-сцены, анимация. Визуальный язык, который запоминается.</p></div>
+<div class="service-card" itemscope itemtype="https://schema.org/Service"><h3 itemprop="name">E‑commerce платформы</h3><p itemprop="description">Интернет-магазины с конверсией 15%+, интеграция с 1С, CRM и маркетплейсами.</p></div>
+<div class="service-card" itemscope itemtype="https://schema.org/Service"><h3 itemprop="name">SEO & аналитика</h3><p itemprop="description">Полная оптимизация: от семантики до лидерских позиций в Яндексе и Google.</p></div>
+<div class="service-card" itemscope itemtype="https://schema.org/Service"><h3 itemprop="name">AI & Machine Learning</h3><p itemprop="description">Чат-боты, рекомендательные системы, аналитика данных, генеративный AI.</p></div>
+<div class="service-card" itemscope itemtype="https://schema.org/Service"><h3 itemprop="name">Мобильные приложения</h3><p itemprop="description">iOS, Android, React Native, Flutter. Полный цикл от идеи до публикации.</p></div>
+</div>
+</div>
+</section>
+
+<section id="portfolio" class="section" itemscope itemtype="https://schema.org/ItemList">
+<div class="container">
+<div class="section-header">
+<h2 itemprop="name">Избранные проекты</h2>
+<a href="portfolio.html" class="section-more-btn">Все проекты</a>
+</div>
+<div class="portfolio-grid">
+<div class="portfolio-card" itemscope itemtype="https://schema.org/CreativeWork">
+<picture><source srcset="images/bank.avif" type="image/avif"><img class="portfolio-image" src="images/bank.avif" alt="Neo Bank — разработка премиум сайта для банковского сектора" loading="lazy" decoding="async" width="400" height="300" itemprop="image"></picture>
+<div class="portfolio-info"><h3 itemprop="name">NeoBank Platform</h3><p itemprop="description">Рост активных клиентов +210%</p></div>
+</div>
+<div class="portfolio-card" itemscope itemtype="https://schema.org/CreativeWork">
+<picture><source srcset="images/ai.avif" type="image/avif"><img class="portfolio-image" src="images/ai.avif" alt="AI рекомендательная система — разработка нейросетей для бизнеса" loading="lazy" decoding="async" width="400" height="300" itemprop="image"></picture>
+<div class="portfolio-info"><h3 itemprop="name">AI рекомендательная система</h3><p itemprop="description">Рост конверсии +34%</p></div>
+</div>
+<div class="portfolio-card" itemscope itemtype="https://schema.org/CreativeWork">
+<picture><source srcset="images/app.avif" type="image/avif"><img class="portfolio-image" src="images/app.avif" alt="FitTrack — разработка мобильного приложения для фитнеса" loading="lazy" decoding="async" width="400" height="300" itemprop="image"></picture>
+<div class="portfolio-info"><h3 itemprop="name">FitTrack приложение</h3><p itemprop="description">50k+ установок</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="process" class="section" itemscope itemtype="https://schema.org/HowTo">
+<div class="container">
+<div class="section-header">
+<h2 itemprop="name">Как мы создаём лидеров рынка</h2>
+<a href="services.html" class="section-more-btn">Подробнее</a>
+</div>
+<div class="steps-container">
+<div class="step-card" itemprop="step" itemscope itemtype="https://schema.org/HowToStep"><div class="step-num" itemprop="position">01</div><h3 itemprop="name">Аналитика</h3><p itemprop="description">Изучаем нишу, конкурентов, ЦА. Формируем KPI.</p></div>
+<div class="step-card" itemprop="step" itemscope itemtype="https://schema.org/HowToStep"><div class="step-num" itemprop="position">02</div><h3 itemprop="name">Прототипирование</h3><p itemprop="description">Интерактивные прототипы, тестирование гипотез.</p></div>
+<div class="step-card" itemprop="step" itemscope itemtype="https://schema.org/HowToStep"><div class="step-num" itemprop="position">03</div><h3 itemprop="name">Дизайн & код</h3><p itemprop="description">Пиксель-перфект, чистый код, ежедневные билды.</p></div>
+<div class="step-card" itemprop="step" itemscope itemtype="https://schema.org/HowToStep"><div class="step-num" itemprop="position">04</div><h3 itemprop="name">SEO & запуск</h3><p itemprop="description">Техническая SEO-оптимизация, деплой, мониторинг.</p></div>
+</div>
+</div>
+</section>
+
+<section id="competences" class="section">
+<div class="container">
+<div class="section-header">
+<h2>Наши компетенции</h2>
+<a href="services.html" class="section-more-btn">Подробнее</a>
+</div>
+<div class="competences-grid">
+<div class="competence-card"><h3>Frontend</h3><p>Интерфейсы, которые продают</p><div class="competence-tech-list"><div class="tech-item" data-tech="react">React / Next.js</div><div class="tech-item" data-tech="vue">Vue 3 / Nuxt</div><div class="tech-item" data-tech="ts">TypeScript</div><div class="tech-item" data-tech="gsap">GSAP</div><div class="tech-item" data-tech="three">Three.js</div></div></div>
+<div class="competence-card"><h3>Backend</h3><p>Надёжная архитектура</p><div class="competence-tech-list"><div class="tech-item" data-tech="node">Node.js / Nest.js</div><div class="tech-item" data-tech="python">Python / Django</div><div class="tech-item" data-tech="laravel">Laravel</div><div class="tech-item" data-tech="postgres">PostgreSQL</div><div class="tech-item" data-tech="docker">Docker / K8s</div></div></div>
+<div class="competence-card"><h3>Дизайн</h3><p>UI/UX & брендинг</p><div class="competence-tech-list"><div class="tech-item" data-tech="figma">Figma</div><div class="tech-item" data-tech="uiux">UI/UX Research</div><div class="tech-item" data-tech="motion">Motion Design</div><div class="tech-item" data-tech="3d">3D Art</div><div class="tech-item" data-tech="adobe">Adobe Suite</div></div></div>
+<div class="competence-card"><h3>SEO / Data</h3><p>Рост трафика и продаж</p><div class="competence-tech-list"><div class="tech-item" data-tech="audit">SEO-аудит</div><div class="tech-item" data-tech="metrika">Метрика / GA4</div><div class="tech-item" data-tech="cluster">Кластеризация</div><div class="tech-item" data-tech="core">Core Web Vitals</div><div class="tech-item" data-tech="semrush">SEMrush</div></div></div>
+</div>
+</div>
+</section>
+
+<!-- ===== КАЛЬКУЛЯТОР С FALLBACK ДЛЯ SEO ===== -->
+<section id="calculator" class="section">
+<div class="container">
+<div class="section-header">
+<h2>Калькулятор стоимости</h2>
+<a href="services.html" class="section-more-btn">Все услуги</a>
+</div>
+
+<!-- СТАТИЧЕСКАЯ ТАБЛИЦА С ЦЕНАМИ (ДЛЯ SEO И ПОИСКОВЫХ РОБОТОВ) -->
+<div class="price-table" id="staticPriceTable">
+    <h3>Примеры стоимости разработки</h3>
+    <div class="price-grid">
+        <div class="price-card">
+            <h4>Лендинг / Старт</h4>
+            <div class="price">от 120 000 ₽</div>
+            <ul>
+                <li>Дизайн (UI/UX)</li>
+                <li>Frontend разработка</li>
+                <li>Базовая SEO оптимизация</li>
+                <li>Адаптивная вёрстка</li>
+                <li>Срок: 2-3 недели</li>
+            </ul>
+        </div>
+        <div class="price-card">
+            <h4>Бизнес / Сайт услуг</h4>
+            <div class="price">от 250 000 ₽</div>
+            <ul>
+                <li>Дизайн (UI/UX)</li>
+                <li>Frontend + Backend</li>
+                <li>CMS (админ-панель)</li>
+                <li>SEO оптимизация</li>
+                <li>CRM интеграция</li>
+                <li>Срок: 4-6 недель</li>
+            </ul>
+        </div>
+        <div class="price-card">
+            <h4>Премиум / Интернет-магазин</h4>
+            <div class="price">от 450 000 ₽</div>
+            <ul>
+                <li>Дизайн (UI/UX)</li>
+                <li>Frontend + Backend</li>
+                <li>CMS + CRM интеграция</li>
+                <li>Полная SEO оптимизация</li>
+                <li>Платёжные системы</li>
+                <li>1С интеграция</li>
+                <li>Срок: 6-8 недель</li>
+            </ul>
+        </div>
+        <div class="price-card">
+            <h4>Enterprise / Портал</h4>
+            <div class="price">от 1 200 000 ₽</div>
+            <ul>
+                <li>Полный цикл разработки</li>
+                <li>AI / ML решения</li>
+                <li>Мобильное приложение</li>
+                <li>Техподдержка 24/7</li>
+                <li>Микросервисная архитектура</li>
+                <li>Срок: от 10 недель</li>
+            </ul>
+        </div>
+    </div>
+    <p class="price-note">*Точная стоимость рассчитывается индивидуально в калькуляторе выше</p>
+</div>
+
+<!-- ИНТЕРАКТИВНЫЙ КАЛЬКУЛЯТОР (ПОКАЗЫВАЕТСЯ ТОЛЬКО ПРИ ВКЛЮЧЁННОМ JS) -->
+<div class="calculator-card interactive-calculator" id="interactiveCalculator" style="display: none;">
+<div class="calculator-two-columns">
+<div class="calculator-left">
+<div class="calc-group"><div class="calc-label">Услуги:</div><div class="calc-options" id="calcServices"><div data-service="design" class="calc-option">Дизайн (UI/UX)</div><div data-service="front" class="calc-option">Frontend</div><div data-service="back" class="calc-option">Backend</div><div data-service="seo" class="calc-option">SEO</div><div data-service="cms" class="calc-option">CMS</div><div data-service="crm" class="calc-option">CRM / ERP</div><div data-service="ai" class="calc-option">AI / ML</div><div data-service="mobile" class="calc-option">Мобильное приложение</div><div data-service="support" class="calc-option">Техподдержка</div></div></div>
+<div class="calc-group"><div class="calc-label">Сложность:</div><div class="calc-options" id="calcComplexity"><div data-complex="simple" class="calc-option">Старт (Лендинг)</div><div data-complex="medium" class="calc-option">Бизнес (Сайт услуг)</div><div data-complex="high" class="calc-option">Премиум (Магазин)</div><div data-complex="enterprise" class="calc-option">Enterprise (Портал)</div></div></div>
+<div class="calc-total-block"><div class="calc-price" id="calcPrice">0 ₽</div><div id="calcHoursInfo" style="font-size:.85rem;color:#B0C4DE"></div></div>
+</div>
+<div class="calculator-right stack-explanation" id="stackExplanation"><h4>Рекомендуемый стек</h4><p>Выберите услуги для расчёта</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+<div class="section-header">
+<h2>Почему выбирают нас</h2>
+<a href="about.html" class="section-more-btn">О компании</a>
+</div>
+<div class="mission-grid-wrapper">
+<div class="mission-text">
+<p><strong>ALBE digital</strong> — это стратегический партнёр, а не просто подрядчик. Мы разрабатываем продукты, которые масштабируют бизнес и увеличивают прибыль. Каждый проект сопровождается глубокой <strong>SEO-проработкой</strong> и техническим аудитом, что гарантирует высокие позиции в поисковых системах с первых недель после запуска.</p>
+<p>Наши клиенты из ритейла, финтеха и образования получают прирост органического трафика до 300% за 6 месяцев. Мы внедряем <strong>AI-решения</strong> для автоматизации маркетинга и продаж, а также разрабатываем мобильные приложения, повышающие лояльность аудитории. Работаем с брендами по всей России.</p>
+</div>
+<div class="mission-grid">
+<picture><source srcset="images/bank.avif" type="image/avif"><img class="mission-grid-card" src="images/bank.avif" alt="Наша команда профессионалов ALBE digital" loading="lazy" decoding="async" width="400" height="300"></picture>
+<picture><source srcset="images/ai.avif" type="image/avif"><img class="mission-grid-card" src="images/ai.avif" alt="Процесс разработки сайтов под ключ" loading="lazy" decoding="async" width="400" height="300"></picture>
+<picture><source srcset="images/app.avif" type="image/avif"><img class="mission-grid-card" src="images/app.avif" alt="Результаты нашей работы — кейсы и достижения" loading="lazy" decoding="async" width="400" height="300"></picture>
+<picture><source srcset="images/bank.avif" type="image/avif"><img class="mission-grid-card" src="images/bank.avif" alt="Наши довольные клиенты и партнёры" loading="lazy" decoding="async" width="400" height="300"></picture>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section" itemscope itemtype="https://schema.org/FAQPage">
+<div class="container">
+<div class="section-header">
+<h2>Часто задаваемые вопросы</h2>
+<a href="services.html" class="section-more-btn">Подробнее</a>
+</div>
+<div class="faq-grid">
+<div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><button class="faq-question" itemprop="name">Сколько стоит разработка сайта под ключ?</button><div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text">Стоимость разработки сайта рассчитывается индивидуально в нашем калькуляторе. Лендинг от 120 000 ₽, корпоративный сайт от 250 000 ₽, интернет-магазин от 450 000 ₽. Окончательная цена зависит от сложности, количества функций и выбранного стека технологий.</div></div></div>
+<div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><button class="faq-question" itemprop="name">Какие сроки разработки сайта?</button><div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text">Сроки разработки сайта под ключ составляют от 3 до 12 недель в зависимости от сложности проекта. Лендинг разрабатывается за 2-3 недели, интернет-магазин — 6-8 недель, сложные порталы и CRM системы — от 10 недель. Мы всегда соблюдаем дедлайны.</div></div></div>
+<div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><button class="faq-question" itemprop="name">Даёте гарантию на SEO продвижение?</button><div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text">Да, мы гарантируем выполнение KPI по SEO продвижению. Заключаем договор с чёткими показателями: рост трафика, улучшение позиций по целевым запросам, увеличение конверсии. При недостижении результатов проводим дополнительную оптимизацию за наш счёт.</div></div></div>
+<div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><button class="faq-question" itemprop="name">Разрабатываете мобильные приложения?</button><div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text">Да, мы разрабатываем мобильные приложения под iOS, Android и кроссплатформенные решения на React Native и Flutter. Полный цикл: от идеи и дизайна до публикации в App Store и Google Play. Интегрируем с вашим сайтом и CRM.</div></div></div>
+<div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><button class="faq-question" itemprop="name">Как происходит SEO оптимизация сайта?</button><div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text">SEO оптимизация включает: технический аудит, сбор семантического ядра, оптимизацию метатегов и контента, улучшение Core Web Vitals, настройку Яндекс.Метрики и Google Analytics, проработку коммерческих факторов. Регулярно отчитываемся по позициям и трафику.</div></div></div>
+<div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><button class="faq-question" itemprop="name">Используете ли вы AI и нейросети?</button><div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text">Да, мы активно внедряем AI решения: чат-боты для автоматизации поддержки, рекомендательные системы, генеративный AI для контента, аналитику данных и прогнозирование. Нейросети помогают ускорить разработку и повысить качество продуктов.</div></div></div>
+<div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><button class="faq-question" itemprop="name">Предоставляете техническую поддержку?</button><div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text">Да, у нас есть круглосуточная техническая поддержка 24/7. Обслуживание включает: устранение ошибок, обновление CMS и плагинов, бэкапы, мониторинг безопасности, доработки функционала. Выбирайте пакет поддержки под ваш бюджет.</div></div></div>
+<div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><button class="faq-question" itemprop="name">Как начать проект с ALBE digital?</button><div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text">Просто оставьте заявку на сайте или напишите в Telegram. Мы проведём бесплатную консультацию, проанализируем ваш бизнес и потребности, предложим оптимальное решение и сроки. После согласования концепции подготовим договор и начнём разработку.</div></div></div>
+</div>
+</div>
+</section>
+
+<!-- КОНТАКТЫ -->
+<section id="contact" class="contact-section" itemscope itemtype="https://schema.org/ContactPage">
+    <div class="container">
+        <div class="contact-card">
+            <div class="section-header" style="display: block; text-align: center;">
+                <h2 style="display: inline-block; text-align: center;">Начнём проект?</h2>
+            </div>
+            <p class="contact-desc">Оставьте заявку — Мы свяжемся с вами в течение 3 часов</p>
+            <form id="mainForm" class="contact-form" itemprop="potentialAction" itemscope itemtype="https://schema.org/CommunicateAction">
+                <div class="form-row">
+                    <input type="text" id="userName" placeholder="Имя *" required itemprop="name">
+                    <input type="tel" id="userPhone" placeholder="Телефон *" required itemprop="telephone">
+                </div>
+                <div class="form-row">
+                    <input type="email" id="userEmail" placeholder="Email *" required itemprop="email">
+                    <input type="text" id="userTelegram" placeholder="Telegram (username)">
+                </div>
+                <textarea rows="4" id="userMsg" placeholder="Опишите задачу" itemprop="description"></textarea>
+                <textarea rows="3" id="userComment" placeholder="Комментарий (дополнительные пожелания)"></textarea>
+                <button type="submit" class="btn-primary">Отправить заявку</button>
+                <div id="formStatus" class="form-status"></div>
+            </form>
+        </div>
+    </div>
+</section>
+</main>
+<div id="footer-placeholder"></div>
+<div class="totop" id="toTopBtn">↑</div>
+<script src="header-loader.js?v=1.0"></script>
+<script src="common.js?v=1.0"></script>
+</body>
+</html>
