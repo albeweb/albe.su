@@ -589,7 +589,7 @@ body.header-fixed { padding-top: 82px; }
 
 /* НОВЫЙ ОСНОВНОЙ ЗАГОЛОВОК H1 В HERO-БАННЕРЕ */
 .hero-title {
-    font-size: 5rem;
+    font-size: 7rem;
     line-height: 1.1;
     margin-bottom: 1.5rem;
     font-weight: 500;
