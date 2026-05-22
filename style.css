@@ -591,7 +591,7 @@ body.header-fixed { padding-top: 82px; }
 .hero-title {
     font-family: 'Manrope', sans-serif;
     font-weight: 500;
-    letter-spacing: 2em;
+    letter-spacing: 0.2em;
     margin-bottom: 1.5rem;
 }
 
