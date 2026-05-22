@@ -275,27 +275,30 @@
 </div>
 </div>
 </section>
+<!-- КОНТАКТЫ — ОБНОВЛЁННЫЙ БЛОК В ЕДИНОМ СТИЛЕ -->
 <section id="contact" class="contact-section" itemscope itemtype="https://schema.org/ContactPage">
-<div class="container">
-<div class="contact-card">
-<h2>Начнём проект?</h2>
-<p class="contact-desc">Оставьте заявку — Мы свяжемся с вами в течение 3 часов</p>
-<form id="mainForm" class="contact-form" itemprop="potentialAction" itemscope itemtype="https://schema.org/CommunicateAction">
-<div class="form-row">
-<input type="text" id="userName" placeholder="Имя *" required itemprop="name">
-<input type="tel" id="userPhone" placeholder="Телефон *" required itemprop="telephone">
-</div>
-<div class="form-row">
-<input type="email" id="userEmail" placeholder="Email *" required itemprop="email">
-<input type="text" id="userTelegram" placeholder="Telegram (username)">
-</div>
-<textarea rows="4" id="userMsg" placeholder="Опишите задачу" itemprop="description"></textarea>
-<textarea rows="3" id="userComment" placeholder="Комментарий (дополнительные пожелания)"></textarea>
-<button type="submit" class="btn-primary">Отправить заявку</button>
-<div id="formStatus" class="form-status"></div>
-</form>
-</div>
-</div>
+    <div class="container">
+        <div class="contact-card">
+            <div class="section-header" style="display: block; text-align: center;">
+                <h2 style="display: inline-block; text-align: center;">Начнём проект?</h2>
+            </div>
+            <p class="contact-desc">Оставьте заявку — Мы свяжемся с вами в течение 3 часов</p>
+            <form id="mainForm" class="contact-form" itemprop="potentialAction" itemscope itemtype="https://schema.org/CommunicateAction">
+                <div class="form-row">
+                    <input type="text" id="userName" placeholder="Имя *" required itemprop="name">
+                    <input type="tel" id="userPhone" placeholder="Телефон *" required itemprop="telephone">
+                </div>
+                <div class="form-row">
+                    <input type="email" id="userEmail" placeholder="Email *" required itemprop="email">
+                    <input type="text" id="userTelegram" placeholder="Telegram (username)">
+                </div>
+                <textarea rows="4" id="userMsg" placeholder="Опишите задачу" itemprop="description"></textarea>
+                <textarea rows="3" id="userComment" placeholder="Комментарий (дополнительные пожелания)"></textarea>
+                <button type="submit" class="btn-primary">Отправить заявку</button>
+                <div id="formStatus" class="form-status"></div>
+            </form>
+        </div>
+    </div>
 </section>
 </main>
 <div id="footer-placeholder"></div>
