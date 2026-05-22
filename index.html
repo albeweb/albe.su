@@ -19,7 +19,7 @@
 <meta name="theme-color" content="#0D1117">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23F5B700'/%3E%3Ctext x='20' y='28' font-size='24' text-anchor='middle' fill='black' font-weight='500'%3EA%3C/text%3E%3C/svg%3E">
 
-<!-- Yandex.Metrika counter (асинхронная, не блокирует) -->
+<!-- Yandex.Metrika counter (асинхронная) -->
 <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
         m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -38,19 +38,16 @@
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/109373410" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 
-<!-- Предзагрузка критических внешних ресурсов (DNS, preconnect) -->
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <!-- 
-    ========== КРИТИЧЕСКИЙ CSS (ИНЛАЙН) ==========
-    Стили, необходимые для отображения первого экрана (hero, кнопки, контейнер).
-    Это гарантирует, что браузер сразу отрисует контент без ожидания внешних CSS.
+    КРИТИЧЕСКИЙ CSS (инлайн) — исправлен для устранения CLS
+    Заданы font-family с правильными fallback и фиксированные line-height
 -->
 <style>
-    /* Базовые сбросы и критическая структура */
     * {
         margin: 0;
         padding: 0;
@@ -59,7 +56,7 @@
     body {
         background-color: #0D1117;
         color: #FFFFFF;
-        font-family: 'Inter', sans-serif;
+        font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         line-height: 1.5;
     }
     .container {
@@ -67,7 +64,6 @@
         margin: 0 auto;
         padding: 0 24px;
     }
-    /* Hero-блок */
     .hero {
         min-height: 100vh;
         display: flex;
@@ -95,9 +91,10 @@
         letter-spacing: 3px;
         color: #F5B700;
         font-weight: 600;
+        line-height: 1.4;
     }
     .hero-title {
-        font-family: 'Manrope', sans-serif;
+        font-family: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         font-weight: 800;
         font-size: clamp(2.5rem, 8vw, 5rem);
         line-height: 1.2;
@@ -121,31 +118,39 @@
         border-radius: 40px;
         font-size: 14px;
         font-weight: 500;
+        line-height: 1.4;
+        font-family: inherit;
     }
     .hero-buttons {
         display: flex;
         gap: 16px;
         margin-top: 8px;
     }
-    .btn-primary {
-        background: #F5B700;
-        color: #0D1117;
+    .btn-primary, .btn-outline {
+        display: inline-block;
         padding: 12px 28px;
         border-radius: 40px;
         text-decoration: none;
         font-weight: 600;
-        display: inline-block;
+        line-height: 1.4;
+        font-family: inherit;
         transition: 0.2s;
+    }
+    .btn-primary {
+        background: #F5B700;
+        color: #0D1117;
     }
     .btn-outline {
         border: 1px solid #F5B700;
         color: #F5B700;
-        padding: 12px 28px;
-        border-radius: 40px;
-        text-decoration: none;
-        font-weight: 600;
-        display: inline-block;
-        transition: 0.2s;
+    }
+    .hero-quote {
+        margin-top: 16px;
+    }
+    .quote-text {
+        font-size: 0.9rem;
+        opacity: 0.8;
+        line-height: 1.4;
     }
     .hero-stats {
         display: flex;
@@ -157,26 +162,21 @@
         font-size: 28px;
         font-weight: 700;
         color: #F5B700;
+        line-height: 1.2;
     }
     .stat-label {
         font-size: 14px;
         opacity: 0.8;
+        line-height: 1.4;
     }
-    /* Остальные стили (для секций ниже) будут подгружены асинхронно */
 </style>
 
-<!-- 
-    ========== АСИНХРОННАЯ ЗАГРУЗКА НЕКРИТИЧЕСКИХ РЕСУРСОВ ==========
-    - Шрифты (кроме базового семейства, уже объявленного)
-    - Полный style.css
-    Используем стандартный метод preload + onload, рекомендованный Google.
--->
+<!-- Асинхронная загрузка некритических CSS (шрифты, style.css) -->
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <link rel="preload" as="style" href="style.css?v=1.0" onload="this.onload=null;this.rel='stylesheet'">
 
-<!-- Фолбэк для отключенного JavaScript -->
 <noscript>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
@@ -184,7 +184,7 @@
     <link rel="stylesheet" href="style.css?v=1.0">
 </noscript>
 
-<!-- Микроразметка Schema.org (полностью сохранена) -->
+<!-- Микроразметка (без изменений) -->
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -254,7 +254,7 @@
 <body>
 <div id="header-placeholder"></div>
 <main>
-<!-- БАННЕР С МНОГОСТРОЧНЫМ ЦВЕТНЫМ ЗАГОЛОВКОМ В H1 -->
+<!-- БАННЕР -->
 <section class="hero">
 <div class="code-rain" aria-hidden="true">
 <div class="code-line" style="left:5%;animation-duration:12s;animation-delay:0s">&lt;div class="digital"&gt;&lt;/div&gt;</div>
@@ -323,7 +323,7 @@
 </div>
 </section>
 
-<!-- ВСЕ ОСТАЛЬНЫЕ СЕКЦИИ БЕЗ ИЗМЕНЕНИЙ (скопированы из вашего исходника) -->
+<!-- ОСТАЛЬНЫЕ СЕКЦИИ (без изменений, такие же как в вашем оригинале) -->
 <section id="services" class="section" itemscope itemtype="https://schema.org/ItemList">
 <div class="container">
 <div class="section-header">
@@ -394,7 +394,7 @@
 </div>
 </section>
 
-<!-- ===== КАЛЬКУЛЯТОР ===== -->
+<!-- КАЛЬКУЛЯТОР -->
 <section id="calculator" class="section">
 <div class="container">
 <div class="section-header">
@@ -472,6 +472,7 @@
 <a href="services.html" class="section-more-btn">Подробнее</a>
 </div>
 <div class="faq-grid">
+<!-- 8 вопросов (как в исходнике) -->
 <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><button class="faq-question" itemprop="name">Сколько стоит разработка сайта под ключ?</button><div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text">Стоимость разработки сайта рассчитывается индивидуально в нашем калькуляторе. Лендинг от 120 000 ₽, корпоративный сайт от 250 000 ₽, интернет-магазин от 450 000 ₽. Окончательная цена зависит от сложности, количества функций и выбранного стека технологий.</div></div></div>
 <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><button class="faq-question" itemprop="name">Какие сроки разработки сайта?</button><div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text">Сроки разработки сайта под ключ составляют от 3 до 12 недель в зависимости от сложности проекта. Лендинг разрабатывается за 2-3 недели, интернет-магазин — 6-8 недель, сложные порталы и CRM системы — от 10 недель. Мы всегда соблюдаем дедлайны.</div></div></div>
 <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><button class="faq-question" itemprop="name">Даёте гарантию на SEO продвижение?</button><div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text">Да, мы гарантируем выполнение KPI по SEO продвижению. Заключаем договор с чёткими показателями: рост трафика, улучшение позиций по целевым запросам, увеличение конверсии. При недостижении результатов проводим дополнительную оптимизацию за наш счёт.</div></div></div>
