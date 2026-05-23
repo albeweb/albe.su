@@ -1143,6 +1143,78 @@ body.header-fixed { padding-top: 82px; }
     transform: translateY(-4px);
 }
 
+/* ============================================ */
+/* ⭐ OPTIMIZATIONS FOR CORE WEB VITALS (CLS FIX) ⭐ */
+/* ============================================ */
+
+/* 1. Фиксация места под динамические блоки */
+#header-placeholder {
+    min-height: 80px;
+    background: #0D1117;
+}
+
+#footer-placeholder {
+    min-height: 200px;
+}
+
+/* 2. Aspect-ratio для всех картинок (предотвращает CLS) */
+.portfolio-image,
+.mission-grid-card {
+    aspect-ratio: 400 / 300;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    background: #1a1f2e;
+}
+
+/* 3. Sticky header вместо JS-фиксации */
+#mainHeader {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+/* 4. Калькулятор всегда виден (без скачков при загрузке JS) */
+.interactive-calculator {
+    display: block !important;
+    min-height: 450px;
+}
+
+/* 5. Контейнер портфолио с фиксированной сеткой */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    grid-auto-rows: minmax(350px, auto);
+}
+
+/* 6. Дополнительная защита от смещений: фиксируем сетку услуг */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 36px;
+    margin-top: 48px;
+    grid-auto-rows: minmax(280px, auto);
+}
+
+/* 7. Фиксация высоты для step-карточек */
+.steps-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    margin-top: 40px;
+}
+
+.step-card {
+    flex: 1 1 200px;
+    min-height: 240px;
+}
+
+/* ============================================ */
+/* MEDIA QUERIES (ОСТАВЛЯЕМ ОРИГИНАЛЬНЫЕ НИЖЕ) */
+/* ============================================ */
+
 @media (max-width: 1600px) {
     h1 { font-size: 8rem; }
     h2 { font-size: 3.4rem; }
