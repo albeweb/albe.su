@@ -120,19 +120,18 @@ h3, h4, h5, h6,
 /* Цифры статистики - Zen Dots */
 .stat-number {
     font-family: 'Zen Dots', monospace;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     font-weight: 500;
-    color: #F5B700;
     line-height: 1.2;
     letter-spacing: -0.02em;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
 }
 
-/* Основной текст и всё остальное — Geist (БЕЗ .phrase-underkey) */
+/* Основной текст и всё остальное — Geist */
 p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-card p,
 .mission-text p, .faq-answer, .footer p, .footer a, .tech-item, .calc-option,
 .time-breakdown-item, .stack-explanation p, input, textarea, .stat-label,
-.price-card li, .price-note, .hero-title-line3 {
+.price-card li, .price-note, .hero-title-line3, .phrase-underkey {
     font-family: 'Geist', sans-serif;
     font-weight: 400;
     font-size: 1.0625rem;
@@ -472,7 +471,6 @@ h3 {
     transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
 }
 
-/* Фон при скролле */
 .header.scrolled {
     background: rgba(13, 17, 23, 0.95);
     backdrop-filter: blur(12px);
@@ -480,7 +478,6 @@ h3 {
     padding: 12px 0;
 }
 
-/* Без скролла — прозрачный, без фона */
 .header:not(.scrolled) {
     background: transparent;
     backdrop-filter: none;
@@ -493,10 +490,7 @@ h3 {
     padding: 0 80px;
 }
 
-/* ============================================ */
-/* ЛОГОТИП — Zen Dots, разноцветные буквы */
-/* ============================================ */
-
+/* Логотип — Zen Dots, разноцветные буквы */
 .logo {
     display: flex;
     align-items: baseline;
@@ -514,19 +508,16 @@ h3 {
     transition: transform 0.2s ease, color 0.2s ease;
 }
 
-.logo-letter:nth-child(1) { color: #F5B700; }  /* A — золотой */
-.logo-letter:nth-child(2) { color: #14C6B0; }  /* L — бирюзовый */
-.logo-letter:nth-child(3) { color: #10B981; }  /* B — мятный */
-.logo-letter:nth-child(4) { color: #8B5CF6; }  /* E — фиолетовый */
+.logo-letter:nth-child(1) { color: #F5B700; }
+.logo-letter:nth-child(2) { color: #14C6B0; }
+.logo-letter:nth-child(3) { color: #10B981; }
+.logo-letter:nth-child(4) { color: #8B5CF6; }
 
 .logo:hover .logo-letter {
     transform: translateY(-2px);
 }
 
-/* ============================================ */
-/* НАВИГАЦИЯ */
-/* ============================================ */
-
+/* Навигация */
 .nav-menu {
     display: flex;
     gap: 2rem;
@@ -545,7 +536,6 @@ h3 {
     transition: color 0.2s ease;
 }
 
-/* Эффект подчёркивания — тонкая золотая линия */
 .nav-link::after {
     content: '';
     position: absolute;
@@ -566,10 +556,7 @@ h3 {
     color: #F5B700;
 }
 
-/* ============================================ */
-/* КНОПКА TELEGRAM — технологичная, с обводкой */
-/* ============================================ */
-
+/* Кнопка Telegram */
 .header-telegram {
     display: inline-flex;
     align-items: center;
@@ -603,10 +590,7 @@ h3 {
     transform: scale(1.05);
 }
 
-/* ============================================ */
-/* БУРГЕР-МЕНЮ (мобильные) */
-/* ============================================ */
-
+/* Бургер-меню */
 .burger {
     display: none;
     flex-direction: column;
@@ -623,7 +607,6 @@ h3 {
     transition: all 0.3s ease;
 }
 
-/* Анимация бургера при открытии */
 .burger.active span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
 }
@@ -769,7 +752,6 @@ h3 {
     color: #F5B700;
 }
 
-/* ФРАЗА "ПОД КЛЮЧ" — наследует шрифт от H1 (без явного font-family) */
 .phrase-underkey {
     font-size: clamp(0.7rem, 2.2vw, 3rem);
     font-weight: 400;
@@ -788,13 +770,19 @@ h3 {
     white-space: normal;
 }
 
+/* ============================================ */
+/* СТАТИСТИКА — ГОРИЗОНТАЛЬНО (НЕ СТОЛБИКОМ) */
+/* ============================================ */
+
 .hero-stats {
-    flex-shrink: 0;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: flex-start;
     gap: 24px;
-    height: 100%;
-    justify-content: center;
+    margin-top: 32px;
+    margin-bottom: 32px;
+    width: 100%;
+    flex-wrap: wrap;
     background: none;
     border: none;
     padding: 0;
@@ -802,26 +790,65 @@ h3 {
 
 .stat-item {
     text-align: center;
-    min-width: 260px;
-    padding: 28px 40px;
-    background: rgba(13, 17, 23, 0.65);
-    backdrop-filter: blur(10px);
-    border: 1.5px solid rgba(245, 183, 0, 0.4);
+    min-width: 140px;
+    padding: 12px 48px;
+    background: transparent;
+    backdrop-filter: none;
+    border: 1px solid;
     border-top-left-radius: 28px;
     border-bottom-right-radius: 28px;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
     transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     cursor: default;
 }
 
-.stat-item:hover {
-    transform: translateX(-8px);
+/* Цвета для каждого элемента статистики */
+.stat-item:nth-child(1) {
     border-color: #F5B700;
+}
+.stat-item:nth-child(1) .stat-number {
+    color: #F5B700;
+}
+
+.stat-item:nth-child(2) {
+    border-color: #14C6B0;
+}
+.stat-item:nth-child(2) .stat-number {
+    color: #14C6B0;
+}
+
+.stat-item:nth-child(3) {
+    border-color: #10B981;
+}
+.stat-item:nth-child(3) .stat-number {
+    color: #10B981;
+}
+
+.stat-item:nth-child(4) {
+    border-color: #8B5CF6;
+}
+.stat-item:nth-child(4) .stat-number {
+    color: #8B5CF6;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
     background: rgba(30, 42, 94, 0.3);
     box-shadow: 0 15px 35px rgba(30, 42, 94, 0.4);
 }
 
+.stat-number {
+    font-family: 'Zen Dots', monospace;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+}
+
 .stat-label {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     color: #B0C4DE;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -1303,26 +1330,22 @@ h3 {
 }
 
 /* ============================================ */
-/* MEDIA QUERIES ДЛЯ ШАПКИ И ОСТАЛЬНОГО */
+/* MEDIA QUERIES */
 /* ============================================ */
 
 @media (max-width: 1024px) {
     .header .container {
         padding: 0 40px;
     }
-    
     .nav-menu {
         gap: 1.5rem;
     }
-    
     .nav-link {
         font-size: 0.85rem;
     }
-    
     .header-telegram span {
         display: none;
     }
-    
     .header-telegram {
         padding: 8px 12px;
     }
@@ -1340,8 +1363,6 @@ h3 {
     h2 { font-size: 3rem; }
     .hero-content { max-width: 52%; }
     .hero-wrapper { gap: 60px; }
-    .stat-item { min-width: 240px; padding: 24px 32px; }
-    .stat-number { font-size: 2.8rem; }
     .portfolio-card .portfolio-image { height: 240px; }
 }
 
@@ -1350,8 +1371,6 @@ h3 {
     h1 { font-size: 6rem; }
     h2 { font-size: 2.6rem; }
     .hero-content { max-width: 50%; }
-    .stat-item { min-width: 220px; padding: 20px 28px; }
-    .stat-number { font-size: 2.5rem; }
     .services-grid, .portfolio-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
     .portfolio-card .portfolio-image { height: 220px; }
 }
@@ -1361,8 +1380,6 @@ h3 {
     h1 { font-size: 5rem; }
     h2 { font-size: 2.2rem; }
     .hero-content { max-width: 48%; }
-    .stat-item { min-width: 200px; padding: 18px 24px; }
-    .stat-number { font-size: 2.2rem; }
     .portfolio-card .portfolio-image { height: 200px; }
 }
 
@@ -1375,9 +1392,7 @@ h3 {
     h2 { font-size: 2rem; }
     .hero-tag { display: block; text-align: center; }
     .services-badges, .hero-buttons { justify-content: center; }
-    .hero-stats { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 20px; }
-    .stat-item { min-width: 200px; flex: 1 1 auto; }
-    .stat-item:hover { transform: translateY(-5px); translateX: 0; }
+    .hero-stats { justify-content: center; }
     .services-grid, .portfolio-grid { grid-template-columns: 1fr; gap: 20px; }
     .portfolio-card .portfolio-image { height: 220px; }
     .mission-grid-wrapper { flex-direction: column; gap: 30px; }
@@ -1388,11 +1403,12 @@ h3 {
     .header .container {
         padding: 0 20px;
     }
-    
     .burger {
         display: flex;
     }
-    
+    .logo {
+        font-size: 1.4rem;
+    }
     .nav-menu {
         position: fixed;
         top: 0;
@@ -1409,38 +1425,27 @@ h3 {
         gap: 1.5rem;
         align-items: flex-start;
     }
-    
     .nav-menu.active {
         right: 0;
     }
-    
     .nav-link {
         font-size: 1.1rem;
         padding: 10px 0;
         width: 100%;
         border-bottom: 1px solid rgba(245, 183, 0, 0.15);
     }
-    
     .nav-link::after {
         display: none;
     }
-    
     .nav-link:hover {
         padding-left: 8px;
     }
-    
     .header-telegram {
         margin-top: 15px;
     }
-    
     .header-telegram span {
         display: inline;
     }
-    
-    .logo {
-        font-size: 1.4rem;
-    }
-    
     .container, .header .container, .hero .container { padding: 0 20px; }
     .section { padding: 60px 0; }
     .hero { padding: 40px 0; min-height: auto; }
@@ -1448,10 +1453,20 @@ h3 {
     h2 { font-size: 1.8rem; }
     h3 { font-size: 1.3rem; }
     .code-rain { display: none; }
-    
-    .stat-item { min-width: 170px; padding: 16px 20px; }
-    .stat-number { font-size: 2rem; }
-    .stat-label { font-size: 0.7rem; }
+    .hero-stats {
+        gap: 12px;
+        justify-content: center;
+    }
+    .stat-item {
+        min-width: auto;
+        padding: 8px 24px;
+    }
+    .stat-number {
+        font-size: 1.2rem;
+    }
+    .stat-label {
+        font-size: 0.6rem;
+    }
     .service-badge { padding: 6px 16px; font-size: 0.7rem; }
     .hero-buttons { flex-direction: column; gap: 12px; }
     .btn-primary, .btn-outline { width: 100%; padding: 12px 20px; font-size: 0.9rem; }
@@ -1500,25 +1515,22 @@ h3 {
     .header .container {
         padding: 0 16px;
     }
-    
     .logo {
         font-size: 1.2rem;
         gap: 2px;
     }
-    
     .nav-menu {
         width: 260px;
         right: -260px;
     }
-    
     .container, .header .container, .hero .container { padding: 0 16px; }
     .section { padding: 40px 0; }
     h1 { font-size: 2.5rem; }
     h2 { font-size: 1.5rem; }
     h2::after { width: 50px; bottom: -8px; }
     .hero-tag { font-size: 0.7rem; letter-spacing: 4px; }
-    .stat-item { min-width: 140px; padding: 12px 16px; }
-    .stat-number { font-size: 1.6rem; }
+    .stat-item { padding: 6px 16px; }
+    .stat-number { font-size: 1rem; }
     .service-badge { padding: 5px 12px; font-size: 0.65rem; }
     .quote-text { font-size: 0.7rem; }
     .service-card, .portfolio-card, .step-card, .faq-item { padding: 20px; }
