@@ -648,7 +648,7 @@ h3 {
 }
 
 .hero-title-line1 {
-    font-size: clamp(1.8rem, 7.5vw, 9rem);
+    font-size: clamp(1.8rem, 7.5vw, 8rem);
     font-weight: 400;
     color: #E2E8F0;
     display: block;
