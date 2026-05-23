@@ -130,8 +130,8 @@
 </head>
 <body>
 
-<!-- Плейсхолдеры для загружаемых компонентов -->
-<div id="header-placeholder"></div>
+<!-- Плейсхолдеры для загружаемых компонентов с фиксированной высотой -->
+<div id="header-placeholder" style="min-height: 82px; background: #0D1117;"></div>
 
 <main>
 <!-- БАННЕР С МНОГОСТРОЧНЫМ ЦВЕТНЫМ ЗАГОЛОВКОМ В H1 -->
@@ -228,15 +228,15 @@
 </div>
 <div class="portfolio-grid">
 <div class="portfolio-card" itemscope itemtype="https://schema.org/CreativeWork">
-<picture><source srcset="images/bank.avif" type="image/avif"><img class="portfolio-image" src="images/bank.avif" alt="Neo Bank — разработка премиум сайта для банковского сектора" loading="lazy" decoding="async" width="400" height="300" itemprop="image"></picture>
+<picture><source srcset="images/bank.avif" type="image/avif"><img class="portfolio-image" src="images/bank.avif" alt="Neo Bank — разработка премиум сайта для банковского сектора" loading="eager" fetchpriority="high" decoding="async" width="400" height="300" itemprop="image"></picture>
 <div class="portfolio-info"><h3 itemprop="name">NeoBank Platform</h3><p itemprop="description">Рост активных клиентов +210%</p></div>
 </div>
 <div class="portfolio-card" itemscope itemtype="https://schema.org/CreativeWork">
-<picture><source srcset="images/ai.avif" type="image/avif"><img class="portfolio-image" src="images/ai.avif" alt="AI рекомендательная система — разработка нейросетей для бизнеса" loading="lazy" decoding="async" width="400" height="300" itemprop="image"></picture>
+<picture><source srcset="images/ai.avif" type="image/avif"><img class="portfolio-image" src="images/ai.avif" alt="AI рекомендательная система — разработка нейросетей для бизнеса" loading="eager" fetchpriority="high" decoding="async" width="400" height="300" itemprop="image"></picture>
 <div class="portfolio-info"><h3 itemprop="name">AI рекомендательная система</h3><p itemprop="description">Рост конверсии +34%</p></div>
 </div>
 <div class="portfolio-card" itemscope itemtype="https://schema.org/CreativeWork">
-<picture><source srcset="images/app.avif" type="image/avif"><img class="portfolio-image" src="images/app.avif" alt="FitTrack — разработка мобильного приложения для фитнеса" loading="lazy" decoding="async" width="400" height="300" itemprop="image"></picture>
+<picture><source srcset="images/app.avif" type="image/avif"><img class="portfolio-image" src="images/app.avif" alt="FitTrack — разработка мобильного приложения для фитнеса" loading="eager" fetchpriority="high" decoding="async" width="400" height="300" itemprop="image"></picture>
 <div class="portfolio-info"><h3 itemprop="name">FitTrack приложение</h3><p itemprop="description">50k+ установок</p></div>
 </div>
 </div>
@@ -334,11 +334,11 @@
             </ul>
         </div>
     </div>
-    <p class="price-note">*Точная стоимость рассчитывается индивидуально в калькуляторе выше</p>
+    <p class="price-note">*Точная стоимость рассчитывается индивидуально в калькуляторе ниже</p>
 </div>
 
-<!-- ИНТЕРАКТИВНЫЙ КАЛЬКУЛЯТОР (ПОКАЗЫВАЕТСЯ ТОЛЬКО ПРИ ВКЛЮЧЁННОМ JS) -->
-<div class="calculator-card interactive-calculator" id="interactiveCalculator" style="display: none;">
+<!-- ИНТЕРАКТИВНЫЙ КАЛЬКУЛЯТОР (ВСЕГДА ВИДЕН, НЕТ СКАЧКОВ) -->
+<div class="calculator-card interactive-calculator" id="interactiveCalculator">
 <div class="calculator-two-columns">
 <div class="calculator-left">
 <div class="calc-group"><div class="calc-label">Услуги:</div><div class="calc-options" id="calcServices"><div data-service="design" class="calc-option">Дизайн (UI/UX)</div><div data-service="front" class="calc-option">Frontend</div><div data-service="back" class="calc-option">Backend</div><div data-service="seo" class="calc-option">SEO</div><div data-service="cms" class="calc-option">CMS</div><div data-service="crm" class="calc-option">CRM / ERP</div><div data-service="ai" class="calc-option">AI / ML</div><div data-service="mobile" class="calc-option">Мобильное приложение</div><div data-service="support" class="calc-option">Техподдержка</div></div></div>
@@ -419,13 +419,12 @@
 </section>
 </main>
 
-<!-- Плейсхолдер для подвала -->
-<div id="footer-placeholder"></div>
+<!-- Плейсхолдер для подвала с фиксированной высотой -->
+<div id="footer-placeholder" style="min-height: 200px;"></div>
 
 <div class="totop" id="toTopBtn">↑</div>
 
-<link rel="stylesheet" href="style.css?v=1.0">
-<script src="common.js?v=1.0"></script>
+<script src="common.js?v=1.0" defer></script>
 
 <script>
 // Загрузка компонентов
