@@ -765,7 +765,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     line-height: 1.2;
     letter-spacing: -0.02em;
     margin-bottom: 8px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Zen Dots', monospace;
 }
 
 .stat-label {
