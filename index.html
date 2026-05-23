@@ -148,7 +148,8 @@
         <span class="word-teal">дизайна</span>
         <span class="word-white">и</span>
         <span class="word-gold">сайтов</span>
-        <span class="word-white"> под ключ</span>
+        <!-- ⭐ ДОБАВЛЕН КЛАСС ДЛЯ ФРАЗЫ "ПОД КЛЮЧ" ⭐ -->
+        <span class="word-white phrase-underkey"> под ключ</span>
     </span>
 </h1>
 <div class="services-badges">
@@ -381,7 +382,7 @@
                 <h2 style="display: inline-block; text-align: center;">Начнём проект?</h2>
             </div>
             <p class="contact-desc">Оставьте заявку — Мы свяжемся с вами в течение 3 часов</p>
-            <form id="mainForm" class="contact-form" itemprop="potentialAction" itemscope itemtype="https://schema.org/CommunicateAction">
+            <form id="mainForm" class="contact-form" action="#" method="post" itemprop="potentialAction" itemscope itemtype="https://schema.org/CommunicateAction">
                 <div class="form-row">
                     <input type="text" id="userName" placeholder="Имя *" required itemprop="name">
                     <input type="tel" id="userPhone" placeholder="Телефон *" required itemprop="telephone">
@@ -494,6 +495,7 @@ function initForm() {
             return;
         }
         
+        // Отправка формы в Telegram (можно настроить позже)
         statusDiv.innerHTML = '✅ Спасибо за заявку! Наш менеджер свяжется с вами. Также вы можете написать нам в Telegram: @albe_web или позвонить +7 (995) 987-03-53';
         statusDiv.style.color = '#4CAF50';
         form.reset();
@@ -529,7 +531,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initToTop();
     
     loadComponent('header-placeholder', 'header.html', () => {
-        // initHeader() - УДАЛЕНА костыльная фиксация, используется CSS position: sticky
         initBurgerMenu();
     });
     loadComponent('footer-placeholder', 'footer.html');
