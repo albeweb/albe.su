@@ -376,7 +376,7 @@
 <a href="#services" class="section-more-btn">Все услуги</a>
 </div>
 
-<!-- СТАТИЧЕСКАЯ ТАБЛИЦА С ЦЕНАМИ (ДЛЯ SEO И ПОИСКОВЫХ РОБОТОВ) -->
+<!-- СТАТИЧЕСКАЯ ТАБЛИЦА С ЦЕНАМИ (ДЛЯ SEO) -->
 <div class="price-table" id="staticPriceTable">
     <h3>Примеры стоимости разработки</h3>
     <div class="price-grid">
@@ -432,15 +432,42 @@
     <p class="price-note">*Точная стоимость рассчитывается индивидуально в калькуляторе ниже</p>
 </div>
 
-<!-- ИНТЕРАКТИВНЫЙ КАЛЬКУЛЯТОР (ВСЕГДА ВИДЕН, НЕТ СКАЧКОВ) -->
+<!-- ИНТЕРАКТИВНЫЙ КАЛЬКУЛЯТОР -->
 <div class="calculator-card interactive-calculator" id="interactiveCalculator">
 <div class="calculator-two-columns">
 <div class="calculator-left">
-<div class="calc-group"><div class="calc-label">Услуги:</div><div class="calc-options" id="calcServices"><div data-service="design" class="calc-option">Дизайн (UI/UX)</div><div data-service="front" class="calc-option">Frontend</div><div data-service="back" class="calc-option">Backend</div><div data-service="seo" class="calc-option">SEO</div><div data-service="cms" class="calc-option">CMS</div><div data-service="crm" class="calc-option">CRM / ERP</div><div data-service="ai" class="calc-option">AI / ML</div><div data-service="mobile" class="calc-option">Мобильное приложение</div><div data-service="support" class="calc-option">Техподдержка</div></div></div>
-<div class="calc-group"><div class="calc-label">Сложность:</div><div class="calc-options" id="calcComplexity"><div data-complex="simple" class="calc-option">Старт (Лендинг)</div><div data-complex="medium" class="calc-option">Бизнес (Сайт услуг)</div><div data-complex="high" class="calc-option">Премиум (Магазин)</div><div data-complex="enterprise" class="calc-option">Enterprise (Портал)</div></div></div>
-<div class="calc-total-block"><div class="calc-price" id="calcPrice">0 ₽</div><div id="calcHoursInfo" style="font-size:.85rem;color:#B0C4DE"></div></div>
+<div class="calc-group">
+<div class="calc-label">Услуги:</div>
+<div class="calc-options" id="calcServices">
+<div data-service="design" class="calc-option">Дизайн (UI/UX)</div>
+<div data-service="front" class="calc-option">Frontend</div>
+<div data-service="back" class="calc-option">Backend</div>
+<div data-service="seo" class="calc-option">SEO</div>
+<div data-service="cms" class="calc-option">CMS</div>
+<div data-service="crm" class="calc-option">CRM / ERP</div>
+<div data-service="ai" class="calc-option">AI / ML</div>
+<div data-service="mobile" class="calc-option">Мобильное приложение</div>
+<div data-service="support" class="calc-option">Техподдержка</div>
 </div>
-<div class="calculator-right stack-explanation" id="stackExplanation"><h4>Рекомендуемый стек</h4><p>Выберите услуги для расчёта</p></div>
+</div>
+<div class="calc-group">
+<div class="calc-label">Сложность:</div>
+<div class="calc-options" id="calcComplexity">
+<div data-complex="simple" class="calc-option">Старт (Лендинг)</div>
+<div data-complex="medium" class="calc-option">Бизнес (Сайт услуг)</div>
+<div data-complex="high" class="calc-option">Премиум (Магазин)</div>
+<div data-complex="enterprise" class="calc-option">Enterprise (Портал)</div>
+</div>
+</div>
+<div class="calc-total-block">
+<div class="calc-price" id="calcPrice">0 ₽</div>
+<div id="calcHoursInfo" style="font-size:.85rem;color:#B0C4DE"></div>
+</div>
+</div>
+<div class="calculator-right stack-explanation" id="stackExplanation">
+<h4>Рекомендуемый стек</h4>
+<p>Выберите услуги для расчёта</p>
+</div>
 </div>
 </div>
 </div>
@@ -522,7 +549,331 @@
 <script src="common.js?v=1.0" defer></script>
 
 <script>
-// Загрузка компонентов
+// ===== ОПИСАНИЯ ТЕХНОЛОГИЙ ДЛЯ ТУЛТИПОВ =====
+const techDesc = {
+    react: "React — библиотека для интерфейсов. Идеален для SPA, CRM, дашбордов.",
+    vue: "Vue — прогрессивный фреймворк. Лёгкий, гибкий, для малых и средних проектов.",
+    ts: "TypeScript — типизированный JS. Надёжность, масштабируемость, меньше ошибок.",
+    gsap: "GSAP — профессиональная анимация. Плавные переходы, сложные таймлайны.",
+    three: "Three.js — 3D в браузере. Впечатляющие сцены, анимация продуктов.",
+    node: "Node.js — серверный JS. Быстрые API, чаты, real-time приложения.",
+    python: "Python + Django — мощный бэкенд, ML, аналитика, высокие нагрузки.",
+    laravel: "Laravel — PHP-фреймворк. Портал, интернет-магазин, CRM.",
+    postgres: "PostgreSQL — надёжная СУБД. Целостность данных, сложные запросы.",
+    docker: "Docker — контейнеризация. Лёгкое развёртывание, масштабирование.",
+    figma: "Figma — дизайн интерфейсов. Прототипы, дизайн-системы, коллаборация.",
+    uiux: "UI/UX Research — исследование поведения. Интерфейсы, решающие бизнес-задачи.",
+    motion: "Motion Design — анимированные интерфейсы. Вовлечённость, впечатления.",
+    "3d": "3D Art — трёхмерная визуализация. Презентации, дополненная реальность.",
+    adobe: "Adobe Suite — графика, ретушь, подготовка элементов.",
+    audit: "SEO-аудит — анализ ошибок, скорости, дублей, метатегов.",
+    metrika: "Метрика/GA4 — сбор данных, вебвизор, цели, e-commerce.",
+    cluster: "Кластеризация — группировка запросов. Оптимальная структура страниц.",
+    core: "Core Web Vitals — LCP, CLS, FID. Влияют на ранжирование.",
+    semrush: "SEMrush / Ahrefs — анализ конкурентов, ключей, ссылок."
+};
+
+// ===== ТУЛТИПЫ ДЛЯ ТЕХНОЛОГИЙ =====
+function initTechTooltips() {
+    const tooltip = document.createElement('div');
+    tooltip.className = 'tech-tooltip';
+    document.body.appendChild(tooltip);
+    let timeout = null;
+    let rafId = null;
+    
+    document.querySelectorAll('.tech-item').forEach(el => {
+        el.addEventListener('mouseenter', function() {
+            if (rafId) cancelAnimationFrame(rafId);
+            
+            const tech = this.getAttribute('data-tech');
+            const desc = techDesc[tech] || "Современная технология";
+            tooltip.innerHTML = '<strong>' + this.innerText + '</strong><br>' + desc;
+            
+            rafId = requestAnimationFrame(() => {
+                tooltip.style.opacity = '1';
+                const rect = this.getBoundingClientRect();
+                let left = rect.right + 15;
+                let top = rect.top + rect.height / 2 - 50;
+                if (left + 380 > window.innerWidth) left = rect.left - 390;
+                if (top < 10) top = 10;
+                if (top + 150 > window.innerHeight) top = window.innerHeight - 160;
+                tooltip.style.left = left + 'px';
+                tooltip.style.top = top + 'px';
+            });
+            
+            if (timeout) clearTimeout(timeout);
+        });
+        
+        el.addEventListener('mouseleave', function() {
+            timeout = setTimeout(function() { 
+                tooltip.style.opacity = '0'; 
+            }, 150);
+        });
+    });
+}
+
+// ===== КАЛЬКУЛЯТОР СТОИМОСТИ =====
+const rate = 2000;
+const sh = { design: 20, front: 30, back: 40, seo: 15, cms: 25, crm: 60, ai: 90, mobile: 120, support: 8 };
+const cm = { simple: 1, medium: 1.5, high: 2.2, enterprise: 3.5 };
+let selected = new Set();
+let complexity = "simple";
+
+function getRec(serv) {
+    let rec = [], exp = "";
+    if (serv.has('front') || serv.has('design')) {
+        rec.push("React / Next.js, TypeScript, Tailwind");
+        exp += "<strong>React:</strong> SEO-рендеринг, UX. TypeScript — надёжность. Tailwind — быстрая вёрстка.<br>";
+    }
+    if (serv.has('back')) {
+        rec.push("Node.js / Python + PostgreSQL");
+        exp += "<strong>Node.js/Python:</strong> масштабируемый бэкенд, готовая архитектура.<br>";
+    }
+    if (serv.has('crm')) exp += "<strong>CRM/ERP:</strong> автоматизация, 1С, единая база.<br>";
+    if (serv.has('ai')) exp += "<strong>AI/ML:</strong> нейросети, прогнозирование, персонализация.<br>";
+    if (serv.has('mobile')) exp += "<strong>React Native/Flutter:</strong> кроссплатформа, экономия бюджета.<br>";
+    if (rec.length === 0) rec.push("React + Node.js / Laravel");
+    let compText = "";
+    if (complexity === 'high' || complexity === 'enterprise') compText = "<br><br><strong>Enterprise:</strong> микросервисы, Docker, Kubernetes, Redis.";
+    return { rec: rec.join(". "), exp: exp + compText };
+}
+
+function updateCalculator() {
+    let h = 0;
+    for (let s of selected) h += sh[s];
+    let fin = Math.round(h * cm[complexity]);
+    let cost = fin * rate;
+    let servList = Array.from(selected).map(function(s) {
+        var names = { design: "Дизайн", front: "Frontend", back: "Backend", seo: "SEO", cms: "CMS", crm: "CRM", ai: "AI", mobile: "Мобильное", support: "Поддержка" };
+        return names[s];
+    }).join(", ");
+    if (servList === "") servList = "—";
+    
+    var priceEl = document.getElementById('calcPrice');
+    var hoursEl = document.getElementById('calcHoursInfo');
+    if (priceEl) priceEl.innerHTML = cost.toLocaleString() + ' ₽';
+    if (hoursEl) hoursEl.innerHTML = '✔ Услуги: ' + servList + '<br>✔ Сложность: ' + (complexity === 'simple' ? 'Старт' : complexity === 'medium' ? 'Бизнес' : complexity === 'high' ? 'Премиум' : 'Enterprise') + '<br>✔ Часы: ' + h + ' ч × ' + cm[complexity] + ' = ' + fin + ' ч.';
+    
+    var rec = getRec(selected);
+    var phases = [
+        { n: "Аналитика и прототип", b: 10, m: 1.2 },
+        { n: "Дизайн", b: selected.has('design') ? 20 : 0, m: 1 },
+        { n: "Frontend", b: selected.has('front') ? 30 : 0, m: 1 },
+        { n: "Backend", b: selected.has('back') ? 40 : 0, m: 1 },
+        { n: "SEO", b: selected.has('seo') ? 15 : 0, m: 1 },
+        { n: "CMS", b: selected.has('cms') ? 25 : 0, m: 1 },
+        { n: "CRM/ERP", b: selected.has('crm') ? 60 : 0, m: 1 },
+        { n: "AI/ML", b: selected.has('ai') ? 90 : 0, m: 1 },
+        { n: "Мобильное", b: selected.has('mobile') ? 120 : 0, m: 1 },
+        { n: "Поддержка", b: selected.has('support') ? 8 : 0, m: 1 },
+        { n: "Тестирование", b: 15, m: 1.3 },
+        { n: "Деплой", b: 8, m: 1.1 }
+    ];
+    var br = [], tot = 0;
+    for (var i = 0; i < phases.length; i++) {
+        var p = phases[i];
+        if (p.b > 0) {
+            var hh = Math.round(p.b * p.m * cm[complexity]);
+            br.push({ name: p.n, h: hh });
+            tot += hh;
+        }
+    }
+    if (tot < fin && fin - tot > 5) br.push({ name: "Управление проектом", h: fin - tot });
+    else if (tot > fin && br.length) {
+        br[0].h -= tot - fin;
+        if (br[0].h < 0) br[0].h = 0;
+    }
+    br = br.filter(function(b) { return b.h > 0; });
+    var timeHtml = '<div class="time-breakdown"><h4>Распределение ' + fin + ' часов:</h4>';
+    for (var i = 0; i < br.length; i++) {
+        timeHtml += '<div class="time-breakdown-item"><span>' + br[i].name + '</span><span>' + br[i].h + ' ч</span></div>';
+    }
+    timeHtml += '</div>';
+    
+    var stackEl = document.getElementById('stackExplanation');
+    if (stackEl) {
+        if (h === 0) {
+            stackEl.innerHTML = '<h4>Рекомендуемый стек</h4><p>Выберите услуги для расчёта</p>';
+        } else {
+            stackEl.innerHTML = '<h4>Рекомендуемый стек</h4><p><strong>' + rec.rec + '</strong></p><h4>Преимущества выбора</h4><p>' + rec.exp + '</p>' + timeHtml + '<p style="margin-top:12px; font-size:0.85rem; color:#B0C4DE;">Выбор технологий основан на потребностях вашего проекта.</p>';
+        }
+    }
+}
+
+function initCalculator() {
+    var serviceOptions = document.querySelectorAll('#calcServices .calc-option');
+    for (var i = 0; i < serviceOptions.length; i++) {
+        var o = serviceOptions[i];
+        o.addEventListener('click', function() {
+            var s = this.getAttribute('data-service');
+            if (selected.has(s)) {
+                selected.delete(s);
+                this.classList.remove('selected');
+            } else {
+                selected.add(s);
+                this.classList.add('selected');
+            }
+            updateCalculator();
+        });
+    }
+    
+    var complexityOptions = document.querySelectorAll('#calcComplexity .calc-option');
+    for (var i = 0; i < complexityOptions.length; i++) {
+        var o = complexityOptions[i];
+        o.addEventListener('click', function() {
+            complexity = this.getAttribute('data-complex');
+            var allOptions = document.querySelectorAll('#calcComplexity .calc-option');
+            for (var j = 0; j < allOptions.length; j++) {
+                allOptions[j].classList.remove('selected');
+            }
+            this.classList.add('selected');
+            updateCalculator();
+        });
+    }
+    
+    var defaultComplexity = document.querySelector('#calcComplexity .calc-option[data-complex="simple"]');
+    if (defaultComplexity) defaultComplexity.classList.add('selected');
+    updateCalculator();
+}
+
+function initCalculatorWithFallback() {
+    const staticTable = document.getElementById('staticPriceTable');
+    const interactiveCalc = document.getElementById('interactiveCalculator');
+    
+    if (staticTable && interactiveCalc) {
+        staticTable.style.display = 'none';
+        interactiveCalc.style.display = 'block';
+        initCalculator();
+    } else if (interactiveCalc) {
+        interactiveCalc.style.display = 'block';
+        initCalculator();
+    }
+}
+
+// ===== ПЛАВНЫЙ СКРОЛЛ =====
+function initSmoothScroll() {
+    var links = document.querySelectorAll('a[href^="#"]');
+    for (var i = 0; i < links.length; i++) {
+        var a = links[i];
+        a.addEventListener('click', function(e) {
+            var href = this.getAttribute('href');
+            if (href === "#" || href === "") return;
+            var target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+}
+
+// ===== FAQ =====
+function initFaq() {
+    var faqGrid = document.querySelector('.faq-grid');
+    if (faqGrid) {
+        faqGrid.addEventListener('click', function(e) {
+            var button = e.target.closest('.faq-question');
+            if (!button) return;
+            e.preventDefault();
+            var item = button.closest('.faq-item');
+            if (!item) return;
+            var answer = item.querySelector('.faq-answer');
+            if (!answer) return;
+            var isActive = answer.classList.contains('active');
+            
+            var allAnswersList = document.querySelectorAll('.faq-answer');
+            for (var i = 0; i < allAnswersList.length; i++) {
+                allAnswersList[i].classList.remove('active');
+            }
+            var allButtons = document.querySelectorAll('.faq-question');
+            for (var i = 0; i < allButtons.length; i++) {
+                allButtons[i].classList.remove('active');
+            }
+            if (!isActive) {
+                answer.classList.add('active');
+                button.classList.add('active');
+            }
+        });
+    }
+}
+
+// ===== ФОРМА =====
+function initForm() {
+    var form = document.getElementById('mainForm');
+    var stat = document.getElementById('formStatus');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var name = document.getElementById('userName') ? document.getElementById('userName').value.trim() : '';
+            var phone = document.getElementById('userPhone') ? document.getElementById('userPhone').value.trim() : '';
+            var email = document.getElementById('userEmail') ? document.getElementById('userEmail').value.trim() : '';
+            
+            if (!name || !phone || !email) {
+                if (stat) stat.innerHTML = '<div style="background:#990000; padding:12px; border-radius:8px;">❌ Заполните все обязательные поля (Имя, Телефон, Email)</div>';
+                setTimeout(function() { if (stat) stat.innerHTML = ''; }, 4000);
+                return;
+            }
+            
+            console.log('Заявка:', { name, phone, email });
+            if (stat) stat.innerHTML = '<div style="background:#F5B700; color:#0D1117; padding:12px; border-radius:8px;">✅ Спасибо! Менеджер свяжется с вами в ближайшее время.</div>';
+            form.reset();
+            setTimeout(function() { if (stat) stat.innerHTML = ''; }, 5000);
+        });
+    }
+}
+
+// ===== КНОПКА НАВЕРХ =====
+function initToTop() {
+    var toTop = document.getElementById('toTopBtn');
+    if (!toTop) return;
+    window.addEventListener('scroll', function() {
+        toTop.style.display = window.scrollY > 400 ? 'flex' : 'none';
+    });
+    toTop.style.display = 'none';
+    toTop.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+// ===== ФИКСАЦИЯ ШАПКИ =====
+function initHeaderFixed() {
+    var header = document.getElementById('mainHeader');
+    if (!header) return;
+    
+    function handleHeaderScroll() {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    }
+    window.addEventListener('scroll', handleHeaderScroll);
+    handleHeaderScroll();
+}
+
+// ===== БУРГЕР-МЕНЮ =====
+function initBurgerMenu() {
+    const burgerBtn = document.getElementById('burgerBtn');
+    const navMenu = document.getElementById('navMenu');
+    
+    if (burgerBtn && navMenu) {
+        burgerBtn.addEventListener('click', function() {
+            burgerBtn.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        });
+        
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                burgerBtn.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    }
+}
+
+// ===== ЗАГРУЗКА КОМПОНЕНТОВ =====
 function loadComponent(elementId, filePath, callback) {
     const placeholder = document.getElementById(elementId);
     if (!placeholder) return;
@@ -542,122 +893,23 @@ function loadComponent(elementId, filePath, callback) {
         });
 }
 
-// Инициализация бургер-меню
-function initBurgerMenu() {
-    const burgerBtn = document.getElementById('burgerBtn');
-    const navMenu = document.getElementById('navMenu');
-    
-    if (burgerBtn && navMenu) {
-        burgerBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            navMenu.classList.toggle('active');
-            
-            const spans = burgerBtn.querySelectorAll('span');
-            if (navMenu.classList.contains('active')) {
-                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-                spans[1].style.opacity = '0';
-                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
-            } else {
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
-            }
-        });
-        
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                const spans = burgerBtn.querySelectorAll('span');
-                if (spans) {
-                    spans[0].style.transform = 'none';
-                    spans[1].style.opacity = '1';
-                    spans[2].style.transform = 'none';
-                }
-            });
-        });
-        
-        console.log('Бургер-меню инициализировано');
-    } else {
-        console.warn('Бургер или меню не найдены, повторная попытка...');
-        setTimeout(initBurgerMenu, 50);
-    }
-}
-
-// Инициализация формы (fallback)
-function initForm() {
-    const form = document.getElementById('mainForm');
-    const statusDiv = document.getElementById('formStatus');
-    
-    if (!form || !statusDiv) return;
-    
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const name = document.getElementById('userName')?.value || '';
-        const phone = document.getElementById('userPhone')?.value || '';
-        const email = document.getElementById('userEmail')?.value || '';
-        
-        if (!name || !phone || !email) {
-            statusDiv.innerHTML = '❌ Пожалуйста, заполните обязательные поля (Имя, Телефон, Email)';
-            statusDiv.style.color = '#ff6b6b';
-            setTimeout(function() {
-                if (statusDiv.innerHTML.includes('❌')) {
-                    statusDiv.innerHTML = '';
-                }
-            }, 5000);
-            return;
-        }
-        
-        statusDiv.innerHTML = '✅ Спасибо за заявку! Наш менеджер свяжется с вами. Также вы можете написать нам в Telegram: @albe_web или позвонить +7 (995) 987-03-53';
-        statusDiv.style.color = '#4CAF50';
-        form.reset();
-        
-        setTimeout(function() {
-            if (statusDiv.innerHTML.includes('✅')) {
-                statusDiv.innerHTML = '';
-            }
-        }, 8000);
-    });
-}
-
-// Кнопка "Наверх"
-function initToTop() {
-    const toTopBtn = document.getElementById('toTopBtn');
-    if (toTopBtn) {
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 300) {
-                toTopBtn.classList.add('visible');
-            } else {
-                toTopBtn.classList.remove('visible');
-            }
-        });
-        toTopBtn.addEventListener('click', function() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
-}
-
-// Запуск загрузки и инициализации
-document.addEventListener('DOMContentLoaded', () => {
+// ===== ЗАПУСК ВСЕХ ИНИЦИАЛИЗАЦИЙ =====
+document.addEventListener('DOMContentLoaded', function() {
+    initTechTooltips();
+    initCalculatorWithFallback();
+    initSmoothScroll();
+    initFaq();
     initForm();
     initToTop();
+    initHeaderFixed();
+    initBurgerMenu();
     
-    loadComponent('header-placeholder', 'header.html', () => {
+    loadComponent('header-placeholder', 'header.html', function() {
         initBurgerMenu();
+        initHeaderFixed();
     });
     loadComponent('footer-placeholder', 'footer.html');
 });
-
-// Мобильное меню (резервное, на случай если header.html не загрузился)
-(function() {
-    const menuBtn = document.getElementById('mobileMenuBtn');
-    const nav = document.querySelector('.nav');
-    if (menuBtn && nav) {
-        menuBtn.addEventListener('click', function() {
-            nav.classList.toggle('nav-open');
-        });
-    }
-})();
 </script>
 </body>
 </html>
