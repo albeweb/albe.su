@@ -1,8 +1,7 @@
 /* ============================================ */
-/* ЛОКАЛЬНОЕ ПОДКЛЮЧЕНИЕ ШРИФТОВ (самостоятельный хостинг) */
+/* ЛОКАЛЬНОЕ ПОДКЛЮЧЕНИЕ ШРИФТОВ */
 /* ============================================ */
 
-/* EN Regular (Etude Noire) - для H1, H2, hero-tag */
 @font-face {
     font-family: 'EN Regular';
     src: url('EN Regular.woff2') format('woff2');
@@ -11,7 +10,6 @@
     font-display: swap;
 }
 
-/* Geist Regular (400) - для основного текста */
 @font-face {
     font-family: 'Geist';
     src: url('Geist-Regular.woff2') format('woff2');
@@ -20,7 +18,6 @@
     font-display: swap;
 }
 
-/* Geist Medium (500) - для подзаголовков и H3 */
 @font-face {
     font-family: 'Geist';
     src: url('Geist-Medium.woff2') format('woff2');
@@ -29,7 +26,6 @@
     font-display: swap;
 }
 
-/* Zen Dots - для логотипа и цифр в статистике */
 @font-face {
     font-family: 'Zen Dots';
     src: url('zen-dots.woff2') format('woff2');
@@ -54,15 +50,16 @@
 }
 
 /* ============================================ */
-/* ОСНОВНЫЕ СТИЛИ */
+/* ОСНОВНЫЕ СТИЛИ + ШУМ */
 /* ============================================ */
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html, body {
-    overflow-x: hidden;
-    max-width: 100%;
+    overflow-x: hidden !important;
+    max-width: 100% !important;
     position: relative;
+    width: 100%;
 }
 
 body {
@@ -72,6 +69,23 @@ body {
     line-height: 1.5;
     font-weight: 400;
     scroll-behavior: smooth;
+    overflow-x: hidden !important;
+    max-width: 100vw;
+    position: relative;
+}
+
+/* ШУМОВАЯ ТЕКСТУРА (возвращена) */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .container {
@@ -80,6 +94,7 @@ body {
     padding: 0 80px;
     position: relative;
     z-index: 2;
+    overflow-x: hidden !important;
 }
 
 /* ============================================ */
@@ -94,7 +109,6 @@ h1, h2, .hero-title, .hero-title-line1, .hero-title-line2,
     letter-spacing: -0.02em;
 }
 
-/* hero-tag отдельно — серый цвет */
 .hero-tag {
     color: var(--gray);
     font-size: 1.1rem;
@@ -283,7 +297,7 @@ h3 {
 .section-more-btn:hover { background: rgba(30, 42, 94, 0.4); }
 
 /* ============================================ */
-/* HERO БАННЕР — ГРАДИЕНТ НА СЛОВО РАЗРАБОТКА */
+/* HERO БАННЕР (с анимацией кода) */
 /* ============================================ */
 
 .hero {
@@ -294,6 +308,39 @@ h3 {
     background: radial-gradient(circle at 20% 30%, #11161F, #0A0E12);
     padding: 80px 0;
     overflow: hidden;
+}
+
+/* АНИМАЦИЯ ПАДАЮЩЕГО КОДА (возвращена) */
+.code-rain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.25;
+    font-family: 'Monaco', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--neon-pink);
+    overflow: hidden;
+}
+
+.code-line {
+    white-space: nowrap;
+    position: absolute;
+    top: -50px;
+    opacity: 0;
+    animation: fall linear infinite;
+    will-change: transform;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-50px); opacity: 0; }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.4; }
+    100% { transform: translateY(100vh); opacity: 0; }
 }
 
 .hero .container {
@@ -320,6 +367,8 @@ h3 {
 }
 
 .hero-title {
+    font-weight: 400;
+    letter-spacing: 0.1em;
     margin-bottom: 1.2rem;
 }
 
@@ -349,7 +398,6 @@ h3 {
 .hero-title-line2 .word-white { color: #FFFFFF; }
 .hero-title-line2 .word-gold { color: var(--neon-pink); }
 
-/* Фраза "под ключ" — наследует шрифт от родителя */
 .phrase-underkey {
     font-size: clamp(0.7rem, 2.2vw, 3rem);
     font-weight: 400;
@@ -358,7 +406,7 @@ h3 {
 }
 
 /* ============================================ */
-/* СТАТИСТИКА — ИСПРАВЛЕНЫ ЦВЕТА ОБВОДКИ */
+/* СТАТИСТИКА */
 /* ============================================ */
 
 .hero-stats {
@@ -384,7 +432,6 @@ h3 {
     cursor: default;
 }
 
-/* Цвета обводки статистики */
 .stat-item:nth-child(1) { border-color: var(--teal); }
 .stat-item:nth-child(1) .stat-number { color: var(--teal); }
 
@@ -435,7 +482,6 @@ h3 {
     letter-spacing: 0.3px;
 }
 
-/* Разные цвета обводки для бейджиков */
 .service-badge:nth-child(1) { border: 1.5px solid var(--neon-pink); }
 .service-badge:nth-child(2) { border: 1.5px solid var(--teal); }
 .service-badge:nth-child(3) { border: 1.5px solid var(--mint); }
@@ -450,8 +496,7 @@ h3 {
 .service-badge:hover {
     transform: translateY(-3px);
     background: rgba(30, 42, 94, 0.4);
-    box-shadow: 0 8px 20px rgba(30, 42, Quintal, 0.3);
-    /* цвет текста не меняется */
+    box-shadow: 0 8px 20px rgba(30, 42, 94, 0.3);
 }
 
 /* ============================================ */
@@ -472,6 +517,33 @@ h3 {
     text-transform: uppercase;
     display: inline-block;
 }
+
+/* ============================================ */
+/* ТУЛТИПЫ ДЛЯ ТЕХНОЛОГИЙ (возвращены) */
+/* ============================================ */
+
+.tech-tooltip {
+    position: fixed;
+    background: #0F1419;
+    border: 1px solid var(--neon-pink);
+    padding: 18px 24px;
+    max-width: 380px;
+    width: max-content;
+    z-index: 2000;
+    border-top-left-radius: 28px;
+    border-bottom-right-radius: 28px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(12px);
+    font-weight: 400;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #E6EDF5;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.tech-tooltip strong { color: var(--neon-pink); font-weight: 500; }
 
 /* ============================================ */
 /* ОСТАЛЬНЫЕ СЕКЦИИ */
@@ -707,6 +779,51 @@ h3 {
 .totop:hover { background: #FFFFFF; transform: translateY(-4px); }
 
 /* ============================================ */
+/* CLS FIX (aspect-ratio) */
+/* ============================================ */
+
+.portfolio-image,
+.mission-grid-card {
+    aspect-ratio: 400 / 300;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    background: #1a1f2e;
+}
+
+.interactive-calculator {
+    display: block !important;
+    min-height: 450px;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    grid-auto-rows: minmax(350px, auto);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 36px;
+    margin-top: 48px;
+    grid-auto-rows: minmax(280px, auto);
+}
+
+.steps-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    margin-top: 40px;
+}
+
+.step-card {
+    flex: 1 1 200px;
+    min-height: 240px;
+}
+
+/* ============================================ */
 /* АДАПТИВ */
 /* ============================================ */
 
@@ -760,11 +877,7 @@ h3 {
     .calculator-two-columns { flex-direction: column; }
     .mission-grid { grid-template-columns: 1fr; }
     
-    .stat-item, .service-badge, .calculator-card, .contact-card,
-    .competence-card, .faq-question, .service-card, .portfolio-card,
-    .step-card, .calc-option, .price-table {
-        backdrop-filter: none !important;
-    }
+    .code-rain { display: none; }
 }
 
 @media (max-width: 480px) {
@@ -775,4 +888,13 @@ h3 {
     .stat-item { padding: 6px 16px; }
     .stat-number { font-size: 1rem; }
     .service-badge { padding: 5px 12px; font-size: 0.65rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
