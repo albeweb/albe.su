@@ -45,7 +45,7 @@
 
 <!-- Дополнительные стили для статистики -->
 <style>
-/* Статистика — между бейджиками и цитатой, с левым выравниванием */
+/* Статистика — между бейджиками и цитатой, горизонтально */
 .hero-stats {
     display: flex;
     flex-direction: row;
@@ -54,12 +54,13 @@
     margin-top: 32px;
     margin-bottom: 32px;
     width: 100%;
+    flex-wrap: wrap;
 }
 
 .stat-item {
     text-align: center;
-    min-width: 180px;
-    padding: 12px 24px;
+    min-width: 140px;
+    padding: 12px 48px;
     background: transparent;
     backdrop-filter: none;
     border: 1px solid;
@@ -69,12 +70,6 @@
     border-bottom-left-radius: 0;
     transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     cursor: default;
-}
-
-/* Обводка в 2 раза длиннее по горизонтали (больше padding) */
-.stat-item {
-    padding-left: 48px;
-    padding-right: 48px;
 }
 
 /* Цвета для каждого элемента статистики */
@@ -129,37 +124,21 @@
     font-weight: 400;
 }
 
-/* Адаптив для мобильных */
-@media (max-width: 900px) {
+/* Адаптив для мобильных — остаётся горизонтальным, просто уменьшается */
+@media (max-width: 768px) {
     .hero-stats {
-        flex-wrap: wrap;
-        gap: 16px;
-        justify-content: center;
+        gap: 12px;
+        justify-content: flex-start;
     }
     .stat-item {
-        min-width: calc(50% - 16px);
-        padding: 10px 24px;
+        min-width: auto;
+        padding: 8px 24px;
     }
     .stat-number {
         font-size: 1.2rem;
     }
     .stat-label {
         font-size: 0.6rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-stats {
-        gap: 12px;
-        flex-direction: column;
-        align-items: stretch;
-    }
-    .stat-item {
-        min-width: auto;
-        padding: 10px 20px;
-    }
-    .stat-number {
-        font-size: 1.1rem;
     }
 }
 </style>
@@ -286,7 +265,7 @@
 </div>
 </div>
 
-<!-- СТАТИСТИКА МЕЖДУ БЕЙДЖИКАМИ И ЦИТАТОЙ -->
+<!-- СТАТИСТИКА МЕЖДУ БЕЙДЖИКАМИ И ЦИТАТОЙ (ГОРИЗОНТАЛЬНО) -->
 <div class="hero-stats">
     <div class="stat-item"><div class="stat-number">7+</div><div class="stat-label">лет опыта</div></div>
     <div class="stat-item"><div class="stat-number">150+</div><div class="stat-label">проектов</div></div>
