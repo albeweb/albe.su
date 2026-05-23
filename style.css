@@ -648,9 +648,9 @@ h3 {
 }
 
 .hero-title-line1 {
-    font-size: clamp(1.8rem, 8.5vw, 9rem);
+    font-size: clamp(1.8rem, 7.5vw, 9rem);
     font-weight: 400;
-    color: #FFFFFF;
+    color: #E2E8F0;
     display: block;
     line-height: 1.1;
     white-space: normal;
@@ -679,7 +679,7 @@ h3 {
 
 /* ФРАЗА "ПОД КЛЮЧ" — наследует шрифт от H1 (без явного font-family) */
 .phrase-underkey {
-    font-size: clamp(0.8rem, 3.2vw, 4rem);
+    font-size: clamp(0.8rem, 3vw, 4rem);
     font-weight: 400;
     letter-spacing: 0.5px;
     display: inline-block;
@@ -689,7 +689,7 @@ h3 {
 .hero-title-line3 {
     font-size: clamp(1.5rem, 4vw, 5rem);
     font-weight: 400;
-    color: #FFFFFF;
+    color: #E2E8F0;
     display: block;
     line-height: 1.1;
     margin-top: 0.2rem;
