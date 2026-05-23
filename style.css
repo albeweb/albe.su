@@ -679,7 +679,7 @@ h3 {
 
 /* ФРАЗА "ПОД КЛЮЧ" — наследует шрифт от H1 (без явного font-family) */
 .phrase-underkey {
-    font-size: clamp(0.8rem, 3vw, 4rem);
+    font-size: clamp(0.8rem, 3vw, 3.8rem);
     font-weight: 400;
     letter-spacing: 0.5px;
     display: inline-block;
