@@ -45,7 +45,7 @@
 
 <!-- Дополнительные стили для статистики -->
 <style>
-/* Статистика — между бейджиками и цитатой, горизонтально */
+/* Статистика — перед бейджиками, горизонтально */
 .hero-stats {
     display: flex;
     flex-direction: row;
@@ -124,7 +124,7 @@
     font-weight: 400;
 }
 
-/* Адаптив для мобильных — остаётся горизонтальным, просто уменьшается */
+/* Адаптив для мобильных */
 @media (max-width: 768px) {
     .hero-stats {
         gap: 12px;
@@ -251,6 +251,15 @@
         <span class="word-white phrase-underkey"> под ключ</span>
     </span>
 </h1>
+
+<!-- СТАТИСТИКА ПЕРЕД БЕЙДЖИКАМИ -->
+<div class="hero-stats">
+    <div class="stat-item"><div class="stat-number">7+</div><div class="stat-label">лет опыта</div></div>
+    <div class="stat-item"><div class="stat-number">150+</div><div class="stat-label">проектов</div></div>
+    <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">поддержка</div></div>
+    <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">результат</div></div>
+</div>
+
 <div class="services-badges">
 <span class="service-badge">Премиум дизайн</span>
 <span class="service-badge">Безупречный код</span>
@@ -261,16 +270,6 @@
 <span class="service-badge">Веб-разработка</span>
 <span class="service-badge">E-commerce</span>
 <span class="service-badge">CRM интеграция</span>
-<span class="service-badge">24/7 поддержка</span>
-</div>
-</div>
-
-<!-- СТАТИСТИКА МЕЖДУ БЕЙДЖИКАМИ И ЦИТАТОЙ (ГОРИЗОНТАЛЬНО) -->
-<div class="hero-stats">
-    <div class="stat-item"><div class="stat-number">7+</div><div class="stat-label">лет опыта</div></div>
-    <div class="stat-item"><div class="stat-number">150+</div><div class="stat-label">проектов</div></div>
-    <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">поддержка</div></div>
-    <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">результат</div></div>
 </div>
 
 <div class="hero-bottom">
