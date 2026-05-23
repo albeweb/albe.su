@@ -142,11 +142,11 @@ h3, h4, h5, h6,
     margin-bottom: 4px;
 }
 
-/* Основной текст и всё остальное — Geist */
+/* Основной текст и всё остальное — Geist (БЕЗ .phrase-underkey) */
 p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-card p,
 .mission-text p, .faq-answer, .footer p, .footer a, .tech-item, .calc-option,
 .time-breakdown-item, .stack-explanation p, input, textarea, .stat-label,
-.price-card li, .price-note, .hero-title-line3, .phrase-underkey {
+.price-card li, .price-note, .hero-title-line3 {
     font-family: 'Geist', sans-serif;
     font-weight: 400;
     font-size: 1.0625rem;
@@ -765,7 +765,7 @@ h3 {
     color: var(--neon-pink);
 }
 
-/* ФРАЗА "ПОД КЛЮЧ" — наследует шрифт от H1 */
+/* ФРАЗА "ПОД КЛЮЧ" — наследует шрифт от H1, размер на 1rem больше */
 .phrase-underkey {
     font-size: clamp(0.7rem, 2.2vw, 4rem);
     font-weight: 400;
@@ -878,6 +878,8 @@ h3 {
     padding: 8px 24px;
     font-size: 0.9rem;
     font-weight: 400;
+    border: 1.5px solid var(--gray);
+    color: var(--white);
     border-top-left-radius: 28px;
     border-bottom-right-radius: 28px;
     transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
@@ -885,23 +887,51 @@ h3 {
     letter-spacing: 0.3px;
 }
 
-/* Разноцветные обводки бейджей */
-.service-badge:nth-child(1) { border: 1.5px solid var(--neon-pink); color: var(--neon-pink); }
-.service-badge:nth-child(2) { border: 1.5px solid var(--teal); color: var(--teal); }
-.service-badge:nth-child(3) { border: 1.5px solid var(--mint); color: var(--mint); }
-.service-badge:nth-child(4) { border: 1.5px solid var(--purple); color: var(--purple); }
-.service-badge:nth-child(5) { border: 1.5px solid var(--neon-pink); color: var(--neon-pink); }
-.service-badge:nth-child(6) { border: 1.5px solid var(--teal); color: var(--teal); }
-.service-badge:nth-child(7) { border: 1.5px solid var(--mint); color: var(--mint); }
-.service-badge:nth-child(8) { border: 1.5px solid var(--purple); color: var(--purple); }
-.service-badge:nth-child(9) { border: 1.5px solid var(--neon-pink); color: var(--neon-pink); }
-.service-badge:nth-child(10) { border: 1.5px solid var(--teal); color: var(--teal); }
-
 .service-badge:hover {
     transform: translateY(-3px);
     background: rgba(30, 42, 94, 0.4);
     backdrop-filter: blur(4px);
     box-shadow: 0 8px 20px rgba(30, 42, 94, 0.3);
+}
+
+/* На мобильных бейджики по 5 в строке */
+@media (max-width: 768px) {
+    .services-badges {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+    }
+    .service-badge {
+        text-align: center;
+        padding: 6px 8px;
+        font-size: 0.7rem;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 550px) {
+    .services-badges {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+    }
+    .service-badge {
+        font-size: 0.65rem;
+        padding: 5px 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .services-badges {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 6px;
+    }
+    .service-badge {
+        font-size: 0.6rem;
+        padding: 4px 4px;
+        white-space: normal;
+        text-align: center;
+        line-height: 1.2;
+    }
 }
 
 .hero-buttons {
@@ -920,10 +950,31 @@ h3 {
 .quote-text {
     font-size: 1rem;
     font-weight: 400;
-    color: var(--neon-pink);
+    color: var(--gray);
     letter-spacing: 1.5px;
     text-transform: uppercase;
     display: inline-block;
+}
+
+/* Мобильная версия статистики — 2x2 */
+@media (max-width: 768px) {
+    .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        justify-items: center;
+    }
+    .stat-item {
+        min-width: auto;
+        padding: 8px 16px;
+        width: 100%;
+    }
+    .stat-number {
+        font-size: 1.2rem;
+    }
+    .stat-label {
+        font-size: 0.6rem;
+    }
 }
 
 .services-grid, .portfolio-grid {
@@ -1471,6 +1522,7 @@ h3 {
     h2 { font-size: 1.8rem; }
     h3 { font-size: 1.3rem; }
     .code-rain { display: none; }
+    
     .hero-stats {
         gap: 12px;
         justify-content: center;
@@ -1485,7 +1537,7 @@ h3 {
     .stat-label {
         font-size: 0.6rem;
     }
-    .service-badge { padding: 6px 16px; font-size: 0.7rem; }
+    
     .hero-buttons { flex-direction: column; gap: 12px; }
     .btn-primary, .btn-outline { width: 100%; padding: 12px 20px; font-size: 0.9rem; }
     .quote-text { font-size: 0.8rem; }
@@ -1549,14 +1601,14 @@ h3 {
     .hero-tag { font-size: 0.7rem; letter-spacing: 4px; }
     .stat-item { padding: 6px 16px; }
     .stat-number { font-size: 1rem; }
-    .service-badge { padding: 5px 12px; font-size: 0.65rem; }
+    .hero-buttons { flex-direction: column; gap: 12px; }
+    .btn-primary, .btn-outline { padding: 10px 16px; font-size: 0.85rem; }
     .quote-text { font-size: 0.7rem; }
     .service-card, .portfolio-card, .step-card, .faq-item { padding: 20px; }
     .service-card h3 { font-size: 1.3rem; }
     .portfolio-card .portfolio-image { height: 180px; }
     .mission-grid .mission-grid-card { height: 120px; }
     .calculator-card { padding: 16px; }
-    .btn-primary, .btn-outline { padding: 10px 16px; font-size: 0.85rem; }
     .contact-card { padding: 24px 20px; }
     .contact-card h2 { font-size: 1.5rem; }
     .faq-question { padding: 16px 18px; font-size: 0.9rem; }
