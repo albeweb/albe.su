@@ -128,11 +128,11 @@ h3, h4, h5, h6,
     margin-bottom: 8px;
 }
 
-/* Основной текст и всё остальное — Geist */
+/* Основной текст и всё остальное — Geist (БЕЗ .phrase-underkey) */
 p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-card p,
 .mission-text p, .faq-answer, .footer p, .footer a, .tech-item, .calc-option,
 .time-breakdown-item, .stack-explanation p, input, textarea, .stat-label,
-.price-card li, .price-note, .hero-title-line3, .phrase-underkey {
+.price-card li, .price-note, .hero-title-line3 {
     font-family: 'Geist', sans-serif;
     font-weight: 400;
     font-size: 1.0625rem;
@@ -677,6 +677,7 @@ h3 {
     color: #F5B700;
 }
 
+/* ФРАЗА "ПОД КЛЮЧ" — наследует шрифт от H1 (без явного font-family) */
 .phrase-underkey {
     font-size: clamp(0.8rem, 3.2vw, 4rem);
     font-weight: 400;
