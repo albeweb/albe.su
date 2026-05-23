@@ -129,7 +129,30 @@
 </script>
 </head>
 <body>
-<div id="header-placeholder"></div>
+
+<!-- ========== ШАПКА (СТАТИЧЕСКАЯ) ========== -->
+<header class="header">
+    <div class="container">
+        <div class="header-wrapper">
+            <div class="logo">
+                <a href="/">ALBE<span>DIGITAL</span></a>
+            </div>
+            <nav class="nav">
+                <a href="#services">Услуги</a>
+                <a href="#portfolio">Портфолио</a>
+                <a href="#process">Процесс</a>
+                <a href="#calculator">Калькулятор</a>
+                <a href="#contact">Контакты</a>
+            </nav>
+            <div class="header-contacts">
+                <a href="tel:+79959870353" class="header-phone">+7 (995) 987-03-53</a>
+                <a href="https://t.me/albe_web" class="header-telegram" target="_blank" rel="noopener noreferrer">Telegram</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Меню">☰</button>
+        </div>
+    </div>
+</header>
+
 <main>
 <!-- БАННЕР С МНОГОСТРОЧНЫМ ЦВЕТНЫМ ЗАГОЛОВКОМ В H1 -->
 <section class="hero">
@@ -204,7 +227,7 @@
 <div class="container">
 <div class="section-header">
 <h2 itemprop="name">Эксклюзивные решения</h2>
-<a href="services.html" class="section-more-btn">Все услуги</a>
+<a href="#services" class="section-more-btn">Все услуги</a>
 </div>
 <div class="services-grid">
 <div class="service-card" itemscope itemtype="https://schema.org/Service"><h3 itemprop="name">Веб-разработка</h3><p itemprop="description">Современный стек: React, Vue, Node.js, Laravel. Высокая производительность и масштабируемость.</p></div>
@@ -221,7 +244,7 @@
 <div class="container">
 <div class="section-header">
 <h2 itemprop="name">Избранные проекты</h2>
-<a href="portfolio.html" class="section-more-btn">Все проекты</a>
+<a href="#portfolio" class="section-more-btn">Все проекты</a>
 </div>
 <div class="portfolio-grid">
 <div class="portfolio-card" itemscope itemtype="https://schema.org/CreativeWork">
@@ -244,7 +267,7 @@
 <div class="container">
 <div class="section-header">
 <h2 itemprop="name">Как мы создаём лидеров рынка</h2>
-<a href="services.html" class="section-more-btn">Подробнее</a>
+<a href="#services" class="section-more-btn">Подробнее</a>
 </div>
 <div class="steps-container">
 <div class="step-card" itemprop="step" itemscope itemtype="https://schema.org/HowToStep"><div class="step-num" itemprop="position">01</div><h3 itemprop="name">Аналитика</h3><p itemprop="description">Изучаем нишу, конкурентов, ЦА. Формируем KPI.</p></div>
@@ -259,7 +282,7 @@
 <div class="container">
 <div class="section-header">
 <h2>Наши компетенции</h2>
-<a href="services.html" class="section-more-btn">Подробнее</a>
+<a href="#services" class="section-more-btn">Подробнее</a>
 </div>
 <div class="competences-grid">
 <div class="competence-card"><h3>Frontend</h3><p>Интерфейсы, которые продают</p><div class="competence-tech-list"><div class="tech-item" data-tech="react">React / Next.js</div><div class="tech-item" data-tech="vue">Vue 3 / Nuxt</div><div class="tech-item" data-tech="ts">TypeScript</div><div class="tech-item" data-tech="gsap">GSAP</div><div class="tech-item" data-tech="three">Three.js</div></div></div>
@@ -275,7 +298,7 @@
 <div class="container">
 <div class="section-header">
 <h2>Калькулятор стоимости</h2>
-<a href="services.html" class="section-more-btn">Все услуги</a>
+<a href="#services" class="section-more-btn">Все услуги</a>
 </div>
 
 <!-- СТАТИЧЕСКАЯ ТАБЛИЦА С ЦЕНАМИ (ДЛЯ SEO И ПОИСКОВЫХ РОБОТОВ) -->
@@ -346,13 +369,14 @@
 </div>
 </div>
 </div>
+</div>
 </section>
 
 <section class="section">
 <div class="container">
 <div class="section-header">
 <h2>Почему выбирают нас</h2>
-<a href="about.html" class="section-more-btn">О компании</a>
+<a href="#contact" class="section-more-btn">О компании</a>
 </div>
 <div class="mission-grid-wrapper">
 <div class="mission-text">
@@ -363,7 +387,7 @@
 <picture><source srcset="images/bank.avif" type="image/avif"><img class="mission-grid-card" src="images/bank.avif" alt="Наша команда профессионалов ALBE digital" loading="lazy" decoding="async" width="400" height="300"></picture>
 <picture><source srcset="images/ai.avif" type="image/avif"><img class="mission-grid-card" src="images/ai.avif" alt="Процесс разработки сайтов под ключ" loading="lazy" decoding="async" width="400" height="300"></picture>
 <picture><source srcset="images/app.avif" type="image/avif"><img class="mission-grid-card" src="images/app.avif" alt="Результаты нашей работы — кейсы и достижения" loading="lazy" decoding="async" width="400" height="300"></picture>
-<picture><source srcset="images/bank.avif" type="image/avif"><img class="mission-grid-card" src="images/bank.avif" alt="Наши довольные клиенты и партнёры" loading="lazy" decoding="async" width="400" height="300"></picture>
+<picture><source srcset="images/office.avif" type="image/avif"><img class="mission-grid-card" src="images/office.avif" alt="Наши довольные клиенты и партнёры" loading="lazy" decoding="async" width="400" height="300"></picture>
 </div>
 </div>
 </div>
@@ -373,7 +397,7 @@
 <div class="container">
 <div class="section-header">
 <h2>Часто задаваемые вопросы</h2>
-<a href="services.html" class="section-more-btn">Подробнее</a>
+<a href="#services" class="section-more-btn">Подробнее</a>
 </div>
 <div class="faq-grid">
 <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><button class="faq-question" itemprop="name">Сколько стоит разработка сайта под ключ?</button><div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text">Стоимость разработки сайта рассчитывается индивидуально в нашем калькуляторе. Лендинг от 120 000 ₽, корпоративный сайт от 250 000 ₽, интернет-магазин от 450 000 ₽. Окончательная цена зависит от сложности, количества функций и выбранного стека технологий.</div></div></div>
@@ -414,72 +438,131 @@
     </div>
 </section>
 </main>
-<div id="footer-placeholder"></div>
+
+<!-- ========== ПОДВАЛ (СТАТИЧЕСКИЙ) ========== -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-logo">ALBE<span>DIGITAL</span></div>
+                <p>Разработка дизайна и сайтов под ключ. Премиум дизайн, SEO, AI решения.</p>
+                <div class="footer-social">
+                    <a href="https://t.me/albe_web" target="_blank" rel="noopener noreferrer">Telegram</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Услуги</h4>
+                <ul>
+                    <li><a href="#services">Веб-разработка</a></li>
+                    <li><a href="#services">Премиум дизайн</a></li>
+                    <li><a href="#services">SEO продвижение</a></li>
+                    <li><a href="#services">AI решения</a></li>
+                    <li><a href="#services">Мобильные приложения</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Компания</h4>
+                <ul>
+                    <li><a href="#portfolio">Портфолио</a></li>
+                    <li><a href="#process">Процесс работы</a></li>
+                    <li><a href="#calculator">Калькулятор</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Контакты</h4>
+                <ul>
+                    <li><a href="tel:+79959870353">+7 (995) 987-03-53</a></li>
+                    <li><a href="mailto:albe.web@yandex.ru">albe.web@yandex.ru</a></li>
+                    <li>Москва, Цветной бульвар</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 ALBE digital. Все права защищены.</p>
+        </div>
+    </div>
+</footer>
+
 <div class="totop" id="toTopBtn">↑</div>
-<script src="header-loader.js?v=1.0"></script>
+
 <script src="common.js?v=1.0"></script>
 
-<!-- ПРЯМАЯ ОТПРАВКА В TELEGRAM (РАБОТАЕТ 100%) -->
 <script>
 (function() {
-    function initTelegramForm() {
+    function initForm() {
         const form = document.getElementById('mainForm');
         const statusDiv = document.getElementById('formStatus');
         
         if (!form || !statusDiv) return;
         
-        // Данные для Telegram
-        const BOT_TOKEN = '8953599318:AAH2inlahtLU4JrQTWQFDxTeDFc1S-Qyp3w';
-        const CHAT_ID = '7459716299';
-        
-        form.addEventListener('submit', async function(e) {
+        form.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            statusDiv.innerHTML = '⏳ Отправка...';
-            statusDiv.style.color = '#F5B700';
+            // Собираем данные (только для демонстрации, отправка не производится)
+            const name = document.getElementById('userName')?.value || '';
+            const phone = document.getElementById('userPhone')?.value || '';
+            const email = document.getElementById('userEmail')?.value || '';
+            const telegram = document.getElementById('userTelegram')?.value || '';
+            const msg = document.getElementById('userMsg')?.value || '';
+            const comment = document.getElementById('userComment')?.value || '';
             
-            // Собираем данные
-            const name = document.getElementById('userName')?.value || 'не указано';
-            const phone = document.getElementById('userPhone')?.value || 'не указано';
-            const email = document.getElementById('userEmail')?.value || 'не указано';
-            const telegram = document.getElementById('userTelegram')?.value || 'не указано';
-            const msg = document.getElementById('userMsg')?.value || 'не указано';
-            const comment = document.getElementById('userComment')?.value || 'не указано';
-            
-            // Формируем текст сообщения
-            const text = `📩 НОВАЯ ЗАЯВКА С САЙТА ALBE%0A%0A👤 Имя: ${encodeURIComponent(name)}%0A📞 Телефон: ${encodeURIComponent(phone)}%0A📧 Email: ${encodeURIComponent(email)}%0A✈️ Telegram: ${encodeURIComponent(telegram)}%0A📝 Задача: ${encodeURIComponent(msg)}%0A💬 Комментарий: ${encodeURIComponent(comment)}%0A%0A🕐 ${new Date().toLocaleString('ru-RU')}`;
-            
-            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${text}`;
-            
-            try {
-                const response = await fetch(url);
-                const result = await response.json();
-                
-                if (result.ok) {
-                    statusDiv.innerHTML = '✅ Заявка отправлена! Мы свяжемся с вами в ближайшее время.';
-                    statusDiv.style.color = '#4CAF50';
-                    form.reset();
-                } else {
-                    throw new Error('Ошибка Telegram API');
-                }
-            } catch (error) {
-                console.error('Ошибка:', error);
-                statusDiv.innerHTML = '❌ Ошибка отправки. Напишите нам в Telegram @albe_web или позвоните +7 (995) 987-03-53';
+            if (!name || !phone || !email) {
+                statusDiv.innerHTML = '❌ Пожалуйста, заполните обязательные поля (Имя, Телефон, Email)';
                 statusDiv.style.color = '#ff6b6b';
+                setTimeout(function() {
+                    if (statusDiv.innerHTML.includes('❌')) {
+                        statusDiv.innerHTML = '';
+                    }
+                }, 5000);
+                return;
             }
+            
+            // Отображаем сообщение о необходимости связаться с нами
+            statusDiv.innerHTML = '✅ Спасибо за заявку! Наш менеджер свяжется с вами. Также вы можете написать нам в Telegram: @albe_web или позвонить +7 (995) 987-03-53';
+            statusDiv.style.color = '#4CAF50';
+            form.reset();
             
             setTimeout(function() {
                 if (statusDiv.innerHTML.includes('✅')) {
                     statusDiv.innerHTML = '';
                 }
-            }, 5000);
+            }, 8000);
         });
     }
     
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initTelegramForm);
+        document.addEventListener('DOMContentLoaded', initForm);
     } else {
-        initTelegramForm();
+        initForm();
+    }
+})();
+
+// Мобильное меню
+(function() {
+    const menuBtn = document.getElementById('mobileMenuBtn');
+    const nav = document.querySelector('.nav');
+    if (menuBtn && nav) {
+        menuBtn.addEventListener('click', function() {
+            nav.classList.toggle('nav-open');
+        });
+    }
+})();
+
+// Кнопка "Наверх"
+(function() {
+    const toTopBtn = document.getElementById('toTopBtn');
+    if (toTopBtn) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                toTopBtn.classList.add('visible');
+            } else {
+                toTopBtn.classList.remove('visible');
+            }
+        });
+        toTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
     }
 })();
 </script>
