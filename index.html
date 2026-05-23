@@ -447,28 +447,6 @@ function loadComponent(elementId, filePath, callback) {
         });
 }
 
-// Инициализация функционала шапки (фиксация при скролле)
-function initHeader() {
-    const header = document.getElementById('mainHeader');
-    if (header) {
-        function handleHeaderScroll() {
-            if (window.scrollY > 50) {
-                if (!header.classList.contains('fixed')) {
-                    header.classList.add('fixed');
-                    document.body.classList.add('header-fixed');
-                }
-            } else {
-                if (header.classList.contains('fixed')) {
-                    header.classList.remove('fixed');
-                    document.body.classList.remove('header-fixed');
-                }
-            }
-        }
-        window.addEventListener('scroll', handleHeaderScroll);
-        handleHeaderScroll();
-    }
-}
-
 // Инициализация бургер-меню
 function initBurgerMenu() {
     const burgerBtn = document.getElementById('burgerBtn');
@@ -570,7 +548,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initToTop();
     
     loadComponent('header-placeholder', 'header.html', () => {
-        initHeader();
+        // initHeader() - УДАЛЕНА костыльная фиксация, используется CSS position: sticky
         initBurgerMenu();
     });
     loadComponent('footer-placeholder', 'footer.html');
