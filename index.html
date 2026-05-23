@@ -43,7 +43,7 @@
 <link rel="preload" as="style" href="style.css?v=1.0">
 <link rel="stylesheet" href="style.css?v=1.0">
 
-<!-- Дополнительные стили для статистики и мобильной оптимизации -->
+<!-- Дополнительные стили для статистики -->
 <style>
 /* Статистика — перед бейджиками, горизонтально */
 .hero-stats {
@@ -137,7 +137,7 @@
     margin-top: 0.5rem;
 }
 
-/* МОБИЛЬНАЯ ОПТИМИЗАЦИЯ: бейджики на втором экране */
+/* Адаптив для мобильных */
 @media (max-width: 768px) {
     .hero-stats {
         gap: 12px;
@@ -156,19 +156,6 @@
     }
     .hero-title {
         margin-bottom: 1.5rem;
-    }
-    
-    /* Бейджики скрыты на первом экране, появляются только при прокрутке */
-    .services-badges {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    
-    /* Когда бейджики попадают в область видимости — появляются */
-    .services-badges.visible {
-        opacity: 1;
-        transform: translateY(0);
     }
 }
 </style>
@@ -906,6 +893,60 @@ function loadComponent(elementId, filePath, callback) {
         });
 }
 
+// ===== МОБИЛЬНАЯ ОПТИМИЗАЦИЯ: бейджики загружаются ПОСЛЕ прокрутки =====
+function initMobileOptimization() {
+    // Только для мобильных устройств
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (!isMobile) return;
+    
+    const badgesContainer = document.querySelector('.services-badges');
+    if (!badgesContainer) return;
+    
+    // Полностью удаляем бейджики из DOM при загрузке
+    const badgesHTML = badgesContainer.innerHTML;
+    badgesContainer.innerHTML = '';
+    badgesContainer.style.minHeight = '0';
+    
+    // Создаём placeholder для плавного появления
+    badgesContainer.style.opacity = '0';
+    badgesContainer.style.transform = 'translateY(20px)';
+    badgesContainer.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+    
+    // Загружаем бейджики только когда пользователь прокрутил 50% страницы
+    let badgesLoaded = false;
+    
+    function loadBadges() {
+        if (badgesLoaded) return;
+        badgesLoaded = true;
+        
+        badgesContainer.innerHTML = badgesHTML;
+        
+        setTimeout(() => {
+            badgesContainer.style.opacity = '1';
+            badgesContainer.style.transform = 'translateY(0)';
+        }, 50);
+        
+        window.removeEventListener('scroll', checkScroll);
+        window.removeEventListener('touchmove', checkScroll);
+    }
+    
+    function checkScroll() {
+        const scrollPercent = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+        if (scrollPercent > 0.5) {
+            loadBadges();
+        }
+    }
+    
+    window.addEventListener('scroll', checkScroll);
+    window.addEventListener('touchmove', checkScroll);
+    
+    // Отключаем падающий код на мобильных для производительности
+    const codeRain = document.querySelector('.code-rain');
+    if (codeRain) {
+        codeRain.style.display = 'none';
+    }
+}
+
 // ===== ЗАПУСК ВСЕХ ИНИЦИАЛИЗАЦИЙ =====
 document.addEventListener('DOMContentLoaded', function() {
     initTechTooltips();
@@ -916,6 +957,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initToTop();
     initHeaderFixed();
     initBurgerMenu();
+    initMobileOptimization();
     
     loadComponent('header-placeholder', 'header.html', function() {
         initBurgerMenu();
@@ -923,28 +965,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     loadComponent('footer-placeholder', 'footer.html');
 });
-
-// Активация появления бейджиков при скролле на мобильных
-(function() {
-    const badgesContainer = document.querySelector('.services-badges');
-    if (!badgesContainer) return;
-    
-    // Проверяем, что это мобильное устройство
-    const isMobile = window.innerWidth <= 768;
-    if (!isMobile) return;
-    
-    // Добавляем класс visible при попадании в область видимости
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                badgesContainer.classList.add('visible');
-                observer.unobserve(badgesContainer);
-            }
-        });
-    }, { threshold: 0.1 });
-    
-    observer.observe(badgesContainer);
-})();
 </script>
 </body>
 </html>
