@@ -666,7 +666,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
 
 /* СТРОКА 2: дизайна и сайтов под ключ (цветные слова) */
 .hero-title-line2 {
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: 500;
     display: block;
     line-height: 1.1;
