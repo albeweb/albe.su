@@ -1,3 +1,4 @@
+// ===== ОПИСАНИЯ ТЕХНОЛОГИЙ ДЛЯ ТУЛТИПОВ =====
 const techDesc = {
     react: "React — библиотека для интерфейсов. Идеален для SPA, CRM, дашбордов.",
     vue: "Vue — прогрессивный фреймворк. Лёгкий, гибкий, для малых и средних проектов.",
@@ -21,6 +22,7 @@ const techDesc = {
     semrush: "SEMrush / Ahrefs — анализ конкурентов, ключей, ссылок."
 };
 
+// ===== ТУЛТИПЫ ДЛЯ ТЕХНОЛОГИЙ =====
 function initTechTooltips() {
     const tooltip = document.createElement('div');
     tooltip.className = 'tech-tooltip';
@@ -49,7 +51,7 @@ function initTechTooltips() {
     });
 }
 
-// ===== КАЛЬКУЛЯТОР =====
+// ===== КАЛЬКУЛЯТОР СТОИМОСТИ =====
 const rate = 2000;
 const sh = { design: 20, front: 30, back: 40, seo: 15, cms: 25, crm: 60, ai: 90, mobile: 120, support: 8 };
 const cm = { simple: 1, medium: 1.5, high: 2.2, enterprise: 3.5 };
@@ -173,20 +175,15 @@ function initCalculator() {
     updateCalculator();
 }
 
-// ===== КАЛЬКУЛЯТОР С FALLBACK ДЛЯ SEO =====
 function initCalculatorWithFallback() {
     const staticTable = document.getElementById('staticPriceTable');
     const interactiveCalc = document.getElementById('interactiveCalculator');
     
     if (staticTable && interactiveCalc) {
-        // Скрываем статическую таблицу
         staticTable.style.display = 'none';
-        // Показываем интерактивный калькулятор
         interactiveCalc.style.display = 'block';
-        // Инициализируем калькулятор
         initCalculator();
     } else if (interactiveCalc) {
-        // Если нет статической таблицы, просто показываем калькулятор
         interactiveCalc.style.display = 'block';
         initCalculator();
     }
@@ -211,15 +208,6 @@ function initSmoothScroll() {
 
 // ===== FAQ =====
 function initFaq() {
-    var allAnswers = document.querySelectorAll('.faq-answer');
-    for (var i = 0; i < allAnswers.length; i++) {
-        allAnswers[i].classList.remove('active');
-    }
-    var allQuestions = document.querySelectorAll('.faq-question');
-    for (var i = 0; i < allQuestions.length; i++) {
-        allQuestions[i].classList.remove('active');
-    }
-    
     var faqGrid = document.querySelector('.faq-grid');
     if (faqGrid) {
         faqGrid.addEventListener('click', function(e) {
@@ -258,18 +246,15 @@ function initForm() {
             var name = document.getElementById('userName') ? document.getElementById('userName').value.trim() : '';
             var phone = document.getElementById('userPhone') ? document.getElementById('userPhone').value.trim() : '';
             var email = document.getElementById('userEmail') ? document.getElementById('userEmail').value.trim() : '';
-            var telegram = document.getElementById('userTelegram') ? document.getElementById('userTelegram').value.trim() : '';
-            var msg = document.getElementById('userMsg') ? document.getElementById('userMsg').value.trim() : '';
-            var comment = document.getElementById('userComment') ? document.getElementById('userComment').value.trim() : '';
             
             if (!name || !phone || !email) {
-                if (stat) stat.innerHTML = '<div style="background:#990000; padding:12px; border-radius:8px;">Заполните все обязательные поля (Имя, Телефон, Email)</div>';
+                if (stat) stat.innerHTML = '<div style="background:#990000; padding:12px; border-radius:8px;">❌ Заполните все обязательные поля (Имя, Телефон, Email)</div>';
                 setTimeout(function() { if (stat) stat.innerHTML = ''; }, 4000);
                 return;
             }
             
-            console.log('Заявка:', { name, phone, email, telegram, msg, comment });
-            if (stat) stat.innerHTML = '<div style="background:#F5B700; color:#0D1117; padding:12px; border-radius:8px;">Спасибо! Менеджер свяжется с вами в ближайшее время.</div>';
+            console.log('Заявка:', { name, phone, email });
+            if (stat) stat.innerHTML = '<div style="background:#F5B700; color:#0D1117; padding:12px; border-radius:8px;">✅ Спасибо! Менеджер свяжется с вами в ближайшее время.</div>';
             form.reset();
             setTimeout(function() { if (stat) stat.innerHTML = ''; }, 5000);
         });
@@ -296,28 +281,71 @@ function initHeaderFixed() {
     
     function handleHeaderScroll() {
         if (window.scrollY > 50) {
-            if (!header.classList.contains('fixed')) {
-                header.classList.add('fixed');
-                document.body.classList.add('header-fixed');
-            }
+            header.classList.add('scrolled');
         } else {
-            if (header.classList.contains('fixed')) {
-                header.classList.remove('fixed');
-                document.body.classList.remove('header-fixed');
-            }
+            header.classList.remove('scrolled');
         }
     }
     window.addEventListener('scroll', handleHeaderScroll);
     handleHeaderScroll();
 }
 
+// ===== БУРГЕР-МЕНЮ =====
+function initBurgerMenu() {
+    const burgerBtn = document.getElementById('burgerBtn');
+    const navMenu = document.getElementById('navMenu');
+    
+    if (burgerBtn && navMenu) {
+        burgerBtn.addEventListener('click', function() {
+            burgerBtn.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        });
+        
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                burgerBtn.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    }
+}
+
+// ===== ЗАГРУЗКА КОМПОНЕНТОВ =====
+function loadComponent(elementId, filePath, callback) {
+    const placeholder = document.getElementById(elementId);
+    if (!placeholder) return;
+    
+    fetch(filePath)
+        .then(response => {
+            if (!response.ok) throw new Error('Failed to load ' + filePath);
+            return response.text();
+        })
+        .then(data => {
+            placeholder.innerHTML = data;
+            if (callback) callback();
+        })
+        .catch(error => {
+            console.error('Ошибка загрузки компонента:', error);
+            placeholder.innerHTML = '<div style="padding:20px;text-align:center;">Ошибка загрузки</div>';
+        });
+}
+
 // ===== ЗАПУСК ВСЕХ ИНИЦИАЛИЗАЦИЙ =====
 document.addEventListener('DOMContentLoaded', function() {
     initTechTooltips();
-    initCalculatorWithFallback();  // ← заменяет initCalculator()
+    initCalculatorWithFallback();
     initSmoothScroll();
     initFaq();
     initForm();
     initToTop();
     initHeaderFixed();
+    initBurgerMenu();
+    
+    loadComponent('header-placeholder', 'header.html', function() {
+        initBurgerMenu();
+        initHeaderFixed();
+    });
+    loadComponent('footer-placeholder', 'footer.html');
 });
