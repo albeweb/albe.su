@@ -459,15 +459,31 @@ h3 {
 }
 
 /* ============================================ */
-/* HEADER */
+/* HEADER — ПРЕМИУМ ТЕХНОЛОГИЧНАЯ ВЕРСИЯ */
 /* ============================================ */
+
 .header {
-    background: rgba(13, 17, 23, 0.85);
-    backdrop-filter: blur(10px);
-    z-index: 1000;
-    border-bottom: 1px solid rgba(245, 183, 0, 0.2);
-    padding: 18px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
+    z-index: 1000;
+    padding: 20px 0;
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+/* Фон при скролле */
+.header.scrolled {
+    background: rgba(13, 17, 23, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(245, 183, 0, 0.15);
+    padding: 12px 0;
+}
+
+/* Без скролла — прозрачный, без фона */
+.header:not(.scrolled) {
+    background: transparent;
+    backdrop-filter: none;
 }
 
 .header .container {
@@ -477,39 +493,125 @@ h3 {
     padding: 0 80px;
 }
 
+/* ============================================ */
+/* ЛОГОТИП — Zen Dots, разноцветные буквы */
+/* ============================================ */
+
 .logo {
-    font-family: 'Zen Dots', monospace;
-    font-size: 2.2rem;
-    font-weight: 400;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
     text-decoration: none;
-    letter-spacing: 1px;
-    flex-shrink: 0;
+    font-family: 'Zen Dots', monospace;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
 }
 
-.logo span:first-child { color: #F5B700; }
-.logo span:last-child { color: #FFFFFF; }
+.logo-letter {
+    position: relative;
+    display: inline-block;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.logo-letter:nth-child(1) { color: #F5B700; }  /* A — золотой */
+.logo-letter:nth-child(2) { color: #14C6B0; }  /* L — бирюзовый */
+.logo-letter:nth-child(3) { color: #10B981; }  /* B — мятный */
+.logo-letter:nth-child(4) { color: #8B5CF6; }  /* E — фиолетовый */
+
+.logo:hover .logo-letter {
+    transform: translateY(-2px);
+}
+
+/* ============================================ */
+/* НАВИГАЦИЯ */
+/* ============================================ */
 
 .nav-menu {
     display: flex;
     gap: 2rem;
     align-items: center;
-    transition: none;
 }
 
 .nav-link {
-    color: #FFFFFF;
+    color: #E6EDF5;
     text-decoration: none;
-    transition: 0.2s;
-    white-space: nowrap;
+    font-family: 'Geist', sans-serif;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+    padding: 8px 0;
+    position: relative;
+    transition: color 0.2s ease;
 }
 
-.nav-link:hover { color: #F5B700; }
+/* Эффект подчёркивания — тонкая золотая линия */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: linear-gradient(90deg, #F5B700, #14C6B0);
+    transition: width 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: #F5B700;
+}
+
+/* ============================================ */
+/* КНОПКА TELEGRAM — технологичная, с обводкой */
+/* ============================================ */
+
+.header-telegram {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    background: rgba(245, 183, 0, 0.08);
+    border: 1px solid rgba(245, 183, 0, 0.4);
+    border-top-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    font-family: 'Geist', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #F5B700;
+}
+
+.header-telegram svg {
+    fill: #F5B700;
+    transition: transform 0.2s ease;
+}
+
+.header-telegram:hover {
+    background: rgba(245, 183, 0, 0.2);
+    border-color: #F5B700;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(245, 183, 0, 0.2);
+}
+
+.header-telegram:hover svg {
+    transform: scale(1.05);
+}
+
+/* ============================================ */
+/* БУРГЕР-МЕНЮ (мобильные) */
+/* ============================================ */
 
 .burger {
     display: none;
     flex-direction: column;
     cursor: pointer;
-    gap: 6px;
+    gap: 5px;
     z-index: 1002;
     position: relative;
 }
@@ -518,28 +620,18 @@ h3 {
     width: 28px;
     height: 2px;
     background: #F5B700;
-    transition: 0.3s;
+    transition: all 0.3s ease;
 }
 
-.header-telegram {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s;
-    margin-left: 8px;
-    flex-shrink: 0;
-    text-decoration: none;
+/* Анимация бургера при открытии */
+.burger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
 }
-
-.header-telegram:hover {
-    transform: scale(1.05);
-    opacity: 0.8;
+.burger.active span:nth-child(2) {
+    opacity: 0;
 }
-
-.header-telegram svg {
-    width: 30px;
-    height: 30px;
-    fill: #FFFFFF;
+.burger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
 }
 
 .text-gold { color: #F5B700; }
@@ -1153,12 +1245,11 @@ h3 {
 /* ============================================ */
 
 #mainHeader {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 100%;
     z-index: 1000;
-    background: rgba(13, 17, 23, 0.95);
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
 }
 
 #header-placeholder {
@@ -1212,8 +1303,30 @@ h3 {
 }
 
 /* ============================================ */
-/* MEDIA QUERIES */
+/* MEDIA QUERIES ДЛЯ ШАПКИ И ОСТАЛЬНОГО */
 /* ============================================ */
+
+@media (max-width: 1024px) {
+    .header .container {
+        padding: 0 40px;
+    }
+    
+    .nav-menu {
+        gap: 1.5rem;
+    }
+    
+    .nav-link {
+        font-size: 0.85rem;
+    }
+    
+    .header-telegram span {
+        display: none;
+    }
+    
+    .header-telegram {
+        padding: 8px 12px;
+    }
+}
 
 @media (max-width: 1600px) {
     h1 { font-size: 8rem; }
@@ -1272,6 +1385,62 @@ h3 {
 }
 
 @media (max-width: 768px) {
+    .header .container {
+        padding: 0 20px;
+    }
+    
+    .burger {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -320px;
+        background: rgba(13, 17, 23, 0.98);
+        backdrop-filter: blur(16px);
+        flex-direction: column;
+        width: 280px;
+        height: 100vh;
+        padding: 100px 24px 30px;
+        transition: right 0.3s ease-out;
+        border-left: 2px solid #F5B700;
+        z-index: 1001;
+        gap: 1.5rem;
+        align-items: flex-start;
+    }
+    
+    .nav-menu.active {
+        right: 0;
+    }
+    
+    .nav-link {
+        font-size: 1.1rem;
+        padding: 10px 0;
+        width: 100%;
+        border-bottom: 1px solid rgba(245, 183, 0, 0.15);
+    }
+    
+    .nav-link::after {
+        display: none;
+    }
+    
+    .nav-link:hover {
+        padding-left: 8px;
+    }
+    
+    .header-telegram {
+        margin-top: 15px;
+    }
+    
+    .header-telegram span {
+        display: inline;
+    }
+    
+    .logo {
+        font-size: 1.4rem;
+    }
+    
     .container, .header .container, .hero .container { padding: 0 20px; }
     .section { padding: 60px 0; }
     .hero { padding: 40px 0; min-height: auto; }
@@ -1279,42 +1448,6 @@ h3 {
     h2 { font-size: 1.8rem; }
     h3 { font-size: 1.3rem; }
     .code-rain { display: none; }
-    .burger { display: flex; }
-    
-    .nav-menu {
-        position: fixed !important;
-        top: 0 !important;
-        right: -300px !important;
-        background: rgba(13, 17, 23, 0.98) !important;
-        backdrop-filter: blur(12px) !important;
-        flex-direction: column !important;
-        width: 280px !important;
-        height: 100vh !important;
-        padding: 80px 24px 30px !important;
-        transition: right 0.3s ease-out !important;
-        border-left: 2px solid #F5B700 !important;
-        z-index: 1001 !important;
-        gap: 1.5rem !important;
-        align-items: flex-start !important;
-        display: flex !important;
-    }
-    
-    .nav-menu.active {
-        right: 0 !important;
-    }
-    
-    .nav-menu .nav-link {
-        color: white !important;
-        font-size: 1.1rem !important;
-        padding: 10px 0 !important;
-        width: 100% !important;
-        border-bottom: 1px solid rgba(245, 183, 0, 0.2) !important;
-    }
-    
-    .nav-menu .header-telegram {
-        margin-left: 0 !important;
-        margin-top: 10px !important;
-    }
     
     .stat-item { min-width: 170px; padding: 16px 20px; }
     .stat-number { font-size: 2rem; }
@@ -1339,7 +1472,6 @@ h3 {
     .faq-grid { grid-template-columns: 1fr; gap: 16px; }
     .faq-question { padding: 18px 20px; font-size: 0.95rem; }
     .footer-grid { flex-direction: column; gap: 30px; text-align: center; align-items: center; }
-    .logo { font-size: 1.6rem; }
     .contact-card { padding: 32px 24px; }
     .form-row { grid-template-columns: 1fr; gap: 0; }
     .contact-card h2 { font-size: 1.8rem; }
@@ -1365,6 +1497,20 @@ h3 {
 }
 
 @media (max-width: 480px) {
+    .header .container {
+        padding: 0 16px;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
+        gap: 2px;
+    }
+    
+    .nav-menu {
+        width: 260px;
+        right: -260px;
+    }
+    
     .container, .header .container, .hero .container { padding: 0 16px; }
     .section { padding: 40px 0; }
     h1 { font-size: 2.5rem; }
