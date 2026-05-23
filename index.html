@@ -130,28 +130,8 @@
 </head>
 <body>
 
-<!-- ========== ШАПКА (СТАТИЧЕСКАЯ) ========== -->
-<header class="header">
-    <div class="container">
-        <div class="header-wrapper">
-            <div class="logo">
-                <a href="/">ALBE<span>DIGITAL</span></a>
-            </div>
-            <nav class="nav">
-                <a href="#services">Услуги</a>
-                <a href="#portfolio">Портфолио</a>
-                <a href="#process">Процесс</a>
-                <a href="#calculator">Калькулятор</a>
-                <a href="#contact">Контакты</a>
-            </nav>
-            <div class="header-contacts">
-                <a href="tel:+79959870353" class="header-phone">+7 (995) 987-03-53</a>
-                <a href="https://t.me/albe_web" class="header-telegram" target="_blank" rel="noopener noreferrer">Telegram</a>
-            </div>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Меню">☰</button>
-        </div>
-    </div>
-</header>
+<!-- Плейсхолдеры для загружаемых компонентов -->
+<div id="header-placeholder"></div>
 
 <main>
 <!-- БАННЕР С МНОГОСТРОЧНЫМ ЦВЕТНЫМ ЗАГОЛОВКОМ В H1 -->
@@ -439,118 +419,137 @@
 </section>
 </main>
 
-<!-- ========== ПОДВАЛ (СТАТИЧЕСКИЙ) ========== -->
-<footer class="footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <div class="footer-logo">ALBE<span>DIGITAL</span></div>
-                <p>Разработка дизайна и сайтов под ключ. Премиум дизайн, SEO, AI решения.</p>
-                <div class="footer-social">
-                    <a href="https://t.me/albe_web" target="_blank" rel="noopener noreferrer">Telegram</a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>Услуги</h4>
-                <ul>
-                    <li><a href="#services">Веб-разработка</a></li>
-                    <li><a href="#services">Премиум дизайн</a></li>
-                    <li><a href="#services">SEO продвижение</a></li>
-                    <li><a href="#services">AI решения</a></li>
-                    <li><a href="#services">Мобильные приложения</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Компания</h4>
-                <ul>
-                    <li><a href="#portfolio">Портфолио</a></li>
-                    <li><a href="#process">Процесс работы</a></li>
-                    <li><a href="#calculator">Калькулятор</a></li>
-                    <li><a href="#contact">Контакты</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Контакты</h4>
-                <ul>
-                    <li><a href="tel:+79959870353">+7 (995) 987-03-53</a></li>
-                    <li><a href="mailto:albe.web@yandex.ru">albe.web@yandex.ru</a></li>
-                    <li>Москва, Цветной бульвар</li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2026 ALBE digital. Все права защищены.</p>
-        </div>
-    </div>
-</footer>
+<!-- Плейсхолдер для подвала -->
+<div id="footer-placeholder"></div>
 
 <div class="totop" id="toTopBtn">↑</div>
 
+<link rel="stylesheet" href="style.css?v=1.0">
 <script src="common.js?v=1.0"></script>
 
 <script>
-(function() {
-    function initForm() {
-        const form = document.getElementById('mainForm');
-        const statusDiv = document.getElementById('formStatus');
-        
-        if (!form || !statusDiv) return;
-        
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Собираем данные (только для демонстрации, отправка не производится)
-            const name = document.getElementById('userName')?.value || '';
-            const phone = document.getElementById('userPhone')?.value || '';
-            const email = document.getElementById('userEmail')?.value || '';
-            const telegram = document.getElementById('userTelegram')?.value || '';
-            const msg = document.getElementById('userMsg')?.value || '';
-            const comment = document.getElementById('userComment')?.value || '';
-            
-            if (!name || !phone || !email) {
-                statusDiv.innerHTML = '❌ Пожалуйста, заполните обязательные поля (Имя, Телефон, Email)';
-                statusDiv.style.color = '#ff6b6b';
-                setTimeout(function() {
-                    if (statusDiv.innerHTML.includes('❌')) {
-                        statusDiv.innerHTML = '';
-                    }
-                }, 5000);
-                return;
+// Загрузка компонентов
+function loadComponent(elementId, filePath, callback) {
+    const placeholder = document.getElementById(elementId);
+    if (!placeholder) return;
+    
+    fetch(filePath)
+        .then(response => {
+            if (!response.ok) throw new Error('Failed to load ' + filePath);
+            return response.text();
+        })
+        .then(data => {
+            placeholder.innerHTML = data;
+            if (callback) callback();
+        })
+        .catch(error => {
+            console.error('Ошибка загрузки компонента:', error);
+            placeholder.innerHTML = '<div style="padding:20px;text-align:center;">Ошибка загрузки</div>';
+        });
+}
+
+// Инициализация функционала шапки (фиксация при скролле)
+function initHeader() {
+    const header = document.getElementById('mainHeader');
+    if (header) {
+        function handleHeaderScroll() {
+            if (window.scrollY > 50) {
+                if (!header.classList.contains('fixed')) {
+                    header.classList.add('fixed');
+                    document.body.classList.add('header-fixed');
+                }
+            } else {
+                if (header.classList.contains('fixed')) {
+                    header.classList.remove('fixed');
+                    document.body.classList.remove('header-fixed');
+                }
             }
+        }
+        window.addEventListener('scroll', handleHeaderScroll);
+        handleHeaderScroll();
+    }
+}
+
+// Инициализация бургер-меню
+function initBurgerMenu() {
+    const burgerBtn = document.getElementById('burgerBtn');
+    const navMenu = document.getElementById('navMenu');
+    
+    if (burgerBtn && navMenu) {
+        burgerBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            navMenu.classList.toggle('active');
             
-            // Отображаем сообщение о необходимости связаться с нами
-            statusDiv.innerHTML = '✅ Спасибо за заявку! Наш менеджер свяжется с вами. Также вы можете написать нам в Telegram: @albe_web или позвонить +7 (995) 987-03-53';
-            statusDiv.style.color = '#4CAF50';
-            form.reset();
-            
+            const spans = burgerBtn.querySelectorAll('span');
+            if (navMenu.classList.contains('active')) {
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+        
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                const spans = burgerBtn.querySelectorAll('span');
+                if (spans) {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+        });
+        
+        console.log('Бургер-меню инициализировано');
+    } else {
+        console.warn('Бургер или меню не найдены, повторная попытка...');
+        setTimeout(initBurgerMenu, 50);
+    }
+}
+
+// Инициализация формы (fallback)
+function initForm() {
+    const form = document.getElementById('mainForm');
+    const statusDiv = document.getElementById('formStatus');
+    
+    if (!form || !statusDiv) return;
+    
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('userName')?.value || '';
+        const phone = document.getElementById('userPhone')?.value || '';
+        const email = document.getElementById('userEmail')?.value || '';
+        
+        if (!name || !phone || !email) {
+            statusDiv.innerHTML = '❌ Пожалуйста, заполните обязательные поля (Имя, Телефон, Email)';
+            statusDiv.style.color = '#ff6b6b';
             setTimeout(function() {
-                if (statusDiv.innerHTML.includes('✅')) {
+                if (statusDiv.innerHTML.includes('❌')) {
                     statusDiv.innerHTML = '';
                 }
-            }, 8000);
-        });
-    }
-    
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initForm);
-    } else {
-        initForm();
-    }
-})();
-
-// Мобильное меню
-(function() {
-    const menuBtn = document.getElementById('mobileMenuBtn');
-    const nav = document.querySelector('.nav');
-    if (menuBtn && nav) {
-        menuBtn.addEventListener('click', function() {
-            nav.classList.toggle('nav-open');
-        });
-    }
-})();
+            }, 5000);
+            return;
+        }
+        
+        statusDiv.innerHTML = '✅ Спасибо за заявку! Наш менеджер свяжется с вами. Также вы можете написать нам в Telegram: @albe_web или позвонить +7 (995) 987-03-53';
+        statusDiv.style.color = '#4CAF50';
+        form.reset();
+        
+        setTimeout(function() {
+            if (statusDiv.innerHTML.includes('✅')) {
+                statusDiv.innerHTML = '';
+            }
+        }, 8000);
+    });
+}
 
 // Кнопка "Наверх"
-(function() {
+function initToTop() {
     const toTopBtn = document.getElementById('toTopBtn');
     if (toTopBtn) {
         window.addEventListener('scroll', function() {
@@ -562,6 +561,29 @@
         });
         toTopBtn.addEventListener('click', function() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+}
+
+// Запуск загрузки и инициализации
+document.addEventListener('DOMContentLoaded', () => {
+    initForm();
+    initToTop();
+    
+    loadComponent('header-placeholder', 'header.html', () => {
+        initHeader();
+        initBurgerMenu();
+    });
+    loadComponent('footer-placeholder', 'footer.html');
+});
+
+// Мобильное меню (резервное, на случай если header.html не загрузился)
+(function() {
+    const menuBtn = document.getElementById('mobileMenuBtn');
+    const nav = document.querySelector('.nav');
+    if (menuBtn && nav) {
+        menuBtn.addEventListener('click', function() {
+            nav.classList.toggle('nav-open');
         });
     }
 })();
