@@ -656,17 +656,17 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
 
 /* СТРОКА 1: РАЗРАБОТКА */
 .hero-title-line1 {
-    font-size: 10rem;
+    font-size: 8rem;
     font-weight: 500;
     color: #FFFFFF;
     display: block;
-    line-height: 1.1;
+    line-height: 1.2;
     font-family: 'Inter', sans-serif;
 }
 
 /* СТРОКА 2: дизайна и сайтов под ключ (цветные слова) */
 .hero-title-line2 {
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: 500;
     display: block;
     line-height: 1.1;
