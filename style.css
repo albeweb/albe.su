@@ -568,7 +568,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
 }
 
 /* ============================================ */
-/* HERO БАННЕР — МНОГОСТРОЧНЫЙ ЗАГОЛОВОК С ЦВЕТНЫМИ СЛОВАМИ */
+/* HERO БАННЕР — ОПТИМИЗИРОВАННЫЕ РАЗМЕРЫ ДЛЯ ВСЕХ ЭКРАНОВ */
 /* ============================================ */
 .hero {
     position: relative;
@@ -646,7 +646,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     margin-top: auto;
 }
 
-/* МНОГОСТРОЧНЫЙ ЗАГОЛОВОК - НАСТРОЙКИ */
+/* МНОГОСТРОЧНЫЙ ЗАГОЛОВОК - ОПТИМИЗИРОВАННЫЕ ПРОПОРЦИИ */
 .hero-title {
     font-family: 'Inter', sans-serif;
     font-weight: 500;
@@ -654,106 +654,76 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     margin-bottom: 1.2rem;
 }
 
-/* СТРОКА 1: РАЗРАБОТКА */
+/* СТРОКА 1: РАЗРАБОТКА — 10rem на 1920px */
 .hero-title-line1 {
-    font-size: 10rem;
+    font-size: clamp(2.2rem, 8vw, 10rem);
     font-weight: 500;
     color: #FFFFFF;
     display: block;
-    line-height: 1.2;
+    line-height: 1.1;
     font-family: 'Inter', sans-serif;
+    white-space: nowrap;
 }
 
-/* СТРОКА 2: дизайна и сайтов под ключ (цветные слова) */
+/* СТРОКА 2: дизайна и сайтов под ключ */
 .hero-title-line2 {
-    font-size: 3rem;
+    font-size: clamp(0.9rem, 2.8vw, 3rem);
     font-weight: 500;
     display: block;
-    line-height: 1.1;
+    line-height: 1.2;
     margin-top: 0.2rem;
     font-family: 'Inter', sans-serif;
+    white-space: nowrap;
 }
 
 /* ЦВЕТА ДЛЯ ОТДЕЛЬНЫХ СЛОВ В ЗАГОЛОВКЕ */
 .hero-title-line2 .word-teal {
-    color: #14C6B0;  /* бирюзовый */
+    color: #14C6B0;
 }
 
 .hero-title-line2 .word-white {
-    color: #FFFFFF;  /* белый */
+    color: #FFFFFF;
 }
 
 .hero-title-line2 .word-gold {
-    color: #F5B700;  /* золотой */
+    color: #F5B700;
 }
 
-/* ============================================ */
-/* ⭐ КЛАСС ДЛЯ ИЗМЕНЕНИЯ РАЗМЕРА ФРАЗЫ "ПОД КЛЮЧ" ⭐ */
-/* ============================================ */
+/* ⭐ ФРАЗА "ПОД КЛЮЧ" — 4.5rem на 1920px, но не больше строки 2 */
 .phrase-underkey {
-    font-size: 4.5rem;
+    font-size: clamp(0.7rem, 3.8vw, 4.5rem);
     font-weight: 400;
     letter-spacing: 0.5px;
     display: inline-block;
+    white-space: nowrap;
 }
 
 /* СТРОКА 3 (если нужна) */
 .hero-title-line3 {
-    font-size: 5rem;
+    font-size: clamp(1.5rem, 6vw, 5rem);
     font-weight: 500;
     color: #FFFFFF;
     display: block;
     line-height: 1.1;
     margin-top: 0.2rem;
     font-family: 'Inter', sans-serif;
+    white-space: nowrap;
 }
 
-/* Адаптивные размеры для многострочного заголовка */
-@media (max-width: 1400px) {
-    .hero-title-line1,
-    .hero-title-line2,
-    .hero-title-line3 {
-        font-size: 4rem;
-    }
-}
-@media (max-width: 1200px) {
-    .hero-title-line1,
-    .hero-title-line2,
-    .hero-title-line3 {
-        font-size: 3.5rem;
-    }
-}
-@media (max-width: 900px) {
-    .hero-title-line1,
-    .hero-title-line2,
-    .hero-title-line3 {
-        font-size: 2.8rem;
-    }
-    .hero-title {
-        margin-bottom: 1rem;
-    }
-}
+/* Дополнительная защита от переносов на очень маленьких экранах */
 @media (max-width: 768px) {
     .hero-title-line1,
     .hero-title-line2,
     .hero-title-line3 {
-        font-size: 2.2rem;
+        white-space: normal;
+        word-break: keep-all;
     }
-    .hero-title {
-        margin-bottom: 0.8rem;
-    }
-}
-@media (max-width: 480px) {
-    .hero-title-line1,
-    .hero-title-line2,
-    .hero-title-line3 {
-        font-size: 1.8rem;
-    }
-    /* Адаптивный размер для фразы "под ключ" на мобильных */
     .phrase-underkey {
-        font-size: 0.7rem;
+        white-space: normal;
     }
 }
+
+/* Убираем старые медиа-запросы для заголовка, заменяем на clamp */
 
 .hero-stats {
     flex-shrink: 0;
@@ -1300,7 +1270,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
 }
 
 /* ============================================ */
-/* MEDIA QUERIES */
+/* MEDIA QUERIES (остальные без изменений) */
 /* ============================================ */
 
 @media (max-width: 1600px) {
