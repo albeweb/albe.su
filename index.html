@@ -43,7 +43,7 @@
 <link rel="preload" as="style" href="style.css?v=1.0">
 <link rel="stylesheet" href="style.css?v=1.0">
 
-<!-- Дополнительные стили для статистики -->
+<!-- Дополнительные стили для статистики и отступов -->
 <style>
 /* Статистика — перед бейджиками, горизонтально */
 .hero-stats {
@@ -51,7 +51,7 @@
     flex-direction: row;
     justify-content: flex-start;
     gap: 24px;
-    margin-top: 32px;
+    margin-top: 48px;
     margin-bottom: 32px;
     width: 100%;
     flex-wrap: wrap;
@@ -124,11 +124,25 @@
     font-weight: 400;
 }
 
+/* Увеличенные отступы между строками заголовка */
+.hero-title {
+    margin-bottom: 2rem;
+}
+
+.hero-title-line1 {
+    margin-bottom: 0.5rem;
+}
+
+.hero-title-line2 {
+    margin-top: 0.5rem;
+}
+
 /* Адаптив для мобильных */
 @media (max-width: 768px) {
     .hero-stats {
         gap: 12px;
         justify-content: flex-start;
+        margin-top: 32px;
     }
     .stat-item {
         min-width: auto;
@@ -139,6 +153,9 @@
     }
     .stat-label {
         font-size: 0.6rem;
+    }
+    .hero-title {
+        margin-bottom: 1.5rem;
     }
 }
 </style>
