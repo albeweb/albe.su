@@ -43,6 +43,123 @@
 <link rel="preload" as="style" href="style.css?v=1.0">
 <link rel="stylesheet" href="style.css?v=1.0">
 
+<!-- Дополнительные стили для статистики -->
+<style>
+/* Статистика — теперь под бейджиками, как кнопки */
+.hero-stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 48px;
+    width: 100%;
+}
+
+.stat-item {
+    text-align: center;
+    min-width: 100px;
+    padding: 12px 24px;
+    background: transparent;
+    backdrop-filter: none;
+    border: 1px solid;
+    border-top-left-radius: 28px;
+    border-bottom-right-radius: 28px;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    cursor: default;
+}
+
+/* Цвета для каждого элемента статистики */
+.stat-item:nth-child(1) {
+    border-color: #F5B700;
+}
+.stat-item:nth-child(1) .stat-number {
+    color: #F5B700;
+}
+
+.stat-item:nth-child(2) {
+    border-color: #14C6B0;
+}
+.stat-item:nth-child(2) .stat-number {
+    color: #14C6B0;
+}
+
+.stat-item:nth-child(3) {
+    border-color: #10B981;
+}
+.stat-item:nth-child(3) .stat-number {
+    color: #10B981;
+}
+
+.stat-item:nth-child(4) {
+    border-color: #8B5CF6;
+}
+.stat-item:nth-child(4) .stat-number {
+    color: #8B5CF6;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+    background: rgba(30, 42, 94, 0.3);
+    box-shadow: 0 15px 35px rgba(30, 42, 94, 0.4);
+}
+
+.stat-number {
+    font-family: 'Zen Dots', monospace;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    font-size: 0.7rem;
+    color: #B0C4DE;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 400;
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 768px) {
+    .hero-stats {
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 32px;
+    }
+    .stat-item {
+        min-width: calc(50% - 12px);
+        padding: 10px 16px;
+    }
+    .stat-number {
+        font-size: 1.2rem;
+    }
+    .stat-label {
+        font-size: 0.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-stats {
+        gap: 10px;
+        margin-top: 24px;
+    }
+    .stat-item {
+        min-width: calc(50% - 10px);
+        padding: 8px 12px;
+    }
+    .stat-number {
+        font-size: 1rem;
+    }
+    .stat-label {
+        font-size: 0.55rem;
+        letter-spacing: 1px;
+    }
+}
+</style>
+
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -170,12 +287,13 @@
 </div>
 </div>
 </div>
-<div class="hero-stats">
-<div class="stat-item"><div class="stat-number">7+</div><div class="stat-label">лет опыта</div></div>
-<div class="stat-item"><div class="stat-number">150+</div><div class="stat-label">проектов</div></div>
-<div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">поддержка</div></div>
-<div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">результат</div></div>
 </div>
+<!-- СТАТИСТИКА ПОД БЕЙДЖИКАМИ, КАК КНОПКИ -->
+<div class="hero-stats">
+    <div class="stat-item"><div class="stat-number">7+</div><div class="stat-label">лет опыта</div></div>
+    <div class="stat-item"><div class="stat-number">150+</div><div class="stat-label">проектов</div></div>
+    <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">поддержка</div></div>
+    <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">результат</div></div>
 </div>
 </div>
 </section>
