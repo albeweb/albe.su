@@ -691,7 +691,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
 /* ⭐ КЛАСС ДЛЯ ИЗМЕНЕНИЯ РАЗМЕРА ФРАЗЫ "ПОД КЛЮЧ" ⭐ */
 /* ============================================ */
 .phrase-underkey {
-    font-size: 0.75rem;
+    font-size: 5rem;
     font-weight: 400;
     letter-spacing: 0.5px;
     display: inline-block;
