@@ -656,7 +656,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
 
 /* СТРОКА 1: РАЗРАБОТКА — от 1.8rem до 10rem */
 .hero-title-line1 {
-    font-size: clamp(1.8rem, 8.5vw, 10rem);
+    font-size: clamp(1.8rem, 8.5vw, 9rem);
     font-weight: 500;
     color: #FFFFFF;
     display: block;
@@ -667,7 +667,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
 
 /* СТРОКА 2: дизайна и сайтов — от 0.7rem до 3rem */
 .hero-title-line2 {
-    font-size: clamp(0.7rem, 2.5vw, 3rem);
+    font-size: clamp(0.7rem, 2.2vw, 3rem);
     font-weight: 500;
     display: block;
     line-height: 1.2;
@@ -691,7 +691,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
 
 /* ⭐ ФРАЗА "ПОД КЛЮЧ" — от 0.8rem до 4.5rem (всегда больше строки 2) */
 .phrase-underkey {
-    font-size: clamp(0.8rem, 3.8vw, 4.5rem);
+    font-size: clamp(0.8rem, 3.2vw, 4rem);
     font-weight: 400;
     letter-spacing: 0.5px;
     display: inline-block;
