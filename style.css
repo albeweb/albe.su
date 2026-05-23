@@ -2,7 +2,7 @@
 /* ЛОКАЛЬНОЕ ПОДКЛЮЧЕНИЕ ШРИФТОВ (самостоятельный хостинг) */
 /* ============================================ */
 
-/* Inter Regular */
+/* Inter Regular (400) - для основного текста */
 @font-face {
     font-family: 'Inter';
     src: url('inter-v20-cyrillic_latin-regular.woff2') format('woff2');
@@ -11,7 +11,7 @@
     font-display: swap;
 }
 
-/* Inter Medium */
+/* Inter Medium (500) - для подзаголовков */
 @font-face {
     font-family: 'Inter';
     src: url('inter-v20-cyrillic_latin-500.woff2') format('woff2');
@@ -20,7 +20,7 @@
     font-display: swap;
 }
 
-/* Inter Semi Bold */
+/* Inter Semi Bold (600) - для заголовков h2/h3 */
 @font-face {
     font-family: 'Inter';
     src: url('inter-v20-cyrillic_latin-600.woff2') format('woff2');
@@ -29,7 +29,7 @@
     font-display: swap;
 }
 
-/* Inter Bold */
+/* Inter Bold (700) - для самых важных заголовков */
 @font-face {
     font-family: 'Inter';
     src: url('inter-v20-cyrillic_latin-700.woff2') format('woff2');
@@ -38,7 +38,7 @@
     font-display: swap;
 }
 
-/* Zen Dots для логотипа */
+/* Zen Dots - для логотипа и цифр в статистике */
 @font-face {
     font-family: 'Zen Dots';
     src: url('zen-dots.woff2') format('woff2');
@@ -94,7 +94,7 @@ body::before {
     overflow-x: hidden !important;
 }
 
-/* ВСЕ ЗАГОЛОВКИ И ТЕКСТЫ - Inter (кроме логотипа) */
+/* ВСЕ ЗАГОЛОВКИ И ТЕКСТЫ - Inter (кроме логотипа и цифр статистики) */
 h1, h2, h3, h4, h5, h6,
 .stat-number, .step-num, .hero-tag,
 .service-card h3, .portfolio-info h3, .step-card h3, .competence-card h3,
@@ -107,9 +107,20 @@ h1, h2, h3, h4, h5, h6,
     letter-spacing: -0.02em;
 }
 
-/* Логотип остаётся Zen Dots (фирменный стиль) */
+/* Логотип - Zen Dots */
 .logo {
     font-family: 'Zen Dots', monospace;
+}
+
+/* Цифры статистики - Zen Dots (выделяются стильно) */
+.stat-number {
+    font-family: 'Zen Dots', monospace;
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: #F5B700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
 }
 
 .service-badge, .quote-text { font-weight: 400; }
@@ -164,7 +175,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     color: #B0C4DE;
 }
 
-.hero-desc strong, .stat-number { font-family: 'Inter', sans-serif; }
+.hero-desc strong, .stat-number { font-family: 'Zen Dots', monospace; }
 
 .section { padding: 100px 0; border-bottom: 1px solid rgba(245, 183, 0, 0.1); }
 
@@ -635,7 +646,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     margin-top: auto;
 }
 
-/* МНОГОСТРОЧНЫЙ ЗАГОЛОВОК */
+/* МНОГОСТРОЧНЫЙ ЗАГОЛОВОК - НАСТРОЙКИ */
 .hero-title {
     font-family: 'Inter', sans-serif;
     font-weight: 500;
@@ -643,6 +654,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     margin-bottom: 1.2rem;
 }
 
+/* СТРОКА 1: РАЗРАБОТКА */
 .hero-title-line1 {
     font-size: 10rem;
     font-weight: 500;
@@ -652,6 +664,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     font-family: 'Inter', sans-serif;
 }
 
+/* СТРОКА 2: дизайна и сайтов под ключ (цветные слова) */
 .hero-title-line2 {
     font-size: 4rem;
     font-weight: 500;
@@ -661,18 +674,20 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     font-family: 'Inter', sans-serif;
 }
 
+/* ЦВЕТА ДЛЯ ОТДЕЛЬНЫХ СЛОВ В ЗАГОЛОВКЕ */
 .hero-title-line2 .word-teal {
-    color: #14C6B0;
+    color: #14C6B0;  /* бирюзовый */
 }
 
 .hero-title-line2 .word-white {
-    color: #FFFFFF;
+    color: #FFFFFF;  /* белый */
 }
 
 .hero-title-line2 .word-gold {
-    color: #F5B700;
+    color: #F5B700;  /* золотой */
 }
 
+/* СТРОКА 3 (если нужна) */
 .hero-title-line3 {
     font-size: 5rem;
     font-weight: 500;
@@ -758,6 +773,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     box-shadow: 0 15px 35px rgba(30, 42, 94, 0.4);
 }
 
+/* ЦИФРЫ В СТАТИСТИКЕ - Zen Dots (как в логотипе) */
 .stat-number {
     font-size: 2.5rem;
     font-weight: 500;
