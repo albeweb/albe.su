@@ -671,7 +671,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     font-weight: 500;
     display: block;
     line-height: 1.2;
-    margin-top: 0.2rem;
+    margin-top: 0.3rem;
     font-family: 'Inter', sans-serif;
     white-space: normal;
 }
