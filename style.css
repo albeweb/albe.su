@@ -399,21 +399,6 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     width: 100%;
 }
 
-.header.fixed {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    animation: slideDown 0.3s ease;
-}
-
-@keyframes slideDown {
-    from { transform: translateY(-100%); }
-    to { transform: translateY(0); }
-}
-
-body.header-fixed { padding-top: 82px; }
-
 .header .container {
     display: flex;
     justify-content: space-between;
@@ -1084,11 +1069,6 @@ body.header-fixed { padding-top: 82px; }
     }
 }
 
-/* Интерактивный калькулятор (по умолчанию скрыт, показывается через JS) */
-.interactive-calculator {
-    display: none;
-}
-
 .footer {
     background: #080C10;
     padding: 56px 0 32px;
@@ -1147,7 +1127,17 @@ body.header-fixed { padding-top: 82px; }
 /* ⭐ OPTIMIZATIONS FOR CORE WEB VITALS (CLS FIX) ⭐ */
 /* ============================================ */
 
-/* 1. Фиксация места под динамические блоки */
+/* 1. STICKY HEADER - чистая CSS-фиксация (без JS костылей) */
+#mainHeader {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(13, 17, 23, 0.95);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+/* 2. Фиксация места под динамические блоки */
 #header-placeholder {
     min-height: 80px;
     background: #0D1117;
@@ -1157,7 +1147,7 @@ body.header-fixed { padding-top: 82px; }
     min-height: 200px;
 }
 
-/* 2. Aspect-ratio для всех картинок (предотвращает CLS) */
+/* 3. Aspect-ratio для всех картинок (предотвращает CLS) */
 .portfolio-image,
 .mission-grid-card {
     aspect-ratio: 400 / 300;
@@ -1165,14 +1155,6 @@ body.header-fixed { padding-top: 82px; }
     height: auto;
     object-fit: cover;
     background: #1a1f2e;
-}
-
-/* 3. Sticky header вместо JS-фиксации */
-#mainHeader {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    transition: all 0.3s ease;
 }
 
 /* 4. Калькулятор всегда виден (без скачков при загрузке JS) */
@@ -1212,7 +1194,7 @@ body.header-fixed { padding-top: 82px; }
 }
 
 /* ============================================ */
-/* MEDIA QUERIES (ОСТАВЛЯЕМ ОРИГИНАЛЬНЫЕ НИЖЕ) */
+/* MEDIA QUERIES */
 /* ============================================ */
 
 @media (max-width: 1600px) {
