@@ -2,6 +2,15 @@
 /* ЛОКАЛЬНОЕ ПОДКЛЮЧЕНИЕ ШРИФТОВ (самостоятельный хостинг) */
 /* ============================================ */
 
+/* EN Regular (Etude Noire) - для H1 и H2 */
+@font-face {
+    font-family: 'EN Regular';
+    src: url('EN Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 /* Geist Regular (400) - для основного текста */
 @font-face {
     font-family: 'Geist';
@@ -11,7 +20,7 @@
     font-display: swap;
 }
 
-/* Geist Medium (500) - для подзаголовков и заголовков h2 */
+/* Geist Medium (500) - для подзаголовков и H3 */
 @font-face {
     font-family: 'Geist';
     src: url('Geist-Medium.woff2') format('woff2');
@@ -76,25 +85,39 @@ body::before {
     overflow-x: hidden !important;
 }
 
-/* ВСЕ ЗАГОЛОВКИ И ТЕКСТЫ - Geist (кроме логотипа и цифр статистики) */
-h1, h2, h3, h4, h5, h6,
-.stat-number, .step-num, .hero-tag,
+/* ============================================ */
+/* НАЗНАЧЕНИЕ ШРИФТОВ */
+/* ============================================ */
+
+/* H1 и H2 — EN Regular (Etude Noire) */
+h1, h2,
+.hero-title, .hero-title-line1, .hero-title-line2,
+.section-header h2,
+.contact-card h2,
+.price-table h3 {
+    font-family: 'EN Regular', sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+}
+
+/* H3 и остальные заголовки — Geist */
+h3, h4, h5, h6,
 .service-card h3, .portfolio-info h3, .step-card h3, .competence-card h3,
-.calc-label, .stack-explanation h4, .faq-question, .footer-logo, .footer h4,
-.cover-content h2, .quote-text, .service-badge, .nav-link, .btn-primary, .btn-outline,
-.price-table h3, .price-card h4, .price-card .price,
-.hero-title, .hero-title-line1, .hero-title-line2, .hero-title-line3 {
+.faq-question, .price-card h4, .price-card .price,
+.nav-link, .btn-primary, .btn-outline, .hero-tag, .quote-text,
+.service-badge, .calc-label, .stack-explanation h4, .footer-logo, .footer h4,
+.step-num, .section-more-btn, .totop {
     font-family: 'Geist', sans-serif;
     font-weight: 500;
     letter-spacing: -0.02em;
 }
 
-/* Логотип - Zen Dots (НЕ ТРОГАЕМ) */
+/* Логотип - Zen Dots */
 .logo {
     font-family: 'Zen Dots', monospace;
 }
 
-/* Цифры статистики - Zen Dots (НЕ ТРОГАЕМ) */
+/* Цифры статистики - Zen Dots */
 .stat-number {
     font-family: 'Zen Dots', monospace;
     font-size: 2.5rem;
@@ -105,28 +128,38 @@ h1, h2, h3, h4, h5, h6,
     margin-bottom: 8px;
 }
 
+/* Основной текст и всё остальное — Geist */
+p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-card p,
+.mission-text p, .faq-answer, .footer p, .footer a, .tech-item, .calc-option,
+.time-breakdown-item, .stack-explanation p, input, textarea, .stat-label,
+.price-card li, .price-note, .hero-title-line3, .phrase-underkey {
+    font-family: 'Geist', sans-serif;
+    font-weight: 400;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    color: #B0C4DE;
+}
+
 .service-badge, .quote-text { font-weight: 400; }
 .btn-primary, .btn-outline { font-weight: 500; }
 
-/* СТАРЫЙ СТИЛЬ h1 (для других страниц, если нужен) */
+/* СТИЛИ ДЛЯ ЗАГОЛОВКОВ */
 h1 {
     font-size: 9rem;
     line-height: 1;
     margin-bottom: 0.5rem;
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: -0.02em;
     color: #FFFFFF;
     text-transform: uppercase;
-    font-family: 'Geist', sans-serif;
 }
 
 h2 {
     font-size: 3.8rem;
     margin-bottom: 2rem;
-    font-weight: 500;
+    font-weight: 400;
     position: relative;
     display: inline-block;
-    font-family: 'Geist', sans-serif;
 }
 
 h2::after {
@@ -143,21 +176,7 @@ h3 {
     font-weight: 500;
     font-size: 1.6rem;
     margin-bottom: 0.75rem;
-    font-family: 'Geist', sans-serif;
 }
-
-p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-card p,
-.mission-text p, .faq-answer, .footer p, .footer a, .tech-item, .calc-option,
-.time-breakdown-item, .stack-explanation p, input, textarea, .stat-label,
-.price-card li, .price-note {
-    font-family: 'Geist', sans-serif;
-    font-weight: 400;
-    font-size: 1.0625rem;
-    line-height: 1.65;
-    color: #B0C4DE;
-}
-
-.hero-desc strong, .stat-number { font-family: 'Zen Dots', monospace; }
 
 .section { padding: 100px 0; border-bottom: 1px solid rgba(245, 183, 0, 0.1); }
 
@@ -238,8 +257,6 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
 .section-header h2 { margin-bottom: 0; }
 
 .section-more-btn {
-    font-family: 'Geist', sans-serif;
-    font-weight: 500;
     font-size: 0.9rem;
     color: #F5B700;
     text-decoration: none;
@@ -328,7 +345,6 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     cursor: pointer;
     display: flex;
     justify-content: space-between;
-    font-family: 'Geist', sans-serif;
     background: rgba(18, 24, 32, 0.85);
     backdrop-filter: blur(2px);
     border: 1px solid rgba(245, 183, 0, 0.2);
@@ -417,7 +433,6 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     border: 1px solid #2A3A44;
     color: #FFFFFF;
     margin-bottom: 22px;
-    font-family: 'Geist', sans-serif;
     transition: 0.2s;
     border-radius: 0;
 }
@@ -444,7 +459,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
 }
 
 /* ============================================ */
-/* HEADER - исправлен (убрал position: relative) */
+/* HEADER */
 /* ============================================ */
 .header {
     background: rgba(13, 17, 23, 0.85);
@@ -486,8 +501,6 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     text-decoration: none;
     transition: 0.2s;
     white-space: nowrap;
-    font-family: 'Geist', sans-serif;
-    font-weight: 500;
 }
 
 .nav-link:hover { color: #F5B700; }
@@ -550,7 +563,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
 }
 
 /* ============================================ */
-/* HERO БАННЕР — ОПТИМИЗИРОВАННАЯ ВЕРСИЯ (clamp) */
+/* HERO БАННЕР */
 /* ============================================ */
 .hero {
     position: relative;
@@ -628,37 +641,30 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     margin-top: auto;
 }
 
-/* МНОГОСТРОЧНЫЙ ЗАГОЛОВОК - ПРОИЗВОДИТЕЛЬНЫЙ CLAMP */
 .hero-title {
-    font-family: 'Geist', sans-serif;
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: 0.1em;
     margin-bottom: 1.2rem;
 }
 
-/* СТРОКА 1: РАЗРАБОТКА — от 1.8rem до 9rem */
 .hero-title-line1 {
     font-size: clamp(1.8rem, 8.5vw, 9rem);
     font-weight: 400;
     color: #FFFFFF;
     display: block;
     line-height: 1.1;
-    font-family: 'Geist', sans-serif;
     white-space: normal;
 }
 
-/* СТРОКА 2: дизайна и сайтов — от 0.7rem до 3rem */
 .hero-title-line2 {
     font-size: clamp(0.7rem, 2.2vw, 3rem);
-    font-weight: 500;
+    font-weight: 400;
     display: block;
     line-height: 1.2;
     margin-top: 0.2rem;
-    font-family: 'Geist', sans-serif;
     white-space: normal;
 }
 
-/* ЦВЕТА ДЛЯ ОТДЕЛЬНЫХ СЛОВ В ЗАГОЛОВКЕ */
 .hero-title-line2 .word-teal {
     color: #14C6B0;
 }
@@ -671,7 +677,6 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     color: #F5B700;
 }
 
-/* ⭐ ФРАЗА "ПОД КЛЮЧ" — от 0.8rem до 4rem */
 .phrase-underkey {
     font-size: clamp(0.8rem, 3.2vw, 4rem);
     font-weight: 400;
@@ -680,15 +685,13 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     white-space: normal;
 }
 
-/* СТРОКА 3 (если нужна) */
 .hero-title-line3 {
     font-size: clamp(1.5rem, 4vw, 5rem);
-    font-weight: 500;
+    font-weight: 400;
     color: #FFFFFF;
     display: block;
     line-height: 1.1;
     margin-top: 0.2rem;
-    font-family: 'Geist', sans-serif;
     white-space: normal;
 }
 
@@ -724,17 +727,6 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     box-shadow: 0 15px 35px rgba(30, 42, 94, 0.4);
 }
 
-/* ЦИФРЫ В СТАТИСТИКЕ - Zen Dots (НЕ ТРОГАЕМ) */
-.stat-number {
-    font-size: 2.5rem;
-    font-weight: 500;
-    color: #F5B700;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    margin-bottom: 8px;
-    font-family: 'Zen Dots', monospace;
-}
-
 .stat-label {
     font-size: 0.9rem;
     color: #B0C4DE;
@@ -752,7 +744,6 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     text-transform: uppercase;
     opacity: 0.9;
     display: inline-block;
-    font-family: 'Geist', sans-serif;
 }
 
 .services-badges {
@@ -832,7 +823,6 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     color: #F5B700;
     margin-bottom: 1rem;
     opacity: 0.8;
-    font-family: 'Geist', sans-serif;
 }
 
 .competences-grid {
@@ -854,7 +844,6 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     margin-bottom: 20px;
     font-weight: 500;
     color: #F5B700;
-    font-family: 'Geist', sans-serif;
 }
 
 .competence-tech-list {
@@ -924,7 +913,6 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     margin-bottom: 12px;
     font-weight: 500;
     color: #F5B700;
-    font-family: 'Geist', sans-serif;
 }
 
 .calc-options {
@@ -960,7 +948,6 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     font-weight: 600;
     color: #F5B700;
     word-break: break-word;
-    font-family: 'Geist', sans-serif;
 }
 
 .stack-explanation {
@@ -973,7 +960,6 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     color: #F5B700;
     margin: 0 0 12px;
     font-size: 1.2rem;
-    font-family: 'Geist', sans-serif;
 }
 
 .time-breakdown {
@@ -1006,7 +992,6 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     text-align: center;
     margin-bottom: 2rem;
     color: #F5B700;
-    font-family: 'Geist', sans-serif;
 }
 
 .price-grid {
@@ -1033,7 +1018,6 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     font-size: 1.3rem;
     color: #F5B700;
     margin-bottom: 12px;
-    font-family: 'Geist', sans-serif;
 }
 
 .price-card .price {
@@ -1043,7 +1027,6 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     margin-bottom: 16px;
     padding-bottom: 16px;
     border-bottom: 1px solid rgba(245, 183, 0, 0.3);
-    font-family: 'Geist', sans-serif;
 }
 
 .price-card ul {
@@ -1128,7 +1111,6 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     color: #F5B700;
     font-size: 1.6rem;
     font-weight: 500;
-    font-family: 'Geist', sans-serif;
 }
 
 .footer a {
@@ -1157,7 +1139,6 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     border-bottom-right-radius: 24px;
     transition: 0.2s;
     z-index: 99;
-    font-family: 'Geist', sans-serif;
     font-weight: 500;
 }
 
@@ -1170,7 +1151,6 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
 /* ⭐ OPTIMIZATIONS FOR CORE WEB VITALS (CLS FIX) ⭐ */
 /* ============================================ */
 
-/* 1. STICKY HEADER - чистая CSS-фиксация (без JS костылей) */
 #mainHeader {
     position: sticky;
     top: 0;
@@ -1180,7 +1160,6 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     transition: all 0.3s ease;
 }
 
-/* 2. Фиксация места под динамические блоки */
 #header-placeholder {
     min-height: 80px;
     background: #0D1117;
@@ -1190,7 +1169,6 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     min-height: 200px;
 }
 
-/* 3. Aspect-ratio для всех картинок (предотвращает CLS) */
 .portfolio-image,
 .mission-grid-card {
     aspect-ratio: 400 / 300;
@@ -1200,13 +1178,11 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     background: #1a1f2e;
 }
 
-/* 4. Калькулятор всегда виден (без скачков при загрузке JS) */
 .interactive-calculator {
     display: block !important;
     min-height: 450px;
 }
 
-/* 5. Контейнер портфолио с фиксированной сеткой */
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -1214,7 +1190,6 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     grid-auto-rows: minmax(350px, auto);
 }
 
-/* 6. Дополнительная защита от смещений: фиксируем сетку услуг */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1223,7 +1198,6 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     grid-auto-rows: minmax(280px, auto);
 }
 
-/* 7. Фиксация высоты для step-карточек */
 .steps-container {
     display: flex;
     flex-wrap: wrap;
@@ -1237,7 +1211,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
 }
 
 /* ============================================ */
-/* MEDIA QUERIES (остальные без изменений) */
+/* MEDIA QUERIES */
 /* ============================================ */
 
 @media (max-width: 1600px) {
@@ -1306,7 +1280,6 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     .code-rain { display: none; }
     .burger { display: flex; }
     
-    /* ===== БУРГЕР-МЕНЮ ===== */
     .nav-menu {
         position: fixed !important;
         top: 0 !important;
