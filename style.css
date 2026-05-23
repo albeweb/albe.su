@@ -733,7 +733,7 @@ h3 {
 
 /* Градиент на слово РАЗРАБОТКА */
 .hero-title-line1 {
-    font-size: clamp(1.8rem, 7.5vw, 8rem);
+    font-size: clamp(1.8rem, 7.5vw, 7rem);
     font-weight: 400;
     background: linear-gradient(135deg, var(--neon-pink), var(--purple), var(--teal));
     -webkit-background-clip: text;
@@ -767,7 +767,7 @@ h3 {
 
 /* ФРАЗА "ПОД КЛЮЧ" — наследует шрифт от H1 */
 .phrase-underkey {
-    font-size: clamp(0.7rem, 2.2vw, 3rem);
+    font-size: clamp(0.7rem, 2.2vw, 4rem);
     font-weight: 400;
     letter-spacing: 0.5px;
     display: inline-block;
