@@ -690,29 +690,12 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
 /* ============================================ */
 /* ⭐ КЛАСС ДЛЯ ИЗМЕНЕНИЯ РАЗМЕРА ФРАЗЫ "ПОД КЛЮЧ" ⭐ */
 /* ============================================ */
-/* Добавьте этот класс к span с текстом "под ключ" в HTML:
-   <span class="word-white phrase-underkey"> под ключ</span>
-*/
 .phrase-underkey {
-    font-size: 0.85rem;      /* Меньше стандартного */
-    /* или используйте другие значения:
-       font-size: 1.2rem;    — больше стандартного
-       font-size: 0.7em;     — относительно родителя
-       font-size: clamp(0.7rem, 2vw, 1rem); — адаптивный
-    */
+    font-size: 0.75rem;
     font-weight: 400;
     letter-spacing: 0.5px;
     display: inline-block;
 }
-
-/* Альтернативный вариант без изменения HTML (через псевдокласс) */
-/* Раскомментируйте, если не хотите добавлять класс в HTML */
-/*
-.hero-title-line2 .word-white:last-child {
-    font-size: 0.85rem;
-    font-weight: 400;
-}
-*/
 
 /* СТРОКА 3 (если нужна) */
 .hero-title-line3 {
@@ -768,7 +751,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     }
     /* Адаптивный размер для фразы "под ключ" на мобильных */
     .phrase-underkey {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
     }
 }
 
