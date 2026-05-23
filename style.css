@@ -2,38 +2,20 @@
 /* ЛОКАЛЬНОЕ ПОДКЛЮЧЕНИЕ ШРИФТОВ (самостоятельный хостинг) */
 /* ============================================ */
 
-/* Inter Regular (400) - для основного текста */
+/* Geist Regular (400) - для основного текста */
 @font-face {
-    font-family: 'Inter';
-    src: url('inter-v20-cyrillic_latin-regular.woff2') format('woff2');
+    font-family: 'Geist';
+    src: url('Geist-Regular.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
 
-/* Inter Medium (500) - для подзаголовков */
+/* Geist Medium (500) - для подзаголовков и заголовков h2 */
 @font-face {
-    font-family: 'Inter';
-    src: url('inter-v20-cyrillic_latin-500.woff2') format('woff2');
+    font-family: 'Geist';
+    src: url('Geist-Medium.woff2') format('woff2');
     font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-}
-
-/* Inter Semi Bold (600) - для заголовков h2/h3 */
-@font-face {
-    font-family: 'Inter';
-    src: url('inter-v20-cyrillic_latin-600.woff2') format('woff2');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-}
-
-/* Inter Bold (700) - для самых важных заголовков */
-@font-face {
-    font-family: 'Inter';
-    src: url('inter-v20-cyrillic_latin-700.woff2') format('woff2');
-    font-weight: 700;
     font-style: normal;
     font-display: swap;
 }
@@ -61,7 +43,7 @@ html, body {
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Geist', sans-serif;
     background-color: #0D1117;
     color: #E6EDF5;
     line-height: 1.5;
@@ -94,7 +76,7 @@ body::before {
     overflow-x: hidden !important;
 }
 
-/* ВСЕ ЗАГОЛОВКИ И ТЕКСТЫ - Inter (кроме логотипа и цифр статистики) */
+/* ВСЕ ЗАГОЛОВКИ И ТЕКСТЫ - Geist (кроме логотипа и цифр статистики) */
 h1, h2, h3, h4, h5, h6,
 .stat-number, .step-num, .hero-tag,
 .service-card h3, .portfolio-info h3, .step-card h3, .competence-card h3,
@@ -102,17 +84,17 @@ h1, h2, h3, h4, h5, h6,
 .cover-content h2, .quote-text, .service-badge, .nav-link, .btn-primary, .btn-outline,
 .price-table h3, .price-card h4, .price-card .price,
 .hero-title, .hero-title-line1, .hero-title-line2, .hero-title-line3 {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Geist', sans-serif;
     font-weight: 500;
     letter-spacing: -0.02em;
 }
 
-/* Логотип - Zen Dots */
+/* Логотип - Zen Dots (НЕ ТРОГАЕМ) */
 .logo {
     font-family: 'Zen Dots', monospace;
 }
 
-/* Цифры статистики - Zen Dots (выделяются стильно) */
+/* Цифры статистики - Zen Dots (НЕ ТРОГАЕМ) */
 .stat-number {
     font-family: 'Zen Dots', monospace;
     font-size: 2.5rem;
@@ -135,7 +117,7 @@ h1 {
     letter-spacing: -0.02em;
     color: #FFFFFF;
     text-transform: uppercase;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Geist', sans-serif;
 }
 
 h2 {
@@ -144,7 +126,7 @@ h2 {
     font-weight: 500;
     position: relative;
     display: inline-block;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Geist', sans-serif;
 }
 
 h2::after {
@@ -161,14 +143,14 @@ h3 {
     font-weight: 500;
     font-size: 1.6rem;
     margin-bottom: 0.75rem;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Geist', sans-serif;
 }
 
 p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-card p,
 .mission-text p, .faq-answer, .footer p, .footer a, .tech-item, .calc-option,
 .time-breakdown-item, .stack-explanation p, input, textarea, .stat-label,
 .price-card li, .price-note {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Geist', sans-serif;
     font-weight: 400;
     font-size: 1.0625rem;
     line-height: 1.65;
@@ -256,7 +238,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
 .section-header h2 { margin-bottom: 0; }
 
 .section-more-btn {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Geist', sans-serif;
     font-weight: 500;
     font-size: 0.9rem;
     color: #F5B700;
@@ -346,7 +328,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     cursor: pointer;
     display: flex;
     justify-content: space-between;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Geist', sans-serif;
     background: rgba(18, 24, 32, 0.85);
     backdrop-filter: blur(2px);
     border: 1px solid rgba(245, 183, 0, 0.2);
@@ -435,7 +417,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     border: 1px solid #2A3A44;
     color: #FFFFFF;
     margin-bottom: 22px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Geist', sans-serif;
     transition: 0.2s;
     border-radius: 0;
 }
@@ -504,7 +486,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     text-decoration: none;
     transition: 0.2s;
     white-space: nowrap;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Geist', sans-serif;
     font-weight: 500;
 }
 
@@ -648,20 +630,20 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
 
 /* МНОГОСТРОЧНЫЙ ЗАГОЛОВОК - ПРОИЗВОДИТЕЛЬНЫЙ CLAMP */
 .hero-title {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Geist', sans-serif;
     font-weight: 500;
     letter-spacing: 0.1em;
     margin-bottom: 1.2rem;
 }
 
-/* СТРОКА 1: РАЗРАБОТКА — от 1.8rem до 10rem */
+/* СТРОКА 1: РАЗРАБОТКА — от 1.8rem до 9rem */
 .hero-title-line1 {
     font-size: clamp(1.8rem, 8.5vw, 9rem);
     font-weight: 400;
     color: #FFFFFF;
     display: block;
     line-height: 1.1;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Geist', sans-serif;
     white-space: normal;
 }
 
@@ -672,7 +654,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     display: block;
     line-height: 1.2;
     margin-top: 0.2rem;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Geist', sans-serif;
     white-space: normal;
 }
 
@@ -689,7 +671,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     color: #F5B700;
 }
 
-/* ⭐ ФРАЗА "ПОД КЛЮЧ" — от 0.8rem до 4.5rem (всегда больше строки 2) */
+/* ⭐ ФРАЗА "ПОД КЛЮЧ" — от 0.8rem до 4rem */
 .phrase-underkey {
     font-size: clamp(0.8rem, 3.2vw, 4rem);
     font-weight: 400;
@@ -706,7 +688,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     display: block;
     line-height: 1.1;
     margin-top: 0.2rem;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Geist', sans-serif;
     white-space: normal;
 }
 
@@ -742,7 +724,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     box-shadow: 0 15px 35px rgba(30, 42, 94, 0.4);
 }
 
-/* ЦИФРЫ В СТАТИСТИКЕ - Zen Dots */
+/* ЦИФРЫ В СТАТИСТИКЕ - Zen Dots (НЕ ТРОГАЕМ) */
 .stat-number {
     font-size: 2.5rem;
     font-weight: 500;
@@ -770,7 +752,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     text-transform: uppercase;
     opacity: 0.9;
     display: inline-block;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Geist', sans-serif;
 }
 
 .services-badges {
@@ -850,7 +832,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     color: #F5B700;
     margin-bottom: 1rem;
     opacity: 0.8;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Geist', sans-serif;
 }
 
 .competences-grid {
@@ -872,7 +854,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     margin-bottom: 20px;
     font-weight: 500;
     color: #F5B700;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Geist', sans-serif;
 }
 
 .competence-tech-list {
@@ -942,7 +924,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     margin-bottom: 12px;
     font-weight: 500;
     color: #F5B700;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Geist', sans-serif;
 }
 
 .calc-options {
@@ -978,7 +960,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     font-weight: 600;
     color: #F5B700;
     word-break: break-word;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Geist', sans-serif;
 }
 
 .stack-explanation {
@@ -991,7 +973,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     color: #F5B700;
     margin: 0 0 12px;
     font-size: 1.2rem;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Geist', sans-serif;
 }
 
 .time-breakdown {
@@ -1024,7 +1006,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     text-align: center;
     margin-bottom: 2rem;
     color: #F5B700;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Geist', sans-serif;
 }
 
 .price-grid {
@@ -1051,7 +1033,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     font-size: 1.3rem;
     color: #F5B700;
     margin-bottom: 12px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Geist', sans-serif;
 }
 
 .price-card .price {
@@ -1061,7 +1043,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     margin-bottom: 16px;
     padding-bottom: 16px;
     border-bottom: 1px solid rgba(245, 183, 0, 0.3);
-    font-family: 'Inter', sans-serif;
+    font-family: 'Geist', sans-serif;
 }
 
 .price-card ul {
@@ -1146,7 +1128,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     color: #F5B700;
     font-size: 1.6rem;
     font-weight: 500;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Geist', sans-serif;
 }
 
 .footer a {
@@ -1175,7 +1157,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     border-bottom-right-radius: 24px;
     transition: 0.2s;
     z-index: 99;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Geist', sans-serif;
     font-weight: 500;
 }
 
