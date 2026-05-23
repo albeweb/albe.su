@@ -39,7 +39,7 @@
 }
 
 /* ============================================ */
-/* ЦВЕТОВАЯ СХЕМА ALBE DIGITAL — NEON TECH */
+/* ЦВЕТОВАЯ СХЕМА */
 /* ============================================ */
 
 :root {
@@ -67,8 +67,8 @@ html, body {
 
 body {
     font-family: 'Geist', sans-serif;
-    background-color: #0D1117;
-    color: #E6EDF5;
+    background-color: var(--bg-dark);
+    color: var(--white);
     line-height: 1.5;
     font-weight: 400;
     scroll-behavior: smooth;
@@ -103,7 +103,6 @@ body::before {
 /* НАЗНАЧЕНИЕ ШРИФТОВ */
 /* ============================================ */
 
-/* H1 и H2 — EN Regular (Etude Noire) */
 h1, h2,
 .hero-title, .hero-title-line1, .hero-title-line2,
 .section-header h2,
@@ -115,7 +114,6 @@ h1, h2,
     letter-spacing: -0.02em;
 }
 
-/* H3 и остальные заголовки — Geist */
 h3, h4, h5, h6,
 .service-card h3, .portfolio-info h3, .step-card h3, .competence-card h3,
 .faq-question, .price-card h4, .price-card .price,
@@ -127,12 +125,10 @@ h3, h4, h5, h6,
     letter-spacing: -0.02em;
 }
 
-/* Логотип - Zen Dots */
 .logo {
     font-family: 'Zen Dots', monospace;
 }
 
-/* Цифры статистики - Zen Dots */
 .stat-number {
     font-family: 'Zen Dots', monospace;
     font-size: 1.5rem;
@@ -142,7 +138,6 @@ h3, h4, h5, h6,
     margin-bottom: 4px;
 }
 
-/* Основной текст и всё остальное — Geist (БЕЗ .phrase-underkey) */
 p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-card p,
 .mission-text p, .faq-answer, .footer p, .footer a, .tech-item, .calc-option,
 .time-breakdown-item, .stack-explanation p, input, textarea, .stat-label,
@@ -194,6 +189,7 @@ h3 {
 
 .section { padding: 100px 0; border-bottom: 1px solid rgba(255, 51, 102, 0.1); }
 
+/* КАРТОЧКИ И БЛОКИ */
 .btn-primary, .btn-outline, .service-card, .portfolio-card, .step-card,
 .mission-photo, .faq-item, .cover-content, .calculator-card, .calc-option, 
 .competence-card, .contact-card, .price-table {
@@ -207,7 +203,7 @@ h3 {
     border-bottom-left-radius: 0;
 }
 
-/* Кнопки с градиентом */
+/* КНОПКИ */
 .btn-primary {
     display: inline-flex;
     align-items: center;
@@ -241,7 +237,6 @@ h3 {
     color: var(--white);
     border: 1px solid var(--neon-pink);
     backdrop-filter: blur(4px);
-    box-shadow: none;
 }
 
 .btn-outline:hover {
@@ -273,6 +268,7 @@ h3 {
     backdrop-filter: blur(4px);
 }
 
+/* СЕКЦИИ */
 .section-header {
     display: flex;
     justify-content: space-between;
@@ -348,6 +344,7 @@ h3 {
     gap: 24px;
 }
 
+/* FAQ */
 .faq-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -406,6 +403,7 @@ h3 {
 .faq-question::after { content: '+'; font-size: 1.5rem; font-weight: 300; }
 .faq-question.active::after { content: '−'; }
 
+/* КОНТАКТЫ */
 .contact-section {
     padding: 100px 0;
     background: #0D1117;
@@ -487,7 +485,7 @@ h3 {
 }
 
 /* ============================================ */
-/* HEADER — ПРЕМИУМ ТЕХНОЛОГИЧНАЯ ВЕРСИЯ */
+/* HEADER */
 /* ============================================ */
 
 .header {
@@ -519,7 +517,6 @@ h3 {
     padding: 0 80px;
 }
 
-/* Логотип — Zen Dots, разноцветные буквы */
 .logo {
     display: flex;
     align-items: baseline;
@@ -546,7 +543,6 @@ h3 {
     transform: translateY(-2px);
 }
 
-/* Навигация */
 .nav-menu {
     display: flex;
     gap: 2rem;
@@ -554,7 +550,7 @@ h3 {
 }
 
 .nav-link {
-    color: #E6EDF5;
+    color: var(--white);
     text-decoration: none;
     font-family: 'Geist', sans-serif;
     font-weight: 500;
@@ -585,7 +581,6 @@ h3 {
     backdrop-filter: blur(2px);
 }
 
-/* Кнопка Telegram — белая иконка и текст */
 .header-telegram {
     display: inline-flex;
     align-items: center;
@@ -619,7 +614,6 @@ h3 {
     transform: scale(1.05);
 }
 
-/* Бургер-меню */
 .burger {
     display: none;
     flex-direction: column;
@@ -649,6 +643,7 @@ h3 {
 /* ============================================ */
 /* HERO БАННЕР */
 /* ============================================ */
+
 .hero {
     position: relative;
     min-height: 100vh;
@@ -731,7 +726,6 @@ h3 {
     margin-bottom: 1.2rem;
 }
 
-/* Градиент на слово РАЗРАБОТКА */
 .hero-title-line1 {
     font-size: clamp(1.8rem, 7.5vw, 7rem);
     font-weight: 400;
@@ -765,7 +759,6 @@ h3 {
     color: var(--neon-pink);
 }
 
-/* ФРАЗА "ПОД КЛЮЧ" — наследует шрифт от H1, размер на 1rem больше */
 .phrase-underkey {
     font-size: clamp(0.7rem, 2.2vw, 4rem);
     font-weight: 400;
@@ -783,10 +776,6 @@ h3 {
     margin-top: 0.2rem;
     white-space: normal;
 }
-
-/* ============================================ */
-/* СТАТИСТИКА — ГОРИЗОНТАЛЬНО */
-/* ============================================ */
 
 .hero-stats {
     display: flex;
@@ -817,7 +806,6 @@ h3 {
     cursor: default;
 }
 
-/* Цвета статистики */
 .stat-item:nth-child(1) { border-color: var(--teal); }
 .stat-item:nth-child(1) .stat-number { color: var(--teal); }
 
@@ -894,46 +882,6 @@ h3 {
     box-shadow: 0 8px 20px rgba(30, 42, 94, 0.3);
 }
 
-/* На мобильных бейджики по 5 в строке */
-@media (max-width: 768px) {
-    .services-badges {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 10px;
-    }
-    .service-badge {
-        text-align: center;
-        padding: 6px 8px;
-        font-size: 0.7rem;
-        white-space: nowrap;
-    }
-}
-
-@media (max-width: 550px) {
-    .services-badges {
-        grid-template-columns: repeat(5, 1fr);
-        gap: 8px;
-    }
-    .service-badge {
-        font-size: 0.65rem;
-        padding: 5px 6px;
-    }
-}
-
-@media (max-width: 480px) {
-    .services-badges {
-        grid-template-columns: repeat(5, 1fr);
-        gap: 6px;
-    }
-    .service-badge {
-        font-size: 0.6rem;
-        padding: 4px 4px;
-        white-space: normal;
-        text-align: center;
-        line-height: 1.2;
-    }
-}
-
 .hero-buttons {
     display: flex;
     gap: 24px;
@@ -954,27 +902,6 @@ h3 {
     letter-spacing: 1.5px;
     text-transform: uppercase;
     display: inline-block;
-}
-
-/* Мобильная версия статистики — 2x2 */
-@media (max-width: 768px) {
-    .hero-stats {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-        justify-items: center;
-    }
-    .stat-item {
-        min-width: auto;
-        padding: 8px 16px;
-        width: 100%;
-    }
-    .stat-number {
-        font-size: 1.2rem;
-    }
-    .stat-label {
-        font-size: 0.6rem;
-    }
 }
 
 .services-grid, .portfolio-grid {
@@ -1076,6 +1003,10 @@ h3 {
 
 .tech-tooltip strong { color: var(--neon-pink); font-weight: 500; }
 
+/* ============================================ */
+/* КАЛЬКУЛЯТОР */
+/* ============================================ */
+
 .calculator-card { padding: 40px; margin: 40px 0; }
 .calculator-two-columns { display: flex; gap: 40px; flex-wrap: wrap; }
 .calculator-left { flex: 1; min-width: 280px; }
@@ -1165,8 +1096,9 @@ h3 {
 .time-breakdown-item span:first-child { color: var(--teal); }
 
 /* ============================================ */
-/* СТАТИЧЕСКАЯ ТАБЛИЦА ЦЕН (ДЛЯ SEO) */
+/* ТАБЛИЦА ЦЕН */
 /* ============================================ */
+
 .price-table {
     padding: 48px 56px;
     margin: 40px 0;
@@ -1244,7 +1176,6 @@ h3 {
     border-top: 1px solid rgba(255, 51, 102, 0.15);
 }
 
-/* Адаптив для таблицы цен */
 @media (max-width: 1200px) {
     .price-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1279,6 +1210,10 @@ h3 {
         gap: 16px;
     }
 }
+
+/* ============================================ */
+/* FOOTER */
+/* ============================================ */
 
 .footer {
     background: #080C10;
@@ -1337,7 +1272,7 @@ h3 {
 }
 
 /* ============================================ */
-/* ⭐ OPTIMIZATIONS FOR CORE WEB VITALS (CLS FIX) ⭐ */
+/* CLS FIX */
 /* ============================================ */
 
 #mainHeader {
@@ -1399,26 +1334,8 @@ h3 {
 }
 
 /* ============================================ */
-/* MEDIA QUERIES */
+/* MEDIA QUERIES — ЕДИНЫЙ БЛОК БЕЗ ДУБЛЕЙ */
 /* ============================================ */
-
-@media (max-width: 1024px) {
-    .header .container {
-        padding: 0 40px;
-    }
-    .nav-menu {
-        gap: 1.5rem;
-    }
-    .nav-link {
-        font-size: 0.85rem;
-    }
-    .header-telegram span {
-        display: none;
-    }
-    .header-telegram {
-        padding: 8px 12px;
-    }
-}
 
 @media (max-width: 1600px) {
     h1 { font-size: 8rem; }
@@ -1430,8 +1347,6 @@ h3 {
     .container, .header .container, .hero .container { padding: 0 60px; }
     h1 { font-size: 7rem; }
     h2 { font-size: 3rem; }
-    .hero-content { max-width: 52%; }
-    .hero-wrapper { gap: 60px; }
     .portfolio-card .portfolio-image { height: 240px; }
 }
 
@@ -1439,7 +1354,6 @@ h3 {
     .container, .header .container, .hero .container { padding: 0 50px; }
     h1 { font-size: 6rem; }
     h2 { font-size: 2.6rem; }
-    .hero-content { max-width: 50%; }
     .services-grid, .portfolio-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
     .portfolio-card .portfolio-image { height: 220px; }
 }
@@ -1448,8 +1362,11 @@ h3 {
     .container, .header .container, .hero .container { padding: 0 40px; }
     h1 { font-size: 5rem; }
     h2 { font-size: 2.2rem; }
-    .hero-content { max-width: 48%; }
     .portfolio-card .portfolio-image { height: 200px; }
+    .nav-menu { gap: 1.5rem; }
+    .nav-link { font-size: 0.85rem; }
+    .header-telegram span { display: none; }
+    .header-telegram { padding: 8px 12px; }
 }
 
 @media (max-width: 900px) {
@@ -1461,7 +1378,6 @@ h3 {
     h2 { font-size: 2rem; }
     .hero-tag { display: block; text-align: center; }
     .services-badges, .hero-buttons { justify-content: center; }
-    .hero-stats { justify-content: center; }
     .services-grid, .portfolio-grid { grid-template-columns: 1fr; gap: 20px; }
     .portfolio-card .portfolio-image { height: 220px; }
     .mission-grid-wrapper { flex-direction: column; gap: 30px; }
@@ -1469,15 +1385,10 @@ h3 {
 }
 
 @media (max-width: 768px) {
-    .header .container {
-        padding: 0 20px;
-    }
-    .burger {
-        display: flex;
-    }
-    .logo {
-        font-size: 1.4rem;
-    }
+    .header .container { padding: 0 20px; }
+    .burger { display: flex; }
+    .logo { font-size: 1.4rem; }
+    
     .nav-menu {
         position: fixed;
         top: 0;
@@ -1494,27 +1405,18 @@ h3 {
         gap: 1.5rem;
         align-items: flex-start;
     }
-    .nav-menu.active {
-        right: 0;
-    }
+    .nav-menu.active { right: 0; }
     .nav-link {
         font-size: 1.1rem;
         padding: 10px 0;
         width: 100%;
         border-bottom: 1px solid rgba(255, 51, 102, 0.15);
     }
-    .nav-link::after {
-        display: none;
-    }
-    .nav-link:hover {
-        padding-left: 8px;
-    }
-    .header-telegram {
-        margin-top: 15px;
-    }
-    .header-telegram span {
-        display: inline;
-    }
+    .nav-link::after { display: none; }
+    .nav-link:hover { padding-left: 8px; }
+    .header-telegram { margin-top: 15px; }
+    .header-telegram span { display: inline; }
+    
     .container, .header .container, .hero .container { padding: 0 20px; }
     .section { padding: 60px 0; }
     .hero { padding: 40px 0; min-height: auto; }
@@ -1523,20 +1425,31 @@ h3 {
     h3 { font-size: 1.3rem; }
     .code-rain { display: none; }
     
+    .services-badges {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+    }
+    .service-badge {
+        text-align: center;
+        padding: 6px 8px;
+        font-size: 0.7rem;
+        white-space: nowrap;
+    }
+    
     .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         gap: 12px;
-        justify-content: center;
+        justify-items: center;
     }
     .stat-item {
         min-width: auto;
         padding: 8px 24px;
+        width: 100%;
     }
-    .stat-number {
-        font-size: 1.2rem;
-    }
-    .stat-label {
-        font-size: 0.6rem;
-    }
+    .stat-number { font-size: 1.2rem; }
+    .stat-label { font-size: 0.6rem; }
     
     .hero-buttons { flex-direction: column; gap: 12px; }
     .btn-primary, .btn-outline { width: 100%; padding: 12px 20px; font-size: 0.9rem; }
@@ -1581,24 +1494,39 @@ h3 {
     .portfolio-card .portfolio-image { background: #1A212B; }
 }
 
+@media (max-width: 550px) {
+    .services-badges {
+        gap: 8px;
+    }
+    .service-badge {
+        font-size: 0.65rem;
+        padding: 5px 6px;
+    }
+}
+
 @media (max-width: 480px) {
-    .header .container {
-        padding: 0 16px;
-    }
-    .logo {
-        font-size: 1.2rem;
-        gap: 2px;
-    }
-    .nav-menu {
-        width: 260px;
-        right: -260px;
-    }
+    .header .container { padding: 0 16px; }
+    .logo { font-size: 1.2rem; gap: 2px; }
+    .nav-menu { width: 260px; right: -260px; }
     .container, .header .container, .hero .container { padding: 0 16px; }
     .section { padding: 40px 0; }
     h1 { font-size: 2.5rem; }
     h2 { font-size: 1.5rem; }
     h2::after { width: 50px; bottom: -8px; }
     .hero-tag { font-size: 0.7rem; letter-spacing: 4px; }
+    
+    .services-badges {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 6px;
+    }
+    .service-badge {
+        font-size: 0.6rem;
+        padding: 4px 4px;
+        white-space: normal;
+        text-align: center;
+        line-height: 1.2;
+    }
+    
     .stat-item { padding: 6px 16px; }
     .stat-number { font-size: 1rem; }
     .hero-buttons { flex-direction: column; gap: 12px; }
