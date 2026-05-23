@@ -120,9 +120,10 @@ h1, h2,
 h3, h4, h5, h6,
 .service-card h3, .portfolio-info h3, .step-card h3, .competence-card h3,
 .faq-question, .price-card h4, .price-card .price,
-.nav-link, .btn-primary, .btn-outline, .quote-text,
+.nav-link, .quote-text,
 .service-badge, .calc-label, .stack-explanation h4, .footer-logo, .footer h4,
-.step-num, .section-more-btn, .totop, .phrase-underkey {
+.step-num, .section-more-btn, .totop, .phrase-underkey,
+.btn-primary, .btn-outline {
     font-family: 'Geist', sans-serif;
     font-weight: 500;
     letter-spacing: -0.02em;
@@ -156,7 +157,6 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
 }
 
 .service-badge, .quote-text { font-weight: 400; }
-.btn-primary, .btn-outline { font-weight: 500; }
 
 /* СТИЛИ ДЛЯ ЗАГОЛОВКОВ */
 h1 {
@@ -195,7 +195,8 @@ h3 {
 
 .section { padding: 100px 0; border-bottom: 1px solid rgba(255, 51, 102, 0.1); }
 
-.btn-primary, .btn-outline, .service-card, .portfolio-card, .step-card,
+/* Карточки и общие блоки */
+.service-card, .portfolio-card, .step-card,
 .mission-photo, .faq-item, .cover-content, .calculator-card, .calc-option, 
 .competence-card, .contact-card, .price-table {
     background: rgba(18, 24, 32, 0.85);
@@ -209,7 +210,7 @@ h3 {
 }
 
 /* Кнопки с градиентом */
-.btn-primary, .btn-outline {
+.btn-primary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -221,12 +222,22 @@ h3 {
     background: linear-gradient(135deg, var(--neon-pink), var(--purple));
     color: #0D1117;
     border: none;
+    transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
 }
 
 .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 14px 36px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
     background: transparent;
     color: var(--white);
     border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
 }
 
 .btn-primary:hover {
@@ -234,7 +245,6 @@ h3 {
     color: var(--white);
     border: 1px solid var(--neon-pink);
     backdrop-filter: blur(4px);
-    box-shadow: none;
 }
 
 .btn-outline:hover {
@@ -263,6 +273,7 @@ h3 {
 .contact-card:hover {
     border-color: var(--neon-pink);
     box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
 }
 
 .section-header {
@@ -638,26 +649,11 @@ h3 {
     transform: rotate(-45deg) translate(7px, -6px);
 }
 
+/* Вспомогательные классы */
 .text-gold { color: var(--neon-pink); }
 .text-teal { color: var(--teal); }
 .text-mint { color: var(--mint); }
 .text-purple { color: var(--purple); }
-.text-indigo { color: #1E2A5E; }
-.text-orange { color: #F97316; }
-.text-blue { color: #3B82F6; }
-
-.btn-teal {
-    background: var(--teal);
-    border-color: var(--teal);
-    color: white;
-}
-
-.btn-teal:hover {
-    background: transparent;
-    color: var(--teal);
-    box-shadow: 0 0 20px rgba(20, 198, 176, 0.4);
-    backdrop-filter: blur(4px);
-}
 
 /* ============================================ */
 /* HERO БАННЕР */
@@ -797,7 +793,7 @@ h3 {
 }
 
 /* ============================================ */
-/* СТАТИСТИКА — ГОРИЗОНТАЛЬНО (НЕ СТОЛБИКОМ) */
+/* СТАТИСТИКА — ГОРИЗОНТАЛЬНО */
 /* ============================================ */
 
 .hero-stats {
@@ -829,34 +825,18 @@ h3 {
     cursor: default;
 }
 
-/* Цвета для каждого элемента статистики */
-.stat-item:nth-child(1) {
-    border-color: var(--teal);
-}
-.stat-item:nth-child(1) .stat-number {
-    color: var(--teal);
-}
+/* Цвета статистики (жёлтого нет) */
+.stat-item:nth-child(1) { border-color: var(--teal); }
+.stat-item:nth-child(1) .stat-number { color: var(--teal); }
 
-.stat-item:nth-child(2) {
-    border-color: var(--mint);
-}
-.stat-item:nth-child(2) .stat-number {
-    color: var(--mint);
-}
+.stat-item:nth-child(2) { border-color: var(--mint); }
+.stat-item:nth-child(2) .stat-number { color: var(--mint); }
 
-.stat-item:nth-child(3) {
-    border-color: var(--purple);
-}
-.stat-item:nth-child(3) .stat-number {
-    color: var(--purple);
-}
+.stat-item:nth-child(3) { border-color: var(--purple); }
+.stat-item:nth-child(3) .stat-number { color: var(--purple); }
 
-.stat-item:nth-child(4) {
-    border-color: var(--neon-pink);
-}
-.stat-item:nth-child(4) .stat-number {
-    color: var(--neon-pink);
-}
+.stat-item:nth-child(4) { border-color: var(--neon-pink); }
+.stat-item:nth-child(4) .stat-number { color: var(--neon-pink); }
 
 .stat-item:hover {
     transform: translateY(-5px);
@@ -913,7 +893,7 @@ h3 {
     letter-spacing: 0.3px;
 }
 
-/* Разноцветные обводки бейджей */
+/* Разноцветные обводки бейджей (циклично) */
 .service-badge:nth-child(1) { border: 1.5px solid var(--neon-pink); color: var(--neon-pink); }
 .service-badge:nth-child(2) { border: 1.5px solid var(--teal); color: var(--teal); }
 .service-badge:nth-child(3) { border: 1.5px solid var(--mint); color: var(--mint); }
@@ -930,13 +910,6 @@ h3 {
     background: rgba(30, 42, 94, 0.4);
     backdrop-filter: blur(4px);
     box-shadow: 0 8px 20px rgba(30, 42, 94, 0.3);
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 24px;
-    margin-top: 2rem;
-    flex-wrap: wrap;
 }
 
 .hero-quote {
@@ -1091,10 +1064,6 @@ h3 {
     background: linear-gradient(135deg, var(--neon-pink), var(--purple));
     color: #0D1117;
     border-color: transparent;
-}
-
-.calc-option.selected:hover {
-    backdrop-filter: blur(4px);
 }
 
 .calc-option:hover {
