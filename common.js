@@ -22,31 +22,41 @@ const techDesc = {
     semrush: "SEMrush / Ahrefs — анализ конкурентов, ключей, ссылок."
 };
 
-// ===== ТУЛТИПЫ ДЛЯ ТЕХНОЛОГИЙ =====
+// ===== ТУЛТИПЫ ДЛЯ ТЕХНОЛОГИЙ (исправлено: нет принудительной компоновки) =====
 function initTechTooltips() {
     const tooltip = document.createElement('div');
     tooltip.className = 'tech-tooltip';
     document.body.appendChild(tooltip);
     let timeout = null;
+    let rafId = null;
     
     document.querySelectorAll('.tech-item').forEach(el => {
         el.addEventListener('mouseenter', function() {
+            if (rafId) cancelAnimationFrame(rafId);
+            
             const tech = this.getAttribute('data-tech');
             const desc = techDesc[tech] || "Современная технология";
             tooltip.innerHTML = '<strong>' + this.innerText + '</strong><br>' + desc;
-            tooltip.style.opacity = '1';
-            const rect = this.getBoundingClientRect();
-            let left = rect.right + 15;
-            let top = rect.top + rect.height / 2 - 50;
-            if (left + 380 > window.innerWidth) left = rect.left - 390;
-            if (top < 10) top = 10;
-            if (top + 150 > window.innerHeight) top = window.innerHeight - 160;
-            tooltip.style.left = left + 'px';
-            tooltip.style.top = top + 'px';
+            
+            rafId = requestAnimationFrame(() => {
+                tooltip.style.opacity = '1';
+                const rect = this.getBoundingClientRect();
+                let left = rect.right + 15;
+                let top = rect.top + rect.height / 2 - 50;
+                if (left + 380 > window.innerWidth) left = rect.left - 390;
+                if (top < 10) top = 10;
+                if (top + 150 > window.innerHeight) top = window.innerHeight - 160;
+                tooltip.style.left = left + 'px';
+                tooltip.style.top = top + 'px';
+            });
+            
             if (timeout) clearTimeout(timeout);
         });
+        
         el.addEventListener('mouseleave', function() {
-            timeout = setTimeout(function() { tooltip.style.opacity = '0'; }, 150);
+            timeout = setTimeout(function() { 
+                tooltip.style.opacity = '0'; 
+            }, 150);
         });
     });
 }
