@@ -747,7 +747,7 @@ h3 {
 .hero-title-line1 {
     font-size: clamp(1.8rem, 7.5vw, 7rem);
     font-weight: 400;
-    background: linear-gradient(135deg, var(--neon-pink), var(--purple), var(--teal));
+    background: linear-gradient(135deg, var(--neon-pink) 0%, var(--purple) 50%, var(--teal) 80%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
