@@ -639,12 +639,12 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
 .hero-title {
     font-family: 'Inter', sans-serif;
     font-weight: 500;
-    letter-spacing: 0.2em;
-    margin-bottom: 1.5rem;
+    letter-spacing: 0.3em;
+    margin-bottom: 1.2rem;
 }
 
 .hero-title-line1 {
-    font-size: 8rem;
+    font-size: 10rem;
     font-weight: 500;
     color: #FFFFFF;
     display: block;
