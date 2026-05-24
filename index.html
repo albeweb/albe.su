@@ -43,6 +43,30 @@
 <link rel="preload" as="style" href="style.css">
 <link rel="stylesheet" href="style.css">
 
+<style>
+/* Временные стили для сетки 4x4 - потом перенеси в style.css */
+.competences-grid-4x4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin: 40px 0;
+}
+
+@media (max-width: 1200px) {
+    .competences-grid-4x4 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .competences-grid-4x4 {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+</style>
+
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -437,14 +461,14 @@
     </div>
 </section>
 
-<!-- НАШИ КОМПЕТЕНЦИИ - ОБНОВЛЕННЫЙ БЛОК -->
+<!-- НАШИ КОМПЕТЕНЦИИ - СЕТКА 4x4 -->
 <section id="competences" class="section">
     <div class="container">
         <div class="section-header">
             <h2>Наши компетенции</h2>
             <a href="#services" class="section-more-btn">Подробнее</a>
         </div>
-        <div class="competences-grid">
+        <div class="competences-grid-4x4">
             <div class="competence-card">
                 <h3>Frontend</h3>
                 <p>Современные интерфейсы</p>
