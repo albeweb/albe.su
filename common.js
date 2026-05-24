@@ -22,7 +22,7 @@ const techDesc = {
     semrush: "SEMrush / Ahrefs — анализ конкурентов, ключей, ссылок."
 };
 
-// ===== ТУЛТИПЫ ДЛЯ ТЕХНОЛОГИЙ (исправлено: нет принудительной компоновки) =====
+// ===== ТУЛТИПЫ ДЛЯ ТЕХНОЛОГИЙ =====
 function initTechTooltips() {
     const tooltip = document.createElement('div');
     tooltip.className = 'tech-tooltip';
@@ -322,6 +322,30 @@ function initBurgerMenu() {
     }
 }
 
+// ===== ГОРИЗОНТАЛЬНЫЙ АККОРДЕОН ПОРТФОЛИО =====
+function initPortfolioAccordion() {
+    const panels = document.querySelectorAll('.accordion-panel');
+    
+    if (panels.length === 0) return;
+    
+    panels.forEach(panel => {
+        const header = panel.querySelector('.accordion-panel-header');
+        
+        if (!header) return;
+        
+        header.addEventListener('click', function(e) {
+            e.stopPropagation();
+            
+            if (panel.classList.contains('active')) {
+                return;
+            }
+            
+            panels.forEach(p => p.classList.remove('active'));
+            panel.classList.add('active');
+        });
+    });
+}
+
 // ===== ЗАГРУЗКА КОМПОНЕНТОВ =====
 function loadComponent(elementId, filePath, callback) {
     const placeholder = document.getElementById(elementId);
@@ -352,6 +376,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initToTop();
     initHeaderFixed();
     initBurgerMenu();
+    initPortfolioAccordion();
     
     loadComponent('header-placeholder', 'header.html', function() {
         initBurgerMenu();
