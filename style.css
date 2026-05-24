@@ -110,7 +110,8 @@ h1, h2,
 .section-header h2,
 .contact-card h2,
 .price-table h3,
-.hero-tag {
+.hero-tag,
+.quote-text {
     font-family: 'EN Regular', sans-serif;
     font-weight: 400;
     letter-spacing: -0.02em;
@@ -126,17 +127,6 @@ h3, h4, h5, h6,
     font-family: 'Geist', sans-serif;
     font-weight: 500;
     letter-spacing: -0.02em;
-}
-
-/* Цитата — Geist Regular */
-.quote-text {
-    font-family: 'Geist', sans-serif;
-    font-weight: 400;
-    font-size: 1rem;
-    color: var(--gray);
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    display: inline-block;
 }
 
 /* Логотип и цифры — Zen Dots */
@@ -158,6 +148,15 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
 
 .service-badge, .quote-text { font-weight: 400; }
 .btn-primary, .btn-outline { font-weight: 500; }
+
+/* СТИЛИ ДЛЯ ЦИТАТЫ */
+.quote-text {
+    font-size: 1rem;
+    color: var(--gray);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: inline-block;
+}
 
 /* ============================================ */
 /* 5. СТИЛИ ДЛЯ ЗАГОЛОВКОВ (ОСНОВНЫЕ) */
@@ -759,7 +758,7 @@ h3 {
     margin-top: auto;
 }
 
-/* 9.3 ЗАГОЛОВОК */
+/* 9.3 ЗАГОЛОВОК — все слова в одной строке */
 .hero-title {
     font-weight: 400;
     letter-spacing: 0.1em;
@@ -779,25 +778,27 @@ h3 {
     margin-bottom: 1rem;
 }
 
+/* Строка 2: дизайна и сайтов под ключ — все вместе */
 .hero-title-line2 {
     font-size: clamp(0.7rem, 2.2vw, 3rem);
     font-weight: 400;
-    display: block;
+    display: inline-block;
     line-height: 1.3;
     margin-top: 0.5rem;
-    white-space: normal;
+    white-space: nowrap;
 }
 
 .hero-title-line2 .word-teal { color: var(--teal); }
 .hero-title-line2 .word-white { color: #FFFFFF; }
 .hero-title-line2 .word-gold { color: var(--neon-pink); }
 
+/* Убираем отдельный класс для "под ключ" */
 .phrase-underkey {
-    font-size: clamp(0.7rem, 2.2vw, 4rem);
-    font-weight: 400;
-    letter-spacing: 0.5px;
-    display: inline-block;
-    white-space: normal;
+    font-size: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    display: inline;
+    white-space: nowrap;
 }
 
 .hero-title-line3 {
