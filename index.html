@@ -44,92 +44,81 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
-/* Стили для модального окна */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(8px);
-    z-index: 2000;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal.active {
-    display: flex;
-}
-
-.modal-content {
-    background: rgba(18, 24, 32, 0.95);
-    border: 1px solid var(--neon-pink);
+/* Дополнительные стили для Telegram-блока */
+.hero-telegram-block {
+    flex: 0.8;
+    max-width: 320px;
+    background: rgba(18, 24, 32, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 51, 102, 0.3);
     border-top-left-radius: 28px;
     border-bottom-right-radius: 28px;
-    padding: 40px;
-    max-width: 450px;
-    width: 90%;
+    padding: 32px 24px;
     text-align: center;
-    position: relative;
+    transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
 }
 
-.modal-content p {
-    margin-bottom: 24px;
-    font-size: 1.1rem;
+.hero-telegram-block:hover {
+    border-color: var(--teal);
+    backdrop-filter: blur(16px);
+    transform: translateY(-5px);
+}
+
+.hero-telegram-title {
+    font-family: 'EN Regular', sans-serif;
+    font-size: 1.2rem;
+    color: var(--teal);
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+}
+
+.hero-telegram-text {
+    font-family: 'Geist', sans-serif;
+    font-size: 0.9rem;
     line-height: 1.5;
+    color: #B0C4DE;
+    margin-bottom: 24px;
 }
 
-.modal-telegram-btn {
+.hero-telegram-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    padding: 14px 32px;
+    gap: 10px;
+    padding: 12px 24px;
     background: #0088cc;
     color: white;
     text-decoration: none;
-    border-radius: 28px;
+    font-family: 'Geist', sans-serif;
     font-weight: 500;
+    font-size: 0.9rem;
+    border-top-left-radius: 28px;
+    border-bottom-right-radius: 28px;
     transition: all 0.3s ease;
+    border: 1px solid #0088cc;
 }
 
-.modal-telegram-btn:hover {
-    background: #006699;
+.hero-telegram-btn:hover {
+    background: transparent;
+    color: #0088cc;
     transform: translateY(-2px);
 }
 
-.modal-close {
-    position: absolute;
-    top: 20px;
-    right: 25px;
-    font-size: 28px;
-    cursor: pointer;
-    color: var(--gray);
-    transition: color 0.2s;
+.hero-telegram-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: white;
+    transition: fill 0.3s ease;
 }
 
-.modal-close:hover {
-    color: var(--neon-pink);
+.hero-telegram-btn:hover svg {
+    fill: #0088cc;
 }
 
-/* Кнопки в Hero - новый блок справа */
-.hero-buttons-right {
-    display: flex;
-    gap: 16px;
-    justify-content: flex-end;
-}
-
-/* Адаптация для мобильных */
 @media (max-width: 900px) {
-    .hero-stats-with-buttons {
-        flex-direction: column;
-        align-items: stretch !important;
-    }
-    .hero-buttons-right {
-        justify-content: center;
-        margin-top: 16px;
+    .hero-telegram-block {
+        max-width: 100%;
+        margin-top: 30px;
     }
 }
 </style>
@@ -202,20 +191,6 @@
 </head>
 <body>
 
-<!-- Модальное окно -->
-<div id="modal" class="modal">
-    <div class="modal-content">
-        <span class="modal-close" id="modalClose">&times;</span>
-        <p>📱 Самый быстрый и надежный способ сразу получить обратную связь — это написать нам в Telegram.</p>
-        <a href="https://t.me/albe_web" target="_blank" class="modal-telegram-btn" id="modalTelegramBtn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.6-1.38-.97-2.23-1.56-.99-.69-.35-1.07.22-1.69.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.12-.06-.17-.07-.05-.17-.03-.24-.02-.1.02-1.76 1.12-4.97 3.28-.47.32-.9.48-1.28.47-.42-.01-1.23-.24-1.83-.44-.74-.24-1.33-.37-1.28-.79.03-.22.33-.44.91-.67 3.58-1.56 5.97-2.59 7.17-3.08 3.41-1.4 4.12-1.64 4.58-1.65.1 0 .33.02.48.15.13.11.16.27.18.43.02.12.01.26-.02.39z" fill="white"/>
-            </svg>
-            Написать в Telegram
-        </a>
-    </div>
-</div>
-
 <!-- Плейсхолдеры для загружаемых компонентов -->
 <div id="header-placeholder"></div>
 
@@ -259,29 +234,22 @@
                         </span>
                     </h1>
 
-                    <!-- Статистика и кнопки в одной строке -->
-                    <div class="hero-stats" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-                        <div style="display: flex; gap: 24px; flex-wrap: wrap;">
-                            <div class="stat-item">
-                                <div class="stat-number">7+</div>
-                                <div class="stat-label">лет опыта</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number">150+</div>
-                                <div class="stat-label">проектов</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number">24/7</div>
-                                <div class="stat-label">поддержка</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number">100%</div>
-                                <div class="stat-label">результат</div>
-                            </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">7+</div>
+                            <div class="stat-label">лет опыта</div>
                         </div>
-                        <div class="hero-buttons-right">
-                            <a href="#" class="hero-btn-primary" id="discussProjectBtn">Обсудить проект</a>
-                            <a href="#portfolio" class="hero-btn-outline">Портфолио</a>
+                        <div class="stat-item">
+                            <div class="stat-number">150+</div>
+                            <div class="stat-label">проектов</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">поддержка</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">результат</div>
                         </div>
                     </div>
 
@@ -302,6 +270,20 @@
                         <span class="quote-text">В ALBE МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ — МЫ СОЗДАЕМ БИЗНЕС</span>
                     </div>
                 </div>
+            </div>
+
+            <!-- Telegram блок справа с блюром -->
+            <div class="hero-telegram-block">
+                <div class="hero-telegram-title">📱 Быстрая связь</div>
+                <div class="hero-telegram-text">
+                    Самый быстрый и надежный способ сразу получить обратную связь — это написать нам в Telegram
+                </div>
+                <a href="https://t.me/albe_web" target="_blank" rel="noopener noreferrer" class="hero-telegram-btn">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.66-.35-1.02.22-1.61.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.05-.2-.07-.06-.16-.04-.23-.02-.1.03-1.7 1.08-4.79 3.17-.45.31-.86.46-1.23.45-.4-.01-1.18-.23-1.76-.42-.71-.23-1.27-.35-1.22-.74.03-.2.31-.41.85-.63 3.34-1.45 5.57-2.41 6.68-2.88 3.18-1.35 3.84-1.58 4.27-1.59.09 0 .31.02.45.13.12.09.15.22.16.34.01.07.01.19-.02.31z"/>
+                    </svg>
+                    Написать в Telegram
+                </a>
             </div>
         </div>
     </div>
@@ -765,10 +747,6 @@ function initSmoothScroll() {
         a.addEventListener('click', function(e) {
             var href = this.getAttribute('href');
             if (href === "#" || href === "") return;
-            if (href === "#") {
-                e.preventDefault();
-                return;
-            }
             var target = document.querySelector(href);
             if (target) {
                 e.preventDefault();
@@ -776,39 +754,6 @@ function initSmoothScroll() {
             }
         });
     }
-}
-
-// ===== МОДАЛЬНОЕ ОКНО =====
-function initModal() {
-    const modal = document.getElementById('modal');
-    const discussBtn = document.getElementById('discussProjectBtn');
-    const closeBtn = document.getElementById('modalClose');
-    const telegramBtn = document.getElementById('modalTelegramBtn');
-    
-    if (discussBtn) {
-        discussBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            modal.classList.add('active');
-        });
-    }
-    
-    if (closeBtn) {
-        closeBtn.addEventListener('click', function() {
-            modal.classList.remove('active');
-        });
-    }
-    
-    if (telegramBtn) {
-        telegramBtn.addEventListener('click', function() {
-            modal.classList.remove('active');
-        });
-    }
-    
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            modal.classList.remove('active');
-        }
-    });
 }
 
 // ===== FAQ =====
@@ -942,7 +887,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initTechTooltips();
     initCalculatorWithFallback();
     initSmoothScroll();
-    initModal();
     initFaq();
     initForm();
     initToTop();
