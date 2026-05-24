@@ -1609,12 +1609,8 @@ h3 {
     border: 1px solid rgba(255, 51, 102, 0.15);
     border-radius: 24px;
     overflow: hidden;
-    height: 600px;
+    height: 580px;
     box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.5);
-}
-
-.accordion-panel:last-child {
-    border-right: 1px solid rgba(255, 51, 102, 0.15);
 }
 
 .accordion-panel.active {
@@ -1640,7 +1636,7 @@ h3 {
     opacity: 1;
 }
 
-/* Закрытые панели - цифра и название по центру */
+/* Закрытые панели */
 .accordion-panel:not(.active) .accordion-panel-header {
     display: flex;
     flex-direction: column;
@@ -1664,21 +1660,12 @@ h3 {
     display: block;
 }
 
-.accordion-panel:not(.active) .panel-title {
-    display: block;
-    width: 100%;
-}
-
 .accordion-panel:not(.active) .panel-title h3 {
     font-size: 1.3rem;
-    writing-mode: horizontal-tb;
-    transform: none;
-    white-space: normal;
     color: var(--white);
     font-weight: 500;
     letter-spacing: 4px;
     text-align: center;
-    word-break: keep-all;
     line-height: 1.4;
 }
 
@@ -1693,59 +1680,32 @@ h3 {
 }
 
 /* Активная панель */
-.accordion-panel.active {
-    display: flex;
-    flex-direction: column;
-}
-
 .accordion-panel.active .accordion-panel-header {
-    padding: 24px 28px;
-    text-align: left;
+    padding: 20px 28px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
+    gap: 20px;
     border-bottom: 1px solid rgba(255, 51, 102, 0.25);
     background: linear-gradient(135deg, rgba(20, 198, 176, 0.08), rgba(139, 92, 246, 0.05));
     flex-shrink: 0;
 }
 
-/* Скрываем цифру в активной панели */
 .accordion-panel.active .panel-number {
     display: none;
 }
 
 .accordion-panel.active .panel-title h3 {
-    font-size: 1.6rem;
-    writing-mode: horizontal-tb;
-    transform: none;
-    white-space: normal;
+    font-size: 1.5rem;
     color: var(--white);
     letter-spacing: 4px;
     font-weight: 600;
     margin: 0;
 }
 
-/* Скрываем часы и стоимость в верхней части активной панели */
 .accordion-panel.active .panel-stats {
     display: none;
-}
-
-.accordion-panel-header {
-    transition: all 0.3s ease;
-}
-
-.panel-number {
-    font-family: 'Zen Dots', monospace;
-    font-weight: 500;
-    letter-spacing: 3px;
-}
-
-.panel-title h3 {
-    font-weight: 600;
-    color: var(--white);
-    letter-spacing: 4px;
-    transition: all 0.3s ease;
 }
 
 .accordion-panel-content {
@@ -1764,12 +1724,8 @@ h3 {
 }
 
 @keyframes fadeInContent {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 /* Изображение */
@@ -1778,19 +1734,7 @@ h3 {
     border-radius: 20px;
     overflow: hidden;
     aspect-ratio: 2 / 1;
-    position: relative;
     flex-shrink: 0;
-}
-
-.panel-image::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, transparent 50%, rgba(255, 51, 102, 0.1));
-    pointer-events: none;
 }
 
 .panel-image img {
@@ -1805,7 +1749,7 @@ h3 {
     transform: scale(1.03);
 }
 
-/* Текст - верхняя половина */
+/* Описание текста */
 .panel-description {
     flex: 1;
     margin-bottom: 20px;
@@ -1819,7 +1763,7 @@ h3 {
     margin: 0;
 }
 
-/* Нижняя часть - технологии и метрики в одной строке */
+/* Нижняя часть */
 .panel-bottom {
     display: flex;
     flex-direction: column;
@@ -1841,7 +1785,6 @@ h3 {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 0;
 }
 
 .tech-items span {
@@ -1850,24 +1793,21 @@ h3 {
     font-size: 0.8rem;
     border-radius: 30px;
     color: var(--white);
-    letter-spacing: 0.3px;
-    transition: all 0.2s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.2s ease;
 }
 
 .tech-items span:hover {
     background: var(--neon-pink);
     color: #0A0A0A;
     transform: translateY(-2px);
-    border-color: transparent;
 }
 
-/* Метрики - команда, результат, длительность в одной строке */
+/* Метрики в одну строку */
 .panel-metrics {
     background: rgba(255, 255, 255, 0.04);
     padding: 14px 18px;
     border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
     display: flex;
     justify-content: space-between;
     gap: 20px;
@@ -1887,9 +1827,9 @@ h3 {
 
 .panel-metrics span:first-child {
     color: var(--gray);
-    letter-spacing: 0.5px;
     font-size: 0.7rem;
     text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .panel-metrics span:last-child {
@@ -1898,9 +1838,8 @@ h3 {
     font-size: 0.9rem;
 }
 
-/* Блок с часами и стоимостью внизу активной панели */
+/* Футер с часами и стоимостью */
 .active-panel-footer {
-    margin-top: auto;
     padding: 16px 28px;
     border-top: 1px solid rgba(255, 51, 102, 0.15);
     background: linear-gradient(135deg, rgba(20, 198, 176, 0.05), rgba(139, 92, 246, 0.03));
@@ -1915,14 +1854,13 @@ h3 {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 1rem;
 }
 
 .active-panel-footer .footer-hours span:first-child,
 .active-panel-footer .footer-price span:first-child {
     color: var(--gray);
-    letter-spacing: 1px;
     font-size: 0.85rem;
+    letter-spacing: 1px;
 }
 
 .active-panel-footer .footer-hours span:last-child,
@@ -1941,18 +1879,16 @@ h3 {
     
     .accordion-panel {
         height: auto;
-        min-height: auto;
     }
     
     .accordion-panel:not(.active) .accordion-panel-header {
-        padding: 20px;
         flex-direction: row;
         justify-content: space-between;
-        min-height: auto;
+        padding: 16px 20px;
     }
     
     .accordion-panel:not(.active) .panel-number {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
         margin-bottom: 0;
     }
     
@@ -1961,21 +1897,12 @@ h3 {
         letter-spacing: 2px;
     }
     
-    .accordion-panel.active .accordion-panel-header {
-        padding: 16px 20px;
-    }
-    
     .accordion-panel.active .panel-title h3 {
         font-size: 1.2rem;
-        letter-spacing: 2px;
     }
     
     .accordion-panel-content {
         padding: 20px;
-    }
-    
-    .panel-description {
-        overflow-y: visible;
     }
     
     .panel-metrics {
@@ -1997,7 +1924,7 @@ h3 {
     .active-panel-footer {
         padding: 12px 20px;
         flex-direction: column;
-        gap: 8px;
         align-items: flex-start;
+        gap: 8px;
     }
 }
