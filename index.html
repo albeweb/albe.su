@@ -209,7 +209,7 @@
         </div>
         
         <div class="horizontal-accordion">
-            <!-- Проект 1 - активный по умолчанию -->
+            <!-- Проект 1 -->
             <div class="h-accordion-item active">
                 <div class="h-accordion-header">
                     <div class="h-accordion-number">01</div>
@@ -834,10 +834,10 @@ function initToTop() {
 }
 
 // ===== ГОРИЗОНТАЛЬНЫЙ АККОРДЕОН =====
-function initPortfolioAccordion() {
-    const accordionItems = document.querySelectorAll('.h-accordion-item');
+function initHorizontalAccordion() {
+    const items = document.querySelectorAll('.h-accordion-item');
     
-    accordionItems.forEach((item) => {
+    items.forEach(item => {
         const header = item.querySelector('.h-accordion-header');
         
         header.addEventListener('click', function(e) {
@@ -847,8 +847,8 @@ function initPortfolioAccordion() {
                 return;
             }
             
-            accordionItems.forEach(other => {
-                other.classList.remove('active');
+            items.forEach(otherItem => {
+                otherItem.classList.remove('active');
             });
             
             item.classList.add('active');
@@ -918,7 +918,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initFaq();
     initForm();
     initToTop();
-    initPortfolioAccordion();
+    initHorizontalAccordion();
     
     loadComponent('header-placeholder', 'header.html', function() {
         initHeaderFixed();
