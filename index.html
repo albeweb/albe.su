@@ -43,6 +43,150 @@
 <link rel="preload" as="style" href="style.css">
 <link rel="stylesheet" href="style.css">
 
+<style>
+/* Дополнительные стили для модального окна */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: #0D1117;
+    border: 1px solid var(--neon-pink);
+    border-top-left-radius: 28px;
+    border-bottom-right-radius: 28px;
+    max-width: 500px;
+    width: 90%;
+    padding: 40px;
+    position: relative;
+    text-align: center;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--neon-pink);
+    transition: all 0.2s;
+}
+
+.modal-close:hover {
+    transform: scale(1.1);
+}
+
+.modal-content h3 {
+    font-family: 'EN Regular', sans-serif;
+    font-size: 1.8rem;
+    color: var(--neon-pink);
+    margin-bottom: 20px;
+}
+
+.modal-content p {
+    margin-bottom: 24px;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #B0C4DE;
+}
+
+.modal-telegram-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 14px 32px;
+    background: #0088cc;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.modal-telegram-btn:hover {
+    background: #006699;
+    transform: translateY(-2px);
+}
+
+/* Кнопки в Hero-баннере справа */
+.hero-buttons-right {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+    min-width: 200px;
+}
+
+.hero-btn-primary, .hero-btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: 'EN Regular', sans-serif;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    text-decoration: none;
+    border-top-left-radius: 28px;
+    border-bottom-right-radius: 28px;
+    transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    text-transform: none;
+    gap: 8px;
+}
+
+.hero-btn-primary {
+    background: var(--neon-pink);
+    color: #FFFFFF;
+    border: 1.5px solid var(--neon-pink);
+}
+
+.hero-btn-primary:hover {
+    background: transparent;
+    color: var(--white);
+    border: 1.5px solid var(--neon-pink);
+    transform: translateY(-3px);
+}
+
+.hero-btn-outline {
+    background: transparent;
+    color: #FFFFFF;
+    border: 1.5px solid var(--teal);
+}
+
+.hero-btn-outline:hover {
+    background: rgba(20, 198, 176, 0.1);
+    border-color: var(--teal);
+    color: var(--teal);
+    transform: translateY(-3px);
+}
+
+@media (max-width: 900px) {
+    .hero-wrapper {
+        flex-direction: column !important;
+    }
+    .hero-buttons-right {
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 20px;
+    }
+}
+</style>
+
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -189,15 +333,31 @@
                     <div class="hero-quote">
                         <span class="quote-text">В ALBE МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ — МЫ СОЗДАЕМ БИЗНЕС</span>
                     </div>
-                    <div class="hero-buttons">
-                        <a href="#contact" class="hero-btn-primary">Обсудить проект</a>
-                        <a href="#portfolio" class="hero-btn-outline">Портфолио</a>
-                    </div>
                 </div>
+            </div>
+            
+            <div class="hero-buttons-right">
+                <a href="#" class="hero-btn-primary" id="discussBtn">Обсудить проект</a>
+                <a href="#portfolio" class="hero-btn-outline">Портфолио</a>
             </div>
         </div>
     </div>
 </section>
+
+<!-- Модальное окно -->
+<div class="modal" id="contactModal">
+    <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <h3>Свяжитесь с нами</h3>
+        <p>Самый быстрый и надежный способ сразу получить обратную связь — написать нам в Telegram</p>
+        <a href="https://t.me/albe_web" target="_blank" class="modal-telegram-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.6-1.38-.97-2.23-1.56-.99-.69-.35-1.07.22-1.69.15-.15 2.77-2.54 2.82-2.76.01-.03.02-.12-.06-.17-.08-.05-.2-.03-.28-.02-.12.02-2.02 1.28-2.85 1.81-.27.18-.52.27-.75.27-.15 0-.3-.03-.44-.08-.36-.13-.82-.27-1.19-.42-.48-.2-.86-.31-.83-.66.02-.2.3-.4.8-.61 1.47-.64 3.51-1.33 4.93-1.76 1.42-.43 2.71-.72 3.55-.72.4 0 .73.05.94.16.22.11.34.28.31.53z" fill="white"/>
+            </svg>
+            Написать в Telegram
+        </a>
+    </div>
+</div>
 
 <section id="services" class="section" itemscope itemtype="https://schema.org/ItemList">
     <div class="container">
@@ -666,6 +826,32 @@ function initSmoothScroll() {
     }
 }
 
+// ===== МОДАЛЬНОЕ ОКНО =====
+function initModal() {
+    const modal = document.getElementById('contactModal');
+    const discussBtn = document.getElementById('discussBtn');
+    const closeBtn = document.querySelector('.modal-close');
+    
+    if (discussBtn) {
+        discussBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            modal.classList.add('active');
+        });
+    }
+    
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+            modal.classList.remove('active');
+        });
+    }
+    
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.classList.remove('active');
+        }
+    });
+}
+
 // ===== FAQ =====
 function initFaq() {
     var faqGrid = document.querySelector('.faq-grid');
@@ -800,6 +986,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initFaq();
     initForm();
     initToTop();
+    initModal();
     
     loadComponent('header-placeholder', 'header.html', function() {
         initHeaderFixed();
