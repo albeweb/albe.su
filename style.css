@@ -1706,7 +1706,8 @@ h3 {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 20px;
     border-bottom: 1px solid rgba(255, 51, 102, 0.25);
     background: linear-gradient(135deg, rgba(20, 198, 176, 0.08), rgba(139, 92, 246, 0.05));
 }
@@ -1733,22 +1734,9 @@ h3 {
     font-weight: 600;
 }
 
+/* Скрываем часы и стоимость в верхней части активной панели */
 .accordion-panel.active .panel-stats {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    margin-top: 0;
-}
-
-.accordion-panel.active .panel-stats span {
-    font-size: 0.9rem;
-    background: linear-gradient(135deg, rgba(255, 51, 102, 0.15), rgba(139, 92, 246, 0.1));
-    padding: 8px 18px;
-    border-radius: 40px;
-    letter-spacing: 0.5px;
-    border: 1px solid rgba(255, 51, 102, 0.2);
-    color: var(--white);
-    font-weight: 500;
+    display: none;
 }
 
 .accordion-panel-header {
@@ -1998,11 +1986,6 @@ h3 {
     
     .accordion-panel-content {
         padding: 24px;
-    }
-    
-    .accordion-panel.active .panel-stats span {
-        font-size: 0.8rem;
-        padding: 6px 14px;
     }
     
     .active-panel-footer {
