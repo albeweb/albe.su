@@ -1827,6 +1827,46 @@ h3 {
     font-weight: 500;
 }
 
+/* Дополнительные стили для плавного аккордеона */
+.portfolio-accordion {
+    transition: all 0.3s ease-out;
+}
+
+.accordion-panel {
+    transition: flex 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.accordion-panel .accordion-panel-content {
+    display: none;
+}
+
+.accordion-panel.active .accordion-panel-content {
+    display: block;
+    animation: fadeInContent 0.35s ease-out;
+}
+
+@keyframes fadeInContent {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Фикс для мобильной версии */
+@media (max-width: 900px) {
+    .accordion-panel {
+        transition: all 0.3s ease;
+    }
+    
+    .accordion-panel .accordion-panel-content {
+        animation: none;
+    }
+}
+
 /* Фикс для плавности - предотвращаем дергание */
 .portfolio-section,
 .portfolio-wrapper,
