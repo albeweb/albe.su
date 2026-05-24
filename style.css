@@ -29,7 +29,7 @@
     font-display: swap;
 }
 
-/* Zen Dots - для логотипа и цифр в статистике */
+/* Zen Dots - для логотипа и всех цифр */
 @font-face {
     font-family: 'Zen Dots';
     src: url('zen-dots.woff2') format('woff2');
@@ -129,8 +129,17 @@ h3, h4, h5, h6,
     letter-spacing: -0.02em;
 }
 
-/* Логотип и цифры — Zen Dots */
-.logo, .stat-number {
+/* Zen Dots - для логотипа и ВСЕХ ЦИФР */
+.logo, 
+.stat-number,
+.accordion-panel .panel-number,
+.price-card .price,
+.calc-price,
+.step-num,
+.stat-item .stat-number,
+.footer-hours span:last-child,
+.footer-price span:last-child,
+.panel-metrics span:last-child {
     font-family: 'Zen Dots', monospace;
 }
 
@@ -1609,7 +1618,7 @@ h3 {
     border: 1px solid rgba(255, 51, 102, 0.15);
     border-radius: 24px;
     overflow: hidden;
-    height: 900px;
+    height: 800px;
     box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.5);
 }
 
