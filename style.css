@@ -816,7 +816,15 @@ button[type="submit"]:hover, .header-telegram:hover {
 .hero-title-line1 {
     font-size: clamp(1.8rem, 7.5vw, 7rem);
     font-weight: 400;
-    background: linear-gradient(135deg, var(--neon-pink) 0%, var(--purple) 50%, var(--teal) 80%);
+    background: linear-gradient(135deg, 
+        #FF3366 0%,
+        #FF6699 15%,
+        #8B5CF6 35%,
+        #14C6B0 55%,
+        #FF3366 75%,
+        #FF6699 100%
+    );
+    background-size: 200% auto;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -824,6 +832,63 @@ button[type="submit"]:hover, .header-telegram:hover {
     line-height: 1.1;
     white-space: normal;
     margin-bottom: 0.5rem;
+    animation: glassGradient 8s ease infinite;
+    text-shadow: 0 0 30px rgba(255, 51, 102, 0.3);
+    letter-spacing: 0.05em;
+    position: relative;
+}
+
+/* Стеклянный блик */
+.hero-title-line1::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(120deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 30%,
+        rgba(255, 255, 255, 0.5) 50%,
+        rgba(255, 255, 255, 0.3) 70%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    pointer-events: none;
+    z-index: 1;
+    animation: glassShine 6s ease infinite;
+}
+
+/* Эффект при наведении - усиление свечения */
+.hero-title-line1:hover {
+    text-shadow: 0 0 40px rgba(255, 51, 102, 0.6), 0 0 20px rgba(20, 198, 176, 0.3);
+    transition: text-shadow 0.3s ease;
+}
+
+/* Анимация движущегося градиента */
+@keyframes glassGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Анимация стеклянного блика */
+@keyframes glassShine {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
 }
 
 .hero-title-line2 {
