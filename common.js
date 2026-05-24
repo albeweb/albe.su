@@ -322,31 +322,70 @@ function initBurgerMenu() {
     }
 }
 
-// ===== ГОРИЗОНТАЛЬНЫЙ АККОРДЕОН ПОРТФОЛИО (ИСПРАВЛЕННЫЙ) =====
+// ===== ДОБАВЛЯЕМ ФУТЕР С ЧАСАМИ И СТОИМОСТЬЮ В АКТИВНУЮ ПАНЕЛЬ =====
+function addFooterToActivePanel() {
+    const activePanel = document.querySelector('.accordion-panel.active');
+    if (!activePanel) return;
+    
+    // Проверяем, есть ли уже футер
+    if (activePanel.querySelector('.active-panel-footer')) return;
+    
+    // Находим stats в активной панели
+    const stats = activePanel.querySelector('.panel-stats');
+    if (!stats) return;
+    
+    // Получаем значения часов и стоимости
+    const statsSpans = stats.querySelectorAll('span');
+    if (statsSpans.length < 2) return;
+    
+    const hours = statsSpans[0].textContent;
+    const price = statsSpans[1].textContent;
+    
+    // Создаем футер
+    const footer = document.createElement('div');
+    footer.className = 'active-panel-footer';
+    footer.innerHTML = `
+        <div class="footer-hours">
+            <span>⏱ ДЛИТЕЛЬНОСТЬ</span>
+            <span>${hours}</span>
+        </div>
+        <div class="footer-price">
+            <span>💰 СТОИМОСТЬ</span>
+            <span>${price}</span>
+        </div>
+    `;
+    
+    // Вставляем футер после контента
+    const content = activePanel.querySelector('.accordion-panel-content');
+    if (content) {
+        content.after(footer);
+    } else {
+        activePanel.appendChild(footer);
+    }
+}
+
+// ===== ГОРИЗОНТАЛЬНЫЙ АККОРДЕОН ПОРТФОЛИО =====
 function initPortfolioAccordion() {
     const panels = document.querySelectorAll('.accordion-panel');
     
     if (panels.length === 0) return;
     
-    // Функция для закрытия всех панелей
     function closeAllPanels() {
         panels.forEach(panel => {
             panel.classList.remove('active');
         });
     }
     
-    // Функция для открытия конкретной панели
     function openPanel(panel) {
         if (!panel) return;
-        
-        // Закрываем все панели
         closeAllPanels();
-        
-        // Открываем выбранную
         panel.classList.add('active');
+        
+        // Удаляем старые футеры и добавляем новый
+        document.querySelectorAll('.active-panel-footer').forEach(footer => footer.remove());
+        addFooterToActivePanel();
     }
     
-    // Добавляем обработчики на каждую панель
     panels.forEach((panel) => {
         const header = panel.querySelector('.accordion-panel-header');
         
@@ -354,36 +393,28 @@ function initPortfolioAccordion() {
             header.style.cursor = 'pointer';
             header.addEventListener('click', function(e) {
                 e.stopPropagation();
-                
-                // Если панель уже активна - ничего не делаем
                 if (panel.classList.contains('active')) return;
-                
-                // Открываем выбранную панель
                 openPanel(panel);
             });
         }
         
-        // Также реагируем на клик по всей панели (кроме активной)
         panel.addEventListener('click', function(e) {
-            // Если клик на кнопке, ссылке или внутри активного контента - игнорируем
             if (e.target.closest('a') || 
                 e.target.closest('button') || 
                 e.target.closest('.accordion-panel-content')) {
                 return;
             }
-            
-            // Если панель уже активна - ничего не делаем
             if (panel.classList.contains('active')) return;
-            
-            // Открываем выбранную панель
             openPanel(panel);
         });
     });
     
-    // Убеждаемся, что первая панель активна при загрузке
     const activePanel = document.querySelector('.accordion-panel.active');
     if (!activePanel && panels.length > 0) {
         panels[0].classList.add('active');
+        addFooterToActivePanel();
+    } else if (activePanel) {
+        addFooterToActivePanel();
     }
 }
 
