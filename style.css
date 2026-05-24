@@ -1595,7 +1595,6 @@ h3 {
     border-radius: 32px;
     overflow: visible;
     min-height: auto;
-    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
 }
 
 .accordion-panel {
@@ -1603,7 +1602,7 @@ h3 {
     position: relative;
     background: linear-gradient(135deg, rgba(20, 26, 32, 0.95), rgba(13, 17, 23, 0.98));
     backdrop-filter: blur(12px);
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -1623,7 +1622,7 @@ h3 {
     flex: 3.5;
     background: linear-gradient(135deg, rgba(25, 32, 40, 0.98), rgba(18, 24, 32, 0.98));
     border: 1px solid rgba(255, 51, 102, 0.35);
-    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 51, 102, 0.1);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
 }
 
 .accordion-panel::before {
@@ -1695,7 +1694,7 @@ h3 {
     background: linear-gradient(135deg, rgba(30, 40, 50, 0.95), rgba(20, 26, 35, 0.95));
 }
 
-/* Активная панель - заголовок вверху, часы и стоимость внизу */
+/* Активная панель */
 .accordion-panel.active {
     display: flex;
     flex-direction: column;
@@ -1752,13 +1751,152 @@ h3 {
     font-weight: 500;
 }
 
-/* Контент активной панели */
-.accordion-panel.active .accordion-panel-content {
-    display: block;
-    flex: 1;
+.accordion-panel-header {
+    transition: all 0.3s ease;
+}
+
+.panel-number {
+    font-family: 'Zen Dots', monospace;
+    font-weight: 500;
+    letter-spacing: 3px;
+}
+
+.panel-title h3 {
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 4px;
+    transition: all 0.3s ease;
+}
+
+.accordion-panel-content {
+    display: none;
     padding: 28px;
+    flex: 1;
     overflow-y: auto;
     background: rgba(10, 14, 19, 0.3);
+}
+
+.accordion-panel.active .accordion-panel-content {
+    display: block;
+    animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Изображение */
+.panel-image {
+    margin-bottom: 24px;
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 2 / 1;
+    position: relative;
+}
+
+.panel-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent 50%, rgba(255, 51, 102, 0.1));
+    pointer-events: none;
+}
+
+.panel-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.panel-image img:hover {
+    transform: scale(1.03);
+}
+
+.panel-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+}
+
+.panel-info p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #C8D8E8;
+    margin-bottom: 0;
+}
+
+.panel-tech h4 {
+    font-size: 0.85rem;
+    color: var(--teal);
+    margin-bottom: 14px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.tech-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tech-items span {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    border-radius: 30px;
+    color: var(--white);
+    letter-spacing: 0.3px;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tech-items span:hover {
+    background: var(--neon-pink);
+    color: #0A0A0A;
+    transform: translateY(-2px);
+    border-color: transparent;
+}
+
+.panel-metrics {
+    background: rgba(255, 255, 255, 0.04);
+    padding: 18px 22px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.panel-metrics div {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    font-size: 0.9rem;
+}
+
+.panel-metrics div:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.panel-metrics span:first-child {
+    color: var(--gray);
+    letter-spacing: 0.5px;
+}
+
+.panel-metrics span:last-child {
+    color: var(--white);
+    font-weight: 500;
 }
 
 /* Блок с часами и стоимостью внизу активной панели */
@@ -1793,201 +1931,6 @@ h3 {
     font-size: 1.2rem;
 }
 
-.accordion-panel-header {
-    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.panel-number {
-    font-family: 'Zen Dots', monospace;
-    font-weight: 500;
-    letter-spacing: 3px;
-}
-
-.panel-title h3 {
-    font-weight: 600;
-    color: var(--white);
-    letter-spacing: 4px;
-    transition: all 0.3s ease;
-}
-
-.accordion-panel-content {
-    display: none;
-    padding: 28px;
-    flex: 1;
-    overflow-y: auto;
-    background: rgba(10, 14, 19, 0.3);
-}
-
-.accordion-panel.active .accordion-panel-content {
-    display: block;
-    animation: fadeInContent 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-@keyframes fadeInContent {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Изображение - формат 2:1 с премиальным эффектом */
-.panel-image {
-    margin-bottom: 24px;
-    border-radius: 20px;
-    overflow: hidden;
-    aspect-ratio: 2 / 1;
-    position: relative;
-}
-
-.panel-image::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, transparent 50%, rgba(255, 51, 102, 0.1));
-    pointer-events: none;
-}
-
-.panel-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.panel-image img:hover {
-    transform: scale(1.05);
-}
-
-.panel-info {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 28px;
-}
-
-.panel-info p {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #C8D8E8;
-    margin-bottom: 0;
-}
-
-.panel-tech h4 {
-    font-size: 0.85rem;
-    color: var(--teal);
-    margin-bottom: 14px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-}
-
-.tech-items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.tech-items span {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
-    padding: 6px 14px;
-    font-size: 0.85rem;
-    border-radius: 30px;
-    color: var(--white);
-    letter-spacing: 0.3px;
-    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.tech-items span:hover {
-    background: linear-gradient(135deg, var(--neon-pink), var(--purple));
-    color: #0A0A0A;
-    transform: translateY(-3px);
-    border-color: transparent;
-}
-
-.panel-metrics {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
-    padding: 18px 22px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.panel-metrics div {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    font-size: 0.9rem;
-}
-
-.panel-metrics div:not(:last-child) {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.panel-metrics span:first-child {
-    color: var(--gray);
-    letter-spacing: 0.5px;
-}
-
-.panel-metrics span:last-child {
-    color: var(--white);
-    font-weight: 600;
-    background: linear-gradient(135deg, var(--white), #C8D8E8);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-/* Дополнительные стили для плавного аккордеона */
-.portfolio-accordion {
-    transition: all 0.3s ease-out;
-}
-
-.accordion-panel {
-    transition: flex 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.accordion-panel .accordion-panel-content {
-    display: none;
-}
-
-.accordion-panel.active .accordion-panel-content {
-    display: block;
-    animation: fadeInContent 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-/* Фикс для мобильной версии */
-@media (max-width: 900px) {
-    .accordion-panel {
-        transition: all 0.3s ease;
-    }
-    
-    .accordion-panel .accordion-panel-content {
-        animation: none;
-    }
-    
-    .active-panel-footer {
-        padding: 16px 24px;
-        flex-direction: column;
-        gap: 12px;
-        align-items: flex-start;
-    }
-}
-
-/* Фикс для плавности - предотвращаем дергание */
-.portfolio-section,
-.portfolio-wrapper,
-.section .container {
-    transition: none;
-}
-
 /* Мобильная адаптация */
 @media (max-width: 900px) {
     .portfolio-accordion {
@@ -2007,16 +1950,18 @@ h3 {
     
     .accordion-panel:not(.active) .accordion-panel-header {
         padding: 30px 20px;
-        min-height: 120px;
+        min-height: auto;
+        flex-direction: row;
+        justify-content: space-between;
     }
     
     .accordion-panel:not(.active) .panel-number {
         font-size: 2rem;
-        margin-bottom: 12px;
+        margin-bottom: 0;
     }
     
     .accordion-panel:not(.active) .panel-title h3 {
-        font-size: 1.1rem;
+        font-size: 1rem;
         letter-spacing: 3px;
     }
     
@@ -2024,8 +1969,6 @@ h3 {
         display: flex;
         flex-direction: row;
         gap: 12px;
-        margin-top: 15px;
-        justify-content: center;
     }
     
     .accordion-panel:not(.active) .panel-stats span {
@@ -2060,5 +2003,12 @@ h3 {
     .accordion-panel.active .panel-stats span {
         font-size: 0.8rem;
         padding: 6px 14px;
+    }
+    
+    .active-panel-footer {
+        padding: 16px 24px;
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
     }
 }
