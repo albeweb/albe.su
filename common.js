@@ -346,11 +346,11 @@ function addFooterToActivePanel() {
     footer.className = 'active-panel-footer';
     footer.innerHTML = `
         <div class="footer-hours">
-            <span>⏱ ДЛИТЕЛЬНОСТЬ</span>
+            <span>ДЛИТЕЛЬНОСТЬ</span>
             <span>${hours}</span>
         </div>
         <div class="footer-price">
-            <span>💰 СТОИМОСТЬ</span>
+            <span>СТОИМОСТЬ</span>
             <span>${price}</span>
         </div>
     `;
