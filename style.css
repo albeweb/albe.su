@@ -758,11 +758,23 @@ h3 {
     margin-top: auto;
 }
 
-/* 9.3 ЗАГОЛОВОК — ТОЛЬКО 2 СТРОКИ */
+/* 9.3 ЗАГОЛОВОК — ОДИНАКОВЫЕ ОТСТУПЫ */
 .hero-title {
     font-weight: 400;
     letter-spacing: 0.1em;
     margin-bottom: 1.5rem;
+}
+
+/* НАДЗАГОЛОВОК (DIGITAL AGENCY) */
+.hero-tag {
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 6px;
+    margin-bottom: 2rem;
+    color: var(--gray);
+    text-transform: uppercase;
+    opacity: 0.9;
+    display: inline-block;
 }
 
 /* СТРОКА 1: РАЗРАБОТКА */
@@ -776,7 +788,7 @@ h3 {
     display: block;
     line-height: 1.2;
     white-space: normal;
-    margin-bottom: 0.3rem;
+    margin-bottom: 2rem;
 }
 
 /* СТРОКА 2: дизайна и сайтов под ключ */
@@ -800,19 +812,6 @@ h3 {
     letter-spacing: inherit;
     display: inline;
     white-space: nowrap;
-}
-
-/* Удалён класс hero-title-line3 */
-
-.hero-tag {
-    font-size: 1.1rem;
-    font-weight: 400;
-    letter-spacing: 6px;
-    margin-bottom: 2rem;
-    color: var(--gray);
-    text-transform: uppercase;
-    opacity: 0.9;
-    display: inline-block;
 }
 
 /* 9.4 СТАТИСТИКА */
@@ -1295,7 +1294,7 @@ h3 {
 }
 
 /* ============================================ */
-/* 15. MEDIA QUERIES (ОПТИМИЗИРОВАННЫЕ) */
+/* 15. MEDIA QUERIES */
 /* ============================================ */
 
 @media (max-width: 1600px) {
@@ -1386,7 +1385,6 @@ h3 {
     h3 { font-size: 1.3rem; }
     .code-rain { display: none; }
     
-    /* Бейджики в 2 колонки */
     .services-badges {
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
@@ -1398,7 +1396,6 @@ h3 {
         white-space: normal;
     }
     
-    /* Статистика в 2 колонки */
     .hero-stats {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -1446,7 +1443,6 @@ h3 {
         line-height: 1.6;
     }
     
-    /* Убираем backdrop-filter на мобильных */
     .stat-item, .service-badge, .section-more-btn, .calculator-card, .contact-card,
     .competence-card, .faq-question, .service-card, .portfolio-card, .step-card,
     .calc-option, .header, .price-table {
