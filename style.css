@@ -101,7 +101,7 @@ body::before {
 }
 
 /* ============================================ */
-/* 4. НАЗНАЧЕНИЕ ШРИФТОВ (ОБЪЕДИНЕНО) */
+/* 4. НАЗНАЧЕНИЕ ШРИФТОВ */
 /* ============================================ */
 
 /* H1 и H2 — EN Regular */
@@ -159,7 +159,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
 }
 
 /* ============================================ */
-/* 5. СТИЛИ ДЛЯ ЗАГОЛОВКОВ (ОСНОВНЫЕ) */
+/* 5. СТИЛИ ДЛЯ ЗАГОЛОВКОВ */
 /* ============================================ */
 
 h1 {
@@ -657,7 +657,7 @@ h3 {
 }
 
 /* ============================================ */
-/* 9. HERO БАННЕР (ТОЛЬКО 2 СТРОКИ) */
+/* 9. HERO БАННЕР — ИСПРАВЛЕННЫЕ ОТСТУПЫ */
 /* ============================================ */
 
 .hero {
@@ -670,7 +670,7 @@ h3 {
     overflow: hidden;
 }
 
-/* 9.1 КОД-РЕЙН (разноцветный падающий код) */
+/* 9.1 КОД-РЕЙН */
 .code-rain {
     position: absolute;
     top: 0;
@@ -758,19 +758,18 @@ h3 {
     margin-top: auto;
 }
 
-/* 9.3 ЗАГОЛОВОК — ОДИНАКОВЫЕ ОТСТУПЫ */
+/* 9.3 ЗАГОЛОВОК */
 .hero-title {
     font-weight: 400;
     letter-spacing: 0.1em;
     margin-bottom: 1.5rem;
 }
 
-/* НАДЗАГОЛОВОК (DIGITAL AGENCY) */
 .hero-tag {
     font-size: 1.1rem;
     font-weight: 400;
     letter-spacing: 6px;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     color: var(--gray);
     text-transform: uppercase;
     opacity: 0.9;
@@ -786,32 +785,32 @@ h3 {
     background-clip: text;
     color: transparent;
     display: block;
-    line-height: 1.2;
+    line-height: 1.1;
     white-space: normal;
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
 }
 
 /* СТРОКА 2: дизайна и сайтов под ключ */
 .hero-title-line2 {
     font-size: clamp(0.7rem, 2.2vw, 3rem);
     font-weight: 400;
-    display: inline-block;
-    line-height: 1.3;
+    display: block;
+    line-height: 1.2;
     margin-top: 0;
-    white-space: nowrap;
+    margin-bottom: 0;
+    white-space: normal;
 }
 
 .hero-title-line2 .word-teal { color: var(--teal); }
 .hero-title-line2 .word-white { color: #FFFFFF; }
 .hero-title-line2 .word-gold { color: var(--neon-pink); }
 
-/* ФРАЗА "ПОД КЛЮЧ" — наследует все стили от строки 2 */
 .phrase-underkey {
     font-size: inherit;
     font-weight: inherit;
     letter-spacing: inherit;
     display: inline;
-    white-space: nowrap;
+    white-space: normal;
 }
 
 /* 9.4 СТАТИСТИКА */
@@ -820,7 +819,7 @@ h3 {
     flex-direction: row;
     justify-content: flex-start;
     gap: 24px;
-    margin-top: 32px;
+    margin-top: 2rem;
     margin-bottom: 48px;
     width: 100%;
     flex-wrap: wrap;
@@ -1259,7 +1258,7 @@ h3 {
 }
 
 /* ============================================ */
-/* 14. CLS FIX (ПЛЕЙСХОЛДЕРЫ) */
+/* 14. CLS FIX */
 /* ============================================ */
 
 #mainHeader {
@@ -1401,7 +1400,7 @@ h3 {
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
         justify-items: center;
-        margin-top: 32px;
+        margin-top: 2rem;
     }
     .stat-item {
         min-width: auto;
