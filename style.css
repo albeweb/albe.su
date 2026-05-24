@@ -814,7 +814,8 @@ button[type="submit"]:hover, .header-telegram:hover {
 }
 
 /* ============================================ */
-/* СТЕКЛЯННЫЙ ГРАДИЕНТ ДЛЯ СЛОВА "РАЗРАБОТКА" */
+/* ГОЛОГРАФИЧЕСКИЙ ЭФФЕКТ ДЛЯ СЛОВА "РАЗРАБОТКА" */
+/* КАК У КНОПКИ TELEGRAM */
 /* ============================================ */
 
 .hero-title-line1 {
@@ -826,40 +827,81 @@ button[type="submit"]:hover, .header-telegram:hover {
     margin-bottom: 0.5rem;
     letter-spacing: 0.05em;
     position: relative;
-    
-    /* Такой же градиент как в кнопках, но ярче */
-    background: linear-gradient(135deg, 
-        var(--neon-pink) 0%,
-        var(--purple) 35%,
-        var(--teal) 65%,
-        var(--neon-pink) 100%
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 0 20px;
+    border-radius: 24px;
+    display: inline-block;
+    width: auto;
+}
+
+/* Вращающийся световой контур (как у кнопки Telegram) */
+.hero-title-line1::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        from 0deg,
+        transparent,
+        var(--neon-pink),
+        transparent,
+        var(--teal),
+        transparent,
+        var(--purple),
+        transparent
     );
-    background-size: 200% auto;
+    animation: hologramRotate 4s linear infinite;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+    z-index: -2;
+    border-radius: 24px;
+}
+
+/* Внутренний затемнённый слой */
+.hero-title-line1::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: rgba(10, 14, 19, 0.7);
+    border-radius: 22px;
+    z-index: -1;
+}
+
+/* Сам текст - белый с градиентной заливкой */
+.hero-title-line1 span {
+    background: linear-gradient(135deg, 
+        var(--white) 0%,
+        #FFFFFF 50%,
+        var(--gray) 100%
+    );
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    animation: textGradientMove 6s ease infinite;
-    
-    /* Свечение для насыщенности */
-    text-shadow: 0 0 25px rgba(255, 51, 102, 0.5);
+    position: relative;
+    z-index: 1;
 }
 
-/* Эффект при наведении - как у кнопок */
+/* Ховер эффект - усиление свечения как у кнопки */
+.hero-title-line1:hover::before {
+    opacity: 0.9;
+}
+
 .hero-title-line1:hover {
-    text-shadow: 0 0 35px rgba(255, 51, 102, 0.8), 0 0 15px rgba(20, 198, 176, 0.5);
-    transition: text-shadow 0.3s ease;
+    transform: translateY(-2px);
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
 }
 
-/* Анимация движения градиента (как у контура кнопок, но медленнее) */
-@keyframes textGradientMove {
+/* Анимация вращения (та же что у кнопок) */
+@keyframes hologramRotate {
     0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
+        transform: rotate(0deg);
     }
     100% {
-        background-position: 0% 50%;
+        transform: rotate(360deg);
     }
 }
 
@@ -994,6 +1036,12 @@ button[type="submit"]:hover, .header-telegram:hover {
         font-size: 1rem;
         flex: 1;
         text-align: center;
+    }
+    .hero-title-line1 {
+        backdrop-filter: none !important;
+    }
+    .hero-title-line1::before {
+        opacity: 0.3;
     }
 }
 
