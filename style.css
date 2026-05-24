@@ -50,7 +50,6 @@
     --white: #F5F5F5;
     --gray: #A0A0A0;
     --bg-dark: #0A0A0A;
-    --accordion-bg: #141A20;
 }
 
 /* ============================================ */
@@ -1592,22 +1591,21 @@ h3 {
     width: 100%;
     margin-top: 48px;
     gap: 0;
-    background: rgba(20, 26, 32, 0.9);
-    border-radius: 20px;
+    background: rgba(10, 14, 19, 0.6);
+    border-radius: 0;
     overflow: hidden;
-    min-height: 480px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    min-height: 560px;
 }
 
 .accordion-panel {
     flex: 1;
     position: relative;
-    background: rgba(20, 26, 32, 0.7);
+    background: rgba(8, 12, 16, 0.8);
     transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    border-right: 1px solid rgba(255, 51, 102, 0.08);
+    border-right: 1px solid rgba(255, 51, 102, 0.1);
     overflow: hidden;
 }
 
@@ -1617,76 +1615,81 @@ h3 {
 
 .accordion-panel.active {
     flex: 3.5;
-    background: rgba(25, 33, 40, 0.95);
+    background: rgba(12, 18, 24, 0.95);
 }
 
-/* Закрытые панели - вертикальный текст */
+/* Вертикальный текст для закрытых панелей */
 .accordion-panel:not(.active) .accordion-panel-header {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
     padding: 30px 12px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 16px;
+    gap: 20px;
     height: 100%;
-    min-height: 480px;
+    min-height: 560px;
 }
 
 .accordion-panel:not(.active) .panel-number {
     font-size: 1.8rem;
     margin-bottom: 0;
-    letter-spacing: 2px;
-    writing-mode: horizontal-tb;
-    transform: none;
+    letter-spacing: 4px;
 }
 
 .accordion-panel:not(.active) .panel-title h3 {
-    font-family: 'EN Regular', sans-serif;
-    font-size: 1rem;
+    font-size: 0.9rem;
     writing-mode: vertical-rl;
     text-orientation: mixed;
     transform: rotate(180deg);
     white-space: nowrap;
-    letter-spacing: 4px;
 }
 
 .accordion-panel:not(.active) .panel-stats {
     display: none;
 }
 
-/* Активная панель - горизонтальное отображение */
+/* Активная панель - нормальное отображение */
 .accordion-panel.active .accordion-panel-header {
-    padding: 24px 28px;
+    padding: 28px 24px;
     text-align: left;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid rgba(255, 51, 102, 0.15);
-    background: rgba(20, 198, 176, 0.04);
+    border-bottom: 1px solid rgba(255, 51, 102, 0.2);
+    background: rgba(20, 198, 176, 0.05);
 }
 
 .accordion-panel.active .panel-number {
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin-bottom: 0;
-    opacity: 0.5;
+    opacity: 0.6;
     letter-spacing: normal;
-    writing-mode: horizontal-tb;
-    transform: none;
 }
 
 .accordion-panel.active .panel-title h3 {
-    font-family: 'Geist', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 500;
+    font-size: 1.3rem;
     writing-mode: horizontal-tb;
     transform: none;
     white-space: normal;
-    letter-spacing: -0.02em;
 }
 
 .accordion-panel.active .panel-stats {
-    display: none;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-top: 0;
+}
+
+.accordion-panel.active .panel-stats span {
+    font-size: 0.85rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
 }
 
 .accordion-panel-header {
@@ -1697,38 +1700,40 @@ h3 {
     font-family: 'Zen Dots', monospace;
     font-weight: 500;
     color: var(--neon-pink);
+    letter-spacing: 2px;
 }
 
 .panel-title h3 {
     font-weight: 500;
     color: var(--white);
+    letter-spacing: -0.02em;
 }
 
 .accordion-panel-content {
     display: none;
-    padding: 24px 28px;
+    padding: 28px;
     flex: 1;
 }
 
 .accordion-panel.active .accordion-panel-content {
     display: block;
-    animation: fadeInScale 0.4s ease-out;
+    animation: fadeInUp 0.5s ease;
 }
 
-@keyframes fadeInScale {
-    0% {
+@keyframes fadeInUp {
+    from {
         opacity: 0;
-        transform: scale(0.98);
+        transform: translateY(20px);
     }
-    100% {
+    to {
         opacity: 1;
-        transform: scale(1);
+        transform: translateY(0);
     }
 }
 
 /* Изображение - формат 2:1 */
 .panel-image {
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     border-radius: 16px;
     overflow: hidden;
     aspect-ratio: 2 / 1;
@@ -1753,14 +1758,14 @@ h3 {
 }
 
 .panel-info p {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     line-height: 1.6;
-    color: #C0D0E0;
+    color: #B0C4DE;
     margin-bottom: 0;
 }
 
 .panel-tech h4 {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     color: var(--teal);
     margin-bottom: 12px;
     font-weight: 500;
@@ -1778,7 +1783,7 @@ h3 {
 .tech-items span {
     background: rgba(255, 255, 255, 0.05);
     padding: 5px 12px;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     border-radius: 20px;
     color: var(--white);
     letter-spacing: 0.3px;
@@ -1801,7 +1806,7 @@ h3 {
     display: flex;
     justify-content: space-between;
     padding: 8px 0;
-    font-size: 0.85rem;
+    font-size: 0.75rem;
 }
 
 .panel-metrics div:not(:last-child) {
@@ -1818,78 +1823,47 @@ h3 {
     font-weight: 500;
 }
 
-/* Блок со стоимостью и временем внизу открытой карточки */
-.active-bottom-stats {
-    display: flex;
-    gap: 24px;
-    margin-top: 20px;
-    padding-top: 16px;
-    border-top: 1px solid rgba(255, 51, 102, 0.1);
-}
-
-.active-bottom-stats span {
-    font-size: 0.85rem;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 6px 14px;
-    border-radius: 20px;
-    color: var(--gray);
-}
-
 /* Мобильная адаптация */
 @media (max-width: 900px) {
     .portfolio-accordion {
         flex-direction: column;
         min-height: auto;
-        border-radius: 20px;
     }
     
     .accordion-panel {
         border-right: none;
-        border-bottom: 1px solid rgba(255, 51, 102, 0.08);
+        border-bottom: 1px solid rgba(255, 51, 102, 0.1);
         min-height: auto;
     }
     
     .accordion-panel:not(.active) .accordion-panel-header {
+        writing-mode: horizontal-tb;
+        transform: none;
         padding: 18px 24px;
         flex-direction: row;
         justify-content: space-between;
-        align-items: center;
         min-height: auto;
-        gap: 12px;
     }
     
     .accordion-panel:not(.active) .panel-title h3 {
         writing-mode: horizontal-tb;
         transform: none;
         white-space: normal;
-        font-size: 1rem;
-    }
-    
-    .accordion-panel:not(.active) .panel-number {
-        font-size: 1.2rem;
     }
     
     .accordion-panel:not(.active) .panel-stats {
         display: flex;
         flex-direction: row;
-        gap: 12px;
+        gap: 16px;
     }
     
     .accordion-panel:not(.active) .panel-stats span {
         font-size: 0.7rem;
-        background: rgba(255, 255, 255, 0.05);
-        padding: 4px 10px;
-        border-radius: 16px;
     }
     
     .accordion-panel.active .accordion-panel-header {
         flex-wrap: wrap;
         gap: 12px;
-        padding: 20px;
-    }
-    
-    .accordion-panel.active .panel-title h3 {
-        font-size: 1.2rem;
     }
     
     .panel-info {
@@ -1899,26 +1873,5 @@ h3 {
     
     .panel-image {
         aspect-ratio: 16 / 9;
-    }
-    
-    .accordion-panel-content {
-        padding: 20px;
-    }
-}
-
-@media (max-width: 600px) {
-    .accordion-panel:not(.active) .accordion-panel-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .accordion-panel:not(.active) .panel-stats {
-        width: 100%;
-        justify-content: flex-start;
-    }
-    
-    .accordion-panel.active .accordion-panel-header {
-        flex-direction: column;
-        align-items: flex-start;
     }
 }
