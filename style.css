@@ -138,7 +138,7 @@ h3, h4, h5, h6,
 p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-card p,
 .mission-text p, .faq-answer, .footer p, .footer a, .tech-item, .calc-option,
 .time-breakdown-item, .stack-explanation p, input, textarea, .stat-label,
-.price-card li, .price-note, .hero-title-line3, .phrase-underkey {
+.price-card li, .price-note, .hero-title-line3 {
     font-family: 'Geist', sans-serif;
     font-weight: 400;
     font-size: 1.0625rem;
@@ -758,11 +758,11 @@ h3 {
     margin-top: auto;
 }
 
-/* 9.3 ЗАГОЛОВОК — все слова в одной строке */
+/* 9.3 ЗАГОЛОВОК — УМЕНЬШЕННЫЕ ОТСТУПЫ */
 .hero-title {
     font-weight: 400;
     letter-spacing: 0.1em;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
 }
 
 .hero-title-line1 {
@@ -775,7 +775,7 @@ h3 {
     display: block;
     line-height: 1.2;
     white-space: normal;
-    margin-bottom: 1rem;
+    margin-bottom: 0.3rem;
 }
 
 /* Строка 2: дизайна и сайтов под ключ — все вместе */
@@ -784,7 +784,7 @@ h3 {
     font-weight: 400;
     display: inline-block;
     line-height: 1.3;
-    margin-top: 0.5rem;
+    margin-top: 0;
     white-space: nowrap;
 }
 
@@ -792,7 +792,7 @@ h3 {
 .hero-title-line2 .word-white { color: #FFFFFF; }
 .hero-title-line2 .word-gold { color: var(--neon-pink); }
 
-/* Убираем отдельный класс для "под ключ" */
+/* Убираем отдельный класс для "под ключ" — наследует шрифт от родителя */
 .phrase-underkey {
     font-size: inherit;
     font-weight: inherit;
@@ -822,13 +822,13 @@ h3 {
     display: inline-block;
 }
 
-/* 9.4 СТАТИСТИКА */
+/* 9.4 СТАТИСТИКА — УМЕНЬШЕННЫЙ ОТСТУП */
 .hero-stats {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     gap: 24px;
-    margin-top: 64px;
+    margin-top: 32px;
     margin-bottom: 48px;
     width: 100%;
     flex-wrap: wrap;
@@ -1411,7 +1411,7 @@ h3 {
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
         justify-items: center;
-        margin-top: 48px;
+        margin-top: 32px;
     }
     .stat-item {
         min-width: auto;
