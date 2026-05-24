@@ -43,86 +43,6 @@
 <link rel="preload" as="style" href="style.css">
 <link rel="stylesheet" href="style.css">
 
-<style>
-/* Дополнительные стили для Telegram-блока */
-.hero-telegram-block {
-    flex: 0.8;
-    max-width: 320px;
-    background: rgba(18, 24, 32, 0.6);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 51, 102, 0.3);
-    border-top-left-radius: 28px;
-    border-bottom-right-radius: 28px;
-    padding: 32px 24px;
-    text-align: center;
-    transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-}
-
-.hero-telegram-block:hover {
-    border-color: var(--teal);
-    backdrop-filter: blur(16px);
-    transform: translateY(-5px);
-}
-
-.hero-telegram-title {
-    font-family: 'EN Regular', sans-serif;
-    font-size: 1.2rem;
-    color: var(--teal);
-    margin-bottom: 16px;
-    letter-spacing: -0.02em;
-}
-
-.hero-telegram-text {
-    font-family: 'Geist', sans-serif;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    color: #B0C4DE;
-    margin-bottom: 24px;
-}
-
-.hero-telegram-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 12px 24px;
-    background: #0088cc;
-    color: white;
-    text-decoration: none;
-    font-family: 'Geist', sans-serif;
-    font-weight: 500;
-    font-size: 0.9rem;
-    border-top-left-radius: 28px;
-    border-bottom-right-radius: 28px;
-    transition: all 0.3s ease;
-    border: 1px solid #0088cc;
-}
-
-.hero-telegram-btn:hover {
-    background: transparent;
-    color: #0088cc;
-    transform: translateY(-2px);
-}
-
-.hero-telegram-btn svg {
-    width: 18px;
-    height: 18px;
-    fill: white;
-    transition: fill 0.3s ease;
-}
-
-.hero-telegram-btn:hover svg {
-    fill: #0088cc;
-}
-
-@media (max-width: 900px) {
-    .hero-telegram-block {
-        max-width: 100%;
-        margin-top: 30px;
-    }
-}
-</style>
-
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -270,20 +190,6 @@
                         <span class="quote-text">В ALBE МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ — МЫ СОЗДАЕМ БИЗНЕС</span>
                     </div>
                 </div>
-            </div>
-
-            <!-- Telegram блок справа с блюром -->
-            <div class="hero-telegram-block">
-                <div class="hero-telegram-title">📱 Быстрая связь</div>
-                <div class="hero-telegram-text">
-                    Самый быстрый и надежный способ сразу получить обратную связь — это написать нам в Telegram
-                </div>
-                <a href="https://t.me/albe_web" target="_blank" rel="noopener noreferrer" class="hero-telegram-btn">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.66-.35-1.02.22-1.61.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.05-.2-.07-.06-.16-.04-.23-.02-.1.03-1.7 1.08-4.79 3.17-.45.31-.86.46-1.23.45-.4-.01-1.18-.23-1.76-.42-.71-.23-1.27-.35-1.22-.74.03-.2.31-.41.85-.63 3.34-1.45 5.57-2.41 6.68-2.88 3.18-1.35 3.84-1.58 4.27-1.59.09 0 .31.02.45.13.12.09.15.22.16.34.01.07.01.19-.02.31z"/>
-                    </svg>
-                    Написать в Telegram
-                </a>
             </div>
         </div>
     </div>
