@@ -1591,31 +1591,26 @@ h3 {
     width: 100%;
     margin-top: 48px;
     gap: 0;
+    border: 1px solid rgba(255, 51, 102, 0.2);
+    border-top-left-radius: 28px;
+    border-bottom-right-radius: 28px;
+    overflow: hidden;
 }
 
 .accordion-panel {
     flex: 1;
     background: rgba(18, 24, 32, 0.85);
     backdrop-filter: blur(2px);
-    border: 1px solid rgba(255, 51, 102, 0.2);
-    border-left: none;
-    transition: all 0.4s ease;
-    overflow: hidden;
+    border-right: 1px solid rgba(255, 51, 102, 0.15);
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     cursor: pointer;
-    min-height: 480px;
     display: flex;
     flex-direction: column;
-}
-
-.accordion-panel:first-child {
-    border-left: 1px solid rgba(255, 51, 102, 0.2);
-    border-top-left-radius: 28px;
-    border-bottom-right-radius: 28px;
+    min-height: 460px;
 }
 
 .accordion-panel:last-child {
-    border-top-right-radius: 28px;
-    border-bottom-left-radius: 28px;
+    border-right: none;
 }
 
 .accordion-panel.active {
@@ -1669,6 +1664,12 @@ h3 {
 
 .accordion-panel.active .accordion-panel-content {
     display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .panel-image {
@@ -1681,7 +1682,7 @@ h3 {
 .panel-image img {
     width: 100%;
     height: auto;
-    max-height: 180px;
+    max-height: 170px;
     object-fit: cover;
     display: block;
 }
@@ -1726,7 +1727,7 @@ h3 {
 .panel-metrics div {
     display: flex;
     justify-content: space-between;
-    padding: 4px 0;
+    padding: 5px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     font-size: 0.7rem;
 }
@@ -1748,21 +1749,21 @@ h3 {
 @media (max-width: 900px) {
     .portfolio-accordion {
         flex-direction: column;
+        border-radius: 28px;
     }
     
     .accordion-panel {
-        border-left: 1px solid rgba(255, 51, 102, 0.2);
-        border-bottom: none;
-    }
-    
-    .accordion-panel:first-child {
-        border-top-left-radius: 28px;
-        border-bottom-right-radius: 28px;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 51, 102, 0.15);
+        min-height: auto;
     }
     
     .accordion-panel:last-child {
-        border-bottom-left-radius: 28px;
-        border-bottom-right-radius: 28px;
+        border-bottom: none;
+    }
+    
+    .accordion-panel.active {
+        flex: none;
     }
     
     .accordion-panel-header {
@@ -1773,6 +1774,7 @@ h3 {
         padding: 14px 20px;
         flex-wrap: wrap;
         gap: 10px;
+        border-bottom: none;
     }
     
     .panel-number {
@@ -1788,5 +1790,9 @@ h3 {
     
     .panel-title h3 {
         font-size: 1rem;
+    }
+    
+    .accordion-panel.active .accordion-panel-header {
+        border-bottom: 1px solid rgba(255, 51, 102, 0.15);
     }
 }
