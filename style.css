@@ -393,7 +393,7 @@ h3 {
 .section-more-btn:hover::after { transform: translateX(4px); }
 .section-more-btn:hover { background: rgba(30, 42, 94, 0.4); backdrop-filter: blur(4px); }
 
-/* ПОРТФОЛИО */
+/* ПОРТФОЛИО СТАРЫЕ СТИЛИ (будут переопределены новыми) */
 .portfolio-card .portfolio-image {
     width: 100%;
     height: 280px;
@@ -1599,5 +1599,315 @@ h3 {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
+    }
+}
+
+/* ============================================ */
+/* 16. ПОРТФОЛИО - ВЕРТИКАЛЬНЫЙ АККОРДЕОН */
+/* ============================================ */
+
+.portfolio-accordion {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.accordion-item {
+    background: rgba(18, 24, 32, 0.85);
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(255, 51, 102, 0.2);
+    border-top-left-radius: 28px;
+    border-bottom-right-radius: 28px;
+    transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    overflow: hidden;
+}
+
+.accordion-item:hover {
+    border-color: var(--neon-pink);
+    background: rgba(30, 42, 94, 0.4);
+}
+
+.accordion-header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 24px 32px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-wrap: wrap;
+}
+
+.accordion-header:hover {
+    background: rgba(255, 51, 102, 0.05);
+}
+
+.accordion-number {
+    font-family: 'Zen Dots', monospace;
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--neon-pink);
+    min-width: 70px;
+    opacity: 0.8;
+}
+
+.accordion-title {
+    flex: 2;
+    min-width: 200px;
+}
+
+.accordion-title h3 {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    color: var(--white);
+}
+
+.accordion-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    font-size: 0.7rem;
+    padding: 4px 12px;
+    background: rgba(20, 198, 176, 0.15);
+    border: 1px solid rgba(20, 198, 176, 0.3);
+    border-radius: 20px;
+    color: var(--teal);
+    letter-spacing: 0.3px;
+}
+
+.accordion-stats {
+    display: flex;
+    gap: 24px;
+    flex: 1;
+    min-width: 180px;
+}
+
+.accordion-stat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: var(--gray);
+}
+
+.stat-icon {
+    font-size: 1.1rem;
+}
+
+.accordion-arrow {
+    font-size: 1.2rem;
+    color: var(--neon-pink);
+    transition: transform 0.3s ease;
+    width: 30px;
+    text-align: center;
+}
+
+.accordion-item.active .accordion-arrow {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    padding: 0 32px;
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 800px;
+    padding: 0 32px 32px 32px;
+}
+
+.accordion-image {
+    margin-bottom: 24px;
+    border-top-left-radius: 28px;
+    border-bottom-right-radius: 28px;
+    overflow: hidden;
+}
+
+.accordion-image img {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.accordion-image img:hover {
+    transform: scale(1.02);
+}
+
+.accordion-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+}
+
+.accordion-description p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #B0C4DE;
+    margin-bottom: 20px;
+}
+
+.accordion-tech h4 {
+    font-size: 1rem;
+    color: var(--teal);
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tech-stack-item {
+    background: rgba(13, 17, 23, 0.8);
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(255, 51, 102, 0.3);
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    color: var(--white);
+    transition: all 0.2s ease;
+}
+
+.tech-stack-item:hover {
+    border-color: var(--neon-pink);
+    background: rgba(30, 42, 94, 0.4);
+    transform: translateY(-2px);
+}
+
+.accordion-metrics {
+    background: rgba(10, 14, 19, 0.5);
+    padding: 20px;
+    border-left: 3px solid var(--teal);
+    margin-top: 20px;
+}
+
+.metric-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.metric-item:last-child {
+    border-bottom: none;
+}
+
+.metric-label {
+    color: var(--gray);
+    font-size: 0.85rem;
+}
+
+.metric-value {
+    color: var(--white);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.portfolio-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--neon-pink);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.portfolio-link:hover {
+    transform: translateX(5px);
+    color: var(--teal);
+}
+
+/* Мобильная адаптация для аккордеона */
+@media (max-width: 900px) {
+    .accordion-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .accordion-number {
+        font-size: 1.5rem;
+        min-width: auto;
+    }
+    
+    .accordion-title h3 {
+        font-size: 1.2rem;
+    }
+    
+    .accordion-stats {
+        width: 100%;
+    }
+    
+    .accordion-info {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
+    .accordion-item.active .accordion-content {
+        padding: 0 20px 20px 20px;
+    }
+    
+    .accordion-header {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .portfolio-accordion {
+        margin-top: 32px;
+        gap: 12px;
+    }
+    
+    .accordion-stats {
+        gap: 16px;
+    }
+    
+    .accordion-stat {
+        font-size: 0.8rem;
+    }
+    
+    .tech-stack {
+        gap: 8px;
+    }
+    
+    .tech-stack-item {
+        font-size: 0.7rem;
+        padding: 4px 10px;
+    }
+    
+    .metric-item {
+        flex-direction: column;
+        gap: 4px;
+    }
+}
+
+@media (max-width: 480px) {
+    .accordion-header {
+        padding: 16px;
+    }
+    
+    .accordion-tags {
+        gap: 6px;
+    }
+    
+    .tag {
+        font-size: 0.6rem;
+        padding: 3px 8px;
+    }
+    
+    .accordion-stats {
+        flex-wrap: wrap;
+        gap: 12px;
     }
 }
