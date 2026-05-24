@@ -1594,7 +1594,7 @@ h3 {
     background: transparent;
     border-radius: 32px;
     overflow: visible;
-    min-height: auto;
+    min-height: 500px;
 }
 
 .accordion-panel {
@@ -1602,15 +1602,14 @@ h3 {
     position: relative;
     background: linear-gradient(135deg, rgba(20, 26, 32, 0.95), rgba(13, 17, 23, 0.98));
     backdrop-filter: blur(12px);
-    transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    transition: flex 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     cursor: pointer;
     display: flex;
     flex-direction: column;
     border: 1px solid rgba(255, 51, 102, 0.15);
     border-radius: 24px;
     overflow: hidden;
-    min-height: auto;
-    height: auto;
+    height: 500px;
     box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.5);
 }
 
@@ -1634,7 +1633,7 @@ h3 {
     height: 2px;
     background: linear-gradient(90deg, var(--neon-pink), var(--teal), var(--purple));
     opacity: 0;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.3s ease;
 }
 
 .accordion-panel.active::before {
@@ -1650,7 +1649,6 @@ h3 {
     text-align: center;
     padding: 20px 15px;
     height: 100%;
-    min-height: 400px;
     background: rgba(13, 17, 23, 0.5);
 }
 
@@ -1709,6 +1707,7 @@ h3 {
     justify-content: flex-start;
     border-bottom: 1px solid rgba(255, 51, 102, 0.25);
     background: linear-gradient(135deg, rgba(20, 198, 176, 0.08), rgba(139, 92, 246, 0.05));
+    flex-shrink: 0;
 }
 
 /* Скрываем цифру в активной панели */
@@ -1751,35 +1750,35 @@ h3 {
 
 .accordion-panel-content {
     display: none;
-    padding: 28px;
+    padding: 24px;
     flex: 1;
     overflow-y: auto;
     background: rgba(10, 14, 19, 0.3);
 }
 
 .accordion-panel.active .accordion-panel-content {
-    display: block;
-    animation: fadeInUp 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    animation: fadeInContent 0.3s ease;
 }
 
-@keyframes fadeInUp {
+@keyframes fadeInContent {
     from {
         opacity: 0;
-        transform: translateY(20px);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
     }
 }
 
 /* Изображение */
 .panel-image {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     border-radius: 20px;
     overflow: hidden;
     aspect-ratio: 2 / 1;
     position: relative;
+    flex-shrink: 0;
 }
 
 .panel-image::after {
@@ -1808,20 +1807,20 @@ h3 {
 .panel-info {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 28px;
+    gap: 24px;
 }
 
 .panel-info p {
-    font-size: 1rem;
-    line-height: 1.6;
+    font-size: 0.95rem;
+    line-height: 1.55;
     color: #C8D8E8;
     margin-bottom: 0;
 }
 
 .panel-tech h4 {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--teal);
-    margin-bottom: 14px;
+    margin-bottom: 12px;
     font-weight: 500;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -1830,14 +1829,14 @@ h3 {
 .tech-items {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 8px;
+    margin-bottom: 16px;
 }
 
 .tech-items span {
     background: rgba(255, 255, 255, 0.08);
-    padding: 6px 14px;
-    font-size: 0.85rem;
+    padding: 5px 12px;
+    font-size: 0.8rem;
     border-radius: 30px;
     color: var(--white);
     letter-spacing: 0.3px;
@@ -1854,7 +1853,7 @@ h3 {
 
 .panel-metrics {
     background: rgba(255, 255, 255, 0.04);
-    padding: 18px 22px;
+    padding: 14px 18px;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -1862,8 +1861,8 @@ h3 {
 .panel-metrics div {
     display: flex;
     justify-content: space-between;
-    padding: 10px 0;
-    font-size: 0.9rem;
+    padding: 8px 0;
+    font-size: 0.85rem;
 }
 
 .panel-metrics div:not(:last-child) {
@@ -1883,33 +1882,35 @@ h3 {
 /* Блок с часами и стоимостью внизу активной панели */
 .active-panel-footer {
     margin-top: auto;
-    padding: 20px 28px;
+    padding: 16px 24px;
     border-top: 1px solid rgba(255, 51, 102, 0.15);
     background: linear-gradient(135deg, rgba(20, 198, 176, 0.05), rgba(139, 92, 246, 0.03));
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-shrink: 0;
 }
 
 .active-panel-footer .footer-hours,
 .active-panel-footer .footer-price {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 1rem;
+    gap: 8px;
+    font-size: 0.9rem;
 }
 
 .active-panel-footer .footer-hours span:first-child,
 .active-panel-footer .footer-price span:first-child {
     color: var(--gray);
     letter-spacing: 1px;
+    font-size: 0.8rem;
 }
 
 .active-panel-footer .footer-hours span:last-child,
 .active-panel-footer .footer-price span:last-child {
     color: var(--teal);
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 /* Мобильная адаптация */
@@ -1917,58 +1918,43 @@ h3 {
     .portfolio-accordion {
         flex-direction: column;
         min-height: auto;
-        overflow: visible;
         gap: 16px;
     }
     
     .accordion-panel {
-        border-right: 1px solid rgba(255, 51, 102, 0.15);
-        border-bottom: none;
-        min-height: auto;
         height: auto;
-        border-radius: 20px;
+        min-height: auto;
     }
     
     .accordion-panel:not(.active) .accordion-panel-header {
-        padding: 30px 20px;
+        padding: 20px;
         min-height: auto;
         flex-direction: row;
         justify-content: space-between;
     }
     
     .accordion-panel:not(.active) .panel-number {
-        font-size: 2rem;
+        font-size: 1.8rem;
         margin-bottom: 0;
     }
     
     .accordion-panel:not(.active) .panel-title h3 {
         font-size: 1rem;
-        letter-spacing: 3px;
-    }
-    
-    .accordion-panel:not(.active) .panel-stats {
-        display: flex;
-        flex-direction: row;
-        gap: 12px;
-    }
-    
-    .accordion-panel:not(.active) .panel-stats span {
-        font-size: 0.75rem;
-        padding: 5px 12px;
+        letter-spacing: 2px;
     }
     
     .accordion-panel.active .accordion-panel-header {
-        padding: 20px 24px;
+        padding: 16px 20px;
     }
     
     .accordion-panel.active .panel-title h3 {
-        font-size: 1.3rem;
-        letter-spacing: 3px;
+        font-size: 1.2rem;
+        letter-spacing: 2px;
     }
     
     .panel-info {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 16px;
     }
     
     .panel-image {
@@ -1976,13 +1962,13 @@ h3 {
     }
     
     .accordion-panel-content {
-        padding: 24px;
+        padding: 20px;
     }
     
     .active-panel-footer {
-        padding: 16px 24px;
+        padding: 12px 20px;
         flex-direction: column;
-        gap: 12px;
+        gap: 8px;
         align-items: flex-start;
     }
 }
