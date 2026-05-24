@@ -213,7 +213,7 @@ h3 {
 
 .btn-primary, .btn-outline, .service-card, .portfolio-card, .step-card,
 .mission-photo, .faq-item, .cover-content, .calculator-card, .calc-option, 
-.competence-card, .contact-card, .price-table {
+.contact-card, .price-table {
     background: rgba(18, 24, 32, 0.85);
     backdrop-filter: blur(2px);
     border: 1px solid rgba(255, 51, 102, 0.2);
