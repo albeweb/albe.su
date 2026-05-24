@@ -916,6 +916,7 @@ h3 {
 }
 
 .quote-text {
+    font-family: 'EN Regular', sans-serif;
     font-size: 1rem;
     font-weight: 400;
     color: var(--gray);
