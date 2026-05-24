@@ -827,72 +827,31 @@ button[type="submit"]:hover, .header-telegram:hover {
     letter-spacing: 0.05em;
     position: relative;
     
-    /* Градиентный текст */
+    /* Такой же градиент как в кнопках, но ярче */
     background: linear-gradient(135deg, 
-        #FF3366 0%,
-        #FF6699 20%,
-        #8B5CF6 45%,
-        #14C6B0 65%,
-        #FF3366 85%,
-        #FF6699 100%
+        var(--neon-pink) 0%,
+        var(--purple) 35%,
+        var(--teal) 65%,
+        var(--neon-pink) 100%
     );
     background-size: 200% auto;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    animation: glassGradient 8s ease infinite;
+    animation: textGradientMove 6s ease infinite;
     
-    /* Стеклянная подложка */
-    text-shadow: 0 0 20px rgba(255, 51, 102, 0.4);
-    position: relative;
-    display: inline-block;
+    /* Свечение для насыщенности */
+    text-shadow: 0 0 25px rgba(255, 51, 102, 0.5);
 }
 
-/* Стеклянный блик — через ::before (слой поверх) */
-.hero-title-line1::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(120deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.4) 30%,
-        rgba(255, 255, 255, 0.6) 50%,
-        rgba(255, 255, 255, 0.4) 70%,
-        transparent 100%
-    );
-    background-size: 200% 100%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: glassShine 5s ease infinite;
-    pointer-events: none;
-}
-
-/* Стеклянная обводка */
-.hero-title-line1::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    color: transparent;
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
-    z-index: -1;
-    pointer-events: none;
-}
-
-/* Эффект при наведении */
+/* Эффект при наведении - как у кнопок */
 .hero-title-line1:hover {
-    text-shadow: 0 0 30px rgba(255, 51, 102, 0.7), 0 0 15px rgba(20, 198, 176, 0.4);
+    text-shadow: 0 0 35px rgba(255, 51, 102, 0.8), 0 0 15px rgba(20, 198, 176, 0.5);
     transition: text-shadow 0.3s ease;
 }
 
-/* Анимация движущегося градиента */
-@keyframes glassGradient {
+/* Анимация движения градиента (как у контура кнопок, но медленнее) */
+@keyframes textGradientMove {
     0% {
         background-position: 0% 50%;
     }
@@ -901,16 +860,6 @@ button[type="submit"]:hover, .header-telegram:hover {
     }
     100% {
         background-position: 0% 50%;
-    }
-}
-
-/* Анимация стеклянного блика */
-@keyframes glassShine {
-    0% {
-        background-position: -200% 0;
-    }
-    100% {
-        background-position: 200% 0;
     }
 }
 
