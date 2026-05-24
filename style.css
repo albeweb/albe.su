@@ -138,7 +138,7 @@ h3, h4, h5, h6,
 p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-card p,
 .mission-text p, .faq-answer, .footer p, .footer a, .tech-item, .calc-option,
 .time-breakdown-item, .stack-explanation p, input, textarea, .stat-label,
-.price-card li, .price-note, .hero-title-line3 {
+.price-card li, .price-note {
     font-family: 'Geist', sans-serif;
     font-weight: 400;
     font-size: 1.0625rem;
@@ -657,7 +657,7 @@ h3 {
 }
 
 /* ============================================ */
-/* 9. HERO БАННЕР */
+/* 9. HERO БАННЕР (ТОЛЬКО 2 СТРОКИ) */
 /* ============================================ */
 
 .hero {
@@ -758,13 +758,14 @@ h3 {
     margin-top: auto;
 }
 
-/* 9.3 ЗАГОЛОВОК — УМЕНЬШЕННЫЕ ОТСТУПЫ */
+/* 9.3 ЗАГОЛОВОК — ТОЛЬКО 2 СТРОКИ */
 .hero-title {
     font-weight: 400;
     letter-spacing: 0.1em;
     margin-bottom: 1.5rem;
 }
 
+/* СТРОКА 1: РАЗРАБОТКА */
 .hero-title-line1 {
     font-size: clamp(1.8rem, 7.5vw, 7rem);
     font-weight: 400;
@@ -778,21 +779,21 @@ h3 {
     margin-bottom: 0.3rem;
 }
 
-/* Строка 2: дизайна и сайтов под ключ — все вместе */
+/* СТРОКА 2: дизайна и сайтов под ключ */
 .hero-title-line2 {
-    font-size: clamp(0.7rem, 2.2vw, 4rem);
+    font-size: clamp(0.7rem, 2.2vw, 3rem);
     font-weight: 400;
     display: inline-block;
     line-height: 1.3;
     margin-top: 0;
-    white-space: normal;
+    white-space: nowrap;
 }
 
 .hero-title-line2 .word-teal { color: var(--teal); }
 .hero-title-line2 .word-white { color: #FFFFFF; }
 .hero-title-line2 .word-gold { color: var(--neon-pink); }
 
-/* Убираем отдельный класс для "под ключ" — наследует шрифт от родителя */
+/* ФРАЗА "ПОД КЛЮЧ" — наследует все стили от строки 2 */
 .phrase-underkey {
     font-size: inherit;
     font-weight: inherit;
@@ -801,15 +802,7 @@ h3 {
     white-space: nowrap;
 }
 
-.hero-title-line3 {
-    font-size: clamp(1.5rem, 4vw, 5rem);
-    font-weight: 400;
-    color: #E2E8F0;
-    display: block;
-    line-height: 1.1;
-    margin-top: 0rem;
-    white-space: normal;
-}
+/* Удалён класс hero-title-line3 */
 
 .hero-tag {
     font-size: 1.1rem;
@@ -822,7 +815,7 @@ h3 {
     display: inline-block;
 }
 
-/* 9.4 СТАТИСТИКА — УМЕНЬШЕННЫЙ ОТСТУП */
+/* 9.4 СТАТИСТИКА */
 .hero-stats {
     display: flex;
     flex-direction: row;
@@ -1453,7 +1446,7 @@ h3 {
         line-height: 1.6;
     }
     
-    /* Убираем backdrop-filter на мобильных для производительности */
+    /* Убираем backdrop-filter на мобильных */
     .stat-item, .service-badge, .section-more-btn, .calculator-card, .contact-card,
     .competence-card, .faq-question, .service-card, .portfolio-card, .step-card,
     .calc-option, .header, .price-table {
