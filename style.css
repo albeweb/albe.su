@@ -1129,14 +1129,13 @@ h3 {
 }
 
 .competences-grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 30px;
     margin: 40px 0;
 }
 
 .competence-card {
-    flex: 1 1 280px;
     padding: 28px 24px;
     transition: all 0.3s;
     cursor: default;
@@ -1176,29 +1175,6 @@ h3 {
     transform: translateX(4px);
     backdrop-filter: blur(4px);
 }
-
-.tech-tooltip {
-    position: fixed;
-    background: #0F1419;
-    border: 1px solid var(--neon-pink);
-    padding: 18px 24px;
-    max-width: 380px;
-    width: max-content;
-    z-index: 2000;
-    border-top-left-radius: 28px;
-    border-bottom-right-radius: 28px;
-    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(12px);
-    font-weight: 400;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    color: #E6EDF5;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.2s;
-}
-
-.tech-tooltip strong { color: var(--neon-pink); font-weight: 500; }
 
 /* ============================================ */
 /* 12. ТАБЛИЦА ЦЕН */
@@ -1498,7 +1474,10 @@ h3 {
     .steps-container { flex-direction: column; gap: 20px; }
     .step-card { width: 100%; padding: 24px; }
     .step-num { font-size: 2rem; }
-    .competences-grid { flex-direction: column; gap: 20px; }
+    .competences-grid { 
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
     .competence-card { padding: 24px; }
     .calculator-card { padding: 24px; }
     .calculator-two-columns { flex-direction: column; gap: 24px; }
@@ -1573,6 +1552,11 @@ h3 {
     .contact-card { padding: 24px 20px; }
     .contact-card h2 { font-size: 1.5rem; }
     .faq-question { padding: 16px 18px; font-size: 0.9rem; }
+    
+    .competences-grid { 
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
     
     p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-card p,
     .mission-text p, .faq-answer, .footer p, .tech-item, .calc-option, .stack-explanation p,
@@ -1936,4 +1920,34 @@ h3 {
         align-items: flex-start;
         gap: 8px;
     }
+}
+
+/* ============================================ */
+/* 17. ТУЛТИПЫ ДЛЯ ТЕХНОЛОГИЙ */
+/* ============================================ */
+
+.tech-tooltip {
+    position: fixed;
+    background: #0F1419;
+    border: 1px solid var(--neon-pink);
+    padding: 18px 24px;
+    max-width: 380px;
+    width: max-content;
+    z-index: 2000;
+    border-top-left-radius: 28px;
+    border-bottom-right-radius: 28px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(12px);
+    font-weight: 400;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #E6EDF5;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.tech-tooltip strong {
+    color: var(--neon-pink);
+    font-weight: 500;
 }
