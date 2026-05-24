@@ -43,30 +43,6 @@
 <link rel="preload" as="style" href="style.css">
 <link rel="stylesheet" href="style.css">
 
-<style>
-/* Временные стили для сетки 4x4 - потом перенеси в style.css */
-.competences-grid-4x4 {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-    margin: 40px 0;
-}
-
-@media (max-width: 1200px) {
-    .competences-grid-4x4 {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 25px;
-    }
-}
-
-@media (max-width: 768px) {
-    .competences-grid-4x4 {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-}
-</style>
-
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -468,7 +444,7 @@
             <h2>Наши компетенции</h2>
             <a href="#services" class="section-more-btn">Подробнее</a>
         </div>
-        <div class="competences-grid-4x4">
+        <div class="competences-grid">
             <div class="competence-card">
                 <h3>Frontend</h3>
                 <p>Современные интерфейсы</p>
@@ -667,7 +643,105 @@
 <script src="common.js"></script>
 
 <script>
-// ===== ОСТАВЛЕН ТОЛЬКО МИНИМАЛЬНЫЙ КОД, ВСЕ ОСТАЛЬНЫЕ ФУНКЦИИ В common.js =====
+// ===== ОПИСАНИЯ ТЕХНОЛОГИЙ ДЛЯ ТУЛТИПОВ =====
+const techDesc = {
+    // Frontend
+    react: "React / Next.js — библиотека для создания интерфейсов. Next.js добавляет SSR и SSG для SEO-оптимизации.",
+    ts: "TypeScript — типизированный JavaScript. Повышает надёжность кода и упрощает разработку крупных проектов.",
+    redux: "Redux / RTK — управление состоянием приложения. Redux Toolkit упрощает настройку и уменьшает boilerplate.",
+    ssr: "SSR / SSG — серверный рендеринг и статическая генерация. Ускоряет загрузку страниц и улучшает SEO.",
+    css: "CSS3 / SASS / Tailwind — современные технологии стилизации. Tailwind ускоряет вёрстку, SASS добавляет переменные и миксины.",
+    
+    // Backend
+    node: "Node.js / Nest.js — серверный JavaScript. Nest.js предоставляет модульную архитектуру для масштабируемых приложений.",
+    python: "Python / Django — высокоуровневый язык для бэкенда и AI. Django имеет встроенную админ-панель и ORM.",
+    cpp: "C++ — язык для высокопроизводительных систем. Используется в финансах, играх, embedded-системах.",
+    postgres: "PostgreSQL / MS SQL — мощные реляционные СУБД. Поддерживают сложные запросы, транзакции и хранимые процедуры.",
+    redis: "Redis / Elasticsearch — Redis для кэширования и очередей, Elasticsearch для полнотекстового поиска и аналитики.",
+    rabbitmq: "RabbitMQ / Kafka — брокеры сообщений. RabbitMQ для маршрутизации, Kafka для потоковой обработки больших данных.",
+    
+    // DevOps & Cloud
+    kubernetes: "Kubernetes — оркестрация контейнеров. Автоматизирует развертывание, масштабирование и управление приложениями.",
+    docker: "Docker — контейнеризация приложений. Упрощает разработку, тестирование и деплой в любых средах.",
+    yandex: "Yandex Cloud / Selectel — облачные провайдеры в России. Виртуальные машины, объектное хранение, managed databases.",
+    gitlab: "GitLab CI/CD — встроенная система непрерывной интеграции. Автоматическая сборка, тестирование и деплой кода.",
+    terraform: "Terraform / Ansible — Infrastructure as Code. Terraform для создания инфраструктуры, Ansible для настройки серверов.",
+    jenkins: "Jenkins / ArgoCD — CI/CD инструменты. Jenkins для сборки, ArgoCD для GitOps в Kubernetes.",
+    
+    // Mobile
+    reactnative: "React Native / Expo — кроссплатформенная разработка. Один код для iOS и Android. Expo упрощает запуск.",
+    swift: "Swift / Objective C — языки для iOS. Swift — современный и безопасный, Objective C — для legacy проектов.",
+    kotlin: "Kotlin / Java — языки для Android. Kotlin — официальный язык Google, более лаконичный чем Java.",
+    flutter: "Flutter — фреймворк Google для кроссплатформенной разработки. Собственный движок и богатая библиотека виджетов.",
+    
+    // AI & ML
+    ml: "ML / DL / NLP — машинное обучение, глубокое обучение, обработка естественного языка. Ключевые направления AI.",
+    python_ml: "Python / Pandas / Sklearn — стандартный стек для Data Science. Pandas для данных, Sklearn для моделей.",
+    catboost: "CatBoost / OpenVINO — градиентный бустинг от Яндекса. OpenVINO для оптимизации моделей на Intel hardware.",
+    airflow: "Airflow / sqlalchemy — Airflow для оркестрации пайплайнов, sqlalchemy для работы с БД из Python.",
+    vision: "Computer Vision — компьютерное зрение. Распознавание объектов, лиц, сегментация изображений.",
+    voice: "Voice technologies ASR/TTS — распознавание и синтез речи. Автоматические субтитры, голосовые ассистенты.",
+    
+    // Testing & QA
+    postman: "Postman / Swagger — тестирование API. Postman для ручных и автоматических тестов, Swagger для документации.",
+    jmeter: "JMeter — нагрузочное тестирование. Симуляция высокой нагрузки для проверки производительности.",
+    testrail: "TestRail — управление тест-кейсами. Система для хранения и выполнения тестов, отчётности.",
+    charles: "Charles / Fiddler — снифферы трафика. Отладка HTTP/HTTPS запросов, подмена ответов, анализ трафика.",
+    
+    // Architecture & Design
+    uml: "UML 2.x / BPMN 2.0 — нотации для визуализации архитектуры. UML для классов и компонентов, BPMN для процессов.",
+    figma: "Figma — облачный инструмент для дизайна интерфейсов. Совместная работа в реальном времени, прототипирование.",
+    enterprise: "Sparx Enterprise Architect — профессиональный инструмент для моделирования архитектуры предприятия.",
+    iso: "ISO/IEC 12207 / 15288 — международные стандарты для жизненного цикла ПО и системной инженерии.",
+    scrum: "SCRUM / Agile — гибкие методологии разработки. Итеративная поставка, адаптация к изменениям.",
+    
+    // Data Analytics
+    bigdata: "Big Data аналитика — обработка и анализ больших объёмов данных. Инструменты: Hadoop, Spark, ClickHouse.",
+    trading: "Trading аналитика — анализ финансовых рынков. Алготрейдинг, прогнозирование цен, риск-менеджмент.",
+    blockchain: "Blockchain аналитика — анализ блокчейн-транзакций. Отслеживание кошельков, выявление мошенничества.",
+    graph: "Graph analytics — анализ графовых структур. Социальные сети, рекомендательные системы, поиск путей."
+};
+
+// ===== ИНИЦИАЛИЗАЦИЯ ТУЛТИПОВ =====
+function initTechTooltips() {
+    const tooltip = document.createElement('div');
+    tooltip.className = 'tech-tooltip';
+    document.body.appendChild(tooltip);
+    let timeout = null;
+    let rafId = null;
+    
+    document.querySelectorAll('.tech-item').forEach(el => {
+        el.addEventListener('mouseenter', function() {
+            if (rafId) cancelAnimationFrame(rafId);
+            
+            const tech = this.getAttribute('data-tech');
+            const desc = techDesc[tech] || "Технология, которую мы используем в наших проектах для достижения максимального результата.";
+            tooltip.innerHTML = '<strong>' + this.innerText + '</strong><br>' + desc;
+            
+            rafId = requestAnimationFrame(() => {
+                tooltip.style.opacity = '1';
+                const rect = this.getBoundingClientRect();
+                let left = rect.right + 15;
+                let top = rect.top + rect.height / 2 - 50;
+                if (left + 380 > window.innerWidth) left = rect.left - 390;
+                if (top < 10) top = 10;
+                if (top + 150 > window.innerHeight) top = window.innerHeight - 160;
+                tooltip.style.left = left + 'px';
+                tooltip.style.top = top + 'px';
+            });
+            
+            if (timeout) clearTimeout(timeout);
+        });
+        
+        el.addEventListener('mouseleave', function() {
+            timeout = setTimeout(function() { 
+                tooltip.style.opacity = '0'; 
+            }, 150);
+        });
+    });
+}
+
+// ===== ОСТАВЛЕН ТОЛЬКО МИНИМАЛЬНЫЙ КОД ДЛЯ ХЕДЕРА И ФУТЕРА =====
 
 function initHeaderFixed() {
     var header = document.getElementById('mainHeader');
@@ -725,6 +799,7 @@ function loadComponent(elementId, filePath, callback) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    initTechTooltips();
     loadComponent('header-placeholder', 'header.html', function() {
         initHeaderFixed();
         initBurgerMenu();
