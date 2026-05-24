@@ -322,28 +322,69 @@ function initBurgerMenu() {
     }
 }
 
-// ===== ГОРИЗОНТАЛЬНЫЙ АККОРДЕОН ПОРТФОЛИО =====
+// ===== ГОРИЗОНТАЛЬНЫЙ АККОРДЕОН ПОРТФОЛИО (ИСПРАВЛЕННЫЙ) =====
 function initPortfolioAccordion() {
     const panels = document.querySelectorAll('.accordion-panel');
     
     if (panels.length === 0) return;
     
-    panels.forEach(panel => {
+    // Функция для закрытия всех панелей
+    function closeAllPanels() {
+        panels.forEach(panel => {
+            panel.classList.remove('active');
+        });
+    }
+    
+    // Функция для открытия конкретной панели
+    function openPanel(panel) {
+        if (!panel) return;
+        
+        // Закрываем все панели
+        closeAllPanels();
+        
+        // Открываем выбранную
+        panel.classList.add('active');
+    }
+    
+    // Добавляем обработчики на каждую панель
+    panels.forEach((panel) => {
         const header = panel.querySelector('.accordion-panel-header');
         
-        if (!header) return;
+        if (header) {
+            header.style.cursor = 'pointer';
+            header.addEventListener('click', function(e) {
+                e.stopPropagation();
+                
+                // Если панель уже активна - ничего не делаем
+                if (panel.classList.contains('active')) return;
+                
+                // Открываем выбранную панель
+                openPanel(panel);
+            });
+        }
         
-        header.addEventListener('click', function(e) {
-            e.stopPropagation();
-            
-            if (panel.classList.contains('active')) {
+        // Также реагируем на клик по всей панели (кроме активной)
+        panel.addEventListener('click', function(e) {
+            // Если клик на кнопке, ссылке или внутри активного контента - игнорируем
+            if (e.target.closest('a') || 
+                e.target.closest('button') || 
+                e.target.closest('.accordion-panel-content')) {
                 return;
             }
             
-            panels.forEach(p => p.classList.remove('active'));
-            panel.classList.add('active');
+            // Если панель уже активна - ничего не делаем
+            if (panel.classList.contains('active')) return;
+            
+            // Открываем выбранную панель
+            openPanel(panel);
         });
     });
+    
+    // Убеждаемся, что первая панель активна при загрузке
+    const activePanel = document.querySelector('.accordion-panel.active');
+    if (!activePanel && panels.length > 0) {
+        panels[0].classList.add('active');
+    }
 }
 
 // ===== ЗАГРУЗКА КОМПОНЕНТОВ =====
