@@ -1594,7 +1594,7 @@ h3 {
     background: transparent;
     border-radius: 32px;
     overflow: visible;
-    min-height: 500px;
+    min-height: auto;
 }
 
 .accordion-panel {
@@ -1609,7 +1609,7 @@ h3 {
     border: 1px solid rgba(255, 51, 102, 0.15);
     border-radius: 24px;
     overflow: hidden;
-    height: 500px;
+    min-height: auto;
     box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.5);
 }
 
@@ -1750,15 +1750,13 @@ h3 {
 
 .accordion-panel-content {
     display: none;
-    padding: 24px;
+    padding: 28px;
     flex: 1;
-    overflow-y: auto;
     background: rgba(10, 14, 19, 0.3);
 }
 
 .accordion-panel.active .accordion-panel-content {
-    display: flex;
-    flex-direction: column;
+    display: block;
     animation: fadeInContent 0.3s ease;
 }
 
@@ -1773,12 +1771,11 @@ h3 {
 
 /* Изображение */
 .panel-image {
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     border-radius: 20px;
     overflow: hidden;
     aspect-ratio: 2 / 1;
     position: relative;
-    flex-shrink: 0;
 }
 
 .panel-image::after {
@@ -1807,20 +1804,20 @@ h3 {
 .panel-info {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 24px;
+    gap: 28px;
 }
 
 .panel-info p {
-    font-size: 0.95rem;
-    line-height: 1.55;
+    font-size: 1rem;
+    line-height: 1.6;
     color: #C8D8E8;
     margin-bottom: 0;
 }
 
 .panel-tech h4 {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: var(--teal);
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     font-weight: 500;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -1829,14 +1826,14 @@ h3 {
 .tech-items {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 16px;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 .tech-items span {
     background: rgba(255, 255, 255, 0.08);
-    padding: 5px 12px;
-    font-size: 0.8rem;
+    padding: 6px 14px;
+    font-size: 0.85rem;
     border-radius: 30px;
     color: var(--white);
     letter-spacing: 0.3px;
@@ -1853,7 +1850,7 @@ h3 {
 
 .panel-metrics {
     background: rgba(255, 255, 255, 0.04);
-    padding: 14px 18px;
+    padding: 18px 22px;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -1861,8 +1858,8 @@ h3 {
 .panel-metrics div {
     display: flex;
     justify-content: space-between;
-    padding: 8px 0;
-    font-size: 0.85rem;
+    padding: 10px 0;
+    font-size: 0.9rem;
 }
 
 .panel-metrics div:not(:last-child) {
@@ -1882,79 +1879,75 @@ h3 {
 /* Блок с часами и стоимостью внизу активной панели */
 .active-panel-footer {
     margin-top: auto;
-    padding: 16px 24px;
+    padding: 20px 28px;
     border-top: 1px solid rgba(255, 51, 102, 0.15);
     background: linear-gradient(135deg, rgba(20, 198, 176, 0.05), rgba(139, 92, 246, 0.03));
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-shrink: 0;
 }
 
 .active-panel-footer .footer-hours,
 .active-panel-footer .footer-price {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 0.9rem;
+    gap: 10px;
+    font-size: 1rem;
 }
 
 .active-panel-footer .footer-hours span:first-child,
 .active-panel-footer .footer-price span:first-child {
     color: var(--gray);
     letter-spacing: 1px;
-    font-size: 0.8rem;
 }
 
 .active-panel-footer .footer-hours span:last-child,
 .active-panel-footer .footer-price span:last-child {
     color: var(--teal);
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 /* Мобильная адаптация */
 @media (max-width: 900px) {
     .portfolio-accordion {
         flex-direction: column;
-        min-height: auto;
         gap: 16px;
     }
     
     .accordion-panel {
-        height: auto;
-        min-height: auto;
+        border-right: 1px solid rgba(255, 51, 102, 0.15);
     }
     
     .accordion-panel:not(.active) .accordion-panel-header {
-        padding: 20px;
-        min-height: auto;
+        padding: 30px 20px;
         flex-direction: row;
         justify-content: space-between;
+        min-height: auto;
     }
     
     .accordion-panel:not(.active) .panel-number {
-        font-size: 1.8rem;
+        font-size: 2rem;
         margin-bottom: 0;
     }
     
     .accordion-panel:not(.active) .panel-title h3 {
         font-size: 1rem;
-        letter-spacing: 2px;
+        letter-spacing: 3px;
     }
     
     .accordion-panel.active .accordion-panel-header {
-        padding: 16px 20px;
+        padding: 20px 24px;
+        flex-wrap: wrap;
     }
     
     .accordion-panel.active .panel-title h3 {
-        font-size: 1.2rem;
-        letter-spacing: 2px;
+        font-size: 1.3rem;
     }
     
     .panel-info {
         grid-template-columns: 1fr;
-        gap: 16px;
+        gap: 20px;
     }
     
     .panel-image {
@@ -1962,13 +1955,13 @@ h3 {
     }
     
     .accordion-panel-content {
-        padding: 20px;
+        padding: 24px;
     }
     
     .active-panel-footer {
-        padding: 12px 20px;
+        padding: 16px 24px;
         flex-direction: column;
-        gap: 8px;
+        gap: 12px;
         align-items: flex-start;
     }
 }
