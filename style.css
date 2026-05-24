@@ -1100,7 +1100,7 @@ h3 {
 .time-breakdown-item span:first-child { color: var(--teal); }
 
 /* ============================================ */
-/* 11. КОМПЕТЕНЦИИ И ТЕХНОЛОГИИ */
+/* 11. КОМПЕТЕНЦИИ И ТЕХНОЛОГИИ - ПРЕМИАЛЬНЫЙ СТИЛЬ */
 /* ============================================ */
 
 .services-grid {
@@ -1128,6 +1128,7 @@ h3 {
     opacity: 0.8;
 }
 
+/* Премиальные карточки компетенций */
 .competences-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1136,44 +1137,117 @@ h3 {
 }
 
 .competence-card {
-    padding: 28px 24px;
-    transition: all 0.3s;
+    position: relative;
+    background: linear-gradient(135deg, rgba(20, 26, 32, 0.95), rgba(13, 17, 23, 0.98));
+    backdrop-filter: blur(12px);
+    padding: 32px 28px;
+    border: 1px solid rgba(255, 51, 102, 0.15);
+    border-radius: 24px;
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     cursor: default;
+    overflow: hidden;
+    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.5);
+}
+
+.competence-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--neon-pink), var(--teal), var(--purple));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.competence-card:hover::before {
+    opacity: 1;
+}
+
+.competence-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 51, 102, 0.35);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 51, 102, 0.1);
+    background: linear-gradient(135deg, rgba(25, 32, 40, 0.98), rgba(18, 24, 32, 0.98));
 }
 
 .competence-card h3 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    font-weight: 500;
-    color: var(--neon-pink);
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--white), #C8D8E8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.02em;
+}
+
+.competence-card > p {
+    font-size: 0.85rem;
+    color: var(--gray);
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 51, 102, 0.2);
+    letter-spacing: 0.5px;
 }
 
 .competence-tech-list {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-top: 20px;
+    margin-top: 8px;
 }
 
 .tech-item {
     position: relative;
     display: inline-block;
-    background: #11181F;
-    padding: 8px 16px;
-    font-size: 0.9rem;
-    border: 1px solid #2A3A44;
-    border-top-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    background: linear-gradient(135deg, rgba(17, 24, 31, 0.9), rgba(13, 17, 23, 0.9));
+    padding: 10px 18px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid rgba(255, 51, 102, 0.2);
+    border-radius: 40px;
     cursor: help;
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     width: fit-content;
+    color: #C8D8E8;
+    letter-spacing: 0.3px;
+    backdrop-filter: blur(4px);
 }
 
 .tech-item:hover {
     border-color: var(--neon-pink);
-    background: rgba(30, 42, 94, 0.4);
-    transform: translateX(4px);
-    backdrop-filter: blur(4px);
+    background: linear-gradient(135deg, rgba(255, 51, 102, 0.15), rgba(139, 92, 246, 0.1));
+    transform: translateX(6px) translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 51, 102, 0.2);
+    color: var(--white);
+}
+
+/* Анимация появления карточек при скролле */
+.competence-card {
+    opacity: 0;
+    animation: fadeInUp 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+}
+
+.competence-card:nth-child(1) { animation-delay: 0.05s; }
+.competence-card:nth-child(2) { animation-delay: 0.1s; }
+.competence-card:nth-child(3) { animation-delay: 0.15s; }
+.competence-card:nth-child(4) { animation-delay: 0.2s; }
+.competence-card:nth-child(5) { animation-delay: 0.25s; }
+.competence-card:nth-child(6) { animation-delay: 0.3s; }
+.competence-card:nth-child(7) { animation-delay: 0.35s; }
+.competence-card:nth-child(8) { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* ============================================ */
@@ -1375,6 +1449,10 @@ h3 {
     h2 { font-size: 2.6rem; }
     .services-grid, .portfolio-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
     .portfolio-card .portfolio-image { height: 220px; }
+    .competences-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
 }
 
 @media (max-width: 1024px) {
@@ -1478,7 +1556,16 @@ h3 {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
     }
-    .competence-card { padding: 24px; }
+    .competence-card { 
+        padding: 24px 20px;
+    }
+    .competence-card h3 {
+        font-size: 1.4rem;
+    }
+    .tech-item {
+        padding: 7px 14px;
+        font-size: 0.75rem;
+    }
     .calculator-card { padding: 24px; }
     .calculator-two-columns { flex-direction: column; gap: 24px; }
     .calculator-right { padding: 20px; }
@@ -1516,6 +1603,10 @@ h3 {
 @media (max-width: 550px) {
     .services-badges { gap: 10px; }
     .service-badge { font-size: 0.75rem; padding: 8px 12px; }
+    .competences-grid { 
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
 }
 
 @media (max-width: 480px) {
