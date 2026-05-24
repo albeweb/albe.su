@@ -122,7 +122,7 @@ h3, h4, h5, h6,
 .service-card h3, .portfolio-info h3, .step-card h3, .competence-card h3,
 .faq-question, .price-card h4, .price-card .price,
 .nav-link, .service-badge, .calc-label, .stack-explanation h4, .footer-logo, .footer h4,
-.step-num, .section-more-btn, .totop {
+.step-num {
     font-family: 'Geist', sans-serif;
     font-weight: 500;
     letter-spacing: -0.02em;
@@ -228,28 +228,35 @@ h3 {
 
 /* Базовая голограмма для всех кнопок */
 .btn-primary, .btn-outline, .hero-btn-primary, .hero-btn-outline, 
-.section-more-btn, .totop, button[type="submit"] {
+.section-more-btn, .totop, button[type="submit"], .header-telegram {
     position: relative;
     background: transparent;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: none;
-    padding: 14px 36px;
-    font-family: 'Geist', sans-serif;
-    font-weight: 600;
-    font-size: 1rem;
+    padding: 21px 54px;
+    font-family: 'EN Regular', sans-serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+    letter-spacing: 0.02em;
     cursor: pointer;
     border-radius: 24px;
     overflow: hidden;
     transition: all 0.3s ease;
     z-index: 1;
+    color: #F5F5F5;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
 /* Вращающийся световой контур */
 .btn-primary::before, .btn-outline::before, 
 .hero-btn-primary::before, .hero-btn-outline::before,
 .section-more-btn::before, .totop::before,
-button[type="submit"]::before {
+button[type="submit"]::before, .header-telegram::before {
     content: '';
     position: absolute;
     top: -50%;
@@ -277,7 +284,7 @@ button[type="submit"]::before {
 .btn-primary::after, .btn-outline::after,
 .hero-btn-primary::after, .hero-btn-outline::after,
 .section-more-btn::after, .totop::after,
-button[type="submit"]::after {
+button[type="submit"]::after, .header-telegram::after {
     content: '';
     position: absolute;
     inset: 2px;
@@ -290,46 +297,16 @@ button[type="submit"]::after {
 .btn-primary:hover::before, .btn-outline:hover::before,
 .hero-btn-primary:hover::before, .hero-btn-outline:hover::before,
 .section-more-btn:hover::before, .totop:hover::before,
-button[type="submit"]:hover::before {
+button[type="submit"]:hover::before, .header-telegram:hover::before {
     opacity: 0.8;
 }
 
 .btn-primary:hover, .btn-outline:hover,
 .hero-btn-primary:hover, .hero-btn-outline:hover,
 .section-more-btn:hover, .totop:hover,
-button[type="submit"]:hover {
+button[type="submit"]:hover, .header-telegram:hover {
     transform: translateY(-2px);
     letter-spacing: 0.5px;
-}
-
-/* Специфичные цвета для разных кнопок */
-.btn-primary, .hero-btn-primary, button[type="submit"] {
-    color: var(--white);
-}
-
-.btn-outline, .hero-btn-outline {
-    color: var(--white);
-}
-
-.section-more-btn {
-    color: var(--neon-pink);
-    padding: 8px 20px;
-    font-size: 0.9rem;
-}
-
-.section-more-btn::after {
-    content: '→';
-    margin-left: 8px;
-    transition: transform 0.2s;
-}
-
-.section-more-btn:hover::after {
-    transform: translateX(4px);
-}
-
-.totop {
-    padding: 12px 18px;
-    font-size: 1.8rem;
 }
 
 /* Анимация вращения */
@@ -342,21 +319,41 @@ button[type="submit"]:hover {
     }
 }
 
+/* Специфичные размеры для разных кнопок */
+.section-more-btn {
+    padding: 16px 40px;
+    font-size: 1rem;
+}
+
+.section-more-btn::after {
+    display: none;
+}
+
+.totop {
+    padding: 14px 24px;
+    font-size: 1.6rem;
+    width: auto;
+    height: auto;
+}
+
+.header-telegram {
+    padding: 12px 28px;
+    font-size: 0.95rem;
+    backdrop-filter: blur(12px);
+}
+
+/* Кнопки в hero-баннере */
+.hero-btn-primary, .hero-btn-outline {
+    font-size: 1.2rem;
+    padding: 21px 54px;
+}
+
 /* КНОПКИ В HERO-БАННЕРЕ */
 .hero-buttons {
     display: flex;
     gap: 20px;
     margin-top: 2rem;
     flex-wrap: wrap;
-}
-
-.hero-btn-primary, .hero-btn-outline {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    text-decoration: none;
-    text-transform: none;
 }
 
 .service-card, .portfolio-card, .step-card, .mission-photo, .faq-item, .contact-card {
@@ -673,37 +670,6 @@ button[type="submit"]:hover {
     backdrop-filter: blur(2px);
 }
 
-.header-telegram {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 18px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-top-left-radius: 24px;
-    border-bottom-right-radius: 24px;
-    text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    font-size: 0.9rem;
-    color: var(--white);
-}
-
-.header-telegram svg {
-    fill: var(--white);
-    transition: transform 0.2s ease;
-}
-
-.header-telegram:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: var(--white);
-    transform: translateY(-2px);
-    backdrop-filter: blur(4px);
-}
-
-.header-telegram:hover svg {
-    transform: scale(1.05);
-}
-
 .burger {
     display: none;
     flex-direction: column;
@@ -987,8 +953,8 @@ button[type="submit"]:hover {
     }
     .hero-btn-primary,
     .hero-btn-outline {
-        padding: 10px 16px;
-        font-size: 0.85rem;
+        padding: 16px 28px;
+        font-size: 1rem;
         flex: 1;
         text-align: center;
     }
@@ -997,8 +963,8 @@ button[type="submit"]:hover {
 @media (max-width: 480px) {
     .hero-btn-primary,
     .hero-btn-outline {
-        padding: 8px 14px;
-        font-size: 0.8rem;
+        padding: 14px 20px;
+        font-size: 0.9rem;
     }
 }
 
@@ -1357,19 +1323,6 @@ button[type="submit"]:hover {
 
 .footer a:hover { color: var(--neon-pink); }
 
-.totop {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.8rem;
-    border-radius: 24px;
-}
-
 /* ============================================ */
 /* 14. CLS FIX */
 /* ============================================ */
@@ -1490,8 +1443,6 @@ button[type="submit"]:hover {
     }
     .nav-link::after { display: none; }
     .nav-link:hover { padding-left: 8px; }
-    .header-telegram { margin-top: 15px; }
-    .header-telegram span { display: inline; }
     
     .container, .header .container, .hero .container { padding: 0 20px; }
     .section { padding: 60px 0; }
@@ -1571,7 +1522,7 @@ button[type="submit"]:hover {
     .competence-card, .faq-question, .service-card, .portfolio-card, .step-card,
     .calc-option, .header, .price-table,
     .btn-primary, .btn-outline, .hero-btn-primary, .hero-btn-outline, 
-    .section-more-btn, .totop, button[type="submit"] {
+    .section-more-btn, .totop, button[type="submit"], .header-telegram {
         backdrop-filter: none !important;
     }
     
