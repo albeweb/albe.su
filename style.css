@@ -1658,7 +1658,7 @@ h3 {
 }
 
 .accordion-panel:not(.active) .panel-number {
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 20px;
     letter-spacing: 6px;
     background: linear-gradient(135deg, var(--neon-pink), var(--purple));
@@ -1670,7 +1670,7 @@ h3 {
 }
 
 .accordion-panel:not(.active) .panel-title h3 {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     color: var(--white);
     font-weight: 500;
     letter-spacing: 4px;
@@ -1706,7 +1706,7 @@ h3 {
 }
 
 .accordion-panel.active .panel-title h3 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: var(--white);
     letter-spacing: 4px;
     font-weight: 600;
@@ -1739,7 +1739,7 @@ h3 {
 
 /* Изображение */
 .panel-image {
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     border-radius: 20px;
     overflow: hidden;
     aspect-ratio: 2 / 1;
@@ -1758,7 +1758,7 @@ h3 {
     transform: scale(1.03);
 }
 
-/* Описание текста */
+/* Описание текста - увеличен шрифт */
 .panel-description {
     flex: 1;
     margin-bottom: 20px;
@@ -1766,7 +1766,7 @@ h3 {
 }
 
 .panel-description p {
-    font-size: 1rem;
+    font-size: 1.15rem;
     line-height: 1.6;
     color: #C8D8E8;
     margin: 0;
@@ -1776,15 +1776,15 @@ h3 {
 .panel-bottom {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
     flex-shrink: 0;
 }
 
-/* Технологии */
+/* Технологии - увеличен шрифт */
 .panel-tech h4 {
-    font-size: 0.8rem;
+    font-size: 1rem;
     color: var(--teal);
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     font-weight: 500;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -1793,13 +1793,13 @@ h3 {
 .tech-items {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px;
 }
 
 .tech-items span {
     background: rgba(255, 255, 255, 0.08);
-    padding: 5px 12px;
-    font-size: 0.8rem;
+    padding: 8px 16px;
+    font-size: 0.95rem;
     border-radius: 30px;
     color: var(--white);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1812,10 +1812,10 @@ h3 {
     transform: translateY(-2px);
 }
 
-/* Метрики в одну строку */
+/* Метрики в одну строку - увеличен шрифт */
 .panel-metrics {
     background: rgba(255, 255, 255, 0.04);
-    padding: 14px 18px;
+    padding: 16px 20px;
     border-radius: 20px;
     display: flex;
     justify-content: space-between;
@@ -1825,7 +1825,7 @@ h3 {
 .panel-metrics div {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
     flex: 1;
     text-align: center;
 }
@@ -1836,20 +1836,20 @@ h3 {
 
 .panel-metrics span:first-child {
     color: var(--gray);
-    font-size: 0.7rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
 .panel-metrics span:last-child {
     color: var(--white);
-    font-weight: 500;
-    font-size: 0.9rem;
+    font-weight: 600;
+    font-size: 1.1rem;
 }
 
-/* Футер с часами и стоимостью */
+/* Футер с часами и стоимостью - увеличен шрифт */
 .active-panel-footer {
-    padding: 16px 28px;
+    padding: 18px 28px;
     border-top: 1px solid rgba(255, 51, 102, 0.15);
     background: linear-gradient(135deg, rgba(20, 198, 176, 0.05), rgba(139, 92, 246, 0.03));
     display: flex;
@@ -1862,13 +1862,13 @@ h3 {
 .active-panel-footer .footer-price {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 .active-panel-footer .footer-hours span:first-child,
 .active-panel-footer .footer-price span:first-child {
     color: var(--gray);
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     letter-spacing: 1px;
 }
 
@@ -1876,7 +1876,7 @@ h3 {
 .active-panel-footer .footer-price span:last-child {
     color: var(--teal);
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
 }
 
 /* Мобильная адаптация */
@@ -1897,21 +1897,25 @@ h3 {
     }
     
     .accordion-panel:not(.active) .panel-number {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         margin-bottom: 0;
     }
     
     .accordion-panel:not(.active) .panel-title h3 {
-        font-size: 1rem;
+        font-size: 1.1rem;
         letter-spacing: 2px;
     }
     
     .accordion-panel.active .panel-title h3 {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
     }
     
     .accordion-panel-content {
         padding: 20px;
+    }
+    
+    .panel-description p {
+        font-size: 1rem;
     }
     
     .panel-metrics {
