@@ -1595,8 +1595,8 @@ h3 {
     border-radius: 24px;
     overflow: hidden;
     min-height: 480px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 51, 102, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 51, 102, 0.08);
 }
 
 .accordion-panel {
@@ -1662,7 +1662,7 @@ h3 {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid rgba(255, 51, 102, 0.15);
+    border-bottom: 1px solid rgba(255, 51, 102, 0.12);
     background: rgba(20, 198, 176, 0.04);
 }
 
@@ -1824,7 +1824,7 @@ h3 {
     gap: 24px;
     margin-top: 20px;
     padding-top: 16px;
-    border-top: 1px solid rgba(255, 51, 102, 0.1);
+    border-top: 1px solid rgba(255, 51, 102, 0.08);
 }
 
 .active-bottom-stats span {
