@@ -1594,19 +1594,22 @@ h3 {
     background: #141A20;
     border-radius: 0;
     overflow: hidden;
-    min-height: 480px;
+    min-height: auto;
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
 }
 
 .accordion-panel {
     flex: 1;
     position: relative;
     background: #141A20;
-    transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     cursor: pointer;
     display: flex;
     flex-direction: column;
     border-right: 1px solid rgba(255, 51, 102, 0.15);
     overflow: hidden;
+    min-height: auto;
+    height: auto;
 }
 
 .accordion-panel:last-child {
@@ -1629,8 +1632,8 @@ h3 {
     justify-content: center;
     align-items: center;
     gap: 20px;
-    height: 100%;
-    min-height: 480px;
+    height: auto;
+    min-height: auto;
 }
 
 .accordion-panel:not(.active) .panel-number {
@@ -1640,7 +1643,7 @@ h3 {
 }
 
 .accordion-panel:not(.active) .panel-title h3 {
-    font-size: 1rem;
+    font-size: 0.9rem;
     writing-mode: vertical-rl;
     text-orientation: mixed;
     transform: rotate(180deg);
@@ -1653,14 +1656,14 @@ h3 {
 
 /* Активная панель - нормальное отображение */
 .accordion-panel.active .accordion-panel-header {
-    padding: 28px 24px;
+    padding: 24px 24px;
     text-align: left;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid rgba(255, 51, 102, 0.2);
-    background: rgba(20, 198, 176, 0.08);
+    background: rgba(20, 198, 176, 0.06);
 }
 
 .accordion-panel.active .panel-number {
@@ -1671,7 +1674,7 @@ h3 {
 }
 
 .accordion-panel.active .panel-title h3 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     writing-mode: horizontal-tb;
     transform: none;
     white-space: normal;
@@ -1680,20 +1683,20 @@ h3 {
 .accordion-panel.active .panel-stats {
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    gap: 16px;
     margin-top: 0;
 }
 
 .accordion-panel.active .panel-stats span {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     background: rgba(255, 255, 255, 0.08);
-    padding: 6px 14px;
+    padding: 5px 12px;
     border-radius: 20px;
     letter-spacing: 0.5px;
 }
 
 .accordion-panel-header {
-    transition: all 0.4s ease;
+    transition: all 0.3s ease;
 }
 
 .panel-number {
@@ -1711,19 +1714,20 @@ h3 {
 
 .accordion-panel-content {
     display: none;
-    padding: 28px;
+    padding: 24px;
     flex: 1;
+    overflow-y: auto;
 }
 
 .accordion-panel.active .accordion-panel-content {
     display: block;
-    animation: fadeInUp 0.5s ease;
+    animation: fadeInUp 0.3s ease;
 }
 
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(15px);
     }
     to {
         opacity: 1;
@@ -1733,7 +1737,7 @@ h3 {
 
 /* Изображение - формат 2:1 */
 .panel-image {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     border-radius: 16px;
     overflow: hidden;
     aspect-ratio: 2 / 1;
@@ -1754,20 +1758,20 @@ h3 {
 .panel-info {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 28px;
+    gap: 24px;
 }
 
 .panel-info p {
     font-size: 1rem;
-    line-height: 1.6;
+    line-height: 1.55;
     color: #B0C4DE;
     margin-bottom: 0;
 }
 
 .panel-tech h4 {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--teal);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     font-weight: 500;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -1777,12 +1781,12 @@ h3 {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
 .tech-items span {
     background: rgba(255, 255, 255, 0.08);
-    padding: 6px 14px;
+    padding: 5px 12px;
     font-size: 0.85rem;
     border-radius: 20px;
     color: var(--white);
@@ -1797,20 +1801,20 @@ h3 {
 }
 
 .panel-metrics {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 14px 18px;
     border-radius: 16px;
 }
 
 .panel-metrics div {
     display: flex;
     justify-content: space-between;
-    padding: 8px 0;
-    font-size: 0.9rem;
+    padding: 7px 0;
+    font-size: 0.85rem;
 }
 
 .panel-metrics div:not(:last-child) {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .panel-metrics span:first-child {
@@ -1823,23 +1827,32 @@ h3 {
     font-weight: 500;
 }
 
+/* Фикс для плавности - предотвращаем дергание */
+.portfolio-section,
+.portfolio-wrapper,
+.section .container {
+    transition: none;
+}
+
 /* Мобильная адаптация */
 @media (max-width: 900px) {
     .portfolio-accordion {
         flex-direction: column;
         min-height: auto;
+        overflow: visible;
     }
     
     .accordion-panel {
         border-right: none;
         border-bottom: 1px solid rgba(255, 51, 102, 0.1);
         min-height: auto;
+        height: auto;
     }
     
     .accordion-panel:not(.active) .accordion-panel-header {
         writing-mode: horizontal-tb;
         transform: none;
-        padding: 18px 24px;
+        padding: 16px 20px;
         flex-direction: row;
         justify-content: space-between;
         min-height: auto;
@@ -1855,24 +1868,33 @@ h3 {
     .accordion-panel:not(.active) .panel-stats {
         display: flex;
         flex-direction: row;
-        gap: 16px;
+        gap: 12px;
     }
     
     .accordion-panel:not(.active) .panel-stats span {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
     }
     
     .accordion-panel.active .accordion-panel-header {
         flex-wrap: wrap;
-        gap: 12px;
+        gap: 10px;
+        padding: 16px 20px;
+    }
+    
+    .accordion-panel.active .panel-title h3 {
+        font-size: 1.2rem;
     }
     
     .panel-info {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 18px;
     }
     
     .panel-image {
         aspect-ratio: 16 / 9;
+    }
+    
+    .accordion-panel-content {
+        padding: 20px;
     }
 }
