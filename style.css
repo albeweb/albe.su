@@ -121,8 +121,7 @@ h1, h2,
 h3, h4, h5, h6,
 .service-card h3, .portfolio-info h3, .step-card h3, .competence-card h3,
 .faq-question, .price-card h4, .price-card .price,
-.nav-link, .btn-primary, .btn-outline,
-.service-badge, .calc-label, .stack-explanation h4, .footer-logo, .footer h4,
+.nav-link, .service-badge, .calc-label, .stack-explanation h4, .footer-logo, .footer h4,
 .step-num, .section-more-btn, .totop {
     font-family: 'Geist', sans-serif;
     font-weight: 500;
@@ -156,7 +155,6 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
 }
 
 .service-badge, .quote-text { font-weight: 400; }
-.btn-primary, .btn-outline { font-weight: 500; }
 
 /* СТИЛИ ДЛЯ ЦИТАТЫ */
 .quote-text {
@@ -211,7 +209,7 @@ h3 {
 /* 6. КАРТОЧКИ И ОБЩИЕ БЛОКИ */
 /* ============================================ */
 
-.btn-primary, .btn-outline, .service-card, .portfolio-card, .step-card,
+.service-card, .portfolio-card, .step-card,
 .mission-photo, .faq-item, .cover-content, .calculator-card, .calc-option, 
 .contact-card, .price-table {
     background: rgba(18, 24, 32, 0.85);
@@ -224,6 +222,126 @@ h3 {
     border-bottom-left-radius: 0;
 }
 
+/* ============================================ */
+/* 6.1. ГОЛОГРАФИЧЕСКИЕ КНОПКИ */
+/* ============================================ */
+
+/* Базовая голограмма для всех кнопок */
+.btn-primary, .btn-outline, .hero-btn-primary, .hero-btn-outline, 
+.section-more-btn, .totop, button[type="submit"] {
+    position: relative;
+    background: transparent;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: none;
+    padding: 14px 36px;
+    font-family: 'Geist', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 24px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+/* Вращающийся световой контур */
+.btn-primary::before, .btn-outline::before, 
+.hero-btn-primary::before, .hero-btn-outline::before,
+.section-more-btn::before, .totop::before,
+button[type="submit"]::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        from 0deg,
+        transparent,
+        var(--neon-pink),
+        transparent,
+        var(--teal),
+        transparent,
+        var(--purple),
+        transparent
+    );
+    animation: hologramRotate 4s linear infinite;
+    opacity: 0.4;
+    transition: opacity 0.3s ease;
+    z-index: -2;
+    border-radius: inherit;
+}
+
+/* Внутренний затемнённый слой */
+.btn-primary::after, .btn-outline::after,
+.hero-btn-primary::after, .hero-btn-outline::after,
+.section-more-btn::after, .totop::after,
+button[type="submit"]::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: rgba(10, 14, 19, 0.8);
+    border-radius: 22px;
+    z-index: -1;
+}
+
+/* Ховер эффекты */
+.btn-primary:hover::before, .btn-outline:hover::before,
+.hero-btn-primary:hover::before, .hero-btn-outline:hover::before,
+.section-more-btn:hover::before, .totop:hover::before,
+button[type="submit"]:hover::before {
+    opacity: 0.8;
+}
+
+.btn-primary:hover, .btn-outline:hover,
+.hero-btn-primary:hover, .hero-btn-outline:hover,
+.section-more-btn:hover, .totop:hover,
+button[type="submit"]:hover {
+    transform: translateY(-2px);
+    letter-spacing: 0.5px;
+}
+
+/* Специфичные цвета для разных кнопок */
+.btn-primary, .hero-btn-primary, button[type="submit"] {
+    color: var(--white);
+}
+
+.btn-outline, .hero-btn-outline {
+    color: var(--white);
+}
+
+.section-more-btn {
+    color: var(--neon-pink);
+    padding: 8px 20px;
+    font-size: 0.9rem;
+}
+
+.section-more-btn::after {
+    content: '→';
+    margin-left: 8px;
+    transition: transform 0.2s;
+}
+
+.section-more-btn:hover::after {
+    transform: translateX(4px);
+}
+
+.totop {
+    padding: 12px 18px;
+    font-size: 1.8rem;
+}
+
+/* Анимация вращения */
+@keyframes hologramRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 /* КНОПКИ В HERO-БАННЕРЕ */
 .hero-buttons {
     display: flex;
@@ -232,118 +350,20 @@ h3 {
     flex-wrap: wrap;
 }
 
-.hero-btn-primary {
+.hero-btn-primary, .hero-btn-outline {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 20px;
-    font-size: 1rem;
-    font-weight: 400;
-    font-family: 'EN Regular', sans-serif;
-    letter-spacing: 0.3px;
-    cursor: pointer;
-    text-decoration: none;
-    background: var(--neon-pink);
-    color: #FFFFFF;
-    border: 1.5px solid var(--neon-pink);
-    border-top-left-radius: 28px;
-    border-bottom-right-radius: 28px;
-    border-top-right-radius: 0;
-    border-bottom-left-radius: 0;
-    transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    text-transform: none;
     gap: 8px;
-}
-
-.hero-btn-primary:hover {
-    background: transparent;
-    color: var(--white);
-    border: 1.5px solid var(--neon-pink);
-    backdrop-filter: blur(4px);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(30, 42, 94, 0.3);
-}
-
-.hero-btn-outline {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px 20px;
-    font-size: 1rem;
-    font-weight: 400;
-    font-family: 'EN Regular', sans-serif;
-    letter-spacing: 0.3px;
-    cursor: pointer;
     text-decoration: none;
-    background: transparent;
-    color: #FFFFFF;
-    border: 1.5px solid var(--teal);
-    border-top-left-radius: 28px;
-    border-bottom-right-radius: 28px;
-    border-top-right-radius: 0;
-    border-bottom-left-radius: 0;
-    transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     text-transform: none;
-    gap: 8px;
-}
-
-.hero-btn-outline:hover {
-    background: rgba(20, 198, 176, 0.1);
-    border-color: var(--teal);
-    color: var(--teal);
-    transform: translateY(-3px);
-    backdrop-filter: blur(4px);
-    box-shadow: 0 8px 20px rgba(30, 42, 94, 0.3);
-}
-
-.btn-primary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    padding: 14px 36px;
-    font-size: 1rem;
-    cursor: pointer;
-    text-decoration: none;
-    background: linear-gradient(135deg, var(--neon-pink), var(--purple));
-    color: #0D1117;
-    border: none;
-}
-
-.btn-outline {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    padding: 14px 36px;
-    font-size: 1rem;
-    cursor: pointer;
-    text-decoration: none;
-    background: transparent;
-    color: #FFFFFF;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-}
-
-.btn-primary:hover {
-    background: transparent;
-    color: var(--white);
-    border: 1px solid var(--neon-pink);
-    backdrop-filter: blur(4px);
-}
-
-.btn-outline:hover {
-    border-color: var(--neon-pink);
-    background: rgba(255, 51, 102, 0.05);
-    color: var(--white);
-    backdrop-filter: blur(4px);
 }
 
 .service-card, .portfolio-card, .step-card, .mission-photo, .faq-item, .contact-card {
     padding: 32px;
 }
 
-.service-card:hover, .portfolio-card:hover, .step-card:hover, .calc-option:hover,
-.section-more-btn:hover {
+.service-card:hover, .portfolio-card:hover, .step-card:hover, .calc-option:hover {
     transform: translateY(-5px);
     border-color: var(--neon-pink);
     backdrop-filter: blur(4px);
@@ -369,31 +389,6 @@ h3 {
 }
 
 .section-header h2 { margin-bottom: 0; }
-
-.section-more-btn {
-    font-size: 0.9rem;
-    color: var(--neon-pink);
-    text-decoration: none;
-    padding: 8px 20px;
-    border: 1px solid rgba(255, 51, 102, 0.4);
-    border-top-left-radius: 24px;
-    border-bottom-right-radius: 24px;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(18, 24, 32, 0.6);
-    backdrop-filter: blur(4px);
-}
-
-.section-more-btn::after {
-    content: '→';
-    font-size: 1rem;
-    transition: transform 0.2s;
-}
-
-.section-more-btn:hover::after { transform: translateX(4px); }
-.section-more-btn:hover { background: rgba(30, 42, 94, 0.4); backdrop-filter: blur(4px); }
 
 /* ПОРТФОЛИО */
 .portfolio-card .portfolio-image {
@@ -1366,29 +1361,13 @@ h3 {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    background: linear-gradient(135deg, var(--neon-pink), var(--purple));
     width: 48px;
     height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    border: none;
     font-size: 1.8rem;
-    color: #0D1117;
-    border-top-left-radius: 24px;
-    border-bottom-right-radius: 24px;
-    transition: 0.2s;
-    z-index: 99;
-    font-weight: 500;
-}
-
-.totop:hover {
-    background: transparent;
-    border: 1px solid var(--neon-pink);
-    color: var(--white);
-    transform: translateY(-4px);
-    backdrop-filter: blur(4px);
+    border-radius: 24px;
 }
 
 /* ============================================ */
@@ -1580,7 +1559,6 @@ h3 {
     .form-row { grid-template-columns: 1fr; gap: 0; }
     .contact-card h2 { font-size: 1.8rem; }
     .section-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-    .section-more-btn { align-self: flex-start; }
     
     p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-card p,
     .mission-text p, .faq-answer, .footer p, .tech-item, .calc-option, .stack-explanation p,
@@ -1589,9 +1567,11 @@ h3 {
         line-height: 1.6;
     }
     
-    .stat-item, .service-badge, .section-more-btn, .calculator-card, .contact-card,
+    .stat-item, .service-badge, .calculator-card, .contact-card,
     .competence-card, .faq-question, .service-card, .portfolio-card, .step-card,
-    .calc-option, .header, .price-table {
+    .calc-option, .header, .price-table,
+    .btn-primary, .btn-outline, .hero-btn-primary, .hero-btn-outline, 
+    .section-more-btn, .totop, button[type="submit"] {
         backdrop-filter: none !important;
     }
     
