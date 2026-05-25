@@ -160,7 +160,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     font-size: 0.9rem;
     color: var(--gray);
     letter-spacing: 3px;
-    text-transform: uppercase;
+    text-transform: lowercase;
     display: inline-block;
 }
 
@@ -175,7 +175,7 @@ h1 {
     font-weight: 400;
     letter-spacing: -0.02em;
     color: var(--white);
-    text-transform: uppercase;
+    text-transform: lowercase;
 }
 
 h2 {
@@ -651,7 +651,7 @@ h4 {
     letter-spacing: 6px;
     margin-bottom: 1.5rem;
     color: var(--gray);
-    text-transform: uppercase;
+    text-transform: lowercase;
     opacity: 0.9;
     display: inline-block;
 }
@@ -666,15 +666,14 @@ h4 {
     margin-bottom: 0.5rem;
     letter-spacing: 0.05em;
     position: relative;
-    
     background: var(--ig-gradient);
     background-size: 200% auto;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    
     text-shadow: 0 2px 5px rgba(0,0,0,0.3), 0 4px 15px rgba(0,0,0,0.2);
     display: inline-block;
+    text-transform: lowercase;
 }
 
 .hero-title-line1::before {
@@ -727,6 +726,7 @@ h4 {
     margin-bottom: 0;
     white-space: normal;
     color: var(--white);
+    text-transform: lowercase;
 }
 
 .hero-title-line2 .word-teal, 
