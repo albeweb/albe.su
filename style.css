@@ -111,7 +111,9 @@ h1, h2,
 .contact-card h2,
 .price-table h3,
 .hero-tag,
-.quote-text {
+.quote-text,
+.nav-link,
+.header-telegram {
     font-family: 'EN Regular', sans-serif;
     font-weight: 400;
     letter-spacing: -0.02em;
@@ -121,7 +123,7 @@ h1, h2,
 h3, h4, h5, h6,
 .service-card h3, .portfolio-info h3, .step-card h3, .competence-card h3,
 .faq-question, .price-card h4, .price-card .price,
-.nav-link, .service-badge, .calc-label, .stack-explanation h4, .footer-logo, .footer h4,
+.service-badge, .calc-label, .stack-explanation h4, .footer-logo, .footer h4,
 .step-num {
     font-family: 'Geist', sans-serif;
     font-weight: 500;
@@ -220,7 +222,7 @@ h3 {
 }
 
 /* ============================================ */
-/* 6.1. ГОЛОГРАФИЧЕСКИЕ КНОПКИ */
+/* 6.1. ГОЛОГРАФИЧЕСКИЕ КНОПКИ - СТАТИЧНАЯ ОБВОДКА */
 /* ============================================ */
 
 /* Базовая голограмма для всех кнопок */
@@ -238,7 +240,6 @@ h3 {
     letter-spacing: 0.02em;
     cursor: pointer;
     border-radius: 24px;
-    overflow: hidden;
     transition: all 0.3s ease;
     z-index: 1;
     color: #F5F5F5;
@@ -249,32 +250,25 @@ h3 {
     gap: 8px;
 }
 
-/* Вращающийся световой контур */
+/* Статичная голографическая обводка через псевдоэлемент */
 .btn-primary::before, .btn-outline::before, 
 .hero-btn-primary::before, .hero-btn-outline::before,
 .section-more-btn::before, .totop::before,
 button[type="submit"]::before, .header-telegram::before {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: conic-gradient(
-        from 0deg,
-        transparent,
-        var(--neon-pink),
-        transparent,
-        var(--teal),
-        transparent,
-        var(--purple),
-        transparent
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, 
+        var(--neon-pink), 
+        var(--purple), 
+        var(--teal), 
+        var(--neon-pink)
     );
-    animation: hologramRotate 4s linear infinite;
-    opacity: 0.4;
-    transition: opacity 0.3s ease;
+    border-radius: 26px;
     z-index: -2;
-    border-radius: 24px;
 }
 
 /* Внутренний затемнённый слой */
@@ -291,13 +285,6 @@ button[type="submit"]::after, .header-telegram::after {
 }
 
 /* Ховер эффекты */
-.btn-primary:hover::before, .btn-outline:hover::before,
-.hero-btn-primary:hover::before, .hero-btn-outline:hover::before,
-.section-more-btn:hover::before, .totop:hover::before,
-button[type="submit"]:hover::before, .header-telegram:hover::before {
-    opacity: 0.8;
-}
-
 .btn-primary:hover, .btn-outline:hover,
 .hero-btn-primary:hover, .hero-btn-outline:hover,
 .section-more-btn:hover, .totop:hover,
@@ -306,14 +293,12 @@ button[type="submit"]:hover, .header-telegram:hover {
     letter-spacing: 0.5px;
 }
 
-/* Анимация вращения */
-@keyframes hologramRotate {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+/* Ховер - усиление обводки */
+.btn-primary:hover::before, .btn-outline:hover::before,
+.hero-btn-primary:hover::before, .hero-btn-outline:hover::before,
+.section-more-btn:hover::before, .totop:hover::before,
+button[type="submit"]:hover::before, .header-telegram:hover::before {
+    filter: brightness(1.2);
 }
 
 /* Специфичные размеры для разных кнопок */
@@ -805,10 +790,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     display: inline-block;
 }
 
-/* ============================================ */
-/* ГОЛОГРАФИЧЕСКИЙ ГРАДИЕНТ НА БУКВАХ "РАЗРАБОТКА" */
-/* ============================================ */
-
+/* ГОЛОГРАФИЧЕСКИЙ ГРАДИЕНТ ДЛЯ СЛОВА "РАЗРАБОТКА" */
 .hero-title-line1 {
     font-size: clamp(1.8rem, 7.5vw, 7rem);
     font-weight: 400;
@@ -818,7 +800,6 @@ button[type="submit"]:hover, .header-telegram:hover {
     margin-bottom: 0.5rem;
     letter-spacing: 0.05em;
     
-    /* Голографический градиент как у кнопки Telegram */
     background: linear-gradient(135deg, 
         var(--neon-pink) 0%,
         var(--purple) 30%,
@@ -833,7 +814,6 @@ button[type="submit"]:hover, .header-telegram:hover {
     display: inline-block;
 }
 
-/* Анимация движения градиента по буквам */
 @keyframes hologramText {
     0% {
         background-position: 0% 50%;
@@ -843,12 +823,12 @@ button[type="submit"]:hover, .header-telegram:hover {
     }
 }
 
-/* Эффект при наведении - усиление яркости */
 .hero-title-line1:hover {
     animation: hologramText 1.5s linear infinite;
     filter: drop-shadow(0 0 15px var(--neon-pink));
 }
 
+/* Вторая строка - все слова белые */
 .hero-title-line2 {
     font-size: clamp(0.7rem, 2.2vw, 4rem);
     font-weight: 400;
@@ -857,11 +837,14 @@ button[type="submit"]:hover, .header-telegram:hover {
     margin-top: 0;
     margin-bottom: 0;
     white-space: normal;
+    color: #FFFFFF;
 }
 
-.hero-title-line2 .word-teal { color: var(--teal); }
-.hero-title-line2 .word-white { color: #FFFFFF; }
-.hero-title-line2 .word-gold { color: var(--neon-pink); }
+.hero-title-line2 .word-teal, 
+.hero-title-line2 .word-white, 
+.hero-title-line2 .word-gold {
+    color: #FFFFFF;
+}
 
 .phrase-underkey {
     font-size: inherit;
@@ -869,6 +852,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     letter-spacing: inherit;
     display: inline;
     white-space: normal;
+    color: #FFFFFF;
 }
 
 .hero-stats {
@@ -1412,8 +1396,6 @@ button[type="submit"]:hover, .header-telegram:hover {
     .portfolio-card .portfolio-image { height: 200px; }
     .nav-menu { gap: 1.5rem; }
     .nav-link { font-size: 0.85rem; }
-    .header-telegram span { display: none; }
-    .header-telegram { padding: 8px 12px; }
 }
 
 @media (max-width: 900px) {
