@@ -2640,4 +2640,65 @@ h4 {
     .footer-logo {
         font-size: 1.6rem;
     }
+
+    /* ===== НОВЫЕ ПРАВИЛА: увеличение бейджей Hero и кнопок ===== */
+    .service-badge {
+        font-size: 1rem;
+        padding: 14px 24px;
+    }
+    .services-badges {
+        gap: 24px;
+    }
+
+    /* Кинетические кнопки – общее увеличение */
+    .kinetic-btn {
+        min-width: 280px;
+        height: 64px;
+    }
+    .kinetic-btn.small {
+        min-width: 220px;
+        height: 56px;
+    }
+    .kinetic-btn.large {
+        min-width: 400px;
+        height: 72px;
+    }
+    .kinetic-btn .btn-text {
+        font-size: 1.2rem;
+        letter-spacing: 6px;
+    }
+    .kinetic-btn.small .btn-text {
+        font-size: 1rem;
+        letter-spacing: 5px;
+    }
+    .kinetic-btn.large .btn-text {
+        font-size: 1.3rem;
+        letter-spacing: 8px;
+    }
+    .kinetic-btn.header-telegram-btn {
+        min-width: 150px !important;
+        height: 48px !important;
+    }
+    .kinetic-btn.header-telegram-btn .btn-text {
+        font-size: 0.9rem !important;
+        letter-spacing: 2px !important;
+    }
+    .kinetic-btn.totop-btn {
+        min-width: 60px !important;
+        width: 60px !important;
+        height: 60px !important;
+    }
+    .kinetic-btn.totop-btn .btn-text {
+        font-size: 1.4rem !important;
+        letter-spacing: 0 !important;
+    }
+    .kinetic-btn:hover .btn-text {
+        letter-spacing: 8px;
+    }
+    .kinetic-btn.small:hover .btn-text {
+        letter-spacing: 7px;
+    }
+    .kinetic-btn.large:hover .btn-text {
+        letter-spacing: 10px;
+    }
 }
