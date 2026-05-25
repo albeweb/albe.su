@@ -2189,3 +2189,229 @@ button[type="submit"]:hover, .header-telegram:hover {
         perspective: none;
     }
 }
+/* ============================================ */
+/* 19. КИНЕТИЧЕСКИЕ КНОПКИ (3 СЕГМЕНТА) */
+/* ============================================ */
+
+.kinetic-wrapper {
+    display: inline-block;
+}
+
+.kinetic-btn {
+    position: relative;
+    width: 380px;
+    height: 70px;
+    cursor: none;
+    transform-style: preserve-3d;
+    transition: transform 0.08s linear;
+}
+
+.kinetic-btn.small {
+    width: 260px;
+    height: 55px;
+}
+
+.kinetic-btn.large {
+    width: 500px;
+    height: 85px;
+}
+
+.kinetic-btn .segment {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background: #0A0A0C;
+    backdrop-filter: blur(4px);
+    transition: all 0.18s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+    transform-style: preserve-3d;
+    overflow: hidden;
+}
+
+.kinetic-btn .segment-left {
+    left: 0;
+    width: 33.333%;
+    border-top-left-radius: 60px;
+    border-bottom-left-radius: 60px;
+    border: 2px solid #FF3366;
+    border-right: none;
+}
+
+.kinetic-btn .segment-center {
+    left: 33.333%;
+    width: 33.333%;
+    border-top: 2px solid #14C6B0;
+    border-bottom: 2px solid #14C6B0;
+    border-left: none;
+    border-right: none;
+    background: linear-gradient(135deg, #101012, #08080A);
+}
+
+.kinetic-btn .segment-right {
+    right: 0;
+    left: auto;
+    width: 33.333%;
+    border-top-right-radius: 60px;
+    border-bottom-right-radius: 60px;
+    border: 2px solid #8B5CF6;
+    border-left: none;
+}
+
+.kinetic-btn .segment::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(55deg, 
+        rgba(255, 51, 102, 0.08) 0px, 
+        rgba(255, 51, 102, 0.08) 2px, 
+        transparent 2px, 
+        transparent 10px,
+        rgba(20, 198, 176, 0.06) 10px,
+        rgba(20, 198, 176, 0.06) 12px,
+        transparent 12px,
+        transparent 22px,
+        rgba(139, 92, 246, 0.06) 22px,
+        rgba(139, 92, 246, 0.06) 24px,
+        transparent 24px,
+        transparent 32px
+    );
+    pointer-events: none;
+    opacity: 0.35;
+}
+
+.kinetic-btn .segment::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), 
+        rgba(255, 51, 102, 0.4), 
+        rgba(20, 198, 176, 0.3), 
+        rgba(139, 92, 246, 0.3),
+        transparent 75%);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+    mix-blend-mode: screen;
+}
+
+.kinetic-btn:hover .segment::after {
+    opacity: 0.7;
+}
+
+.kinetic-btn .btn-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateZ(25px);
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 4px;
+    background: linear-gradient(135deg, #F5F5F5, #E0E0E0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-transform: uppercase;
+    white-space: nowrap;
+    z-index: 15;
+    pointer-events: none;
+    text-shadow: 0 0 5px rgba(255, 51, 102, 0.3);
+    transition: all 0.2s;
+    font-family: 'EN Regular', 'Geist', sans-serif;
+}
+
+.kinetic-btn.small .btn-text {
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+}
+
+.kinetic-btn.large .btn-text {
+    font-size: 1.2rem;
+    letter-spacing: 6px;
+}
+
+.kinetic-btn:hover .btn-text {
+    letter-spacing: 7px;
+    background: linear-gradient(135deg, #FFFFFF, #14C6B0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow: 0 0 15px rgba(255, 51, 102, 0.5);
+}
+
+.kinetic-btn.small:hover .btn-text {
+    letter-spacing: 5px;
+}
+
+.kinetic-btn.large:hover .btn-text {
+    letter-spacing: 10px;
+}
+
+.kinetic-btn .spark {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: radial-gradient(circle, #FF3366, #14C6B0);
+    border-radius: 50%;
+    filter: blur(1px);
+    pointer-events: none;
+    z-index: 25;
+    opacity: 0;
+    box-shadow: 0 0 6px #8B5CF6;
+}
+
+@keyframes sparkFloat {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1.2);
+        background: #FF3366;
+    }
+    30% {
+        background: #14C6B0;
+    }
+    70% {
+        background: #8B5CF6;
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--dx), var(--dy)) scale(0);
+        background: #FF3366;
+    }
+}
+
+@keyframes glitchText {
+    0% { clip-path: inset(0 0 0 0); }
+    10% { clip-path: inset(10% 0 30% 0); }
+    20% { clip-path: inset(40% 0 10% 0); }
+    30% { clip-path: inset(20% 0 50% 0); }
+    100% { clip-path: inset(0 0 0 0); }
+}
+
+.kinetic-btn:active .segment-left {
+    transform: translateX(-6px) rotateY(-4deg) !important;
+}
+.kinetic-btn:active .segment-right {
+    transform: translateX(6px) rotateY(4deg) !important;
+}
+.kinetic-btn:active .segment-center {
+    transform: scale(0.97) translateZ(5px) !important;
+}
+.kinetic-btn:active .btn-text {
+    letter-spacing: 2px;
+    transform: translate(-50%, -50%) translateZ(30px) scale(0.98);
+}
+
+@media (max-width: 768px) {
+    .kinetic-btn {
+        width: 280px;
+        height: 55px;
+    }
+    .kinetic-btn.large {
+        width: 340px;
+        height: 65px;
+    }
+    .kinetic-btn .btn-text {
+        font-size: 0.8rem;
+        letter-spacing: 3px;
+    }
+    .kinetic-btn:hover .btn-text {
+        letter-spacing: 5px;
+    }
+}
