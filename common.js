@@ -116,7 +116,7 @@ function initKineticButtons() {
     // Находим все кнопки, которые нужно преобразовать
     const buttonsToConvert = document.querySelectorAll(
         '.btn-primary, .btn-outline, .hero-btn-primary, .hero-btn-outline, ' +
-        '.section-more-btn, button[type="submit"], .header-telegram'
+        '.section-more-btn, button[type="submit"], .header-telegram, #toTopBtn'
     );
     
     if (buttonsToConvert.length === 0) return;
@@ -137,7 +137,17 @@ function initKineticButtons() {
         // Определяем размер кнопки
         let sizeClass = '';
         if (btnClass.includes('section-more-btn')) sizeClass = 'small';
-        if (btnClass.includes('hero-btn') || btnClass.includes('btn-primary') && btnText.length > 15) sizeClass = 'large';
+        if (btnClass.includes('hero-btn') || (btnClass.includes('btn-primary') && btnText.length > 15)) sizeClass = 'large';
+        
+        // Для кнопки наверх добавляем специальный класс
+        if (btnId === 'toTopBtn') {
+            sizeClass = 'totop-btn';
+        }
+        
+        // Для Telegram в шапке
+        if (btnClass.includes('header-telegram')) {
+            sizeClass = 'header-telegram-btn';
+        }
         
         // Создаём кинетическую кнопку
         const kineticBtn = document.createElement('div');
@@ -157,12 +167,10 @@ function initKineticButtons() {
         textSpan.textContent = btnText;
         
         // Создаём искры (6 штук)
-        const sparks = [];
         for (let i = 0; i < 6; i++) {
             const spark = document.createElement('div');
             spark.className = 'spark';
             kineticBtn.appendChild(spark);
-            sparks.push(spark);
         }
         
         // Собираем кнопку
@@ -177,12 +185,20 @@ function initKineticButtons() {
         parent.replaceChild(wrapper, oldBtn);
         
         // Инициализируем эффекты для этой кнопки
-        initKineticButtonEffects(kineticBtn, sparks, btnText);
+        initKineticButtonEffects(kineticBtn, btnText);
+        
+        // Для кнопки наверх восстанавливаем функционал скролла
+        if (btnId === 'toTopBtn') {
+            kineticBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
     });
 }
 
 // Эффекты для одной кинетической кнопки
-function initKineticButtonEffects(btn, sparks, originalText) {
+function initKineticButtonEffects(btn, originalText) {
     const leftSeg = btn.querySelector('.segment-left');
     const centerSeg = btn.querySelector('.segment-center');
     const rightSeg = btn.querySelector('.segment-right');
@@ -190,25 +206,26 @@ function initKineticButtonEffects(btn, sparks, originalText) {
     
     let targetRotateX = 0, targetRotateY = 0;
     let currentRotateX = 0, currentRotateY = 0;
+    let animationFrame = null;
     
     // Цвета из вашей схемы
     const colors = {
-        left: '#FF3366',      // neon-pink
-        center: '#14C6B0',    // teal
-        right: '#8B5CF6'      // purple
+        left: '#FF3366',
+        center: '#14C6B0',
+        right: '#8B5CF6'
     };
     
     // Функция для запуска искр
-    function triggerSparks(count = 6, clientX = null, clientY = null) {
+    function triggerSparks(count = 4, clientX = null, clientY = null) {
         const rect = btn.getBoundingClientRect();
         const sparksList = btn.querySelectorAll('.spark');
         
         for (let i = 0; i < Math.min(count, sparksList.length); i++) {
             const spark = sparksList[i];
             const angle = Math.random() * Math.PI * 2;
-            const radius = 45 + Math.random() * 60;
+            const radius = 30 + Math.random() * 40;
             const dx = Math.cos(angle) * radius * (Math.random() > 0.5 ? 1 : -1);
-            const dy = Math.sin(angle) * radius * 0.7 - 12;
+            const dy = Math.sin(angle) * radius * 0.5 - 8;
             
             spark.style.setProperty('--dx', dx + 'px');
             spark.style.setProperty('--dy', dy + 'px');
@@ -219,13 +236,13 @@ function initKineticButtonEffects(btn, sparks, originalText) {
                 spark.style.left = localX + '%';
                 spark.style.top = localY + '%';
             } else {
-                spark.style.left = (Math.random() * 90 + 5) + '%';
-                spark.style.top = (Math.random() * 80 + 10) + '%';
+                spark.style.left = (Math.random() * 80 + 10) + '%';
+                spark.style.top = (Math.random() * 70 + 15) + '%';
             }
             
             spark.style.animation = 'none';
             spark.offsetHeight;
-            spark.style.animation = 'sparkFloat 0.6s ease-out forwards';
+            spark.style.animation = 'sparkFloat 0.5s ease-out forwards';
         }
     }
     
@@ -234,7 +251,7 @@ function initKineticButtonEffects(btn, sparks, originalText) {
         currentRotateX += (targetRotateX - currentRotateX) * 0.12;
         currentRotateY += (targetRotateY - currentRotateY) * 0.12;
         btn.style.transform = `rotateX(${currentRotateX}deg) rotateY(${currentRotateY}deg)`;
-        requestAnimationFrame(animateRotation);
+        animationFrame = requestAnimationFrame(animateRotation);
     }
     animateRotation();
     
@@ -244,44 +261,44 @@ function initKineticButtonEffects(btn, sparks, originalText) {
         const relX = (e.clientX - rect.left) / rect.width - 0.5;
         const relY = (e.clientY - rect.top) / rect.height - 0.5;
         
-        targetRotateY = relX * 15;
-        targetRotateX = -relY * 12;
+        targetRotateY = relX * 10;
+        targetRotateX = -relY * 8;
         
         const px = ((e.clientX - rect.left) / rect.width) * 100;
         const py = ((e.clientY - rect.top) / rect.height) * 100;
         btn.style.setProperty('--x', px + '%');
         btn.style.setProperty('--y', py + '%');
         
-        const intensity = Math.min(1, Math.abs(relX) + Math.abs(relY));
+        const intensity = Math.min(0.6, Math.abs(relX) + Math.abs(relY));
         
         // Движение сегментов
-        leftSeg.style.transform = `translateX(${relX * -12}px) rotateY(${relX * -8}deg) translateZ(${relY * 6}px)`;
-        rightSeg.style.transform = `translateX(${relX * 12}px) rotateY(${relX * 8}deg) translateZ(${relY * 6}px)`;
-        centerSeg.style.transform = `translateY(${relY * 8}px) translateZ(${Math.abs(relX) * 12}px)`;
+        leftSeg.style.transform = `translateX(${relX * -8}px) rotateY(${relX * -5}deg) translateZ(${relY * 4}px)`;
+        rightSeg.style.transform = `translateX(${relX * 8}px) rotateY(${relX * 5}deg) translateZ(${relY * 4}px)`;
+        centerSeg.style.transform = `translateY(${relY * 5}px) translateZ(${Math.abs(relX) * 8}px)`;
         
         // Свечение границ
-        const leftGlow = `rgba(255, 51, 102, ${0.4 + intensity * 0.8})`;
-        const centerGlow = `rgba(20, 198, 176, ${0.4 + intensity * 0.8})`;
-        const rightGlow = `rgba(139, 92, 246, ${0.4 + intensity * 0.8})`;
+        const leftGlow = `rgba(255, 51, 102, ${0.4 + intensity * 0.5})`;
+        const centerGlow = `rgba(20, 198, 176, ${0.4 + intensity * 0.5})`;
+        const rightGlow = `rgba(139, 92, 246, ${0.4 + intensity * 0.5})`;
         
         leftSeg.style.borderColor = leftGlow;
         centerSeg.style.borderTopColor = centerGlow;
         centerSeg.style.borderBottomColor = centerGlow;
         rightSeg.style.borderColor = rightGlow;
         
-        // Искры при движении
-        if (Math.random() < 0.1) {
-            triggerSparks(2, e.clientX, e.clientY);
+        // Редкие искры при движении
+        if (Math.random() < 0.08) {
+            triggerSparks(1, e.clientX, e.clientY);
         }
     });
     
     // Mouse enter
     btn.addEventListener('mouseenter', () => {
-        triggerSparks(4);
-        textSpan.style.animation = 'glitchText 0.3s infinite';
+        triggerSparks(3);
+        if (textSpan) textSpan.style.animation = 'glitchText 0.3s infinite';
     });
     
-    // Mouse leave - сброс
+    // Mouse leave - плавный сброс
     btn.addEventListener('mouseleave', () => {
         leftSeg.style.transform = '';
         rightSeg.style.transform = '';
@@ -294,30 +311,30 @@ function initKineticButtonEffects(btn, sparks, originalText) {
         
         targetRotateX = 0;
         targetRotateY = 0;
-        textSpan.style.animation = '';
+        
+        if (textSpan) textSpan.style.animation = '';
     });
     
-    // Click - взрыв искр
+    // Click
     btn.addEventListener('click', (e) => {
-        triggerSparks(12, e.clientX, e.clientY);
+        triggerSparks(8, e.clientX, e.clientY);
         
-        btn.style.transform = `rotateX(${currentRotateX}deg) rotateY(${currentRotateY}deg) scale(0.97)`;
+        const currentTransform = btn.style.transform;
+        btn.style.transform = `${currentTransform} scale(0.97)`;
         setTimeout(() => {
-            btn.style.transform = `rotateX(${currentRotateX}deg) rotateY(${currentRotateY}deg) scale(1)`;
+            btn.style.transform = currentTransform;
         }, 120);
-        
-        console.log(`⚡ КИНЕТИЧЕСКАЯ КНОПКА | ${originalText} ⚡`);
     });
     
     // Мерцание в покое
-    let idleTimer = setInterval(() => {
+    let idleGlowInterval = setInterval(() => {
         if (!btn.matches(':hover')) {
-            const idleGlow = Math.sin(Date.now() * 0.004) * 0.2 + 0.3;
-            leftSeg.style.boxShadow = `0 0 8px rgba(255, 51, 102, ${idleGlow})`;
-            rightSeg.style.boxShadow = `0 0 8px rgba(139, 92, 246, ${idleGlow})`;
-            centerSeg.style.boxShadow = `0 0 10px rgba(20, 198, 176, ${idleGlow})`;
+            const idleGlow = Math.sin(Date.now() * 0.003) * 0.15 + 0.25;
+            leftSeg.style.boxShadow = `0 0 6px rgba(255, 51, 102, ${idleGlow})`;
+            rightSeg.style.boxShadow = `0 0 6px rgba(139, 92, 246, ${idleGlow})`;
+            centerSeg.style.boxShadow = `0 0 8px rgba(20, 198, 176, ${idleGlow})`;
         }
-    }, 450);
+    }, 400);
 }
 
 // ===== КАЛЬКУЛЯТОР СТОИМОСТИ =====
@@ -530,16 +547,25 @@ function initForm() {
     }
 }
 
-// ===== КНОПКА НАВЕРХ =====
+// ===== КНОПКА НАВЕРХ (ДУБЛИРУЮЩАЯ ФУНКЦИЯ ДЛЯ БЕЗОПАСНОСТИ) =====
 function initToTop() {
-    var toTop = document.getElementById('toTopBtn');
-    if (!toTop) return;
+    // Функция больше не создаёт кнопку, так как она создаётся в initKineticButtons
+    // Просто проверяем, что обработчик работает
+    const toTopBtn = document.querySelector('#toTopBtn');
+    if (toTopBtn && !toTopBtn.hasAttribute('data-kinetic-initialized')) {
+        toTopBtn.setAttribute('data-kinetic-initialized', 'true');
+        toTopBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+    
+    // Показываем/скрываем кнопку
     window.addEventListener('scroll', function() {
-        toTop.style.display = window.scrollY > 400 ? 'flex' : 'none';
-    });
-    toTop.style.display = 'none';
-    toTop.addEventListener('click', function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        const btn = document.querySelector('#toTopBtn');
+        if (btn) {
+            btn.style.display = window.scrollY > 400 ? 'flex' : 'none';
+        }
     });
 }
 
@@ -810,20 +836,23 @@ document.addEventListener('DOMContentLoaded', function() {
     initSmoothScroll();
     initFaq();
     initForm();
-    initToTop();
     initHeaderFixed();
     initBurgerMenu();
     initPortfolioAccordion();
     initQuantumCards();
-    initKineticButtons(); // <-- НОВАЯ ФУНКЦИЯ ДЛЯ КИНЕТИЧЕСКИХ КНОПОК
+    initKineticButtons(); // Создаёт кинетические кнопки
+    initToTop(); // Управляет отображением кнопки наверх
     
     loadComponent('header-placeholder', 'header.html', function() {
         initBurgerMenu();
         initHeaderFixed();
-        // После загрузки header нужно снова инициализировать кнопки
-        setTimeout(() => initKineticButtons(), 100);
+        setTimeout(() => {
+            initKineticButtons(); // Повторная инициализация для кнопок в header
+        }, 100);
     });
     loadComponent('footer-placeholder', 'footer.html', function() {
-        setTimeout(() => initKineticButtons(), 100);
+        setTimeout(() => {
+            initKineticButtons(); // Повторная инициализация для кнопок в footer
+        }, 100);
     });
 });
