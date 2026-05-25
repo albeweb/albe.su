@@ -2074,7 +2074,7 @@ h3 {
 }
 
 /* ============================================ */
-/* 19. КИНЕТИЧЕСКИЕ КНОПКИ (3 СЕГМЕНТА) - С ЗАЗОРАМИ */
+/* 19. КИНЕТИЧЕСКИЕ КНОПКИ (3 СЕГМЕНТА) */
 /* ============================================ */
 
 .kinetic-wrapper {
@@ -2092,15 +2092,23 @@ h3 {
     display: inline-flex;
 }
 
-/* Размер для Telegram в шапке */
+/* Размер для Telegram в шапке - УМЕНЬШЕННЫЙ */
 .kinetic-btn.header-telegram-btn {
-    min-width: 130px !important;
-    height: 38px !important;
+    min-width: 100px !important;
+    height: 34px !important;
+}
+
+.kinetic-btn.header-telegram-btn .segment-left {
+    border-radius: 40px 0 0 40px !important;
+}
+
+.kinetic-btn.header-telegram-btn .segment-right {
+    border-radius: 0 40px 40px 0 !important;
 }
 
 .kinetic-btn.header-telegram-btn .btn-text {
-    font-size: 0.7rem !important;
-    letter-spacing: 1.5px !important;
+    font-size: 0.6rem !important;
+    letter-spacing: 1px !important;
 }
 
 .kinetic-btn.small {
@@ -2113,7 +2121,7 @@ h3 {
     height: 64px;
 }
 
-/* СПЕЦИАЛЬНЫЙ СТИЛЬ ДЛЯ КНОПКИ НАВЕРХ */
+/* Кнопка наверх */
 .kinetic-btn.totop-btn {
     min-width: 50px !important;
     width: 50px !important;
@@ -2155,7 +2163,7 @@ h3 {
     box-sizing: border-box;
 }
 
-/* Левый сегмент - с clip-path для зазора */
+/* Левый сегмент */
 .kinetic-btn .segment-left {
     left: 0;
     width: 33.333%;
@@ -2166,7 +2174,7 @@ h3 {
     clip-path: polygon(0% 0%, 92% 0%, 86% 100%, 0% 100%);
 }
 
-/* Центральный сегмент - прямой, без закруглений */
+/* Центральный сегмент */
 .kinetic-btn .segment-center {
     left: 33.333%;
     width: 33.334%;
@@ -2178,7 +2186,7 @@ h3 {
     clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
 
-/* Правый сегмент - с clip-path для зазора */
+/* Правый сегмент */
 .kinetic-btn .segment-right {
     right: 0;
     left: auto;
@@ -2190,7 +2198,7 @@ h3 {
     clip-path: polygon(14% 0%, 100% 0%, 100% 100%, 8% 100%);
 }
 
-/* Текстура для всех сегментов */
+/* Текстура */
 .kinetic-btn .segment::before {
     content: '';
     position: absolute;
@@ -2233,7 +2241,7 @@ h3 {
     opacity: 0.7;
 }
 
-/* Текст - ПОВЕРХ сегментов с translateZ */
+/* Текст */
 .kinetic-btn .btn-text {
     position: absolute;
     top: 50%;
@@ -2322,12 +2330,15 @@ h3 {
 .kinetic-btn:active .segment-left {
     transform: translateX(-6px) rotateY(-4deg) !important;
 }
+
 .kinetic-btn:active .segment-right {
     transform: translateX(6px) rotateY(4deg) !important;
 }
+
 .kinetic-btn:active .segment-center {
     transform: scale(0.98) translateZ(5px) !important;
 }
+
 .kinetic-btn:active .btn-text {
     letter-spacing: 2px;
     transform: translate(-50%, -50%) translateZ(35px) scale(0.98);
@@ -2350,14 +2361,18 @@ h3 {
     .kinetic-btn:hover .btn-text {
         letter-spacing: 3px;
     }
+    
+    /* Telegram на мобильных - ещё меньше */
     .kinetic-btn.header-telegram-btn {
-        min-width: 100px !important;
-        height: 32px !important;
+        min-width: 80px !important;
+        height: 28px !important;
     }
     .kinetic-btn.header-telegram-btn .btn-text {
-        font-size: 0.6rem !important;
-        letter-spacing: 1px !important;
+        font-size: 0.5rem !important;
+        letter-spacing: 0.5px !important;
     }
+    
+    /* Кнопка наверх на мобильных */
     .kinetic-btn.totop-btn {
         min-width: 40px !important;
         width: 40px !important;
