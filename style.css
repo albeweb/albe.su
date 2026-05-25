@@ -1820,7 +1820,7 @@ h4 {
     grid-template-columns: repeat(3, 1fr);
     gap: 36px;
     margin-top: 48px;
-    margin-bottom: 60px;   /* ← увеличенный нижний отступ для устранения вертикального скролла */
+    margin-bottom: 100px;   /* ← увеличенный нижний отступ для устранения вертикального скролла */
     overflow-x: hidden;
 }
 
