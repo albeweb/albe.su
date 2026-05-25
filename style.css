@@ -805,17 +805,48 @@ button[type="submit"]:hover, .header-telegram:hover {
     display: inline-block;
 }
 
+/* ============================================ */
+/* ГОЛОГРАФИЧЕСКИЙ ГРАДИЕНТ НА БУКВАХ "РАЗРАБОТКА" */
+/* ============================================ */
+
 .hero-title-line1 {
     font-size: clamp(1.8rem, 7.5vw, 7rem);
     font-weight: 400;
-    background: linear-gradient(135deg, var(--neon-pink) 0%, var(--purple) 50%, var(--teal) 80%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
     display: block;
     line-height: 1.1;
     white-space: normal;
     margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+    
+    /* Голографический градиент как у кнопки Telegram */
+    background: linear-gradient(135deg, 
+        var(--neon-pink) 0%,
+        var(--purple) 30%,
+        var(--teal) 60%,
+        var(--neon-pink) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: hologramText 4s linear infinite;
+    display: inline-block;
+}
+
+/* Анимация движения градиента по буквам */
+@keyframes hologramText {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+/* Эффект при наведении - усиление яркости */
+.hero-title-line1:hover {
+    animation: hologramText 1.5s linear infinite;
+    filter: drop-shadow(0 0 15px var(--neon-pink));
 }
 
 .hero-title-line2 {
