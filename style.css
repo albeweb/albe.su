@@ -1962,19 +1962,71 @@ button[type="submit"]:hover, .header-telegram:hover {
     backdrop-filter: blur(12px);
     border: 1.5px solid rgba(255, 255, 255, 0.1);
     border-radius: 28px;
-    padding: 32px;
+    padding: 28px;
     transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     overflow: hidden;
     isolation: isolate;
     box-shadow: 0 15px 35px -15px rgba(0, 0, 0, 0.5);
     cursor: default;
-    aspect-ratio: 1 / 1;
+    
+    /* Формат 2:1 */
+    aspect-ratio: 2 / 1;
+    
+    /* 3D контекст для параллакса */
     transform-style: preserve-3d;
     perspective: 1000px;
     display: flex;
     flex-direction: column;
 }
 
+/* Уменьшаем отступы для контента */
+.service-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+    background: linear-gradient(135deg, #F5F5F5, #A0A0A0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.service-card p {
+    color: #A0A0A0;
+    line-height: 1.4;
+    font-size: 0.95rem;
+}
+
+/* Уменьшаем цветные точки */
+.service-card .color-strip {
+    display: flex;
+    gap: 0.4rem;
+    margin: 0.75rem 0;
+}
+.service-card .color-dot {
+    width: 20px;
+    height: 3px;
+    border-radius: 3px;
+}
+
+/* Уменьшаем уголки */
+.service-card .corner-tl,
+.service-card .corner-tr,
+.service-card .corner-bl,
+.service-card .corner-br {
+    width: 24px;
+    height: 24px;
+}
+.service-card .corner-tl { top: 12px; left: 12px; }
+.service-card .corner-tr { top: 12px; right: 12px; }
+.service-card .corner-bl { bottom: 12px; left: 12px; }
+.service-card .corner-br { bottom: 12px; right: 12px; }
+
+/* Внутренняя рамка */
+.service-card::after {
+    inset: 10px;
+    border-radius: 18px;
+}
+
+/* СЕГМЕНТЫ */
 .service-card .segment {
     position: absolute;
     background: rgba(10, 10, 10, 0.9);
@@ -2017,6 +2069,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     border-left: none; 
 }
 
+/* Узор на сегментах */
 .service-card .segment::before {
     content: '';
     position: absolute;
@@ -2025,6 +2078,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     pointer-events: none;
 }
 
+/* Световой блик на сегментах */
 .service-card .segment::after {
     content: '';
     position: absolute;
@@ -2039,40 +2093,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     opacity: 1;
 }
 
-.service-card .corner-tl,
-.service-card .corner-tr,
-.service-card .corner-bl,
-.service-card .corner-br {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    border-color: rgba(255, 255, 255, 0.4);
-    border-style: solid;
-    transition: all 0.2s;
-    transform: translateZ(30px);
-    pointer-events: none;
-}
-.service-card .corner-tl { top: 16px; left: 16px; border-width: 2px 0 0 2px; }
-.service-card .corner-tr { top: 16px; right: 16px; border-width: 2px 2px 0 0; }
-.service-card .corner-bl { bottom: 16px; left: 16px; border-width: 0 0 2px 2px; }
-.service-card .corner-br { bottom: 16px; right: 16px; border-width: 0 2px 2px 0; }
-
-.service-card:hover .corner-tl { border-color: #FF3366; filter: drop-shadow(0 0 6px #FF3366); }
-.service-card:hover .corner-tr { border-color: #14C6B0; filter: drop-shadow(0 0 6px #14C6B0); }
-.service-card:hover .corner-bl { border-color: #8B5CF6; filter: drop-shadow(0 0 6px #8B5CF6); }
-.service-card:hover .corner-br { border-color: #10B981; filter: drop-shadow(0 0 6px #10B981); }
-
-.service-card::after {
-    content: '';
-    position: absolute;
-    inset: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 20px;
-    pointer-events: none;
-    transition: all 0.3s;
-    transform: translateZ(5px);
-}
-
+/* КОНТЕНТ КАРТОЧКИ — НА ПЕРЕДНЕМ ПЛАНЕ */
 .service-card h3,
 .service-card p,
 .service-card .color-strip {
@@ -2080,37 +2101,9 @@ button[type="submit"]:hover, .header-telegram:hover {
     transform: translateZ(25px);
 }
 
-.service-card h3 {
-    font-size: 1.6rem;
-    margin-bottom: 1rem;
-    background: linear-gradient(135deg, #F5F5F5, #A0A0A0);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.service-card p {
-    color: #A0A0A0;
-    line-height: 1.5;
-}
-
-.service-card .color-strip {
-    display: flex;
-    gap: 0.5rem;
-    margin: 1rem 0;
-}
-.service-card .color-dot {
-    width: 24px;
-    height: 4px;
-    border-radius: 4px;
-}
-.service-card .dot-pink { background: #FF3366; box-shadow: 0 0 6px #FF3366; }
-.service-card .dot-teal { background: #14C6B0; box-shadow: 0 0 6px #14C6B0; }
-.service-card .dot-mint { background: #10B981; box-shadow: 0 0 6px #10B981; }
-.service-card .dot-purple { background: #8B5CF6; box-shadow: 0 0 6px #8B5CF6; }
-
+/* Ховер-эффекты */
 .service-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-6px);
     border-color: rgba(255, 51, 102, 0.5);
     box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.6);
     background: rgba(20, 26, 32, 0.95);
@@ -2121,6 +2114,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     box-shadow: 0 0 15px rgba(255, 51, 102, 0.15);
 }
 
+/* Адаптация для мобильных */
 @media (max-width: 1200px) {
     .services-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -2134,24 +2128,27 @@ button[type="submit"]:hover, .header-telegram:hover {
         gap: 20px;
     }
     .service-card {
-        padding: 24px;
+        padding: 20px;
         aspect-ratio: auto;
-        min-height: 280px;
+        min-height: 220px;
+    }
+    .service-card h3 {
+        font-size: 1.2rem;
+    }
+    .service-card p {
+        font-size: 0.85rem;
     }
     .service-card .corner-tl,
     .service-card .corner-tr,
     .service-card .corner-bl,
     .service-card .corner-br {
-        width: 20px;
-        height: 20px;
+        width: 18px;
+        height: 18px;
     }
-    .service-card .corner-tl { top: 12px; left: 12px; }
-    .service-card .corner-tr { top: 12px; right: 12px; }
-    .service-card .corner-bl { bottom: 12px; left: 12px; }
-    .service-card .corner-br { bottom: 12px; right: 12px; }
-    .service-card h3 {
-        font-size: 1.3rem;
-    }
+    .service-card .corner-tl { top: 8px; left: 8px; }
+    .service-card .corner-tr { top: 8px; right: 8px; }
+    .service-card .corner-bl { bottom: 8px; left: 8px; }
+    .service-card .corner-br { bottom: 8px; right: 8px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
