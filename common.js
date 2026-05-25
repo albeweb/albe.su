@@ -456,7 +456,7 @@ function initSmoothScroll() {
     }
 }
 
-// ===== FAQ =====
+// ===== FAQ (старый, оставлен для совместимости, но в HTML теперь используется новый) =====
 function initFaq() {
     var faqGrid = document.querySelector('.faq-grid');
     if (faqGrid) {
@@ -769,6 +769,86 @@ function initQuantumCards() {
     });
 }
 
+// ===== АККОРДЕОН FAQ В СТИЛЕ «КЕЙС» =====
+function initCaseAccordion() {
+    const items = document.querySelectorAll('.case-item');
+    if (items.length === 0) return;
+
+    // Контейнер для искр (создаётся один раз)
+    let sparkContainer = document.querySelector('.spark-container');
+    if (!sparkContainer) {
+        sparkContainer = document.createElement('div');
+        sparkContainer.className = 'spark-container';
+        sparkContainer.style.position = 'fixed';
+        sparkContainer.style.top = '0';
+        sparkContainer.style.left = '0';
+        sparkContainer.style.width = '100%';
+        sparkContainer.style.height = '100%';
+        sparkContainer.style.pointerEvents = 'none';
+        sparkContainer.style.zIndex = '9999';
+        document.body.appendChild(sparkContainer);
+    }
+
+    const sparks = [];
+    const SPARKS_COUNT = 30;
+    for (let i = 0; i < SPARKS_COUNT; i++) {
+        const s = document.createElement('div');
+        s.className = 'spark';
+        sparkContainer.appendChild(s);
+        sparks.push(s);
+    }
+
+    function burstSparks(x, y) {
+        const colors = ['#FF3366', '#14C6B0', '#10B981', '#8B5CF6'];
+        const count = 12 + Math.floor(Math.random() * 12);
+        for (let i = 0; i < count; i++) {
+            const spark = sparks[i % sparks.length];
+            const angle = Math.random() * Math.PI * 2;
+            const radius = 35 + Math.random() * 65;
+            const dx = Math.cos(angle) * radius;
+            const dy = Math.sin(angle) * radius;
+            spark.style.setProperty('--dx', dx + 'px');
+            spark.style.setProperty('--dy', dy + 'px');
+            spark.style.left = (x - 2) + 'px';
+            spark.style.top = (y - 2) + 'px';
+            spark.style.background = colors[Math.floor(Math.random() * colors.length)];
+            spark.style.animation = 'none';
+            spark.offsetHeight;
+            spark.style.animation = 'sparkOpen 0.5s ease-out forwards';
+        }
+    }
+
+    function openCase(selectedItem) {
+        const isActive = selectedItem.classList.contains('active');
+        // Закрываем все остальные
+        items.forEach(item => {
+            if (item !== selectedItem && item.classList.contains('active')) {
+                item.classList.remove('active');
+            }
+        });
+        if (!isActive) {
+            selectedItem.classList.add('active');
+            const handle = selectedItem.querySelector('.case-handle');
+            if (handle) {
+                const rect = handle.getBoundingClientRect();
+                burstSparks(rect.left + rect.width / 2, rect.top + rect.height / 2);
+            }
+        } else {
+            selectedItem.classList.remove('active');
+        }
+    }
+
+    items.forEach(item => {
+        const lid = item.querySelector('.case-lid');
+        if (lid) {
+            lid.addEventListener('click', (e) => {
+                e.preventDefault();
+                openCase(item);
+            });
+        }
+    });
+}
+
 // ===== ЗАГРУЗКА КОМПОНЕНТОВ =====
 function loadComponent(elementId, filePath, callback) {
     const placeholder = document.getElementById(elementId);
@@ -802,6 +882,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initQuantumCards();
     initKineticButtons();
     initToTop();
+    initCaseAccordion(); // <-- НОВАЯ ФУНКЦИЯ ДЛЯ АККОРДЕОНА-КЕЙСОВ
     
     loadComponent('header-placeholder', 'header.html', function() {
         initBurgerMenu();
