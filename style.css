@@ -1968,20 +1968,13 @@ button[type="submit"]:hover, .header-telegram:hover {
     isolation: isolate;
     box-shadow: 0 15px 35px -15px rgba(0, 0, 0, 0.5);
     cursor: default;
-    
-    /* Квадратная форма */
     aspect-ratio: 1 / 1;
-    
-    /* 3D контекст для параллакса */
     transform-style: preserve-3d;
     perspective: 1000px;
-    
-    /* Для правильного позиционирования контента */
     display: flex;
     flex-direction: column;
 }
 
-/* СЕГМЕНТЫ — НА ЗАДНЕМ ПЛАНЕ */
 .service-card .segment {
     position: absolute;
     background: rgba(10, 10, 10, 0.9);
@@ -1992,13 +1985,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     will-change: transform;
     top: 0;
     bottom: 0;
-    /* КЛЮЧ: сегменты уходят НАЗАД */
     transform: translateZ(-20px);
-}
-
-/* ВАЖНО: убираем z-index у сегментов */
-.service-card .segment {
-    z-index: auto;
 }
 
 .service-card .seg-1 { 
@@ -2030,7 +2017,6 @@ button[type="submit"]:hover, .header-telegram:hover {
     border-left: none; 
 }
 
-/* Узор на сегментах */
 .service-card .segment::before {
     content: '';
     position: absolute;
@@ -2039,7 +2025,6 @@ button[type="submit"]:hover, .header-telegram:hover {
     pointer-events: none;
 }
 
-/* Световой блик на сегментах */
 .service-card .segment::after {
     content: '';
     position: absolute;
@@ -2054,7 +2039,6 @@ button[type="submit"]:hover, .header-telegram:hover {
     opacity: 1;
 }
 
-/* Угловые скобы */
 .service-card .corner-tl,
 .service-card .corner-tr,
 .service-card .corner-bl,
@@ -2065,9 +2049,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     border-color: rgba(255, 255, 255, 0.4);
     border-style: solid;
     transition: all 0.2s;
-    /* Уголки НАД всем */
     transform: translateZ(30px);
-    z-index: 30;
     pointer-events: none;
 }
 .service-card .corner-tl { top: 16px; left: 16px; border-width: 2px 0 0 2px; }
@@ -2075,13 +2057,11 @@ button[type="submit"]:hover, .header-telegram:hover {
 .service-card .corner-bl { bottom: 16px; left: 16px; border-width: 0 0 2px 2px; }
 .service-card .corner-br { bottom: 16px; right: 16px; border-width: 0 2px 2px 0; }
 
-/* Цветные уголки при наведении */
 .service-card:hover .corner-tl { border-color: #FF3366; filter: drop-shadow(0 0 6px #FF3366); }
 .service-card:hover .corner-tr { border-color: #14C6B0; filter: drop-shadow(0 0 6px #14C6B0); }
 .service-card:hover .corner-bl { border-color: #8B5CF6; filter: drop-shadow(0 0 6px #8B5CF6); }
 .service-card:hover .corner-br { border-color: #10B981; filter: drop-shadow(0 0 6px #10B981); }
 
-/* Внутренняя рамка */
 .service-card::after {
     content: '';
     position: absolute;
@@ -2090,19 +2070,14 @@ button[type="submit"]:hover, .header-telegram:hover {
     border-radius: 20px;
     pointer-events: none;
     transition: all 0.3s;
-    /* Рамка между сегментами и контентом */
     transform: translateZ(5px);
-    z-index: 15;
 }
 
-/* КОНТЕНТ КАРТОЧКИ — НА ПЕРЕДНЕМ ПЛАНЕ */
-/* КЛЮЧ: контент выдвигается ВПЕРЁД */
 .service-card h3,
 .service-card p,
 .service-card .color-strip {
     position: relative;
     transform: translateZ(25px);
-    z-index: 20;
 }
 
 .service-card h3 {
@@ -2119,7 +2094,6 @@ button[type="submit"]:hover, .header-telegram:hover {
     line-height: 1.5;
 }
 
-/* Декоративная цветная полоска */
 .service-card .color-strip {
     display: flex;
     gap: 0.5rem;
@@ -2135,7 +2109,6 @@ button[type="submit"]:hover, .header-telegram:hover {
 .service-card .dot-mint { background: #10B981; box-shadow: 0 0 6px #10B981; }
 .service-card .dot-purple { background: #8B5CF6; box-shadow: 0 0 6px #8B5CF6; }
 
-/* Ховер-эффекты */
 .service-card:hover {
     transform: translateY(-8px);
     border-color: rgba(255, 51, 102, 0.5);
@@ -2148,7 +2121,6 @@ button[type="submit"]:hover, .header-telegram:hover {
     box-shadow: 0 0 15px rgba(255, 51, 102, 0.15);
 }
 
-/* Адаптация для мобильных */
 @media (max-width: 1200px) {
     .services-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -2182,7 +2154,6 @@ button[type="submit"]:hover, .header-telegram:hover {
     }
 }
 
-/* Отключаем 3D эффект при reduced motion */
 @media (prefers-reduced-motion: reduce) {
     .service-card,
     .service-card .segment,
