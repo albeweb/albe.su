@@ -1060,15 +1060,6 @@ button[type="submit"]:hover, .header-telegram:hover {
 /* 11. КОМПЕТЕНЦИИ И ТЕХНОЛОГИИ */
 /* ============================================ */
 
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 36px;
-    margin-top: 48px;
-}
-
-.service-card h3 { font-size: 1.6rem; margin-bottom: 1rem; }
-
 .steps-container {
     display: flex;
     flex-wrap: wrap;
@@ -1374,8 +1365,6 @@ button[type="submit"]:hover, .header-telegram:hover {
     .container, .header .container, .hero .container { padding: 0 50px; }
     h1 { font-size: 6rem; }
     h2 { font-size: 2.6rem; }
-    .services-grid, .portfolio-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
-    .portfolio-card .portfolio-image { height: 220px; }
     .competences-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 25px;
@@ -1400,7 +1389,6 @@ button[type="submit"]:hover, .header-telegram:hover {
     h2 { font-size: 2rem; }
     .hero-tag { display: block; text-align: center; }
     .services-badges, .hero-buttons { justify-content: center; }
-    .services-grid, .portfolio-grid { grid-template-columns: 1fr; gap: 20px; }
     .portfolio-card .portfolio-image { height: 220px; }
     .mission-grid-wrapper { flex-direction: column; gap: 30px; }
     .mission-text { text-align: center; }
@@ -1512,7 +1500,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     }
     
     .stat-item, .service-badge, .calculator-card, .contact-card,
-    .competence-card, .faq-question, .service-card, .portfolio-card, .step-card,
+    .competence-card, .faq-question, .portfolio-card, .step-card,
     .calc-option, .header, .price-table,
     .btn-primary, .btn-outline, .hero-btn-primary, .hero-btn-outline, 
     .section-more-btn, .totop, button[type="submit"], .header-telegram {
@@ -1958,7 +1946,7 @@ button[type="submit"]:hover, .header-telegram:hover {
 }
 
 /* ============================================ */
-/* 18. ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ — КВАНТОВЫЙ СТИЛЬ */
+/* 18. ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ — КВАНТОВЫЙ СТИЛЬ (КВАДРАТНЫЕ КАРТОЧКИ 1:1) */
 /* ============================================ */
 
 .services-grid {
@@ -1980,6 +1968,13 @@ button[type="submit"]:hover, .header-telegram:hover {
     isolation: isolate;
     box-shadow: 0 15px 35px -15px rgba(0, 0, 0, 0.5);
     cursor: default;
+    
+    /* КВАДРАТНАЯ ФОРМА 1:1 */
+    aspect-ratio: 1 / 1;
+    
+    /* Флекс для вертикального распределения контента */
+    display: flex;
+    flex-direction: column;
 }
 
 /* Вертикальные сегменты (как в квантовой карточке) */
@@ -2010,7 +2005,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     transition: opacity 0.3s;
 }
 
-/* Узор на сегментах (как в квантовой карточке) */
+/* Узор на сегментах */
 .service-card .segment-pattern {
     position: absolute;
     inset: 0;
