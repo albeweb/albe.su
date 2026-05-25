@@ -1,5 +1,5 @@
 /* ============================================ */
-/* 1. ЛОКАЛЬНОЕ ПОДКЛЮЧЕНИЕ ШРИФТОВ */
+/* 1. ЛОКАЛЬНОЕ ПОДКЛЮЧЕНИЕ ШРИФТОВ (без изменений) */
 /* ============================================ */
 
 @font-face {
@@ -49,7 +49,7 @@
 }
 
 /* ============================================ */
-/* 3. БАЗОВЫЕ СТИЛИ И СБРОС */
+/* 3. БАЗОВЫЕ СТИЛИ (ваши, без изменений) */
 /* ============================================ */
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -95,7 +95,7 @@ body::before {
 }
 
 /* ============================================ */
-/* 4. НАЗНАЧЕНИЕ ШРИФТОВ */
+/* 4. НАЗНАЧЕНИЕ ШРИФТОВ (без изменений) */
 /* ============================================ */
 
 h1, h2, .hero-title, .hero-title-line1, .hero-title-line2,
@@ -146,7 +146,7 @@ input, textarea, .stat-label, .price-card li,
 }
 
 /* ============================================ */
-/* 5. СТИЛИ ДЛЯ ЗАГОЛОВКОВ (без градиента, цвета задаются в темах блоков) */
+/* 5. СТИЛИ ДЛЯ ЗАГОЛОВКОВ (глобально – белый, градиент убран) */
 /* ============================================ */
 
 h1 {
@@ -190,7 +190,7 @@ h4 {
 .section { padding: 100px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
 
 /* ============================================ */
-/* 6. КАРТОЧКИ И ОБЩИЕ БЛОКИ (без градиентов) */
+/* 6. КАРТОЧКИ И ОБЩИЕ БЛОКИ (без изменений, кроме удаления градиентов из кнопок) */
 /* ============================================ */
 
 .portfolio-card, .step-card, .mission-photo, .faq-item,
@@ -295,7 +295,7 @@ h4 {
 .faq-question.active::after { content: '−'; }
 
 /* ============================================ */
-/* 7. КОНТАКТЫ */
+/* 7. КОНТАКТЫ (без изменений) */
 /* ============================================ */
 
 .contact-section {
@@ -465,7 +465,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 9. HERO БАННЕР (НЕ ТРОГАЕМ - ГРАДИЕНТ ОСТАЁТСЯ) */
+/* 9. HERO БАННЕР (НЕ ТРОГАЕМ – ГРАДИЕНТ ОСТАЁТСЯ) */
 /* ============================================ */
 
 .hero {
@@ -684,12 +684,6 @@ h4 {
     letter-spacing: 0.3px;
     text-align: center;
 }
-.service-badge:hover {
-    transform: translateY(-3px);
-    background: rgba(30, 30, 40, 0.9);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
 .hero-quote {
     margin-top: 2rem;
     padding-top: 1.5rem;
@@ -743,10 +737,6 @@ h4 {
     color: var(--white);
     border-color: transparent;
 }
-.calc-option:hover {
-    transform: translateY(-2px);
-    backdrop-filter: blur(4px);
-}
 .calc-total-block {
     margin-top: 24px;
     padding: 20px;
@@ -784,6 +774,7 @@ h4 {
     flex-wrap: wrap;
     gap: 8px;
 }
+.time-breakdown-item span:first-child { color: var(--ig-orange); }
 
 /* ============================================ */
 /* 11. КОМПЕТЕНЦИИ И ТЕХНОЛОГИИ */
@@ -843,14 +834,6 @@ h4 {
     opacity: 0;
     transition: opacity 0.4s ease;
 }
-.competence-card:hover::before {
-    opacity: 1;
-}
-.competence-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
-    background: rgba(25, 25, 32, 0.98);
-}
 .competence-card h3 {
     font-size: 1.4rem;
     margin-bottom: 10px;
@@ -890,12 +873,6 @@ h4 {
     color: var(--white);
     letter-spacing: 0.3px;
     backdrop-filter: blur(4px);
-}
-.tech-item:hover {
-    background: rgba(214, 41, 118, 0.15);
-    transform: translateX(6px) translateY(-2px);
-    box-shadow: 0 5px 15px rgba(214, 41, 118, 0.2);
-    color: var(--white);
 }
 .competence-card {
     opacity: 0;
@@ -938,11 +915,6 @@ h4 {
     border-radius: 20px;
     transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.08);
-}
-.price-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(8px);
 }
 .price-card h4 {
     font-size: 1.2rem;
@@ -1328,7 +1300,6 @@ h4 {
     display: block;
     transition: transform 0.5s ease;
 }
-.panel-image img:hover { transform: scale(1.03); }
 .panel-description {
     flex: 1;
     margin-bottom: 20px;
@@ -1366,11 +1337,6 @@ h4 {
     color: var(--white);
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.2s ease;
-}
-.tech-items span:hover {
-    background: var(--ig-pink);
-    color: #0A0A0A;
-    transform: translateY(-2px);
 }
 .panel-metrics {
     background: rgba(255, 255, 255, 0.04);
@@ -1481,7 +1447,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 18. ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ — КВАНТОВЫЙ СТИЛЬ (без градиентов внутри) */
+/* 18. ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ — КВАНТОВЫЙ СТИЛЬ */
 /* ============================================ */
 
 .services-grid {
@@ -1538,7 +1504,6 @@ h4 {
     transition: opacity 0.15s;
     pointer-events: none;
 }
-.services-grid .service-card:hover .segment::after { opacity: 1; }
 .services-grid .service-card .corner-tl,
 .services-grid .service-card .corner-tr,
 .services-grid .service-card .corner-bl,
@@ -1956,6 +1921,8 @@ h4 {
 }
 .services-section .section-header h2,
 .services-section > h2 { color: var(--block-color); }
+.services-section .service-badge:hover,
+.services-section .service-card:hover,
 .services-section .service-card .card-btn,
 .services-section .kinetic-btn:not(.header-telegram-btn):not(.totop-btn) .segment-left,
 .services-section .kinetic-btn:not(.header-telegram-btn):not(.totop-btn) .segment-center,
@@ -1969,8 +1936,6 @@ h4 {
     background-color: var(--block-color);
     border-color: var(--block-color);
 }
-.services-section .service-card:hover,
-.services-section .service-badge:hover { border-color: var(--block-color); }
 .services-section .stat-item:nth-child(1) { border-color: var(--block-color); }
 .services-section .stat-item:nth-child(1) .stat-number { color: var(--block-color); }
 
