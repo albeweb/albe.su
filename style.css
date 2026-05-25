@@ -2074,7 +2074,7 @@ h3 {
 }
 
 /* ============================================ */
-/* 19. КИНЕТИЧЕСКИЕ КНОПКИ (3 СЕГМЕНТА) - ИСПРАВЛЕННЫЕ */
+/* 19. КИНЕТИЧЕСКИЕ КНОПКИ (3 СЕГМЕНТА) - С ЗАЗОРАМИ */
 /* ============================================ */
 
 .kinetic-wrapper {
@@ -2094,8 +2094,13 @@ h3 {
 
 /* Размер для Telegram в шапке */
 .kinetic-btn.header-telegram-btn {
-    min-width: 140px !important;
-    height: 42px !important;
+    min-width: 130px !important;
+    height: 38px !important;
+}
+
+.kinetic-btn.header-telegram-btn .btn-text {
+    font-size: 0.7rem !important;
+    letter-spacing: 1.5px !important;
 }
 
 .kinetic-btn.small {
@@ -2135,7 +2140,6 @@ h3 {
 
 .kinetic-btn.totop-btn:hover .btn-text {
     letter-spacing: 0 !important;
-    transform: translate(-50%, -50%) !important;
 }
 
 /* Базовые стили сегментов */
@@ -2145,20 +2149,24 @@ h3 {
     height: 100%;
     background: #0A0A0C;
     backdrop-filter: blur(4px);
-    transition: transform 0.15s cubic-bezier(0.2, 0.9, 0.4, 1.1), border-color 0.2s ease;
+    transition: transform 0.18s cubic-bezier(0.2, 0.9, 0.4, 1.2), border-color 0.2s ease;
     transform-style: preserve-3d;
     overflow: hidden;
     box-sizing: border-box;
 }
 
+/* Левый сегмент - с clip-path для зазора */
 .kinetic-btn .segment-left {
     left: 0;
     width: 33.333%;
-    border-radius: 60px 0 0 60px;
+    border-top-left-radius: 60px;
+    border-bottom-left-radius: 60px;
     border: 2px solid #FF3366;
     border-right: none;
+    clip-path: polygon(0% 0%, 92% 0%, 86% 100%, 0% 100%);
 }
 
+/* Центральный сегмент - прямой, без закруглений */
 .kinetic-btn .segment-center {
     left: 33.333%;
     width: 33.334%;
@@ -2167,17 +2175,22 @@ h3 {
     border-left: none;
     border-right: none;
     background: linear-gradient(135deg, #101012, #08080A);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
 
+/* Правый сегмент - с clip-path для зазора */
 .kinetic-btn .segment-right {
     right: 0;
     left: auto;
     width: 33.333%;
-    border-radius: 0 60px 60px 0;
+    border-top-right-radius: 60px;
+    border-bottom-right-radius: 60px;
     border: 2px solid #8B5CF6;
     border-left: none;
+    clip-path: polygon(14% 0%, 100% 0%, 100% 100%, 8% 100%);
 }
 
+/* Текстура для всех сегментов */
 .kinetic-btn .segment::before {
     content: '';
     position: absolute;
@@ -2200,14 +2213,15 @@ h3 {
     opacity: 0.35;
 }
 
+/* Голографический блик */
 .kinetic-btn .segment::after {
     content: '';
     position: absolute;
     inset: 0;
     background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), 
-        rgba(255, 51, 102, 0.3), 
-        rgba(20, 198, 176, 0.2), 
-        rgba(139, 92, 246, 0.2),
+        rgba(255, 51, 102, 0.35), 
+        rgba(20, 198, 176, 0.25), 
+        rgba(139, 92, 246, 0.25),
         transparent 75%);
     opacity: 0;
     transition: opacity 0.25s ease;
@@ -2216,52 +2230,56 @@ h3 {
 }
 
 .kinetic-btn:hover .segment::after {
-    opacity: 0.6;
+    opacity: 0.7;
 }
 
+/* Текст - ПОВЕРХ сегментов с translateZ */
 .kinetic-btn .btn-text {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: 600;
+    transform: translate(-50%, -50%) translateZ(30px);
+    font-weight: 700;
     font-size: 0.95rem;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
     background: linear-gradient(135deg, #F5F5F5, #E0E0E0);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     text-transform: uppercase;
     white-space: nowrap;
-    z-index: 15;
+    z-index: 20;
     pointer-events: none;
+    text-shadow: 0 0 5px rgba(255, 51, 102, 0.3);
     transition: letter-spacing 0.2s ease;
     font-family: 'EN Regular', 'Geist', sans-serif;
 }
 
 .kinetic-btn.small .btn-text {
     font-size: 0.8rem;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
 }
 
 .kinetic-btn.large .btn-text {
     font-size: 1rem;
-    letter-spacing: 4px;
+    letter-spacing: 5px;
 }
 
 .kinetic-btn:hover .btn-text {
-    letter-spacing: 5px;
+    letter-spacing: 6px;
     background: linear-gradient(135deg, #FFFFFF, #14C6B0);
     -webkit-background-clip: text;
     background-clip: text;
+    text-shadow: 0 0 15px rgba(255, 51, 102, 0.5);
+    transform: translate(-50%, -50%) translateZ(35px);
 }
 
 .kinetic-btn.small:hover .btn-text {
-    letter-spacing: 4px;
+    letter-spacing: 5px;
 }
 
 .kinetic-btn.large:hover .btn-text {
-    letter-spacing: 7px;
+    letter-spacing: 8px;
 }
 
 /* Искры */
@@ -2288,12 +2306,31 @@ h3 {
     }
 }
 
+@keyframes glitchText {
+    0% { clip-path: inset(0 0 0 0); }
+    10% { clip-path: inset(10% 0 30% 0); }
+    20% { clip-path: inset(40% 0 10% 0); }
+    30% { clip-path: inset(20% 0 50% 0); }
+    100% { clip-path: inset(0 0 0 0); }
+}
+
+/* Активное состояние */
 .kinetic-btn:active {
     transform: scale(0.97) !important;
 }
 
+.kinetic-btn:active .segment-left {
+    transform: translateX(-6px) rotateY(-4deg) !important;
+}
+.kinetic-btn:active .segment-right {
+    transform: translateX(6px) rotateY(4deg) !important;
+}
+.kinetic-btn:active .segment-center {
+    transform: scale(0.98) translateZ(5px) !important;
+}
 .kinetic-btn:active .btn-text {
     letter-spacing: 2px;
+    transform: translate(-50%, -50%) translateZ(35px) scale(0.98);
 }
 
 /* Адаптация для мобильных */
@@ -2314,12 +2351,12 @@ h3 {
         letter-spacing: 3px;
     }
     .kinetic-btn.header-telegram-btn {
-        min-width: 110px !important;
-        height: 36px !important;
+        min-width: 100px !important;
+        height: 32px !important;
     }
     .kinetic-btn.header-telegram-btn .btn-text {
-        font-size: 0.6rem;
-        letter-spacing: 1px;
+        font-size: 0.6rem !important;
+        letter-spacing: 1px !important;
     }
     .kinetic-btn.totop-btn {
         min-width: 40px !important;
