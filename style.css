@@ -216,10 +216,7 @@ h3 {
     backdrop-filter: blur(2px);
     border: 1px solid rgba(255, 51, 102, 0.2);
     transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    border-top-left-radius: 28px;
-    border-bottom-right-radius: 28px;
-    border-top-right-radius: 0;
-    border-bottom-left-radius: 0;
+    border-radius: 16px;
 }
 
 /* ============================================ */
@@ -277,7 +274,7 @@ button[type="submit"]::before, .header-telegram::before {
     opacity: 0.4;
     transition: opacity 0.3s ease;
     z-index: -2;
-    border-radius: inherit;
+    border-radius: 24px;
 }
 
 /* Внутренний затемнённый слой */
@@ -393,7 +390,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     height: 280px;
     object-fit: cover;
     display: block;
-    border-top-left-radius: 28px;
+    border-radius: 16px;
     background: linear-gradient(145deg, #1A212B, #0B1015);
 }
 
@@ -410,8 +407,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     height: 200px;
     object-fit: cover;
     display: block;
-    border-top-left-radius: 28px;
-    border-bottom-right-radius: 28px;
+    border-radius: 16px;
 }
 
 .mission-grid-wrapper {
@@ -465,10 +461,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     backdrop-filter: blur(2px);
     border: 1px solid rgba(255, 51, 102, 0.2);
     transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    border-top-left-radius: 28px;
-    border-bottom-right-radius: 28px;
-    border-top-right-radius: 0;
-    border-bottom-left-radius: 0;
+    border-radius: 16px;
 }
 
 .faq-question:hover {
@@ -486,8 +479,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     backdrop-filter: blur(2px);
     border: 1px solid rgba(255, 51, 102, 0.2);
     border-top: none;
-    border-top-left-radius: 0;
-    border-bottom-right-radius: 28px;
+    border-radius: 0 0 16px 16px;
     margin-top: -2px;
 }
 
@@ -555,7 +547,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     color: #FFFFFF;
     margin-bottom: 22px;
     transition: 0.2s;
-    border-radius: 0;
+    border-radius: 12px;
 }
 
 .contact-form input:focus, .contact-form textarea:focus,
@@ -813,50 +805,17 @@ button[type="submit"]:hover, .header-telegram:hover {
     display: inline-block;
 }
 
-/* ============================================ */
-/* ГОЛОГРАФИЧЕСКИЙ ГРАДИЕНТ НА БУКВАХ "РАЗРАБОТКА" */
-/* КАК У КНОПКИ TELEGRAM */
-/* ============================================ */
-
 .hero-title-line1 {
     font-size: clamp(1.8rem, 7.5vw, 7rem);
     font-weight: 400;
+    background: linear-gradient(135deg, var(--neon-pink) 0%, var(--purple) 50%, var(--teal) 80%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     display: block;
     line-height: 1.1;
     white-space: normal;
     margin-bottom: 0.5rem;
-    letter-spacing: 0.05em;
-    position: relative;
-    
-    /* Голографический градиент как у кнопки Telegram */
-    background: linear-gradient(135deg, 
-        var(--neon-pink) 0%,
-        var(--teal) 30%,
-        var(--purple) 60%,
-        var(--neon-pink) 100%
-    );
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: hologramText 3s linear infinite;
-    display: inline-block;
-}
-
-/* Анимация движения градиента по буквам (как вращение контура у кнопки) */
-@keyframes hologramText {
-    0% {
-        background-position: 0% 50%;
-    }
-    100% {
-        background-position: 200% 50%;
-    }
-}
-
-/* Эффект при наведении - усиление яркости */
-.hero-title-line1:hover {
-    animation: hologramText 1.5s linear infinite;
-    filter: drop-shadow(0 0 15px var(--neon-pink));
 }
 
 .hero-title-line2 {
@@ -902,10 +861,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     background: transparent;
     backdrop-filter: none;
     border: 1px solid;
-    border-top-left-radius: 28px;
-    border-bottom-right-radius: 28px;
-    border-top-right-radius: 0;
-    border-bottom-left-radius: 0;
+    border-radius: 16px;
     transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     cursor: default;
 }
@@ -957,8 +913,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     font-weight: 400;
     border: 1.5px solid var(--gray);
     color: var(--white);
-    border-top-left-radius: 28px;
-    border-bottom-right-radius: 28px;
+    border-radius: 16px;
     transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     cursor: default;
     letter-spacing: 0.3px;
@@ -1000,6 +955,7 @@ button[type="submit"]:hover, .header-telegram:hover {
         font-size: 0.9rem;
     }
 }
+
 /* ============================================ */
 /* 10. КАЛЬКУЛЯТОР */
 /* ============================================ */
@@ -1034,8 +990,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     padding: 10px 20px;
     cursor: pointer;
     font-weight: 400;
-    border-top-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-radius: 20px;
 }
 
 .calc-option.selected {
@@ -1093,7 +1048,7 @@ button[type="submit"]:hover, .header-telegram:hover {
 .time-breakdown-item span:first-child { color: var(--teal); }
 
 /* ============================================ */
-/* 11. КОМПЕТЕНЦИИ И ТЕХНОЛОГИИ - ПРЕМИАЛЬНЫЙ СТИЛЬ */
+/* 11. КОМПЕТЕНЦИИ И ТЕХНОЛОГИИ */
 /* ============================================ */
 
 .services-grid {
@@ -1135,7 +1090,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     backdrop-filter: blur(12px);
     padding: 32px 28px;
     border: 1px solid rgba(255, 51, 102, 0.15);
-    border-radius: 24px;
+    border-radius: 20px;
     transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     cursor: default;
     overflow: hidden;
@@ -1639,7 +1594,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     margin-top: 48px;
     gap: 12px;
     background: transparent;
-    border-radius: 32px;
+    border-radius: 24px;
     overflow: visible;
     min-height: auto;
 }
@@ -1654,7 +1609,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     display: flex;
     flex-direction: column;
     border: 1px solid rgba(255, 51, 102, 0.15);
-    border-radius: 24px;
+    border-radius: 20px;
     overflow: hidden;
     height: 800px;
     box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.5);
@@ -1778,7 +1733,7 @@ button[type="submit"]:hover, .header-telegram:hover {
 /* Изображение */
 .panel-image {
     margin-bottom: 20px;
-    border-radius: 20px;
+    border-radius: 16px;
     overflow: hidden;
     aspect-ratio: 2 / 1;
     flex-shrink: 0;
@@ -1838,7 +1793,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     background: rgba(255, 255, 255, 0.08);
     padding: 5px 12px;
     font-size: 0.8rem;
-    border-radius: 30px;
+    border-radius: 20px;
     color: var(--white);
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.2s ease;
@@ -1854,7 +1809,7 @@ button[type="submit"]:hover, .header-telegram:hover {
 .panel-metrics {
     background: rgba(255, 255, 255, 0.04);
     padding: 14px 18px;
-    border-radius: 20px;
+    border-radius: 16px;
     display: flex;
     justify-content: space-between;
     gap: 20px;
@@ -1988,8 +1943,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     max-width: 380px;
     width: max-content;
     z-index: 2000;
-    border-top-left-radius: 28px;
-    border-bottom-right-radius: 28px;
+    border-radius: 16px;
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(12px);
     font-weight: 400;
