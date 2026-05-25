@@ -649,13 +649,12 @@ function initPortfolioAccordion() {
     }
 }
 
-// ===== 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ (ПОД ЭТАЛОН) =====
+// ===== 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ (БЕЗ ВЕРТИКАЛЬНОГО СКРОЛЛА) =====
 function initQuantumCards() {
     const cards = document.querySelectorAll('.services-grid .service-card');
-    
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion || cards.length === 0) return;
-    
+
     cards.forEach(card => {
         const seg1 = card.querySelector('.seg-1');
         const seg2 = card.querySelector('.seg-2');
@@ -663,46 +662,54 @@ function initQuantumCards() {
         const seg4 = card.querySelector('.seg-4');
         const segments = [seg1, seg2, seg3, seg4];
         const content = card.querySelector('.card-content');
-        
+
         if (!seg1 || !seg2 || !seg3 || !seg4) return;
-        
+
         let targetRotateX = 0, targetRotateY = 0;
         let currentRotateX = 0, currentRotateY = 0;
-        
+
         let segTargets = {
             seg1: { x: 0, y: 0, ry: 0 },
             seg2: { x: 0, y: 0 },
             seg3: { x: 0, y: 0 },
             seg4: { x: 0, y: 0, ry: 0 }
         };
-        
         let segCurrent = {
             seg1: { x: 0, y: 0, ry: 0 },
             seg2: { x: 0, y: 0 },
             seg3: { x: 0, y: 0 },
             seg4: { x: 0, y: 0, ry: 0 }
         };
-        
+
+        // Жёсткие лимиты – чтобы не выходить за карточку
+        const MAX_X = 12;
+        const MAX_Y = 3;        // было 6, уменьшено в 2 раза
+        const MAX_RY = 4;
+
+        function limit(value, max) {
+            return Math.min(max, Math.max(-max, value));
+        }
+
         function updateSegments() {
             segCurrent.seg1.x += (segTargets.seg1.x - segCurrent.seg1.x) * 0.2;
             segCurrent.seg1.y += (segTargets.seg1.y - segCurrent.seg1.y) * 0.2;
             segCurrent.seg1.ry += (segTargets.seg1.ry - segCurrent.seg1.ry) * 0.2;
             seg1.style.transform = `translateX(${segCurrent.seg1.x}px) translateY(${segCurrent.seg1.y}px) rotateY(${segCurrent.seg1.ry}deg) translateZ(-5px)`;
-            
+
             segCurrent.seg2.x += (segTargets.seg2.x - segCurrent.seg2.x) * 0.2;
             segCurrent.seg2.y += (segTargets.seg2.y - segCurrent.seg2.y) * 0.2;
             seg2.style.transform = `translateX(${segCurrent.seg2.x}px) translateY(${segCurrent.seg2.y}px) translateZ(-5px)`;
-            
+
             segCurrent.seg3.x += (segTargets.seg3.x - segCurrent.seg3.x) * 0.2;
             segCurrent.seg3.y += (segTargets.seg3.y - segCurrent.seg3.y) * 0.2;
             seg3.style.transform = `translateX(${segCurrent.seg3.x}px) translateY(${segCurrent.seg3.y}px) translateZ(-5px)`;
-            
+
             segCurrent.seg4.x += (segTargets.seg4.x - segCurrent.seg4.x) * 0.2;
             segCurrent.seg4.y += (segTargets.seg4.y - segCurrent.seg4.y) * 0.2;
             segCurrent.seg4.ry += (segTargets.seg4.ry - segCurrent.seg4.ry) * 0.2;
             seg4.style.transform = `translateX(${segCurrent.seg4.x}px) translateY(${segCurrent.seg4.y}px) rotateY(${segCurrent.seg4.ry}deg) translateZ(-5px)`;
         }
-        
+
         function animate() {
             currentRotateX += (targetRotateX - currentRotateX) * 0.12;
             currentRotateY += (targetRotateY - currentRotateY) * 0.12;
@@ -711,45 +718,45 @@ function initQuantumCards() {
             requestAnimationFrame(animate);
         }
         animate();
-        
+
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const relX = (e.clientX - rect.left) / rect.width - 0.5;
             const relY = (e.clientY - rect.top) / rect.height - 0.5;
-            
-            targetRotateY = relX * 12;
-            targetRotateX = -relY * 10;
-            
+
+            targetRotateY = relX * 10;
+            targetRotateX = -relY * 8;
+
             const px = ((e.clientX - rect.left) / rect.width) * 100;
             const py = ((e.clientY - rect.top) / rect.height) * 100;
             card.style.setProperty('--x', px + '%');
             card.style.setProperty('--y', py + '%');
-            
+
             const intensity = Math.min(1, Math.abs(relX) + Math.abs(relY));
             const borderGlow = `rgba(255, 255, 255, ${0.15 + intensity * 0.4})`;
             segments.forEach(seg => {
                 if (seg) seg.style.borderColor = borderGlow;
             });
-            
-            segTargets.seg1.x = relX * -18;
-            segTargets.seg1.y = relY * -8;
-            segTargets.seg1.ry = relX * -6;
-            
-            segTargets.seg2.x = relX * -8;
-            segTargets.seg2.y = relY * 6;
-            
-            segTargets.seg3.x = relX * 8;
-            segTargets.seg3.y = relY * -4;
-            
-            segTargets.seg4.x = relX * 18;
-            segTargets.seg4.y = relY * 8;
-            segTargets.seg4.ry = relX * 6;
-            
+
+            // Горизонтальное смещение – оставляем
+            segTargets.seg1.x = limit(relX * -12, MAX_X);
+            segTargets.seg1.ry = limit(relX * -4, MAX_RY);
+            segTargets.seg2.x = limit(relX * -5, MAX_X);
+            segTargets.seg3.x = limit(relX * 5, MAX_X);
+            segTargets.seg4.x = limit(relX * 12, MAX_X);
+            segTargets.seg4.ry = limit(relX * 4, MAX_RY);
+
+            // Вертикальное смещение – УМЕНЬШЕНО в 2 раза (чтобы не было скролла)
+            segTargets.seg1.y = limit(relY * -3, MAX_Y);   // было -8
+            segTargets.seg2.y = limit(relY * 2, MAX_Y);    // было 6
+            segTargets.seg3.y = limit(relY * -1.5, MAX_Y); // было -4
+            segTargets.seg4.y = limit(relY * 3, MAX_Y);    // было 8
+
             if (content) {
                 content.style.transform = `translateZ(25px)`;
             }
         });
-        
+
         card.addEventListener('mouseleave', () => {
             targetRotateX = 0;
             targetRotateY = 0;
@@ -774,7 +781,6 @@ function initCaseAccordion() {
     const items = document.querySelectorAll('.case-item');
     if (items.length === 0) return;
 
-    // Контейнер для искр (создаётся один раз)
     let sparkContainer = document.querySelector('.spark-container');
     if (!sparkContainer) {
         sparkContainer = document.createElement('div');
@@ -820,7 +826,6 @@ function initCaseAccordion() {
 
     function openCase(selectedItem) {
         const isActive = selectedItem.classList.contains('active');
-        // Закрываем все остальные
         items.forEach(item => {
             if (item !== selectedItem && item.classList.contains('active')) {
                 item.classList.remove('active');
@@ -882,7 +887,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initQuantumCards();
     initKineticButtons();
     initToTop();
-    initCaseAccordion(); // <-- НОВАЯ ФУНКЦИЯ ДЛЯ АККОРДЕОНА-КЕЙСОВ
+    initCaseAccordion();
     
     loadComponent('header-placeholder', 'header.html', function() {
         initBurgerMenu();
