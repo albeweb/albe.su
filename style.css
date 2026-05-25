@@ -1970,14 +1970,18 @@ button[type="submit"]:hover, .header-telegram:hover {
     cursor: default;
     
     /* Квадратная форма */
-    aspect-ratio: 2 / 1;
+    aspect-ratio: 1 / 1;
     
     /* 3D контекст для параллакса */
     transform-style: preserve-3d;
     perspective: 1000px;
+    
+    /* Для правильного позиционирования контента */
+    display: flex;
+    flex-direction: column;
 }
 
-/* СЕГМЕНТЫ — ОСНОВА ДЛЯ 3D ПАРАЛЛАКСА */
+/* СЕГМЕНТЫ — НА ЗАДНЕМ ПЛАНЕ */
 .service-card .segment {
     position: absolute;
     background: rgba(10, 10, 10, 0.9);
@@ -1986,10 +1990,15 @@ button[type="submit"]:hover, .header-telegram:hover {
     transform-style: preserve-3d;
     overflow: hidden;
     will-change: transform;
-    z-index: 1;
-    transform: translateZ(-5px);
     top: 0;
     bottom: 0;
+    /* КЛЮЧ: сегменты уходят НАЗАД */
+    transform: translateZ(-20px);
+}
+
+/* ВАЖНО: убираем z-index у сегментов */
+.service-card .segment {
+    z-index: auto;
 }
 
 .service-card .seg-1 { 
@@ -2045,15 +2054,6 @@ button[type="submit"]:hover, .header-telegram:hover {
     opacity: 1;
 }
 
-/* Узор на сегментах */
-.service-card .segment-pattern {
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 2px, transparent 2px, transparent 12px);
-    pointer-events: none;
-    z-index: 0;
-}
-
 /* Угловые скобы */
 .service-card .corner-tl,
 .service-card .corner-tr,
@@ -2065,7 +2065,9 @@ button[type="submit"]:hover, .header-telegram:hover {
     border-color: rgba(255, 255, 255, 0.4);
     border-style: solid;
     transition: all 0.2s;
-    z-index: 20;
+    /* Уголки НАД всем */
+    transform: translateZ(30px);
+    z-index: 30;
     pointer-events: none;
 }
 .service-card .corner-tl { top: 16px; left: 16px; border-width: 2px 0 0 2px; }
@@ -2088,15 +2090,19 @@ button[type="submit"]:hover, .header-telegram:hover {
     border-radius: 20px;
     pointer-events: none;
     transition: all 0.3s;
-    z-index: 2;
+    /* Рамка между сегментами и контентом */
+    transform: translateZ(5px);
+    z-index: 15;
 }
 
-/* Контент карточки — ПОВЕРХ СЕГМЕНТОВ */
+/* КОНТЕНТ КАРТОЧКИ — НА ПЕРЕДНЕМ ПЛАНЕ */
+/* КЛЮЧ: контент выдвигается ВПЕРЁД */
 .service-card h3,
 .service-card p,
 .service-card .color-strip {
     position: relative;
-    z-index: 10;
+    transform: translateZ(25px);
+    z-index: 20;
 }
 
 .service-card h3 {
@@ -2157,6 +2163,8 @@ button[type="submit"]:hover, .header-telegram:hover {
     }
     .service-card {
         padding: 24px;
+        aspect-ratio: auto;
+        min-height: 280px;
     }
     .service-card .corner-tl,
     .service-card .corner-tr,
@@ -2171,5 +2179,20 @@ button[type="submit"]:hover, .header-telegram:hover {
     .service-card .corner-br { bottom: 12px; right: 12px; }
     .service-card h3 {
         font-size: 1.3rem;
+    }
+}
+
+/* Отключаем 3D эффект при reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .service-card,
+    .service-card .segment,
+    .service-card h3,
+    .service-card p {
+        transform: none !important;
+        transition: none !important;
+    }
+    .service-card {
+        transform-style: flat;
+        perspective: none;
     }
 }
