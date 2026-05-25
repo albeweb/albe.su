@@ -111,6 +111,215 @@ function initTechTooltips() {
     });
 }
 
+// ===== КИНЕТИЧЕСКИЕ КНОПКИ (3 СЕГМЕНТА) =====
+function initKineticButtons() {
+    // Находим все кнопки, которые нужно преобразовать
+    const buttonsToConvert = document.querySelectorAll(
+        '.btn-primary, .btn-outline, .hero-btn-primary, .hero-btn-outline, ' +
+        '.section-more-btn, button[type="submit"], .header-telegram'
+    );
+    
+    if (buttonsToConvert.length === 0) return;
+    
+    // Удаляем старые кнопки и создаём новые
+    buttonsToConvert.forEach(oldBtn => {
+        // Сохраняем текст и атрибуты
+        const btnText = oldBtn.textContent.trim();
+        const btnId = oldBtn.id;
+        const btnClass = oldBtn.className;
+        const parent = oldBtn.parentNode;
+        
+        // Создаём обёртку
+        const wrapper = document.createElement('div');
+        wrapper.className = 'kinetic-wrapper';
+        if (btnId) wrapper.id = btnId;
+        
+        // Определяем размер кнопки
+        let sizeClass = '';
+        if (btnClass.includes('section-more-btn')) sizeClass = 'small';
+        if (btnClass.includes('hero-btn') || btnClass.includes('btn-primary') && btnText.length > 15) sizeClass = 'large';
+        
+        // Создаём кинетическую кнопку
+        const kineticBtn = document.createElement('div');
+        kineticBtn.className = `kinetic-btn ${sizeClass}`;
+        
+        // Создаём 3 сегмента
+        const segLeft = document.createElement('div');
+        segLeft.className = 'segment segment-left';
+        const segCenter = document.createElement('div');
+        segCenter.className = 'segment segment-center';
+        const segRight = document.createElement('div');
+        segRight.className = 'segment segment-right';
+        
+        // Создаём текст
+        const textSpan = document.createElement('div');
+        textSpan.className = 'btn-text';
+        textSpan.textContent = btnText;
+        
+        // Создаём искры (6 штук)
+        const sparks = [];
+        for (let i = 0; i < 6; i++) {
+            const spark = document.createElement('div');
+            spark.className = 'spark';
+            kineticBtn.appendChild(spark);
+            sparks.push(spark);
+        }
+        
+        // Собираем кнопку
+        kineticBtn.appendChild(segLeft);
+        kineticBtn.appendChild(segCenter);
+        kineticBtn.appendChild(segRight);
+        kineticBtn.appendChild(textSpan);
+        
+        wrapper.appendChild(kineticBtn);
+        
+        // Заменяем старую кнопку
+        parent.replaceChild(wrapper, oldBtn);
+        
+        // Инициализируем эффекты для этой кнопки
+        initKineticButtonEffects(kineticBtn, sparks, btnText);
+    });
+}
+
+// Эффекты для одной кинетической кнопки
+function initKineticButtonEffects(btn, sparks, originalText) {
+    const leftSeg = btn.querySelector('.segment-left');
+    const centerSeg = btn.querySelector('.segment-center');
+    const rightSeg = btn.querySelector('.segment-right');
+    const textSpan = btn.querySelector('.btn-text');
+    
+    let targetRotateX = 0, targetRotateY = 0;
+    let currentRotateX = 0, currentRotateY = 0;
+    
+    // Цвета из вашей схемы
+    const colors = {
+        left: '#FF3366',      // neon-pink
+        center: '#14C6B0',    // teal
+        right: '#8B5CF6'      // purple
+    };
+    
+    // Функция для запуска искр
+    function triggerSparks(count = 6, clientX = null, clientY = null) {
+        const rect = btn.getBoundingClientRect();
+        const sparksList = btn.querySelectorAll('.spark');
+        
+        for (let i = 0; i < Math.min(count, sparksList.length); i++) {
+            const spark = sparksList[i];
+            const angle = Math.random() * Math.PI * 2;
+            const radius = 45 + Math.random() * 60;
+            const dx = Math.cos(angle) * radius * (Math.random() > 0.5 ? 1 : -1);
+            const dy = Math.sin(angle) * radius * 0.7 - 12;
+            
+            spark.style.setProperty('--dx', dx + 'px');
+            spark.style.setProperty('--dy', dy + 'px');
+            
+            if (clientX && clientY) {
+                const localX = ((clientX - rect.left) / rect.width) * 100;
+                const localY = ((clientY - rect.top) / rect.height) * 100;
+                spark.style.left = localX + '%';
+                spark.style.top = localY + '%';
+            } else {
+                spark.style.left = (Math.random() * 90 + 5) + '%';
+                spark.style.top = (Math.random() * 80 + 10) + '%';
+            }
+            
+            spark.style.animation = 'none';
+            spark.offsetHeight;
+            spark.style.animation = 'sparkFloat 0.6s ease-out forwards';
+        }
+    }
+    
+    // Анимация наклона
+    function animateRotation() {
+        currentRotateX += (targetRotateX - currentRotateX) * 0.12;
+        currentRotateY += (targetRotateY - currentRotateY) * 0.12;
+        btn.style.transform = `rotateX(${currentRotateX}deg) rotateY(${currentRotateY}deg)`;
+        requestAnimationFrame(animateRotation);
+    }
+    animateRotation();
+    
+    // Mouse move - параллакс
+    btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const relX = (e.clientX - rect.left) / rect.width - 0.5;
+        const relY = (e.clientY - rect.top) / rect.height - 0.5;
+        
+        targetRotateY = relX * 15;
+        targetRotateX = -relY * 12;
+        
+        const px = ((e.clientX - rect.left) / rect.width) * 100;
+        const py = ((e.clientY - rect.top) / rect.height) * 100;
+        btn.style.setProperty('--x', px + '%');
+        btn.style.setProperty('--y', py + '%');
+        
+        const intensity = Math.min(1, Math.abs(relX) + Math.abs(relY));
+        
+        // Движение сегментов
+        leftSeg.style.transform = `translateX(${relX * -12}px) rotateY(${relX * -8}deg) translateZ(${relY * 6}px)`;
+        rightSeg.style.transform = `translateX(${relX * 12}px) rotateY(${relX * 8}deg) translateZ(${relY * 6}px)`;
+        centerSeg.style.transform = `translateY(${relY * 8}px) translateZ(${Math.abs(relX) * 12}px)`;
+        
+        // Свечение границ
+        const leftGlow = `rgba(255, 51, 102, ${0.4 + intensity * 0.8})`;
+        const centerGlow = `rgba(20, 198, 176, ${0.4 + intensity * 0.8})`;
+        const rightGlow = `rgba(139, 92, 246, ${0.4 + intensity * 0.8})`;
+        
+        leftSeg.style.borderColor = leftGlow;
+        centerSeg.style.borderTopColor = centerGlow;
+        centerSeg.style.borderBottomColor = centerGlow;
+        rightSeg.style.borderColor = rightGlow;
+        
+        // Искры при движении
+        if (Math.random() < 0.1) {
+            triggerSparks(2, e.clientX, e.clientY);
+        }
+    });
+    
+    // Mouse enter
+    btn.addEventListener('mouseenter', () => {
+        triggerSparks(4);
+        textSpan.style.animation = 'glitchText 0.3s infinite';
+    });
+    
+    // Mouse leave - сброс
+    btn.addEventListener('mouseleave', () => {
+        leftSeg.style.transform = '';
+        rightSeg.style.transform = '';
+        centerSeg.style.transform = '';
+        
+        leftSeg.style.borderColor = colors.left;
+        centerSeg.style.borderTopColor = colors.center;
+        centerSeg.style.borderBottomColor = colors.center;
+        rightSeg.style.borderColor = colors.right;
+        
+        targetRotateX = 0;
+        targetRotateY = 0;
+        textSpan.style.animation = '';
+    });
+    
+    // Click - взрыв искр
+    btn.addEventListener('click', (e) => {
+        triggerSparks(12, e.clientX, e.clientY);
+        
+        btn.style.transform = `rotateX(${currentRotateX}deg) rotateY(${currentRotateY}deg) scale(0.97)`;
+        setTimeout(() => {
+            btn.style.transform = `rotateX(${currentRotateX}deg) rotateY(${currentRotateY}deg) scale(1)`;
+        }, 120);
+        
+        console.log(`⚡ КИНЕТИЧЕСКАЯ КНОПКА | ${originalText} ⚡`);
+    });
+    
+    // Мерцание в покое
+    let idleTimer = setInterval(() => {
+        if (!btn.matches(':hover')) {
+            const idleGlow = Math.sin(Date.now() * 0.004) * 0.2 + 0.3;
+            leftSeg.style.boxShadow = `0 0 8px rgba(255, 51, 102, ${idleGlow})`;
+            rightSeg.style.boxShadow = `0 0 8px rgba(139, 92, 246, ${idleGlow})`;
+            centerSeg.style.boxShadow = `0 0 10px rgba(20, 198, 176, ${idleGlow})`;
+        }
+    }, 450);
+}
+
 // ===== КАЛЬКУЛЯТОР СТОИМОСТИ =====
 const rate = 2000;
 const sh = { design: 20, front: 30, back: 40, seo: 15, cms: 25, crm: 60, ai: 90, mobile: 120, support: 8 };
@@ -462,23 +671,20 @@ function initPortfolioAccordion() {
     }
 }
 
-// ===== 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ (ИСПРАВЛЕННЫЙ) =====
+// ===== 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ =====
 function initQuantumCards() {
-    const cards = document.querySelectorAll('.service-card');
+    const cards = document.querySelectorAll('.services-grid .service-card');
     
-    // Проверка на reduced motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion || cards.length === 0) return;
     
     cards.forEach(card => {
-        // Находим сегменты
         const seg1 = card.querySelector('.seg-1');
         const seg2 = card.querySelector('.seg-2');
         const seg3 = card.querySelector('.seg-3');
         const seg4 = card.querySelector('.seg-4');
         const segments = [seg1, seg2, seg3, seg4];
         
-        // Проверяем, что все сегменты существуют
         if (!seg1 || !seg2 || !seg3 || !seg4) return;
         
         let targetRotateX = 0, targetRotateY = 0;
@@ -499,23 +705,19 @@ function initQuantumCards() {
         };
         
         function updateSegments() {
-            // Сегмент 1 (левый)
             segCurrent.seg1.x += (segTargets.seg1.x - segCurrent.seg1.x) * 0.15;
             segCurrent.seg1.y += (segTargets.seg1.y - segCurrent.seg1.y) * 0.15;
             segCurrent.seg1.ry += (segTargets.seg1.ry - segCurrent.seg1.ry) * 0.15;
             seg1.style.transform = `translateX(${segCurrent.seg1.x}px) translateY(${segCurrent.seg1.y}px) rotateY(${segCurrent.seg1.ry}deg) translateZ(-20px)`;
             
-            // Сегмент 2 (левый центр)
             segCurrent.seg2.x += (segTargets.seg2.x - segCurrent.seg2.x) * 0.15;
             segCurrent.seg2.y += (segTargets.seg2.y - segCurrent.seg2.y) * 0.15;
             seg2.style.transform = `translateX(${segCurrent.seg2.x}px) translateY(${segCurrent.seg2.y}px) translateZ(-20px)`;
             
-            // Сегмент 3 (правый центр)
             segCurrent.seg3.x += (segTargets.seg3.x - segCurrent.seg3.x) * 0.15;
             segCurrent.seg3.y += (segTargets.seg3.y - segCurrent.seg3.y) * 0.15;
             seg3.style.transform = `translateX(${segCurrent.seg3.x}px) translateY(${segCurrent.seg3.y}px) translateZ(-20px)`;
             
-            // Сегмент 4 (правый)
             segCurrent.seg4.x += (segTargets.seg4.x - segCurrent.seg4.x) * 0.15;
             segCurrent.seg4.y += (segTargets.seg4.y - segCurrent.seg4.y) * 0.15;
             segCurrent.seg4.ry += (segTargets.seg4.ry - segCurrent.seg4.ry) * 0.15;
@@ -536,24 +738,20 @@ function initQuantumCards() {
             const relX = (e.clientX - rect.left) / rect.width - 0.5;
             const relY = (e.clientY - rect.top) / rect.height - 0.5;
             
-            // Наклон карточки
             targetRotateY = relX * 10;
             targetRotateX = -relY * 8;
             
-            // Позиция для светового блика
             const px = ((e.clientX - rect.left) / rect.width) * 100;
             const py = ((e.clientY - rect.top) / rect.height) * 100;
             card.style.setProperty('--x', px + '%');
             card.style.setProperty('--y', py + '%');
             
-            // Интенсивность эффекта
             const intensity = Math.min(1, Math.abs(relX) + Math.abs(relY));
             const borderGlow = `rgba(255, 255, 255, ${0.15 + intensity * 0.4})`;
             segments.forEach(seg => {
                 if (seg) seg.style.borderColor = borderGlow;
             });
             
-            // Параллакс движения сегментов
             segTargets.seg1.x = relX * -20;
             segTargets.seg1.y = relY * -8;
             segTargets.seg1.ry = relX * -6;
@@ -617,10 +815,15 @@ document.addEventListener('DOMContentLoaded', function() {
     initBurgerMenu();
     initPortfolioAccordion();
     initQuantumCards();
+    initKineticButtons(); // <-- НОВАЯ ФУНКЦИЯ ДЛЯ КИНЕТИЧЕСКИХ КНОПОК
     
     loadComponent('header-placeholder', 'header.html', function() {
         initBurgerMenu();
         initHeaderFixed();
+        // После загрузки header нужно снова инициализировать кнопки
+        setTimeout(() => initKineticButtons(), 100);
     });
-    loadComponent('footer-placeholder', 'footer.html');
+    loadComponent('footer-placeholder', 'footer.html', function() {
+        setTimeout(() => initKineticButtons(), 100);
+    });
 });
