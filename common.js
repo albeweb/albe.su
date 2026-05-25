@@ -56,7 +56,7 @@ const techDesc = {
     blockchain: "Blockchain аналитика — анализ блокчейн-транзакций. Отслеживание движения средств, выявление мошенничества, анализ смарт-контрактов.",
     graph: "Graph аналитика — анализ графовых структур. Социальные сети, рекомендательные системы, поиск кратчайших путей.",
     
-    // Дополнительные (старые)
+    // Дополнительные
     vue: "Vue — прогрессивный фреймворк. Лёгкий, гибкий, для малых и средних проектов.",
     gsap: "GSAP — профессиональная анимация. Плавные переходы, сложные таймлайны.",
     three: "Three.js — 3D в браузере. Впечатляющие сцены, анимация продуктов.",
@@ -462,11 +462,13 @@ function initPortfolioAccordion() {
     }
 }
 
-// ===== 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ =====
+// ===== 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ (ИСПРАВЛЕННЫЙ) =====
 function initQuantumCards() {
     const cards = document.querySelectorAll('.service-card');
     
-    if (cards.length === 0) return;
+    // Проверка на reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion || cards.length === 0) return;
     
     cards.forEach(card => {
         // Находим сегменты
@@ -483,32 +485,41 @@ function initQuantumCards() {
         let currentRotateX = 0, currentRotateY = 0;
         
         let segTargets = {
-            seg1: { x: 0, ry: 0 },
-            seg2: { y: 0 },
-            seg3: { y: 0 },
-            seg4: { x: 0, ry: 0 }
+            seg1: { x: 0, y: 0, ry: 0 },
+            seg2: { x: 0, y: 0 },
+            seg3: { x: 0, y: 0 },
+            seg4: { x: 0, y: 0, ry: 0 }
         };
+        
         let segCurrent = {
-            seg1: { x: 0, ry: 0 },
-            seg2: { y: 0 },
-            seg3: { y: 0 },
-            seg4: { x: 0, ry: 0 }
+            seg1: { x: 0, y: 0, ry: 0 },
+            seg2: { x: 0, y: 0 },
+            seg3: { x: 0, y: 0 },
+            seg4: { x: 0, y: 0, ry: 0 }
         };
         
         function updateSegments() {
-            segCurrent.seg1.x += (segTargets.seg1.x - segCurrent.seg1.x) * 0.2;
-            segCurrent.seg1.ry += (segTargets.seg1.ry - segCurrent.seg1.ry) * 0.2;
-            seg1.style.transform = `translateX(${segCurrent.seg1.x}px) rotateY(${segCurrent.seg1.ry}deg) translateZ(-5px)`;
+            // Сегмент 1 (левый)
+            segCurrent.seg1.x += (segTargets.seg1.x - segCurrent.seg1.x) * 0.15;
+            segCurrent.seg1.y += (segTargets.seg1.y - segCurrent.seg1.y) * 0.15;
+            segCurrent.seg1.ry += (segTargets.seg1.ry - segCurrent.seg1.ry) * 0.15;
+            seg1.style.transform = `translateX(${segCurrent.seg1.x}px) translateY(${segCurrent.seg1.y}px) rotateY(${segCurrent.seg1.ry}deg) translateZ(-20px)`;
             
-            segCurrent.seg2.y += (segTargets.seg2.y - segCurrent.seg2.y) * 0.2;
-            seg2.style.transform = `translateY(${segCurrent.seg2.y}px) translateZ(-5px)`;
+            // Сегмент 2 (левый центр)
+            segCurrent.seg2.x += (segTargets.seg2.x - segCurrent.seg2.x) * 0.15;
+            segCurrent.seg2.y += (segTargets.seg2.y - segCurrent.seg2.y) * 0.15;
+            seg2.style.transform = `translateX(${segCurrent.seg2.x}px) translateY(${segCurrent.seg2.y}px) translateZ(-20px)`;
             
-            segCurrent.seg3.y += (segTargets.seg3.y - segCurrent.seg3.y) * 0.2;
-            seg3.style.transform = `translateY(${segCurrent.seg3.y}px) translateZ(-5px)`;
+            // Сегмент 3 (правый центр)
+            segCurrent.seg3.x += (segTargets.seg3.x - segCurrent.seg3.x) * 0.15;
+            segCurrent.seg3.y += (segTargets.seg3.y - segCurrent.seg3.y) * 0.15;
+            seg3.style.transform = `translateX(${segCurrent.seg3.x}px) translateY(${segCurrent.seg3.y}px) translateZ(-20px)`;
             
-            segCurrent.seg4.x += (segTargets.seg4.x - segCurrent.seg4.x) * 0.2;
-            segCurrent.seg4.ry += (segTargets.seg4.ry - segCurrent.seg4.ry) * 0.2;
-            seg4.style.transform = `translateX(${segCurrent.seg4.x}px) rotateY(${segCurrent.seg4.ry}deg) translateZ(-5px)`;
+            // Сегмент 4 (правый)
+            segCurrent.seg4.x += (segTargets.seg4.x - segCurrent.seg4.x) * 0.15;
+            segCurrent.seg4.y += (segTargets.seg4.y - segCurrent.seg4.y) * 0.15;
+            segCurrent.seg4.ry += (segTargets.seg4.ry - segCurrent.seg4.ry) * 0.15;
+            seg4.style.transform = `translateX(${segCurrent.seg4.x}px) translateY(${segCurrent.seg4.y}px) rotateY(${segCurrent.seg4.ry}deg) translateZ(-20px)`;
         }
         
         function animate() {
@@ -525,36 +536,47 @@ function initQuantumCards() {
             const relX = (e.clientX - rect.left) / rect.width - 0.5;
             const relY = (e.clientY - rect.top) / rect.height - 0.5;
             
-            targetRotateY = relX * 8;
-            targetRotateX = -relY * 6;
+            // Наклон карточки
+            targetRotateY = relX * 10;
+            targetRotateX = -relY * 8;
             
+            // Позиция для светового блика
             const px = ((e.clientX - rect.left) / rect.width) * 100;
             const py = ((e.clientY - rect.top) / rect.height) * 100;
             card.style.setProperty('--x', px + '%');
             card.style.setProperty('--y', py + '%');
             
+            // Интенсивность эффекта
             const intensity = Math.min(1, Math.abs(relX) + Math.abs(relY));
             const borderGlow = `rgba(255, 255, 255, ${0.15 + intensity * 0.4})`;
             segments.forEach(seg => {
                 if (seg) seg.style.borderColor = borderGlow;
             });
             
-            segTargets.seg1.x = relX * -15;
-            segTargets.seg1.ry = relX * -8;
-            segTargets.seg2.y = relY * 5;
-            segTargets.seg3.y = relY * -3;
-            segTargets.seg4.x = relX * 15;
-            segTargets.seg4.ry = relX * 8;
+            // Параллакс движения сегментов
+            segTargets.seg1.x = relX * -20;
+            segTargets.seg1.y = relY * -8;
+            segTargets.seg1.ry = relX * -6;
+            
+            segTargets.seg2.x = relX * -8;
+            segTargets.seg2.y = relY * 6;
+            
+            segTargets.seg3.x = relX * 8;
+            segTargets.seg3.y = relY * -4;
+            
+            segTargets.seg4.x = relX * 20;
+            segTargets.seg4.y = relY * 8;
+            segTargets.seg4.ry = relX * 6;
         });
         
         card.addEventListener('mouseleave', () => {
             targetRotateX = 0;
             targetRotateY = 0;
             segTargets = {
-                seg1: { x: 0, ry: 0 },
-                seg2: { y: 0 },
-                seg3: { y: 0 },
-                seg4: { x: 0, ry: 0 }
+                seg1: { x: 0, y: 0, ry: 0 },
+                seg2: { x: 0, y: 0 },
+                seg3: { x: 0, y: 0 },
+                seg4: { x: 0, y: 0, ry: 0 }
             };
             segments.forEach(seg => {
                 if (seg) seg.style.borderColor = '';
@@ -594,7 +616,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initHeaderFixed();
     initBurgerMenu();
     initPortfolioAccordion();
-    initQuantumCards(); // <-- ДОБАВЛЕНА ФУНКЦИЯ ПАРАЛЛАКСА
+    initQuantumCards();
     
     loadComponent('header-placeholder', 'header.html', function() {
         initBurgerMenu();
