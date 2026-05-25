@@ -1946,7 +1946,7 @@ button[type="submit"]:hover, .header-telegram:hover {
 }
 
 /* ============================================ */
-/* 18. ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ — КВАНТОВЫЙ СТИЛЬ (КВАДРАТНЫЕ КАРТОЧКИ 1:1) */
+/* 18. ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ — КВАНТОВЫЙ СТИЛЬ */
 /* ============================================ */
 
 .services-grid {
@@ -1969,40 +1969,52 @@ button[type="submit"]:hover, .header-telegram:hover {
     box-shadow: 0 15px 35px -15px rgba(0, 0, 0, 0.5);
     cursor: default;
     
-    /* КВАДРАТНАЯ ФОРМА 1:1 */
+    /* КЛЮЧЕВОЕ СВОЙСТВО - КВАДРАТНАЯ ФОРМА 1:1 */
     aspect-ratio: 1 / 1;
     
-    /* Флекс для вертикального распределения контента */
-    display: flex;
-    flex-direction: column;
+    /* Для правильного позиционирования сегментов */
+    transform-style: preserve-3d;
+    perspective: 1000px;
 }
 
-/* Вертикальные сегменты (как в квантовой карточке) */
-.service-card::before {
+/* Сегменты */
+.service-card .segment {
+    position: absolute;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    transform-style: preserve-3d;
+    overflow: hidden;
+    will-change: transform;
+    z-index: 1;
+    transform: translateZ(-5px);
+}
+
+.service-card .seg-1 { left: 0%; width: 22%; height: 100%; border-radius: 28px 0 0 28px; border-right: none; }
+.service-card .seg-2 { left: 22%; width: 28%; height: 100%; border-left: none; border-right: none; }
+.service-card .seg-3 { left: 50%; width: 28%; height: 100%; border-left: none; border-right: none; }
+.service-card .seg-4 { left: 78%; width: 22%; height: 100%; border-radius: 0 28px 28px 0; border-left: none; }
+
+.service-card .segment::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: repeating-linear-gradient(
-        90deg,
-        transparent 0%,
-        transparent 22%,
-        rgba(255, 51, 102, 0.08) 22%,
-        rgba(255, 51, 102, 0.08) 28%,
-        transparent 28%,
-        transparent 50%,
-        rgba(139, 92, 246, 0.08) 50%,
-        rgba(139, 92, 246, 0.08) 56%,
-        transparent 56%,
-        transparent 78%,
-        rgba(20, 198, 176, 0.08) 78%,
-        rgba(20, 198, 176, 0.08) 84%,
-        transparent 84%,
-        transparent 100%
-    );
+    background: repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 2px, transparent 2px, transparent 12px);
     pointer-events: none;
-    z-index: 0;
-    opacity: 0.5;
-    transition: opacity 0.3s;
+}
+
+.service-card .segment::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,0.15), transparent 80%);
+    opacity: 0;
+    transition: opacity 0.15s;
+    pointer-events: none;
+}
+
+.service-card:hover .segment::after {
+    opacity: 1;
 }
 
 /* Узор на сегментах */
