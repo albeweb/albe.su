@@ -2190,7 +2190,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     }
 }
 /* ============================================ */
-/* 19. КИНЕТИЧЕСКИЕ КНОПКИ (3 СЕГМЕНТА) */
+/* 19. КИНЕТИЧЕСКИЕ КНОПКИ (3 СЕГМЕНТА) - ИСПРАВЛЕННЫЕ */
 /* ============================================ */
 
 .kinetic-wrapper {
@@ -2225,17 +2225,19 @@ button[type="submit"]:hover, .header-telegram:hover {
     transition: all 0.18s cubic-bezier(0.2, 0.9, 0.4, 1.2);
     transform-style: preserve-3d;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
+/* Левый сегмент */
 .kinetic-btn .segment-left {
     left: 0;
     width: 33.333%;
-    border-top-left-radius: 60px;
-    border-bottom-left-radius: 60px;
+    border-radius: 60px 0 0 60px;
     border: 2px solid #FF3366;
     border-right: none;
 }
 
+/* Центральный сегмент - УБИРАЕМ clip-path который вызывает дергание */
 .kinetic-btn .segment-center {
     left: 33.333%;
     width: 33.333%;
@@ -2244,33 +2246,35 @@ button[type="submit"]:hover, .header-telegram:hover {
     border-left: none;
     border-right: none;
     background: linear-gradient(135deg, #101012, #08080A);
+    border-radius: 0;
 }
 
+/* Правый сегмент */
 .kinetic-btn .segment-right {
     right: 0;
     left: auto;
     width: 33.333%;
-    border-top-right-radius: 60px;
-    border-bottom-right-radius: 60px;
+    border-radius: 0 60px 60px 0;
     border: 2px solid #8B5CF6;
     border-left: none;
 }
 
+/* Текстура для всех сегментов */
 .kinetic-btn .segment::before {
     content: '';
     position: absolute;
     inset: 0;
     background: repeating-linear-gradient(55deg, 
-        rgba(255, 51, 102, 0.08) 0px, 
-        rgba(255, 51, 102, 0.08) 2px, 
+        rgba(255, 51, 102, 0.06) 0px, 
+        rgba(255, 51, 102, 0.06) 2px, 
         transparent 2px, 
         transparent 10px,
-        rgba(20, 198, 176, 0.06) 10px,
-        rgba(20, 198, 176, 0.06) 12px,
+        rgba(20, 198, 176, 0.05) 10px,
+        rgba(20, 198, 176, 0.05) 12px,
         transparent 12px,
         transparent 22px,
-        rgba(139, 92, 246, 0.06) 22px,
-        rgba(139, 92, 246, 0.06) 24px,
+        rgba(139, 92, 246, 0.05) 22px,
+        rgba(139, 92, 246, 0.05) 24px,
         transparent 24px,
         transparent 32px
     );
@@ -2278,14 +2282,15 @@ button[type="submit"]:hover, .header-telegram:hover {
     opacity: 0.35;
 }
 
+/* Голографический блик */
 .kinetic-btn .segment::after {
     content: '';
     position: absolute;
     inset: 0;
     background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), 
-        rgba(255, 51, 102, 0.4), 
-        rgba(20, 198, 176, 0.3), 
-        rgba(139, 92, 246, 0.3),
+        rgba(255, 51, 102, 0.35), 
+        rgba(20, 198, 176, 0.25), 
+        rgba(139, 92, 246, 0.25),
         transparent 75%);
     opacity: 0;
     transition: opacity 0.25s ease;
@@ -2297,6 +2302,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     opacity: 0.7;
 }
 
+/* Текст */
 .kinetic-btn .btn-text {
     position: absolute;
     top: 50%;
@@ -2344,6 +2350,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     letter-spacing: 10px;
 }
 
+/* Искры */
 .kinetic-btn .spark {
     position: absolute;
     width: 5px;
@@ -2384,20 +2391,22 @@ button[type="submit"]:hover, .header-telegram:hover {
     100% { clip-path: inset(0 0 0 0); }
 }
 
+/* Активное состояние - нажатие */
 .kinetic-btn:active .segment-left {
-    transform: translateX(-6px) rotateY(-4deg) !important;
+    transform: translateX(-4px) rotateY(-3deg) !important;
 }
 .kinetic-btn:active .segment-right {
-    transform: translateX(6px) rotateY(4deg) !important;
+    transform: translateX(4px) rotateY(3deg) !important;
 }
 .kinetic-btn:active .segment-center {
-    transform: scale(0.97) translateZ(5px) !important;
+    transform: scale(0.98) translateZ(5px) !important;
 }
 .kinetic-btn:active .btn-text {
     letter-spacing: 2px;
     transform: translate(-50%, -50%) translateZ(30px) scale(0.98);
 }
 
+/* Адаптация для мобильных */
 @media (max-width: 768px) {
     .kinetic-btn {
         width: 280px;
@@ -2413,5 +2422,11 @@ button[type="submit"]:hover, .header-telegram:hover {
     }
     .kinetic-btn:hover .btn-text {
         letter-spacing: 5px;
+    }
+    .kinetic-btn .segment-left {
+        border-radius: 40px 0 0 40px;
+    }
+    .kinetic-btn .segment-right {
+        border-radius: 0 40px 40px 0;
     }
 }
