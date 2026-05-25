@@ -456,7 +456,7 @@ function initSmoothScroll() {
     }
 }
 
-// ===== FAQ (старый, оставлен для совместимости, но в HTML теперь используется новый) =====
+// ===== FAQ (старый, оставлен для совместимости) =====
 function initFaq() {
     var faqGrid = document.querySelector('.faq-grid');
     if (faqGrid) {
@@ -649,7 +649,7 @@ function initPortfolioAccordion() {
     }
 }
 
-// ===== 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ (БЕЗ ВЕРТИКАЛЬНОГО СКРОЛЛА) =====
+// ===== 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК (ТОЛЬКО ГОРИЗОНТАЛЬНЫЙ, БЕЗ ВЕРТИКАЛЬНОГО СМЕЩЕНИЯ) =====
 function initQuantumCards() {
     const cards = document.querySelectorAll('.services-grid .service-card');
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -665,25 +665,25 @@ function initQuantumCards() {
 
         if (!seg1 || !seg2 || !seg3 || !seg4) return;
 
-        let targetRotateX = 0, targetRotateY = 0;
-        let currentRotateX = 0, currentRotateY = 0;
+        let targetRotateY = 0;           // только горизонтальный наклон
+        let currentRotateY = 0;
+        // Вертикальный наклон убран (targetRotateX всегда 0)
 
         let segTargets = {
-            seg1: { x: 0, y: 0, ry: 0 },
-            seg2: { x: 0, y: 0 },
-            seg3: { x: 0, y: 0 },
-            seg4: { x: 0, y: 0, ry: 0 }
+            seg1: { x: 0, ry: 0 },
+            seg2: { x: 0 },
+            seg3: { x: 0 },
+            seg4: { x: 0, ry: 0 }
         };
         let segCurrent = {
-            seg1: { x: 0, y: 0, ry: 0 },
-            seg2: { x: 0, y: 0 },
-            seg3: { x: 0, y: 0 },
-            seg4: { x: 0, y: 0, ry: 0 }
+            seg1: { x: 0, ry: 0 },
+            seg2: { x: 0 },
+            seg3: { x: 0 },
+            seg4: { x: 0, ry: 0 }
         };
 
-        // Жёсткие лимиты – чтобы не выходить за карточку
+        // Лимиты для горизонтального смещения
         const MAX_X = 12;
-        const MAX_Y = 3;        // было 6, уменьшено в 2 раза
         const MAX_RY = 4;
 
         function limit(value, max) {
@@ -691,29 +691,25 @@ function initQuantumCards() {
         }
 
         function updateSegments() {
+            // seg1
             segCurrent.seg1.x += (segTargets.seg1.x - segCurrent.seg1.x) * 0.2;
-            segCurrent.seg1.y += (segTargets.seg1.y - segCurrent.seg1.y) * 0.2;
             segCurrent.seg1.ry += (segTargets.seg1.ry - segCurrent.seg1.ry) * 0.2;
-            seg1.style.transform = `translateX(${segCurrent.seg1.x}px) translateY(${segCurrent.seg1.y}px) rotateY(${segCurrent.seg1.ry}deg) translateZ(-5px)`;
-
+            seg1.style.transform = `translateX(${segCurrent.seg1.x}px) rotateY(${segCurrent.seg1.ry}deg) translateZ(-5px)`;
+            // seg2
             segCurrent.seg2.x += (segTargets.seg2.x - segCurrent.seg2.x) * 0.2;
-            segCurrent.seg2.y += (segTargets.seg2.y - segCurrent.seg2.y) * 0.2;
-            seg2.style.transform = `translateX(${segCurrent.seg2.x}px) translateY(${segCurrent.seg2.y}px) translateZ(-5px)`;
-
+            seg2.style.transform = `translateX(${segCurrent.seg2.x}px) translateZ(-5px)`;
+            // seg3
             segCurrent.seg3.x += (segTargets.seg3.x - segCurrent.seg3.x) * 0.2;
-            segCurrent.seg3.y += (segTargets.seg3.y - segCurrent.seg3.y) * 0.2;
-            seg3.style.transform = `translateX(${segCurrent.seg3.x}px) translateY(${segCurrent.seg3.y}px) translateZ(-5px)`;
-
+            seg3.style.transform = `translateX(${segCurrent.seg3.x}px) translateZ(-5px)`;
+            // seg4
             segCurrent.seg4.x += (segTargets.seg4.x - segCurrent.seg4.x) * 0.2;
-            segCurrent.seg4.y += (segTargets.seg4.y - segCurrent.seg4.y) * 0.2;
             segCurrent.seg4.ry += (segTargets.seg4.ry - segCurrent.seg4.ry) * 0.2;
-            seg4.style.transform = `translateX(${segCurrent.seg4.x}px) translateY(${segCurrent.seg4.y}px) rotateY(${segCurrent.seg4.ry}deg) translateZ(-5px)`;
+            seg4.style.transform = `translateX(${segCurrent.seg4.x}px) rotateY(${segCurrent.seg4.ry}deg) translateZ(-5px)`;
         }
 
         function animate() {
-            currentRotateX += (targetRotateX - currentRotateX) * 0.12;
             currentRotateY += (targetRotateY - currentRotateY) * 0.12;
-            card.style.transform = `rotateX(${currentRotateX}deg) rotateY(${currentRotateY}deg)`;
+            card.style.transform = `rotateY(${currentRotateY}deg)`;
             updateSegments();
             requestAnimationFrame(animate);
         }
@@ -722,23 +718,23 @@ function initQuantumCards() {
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const relX = (e.clientX - rect.left) / rect.width - 0.5;
-            const relY = (e.clientY - rect.top) / rect.height - 0.5;
+            // вертикальная координата не используется для движения, только для блика
 
-            targetRotateY = relX * 10;
-            targetRotateX = -relY * 8;
+            // Горизонтальный наклон карточки
+            targetRotateY = relX * 12;
 
             const px = ((e.clientX - rect.left) / rect.width) * 100;
             const py = ((e.clientY - rect.top) / rect.height) * 100;
             card.style.setProperty('--x', px + '%');
             card.style.setProperty('--y', py + '%');
 
-            const intensity = Math.min(1, Math.abs(relX) + Math.abs(relY));
+            const intensity = Math.min(1, Math.abs(relX));
             const borderGlow = `rgba(255, 255, 255, ${0.15 + intensity * 0.4})`;
             segments.forEach(seg => {
                 if (seg) seg.style.borderColor = borderGlow;
             });
 
-            // Горизонтальное смещение – оставляем
+            // Только горизонтальное смещение
             segTargets.seg1.x = limit(relX * -12, MAX_X);
             segTargets.seg1.ry = limit(relX * -4, MAX_RY);
             segTargets.seg2.x = limit(relX * -5, MAX_X);
@@ -746,25 +742,18 @@ function initQuantumCards() {
             segTargets.seg4.x = limit(relX * 12, MAX_X);
             segTargets.seg4.ry = limit(relX * 4, MAX_RY);
 
-            // Вертикальное смещение – УМЕНЬШЕНО в 2 раза (чтобы не было скролла)
-            segTargets.seg1.y = limit(relY * -3, MAX_Y);   // было -8
-            segTargets.seg2.y = limit(relY * 2, MAX_Y);    // было 6
-            segTargets.seg3.y = limit(relY * -1.5, MAX_Y); // было -4
-            segTargets.seg4.y = limit(relY * 3, MAX_Y);    // было 8
-
             if (content) {
                 content.style.transform = `translateZ(25px)`;
             }
         });
 
         card.addEventListener('mouseleave', () => {
-            targetRotateX = 0;
             targetRotateY = 0;
             segTargets = {
-                seg1: { x: 0, y: 0, ry: 0 },
-                seg2: { x: 0, y: 0 },
-                seg3: { x: 0, y: 0 },
-                seg4: { x: 0, y: 0, ry: 0 }
+                seg1: { x: 0, ry: 0 },
+                seg2: { x: 0 },
+                seg3: { x: 0 },
+                seg4: { x: 0, ry: 0 }
             };
             segments.forEach(seg => {
                 if (seg) seg.style.borderColor = '';
