@@ -262,7 +262,7 @@ button[type="submit"]::after, .header-telegram::after {
     z-index: -1;
 }
 
-/* Ховер эффекты - только легкая подсветка, без смещения */
+/* Ховер эффекты - только легкая подсветка */
 .btn-primary:hover, .btn-outline:hover,
 .hero-btn-primary:hover, .hero-btn-outline:hover,
 .section-more-btn:hover, .totop:hover,
@@ -306,14 +306,9 @@ button[type="submit"]:hover, .header-telegram:hover {
     flex-wrap: wrap;
 }
 
-/* Белый самолетик */
+/* Скрываем иконку самолетика в Telegram */
 .header-telegram svg {
-    fill: #FFFFFF;
-    transition: transform 0.2s ease;
-}
-
-.header-telegram:hover svg {
-    transform: scale(1.05);
+    display: none;
 }
 
 .service-card, .portfolio-card, .step-card, .mission-photo, .faq-item, .contact-card {
@@ -769,7 +764,7 @@ button[type="submit"]:hover, .header-telegram:hover {
 }
 
 /* ============================================ */
-/* ГОЛОГРАФИЧЕСКИЙ ГРАДИЕНТ НА БУКВАХ "РАЗРАБОТКА" */
+/* ГОЛОГРАФИЧЕСКИЙ ГРАДИЕНТ НА БУКВАХ "РАЗРАБОТКА" - ПОСТОЯННОЕ СВЕЧЕНИЕ */
 /* ============================================ */
 
 .hero-title-line1 {
@@ -793,6 +788,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     color: transparent;
     animation: hologramText 4s linear infinite;
     display: inline-block;
+    filter: drop-shadow(0 0 15px var(--neon-pink));
 }
 
 @keyframes hologramText {
@@ -804,11 +800,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     }
 }
 
-.hero-title-line1:hover {
-    animation: hologramText 1.5s linear infinite;
-    filter: drop-shadow(0 0 15px var(--neon-pink));
-}
-
+/* Вторая строка - белым цветом из палитры */
 .hero-title-line2 {
     font-size: clamp(0.7rem, 2.2vw, 4rem);
     font-weight: 400;
@@ -817,11 +809,14 @@ button[type="submit"]:hover, .header-telegram:hover {
     margin-top: 0;
     margin-bottom: 0;
     white-space: normal;
+    color: #F5F5F5;
 }
 
-.hero-title-line2 .word-teal { color: var(--teal); }
-.hero-title-line2 .word-white { color: #FFFFFF; }
-.hero-title-line2 .word-gold { color: var(--neon-pink); }
+.hero-title-line2 .word-teal, 
+.hero-title-line2 .word-white, 
+.hero-title-line2 .word-gold {
+    color: #F5F5F5;
+}
 
 .phrase-underkey {
     font-size: inherit;
@@ -829,6 +824,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     letter-spacing: inherit;
     display: inline;
     white-space: normal;
+    color: #F5F5F5;
 }
 
 .hero-stats {
