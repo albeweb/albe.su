@@ -1854,9 +1854,11 @@ h3 {
     border-radius: 28px;
     overflow: hidden;
     cursor: default;
-    aspect-ratio: 2 / 1;
+    aspect-ratio: 2.4 / 1;
     transform-style: preserve-3d;
     perspective: 1000px;
+    border: none;
+    box-shadow: 0 15px 35px -15px rgba(0, 0, 0, 0.5);
 }
 
 .services-grid .service-card .segment {
@@ -2022,12 +2024,19 @@ h3 {
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
     }
+    .services-grid .service-card {
+        aspect-ratio: 2.2 / 1;
+    }
 }
 
 @media (max-width: 768px) {
     .services-grid {
         grid-template-columns: 1fr;
         gap: 20px;
+    }
+    .services-grid .service-card {
+        aspect-ratio: auto;
+        min-height: 280px;
     }
     .services-grid .service-card .card-content {
         padding: 20px;
