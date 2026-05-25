@@ -1950,14 +1950,18 @@ button[type="submit"]:hover, .header-telegram:hover {
 /* ============================================ */
 
 .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 36px;
-    margin-top: 48px;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 36px !important;
+    margin-top: 48px !important;
+    position: relative !important;
 }
 
 .service-card {
+    /* НЕ используем all: initial - оно ломает aspect-ratio */
     position: relative;
+    display: flex;
+    flex-direction: column;
     background: rgba(10, 10, 10, 0.85);
     backdrop-filter: blur(12px);
     border: 1.5px solid rgba(255, 255, 255, 0.1);
@@ -1969,61 +1973,39 @@ button[type="submit"]:hover, .header-telegram:hover {
     box-shadow: 0 15px 35px -15px rgba(0, 0, 0, 0.5);
     cursor: default;
     
-    /* Формат 2:1 */
-    aspect-ratio: 2 / 1;
+    /* ГЛАВНОЕ - формат 2:1 */
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 1 !important;
+    min-height: 0;
     
-    /* 3D контекст для параллакса */
+    /* 3D контекст */
     transform-style: preserve-3d;
     perspective: 1000px;
-    display: flex;
-    flex-direction: column;
+    
+    /* Сброс только нужных свойств */
+    font-family: 'Geist', sans-serif;
+    color: #F5F5F5;
+    box-sizing: border-box;
 }
 
-/* Уменьшаем отступы для контента */
-.service-card h3 {
-    font-size: 1.4rem;
-    margin-bottom: 0.75rem;
-    background: linear-gradient(135deg, #F5F5F5, #A0A0A0);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+/* Принудительный фикс высоты для Safari */
+.service-card {
+    height: auto;
 }
 
-.service-card p {
-    color: #A0A0A0;
-    line-height: 1.4;
-    font-size: 0.95rem;
+/* Для Chrome/Edge/Firefox */
+@supports (aspect-ratio: 2/1) {
+    .service-card {
+        aspect-ratio: 2 / 1 !important;
+    }
 }
 
-/* Уменьшаем цветные точки */
-.service-card .color-strip {
-    display: flex;
-    gap: 0.4rem;
-    margin: 0.75rem 0;
-}
-.service-card .color-dot {
-    width: 20px;
-    height: 3px;
-    border-radius: 3px;
-}
-
-/* Уменьшаем уголки */
-.service-card .corner-tl,
-.service-card .corner-tr,
-.service-card .corner-bl,
-.service-card .corner-br {
-    width: 24px;
-    height: 24px;
-}
-.service-card .corner-tl { top: 12px; left: 12px; }
-.service-card .corner-tr { top: 12px; right: 12px; }
-.service-card .corner-bl { bottom: 12px; left: 12px; }
-.service-card .corner-br { bottom: 12px; right: 12px; }
-
-/* Внутренняя рамка */
-.service-card::after {
-    inset: 10px;
-    border-radius: 18px;
+/* Запасной вариант для старых браузеров */
+@supports not (aspect-ratio: 2/1) {
+    .service-card {
+        height: 220px;
+    }
 }
 
 /* СЕГМЕНТЫ */
@@ -2040,6 +2022,29 @@ button[type="submit"]:hover, .header-telegram:hover {
     transform: translateZ(-20px);
 }
 
+.service-card .segment::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 2px, transparent 2px, transparent 12px);
+    pointer-events: none;
+}
+
+.service-card .segment::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,0.15), transparent 80%);
+    opacity: 0;
+    transition: opacity 0.15s;
+    pointer-events: none;
+}
+
+.service-card:hover .segment::after {
+    opacity: 1;
+}
+
+/* Позиции сегментов */
 .service-card .seg-1 { 
     left: 0%; 
     width: 22%; 
@@ -2069,31 +2074,44 @@ button[type="submit"]:hover, .header-telegram:hover {
     border-left: none; 
 }
 
-/* Узор на сегментах */
-.service-card .segment::before {
-    content: '';
+/* УГЛОВЫЕ СКОБЫ */
+.service-card .corner-tl,
+.service-card .corner-tr,
+.service-card .corner-bl,
+.service-card .corner-br {
     position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 2px, transparent 2px, transparent 12px);
+    width: 24px;
+    height: 24px;
+    border-color: rgba(255, 255, 255, 0.4);
+    border-style: solid;
+    transition: all 0.2s;
+    transform: translateZ(30px);
     pointer-events: none;
 }
+.service-card .corner-tl { top: 12px; left: 12px; border-width: 2px 0 0 2px; }
+.service-card .corner-tr { top: 12px; right: 12px; border-width: 2px 2px 0 0; }
+.service-card .corner-bl { bottom: 12px; left: 12px; border-width: 0 0 2px 2px; }
+.service-card .corner-br { bottom: 12px; right: 12px; border-width: 0 2px 2px 0; }
 
-/* Световой блик на сегментах */
-.service-card .segment::after {
+/* Внутренняя рамка */
+.service-card::after {
     content: '';
     position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,0.15), transparent 80%);
-    opacity: 0;
-    transition: opacity 0.15s;
+    inset: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
     pointer-events: none;
+    transition: all 0.3s;
+    transform: translateZ(5px);
 }
 
-.service-card:hover .segment::after {
-    opacity: 1;
-}
+/* Цветные уголки при наведении */
+.service-card:hover .corner-tl { border-color: #FF3366; filter: drop-shadow(0 0 6px #FF3366); }
+.service-card:hover .corner-tr { border-color: #14C6B0; filter: drop-shadow(0 0 6px #14C6B0); }
+.service-card:hover .corner-bl { border-color: #8B5CF6; filter: drop-shadow(0 0 6px #8B5CF6); }
+.service-card:hover .corner-br { border-color: #10B981; filter: drop-shadow(0 0 6px #10B981); }
 
-/* КОНТЕНТ КАРТОЧКИ — НА ПЕРЕДНЕМ ПЛАНЕ */
+/* КОНТЕНТ КАРТОЧКИ */
 .service-card h3,
 .service-card p,
 .service-card .color-strip {
@@ -2101,7 +2119,43 @@ button[type="submit"]:hover, .header-telegram:hover {
     transform: translateZ(25px);
 }
 
-/* Ховер-эффекты */
+.service-card h3 {
+    font-family: 'Geist', sans-serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+    margin: 0 0 0.75rem 0;
+    background: linear-gradient(135deg, #F5F5F5, #A0A0A0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.service-card p {
+    font-family: 'Geist', sans-serif;
+    font-weight: 400;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin: 0;
+    color: #A0A0A0;
+}
+
+/* Цветная полоска */
+.service-card .color-strip {
+    display: flex;
+    gap: 0.4rem;
+    margin: 0.75rem 0 0 0;
+}
+.service-card .color-dot {
+    width: 20px;
+    height: 3px;
+    border-radius: 3px;
+}
+.service-card .dot-pink { background: #FF3366; box-shadow: 0 0 6px #FF3366; }
+.service-card .dot-teal { background: #14C6B0; box-shadow: 0 0 6px #14C6B0; }
+.service-card .dot-mint { background: #10B981; box-shadow: 0 0 6px #10B981; }
+.service-card .dot-purple { background: #8B5CF6; box-shadow: 0 0 6px #8B5CF6; }
+
+/* ХОВЕР */
 .service-card:hover {
     transform: translateY(-6px);
     border-color: rgba(255, 51, 102, 0.5);
@@ -2114,23 +2168,24 @@ button[type="submit"]:hover, .header-telegram:hover {
     box-shadow: 0 0 15px rgba(255, 51, 102, 0.15);
 }
 
-/* Адаптация для мобильных */
+/* АДАПТАЦИЯ */
 @media (max-width: 1200px) {
     .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 30px !important;
     }
 }
 
 @media (max-width: 768px) {
     .services-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
     }
     .service-card {
         padding: 20px;
-        aspect-ratio: auto;
+        aspect-ratio: auto !important;
         min-height: 220px;
+        height: auto;
     }
     .service-card h3 {
         font-size: 1.2rem;
@@ -2151,6 +2206,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     .service-card .corner-br { bottom: 8px; right: 8px; }
 }
 
+/* REDUCED MOTION */
 @media (prefers-reduced-motion: reduce) {
     .service-card,
     .service-card .segment,
