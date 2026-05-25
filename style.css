@@ -165,7 +165,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
 }
 
 /* ============================================ */
-/* 5. СТИЛИ ДЛЯ ЗАГОЛОВКОВ (без градиента, цвета у каждого блока свои) */
+/* 5. СТИЛИ ДЛЯ ЗАГОЛОВКОВ */
 /* ============================================ */
 
 h1 {
@@ -178,7 +178,7 @@ h1 {
     text-transform: uppercase;
 }
 
-/* Глобальные стили для h2 – убрали градиент, зададим цвет через блоки */
+/* Базовый стиль h2 – белый, без градиента */
 h2 {
     font-size: clamp(1.8rem, 5vw, 3.8rem);
     margin-bottom: 2rem;
@@ -195,7 +195,48 @@ h2::after {
     left: 0;
     width: 70px;
     height: 2px;
-    background: currentColor; /* используем цвет текста h2 */
+    background: currentColor; /* цвет подчёркивания = цвет текста h2 */
+}
+
+/* Цвета для секций по порядку (у каждой секции класс .section) */
+/* 1. Услуги */
+.section:nth-of-type(1) .section-header h2,
+.section:nth-of-type(1) > h2 {
+    color: var(--ig-pink);
+}
+/* 2. Портфолио */
+.section:nth-of-type(2) .section-header h2,
+.section:nth-of-type(2) > h2 {
+    color: var(--ig-purple);
+}
+/* 3. Калькулятор */
+.section:nth-of-type(3) .section-header h2,
+.section:nth-of-type(3) > h2 {
+    color: var(--ig-orange);
+}
+/* 4. Компетенции */
+.section:nth-of-type(4) .section-header h2,
+.section:nth-of-type(4) > h2 {
+    color: var(--ig-blue);
+}
+/* 5. Цены */
+.section:nth-of-type(5) .section-header h2,
+.section:nth-of-type(5) > h2 {
+    color: var(--ig-yellow);
+}
+/* 6. FAQ (аккордеон) */
+.section:nth-of-type(6) .section-header h2,
+.section:nth-of-type(6) > h2 {
+    color: var(--ig-pink);
+}
+/* Контакты – отдельный блок (без класса .section, но есть .contact-section) */
+.contact-section .section-header h2,
+.contact-section h2 {
+    color: var(--ig-orange);
+}
+/* Футер – заголовки h4 */
+.footer h4 {
+    color: var(--ig-purple);
 }
 
 h3 {
@@ -213,47 +254,6 @@ h4 {
 }
 
 .section { padding: 100px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-
-/* === ЦВЕТА ЗАГОЛОВКОВ ДЛЯ КАЖДОГО БЛОКА === */
-/* Услуги */
-.services-section .section-header h2,
-.services-section h2 {
-    color: var(--ig-pink);
-}
-/* Портфолио */
-.portfolio-section .section-header h2,
-.portfolio-section h2 {
-    color: var(--ig-purple);
-}
-/* Калькулятор */
-.calculator-section .section-header h2,
-.calculator-section h2 {
-    color: var(--ig-orange);
-}
-/* Компетенции */
-.competences-section .section-header h2,
-.competences-section h2 {
-    color: var(--ig-blue);
-}
-/* Цены */
-.price-section .section-header h2,
-.price-section h2 {
-    color: var(--ig-yellow);
-}
-/* FAQ (аккордеон) */
-.faq-section .section-header h2,
-.faq-section h2 {
-    color: var(--ig-pink);
-}
-/* Контакты */
-.contact-section .section-header h2,
-.contact-section h2 {
-    color: var(--ig-orange);
-}
-/* Футер (заголовки внутри) */
-.footer h4 {
-    color: var(--ig-purple);
-}
 
 /* ============================================ */
 /* 6. КАРТОЧКИ И ОБЩИЕ БЛОКИ */
@@ -414,7 +414,7 @@ h4 {
     width: auto;
     margin-left: auto;
     margin-right: auto;
-    color: var(--ig-orange); /* задаём явно, но наследуется от блока */
+    /* цвет уже задан через .contact-section h2 */
 }
 
 .contact-card h2::after {
