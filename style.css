@@ -2108,6 +2108,37 @@ h3 {
     height: 64px;
 }
 
+/* СПЕЦИАЛЬНЫЙ СТИЛЬ ДЛЯ КНОПКИ НАВЕРХ */
+.kinetic-btn.totop-btn {
+    min-width: 50px !important;
+    width: 50px !important;
+    height: 50px !important;
+}
+
+.kinetic-btn.totop-btn .segment-left {
+    border-radius: 50% 0 0 50% !important;
+}
+
+.kinetic-btn.totop-btn .segment-right {
+    border-radius: 0 50% 50% 0 !important;
+}
+
+.kinetic-btn.totop-btn .segment-center {
+    width: 34% !important;
+    left: 33% !important;
+}
+
+.kinetic-btn.totop-btn .btn-text {
+    font-size: 1.2rem !important;
+    letter-spacing: 0 !important;
+}
+
+.kinetic-btn.totop-btn:hover .btn-text {
+    letter-spacing: 0 !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+/* Базовые стили сегментов */
 .kinetic-btn .segment {
     position: absolute;
     top: 0;
@@ -2233,6 +2264,7 @@ h3 {
     letter-spacing: 7px;
 }
 
+/* Искры */
 .kinetic-btn .spark {
     position: absolute;
     width: 4px;
@@ -2264,6 +2296,7 @@ h3 {
     letter-spacing: 2px;
 }
 
+/* Адаптация для мобильных */
 @media (max-width: 768px) {
     .kinetic-btn {
         min-width: 200px;
@@ -2287,5 +2320,13 @@ h3 {
     .kinetic-btn.header-telegram-btn .btn-text {
         font-size: 0.7rem;
         letter-spacing: 1px;
+    }
+    .kinetic-btn.totop-btn {
+        min-width: 40px !important;
+        width: 40px !important;
+        height: 40px !important;
+    }
+    .kinetic-btn.totop-btn .btn-text {
+        font-size: 1rem !important;
     }
 }
