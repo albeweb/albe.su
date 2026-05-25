@@ -1969,18 +1969,18 @@ button[type="submit"]:hover, .header-telegram:hover {
     box-shadow: 0 15px 35px -15px rgba(0, 0, 0, 0.5);
     cursor: default;
     
-    /* КЛЮЧЕВОЕ СВОЙСТВО - КВАДРАТНАЯ ФОРМА 1:1 */
-    aspect-ratio: 1 / 1;
+    /* Квадратная форма */
+    aspect-ratio: 2 / 1;
     
-    /* Для правильного позиционирования сегментов */
+    /* 3D контекст для параллакса */
     transform-style: preserve-3d;
     perspective: 1000px;
 }
 
-/* Сегменты */
+/* СЕГМЕНТЫ — ОСНОВА ДЛЯ 3D ПАРАЛЛАКСА */
 .service-card .segment {
     position: absolute;
-    background: rgba(10, 10, 10, 0.85);
+    background: rgba(10, 10, 10, 0.9);
     backdrop-filter: blur(12px);
     border: 1.5px solid rgba(255, 255, 255, 0.1);
     transform-style: preserve-3d;
@@ -1988,13 +1988,40 @@ button[type="submit"]:hover, .header-telegram:hover {
     will-change: transform;
     z-index: 1;
     transform: translateZ(-5px);
+    top: 0;
+    bottom: 0;
 }
 
-.service-card .seg-1 { left: 0%; width: 22%; height: 100%; border-radius: 28px 0 0 28px; border-right: none; }
-.service-card .seg-2 { left: 22%; width: 28%; height: 100%; border-left: none; border-right: none; }
-.service-card .seg-3 { left: 50%; width: 28%; height: 100%; border-left: none; border-right: none; }
-.service-card .seg-4 { left: 78%; width: 22%; height: 100%; border-radius: 0 28px 28px 0; border-left: none; }
+.service-card .seg-1 { 
+    left: 0%; 
+    width: 22%; 
+    height: 100%; 
+    border-radius: 28px 0 0 28px; 
+    border-right: none; 
+}
+.service-card .seg-2 { 
+    left: 22%; 
+    width: 28%; 
+    height: 100%; 
+    border-left: none; 
+    border-right: none; 
+}
+.service-card .seg-3 { 
+    left: 50%; 
+    width: 28%; 
+    height: 100%; 
+    border-left: none; 
+    border-right: none; 
+}
+.service-card .seg-4 { 
+    left: 78%; 
+    width: 22%; 
+    height: 100%; 
+    border-radius: 0 28px 28px 0; 
+    border-left: none; 
+}
 
+/* Узор на сегментах */
 .service-card .segment::before {
     content: '';
     position: absolute;
@@ -2003,6 +2030,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     pointer-events: none;
 }
 
+/* Световой блик на сегментах */
 .service-card .segment::after {
     content: '';
     position: absolute;
@@ -2063,9 +2091,10 @@ button[type="submit"]:hover, .header-telegram:hover {
     z-index: 2;
 }
 
-/* Контент карточки */
+/* Контент карточки — ПОВЕРХ СЕГМЕНТОВ */
 .service-card h3,
-.service-card p {
+.service-card p,
+.service-card .color-strip {
     position: relative;
     z-index: 10;
 }
@@ -2106,10 +2135,6 @@ button[type="submit"]:hover, .header-telegram:hover {
     border-color: rgba(255, 51, 102, 0.5);
     box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.6);
     background: rgba(20, 26, 32, 0.95);
-}
-
-.service-card:hover::before {
-    opacity: 0.9;
 }
 
 .service-card:hover::after {
