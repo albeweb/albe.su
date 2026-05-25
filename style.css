@@ -112,7 +112,8 @@ h1, h2,
 .price-table h3,
 .hero-tag,
 .quote-text,
-.nav-link {
+.nav-link,
+.header-telegram {
     font-family: 'EN Regular', sans-serif;
     font-weight: 400;
     letter-spacing: -0.02em;
@@ -224,9 +225,9 @@ h3 {
 /* 6.1. КНОПКИ - БЕЛАЯ ОБВОДКА */
 /* ============================================ */
 
-/* Базовые стили для всех кнопок (кроме header-telegram) */
+/* Базовые стили для всех кнопок */
 .btn-primary, .btn-outline, .hero-btn-primary, .hero-btn-outline, 
-.section-more-btn, .totop, button[type="submit"] {
+.section-more-btn, .totop, button[type="submit"], .header-telegram {
     position: relative;
     background: transparent;
     backdrop-filter: blur(12px);
@@ -240,7 +241,6 @@ h3 {
     cursor: pointer;
     border-radius: 24px;
     transition: all 0.3s ease;
-    z-index: 1;
     color: #F5F5F5;
     text-decoration: none;
     display: inline-flex;
@@ -253,7 +253,7 @@ h3 {
 .btn-primary::after, .btn-outline::after,
 .hero-btn-primary::after, .hero-btn-outline::after,
 .section-more-btn::after, .totop::after,
-button[type="submit"]::after {
+button[type="submit"]::after, .header-telegram::after {
     content: '';
     position: absolute;
     inset: 2px;
@@ -262,13 +262,11 @@ button[type="submit"]::after {
     z-index: -1;
 }
 
-/* Ховер эффекты */
+/* Ховер эффекты - только легкая подсветка, без смещения */
 .btn-primary:hover, .btn-outline:hover,
 .hero-btn-primary:hover, .hero-btn-outline:hover,
 .section-more-btn:hover, .totop:hover,
-button[type="submit"]:hover {
-    transform: translateY(-2px);
-    letter-spacing: 0.5px;
+button[type="submit"]:hover, .header-telegram:hover {
     border-color: rgba(255, 255, 255, 0.6);
 }
 
@@ -289,75 +287,23 @@ button[type="submit"]:hover {
     height: auto;
 }
 
+.header-telegram {
+    padding: 12px 28px;
+    font-size: 0.95rem;
+}
+
 /* Кнопки в hero-баннере */
 .hero-btn-primary, .hero-btn-outline {
     font-size: 1.2rem;
     padding: 21px 54px;
 }
 
-/* ============================================ */
-/* КНОПКА TELEGRAM В ШАПКЕ (с градиентом и белым самолетиком) */
-/* ============================================ */
-
-.header-telegram {
-    position: relative;
-    background: transparent;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: none;
-    padding: 12px 28px;
-    font-family: 'EN Regular', sans-serif;
-    font-weight: 400;
-    font-size: 0.95rem;
-    letter-spacing: 0.02em;
-    cursor: pointer;
-    border-radius: 24px;
-    transition: all 0.3s ease;
-    z-index: 1;
-    color: #F5F5F5;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
-/* Вращающийся световой контур */
-.header-telegram::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(135deg, 
-        var(--neon-pink), 
-        var(--purple), 
-        var(--teal), 
-        var(--neon-pink)
-    );
-    border-radius: 26px;
-    z-index: -2;
-}
-
-/* Внутренний затемнённый слой */
-.header-telegram::after {
-    content: '';
-    position: absolute;
-    inset: 2px;
-    background: rgba(10, 14, 19, 0.8);
-    border-radius: 22px;
-    z-index: -1;
-}
-
-/* Ховер эффекты */
-.header-telegram:hover {
-    transform: translateY(-2px);
-    letter-spacing: 0.5px;
-}
-
-.header-telegram:hover::before {
-    filter: brightness(1.2);
+/* КНОПКИ В HERO-БАННЕРЕ */
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    margin-top: 2rem;
+    flex-wrap: wrap;
 }
 
 /* Белый самолетик */
@@ -368,14 +314,6 @@ button[type="submit"]:hover {
 
 .header-telegram:hover svg {
     transform: scale(1.05);
-}
-
-/* КНОПКИ В HERO-БАННЕРЕ */
-.hero-buttons {
-    display: flex;
-    gap: 20px;
-    margin-top: 2rem;
-    flex-wrap: wrap;
 }
 
 .service-card, .portfolio-card, .step-card, .mission-photo, .faq-item, .contact-card {
