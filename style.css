@@ -764,7 +764,7 @@ button[type="submit"]:hover, .header-telegram:hover {
 }
 
 /* ============================================ */
-/* ГОЛОГРАФИЧЕСКИЙ ГРАДИЕНТ НА БУКВАХ "РАЗРАБОТКА" - ПОСТОЯННОЕ СВЕЧЕНИЕ */
+/* СТЕКЛЯННЫЙ ГРАДИЕНТ С ГЛУБИНОЙ (БЕЗ НЕОНА) */
 /* ============================================ */
 
 .hero-title-line1 {
@@ -775,32 +775,75 @@ button[type="submit"]:hover, .header-telegram:hover {
     white-space: normal;
     margin-bottom: 0.5rem;
     letter-spacing: 0.05em;
+    position: relative;
     
+    /* Основной градиент — глубокий, насыщенный */
     background: linear-gradient(135deg, 
-        var(--neon-pink) 0%,
-        var(--purple) 30%,
-        var(--teal) 60%,
-        var(--neon-pink) 100%
+        #FF3366 0%,
+        #FF6699 20%,
+        #8B5CF6 45%,
+        #14C6B0 70%,
+        #FF3366 100%
     );
     background-size: 200% auto;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    animation: hologramText 4s linear infinite;
+    animation: glassGradientMove 8s ease infinite;
+    
+    /* Тень для глубины (не неон) — мягкий объём */
+    text-shadow: 0 2px 5px rgba(0,0,0,0.3), 0 4px 15px rgba(0,0,0,0.2);
     display: inline-block;
-    filter: drop-shadow(0 0 15px var(--neon-pink));
 }
 
-@keyframes hologramText {
-    0% {
-        background-position: 0% 50%;
-    }
-    100% {
-        background-position: 200% 50%;
-    }
+/* Стеклянный блик — белая полоса, создающая эффект глянца */
+.hero-title-line1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.25) 30%,
+        rgba(255, 255, 255, 0.4) 50%,
+        rgba(255, 255, 255, 0.25) 70%,
+        transparent 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: glassShine 6s ease infinite;
+    pointer-events: none;
 }
 
-/* Вторая строка - белым цветом из палитры */
+/* Тонкая стеклянная обводка (имитация фацета) */
+.hero-title-line1::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.15);
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+@keyframes glassGradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes glassShine {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* Вторая строка — белая из палитры */
 .hero-title-line2 {
     font-size: clamp(0.7rem, 2.2vw, 4rem);
     font-weight: 400;
