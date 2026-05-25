@@ -143,15 +143,15 @@ h3, h4, h5, h6,
     font-family: 'Zen Dots', monospace;
 }
 
-/* Основной текст — Geist Regular */
+/* Основной текст — Geist Regular - УНИФИЦИРОВАННЫЙ РАЗМЕР */
 p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-card p,
 .mission-text p, .faq-answer, .footer p, .footer a, .tech-item, .calc-option,
 .time-breakdown-item, .stack-explanation p, input, textarea, .stat-label,
-.price-card li, .price-note {
+.price-card li, .price-note, .panel-description p, .contact-desc {
     font-family: 'Geist', sans-serif;
     font-weight: 400;
-    font-size: 1.0625rem;
-    line-height: 1.65;
+    font-size: 1rem;
+    line-height: 1.6;
     color: #B0C4DE;
 }
 
@@ -159,19 +159,19 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
 
 /* СТИЛИ ДЛЯ ЦИТАТЫ */
 .quote-text {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: var(--gray);
-    letter-spacing: 1.5px;
+    letter-spacing: 3px;
     text-transform: uppercase;
     display: inline-block;
 }
 
 /* ============================================ */
-/* 5. СТИЛИ ДЛЯ ЗАГОЛОВКОВ */
+/* 5. СТИЛИ ДЛЯ ЗАГОЛОВКОВ - УНИФИЦИРОВАННЫЕ */
 /* ============================================ */
 
 h1 {
-    font-size: 9rem;
+    font-size: clamp(3rem, 8vw, 9rem);
     line-height: 1;
     margin-bottom: 0.5rem;
     font-weight: 400;
@@ -181,7 +181,7 @@ h1 {
 }
 
 h2 {
-    font-size: 3.8rem;
+    font-size: clamp(1.8rem, 5vw, 3.8rem);
     margin-bottom: 2rem;
     font-weight: 400;
     position: relative;
@@ -200,8 +200,14 @@ h2::after {
 
 h3 {
     font-weight: 500;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     margin-bottom: 0.75rem;
+}
+
+h4 {
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
 }
 
 .section { padding: 100px 0; border-bottom: 1px solid rgba(255, 51, 102, 0.1); }
@@ -383,9 +389,8 @@ h3 {
 
 .contact-desc {
     text-align: center;
-    color: #B0C4DE;
     margin-bottom: 2rem;
-    font-size: 1rem;
+    font-size: 0.95rem;
 }
 
 .contact-form {
@@ -404,6 +409,7 @@ h3 {
     margin-bottom: 22px;
     transition: 0.2s;
     border-radius: 12px;
+    font-size: 0.95rem;
 }
 
 .contact-form input:focus, .contact-form textarea:focus,
@@ -465,7 +471,7 @@ h3 {
     align-items: baseline;
     gap: 4px;
     text-decoration: none;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     letter-spacing: 2px;
     transition: all 0.3s ease;
     color: var(--white);
@@ -491,7 +497,7 @@ h3 {
 .nav-link {
     color: var(--white);
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     letter-spacing: 0.3px;
     padding: 8px 0;
     position: relative;
@@ -545,7 +551,7 @@ h3 {
 }
 
 /* ============================================ */
-/* 9. HERO БАННЕР */
+/* 9. HERO БАННЕР - ЭТАЛОН */
 /* ============================================ */
 
 .hero {
@@ -566,9 +572,9 @@ h3 {
     height: 100%;
     pointer-events: none;
     z-index: 0;
-    opacity: 0.5;
+    opacity: 0.4;
     font-family: 'Monaco', 'Courier New', monospace;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 1.6;
     overflow: hidden;
 }
@@ -606,7 +612,7 @@ h3 {
 @keyframes fall {
     0% { transform: translateY(-50px); opacity: 0; }
     10% { opacity: 0.8; }
-    90% { opacity: 0.6; }
+    90% { opacity: 0.5; }
     100% { transform: translateY(100vh); opacity: 0; }
 }
 
@@ -651,7 +657,7 @@ h3 {
 }
 
 .hero-tag {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     font-weight: 400;
     letter-spacing: 6px;
     margin-bottom: 1.5rem;
@@ -662,7 +668,7 @@ h3 {
 }
 
 /* ============================================ */
-/* СТЕКЛЯННЫЙ ГРАДИЕНТ С ГЛУБИНОЙ — АНИМАЦИЯ ТОЛЬКО ДЛЯ ПК */
+/* СТЕКЛЯННЫЙ ГРАДИЕНТ С ГЛУБИНОЙ */
 /* ============================================ */
 
 .hero-title-line1 {
@@ -700,9 +706,9 @@ h3 {
     height: 100%;
     background: linear-gradient(120deg,
         transparent 0%,
-        rgba(255, 255, 255, 0.25) 30%,
-        rgba(255, 255, 255, 0.4) 50%,
-        rgba(255, 255, 255, 0.25) 70%,
+        rgba(255, 255, 255, 0.2) 30%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0.2) 70%,
         transparent 100%
     );
     background-size: 200% 100%;
@@ -733,7 +739,7 @@ h3 {
 }
 
 .hero-title-line2 {
-    font-size: clamp(0.7rem, 2.2vw, 4rem);
+    font-size: clamp(0.8rem, 2.5vw, 4rem);
     font-weight: 400;
     display: block;
     line-height: 1.2;
@@ -774,8 +780,8 @@ h3 {
 
 .stat-item {
     text-align: center;
-    min-width: 140px;
-    padding: 12px 48px;
+    min-width: 120px;
+    padding: 12px 32px;
     background: transparent;
     backdrop-filter: none;
     border: 1px solid;
@@ -801,7 +807,7 @@ h3 {
 }
 
 .stat-number {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 500;
     line-height: 1.2;
     letter-spacing: -0.02em;
@@ -809,7 +815,7 @@ h3 {
 }
 
 .stat-label {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     color: #B0C4DE;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -826,10 +832,10 @@ h3 {
 .service-badge {
     background: rgba(13, 17, 23, 0.65);
     backdrop-filter: blur(8px);
-    padding: 12px 20px;
-    font-size: 1rem;
+    padding: 10px 16px;
+    font-size: 0.85rem;
     font-weight: 400;
-    border: 1.5px solid var(--gray);
+    border: 1px solid var(--gray);
     color: var(--white);
     border-radius: 16px;
     transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
@@ -879,6 +885,7 @@ h3 {
     margin-bottom: 12px;
     font-weight: 500;
     color: var(--teal);
+    font-size: 0.9rem;
 }
 
 .calc-options {
@@ -889,10 +896,11 @@ h3 {
 
 .calc-option {
     background: #11181F;
-    padding: 10px 20px;
+    padding: 8px 18px;
     cursor: pointer;
     font-weight: 400;
     border-radius: 20px;
+    font-size: 0.85rem;
 }
 
 .calc-option.selected {
@@ -914,14 +922,14 @@ h3 {
 }
 
 .calc-price {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 600;
     color: var(--teal);
     word-break: break-word;
 }
 
 .stack-explanation {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     line-height: 1.6;
     color: #B0C4DE;
 }
@@ -929,7 +937,7 @@ h3 {
 .stack-explanation h4 {
     color: var(--teal);
     margin: 0 0 12px;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .time-breakdown {
@@ -942,7 +950,7 @@ h3 {
     display: flex;
     justify-content: space-between;
     margin-bottom: 6px;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     flex-wrap: wrap;
     gap: 8px;
 }
@@ -962,7 +970,7 @@ h3 {
 
 .step-card { flex: 1 1 200px; }
 .step-num {
-    font-size: 2.6rem;
+    font-size: 2.2rem;
     font-weight: 500;
     color: var(--neon-pink);
     margin-bottom: 1rem;
@@ -981,7 +989,7 @@ h3 {
     position: relative;
     background: linear-gradient(135deg, rgba(20, 26, 32, 0.95), rgba(13, 17, 23, 0.98));
     backdrop-filter: blur(12px);
-    padding: 32px 28px;
+    padding: 28px 24px;
     border: 1px solid rgba(255, 51, 102, 0.15);
     border-radius: 20px;
     transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
@@ -1014,8 +1022,8 @@ h3 {
 }
 
 .competence-card h3 {
-    font-size: 1.6rem;
-    margin-bottom: 12px;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
     font-weight: 600;
     background: linear-gradient(135deg, var(--white), #C8D8E8);
     -webkit-background-clip: text;
@@ -1025,10 +1033,10 @@ h3 {
 }
 
 .competence-card > p {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--gray);
-    margin-bottom: 24px;
-    padding-bottom: 16px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
     border-bottom: 1px solid rgba(255, 51, 102, 0.2);
     letter-spacing: 0.5px;
 }
@@ -1036,7 +1044,7 @@ h3 {
 .competence-tech-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
     margin-top: 8px;
 }
 
@@ -1044,8 +1052,8 @@ h3 {
     position: relative;
     display: inline-block;
     background: linear-gradient(135deg, rgba(17, 24, 31, 0.9), rgba(13, 17, 23, 0.9));
-    padding: 10px 18px;
-    font-size: 0.85rem;
+    padding: 8px 14px;
+    font-size: 0.75rem;
     font-weight: 500;
     border: 1px solid rgba(255, 51, 102, 0.2);
     border-radius: 40px;
@@ -1095,12 +1103,12 @@ h3 {
 /* ============================================ */
 
 .price-table {
-    padding: 48px 56px;
+    padding: 40px 48px;
     margin: 40px 0;
 }
 
 .price-table h3 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     text-align: center;
     margin-bottom: 2rem;
     color: var(--neon-pink);
@@ -1114,7 +1122,7 @@ h3 {
 
 .price-card {
     background: rgba(10, 14, 19, 0.6);
-    padding: 24px;
+    padding: 20px;
     border-radius: 20px;
     transition: all 0.3s ease;
     border: 1px solid transparent;
@@ -1128,13 +1136,13 @@ h3 {
 }
 
 .price-card h4 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: var(--neon-pink);
     margin-bottom: 12px;
 }
 
 .price-card .price {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: 600;
     color: #FFFFFF;
     margin-bottom: 16px;
@@ -1149,7 +1157,7 @@ h3 {
 }
 
 .price-card li {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     padding: 6px 0;
     padding-left: 20px;
     position: relative;
@@ -1164,7 +1172,7 @@ h3 {
 
 .price-note {
     text-align: center;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: #6B8CA8;
     margin-top: 24px;
     padding-top: 16px;
@@ -1190,7 +1198,7 @@ h3 {
 
 .footer-logo {
     color: var(--neon-pink);
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: 500;
 }
 
@@ -1198,9 +1206,14 @@ h3 {
     color: #B0C4DE;
     text-decoration: none;
     transition: 0.2s;
+    font-size: 0.9rem;
 }
 
 .footer a:hover { color: var(--neon-pink); }
+
+.footer p {
+    font-size: 0.85rem;
+}
 
 /* ============================================ */
 /* 14. CLS FIX */
@@ -1238,36 +1251,34 @@ h3 {
 }
 
 /* ============================================ */
-/* 15. MEDIA QUERIES */
+/* 15. MEDIA QUERIES - ОБНОВЛЕННЫЕ */
 /* ============================================ */
-
-@media (max-width: 1600px) {
-    h1 { font-size: 8rem; }
-    h2 { font-size: 3.4rem; }
-    .portfolio-card .portfolio-image { height: 260px; }
-}
 
 @media (max-width: 1400px) {
     .container, .header .container, .hero .container { padding: 0 60px; }
-    h1 { font-size: 7rem; }
-    h2 { font-size: 3rem; }
     .portfolio-card .portfolio-image { height: 240px; }
 }
 
 @media (max-width: 1200px) {
     .container, .header .container, .hero .container { padding: 0 50px; }
-    h1 { font-size: 6rem; }
-    h2 { font-size: 2.6rem; }
+    h1 { font-size: 5rem; }
+    h2 { font-size: 2.2rem; }
     .competences-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 25px;
+    }
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .price-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 1024px) {
     .container, .header .container, .hero .container { padding: 0 40px; }
-    h1 { font-size: 5rem; }
-    h2 { font-size: 2.2rem; }
+    h1 { font-size: 4rem; }
+    h2 { font-size: 2rem; }
     .portfolio-card .portfolio-image { height: 200px; }
     .nav-menu { gap: 1.5rem; }
     .nav-link { font-size: 0.85rem; }
@@ -1278,19 +1289,18 @@ h3 {
     .hero-wrapper { flex-direction: column; align-items: center; gap: 50px; }
     .hero-content { max-width: 100%; text-align: center; }
     .hero-top { align-items: center; }
-    h1 { font-size: 4.5rem; white-space: normal; }
-    h2 { font-size: 2rem; }
     .hero-tag { display: block; text-align: center; }
     .services-badges, .hero-buttons { justify-content: center; }
     .portfolio-card .portfolio-image { height: 220px; }
     .mission-grid-wrapper { flex-direction: column; gap: 30px; }
     .mission-text { text-align: center; }
+    .faq-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) {
     .header .container { padding: 0 20px; }
     .burger { display: flex; }
-    .logo { font-size: 1.4rem; }
+    .logo { font-size: 1.3rem; }
     
     .nav-menu {
         position: fixed;
@@ -1310,7 +1320,7 @@ h3 {
     }
     .nav-menu.active { right: 0; }
     .nav-link {
-        font-size: 1.1rem;
+        font-size: 1rem;
         padding: 10px 0;
         width: 100%;
         border-bottom: 1px solid rgba(255, 51, 102, 0.15);
@@ -1321,8 +1331,8 @@ h3 {
     .container, .header .container, .hero .container { padding: 0 20px; }
     .section { padding: 60px 0; }
     .hero { padding: 40px 0; min-height: auto; }
-    h1 { font-size: 3.5rem; }
-    h2 { font-size: 1.8rem; }
+    h1 { font-size: 3rem; }
+    h2 { font-size: 1.6rem; }
     h3 { font-size: 1.3rem; }
     .code-rain { display: none; }
     
@@ -1331,10 +1341,8 @@ h3 {
         gap: 12px;
     }
     .service-badge {
-        text-align: center;
-        padding: 10px 16px;
-        font-size: 0.85rem;
-        white-space: normal;
+        font-size: 0.75rem;
+        padding: 8px 12px;
     }
     
     .hero-stats {
@@ -1346,51 +1354,34 @@ h3 {
     }
     .stat-item {
         min-width: auto;
-        padding: 8px 24px;
+        padding: 8px 16px;
         width: 100%;
     }
-    .stat-number { font-size: 1.2rem; }
-    .stat-label { font-size: 0.6rem; }
+    .stat-number { font-size: 1.1rem; }
+    .stat-label { font-size: 0.55rem; }
     
-    .portfolio-card .portfolio-image { height: 200px; }
+    .portfolio-card .portfolio-image { height: 180px; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .price-grid { grid-template-columns: 1fr; }
     .steps-container { flex-direction: column; gap: 20px; }
     .step-card { width: 100%; padding: 24px; }
-    .step-num { font-size: 2rem; }
+    .step-num { font-size: 1.8rem; }
     .competences-grid { 
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+        grid-template-columns: 1fr;
+        gap: 18px;
     }
-    .competence-card { 
-        padding: 24px 20px;
-    }
-    .competence-card h3 {
-        font-size: 1.4rem;
-    }
-    .tech-item {
-        padding: 7px 14px;
-        font-size: 0.75rem;
-    }
-    .calculator-card { padding: 24px; }
+    .calculator-card { padding: 20px; }
     .calculator-two-columns { flex-direction: column; gap: 24px; }
-    .calculator-right { padding: 20px; }
     .calc-option { width: 100%; text-align: center; }
-    .calc-price { font-size: 1.4rem; }
+    .calc-price { font-size: 1.3rem; }
     .mission-grid { grid-template-columns: 1fr; gap: 16px; }
-    .mission-grid .mission-grid-card { height: 180px; }
-    .faq-grid { grid-template-columns: 1fr; gap: 16px; }
-    .faq-question { padding: 18px 20px; font-size: 0.95rem; }
+    .mission-grid .mission-grid-card { height: 160px; }
+    .faq-question { padding: 16px 20px; font-size: 0.9rem; }
     .footer-grid { flex-direction: column; gap: 30px; text-align: center; align-items: center; }
-    .contact-card { padding: 32px 24px; }
+    .contact-card { padding: 28px 20px; }
     .form-row { grid-template-columns: 1fr; gap: 0; }
-    .contact-card h2 { font-size: 1.8rem; }
+    .contact-card h2 { font-size: 1.6rem; }
     .section-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-    
-    p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-card p,
-    .mission-text p, .faq-answer, .footer p, .tech-item, .calc-option, .stack-explanation p,
-    .stat-label, .price-card li, .price-note {
-        font-size: 1rem;
-        line-height: 1.6;
-    }
     
     .stat-item, .service-badge, .calculator-card, .contact-card,
     .competence-card, .faq-question, .portfolio-card, .step-card,
@@ -1400,64 +1391,48 @@ h3 {
     
     body::before { display: none; }
     .hero { background: #0A0E12; }
-    .portfolio-card .portfolio-image { background: #1A212B; }
 }
 
 @media (max-width: 550px) {
     .services-badges { gap: 10px; }
-    .service-badge { font-size: 0.75rem; padding: 8px 12px; }
-    .competences-grid { 
-        grid-template-columns: 1fr;
-        gap: 18px;
-    }
+    .service-badge { font-size: 0.7rem; padding: 6px 10px; }
+    .competences-grid { gap: 16px; }
+    .competence-card { padding: 20px 16px; }
+    .competence-card h3 { font-size: 1.2rem; }
 }
 
 @media (max-width: 480px) {
     .header .container { padding: 0 16px; }
-    .logo { font-size: 1.2rem; gap: 2px; }
+    .logo { font-size: 1.1rem; gap: 2px; }
     .nav-menu { width: 260px; right: -260px; }
     .container, .header .container, .hero .container { padding: 0 16px; }
     .section { padding: 40px 0; }
-    h1 { font-size: 2.5rem; }
-    h2 { font-size: 1.5rem; }
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.4rem; }
     h2::after { width: 50px; bottom: -8px; }
-    .hero-tag { font-size: 0.7rem; letter-spacing: 4px; }
+    .hero-tag { font-size: 0.65rem; letter-spacing: 4px; }
     
     .services-badges {
         grid-template-columns: repeat(2, 1fr);
         gap: 8px;
     }
     .service-badge {
-        font-size: 0.7rem;
-        padding: 6px 10px;
-        white-space: normal;
-        text-align: center;
-        line-height: 1.3;
+        font-size: 0.65rem;
+        padding: 5px 8px;
     }
     
-    .stat-item { padding: 6px 16px; }
+    .stat-item { padding: 6px 12px; }
     .stat-number { font-size: 1rem; }
-    .quote-text { font-size: 0.7rem; }
-    .service-card, .portfolio-card, .step-card, .faq-item { padding: 20px; }
-    .service-card h3 { font-size: 1.3rem; }
-    .portfolio-card .portfolio-image { height: 180px; }
-    .mission-grid .mission-grid-card { height: 120px; }
+    .quote-text { font-size: 0.65rem; }
+    .service-card, .portfolio-card, .step-card, .faq-item { padding: 16px; }
+    .portfolio-card .portfolio-image { height: 160px; }
+    .mission-grid .mission-grid-card { height: 100px; }
     .calculator-card { padding: 16px; }
-    .contact-card { padding: 24px 20px; }
-    .contact-card h2 { font-size: 1.5rem; }
-    .faq-question { padding: 16px 18px; font-size: 0.9rem; }
+    .contact-card { padding: 20px 16px; }
+    .contact-card h2 { font-size: 1.4rem; }
+    .faq-question { padding: 14px 16px; font-size: 0.85rem; }
     
-    .competences-grid { 
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-    
-    p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-card p,
-    .mission-text p, .faq-answer, .footer p, .tech-item, .calc-option, .stack-explanation p,
-    .stat-label, .price-card li, .price-note {
-        font-size: 0.95rem;
-        line-height: 1.55;
-    }
+    .tech-item { padding: 5px 10px; font-size: 0.7rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1535,7 +1510,7 @@ h3 {
 }
 
 .accordion-panel:not(.active) .panel-number {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     margin-bottom: 20px;
     letter-spacing: 6px;
     background: linear-gradient(135deg, var(--neon-pink), var(--purple));
@@ -1547,7 +1522,7 @@ h3 {
 }
 
 .accordion-panel:not(.active) .panel-title h3 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: var(--white);
     font-weight: 500;
     letter-spacing: 4px;
@@ -1582,7 +1557,7 @@ h3 {
 }
 
 .accordion-panel.active .panel-title h3 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: var(--white);
     letter-spacing: 4px;
     font-weight: 600;
@@ -1640,7 +1615,7 @@ h3 {
 }
 
 .panel-description p {
-    font-size: 1rem;
+    font-size: 0.95rem;
     line-height: 1.6;
     color: #C8D8E8;
     margin: 0;
@@ -1654,7 +1629,7 @@ h3 {
 }
 
 .panel-tech h4 {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--teal);
     margin-bottom: 10px;
     font-weight: 500;
@@ -1671,7 +1646,7 @@ h3 {
 .tech-items span {
     background: rgba(255, 255, 255, 0.08);
     padding: 5px 12px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     border-radius: 20px;
     color: var(--white);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1707,7 +1682,7 @@ h3 {
 
 .panel-metrics span:first-child {
     color: var(--gray);
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -1715,7 +1690,7 @@ h3 {
 .panel-metrics span:last-child {
     color: var(--white);
     font-weight: 500;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 .active-panel-footer {
@@ -1738,7 +1713,7 @@ h3 {
 .active-panel-footer .footer-hours span:first-child,
 .active-panel-footer .footer-price span:first-child {
     color: var(--gray);
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     letter-spacing: 1px;
 }
 
@@ -1746,7 +1721,7 @@ h3 {
 .active-panel-footer .footer-price span:last-child {
     color: var(--teal);
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 @media (max-width: 900px) {
@@ -1766,7 +1741,7 @@ h3 {
     }
     
     .accordion-panel:not(.active) .panel-number {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         margin-bottom: 0;
     }
     
@@ -1776,7 +1751,7 @@ h3 {
     }
     
     .accordion-panel.active .panel-title h3 {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
     
     .accordion-panel-content {
@@ -1815,15 +1790,15 @@ h3 {
     position: fixed;
     background: #0F1419;
     border: 1px solid var(--neon-pink);
-    padding: 18px 24px;
-    max-width: 380px;
+    padding: 16px 20px;
+    max-width: 360px;
     width: max-content;
     z-index: 2000;
     border-radius: 16px;
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(12px);
     font-weight: 400;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     line-height: 1.5;
     color: #E6EDF5;
     pointer-events: none;
@@ -1914,7 +1889,7 @@ h3 {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,0.15), transparent 80%);
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,0.12), transparent 80%);
     opacity: 0;
     transition: opacity 0.15s;
     pointer-events: none;
@@ -1929,8 +1904,8 @@ h3 {
 .services-grid .service-card .corner-bl,
 .services-grid .service-card .corner-br {
     position: absolute;
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
     border-color: rgba(255, 255, 255, 0.4);
     border-style: solid;
     z-index: 20;
@@ -1974,6 +1949,7 @@ h3 {
     backdrop-filter: blur(4px);
     font-family: 'Geist', sans-serif;
     margin-top: 16px;
+    font-size: 0.85rem;
 }
 
 .services-grid .service-card .card-btn:hover {
