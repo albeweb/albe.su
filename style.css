@@ -764,7 +764,7 @@ button[type="submit"]:hover, .header-telegram:hover {
 }
 
 /* ============================================ */
-/* СТЕКЛЯННЫЙ ГРАДИЕНТ С ГЛУБИНОЙ (БЕЗ РАМКИ) */
+/* СТЕКЛЯННЫЙ ГРАДИЕНТ С ГЛУБИНОЙ (БЕЗ РАМКИ) — АНИМАЦИЯ ТОЛЬКО ДЛЯ ПК */
 /* ============================================ */
 
 .hero-title-line1 {
@@ -789,7 +789,6 @@ button[type="submit"]:hover, .header-telegram:hover {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    animation: glassGradientMove 8s ease infinite;
     
     /* Тень для глубины — мягкий объём */
     text-shadow: 0 2px 5px rgba(0,0,0,0.3), 0 4px 15px rgba(0,0,0,0.2);
@@ -815,11 +814,20 @@ button[type="submit"]:hover, .header-telegram:hover {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    animation: glassShine 6s ease infinite;
     pointer-events: none;
 }
 
 /* Рамка удалена — псевдоэлемент ::after отсутствует */
+
+/* Анимации только для экранов шире 1024px (ПК) */
+@media (min-width: 1025px) {
+    .hero-title-line1 {
+        animation: glassGradientMove 8s ease infinite;
+    }
+    .hero-title-line1::before {
+        animation: glassShine 6s ease infinite;
+    }
+}
 
 @keyframes glassGradientMove {
     0% { background-position: 0% 50%; }
