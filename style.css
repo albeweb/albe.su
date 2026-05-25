@@ -1820,7 +1820,7 @@ h4 {
     grid-template-columns: repeat(3, 1fr);
     gap: 36px;
     margin-top: 48px;
-    overflow-x: hidden; /* ← запрещаем горизонтальный скролл внутри сетки */
+    overflow-x: hidden;
 }
 
 .services-grid .service-card {
@@ -1835,7 +1835,7 @@ h4 {
     perspective: 1000px;
     border: none;
     box-shadow: 0 15px 35px -15px rgba(0, 0, 0, 0.5);
-    contain: paint; /* ← изолирует карточку, её содержимое не вызывает скролл */
+    contain: paint;
 }
 
 .services-grid .service-card .segment {
@@ -2337,4 +2337,199 @@ h4 {
     .kinetic-btn.totop-btn .btn-text {
         font-size: 1rem !important;
     }
+}
+
+/* ============================================ */
+/* 20. АККОРДЕОН FAQ В СТИЛЕ «КЕЙС» */
+/* ============================================ */
+
+.cases-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.case-item {
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+    perspective: 800px;
+}
+
+.case-item:hover {
+    border-color: rgba(255, 51, 102, 0.3);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+.case-lid {
+    position: relative;
+    padding: 1.2rem 1.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transform-origin: top center;
+    transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+    transform-style: preserve-3d;
+    z-index: 2;
+    background: transparent;
+    border: none;
+    width: 100%;
+    font-family: inherit;
+    text-align: left;
+}
+
+.case-item.active .case-lid {
+    transform: rotateX(-10deg) translateY(-8px);
+    border-bottom: 1px solid rgba(255, 51, 102, 0.5);
+}
+
+.lid-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.case-number {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #8B5CF6;
+    background: rgba(139, 92, 246, 0.15);
+    padding: 0.2rem 0.8rem;
+    border-radius: 30px;
+    letter-spacing: 1px;
+    transition: all 0.2s;
+}
+
+.case-item.active .case-number {
+    background: #FF3366;
+    color: #0A0A0A;
+    box-shadow: 0 0 12px #FF3366;
+}
+
+.case-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #F5F5F5;
+    letter-spacing: -0.2px;
+}
+
+.case-handle {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.handle-bar {
+    width: 24px;
+    height: 3px;
+    background: #A0A0A0;
+    border-radius: 4px;
+    transition: all 0.4s cubic-bezier(0.34, 1.2, 0.64, 1);
+    position: relative;
+}
+
+.handle-bar::before,
+.handle-bar::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 3px;
+    background: #A0A0A0;
+    border-radius: 2px;
+    transition: all 0.4s;
+}
+
+.handle-bar::before {
+    left: -8px;
+    top: 0;
+}
+
+.handle-bar::after {
+    right: -8px;
+    top: 0;
+}
+
+.case-item.active .handle-bar {
+    background: #FF3366;
+    box-shadow: 0 0 8px #FF3366;
+    transform: rotate(180deg);
+}
+
+.case-item.active .handle-bar::before,
+.case-item.active .handle-bar::after {
+    background: #FF3366;
+    box-shadow: 0 0 4px #FF3366;
+}
+
+.case-inside {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.case-item.active .case-inside {
+    max-height: 380px;
+}
+
+.case-content {
+    padding: 0.2rem 1.8rem 1.6rem 1.8rem;
+    transform: translateZ(8px);
+}
+
+.case-text {
+    color: #CCCCCC;
+    line-height: 1.6;
+    font-size: 0.92rem;
+    border-top: 1px solid rgba(20, 198, 176, 0.3);
+    padding-top: 1rem;
+}
+
+.project-meta {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.meta-tag {
+    font-size: 0.7rem;
+    font-family: monospace;
+    color: #10B981;
+    background: rgba(16, 185, 129, 0.08);
+    padding: 0.2rem 0.7rem;
+    border-radius: 20px;
+    border-left: 1px solid #10B981;
+}
+
+/* искры */
+.spark {
+    position: fixed;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    filter: blur(1px);
+    pointer-events: none;
+    z-index: 10000;
+    opacity: 0;
+}
+
+@keyframes sparkOpen {
+    0% { opacity: 1; transform: translate(0,0) scale(1); }
+    100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0); }
+}
+
+@media (max-width: 640px) {
+    .case-lid { padding: 1rem 1.2rem; }
+    .case-title { font-size: 0.85rem; }
+    .case-content { padding: 0 1.2rem 1.2rem 1.2rem; }
+    .case-number { font-size: 0.7rem; }
 }
