@@ -2092,10 +2092,10 @@ h3 {
     display: inline-flex;
 }
 
-/* Размер для Telegram в шапке - УМЕНЬШЕННЫЙ */
+/* Размер для Telegram в шапке - УВЕЛИЧЕННЫЙ */
 .kinetic-btn.header-telegram-btn {
-    min-width: 100px !important;
-    height: 34px !important;
+    min-width: 130px !important;
+    height: 42px !important;
 }
 
 .kinetic-btn.header-telegram-btn .segment-left {
@@ -2107,8 +2107,8 @@ h3 {
 }
 
 .kinetic-btn.header-telegram-btn .btn-text {
-    font-size: 0.6rem !important;
-    letter-spacing: 1px !important;
+    font-size: 0.75rem !important;
+    letter-spacing: 1.5px !important;
 }
 
 .kinetic-btn.small {
@@ -2241,7 +2241,7 @@ h3 {
     opacity: 0.7;
 }
 
-/* Текст */
+/* Текст - БЕЗ ГЛИТЧ-АНИМАЦИИ, ЧТОБЫ НЕ ДЕРГАЛСЯ */
 .kinetic-btn .btn-text {
     position: absolute;
     top: 50%;
@@ -2259,7 +2259,7 @@ h3 {
     z-index: 20;
     pointer-events: none;
     text-shadow: 0 0 5px rgba(255, 51, 102, 0.3);
-    transition: letter-spacing 0.2s ease;
+    transition: letter-spacing 0.2s ease, transform 0.2s ease;
     font-family: 'EN Regular', 'Geist', sans-serif;
 }
 
@@ -2314,14 +2314,6 @@ h3 {
     }
 }
 
-@keyframes glitchText {
-    0% { clip-path: inset(0 0 0 0); }
-    10% { clip-path: inset(10% 0 30% 0); }
-    20% { clip-path: inset(40% 0 10% 0); }
-    30% { clip-path: inset(20% 0 50% 0); }
-    100% { clip-path: inset(0 0 0 0); }
-}
-
 /* Активное состояние */
 .kinetic-btn:active {
     transform: scale(0.97) !important;
@@ -2362,14 +2354,14 @@ h3 {
         letter-spacing: 3px;
     }
     
-    /* Telegram на мобильных - ещё меньше */
+    /* Telegram на мобильных */
     .kinetic-btn.header-telegram-btn {
-        min-width: 80px !important;
-        height: 28px !important;
+        min-width: 110px !important;
+        height: 36px !important;
     }
     .kinetic-btn.header-telegram-btn .btn-text {
-        font-size: 0.5rem !important;
-        letter-spacing: 0.5px !important;
+        font-size: 0.65rem !important;
+        letter-spacing: 1px !important;
     }
     
     /* Кнопка наверх на мобильных */
