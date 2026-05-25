@@ -208,10 +208,10 @@ h3 {
 .section { padding: 100px 0; border-bottom: 1px solid rgba(255, 51, 102, 0.1); }
 
 /* ============================================ */
-/* 6. КАРТОЧКИ И ОБЩИЕ БЛОКИ */
+/* 6. КАРТОЧКИ И ОБЩИЕ БЛОКИ (БАЗОВЫЕ СТИЛИ) */
 /* ============================================ */
 
-.service-card, .portfolio-card, .step-card,
+.portfolio-card, .step-card,
 .mission-photo, .faq-item, .cover-content, .calculator-card, .calc-option, 
 .contact-card, .price-table {
     background: rgba(18, 24, 32, 0.85);
@@ -313,17 +313,6 @@ button[type="submit"]:hover, .header-telegram:hover {
 
 .service-card, .portfolio-card, .step-card, .mission-photo, .faq-item, .contact-card {
     padding: 32px;
-}
-
-.service-card:hover, .portfolio-card:hover, .step-card:hover, .calc-option:hover {
-    transform: translateY(-5px);
-    border-color: var(--neon-pink);
-    backdrop-filter: blur(4px);
-}
-
-.service-card:hover, .portfolio-card:hover, .step-card:hover, .calc-option:hover {
-    background: rgba(30, 42, 94, 0.5);
-    box-shadow: 0 20px 30px -12px rgba(30, 42, 94, 0.6);
 }
 
 .contact-card:hover {
@@ -764,7 +753,7 @@ button[type="submit"]:hover, .header-telegram:hover {
 }
 
 /* ============================================ */
-/* СТЕКЛЯННЫЙ ГРАДИЕНТ С ГЛУБИНОЙ (БЕЗ РАМКИ) — АНИМАЦИЯ ТОЛЬКО ДЛЯ ПК */
+/* СТЕКЛЯННЫЙ ГРАДИЕНТ С ГЛУБИНОЙ — АНИМАЦИЯ ТОЛЬКО ДЛЯ ПК */
 /* ============================================ */
 
 .hero-title-line1 {
@@ -777,7 +766,6 @@ button[type="submit"]:hover, .header-telegram:hover {
     letter-spacing: 0.05em;
     position: relative;
     
-    /* Основной градиент — глубокий, насыщенный */
     background: linear-gradient(135deg, 
         #FF3366 0%,
         #FF6699 20%,
@@ -790,12 +778,10 @@ button[type="submit"]:hover, .header-telegram:hover {
     background-clip: text;
     color: transparent;
     
-    /* Тень для глубины — мягкий объём */
     text-shadow: 0 2px 5px rgba(0,0,0,0.3), 0 4px 15px rgba(0,0,0,0.2);
     display: inline-block;
 }
 
-/* Стеклянный блик — белая полоса, создающая эффект глянца */
 .hero-title-line1::before {
     content: '';
     position: absolute;
@@ -817,9 +803,6 @@ button[type="submit"]:hover, .header-telegram:hover {
     pointer-events: none;
 }
 
-/* Рамка удалена — псевдоэлемент ::after отсутствует */
-
-/* Анимации только для экранов шире 1024px (ПК) */
 @media (min-width: 1025px) {
     .hero-title-line1 {
         animation: glassGradientMove 8s ease infinite;
@@ -840,7 +823,6 @@ button[type="submit"]:hover, .header-telegram:hover {
     100% { background-position: 200% 0; }
 }
 
-/* Вторая строка — белая из палитры */
 .hero-title-line2 {
     font-size: clamp(0.7rem, 2.2vw, 4rem);
     font-weight: 400;
@@ -1199,7 +1181,6 @@ button[type="submit"]:hover, .header-telegram:hover {
     color: var(--white);
 }
 
-/* Анимация появления карточек при скролле */
 .competence-card {
     opacity: 0;
     animation: fadeInUp 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
@@ -1663,7 +1644,6 @@ button[type="submit"]:hover, .header-telegram:hover {
     opacity: 1;
 }
 
-/* Закрытые панели */
 .accordion-panel:not(.active) .accordion-panel-header {
     display: flex;
     flex-direction: column;
@@ -1706,7 +1686,6 @@ button[type="submit"]:hover, .header-telegram:hover {
     background: linear-gradient(135deg, rgba(30, 40, 50, 0.95), rgba(20, 26, 35, 0.95));
 }
 
-/* Активная панель */
 .accordion-panel.active .accordion-panel-header {
     padding: 20px 28px;
     display: flex;
@@ -1755,7 +1734,6 @@ button[type="submit"]:hover, .header-telegram:hover {
     to { opacity: 1; }
 }
 
-/* Изображение */
 .panel-image {
     margin-bottom: 20px;
     border-radius: 16px;
@@ -1776,7 +1754,6 @@ button[type="submit"]:hover, .header-telegram:hover {
     transform: scale(1.03);
 }
 
-/* Описание текста */
 .panel-description {
     flex: 1;
     margin-bottom: 20px;
@@ -1790,7 +1767,6 @@ button[type="submit"]:hover, .header-telegram:hover {
     margin: 0;
 }
 
-/* Нижняя часть */
 .panel-bottom {
     display: flex;
     flex-direction: column;
@@ -1798,7 +1774,6 @@ button[type="submit"]:hover, .header-telegram:hover {
     flex-shrink: 0;
 }
 
-/* Технологии */
 .panel-tech h4 {
     font-size: 0.8rem;
     color: var(--teal);
@@ -1830,7 +1805,6 @@ button[type="submit"]:hover, .header-telegram:hover {
     transform: translateY(-2px);
 }
 
-/* Метрики в одну строку */
 .panel-metrics {
     background: rgba(255, 255, 255, 0.04);
     padding: 14px 18px;
@@ -1865,7 +1839,6 @@ button[type="submit"]:hover, .header-telegram:hover {
     font-size: 0.9rem;
 }
 
-/* Футер с часами и стоимостью */
 .active-panel-footer {
     padding: 16px 28px;
     border-top: 1px solid rgba(255, 51, 102, 0.15);
@@ -1897,7 +1870,6 @@ button[type="submit"]:hover, .header-telegram:hover {
     font-size: 1.1rem;
 }
 
-/* Мобильная адаптация */
 @media (max-width: 900px) {
     .portfolio-accordion {
         flex-direction: column;
@@ -1989,12 +1961,19 @@ button[type="submit"]:hover, .header-telegram:hover {
 /* 18. ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ — ПРЕМИАЛЬНЫЕ КАРТОЧКИ (КВАНТОВЫЙ СТИЛЬ) */
 /* ============================================ */
 
-/* Переопределяем общие стили карточек услуг */
+/* Стили для карточек услуг */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 36px;
+    margin-top: 48px;
+}
+
 .service-card {
     position: relative;
     background: rgba(18, 24, 32, 0.75);
     backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 51, 102, 0.2);
+    border: 1px solid rgba(255, 51, 102, 0.25);
     border-radius: 28px;
     padding: 32px;
     transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
@@ -2004,7 +1983,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     cursor: default;
 }
 
-/* Вертикальные сегменты (имитация разбивки) */
+/* Вертикальные сегменты */
 .service-card::before {
     content: '';
     position: absolute;
@@ -2032,7 +2011,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     transition: opacity 0.3s;
 }
 
-/* Угловые скобы (через псевдоэлемент + внутренняя рамка) */
+/* Внутренняя рамка */
 .service-card::after {
     content: '';
     position: absolute;
@@ -2044,7 +2023,7 @@ button[type="submit"]:hover, .header-telegram:hover {
     z-index: 2;
 }
 
-/* Цветные уголки через box-shadow на спэны — создаём их через абсолютные элементы */
+/* Угловые скобы */
 .service-card .corner-tl,
 .service-card .corner-tr,
 .service-card .corner-bl,
@@ -2069,7 +2048,7 @@ button[type="submit"]:hover, .header-telegram:hover {
 .service-card:hover .corner-bl { border-color: #8B5CF6; filter: drop-shadow(0 0 5px #8B5CF6); }
 .service-card:hover .corner-br { border-color: #10B981; filter: drop-shadow(0 0 5px #10B981); }
 
-/* Контент карточки (поверх сегментов) */
+/* Контент карточки */
 .service-card h3,
 .service-card p {
     position: relative;
@@ -2108,7 +2087,18 @@ button[type="submit"]:hover, .header-telegram:hover {
 }
 
 /* Адаптация для мобильных */
+@media (max-width: 1200px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+
 @media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
     .service-card {
         padding: 24px;
     }
