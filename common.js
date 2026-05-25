@@ -96,7 +96,6 @@ function initTechTooltips() {
 
 // ===== КИНЕТИЧЕСКИЕ КНОПКИ (3 СЕГМЕНТА) =====
 function initKineticButtons() {
-    // Находим все кнопки, которые нужно преобразовать
     const buttonsToConvert = document.querySelectorAll(
         '.btn-primary, .btn-outline, .hero-btn-primary, .hero-btn-outline, ' +
         '.section-more-btn, button[type="submit"], .header-telegram, #toTopBtn'
@@ -174,7 +173,7 @@ function initKineticButtons() {
     });
 }
 
-// Эффекты для одной кинетической кнопки (ИСПРАВЛЕННЫЙ)
+// Эффекты для одной кинетической кнопки
 function initKineticButtonEffects(btn, originalText) {
     const leftSeg = btn.querySelector('.segment-left');
     const centerSeg = btn.querySelector('.segment-center');
@@ -186,7 +185,6 @@ function initKineticButtonEffects(btn, originalText) {
     let targetRotateX = 0, targetRotateY = 0;
     let currentRotateX = 0, currentRotateY = 0;
     
-    // БЕЛЫЕ цвета по умолчанию
     const defaultColors = {
         left: 'rgba(255, 255, 255, 0.3)',
         centerTop: 'rgba(255, 255, 255, 0.3)',
@@ -194,7 +192,6 @@ function initKineticButtonEffects(btn, originalText) {
         right: 'rgba(255, 255, 255, 0.3)'
     };
     
-    // ЦВЕТНЫЕ цвета при наведении
     const hoverColors = {
         left: '#FF3366',
         centerTop: '#14C6B0',
@@ -301,7 +298,6 @@ function initKineticButtonEffects(btn, originalText) {
         }, 120);
     });
     
-    // Инициализация - белый цвет
     resetToWhite();
 }
 
@@ -653,7 +649,7 @@ function initPortfolioAccordion() {
     }
 }
 
-// ===== 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ =====
+// ===== 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ (ИСПРАВЛЕННЫЙ) =====
 function initQuantumCards() {
     const cards = document.querySelectorAll('.services-grid .service-card');
     
@@ -666,6 +662,7 @@ function initQuantumCards() {
         const seg3 = card.querySelector('.seg-3');
         const seg4 = card.querySelector('.seg-4');
         const segments = [seg1, seg2, seg3, seg4];
+        const content = card.querySelector('.card-content');
         
         if (!seg1 || !seg2 || !seg3 || !seg4) return;
         
@@ -690,20 +687,20 @@ function initQuantumCards() {
             segCurrent.seg1.x += (segTargets.seg1.x - segCurrent.seg1.x) * 0.15;
             segCurrent.seg1.y += (segTargets.seg1.y - segCurrent.seg1.y) * 0.15;
             segCurrent.seg1.ry += (segTargets.seg1.ry - segCurrent.seg1.ry) * 0.15;
-            seg1.style.transform = `translateX(${segCurrent.seg1.x}px) translateY(${segCurrent.seg1.y}px) rotateY(${segCurrent.seg1.ry}deg) translateZ(-20px)`;
+            seg1.style.transform = `translateX(${segCurrent.seg1.x}px) translateY(${segCurrent.seg1.y}px) rotateY(${segCurrent.seg1.ry}deg) translateZ(-5px)`;
             
             segCurrent.seg2.x += (segTargets.seg2.x - segCurrent.seg2.x) * 0.15;
             segCurrent.seg2.y += (segTargets.seg2.y - segCurrent.seg2.y) * 0.15;
-            seg2.style.transform = `translateX(${segCurrent.seg2.x}px) translateY(${segCurrent.seg2.y}px) translateZ(-20px)`;
+            seg2.style.transform = `translateX(${segCurrent.seg2.x}px) translateY(${segCurrent.seg2.y}px) translateZ(-5px)`;
             
             segCurrent.seg3.x += (segTargets.seg3.x - segCurrent.seg3.x) * 0.15;
             segCurrent.seg3.y += (segTargets.seg3.y - segCurrent.seg3.y) * 0.15;
-            seg3.style.transform = `translateX(${segCurrent.seg3.x}px) translateY(${segCurrent.seg3.y}px) translateZ(-20px)`;
+            seg3.style.transform = `translateX(${segCurrent.seg3.x}px) translateY(${segCurrent.seg3.y}px) translateZ(-5px)`;
             
             segCurrent.seg4.x += (segTargets.seg4.x - segCurrent.seg4.x) * 0.15;
             segCurrent.seg4.y += (segTargets.seg4.y - segCurrent.seg4.y) * 0.15;
             segCurrent.seg4.ry += (segTargets.seg4.ry - segCurrent.seg4.ry) * 0.15;
-            seg4.style.transform = `translateX(${segCurrent.seg4.x}px) translateY(${segCurrent.seg4.y}px) rotateY(${segCurrent.seg4.ry}deg) translateZ(-20px)`;
+            seg4.style.transform = `translateX(${segCurrent.seg4.x}px) translateY(${segCurrent.seg4.y}px) rotateY(${segCurrent.seg4.ry}deg) translateZ(-5px)`;
         }
         
         function animate() {
@@ -720,8 +717,8 @@ function initQuantumCards() {
             const relX = (e.clientX - rect.left) / rect.width - 0.5;
             const relY = (e.clientY - rect.top) / rect.height - 0.5;
             
-            targetRotateY = relX * 10;
-            targetRotateX = -relY * 8;
+            targetRotateY = relX * 8;
+            targetRotateX = -relY * 6;
             
             const px = ((e.clientX - rect.left) / rect.width) * 100;
             const py = ((e.clientY - rect.top) / rect.height) * 100;
@@ -734,19 +731,23 @@ function initQuantumCards() {
                 if (seg) seg.style.borderColor = borderGlow;
             });
             
-            segTargets.seg1.x = relX * -20;
-            segTargets.seg1.y = relY * -8;
-            segTargets.seg1.ry = relX * -6;
+            segTargets.seg1.x = relX * -12;
+            segTargets.seg1.y = relY * -5;
+            segTargets.seg1.ry = relX * -5;
             
-            segTargets.seg2.x = relX * -8;
-            segTargets.seg2.y = relY * 6;
+            segTargets.seg2.x = relX * -5;
+            segTargets.seg2.y = relY * 4;
             
-            segTargets.seg3.x = relX * 8;
-            segTargets.seg3.y = relY * -4;
+            segTargets.seg3.x = relX * 5;
+            segTargets.seg3.y = relY * -3;
             
-            segTargets.seg4.x = relX * 20;
-            segTargets.seg4.y = relY * 8;
-            segTargets.seg4.ry = relX * 6;
+            segTargets.seg4.x = relX * 12;
+            segTargets.seg4.y = relY * 5;
+            segTargets.seg4.ry = relX * 5;
+            
+            if (content) {
+                content.style.transform = `translateZ(25px)`;
+            }
         });
         
         card.addEventListener('mouseleave', () => {
@@ -761,6 +762,9 @@ function initQuantumCards() {
             segments.forEach(seg => {
                 if (seg) seg.style.borderColor = '';
             });
+            if (content) {
+                content.style.transform = 'translateZ(25px)';
+            }
         });
     });
 }
