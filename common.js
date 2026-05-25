@@ -111,7 +111,6 @@ function initKineticButtons() {
         const parent = oldBtn.parentNode;
         let telegramLink = null;
         
-        // Сохраняем ссылку для Telegram
         if (oldBtn.classList.contains('header-telegram')) {
             telegramLink = oldBtn.getAttribute('href');
         }
@@ -159,7 +158,6 @@ function initKineticButtons() {
         
         initKineticButtonEffects(kineticBtn, btnText);
         
-        // Обработчик для кнопки наверх
         if (btnId === 'toTopBtn') {
             kineticBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
@@ -167,7 +165,6 @@ function initKineticButtons() {
             });
         }
         
-        // Обработчик для Telegram
         if (telegramLink) {
             kineticBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
@@ -177,30 +174,42 @@ function initKineticButtons() {
     });
 }
 
-// Эффекты для одной кинетической кнопки
+// Эффекты для одной кинетической кнопки (ИСПРАВЛЕННЫЙ)
 function initKineticButtonEffects(btn, originalText) {
     const leftSeg = btn.querySelector('.segment-left');
     const centerSeg = btn.querySelector('.segment-center');
     const rightSeg = btn.querySelector('.segment-right');
     const textSpan = btn.querySelector('.btn-text');
     
+    if (!leftSeg || !centerSeg || !rightSeg) return;
+    
     let targetRotateX = 0, targetRotateY = 0;
     let currentRotateX = 0, currentRotateY = 0;
     
-    const colors = {
+    // БЕЛЫЕ цвета по умолчанию
+    const defaultColors = {
+        left: 'rgba(255, 255, 255, 0.3)',
+        centerTop: 'rgba(255, 255, 255, 0.3)',
+        centerBottom: 'rgba(255, 255, 255, 0.3)',
+        right: 'rgba(255, 255, 255, 0.3)'
+    };
+    
+    // ЦВЕТНЫЕ цвета при наведении
+    const hoverColors = {
         left: '#FF3366',
-        center: '#14C6B0',
+        centerTop: '#14C6B0',
+        centerBottom: '#14C6B0',
         right: '#8B5CF6'
     };
     
-    function triggerSparks(count = 4, clientX = null, clientY = null) {
+    function triggerSparks(count = 3, clientX = null, clientY = null) {
         const rect = btn.getBoundingClientRect();
         const sparksList = btn.querySelectorAll('.spark');
         
         for (let i = 0; i < Math.min(count, sparksList.length); i++) {
             const spark = sparksList[i];
             const angle = Math.random() * Math.PI * 2;
-            const radius = 30 + Math.random() * 40;
+            const radius = 25 + Math.random() * 35;
             const dx = Math.cos(angle) * radius * (Math.random() > 0.5 ? 1 : -1);
             const dy = Math.sin(angle) * radius * 0.5 - 8;
             
@@ -221,6 +230,23 @@ function initKineticButtonEffects(btn, originalText) {
             spark.offsetHeight;
             spark.style.animation = 'sparkFloat 0.5s ease-out forwards';
         }
+    }
+    
+    function resetToWhite() {
+        leftSeg.style.borderColor = defaultColors.left;
+        centerSeg.style.borderTopColor = defaultColors.centerTop;
+        centerSeg.style.borderBottomColor = defaultColors.centerBottom;
+        rightSeg.style.borderColor = defaultColors.right;
+        leftSeg.style.boxShadow = '';
+        centerSeg.style.boxShadow = '';
+        rightSeg.style.boxShadow = '';
+    }
+    
+    function setHoverColors() {
+        leftSeg.style.borderColor = hoverColors.left;
+        centerSeg.style.borderTopColor = hoverColors.centerTop;
+        centerSeg.style.borderBottomColor = hoverColors.centerBottom;
+        rightSeg.style.borderColor = hoverColors.right;
     }
     
     function animateRotation() {
@@ -244,64 +270,39 @@ function initKineticButtonEffects(btn, originalText) {
         btn.style.setProperty('--x', px + '%');
         btn.style.setProperty('--y', py + '%');
         
-        const intensity = Math.min(0.6, Math.abs(relX) + Math.abs(relY));
-        
         leftSeg.style.transform = `translateX(${relX * -8}px) rotateY(${relX * -5}deg) translateZ(${relY * 4}px)`;
         rightSeg.style.transform = `translateX(${relX * 8}px) rotateY(${relX * 5}deg) translateZ(${relY * 4}px)`;
         centerSeg.style.transform = `translateY(${relY * 5}px) translateZ(${Math.abs(relX) * 8}px)`;
         
-        const leftGlow = `rgba(255, 51, 102, ${0.4 + intensity * 0.5})`;
-        const centerGlow = `rgba(20, 198, 176, ${0.4 + intensity * 0.5})`;
-        const rightGlow = `rgba(139, 92, 246, ${0.4 + intensity * 0.5})`;
-        
-        leftSeg.style.borderColor = leftGlow;
-        centerSeg.style.borderTopColor = centerGlow;
-        centerSeg.style.borderBottomColor = centerGlow;
-        rightSeg.style.borderColor = rightGlow;
-        
-        if (Math.random() < 0.08) {
+        if (Math.random() < 0.05) {
             triggerSparks(1, e.clientX, e.clientY);
         }
     });
     
     btn.addEventListener('mouseenter', () => {
         triggerSparks(3);
-        if (textSpan) textSpan.style.animation = 'glitchText 0.3s infinite';
+        setHoverColors();
     });
     
     btn.addEventListener('mouseleave', () => {
         leftSeg.style.transform = '';
         rightSeg.style.transform = '';
         centerSeg.style.transform = '';
-        
-        leftSeg.style.borderColor = colors.left;
-        centerSeg.style.borderTopColor = colors.center;
-        centerSeg.style.borderBottomColor = colors.center;
-        rightSeg.style.borderColor = colors.right;
-        
+        resetToWhite();
         targetRotateX = 0;
         targetRotateY = 0;
-        
-        if (textSpan) textSpan.style.animation = '';
     });
     
     btn.addEventListener('click', (e) => {
         triggerSparks(8, e.clientX, e.clientY);
-        const currentTransform = btn.style.transform;
-        btn.style.transform = `${currentTransform} scale(0.97)`;
+        btn.style.transform = `scale(0.97)`;
         setTimeout(() => {
-            btn.style.transform = currentTransform;
+            btn.style.transform = '';
         }, 120);
     });
     
-    let idleGlowInterval = setInterval(() => {
-        if (!btn.matches(':hover')) {
-            const idleGlow = Math.sin(Date.now() * 0.003) * 0.15 + 0.25;
-            leftSeg.style.boxShadow = `0 0 6px rgba(255, 51, 102, ${idleGlow})`;
-            rightSeg.style.boxShadow = `0 0 6px rgba(139, 92, 246, ${idleGlow})`;
-            centerSeg.style.boxShadow = `0 0 8px rgba(20, 198, 176, ${idleGlow})`;
-        }
-    }, 400);
+    // Инициализация - белый цвет
+    resetToWhite();
 }
 
 // ===== КАЛЬКУЛЯТОР СТОИМОСТИ =====
