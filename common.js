@@ -1,62 +1,45 @@
 // ===== ОПИСАНИЯ ТЕХНОЛОГИЙ ДЛЯ ТУЛТИПОВ =====
 const techDesc = {
-    // Frontend
     react: "React / Next.js — библиотека для создания пользовательских интерфейсов. Next.js добавляет серверный рендеринг (SSR) и генерацию статических сайтов (SSG), что улучшает SEO и скорость загрузки.",
     ts: "TypeScript — типизированный JavaScript. Позволяет находить ошибки на этапе разработки, улучшает читаемость кода и упрощает поддержку крупных проектов.",
     redux: "Redux / RTK — управление состоянием приложения. Redux Toolkit упрощает настройку хранилища, уменьшает количество шаблонного кода и интегрируется с React.",
     ssr: "SSR / SSG — серверный рендеринг и статическая генерация. SSR отдаёт готовый HTML с сервера, ускоряя первую загрузку. SSG генерирует статические файлы на этапе сборки.",
     css: "CSS3 / SASS / Tailwind — современные технологии стилизации. SASS добавляет переменные и миксины. Tailwind — утилитарный CSS-фреймворк для быстрой вёрстки.",
-    
-    // Backend
     node: "Node.js / Nest.js — серверный JavaScript. Node.js — асинхронная событийно-ориентированная платформа. Nest.js добавляет модульную архитектуру, похожую на Angular.",
     python: "Python / Django — высокоуровневый язык для бэкенда и AI. Django предоставляет встроенную админ-панель, ORM и систему аутентификации.",
     cpp: "C++ — язык для высокопроизводительных систем. Используется в финансах, игровой индустрии, embedded-системах и высоконагруженных сервисах.",
     postgres: "PostgreSQL / MS SQL — мощные реляционные СУБД. Поддерживают сложные запросы, транзакции, хранимые процедуры и репликацию.",
     redis: "Redis / Elasticsearch — Redis для кэширования и очередей сообщений, Elasticsearch для полнотекстового поиска и аналитики логов.",
     rabbitmq: "RabbitMQ / Kafka — брокеры сообщений. RabbitMQ для маршрутизации и надёжной доставки, Kafka для потоковой обработки больших данных.",
-    
-    // DevOps & Cloud
     kubernetes: "Kubernetes — оркестрация контейнеров. Автоматизирует развертывание, масштабирование и управление контейнеризированными приложениями.",
     docker: "Docker — контейнеризация приложений. Упаковывает приложение со всеми зависимостями в контейнер, который работает одинаково в любой среде.",
     yandex: "Yandex Cloud / Selectel — российские облачные провайдеры. Предоставляют виртуальные машины, объектное хранение, managed базы данных и Kubernetes.",
     gitlab: "GitLab CI/CD — встроенная система непрерывной интеграции и доставки. Автоматическая сборка, тестирование и деплой кода при каждом коммите.",
     terraform: "Terraform / Ansible — Infrastructure as Code. Terraform для создания и версионирования инфраструктуры, Ansible для настройки серверов.",
     jenkins: "Jenkins / ArgoCD — CI/CD инструменты. Jenkins — гибкий сервер автоматизации сборки. ArgoCD — GitOps инструмент для Kubernetes.",
-    
-    // Mobile
     reactnative: "React Native / Expo — кроссплатформенная разработка мобильных приложений. Один код на JavaScript для iOS и Android. Expo упрощает запуск и тестирование.",
     swift: "Swift / Objective C — языки разработки для iOS/macOS. Swift — современный, безопасный и выразительный язык от Apple. Objective C — для поддержки легаси кода.",
     kotlin: "Kotlin / Java — языки для Android. Kotlin — официальный язык от Google, более лаконичный и безопасный чем Java, с поддержкой корутин.",
     flutter: "Flutter — фреймворк Google для кроссплатформенной разработки. Использует язык Dart, собственный движок рендеринга и богатую библиотеку виджетов.",
-    
-    // AI & ML
     ml: "ML / DL / NLP — машинное обучение, глубокое обучение, обработка естественного языка. Ключевые направления искусственного интеллекта.",
     python_ml: "Python / Pandas / Sklearn — стандартный стек для Data Science. Pandas для обработки данных, Sklearn для классических алгоритмов ML.",
     catboost: "CatBoost / OpenVINO — градиентный бустинг от Яндекса. OpenVINO для оптимизации и ускорения моделей на Intel процессорах.",
     airflow: "Airflow / sqlalchemy — Airflow для оркестрации пайплайнов данных, sqlalchemy для работы с базами данных из Python (ORM).",
     vision: "Computer Vision — компьютерное зрение. Распознавание объектов, лиц, сегментация изображений, анализ медицинских снимков.",
     voice: "Voice technologies ASR/TTS — распознавание и синтез речи. Автоматические субтитры, голосовые ассистенты, озвучивание текста.",
-    
-    // Testing & QA
     postman: "Postman / Swagger — тестирование и документация API. Postman для ручных и автоматических тестов, Swagger для генерации документации.",
     jmeter: "JMeter — нагрузочное тестирование. Симуляция высокой нагрузки для проверки производительности и стабильности сервисов.",
     testrail: "TestRail — управление тест-кейсами. Система для хранения, выполнения тестов и формирования отчётов.",
     charles: "Charles / Fiddler — снифферы трафика. Отладка HTTP/HTTPS запросов, подмена ответов, анализ трафика между клиентом и сервером.",
-    
-    // Architecture & Design
     uml: "UML 2.x / BPMN 2.0 — нотации для визуализации архитектуры. UML для классов, компонентов и последовательностей, BPMN для бизнес-процессов.",
     figma: "Figma — облачный инструмент для дизайна интерфейсов. Совместная работа в реальном времени, создание прототипов и дизайн-систем.",
     enterprise: "Sparx Enterprise Architect — профессиональный инструмент для моделирования архитектуры предприятия. Поддерживает UML, BPMN, SysML.",
     iso: "ISO/IEC 12207 / 15288 — международные стандарты для жизненного цикла программного обеспечения и системной инженерии.",
     scrum: "SCRUM / Agile — гибкие методологии разработки. Итеративная поставка, адаптация к изменениям, кросс-функциональные команды.",
-    
-    // Data Analytics
     bigdata: "Big Data аналитика — обработка и анализ больших объёмов данных. Инструменты: Hadoop, Spark, ClickHouse, BigQuery.",
     trading: "Trading аналитика — анализ финансовых рынков. Алгоритмическая торговля, прогнозирование цен, риск-менеджмент.",
     blockchain: "Blockchain аналитика — анализ блокчейн-транзакций. Отслеживание движения средств, выявление мошенничества, анализ смарт-контрактов.",
     graph: "Graph аналитика — анализ графовых структур. Социальные сети, рекомендательные системы, поиск кратчайших путей.",
-    
-    // Дополнительные
     vue: "Vue — прогрессивный фреймворк. Лёгкий, гибкий, для малых и средних проектов.",
     gsap: "GSAP — профессиональная анимация. Плавные переходы, сложные таймлайны.",
     three: "Three.js — 3D в браузере. Впечатляющие сцены, анимация продуктов.",
@@ -121,39 +104,34 @@ function initKineticButtons() {
     
     if (buttonsToConvert.length === 0) return;
     
-    // Удаляем старые кнопки и создаём новые
     buttonsToConvert.forEach(oldBtn => {
-        // Сохраняем текст и атрибуты
         const btnText = oldBtn.textContent.trim();
         const btnId = oldBtn.id;
         const btnClass = oldBtn.className;
         const parent = oldBtn.parentNode;
+        let telegramLink = null;
         
-        // Создаём обёртку
+        // Сохраняем ссылку для Telegram
+        if (oldBtn.classList.contains('header-telegram')) {
+            telegramLink = oldBtn.getAttribute('href');
+        }
+        
         const wrapper = document.createElement('div');
         wrapper.className = 'kinetic-wrapper';
         if (btnId) wrapper.id = btnId;
         
-        // Определяем размер кнопки
         let sizeClass = '';
         if (btnClass.includes('section-more-btn')) sizeClass = 'small';
         if (btnClass.includes('hero-btn') || (btnClass.includes('btn-primary') && btnText.length > 15)) sizeClass = 'large';
+        if (btnId === 'toTopBtn') sizeClass = 'totop-btn';
+        if (btnClass.includes('header-telegram')) sizeClass = 'header-telegram-btn';
         
-        // Для кнопки наверх добавляем специальный класс
-        if (btnId === 'toTopBtn') {
-            sizeClass = 'totop-btn';
-        }
-        
-        // Для Telegram в шапке
-        if (btnClass.includes('header-telegram')) {
-            sizeClass = 'header-telegram-btn';
-        }
-        
-        // Создаём кинетическую кнопку
         const kineticBtn = document.createElement('div');
         kineticBtn.className = `kinetic-btn ${sizeClass}`;
+        if (telegramLink) {
+            kineticBtn.setAttribute('data-telegram-link', telegramLink);
+        }
         
-        // Создаём 3 сегмента
         const segLeft = document.createElement('div');
         segLeft.className = 'segment segment-left';
         const segCenter = document.createElement('div');
@@ -161,37 +139,39 @@ function initKineticButtons() {
         const segRight = document.createElement('div');
         segRight.className = 'segment segment-right';
         
-        // Создаём текст
         const textSpan = document.createElement('div');
         textSpan.className = 'btn-text';
         textSpan.textContent = btnText;
         
-        // Создаём искры (6 штук)
         for (let i = 0; i < 6; i++) {
             const spark = document.createElement('div');
             spark.className = 'spark';
             kineticBtn.appendChild(spark);
         }
         
-        // Собираем кнопку
         kineticBtn.appendChild(segLeft);
         kineticBtn.appendChild(segCenter);
         kineticBtn.appendChild(segRight);
         kineticBtn.appendChild(textSpan);
         
         wrapper.appendChild(kineticBtn);
-        
-        // Заменяем старую кнопку
         parent.replaceChild(wrapper, oldBtn);
         
-        // Инициализируем эффекты для этой кнопки
         initKineticButtonEffects(kineticBtn, btnText);
         
-        // Для кнопки наверх восстанавливаем функционал скролла
+        // Обработчик для кнопки наверх
         if (btnId === 'toTopBtn') {
             kineticBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+        
+        // Обработчик для Telegram
+        if (telegramLink) {
+            kineticBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                window.open(telegramLink, '_blank');
             });
         }
     });
@@ -206,16 +186,13 @@ function initKineticButtonEffects(btn, originalText) {
     
     let targetRotateX = 0, targetRotateY = 0;
     let currentRotateX = 0, currentRotateY = 0;
-    let animationFrame = null;
     
-    // Цвета из вашей схемы
     const colors = {
         left: '#FF3366',
         center: '#14C6B0',
         right: '#8B5CF6'
     };
     
-    // Функция для запуска искр
     function triggerSparks(count = 4, clientX = null, clientY = null) {
         const rect = btn.getBoundingClientRect();
         const sparksList = btn.querySelectorAll('.spark');
@@ -246,16 +223,14 @@ function initKineticButtonEffects(btn, originalText) {
         }
     }
     
-    // Анимация наклона
     function animateRotation() {
         currentRotateX += (targetRotateX - currentRotateX) * 0.12;
         currentRotateY += (targetRotateY - currentRotateY) * 0.12;
         btn.style.transform = `rotateX(${currentRotateX}deg) rotateY(${currentRotateY}deg)`;
-        animationFrame = requestAnimationFrame(animateRotation);
+        requestAnimationFrame(animateRotation);
     }
     animateRotation();
     
-    // Mouse move - параллакс
     btn.addEventListener('mousemove', (e) => {
         const rect = btn.getBoundingClientRect();
         const relX = (e.clientX - rect.left) / rect.width - 0.5;
@@ -271,12 +246,10 @@ function initKineticButtonEffects(btn, originalText) {
         
         const intensity = Math.min(0.6, Math.abs(relX) + Math.abs(relY));
         
-        // Движение сегментов
         leftSeg.style.transform = `translateX(${relX * -8}px) rotateY(${relX * -5}deg) translateZ(${relY * 4}px)`;
         rightSeg.style.transform = `translateX(${relX * 8}px) rotateY(${relX * 5}deg) translateZ(${relY * 4}px)`;
         centerSeg.style.transform = `translateY(${relY * 5}px) translateZ(${Math.abs(relX) * 8}px)`;
         
-        // Свечение границ
         const leftGlow = `rgba(255, 51, 102, ${0.4 + intensity * 0.5})`;
         const centerGlow = `rgba(20, 198, 176, ${0.4 + intensity * 0.5})`;
         const rightGlow = `rgba(139, 92, 246, ${0.4 + intensity * 0.5})`;
@@ -286,19 +259,16 @@ function initKineticButtonEffects(btn, originalText) {
         centerSeg.style.borderBottomColor = centerGlow;
         rightSeg.style.borderColor = rightGlow;
         
-        // Редкие искры при движении
         if (Math.random() < 0.08) {
             triggerSparks(1, e.clientX, e.clientY);
         }
     });
     
-    // Mouse enter
     btn.addEventListener('mouseenter', () => {
         triggerSparks(3);
         if (textSpan) textSpan.style.animation = 'glitchText 0.3s infinite';
     });
     
-    // Mouse leave - плавный сброс
     btn.addEventListener('mouseleave', () => {
         leftSeg.style.transform = '';
         rightSeg.style.transform = '';
@@ -315,10 +285,8 @@ function initKineticButtonEffects(btn, originalText) {
         if (textSpan) textSpan.style.animation = '';
     });
     
-    // Click
     btn.addEventListener('click', (e) => {
         triggerSparks(8, e.clientX, e.clientY);
-        
         const currentTransform = btn.style.transform;
         btn.style.transform = `${currentTransform} scale(0.97)`;
         setTimeout(() => {
@@ -326,7 +294,6 @@ function initKineticButtonEffects(btn, originalText) {
         }, 120);
     });
     
-    // Мерцание в покое
     let idleGlowInterval = setInterval(() => {
         if (!btn.matches(':hover')) {
             const idleGlow = Math.sin(Date.now() * 0.003) * 0.15 + 0.25;
@@ -547,20 +514,8 @@ function initForm() {
     }
 }
 
-// ===== КНОПКА НАВЕРХ (ДУБЛИРУЮЩАЯ ФУНКЦИЯ ДЛЯ БЕЗОПАСНОСТИ) =====
+// ===== КНОПКА НАВЕРХ =====
 function initToTop() {
-    // Функция больше не создаёт кнопку, так как она создаётся в initKineticButtons
-    // Просто проверяем, что обработчик работает
-    const toTopBtn = document.querySelector('#toTopBtn');
-    if (toTopBtn && !toTopBtn.hasAttribute('data-kinetic-initialized')) {
-        toTopBtn.setAttribute('data-kinetic-initialized', 'true');
-        toTopBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
-    
-    // Показываем/скрываем кнопку
     window.addEventListener('scroll', function() {
         const btn = document.querySelector('#toTopBtn');
         if (btn) {
@@ -840,19 +795,19 @@ document.addEventListener('DOMContentLoaded', function() {
     initBurgerMenu();
     initPortfolioAccordion();
     initQuantumCards();
-    initKineticButtons(); // Создаёт кинетические кнопки
-    initToTop(); // Управляет отображением кнопки наверх
+    initKineticButtons();
+    initToTop();
     
     loadComponent('header-placeholder', 'header.html', function() {
         initBurgerMenu();
         initHeaderFixed();
         setTimeout(() => {
-            initKineticButtons(); // Повторная инициализация для кнопок в header
+            initKineticButtons();
         }, 100);
     });
     loadComponent('footer-placeholder', 'footer.html', function() {
         setTimeout(() => {
-            initKineticButtons(); // Повторная инициализация для кнопок в footer
+            initKineticButtons();
         }, 100);
     });
 });
