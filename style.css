@@ -1820,6 +1820,7 @@ h4 {
     grid-template-columns: repeat(3, 1fr);
     gap: 36px;
     margin-top: 48px;
+    overflow-x: hidden; /* ← запрещаем горизонтальный скролл внутри сетки */
 }
 
 .services-grid .service-card {
@@ -1834,6 +1835,7 @@ h4 {
     perspective: 1000px;
     border: none;
     box-shadow: 0 15px 35px -15px rgba(0, 0, 0, 0.5);
+    contain: paint; /* ← изолирует карточку, её содержимое не вызывает скролл */
 }
 
 .services-grid .service-card .segment {
@@ -1846,6 +1848,7 @@ h4 {
     top: 0;
     bottom: 0;
     transform: translateZ(-5px);
+    max-width: 100%;
 }
 
 .services-grid .service-card .seg-1 { 
@@ -2009,6 +2012,7 @@ h4 {
     .services-grid {
         grid-template-columns: 1fr;
         gap: 20px;
+        overflow-x: visible;
     }
     .services-grid .service-card {
         aspect-ratio: auto;
