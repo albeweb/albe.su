@@ -649,7 +649,7 @@ function initPortfolioAccordion() {
     }
 }
 
-// ===== 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ (ИСПРАВЛЕННЫЙ) =====
+// ===== 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ (ПОД ЭТАЛОН) =====
 function initQuantumCards() {
     const cards = document.querySelectorAll('.services-grid .service-card');
     
@@ -684,22 +684,22 @@ function initQuantumCards() {
         };
         
         function updateSegments() {
-            segCurrent.seg1.x += (segTargets.seg1.x - segCurrent.seg1.x) * 0.15;
-            segCurrent.seg1.y += (segTargets.seg1.y - segCurrent.seg1.y) * 0.15;
-            segCurrent.seg1.ry += (segTargets.seg1.ry - segCurrent.seg1.ry) * 0.15;
+            segCurrent.seg1.x += (segTargets.seg1.x - segCurrent.seg1.x) * 0.2;
+            segCurrent.seg1.y += (segTargets.seg1.y - segCurrent.seg1.y) * 0.2;
+            segCurrent.seg1.ry += (segTargets.seg1.ry - segCurrent.seg1.ry) * 0.2;
             seg1.style.transform = `translateX(${segCurrent.seg1.x}px) translateY(${segCurrent.seg1.y}px) rotateY(${segCurrent.seg1.ry}deg) translateZ(-5px)`;
             
-            segCurrent.seg2.x += (segTargets.seg2.x - segCurrent.seg2.x) * 0.15;
-            segCurrent.seg2.y += (segTargets.seg2.y - segCurrent.seg2.y) * 0.15;
+            segCurrent.seg2.x += (segTargets.seg2.x - segCurrent.seg2.x) * 0.2;
+            segCurrent.seg2.y += (segTargets.seg2.y - segCurrent.seg2.y) * 0.2;
             seg2.style.transform = `translateX(${segCurrent.seg2.x}px) translateY(${segCurrent.seg2.y}px) translateZ(-5px)`;
             
-            segCurrent.seg3.x += (segTargets.seg3.x - segCurrent.seg3.x) * 0.15;
-            segCurrent.seg3.y += (segTargets.seg3.y - segCurrent.seg3.y) * 0.15;
+            segCurrent.seg3.x += (segTargets.seg3.x - segCurrent.seg3.x) * 0.2;
+            segCurrent.seg3.y += (segTargets.seg3.y - segCurrent.seg3.y) * 0.2;
             seg3.style.transform = `translateX(${segCurrent.seg3.x}px) translateY(${segCurrent.seg3.y}px) translateZ(-5px)`;
             
-            segCurrent.seg4.x += (segTargets.seg4.x - segCurrent.seg4.x) * 0.15;
-            segCurrent.seg4.y += (segTargets.seg4.y - segCurrent.seg4.y) * 0.15;
-            segCurrent.seg4.ry += (segTargets.seg4.ry - segCurrent.seg4.ry) * 0.15;
+            segCurrent.seg4.x += (segTargets.seg4.x - segCurrent.seg4.x) * 0.2;
+            segCurrent.seg4.y += (segTargets.seg4.y - segCurrent.seg4.y) * 0.2;
+            segCurrent.seg4.ry += (segTargets.seg4.ry - segCurrent.seg4.ry) * 0.2;
             seg4.style.transform = `translateX(${segCurrent.seg4.x}px) translateY(${segCurrent.seg4.y}px) rotateY(${segCurrent.seg4.ry}deg) translateZ(-5px)`;
         }
         
@@ -717,8 +717,8 @@ function initQuantumCards() {
             const relX = (e.clientX - rect.left) / rect.width - 0.5;
             const relY = (e.clientY - rect.top) / rect.height - 0.5;
             
-            targetRotateY = relX * 8;
-            targetRotateX = -relY * 6;
+            targetRotateY = relX * 12;
+            targetRotateX = -relY * 10;
             
             const px = ((e.clientX - rect.left) / rect.width) * 100;
             const py = ((e.clientY - rect.top) / rect.height) * 100;
@@ -731,19 +731,19 @@ function initQuantumCards() {
                 if (seg) seg.style.borderColor = borderGlow;
             });
             
-            segTargets.seg1.x = relX * -12;
-            segTargets.seg1.y = relY * -5;
-            segTargets.seg1.ry = relX * -5;
+            segTargets.seg1.x = relX * -18;
+            segTargets.seg1.y = relY * -8;
+            segTargets.seg1.ry = relX * -6;
             
-            segTargets.seg2.x = relX * -5;
-            segTargets.seg2.y = relY * 4;
+            segTargets.seg2.x = relX * -8;
+            segTargets.seg2.y = relY * 6;
             
-            segTargets.seg3.x = relX * 5;
-            segTargets.seg3.y = relY * -3;
+            segTargets.seg3.x = relX * 8;
+            segTargets.seg3.y = relY * -4;
             
-            segTargets.seg4.x = relX * 12;
-            segTargets.seg4.y = relY * 5;
-            segTargets.seg4.ry = relX * 5;
+            segTargets.seg4.x = relX * 18;
+            segTargets.seg4.y = relY * 8;
+            segTargets.seg4.ry = relX * 6;
             
             if (content) {
                 content.style.transform = `translateZ(25px)`;
