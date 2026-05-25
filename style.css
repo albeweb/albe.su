@@ -1847,7 +1847,6 @@ h3 {
     margin-top: 48px;
 }
 
-/* ОСНОВНАЯ КАРТОЧКА - без лишних стилей */
 .services-grid .service-card {
     position: relative;
     background: rgba(10, 10, 10, 0.85);
@@ -1860,13 +1859,6 @@ h3 {
     perspective: 1000px;
 }
 
-/* Убираем старую рамку и тень */
-.services-grid .service-card {
-    border: none !important;
-    box-shadow: 0 15px 35px -15px rgba(0, 0, 0, 0.5) !important;
-}
-
-/* СЕГМЕНТЫ */
 .services-grid .service-card .segment {
     position: absolute;
     background: rgba(10, 10, 10, 0.9);
@@ -1908,7 +1900,6 @@ h3 {
     border-left: none; 
 }
 
-/* Текстура сегментов */
 .services-grid .service-card .segment::before {
     content: '';
     position: absolute;
@@ -1917,7 +1908,6 @@ h3 {
     pointer-events: none;
 }
 
-/* Блик при ховере */
 .services-grid .service-card .segment::after {
     content: '';
     position: absolute;
@@ -1932,7 +1922,6 @@ h3 {
     opacity: 1;
 }
 
-/* УГЛОВЫЕ СКОБЫ */
 .services-grid .service-card .corner-tl,
 .services-grid .service-card .corner-tr,
 .services-grid .service-card .corner-bl,
@@ -1956,7 +1945,6 @@ h3 {
 .services-grid .service-card:hover .corner-bl { border-color: #8B5CF6; filter: drop-shadow(0 0 6px #8B5CF6); }
 .services-grid .service-card:hover .corner-br { border-color: #10B981; filter: drop-shadow(0 0 6px #10B981); }
 
-/* КОНТЕНТ КАРТОЧКИ - ВСЕГДА СВЕРХУ */
 .services-grid .service-card .card-content {
     position: relative;
     z-index: 15;
@@ -1964,13 +1952,12 @@ h3 {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 24px;
+    padding: 28px;
     transform-style: preserve-3d;
     transform: translateZ(25px);
     pointer-events: none;
 }
 
-/* Кнопка внутри - кликабельна */
 .services-grid .service-card .card-btn {
     pointer-events: auto;
     background: transparent;
@@ -1993,11 +1980,10 @@ h3 {
     box-shadow: 0 0 20px #8B5CF6;
 }
 
-/* Текст внутри карточки */
 .services-grid .service-card h3 {
     font-family: 'Geist', sans-serif;
     font-weight: 500;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     margin: 0 0 0.75rem 0;
     background: linear-gradient(135deg, #F5F5F5, #A0A0A0);
     -webkit-background-clip: text;
@@ -2008,7 +1994,7 @@ h3 {
 .services-grid .service-card p {
     font-family: 'Geist', sans-serif;
     font-weight: 400;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     line-height: 1.4;
     margin: 0;
     color: #A0A0A0;
@@ -2031,7 +2017,6 @@ h3 {
 .services-grid .service-card .dot-mint { background: #10B981; }
 .services-grid .service-card .dot-purple { background: #8B5CF6; }
 
-/* АДАПТАЦИЯ */
 @media (max-width: 1200px) {
     .services-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -2048,10 +2033,10 @@ h3 {
         padding: 20px;
     }
     .services-grid .service-card h3 {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
     .services-grid .service-card p {
-        font-size: 0.75rem;
+        font-size: 0.8rem;
     }
     .services-grid .service-card .corner-tl,
     .services-grid .service-card .corner-tr,
