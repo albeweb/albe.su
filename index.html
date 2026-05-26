@@ -1021,7 +1021,7 @@
 <script src="common.js" defer></script>
 
 <script>
-// AI видео слайдер
+// AI видео слайдер с точной синхронизацией высоты
 (function() {
     const videoSources = [
         "https://kinescope.io/embed/it8tEfjsnaLMaCU712FV2S?autoplay=1&loop=1&muted=1&controls=0&show_title=0&show_logo=0&show_related=0&playsinline=1",
@@ -1034,8 +1034,26 @@
     const prevBtn = document.getElementById('aiVideoPrev');
     const nextBtn = document.getElementById('aiVideoNext');
     const indicators = document.querySelectorAll('.indicator');
+    const videoWrapper = document.querySelector('.ai-video-frame-wrapper');
+    const videoFrame = document.querySelector('.video-frame');
+    const cardsColumn = document.getElementById('aiCardsColumn');
     
     if (!iframe) return;
+    
+    // Точная синхронизация высоты видео с высотой 3 карточек
+    function syncVideoHeight() {
+        if (!cardsColumn || !videoWrapper || !videoFrame) return;
+        
+        // Получаем точную высоту колонки с 3 карточками
+        const cardsHeight = cardsColumn.offsetHeight;
+        
+        if (cardsHeight > 200) {
+            // Убираем padding-top, выставляем фиксированную высоту
+            videoFrame.style.paddingTop = '0';
+            videoFrame.style.height = cardsHeight + 'px';
+            videoWrapper.style.height = cardsHeight + 'px';
+        }
+    }
     
     function updateVideo(index) {
         iframe.src = videoSources[index];
@@ -1044,15 +1062,19 @@
         });
     }
     
-    if (prevBtn) prevBtn.addEventListener('click', function() {
-        currentIndex = (currentIndex - 1 + videoSources.length) % videoSources.length;
-        updateVideo(currentIndex);
-    });
+    if (prevBtn) {
+        prevBtn.addEventListener('click', function() {
+            currentIndex = (currentIndex - 1 + videoSources.length) % videoSources.length;
+            updateVideo(currentIndex);
+        });
+    }
     
-    if (nextBtn) nextBtn.addEventListener('click', function() {
-        currentIndex = (currentIndex + 1) % videoSources.length;
-        updateVideo(currentIndex);
-    });
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function() {
+            currentIndex = (currentIndex + 1) % videoSources.length;
+            updateVideo(currentIndex);
+        });
+    }
     
     indicators.forEach((ind, idx) => {
         ind.addEventListener('click', function() {
@@ -1060,5 +1082,26 @@
             updateVideo(currentIndex);
         });
     });
+    
+    // Запускаем синхронизацию при загрузке и изменении размера
+    window.addEventListener('load', function() {
+        setTimeout(syncVideoHeight, 50);
+        setTimeout(syncVideoHeight, 200);
+    });
+    
+    window.addEventListener('resize', function() {
+        setTimeout(syncVideoHeight, 50);
+    });
+    
+    // Наблюдатель за изменениями размера карточек
+    if (window.ResizeObserver && cardsColumn) {
+        const observer = new ResizeObserver(function() {
+            syncVideoHeight();
+        });
+        observer.observe(cardsColumn);
+    }
+    
+    // Первый запуск
+    syncVideoHeight();
 })();
 </script>
