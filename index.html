@@ -113,7 +113,7 @@
 <div id="header-placeholder"></div>
 
 <main>
-<!-- Hero баннер (оригинальный, восстановлен) -->
+<!-- Hero баннер -->
 <section class="hero">
     <div class="code-rain" aria-hidden="true">
         <div class="code-line" style="left:5%;animation-duration:12s;animation-delay:0s">&lt;div class="digital"&gt;&lt;/div&gt;</div>
@@ -400,35 +400,30 @@
             <a href="#ai-design" class="section-more-btn">Подробнее</a>
         </div>
         <div class="ai-design-grid">
-            <!-- Левая колонка: 3 карточки -->
             <div class="ai-cards-column" id="aiCardsColumn">
                 <div class="ai-card">
-                    <div class="ai-card-icon">🎨</div>
                     <h3>Генеративный дизайн</h3>
                     <p>Нейросети создают уникальные визуальные концепции, которые невозможно повторить. Экономия времени на 70% при сохранении премиум качества.</p>
                 </div>
                 <div class="ai-card">
-                    <div class="ai-card-icon">🎬</div>
                     <h3>Видео AI персонализация</h3>
                     <p>Автоматическая генерация видео под каждого пользователя. Динамическая замена сцен, текста и голоса на основе данных о клиенте.</p>
                 </div>
                 <div class="ai-card">
-                    <div class="ai-card-icon">🧠</div>
                     <h3>Нейроинтерфейсы</h3>
                     <p>Анализ вовлечённости зрителя в реальном времени. AI адаптирует контент под эмоциональное состояние пользователя.</p>
                 </div>
             </div>
-            <!-- Правая колонка: СЛАЙДЕР ВИДЕО -->
             <div class="ai-videos-column">
                 <div class="ai-video-slider-container">
-                    <div class="ai-video-frame-wrapper" id="aiVideoFrame">
-                        <div class="video-frame" style="position: relative; width: 100%; background: #0a0a0f; border-radius: 24px; overflow: hidden; border: 2px solid rgba(214,41,118,0.3);">
+                    <div class="ai-video-frame-wrapper">
+                        <div class="video-frame">
                             <iframe id="aiVideoIframe" 
-                                src="https://kinescope.io/embed/it8tEfjsnaLMaCU712FV2S?autoplay=1&loop=1&muted=1&controls=0&show_title=0&show_logo=0&show_related=0" 
+                                src="https://kinescope.io/embed/it8tEfjsnaLMaCU712FV2S?autoplay=1&loop=1&muted=1&controls=0&show_title=0&show_logo=0&show_related=0&playsinline=1" 
                                 allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;" 
                                 frameborder="0" 
-                                allowfullscreen 
-                                style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;"></iframe>
+                                allowfullscreen>
+                            </iframe>
                         </div>
                     </div>
                     <div class="ai-video-controls">
@@ -1026,96 +1021,69 @@
 <script src="common.js" defer></script>
 
 <script>
-// Дополнительный скрипт для AI видео слайдера и синхронизации высоты
+// AI видео слайдер
 (function() {
-    // Порядок видео: 2 → 3 → 1
     const videoSources = [
-        "https://kinescope.io/embed/it8tEfjsnaLMaCU712FV2S?autoplay=1&loop=1&muted=1&controls=0&show_title=0&show_logo=0&show_related=0",
-        "https://kinescope.io/embed/tyTxHyuEgCojbTw7uPFQxm?autoplay=1&loop=1&muted=1&controls=0&show_title=0&show_logo=0&show_related=0",
-        "https://kinescope.io/embed/wzToMP6ZpNgEfgDNY7ecHM?autoplay=1&loop=1&muted=1&controls=0&show_title=0&show_logo=0&show_related=0"
+        "https://kinescope.io/embed/it8tEfjsnaLMaCU712FV2S?autoplay=1&loop=1&muted=1&controls=0&show_title=0&show_logo=0&show_related=0&playsinline=1",
+        "https://kinescope.io/embed/tyTxHyuEgCojbTw7uPFQxm?autoplay=1&loop=1&muted=1&controls=0&show_title=0&show_logo=0&show_related=0&playsinline=1",
+        "https://kinescope.io/embed/wzToMP6ZpNgEfgDNY7ecHM?autoplay=1&loop=1&muted=1&controls=0&show_title=0&show_logo=0&show_related=0&playsinline=1"
     ];
     
-    let currentVideoIndex = 0;
+    let currentIndex = 0;
     const iframe = document.getElementById('aiVideoIframe');
     const prevBtn = document.getElementById('aiVideoPrev');
     const nextBtn = document.getElementById('aiVideoNext');
     const indicators = document.querySelectorAll('.indicator');
     
+    if (!iframe) return;
+    
     function updateVideo(index) {
-        if (!iframe) return;
-        const newSrc = videoSources[index];
-        iframe.src = newSrc;
-        
-        // Обновляем индикаторы
+        iframe.src = videoSources[index];
         indicators.forEach((ind, i) => {
-            if (i === index) {
-                ind.classList.add('active');
-            } else {
-                ind.classList.remove('active');
-            }
+            ind.classList.toggle('active', i === index);
         });
     }
     
     function nextVideo() {
-        currentVideoIndex = (currentVideoIndex + 1) % videoSources.length;
-        updateVideo(currentVideoIndex);
+        currentIndex = (currentIndex + 1) % videoSources.length;
+        updateVideo(currentIndex);
     }
     
     function prevVideo() {
-        currentVideoIndex = (currentVideoIndex - 1 + videoSources.length) % videoSources.length;
-        updateVideo(currentVideoIndex);
+        currentIndex = (currentIndex - 1 + videoSources.length) % videoSources.length;
+        updateVideo(currentIndex);
     }
     
     if (prevBtn) prevBtn.addEventListener('click', prevVideo);
     if (nextBtn) nextBtn.addEventListener('click', nextVideo);
     
-    // Клик по индикаторам
     indicators.forEach((ind, idx) => {
         ind.addEventListener('click', () => {
-            currentVideoIndex = idx;
-            updateVideo(currentVideoIndex);
+            currentIndex = idx;
+            updateVideo(currentIndex);
         });
     });
     
-    // Синхронизация высоты видео с высотой 3 карточек
+    // Синхронизация высоты
     function syncVideoHeight() {
         const cardsColumn = document.getElementById('aiCardsColumn');
-        const videoFrame = document.querySelector('.ai-video-frame-wrapper');
+        const videoWrapper = document.querySelector('.ai-video-frame-wrapper');
         const videoContainer = document.querySelector('.ai-videos-column');
         
-        if (cardsColumn && videoFrame && videoContainer) {
+        if (cardsColumn && videoWrapper && videoContainer) {
             const cardsHeight = cardsColumn.offsetHeight;
-            const videoFrameRect = videoFrame.getBoundingClientRect();
-            const currentPadding = parseFloat(window.getComputedStyle(videoFrame).paddingTop) || 0;
-            const newHeight = cardsHeight - 60;
-            
-            if (newHeight > 200) {
-                const aspectRatio = (currentPadding / 100) * 0.9;
-                videoFrame.style.height = newHeight + 'px';
-                videoFrame.style.paddingTop = '0';
-                videoContainer.style.minHeight = newHeight + 'px';
+            if (cardsHeight > 200) {
+                videoWrapper.style.height = cardsHeight + 'px';
+                videoContainer.style.minHeight = cardsHeight + 'px';
             }
         }
     }
     
-    window.addEventListener('load', () => {
+    window.addEventListener('load', function() {
         setTimeout(syncVideoHeight, 100);
         setTimeout(syncVideoHeight, 500);
     });
     window.addEventListener('resize', syncVideoHeight);
-    
-    // Принудительное автовоспроизведение (запасной вариант)
-    if (iframe) {
-        iframe.addEventListener('load', () => {
-            // Видео уже имеет autoplay в src, но на всякий случай
-            const playAttempt = setInterval(() => {
-                if (iframe.contentWindow) {
-                    iframe.contentWindow.postMessage('{"method":"play"}', '*');
-                }
-            }, 1000);
-            setTimeout(() => clearInterval(playAttempt), 5000);
-        });
-    }
 })();
 </script>
 </body>
