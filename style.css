@@ -1803,7 +1803,7 @@ button[type="submit"] {
 }
 
 /* ============================================ */
-/* AI ВИДЕО СЛАЙДЕР - ВЫСОТА РАВНА КАРТОЧКАМ */
+/* AI ВИДЕО СЛАЙДЕР - БЕЗ РАМОК, ВИДЕО ЗАПОЛНЯЕТ ВСЮ ОБЛАСТЬ */
 /* ============================================ */
 
 .ai-videos-column {
@@ -1850,7 +1850,6 @@ button[type="submit"] {
     box-shadow: 0 0 15px var(--ig-pink);
 }
 
-/* ВЫСОТА УСТАНАВЛИВАЕТСЯ ЧЕРЕЗ JS, ШИРИНА АВТОМАТИЧЕСКИ ПО ПРОПОРЦИИ 9:16 */
 .ai-video-frame-wrapper {
     position: relative;
     background: #0a0a0f;
@@ -1859,7 +1858,7 @@ button[type="submit"] {
     border: 2px solid rgba(214, 41, 118, 0.5);
     transition: all 0.3s ease;
     box-shadow: 0 0 0 4px rgba(0,0,0,0.3), 0 20px 35px -15px rgba(0,0,0,0.5);
-    aspect-ratio: 9 / 16;
+    /* Убираем aspect-ratio, высота будет через JS, ширина автоматическая */
 }
 
 .ai-video-frame-wrapper:hover {
@@ -1883,7 +1882,6 @@ button[type="submit"] {
     object-fit: cover;
 }
 
-/* Адаптация */
 @media (max-width: 1024px) {
     .ai-design-grid {
         flex-direction: column;
