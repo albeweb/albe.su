@@ -32,22 +32,22 @@
 }
 
 /* ============================================ */
-/* 2. CSS-ПЕРЕМЕННЫЕ (INSTAGRAM-ПАЛИТРА) */
+/* 2. CSS-ПЕРЕМЕННЫЕ (НОВАЯ ПАЛИТРА) */
 /* ============================================ */
 
 :root {
+    --bg-dark: #0A0E17;
+    --text-main: #DEE2E6;
     --ig-pink: #D62976;
     --ig-orange: #F56040;
-    --ig-yellow: #FFDC80;
-    --ig-purple: #833AB4;
-    --ig-blue: #3C82F6;
-    --ig-gradient: linear-gradient(135deg, var(--ig-purple), var(--ig-pink), var(--ig-orange), var(--ig-yellow));
-    --white: #F5F5F5;
-    --gray: #B0B3B8;
-    --bg-dark: #0A0A0A;
-    --card-bg: rgba(18, 18, 18, 0.85);
-    /* новые оттенки для текста */
-    --heading-white: #eef2f8;
+    --ig-blue: #3A86FF;
+    --gray-light: #a8b5c5;
+    --gray-mid: #b0b3b8;
+    --ig-gradient: linear-gradient(135deg, var(--ig-pink), var(--ig-orange), var(--ig-blue));
+    --white: #DEE2E6;
+    --gray: #b0b3b8;
+    --card-bg: rgba(10, 14, 23, 0.85);
+    --heading-white: #DEE2E6;
     --text-muted: #a8b5c5;
 }
 
@@ -67,7 +67,7 @@ html, body {
 body {
     font-family: 'Geist', sans-serif;
     background-color: var(--bg-dark);
-    color: var(--white);
+    color: var(--text-main);
     line-height: 1.5;
     font-weight: 400;
     scroll-behavior: smooth;
@@ -145,7 +145,7 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     font-weight: 400;
     font-size: 1rem;
     line-height: 1.6;
-    color: var(--text-muted);  /* тусклее */
+    color: var(--text-muted);
 }
 
 .service-badge, .quote-text { font-weight: 400; }
@@ -168,11 +168,10 @@ h1 {
     margin-bottom: 0.5rem;
     font-weight: 400;
     letter-spacing: -0.02em;
-    color: var(--white);
+    color: var(--text-main);
     text-transform: lowercase;
 }
 
-/* Базовый стиль h2 – белый, неяркий */
 h2 {
     font-size: clamp(1.8rem, 5vw, 3.8rem);
     margin-bottom: 2rem;
@@ -190,7 +189,6 @@ h2::after {
     height: 2px;
     background: var(--heading-white);
 }
-/* Убираем цветные h2 для секций (они теперь наследуют белый) */
 .services-section .section-header h2,
 .services-section > h2,
 .portfolio-section .section-header h2,
@@ -208,7 +206,6 @@ h2::after {
 .contact-card h2 {
     color: var(--heading-white);
 }
-/* Подчёркивания тоже белые */
 .services-section .section-header h2::after,
 .portfolio-section .section-header h2::after,
 .calculator-section .section-header h2::after,
@@ -224,18 +221,18 @@ h3 {
     font-weight: 500;
     font-size: 1.5rem;
     margin-bottom: 0.75rem;
-    color: var(--white);
+    color: var(--text-main);
 }
 h4 {
     font-weight: 500;
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
-    color: var(--white);
+    color: var(--text-main);
 }
 .section { padding: 100px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
 
 /* ============================================ */
-/* 6. КАРТОЧКИ И ОБЩИЕ БЛОКИ (без изменений) */
+/* 6. КАРТОЧКИ И ОБЩИЕ БЛОКИ */
 /* ============================================ */
 
 .portfolio-card, .step-card,
@@ -352,7 +349,7 @@ h4 {
 .faq-question.active::after { content: '−'; }
 
 /* ============================================ */
-/* 7. КОНТАКТЫ (без изменений) */
+/* 7. КОНТАКТЫ */
 /* ============================================ */
 
 .contact-section {
@@ -401,7 +398,7 @@ h4 {
     padding: 14px 18px;
     background: #0F1117;
     border: 1px solid #2A2E38;
-    color: var(--white);
+    color: var(--text-main);
     margin-bottom: 22px;
     transition: 0.2s;
     border-radius: 12px;
@@ -420,7 +417,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 8. HEADER (лого – белый сплошной, телеграм строчными) */
+/* 8. HEADER */
 /* ============================================ */
 
 .header {
@@ -433,7 +430,7 @@ h4 {
     transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
 }
 .header.scrolled {
-    background: rgba(10, 10, 10, 0.95);
+    background: rgba(10, 14, 23, 0.95);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding: 12px 0;
@@ -457,7 +454,7 @@ h4 {
     letter-spacing: 2px;
     transition: all 0.3s ease;
     background: none;
-    color: var(--white);
+    color: var(--text-main);
 }
 .logo-letter {
     position: relative;
@@ -473,7 +470,7 @@ h4 {
     align-items: center;
 }
 .nav-link {
-    color: var(--white);
+    color: var(--text-main);
     text-decoration: none;
     font-size: 0.9rem;
     letter-spacing: 0.3px;
@@ -519,13 +516,12 @@ h4 {
     transform: rotate(-45deg) translate(7px, -6px);
 }
 
-/* Слово "telegram" в шапке – строчными */
 .kinetic-btn.header-telegram-btn .btn-text {
     text-transform: lowercase !important;
 }
 
 /* ============================================ */
-/* 9. HERO БАННЕР (НЕ ТРОГАЕМ – градиент, строчные) */
+/* 9. HERO БАННЕР */
 /* ============================================ */
 
 .hero {
@@ -561,9 +557,9 @@ h4 {
 }
 .code-line:nth-child(1) { color: var(--ig-pink); }
 .code-line:nth-child(2) { color: var(--ig-orange); }
-.code-line:nth-child(3) { color: var(--ig-yellow); }
-.code-line:nth-child(4) { color: var(--ig-purple); }
-.code-line:nth-child(5) { color: var(--ig-blue); }
+.code-line:nth-child(3) { color: var(--ig-blue); }
+.code-line:nth-child(4) { color: var(--gray-light); }
+.code-line:nth-child(5) { color: var(--gray-mid); }
 @keyframes fall {
     0% { transform: translateY(-50px); opacity: 0; }
     10% { opacity: 0.8; }
@@ -672,13 +668,13 @@ h4 {
     margin-top: 0;
     margin-bottom: 0;
     white-space: normal;
-    color: var(--white);
+    color: var(--text-main);
     text-transform: lowercase;
 }
 .hero-title-line2 .word-teal, 
 .hero-title-line2 .word-white, 
 .hero-title-line2 .word-gold {
-    color: var(--white);
+    color: var(--text-main);
 }
 .phrase-underkey {
     font-size: inherit;
@@ -686,7 +682,7 @@ h4 {
     letter-spacing: inherit;
     display: inline;
     white-space: normal;
-    color: var(--white);
+    color: var(--text-main);
 }
 .hero-stats {
     display: flex;
@@ -705,7 +701,7 @@ h4 {
     text-align: center;
     min-width: 120px;
     padding: 12px 32px;
-    background: rgba(18, 18, 18, 0.7);
+    background: rgba(10, 14, 23, 0.7);
     backdrop-filter: blur(4px);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 16px;
@@ -739,7 +735,7 @@ h4 {
     font-size: 0.85rem;
     font-weight: 400;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    color: var(--white);
+    color: var(--text-main);
     border-radius: 16px;
     transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     cursor: default;
@@ -766,7 +762,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 10. КАЛЬКУЛЯТОР (без изменений, только цвета цифр остаются) */
+/* 10. КАЛЬКУЛЯТОР */
 /* ============================================ */
 
 .calculator-card { padding: 40px; margin: 40px 0; }
@@ -800,11 +796,11 @@ h4 {
     border-radius: 20px;
     font-size: 0.85rem;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    color: var(--white);
+    color: var(--text-main);
 }
 .calc-option.selected {
     background: var(--ig-gradient);
-    color: var(--white);
+    color: var(--text-main);
     border-color: transparent;
 }
 .calc-option:hover {
@@ -852,7 +848,7 @@ h4 {
 .time-breakdown-item span:first-child { color: var(--ig-orange); }
 
 /* ============================================ */
-/* 11. КОМПЕТЕНЦИИ И ТЕХНОЛОГИИ (цветные цифры оставлены) */
+/* 11. КОМПЕТЕНЦИИ И ТЕХНОЛОГИИ */
 /* ============================================ */
 
 .steps-container {
@@ -923,7 +919,7 @@ h4 {
     font-size: 1.4rem;
     margin-bottom: 10px;
     font-weight: 600;
-    background: linear-gradient(135deg, var(--white), #C8D0E0);
+    background: linear-gradient(135deg, var(--text-main), #C8D0E0);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -955,7 +951,7 @@ h4 {
     cursor: help;
     transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     width: fit-content;
-    color: var(--white);
+    color: var(--text-main);
     letter-spacing: 0.3px;
     backdrop-filter: blur(4px);
 }
@@ -964,7 +960,7 @@ h4 {
     background: rgba(214, 41, 118, 0.15);
     transform: translateX(6px) translateY(-2px);
     box-shadow: 0 5px 15px rgba(214, 41, 118, 0.2);
-    color: var(--white);
+    color: var(--text-main);
 }
 .competence-card {
     opacity: 0;
@@ -984,7 +980,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 12. ТАБЛИЦА ЦЕН (цифры цветные, остальное белое/тусклое) */
+/* 12. ТАБЛИЦА ЦЕН */
 /* ============================================ */
 
 .price-table {
@@ -1003,7 +999,7 @@ h4 {
     gap: 24px;
 }
 .price-card {
-    background: rgba(10, 14, 19, 0.7);
+    background: rgba(10, 14, 23, 0.7);
     padding: 20px;
     border-radius: 20px;
     transition: all 0.3s ease;
@@ -1023,7 +1019,7 @@ h4 {
 .price-card .price {
     font-size: 1.4rem;
     font-weight: 600;
-    color: var(--white);
+    color: var(--text-main);
     margin-bottom: 16px;
     padding-bottom: 16px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -1056,7 +1052,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 13. FOOTER (без изменений) */
+/* 13. FOOTER */
 /* ============================================ */
 
 .footer {
@@ -1121,7 +1117,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 15. MEDIA QUERIES – без изменений */
+/* 15. MEDIA QUERIES */
 /* ============================================ */
 
 @media (max-width: 1400px) {
@@ -1272,7 +1268,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 16. ПОРТФОЛИО - ПРЕМИАЛЬНЫЙ ГОРИЗОНТАЛЬНЫЙ АККОРДЕОН (цифры цветные) */
+/* 16. ПОРТФОЛИО - ПРЕМИАЛЬНЫЙ ГОРИЗОНТАЛЬНЫЙ АККОРДЕОН */
 /* ============================================ */
 
 .portfolio-accordion {
@@ -1341,7 +1337,7 @@ h4 {
 }
 .accordion-panel:not(.active) .panel-title h3 {
     font-size: 1.2rem;
-    color: var(--white);
+    color: var(--text-main);
     font-weight: 500;
     letter-spacing: 4px;
     text-align: center;
@@ -1367,7 +1363,7 @@ h4 {
 .accordion-panel.active .panel-number { display: none; }
 .accordion-panel.active .panel-title h3 {
     font-size: 1.3rem;
-    color: var(--white);
+    color: var(--text-main);
     letter-spacing: 4px;
     font-weight: 600;
     margin: 0;
@@ -1439,7 +1435,7 @@ h4 {
     padding: 5px 12px;
     font-size: 0.75rem;
     border-radius: 20px;
-    color: var(--white);
+    color: var(--text-main);
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.2s ease;
 }
@@ -1473,7 +1469,7 @@ h4 {
     letter-spacing: 1px;
 }
 .panel-metrics span:last-child {
-    color: var(--white);
+    color: var(--text-main);
     font-weight: 500;
     font-size: 0.85rem;
 }
@@ -1530,7 +1526,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 17. ТУЛТИПЫ ДЛЯ ТЕХНОЛОГИЙ (без изменений) */
+/* 17. ТУЛТИПЫ ДЛЯ ТЕХНОЛОГИЙ */
 /* ============================================ */
 
 .tech-tooltip {
@@ -1547,7 +1543,7 @@ h4 {
     font-weight: 400;
     font-size: 0.85rem;
     line-height: 1.5;
-    color: var(--white);
+    color: var(--text-main);
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.2s;
@@ -1558,7 +1554,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 18. ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ — КВАНТОВЫЙ СТИЛЬ (без изменений) */
+/* 18. ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ — КВАНТОВЫЙ СТИЛЬ */
 /* ============================================ */
 
 .services-grid {
@@ -1662,7 +1658,7 @@ h4 {
 }
 .services-grid .service-card .card-btn:hover {
     background: var(--ig-gradient);
-    color: var(--white);
+    color: var(--bg-dark);
     box-shadow: 0 0 20px var(--ig-pink);
 }
 .services-grid .service-card h3 {
@@ -1670,7 +1666,7 @@ h4 {
     font-weight: 500;
     font-size: 1.3rem;
     margin: 0 0 0.5rem 0;
-    background: linear-gradient(135deg, #F5F5F5, #A0A0A0);
+    background: linear-gradient(135deg, #DEE2E6, #A0A0A0);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -1695,8 +1691,8 @@ h4 {
 }
 .services-grid .service-card .dot-pink { background: var(--ig-pink); }
 .services-grid .service-card .dot-teal { background: var(--ig-orange); }
-.services-grid .service-card .dot-mint { background: var(--ig-yellow); }
-.services-grid .service-card .dot-purple { background: var(--ig-purple); }
+.services-grid .service-card .dot-mint { background: var(--ig-blue); }
+.services-grid .service-card .dot-purple { background: var(--gray-light); }
 @media (max-width: 1200px) {
     .services-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
     .services-grid .service-card { aspect-ratio: 1.4 / 1; }
@@ -1725,7 +1721,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 19. КИНЕТИЧЕСКИЕ КНОПКИ (текст уменьшен) */
+/* 19. КИНЕТИЧЕСКИЕ КНОПКИ */
 /* ============================================ */
 
 .kinetic-wrapper {
@@ -1822,7 +1818,7 @@ h4 {
         transparent 2px, transparent 10px,
         rgba(245, 96, 64, 0.04) 10px, rgba(245, 96, 64, 0.04) 12px,
         transparent 12px, transparent 22px,
-        rgba(131, 58, 180, 0.04) 22px, rgba(131, 58, 180, 0.04) 24px,
+        rgba(58, 134, 255, 0.04) 22px, rgba(58, 134, 255, 0.04) 24px,
         transparent 24px, transparent 32px);
     pointer-events: none;
     opacity: 0.35;
@@ -1833,9 +1829,9 @@ h4 {
     left: 50%;
     transform: translate(-50%, -50%) translateZ(30px);
     font-weight: 700;
-    font-size: 0.8rem;  /* уменьшен с 0.95rem */
+    font-size: 0.8rem;
     letter-spacing: 4px;
-    background: linear-gradient(135deg, #F5F5F5, #E0E0E0);
+    background: linear-gradient(135deg, #DEE2E6, #E0E0E0);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -1949,8 +1945,8 @@ h4 {
 .case-number {
     font-size: 0.75rem;
     font-weight: 600;
-    color: var(--ig-purple);
-    background: rgba(131, 58, 180, 0.15);
+    color: var(--ig-blue);
+    background: rgba(58, 134, 255, 0.15);
     padding: 0.2rem 0.8rem;
     border-radius: 30px;
     letter-spacing: 1px;
@@ -1958,13 +1954,13 @@ h4 {
 }
 .case-item.active .case-number {
     background: var(--ig-gradient);
-    color: var(--white);
+    color: var(--bg-dark);
     box-shadow: 0 0 12px var(--ig-pink);
 }
 .case-title {
     font-size: 1rem;
     font-weight: 500;
-    color: var(--white);
+    color: var(--text-main);
     letter-spacing: -0.2px;
 }
 .case-handle {
@@ -2031,11 +2027,11 @@ h4 {
 .meta-tag {
     font-size: 0.7rem;
     font-family: monospace;
-    color: var(--ig-yellow);
-    background: rgba(255, 220, 128, 0.08);
+    color: var(--ig-blue);
+    background: rgba(58, 134, 255, 0.08);
     padding: 0.2rem 0.7rem;
     border-radius: 20px;
-    border-left: 1px solid var(--ig-yellow);
+    border-left: 1px solid var(--ig-blue);
 }
 .spark {
     position: fixed;
@@ -2059,7 +2055,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 21. ЦВЕТОВЫЕ ТЕМЫ БЛОКОВ (оставлены только для цифр и акцентов) */
+/* 21. ЦВЕТОВЫЕ ТЕМЫ БЛОКОВ */
 /* ============================================ */
 
 .services-section {
@@ -2069,7 +2065,7 @@ h4 {
 .services-section .stat-item:nth-child(1) .stat-number { color: var(--block-color); }
 
 .portfolio-section {
-    --block-color: var(--ig-purple);
+    --block-color: var(--ig-blue);
 }
 .portfolio-section .accordion-panel.active,
 .portfolio-section .accordion-panel:not(.active):hover { border-color: var(--block-color); }
@@ -2092,11 +2088,11 @@ h4 {
 .competences-section .step-card:hover { border-color: var(--block-color); }
 .competences-section .tech-item:hover {
     border-color: var(--block-color);
-    background: rgba(60, 130, 246, 0.15);
+    background: rgba(58, 134, 255, 0.15);
 }
 
 .price-section {
-    --block-color: var(--ig-yellow);
+    --block-color: var(--gray-mid);
 }
 .price-section .price-card:hover { border-color: var(--block-color); }
 .price-section .price-card h4 { color: var(--block-color); }
@@ -2122,12 +2118,12 @@ h4 {
 }
 
 .footer {
-    --block-color: var(--ig-purple);
+    --block-color: var(--ig-blue);
 }
 .footer a:hover { color: var(--block-color); }
 
 /* ============================================ */
-/* 22. УВЕЛИЧЕНИЕ ШРИФТОВ ДЛЯ ПК И УМЕНЬШЕНИЕ ТЕКСТА КНОПОК */
+/* 22. УВЕЛИЧЕНИЕ ШРИФТОВ ДЛЯ ПК */
 /* ============================================ */
 
 @media (min-width: 1200px) {
@@ -2188,8 +2184,9 @@ h4 {
     .kinetic-btn.totop-btn { min-width: 60px !important; width: 60px !important; height: 60px !important; }
     .kinetic-btn.totop-btn .btn-text { font-size: 1.2rem !important; letter-spacing: 0 !important; }
 }
+
 /* ============================================ */
-/* 23. AI-КАРТОЧКА «ЖИДКАЯ РАМКА» (КИНЕТИЧЕСКАЯ) */
+/* 23. AI-КАРТОЧКА «ЖИДКАЯ РАМКА» */
 /* ============================================ */
 
 .ai-liquid-card {
@@ -2246,8 +2243,8 @@ h4 {
 .ai-corner-br { bottom: 20px; right: 20px; border-width: 0 2px 2px 0; }
 .ai-liquid-card:hover .ai-corner-tl { border-color: var(--ig-pink); filter: drop-shadow(0 0 6px var(--ig-pink)); }
 .ai-liquid-card:hover .ai-corner-tr { border-color: var(--ig-orange); filter: drop-shadow(0 0 6px var(--ig-orange)); }
-.ai-liquid-card:hover .ai-corner-bl { border-color: var(--ig-purple); filter: drop-shadow(0 0 6px var(--ig-purple)); }
-.ai-liquid-card:hover .ai-corner-br { border-color: var(--ig-yellow); filter: drop-shadow(0 0 6px var(--ig-yellow)); }
+.ai-liquid-card:hover .ai-corner-bl { border-color: var(--ig-blue); filter: drop-shadow(0 0 6px var(--ig-blue)); }
+.ai-liquid-card:hover .ai-corner-br { border-color: var(--gray-mid); filter: drop-shadow(0 0 6px var(--gray-mid)); }
 
 .ai-card-content {
     position: relative;
@@ -2272,7 +2269,7 @@ h4 {
     font-size: clamp(1.8rem, 5vw, 2.2rem);
     font-weight: 400;
     line-height: 1.2;
-    background: linear-gradient(135deg, var(--white), #C0C8D8);
+    background: linear-gradient(135deg, var(--text-main), #C0C8D8);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -2297,8 +2294,8 @@ h4 {
 }
 .ai-color-bar .bar-pink { background: var(--ig-pink); box-shadow: 0 0 6px var(--ig-pink); }
 .ai-color-bar .bar-orange { background: var(--ig-orange); box-shadow: 0 0 6px var(--ig-orange); }
-.ai-color-bar .bar-purple { background: var(--ig-purple); box-shadow: 0 0 6px var(--ig-purple); }
-.ai-color-bar .bar-yellow { background: var(--ig-yellow); box-shadow: 0 0 6px var(--ig-yellow); }
+.ai-color-bar .bar-purple { background: var(--gray-light); box-shadow: 0 0 6px var(--gray-light); }
+.ai-color-bar .bar-yellow { background: var(--gray-mid); box-shadow: 0 0 6px var(--gray-mid); }
 .ai-color-bar .bar-blue { background: var(--ig-blue); box-shadow: 0 0 6px var(--ig-blue); }
 
 .ai-stats-row {
@@ -2369,7 +2366,7 @@ h4 {
 }
 .ai-line {
     position: absolute;
-    background: linear-gradient(90deg, transparent, var(--ig-pink), var(--ig-purple), transparent);
+    background: linear-gradient(90deg, transparent, var(--ig-pink), var(--ig-blue), transparent);
     height: 2px;
     width: 100%;
     opacity: 0;
@@ -2387,7 +2384,7 @@ h4 {
     position: absolute;
     width: 2px;
     height: 2px;
-    background: var(--ig-yellow);
+    background: var(--gray-light);
     border-radius: 1px;
     opacity: 0;
     transition: opacity 0.2s;
