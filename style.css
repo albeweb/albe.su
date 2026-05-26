@@ -515,10 +515,6 @@ h4 {
     transform: rotate(-45deg) translate(7px, -6px);
 }
 
-.kinetic-btn.header-telegram-btn .btn-text {
-    text-transform: lowercase !important;
-}
-
 /* ============================================ */
 /* 9. HERO БАННЕР */
 /* ============================================ */
@@ -1720,7 +1716,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 19. КИНЕТИЧЕСКИЕ КНОПКИ */
+/* 19. КИНЕТИЧЕСКИЕ КНОПКИ — ИСПРАВЛЕНЫ */
 /* ============================================ */
 
 .kinetic-wrapper {
@@ -1729,16 +1725,16 @@ h4 {
 .kinetic-btn {
     position: relative;
     width: auto;
-    min-width: 260px;
-    height: 56px;
+    min-width: 200px;
+    height: 52px;
     cursor: pointer;
     transform-style: preserve-3d;
     transition: transform 0.1s ease-out;
     display: inline-flex;
 }
 .kinetic-btn.header-telegram-btn {
-    min-width: 130px !important;
-    height: 42px !important;
+    min-width: 110px !important;
+    height: 38px !important;
 }
 .kinetic-btn.header-telegram-btn .segment-left {
     border-radius: 40px 0 0 40px !important;
@@ -1747,17 +1743,17 @@ h4 {
     border-radius: 0 40px 40px 0 !important;
 }
 .kinetic-btn.small {
-    min-width: 200px;
-    height: 48px;
+    min-width: 170px;
+    height: 44px;
 }
 .kinetic-btn.large {
-    min-width: 360px;
-    height: 64px;
+    min-width: 280px;
+    height: 58px;
 }
 .kinetic-btn.totop-btn {
-    min-width: 50px !important;
-    width: 50px !important;
-    height: 50px !important;
+    min-width: 44px !important;
+    width: 44px !important;
+    height: 44px !important;
 }
 .kinetic-btn.totop-btn .segment-left {
     border-radius: 50% 0 0 50% !important;
@@ -1785,15 +1781,15 @@ h4 {
     width: 33.333%;
     border-top-left-radius: 60px;
     border-bottom-left-radius: 60px;
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
     border-right: none;
     clip-path: polygon(0% 0%, 92% 0%, 86% 100%, 0% 100%);
 }
 .kinetic-btn .segment-center {
     left: 33.333%;
     width: 33.334%;
-    border-top: 2px solid rgba(255, 255, 255, 0.2);
-    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    border-top: 1.5px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0.15);
     border-left: none;
     border-right: none;
     background: linear-gradient(135deg, #101012, #08080A);
@@ -1804,9 +1800,34 @@ h4 {
     width: 33.333%;
     border-top-right-radius: 60px;
     border-bottom-right-radius: 60px;
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
     border-left: none;
     clip-path: polygon(14% 0%, 100% 0%, 100% 100%, 8% 100%);
+}
+/* При наведении — обводка становится розовой/оранжевой */
+.kinetic-btn:hover .segment-left {
+    border-color: var(--ig-pink);
+    border-right: none;
+}
+.kinetic-btn:hover .segment-center {
+    border-top-color: var(--ig-orange);
+    border-bottom-color: var(--ig-orange);
+}
+.kinetic-btn:hover .segment-right {
+    border-color: var(--ig-pink);
+    border-left: none;
+}
+/* Кнопка Telegram в футере — фикс */
+.kinetic-btn.header-telegram-btn:hover .segment-left,
+.kinetic-btn.header-telegram-btn:hover .segment-right,
+.kinetic-btn.header-telegram-btn:hover .segment-center {
+    border-color: rgba(255, 255, 255, 0.15) !important;
+}
+.kinetic-btn.header-telegram-btn:hover .segment-left {
+    border-right: none !important;
+}
+.kinetic-btn.header-telegram-btn:hover .segment-right {
+    border-left: none !important;
 }
 .kinetic-btn .segment::before {
     content: '';
@@ -1825,14 +1846,14 @@ h4 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) translateZ(30px);
-    font-weight: 700;
-    font-size: 0.8rem;
-    letter-spacing: 4px;
+    font-weight: 600;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
     background: linear-gradient(135deg, #DEE2E6, #E0E0E0);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    text-transform: uppercase;
+    text-transform: lowercase;
     white-space: nowrap;
     z-index: 20;
     pointer-events: none;
@@ -1840,12 +1861,21 @@ h4 {
     font-family: 'EN Regular', 'Geist', sans-serif;
 }
 .kinetic-btn.small .btn-text {
-    font-size: 0.7rem;
-    letter-spacing: 3px;
+    font-size: 0.6rem;
+    letter-spacing: 1.5px;
 }
 .kinetic-btn.large .btn-text {
-    font-size: 0.9rem;
-    letter-spacing: 5px;
+    font-size: 0.8rem;
+    letter-spacing: 2.5px;
+}
+.kinetic-btn.header-telegram-btn .btn-text {
+    font-size: 0.55rem !important;
+    letter-spacing: 1px !important;
+    text-transform: lowercase !important;
+}
+.kinetic-btn.totop-btn .btn-text {
+    font-size: 1rem !important;
+    letter-spacing: 0 !important;
 }
 .kinetic-btn .spark {
     position: absolute;
@@ -1875,18 +1905,18 @@ h4 {
     transform: scale(0.98) translateZ(5px) !important;
 }
 .kinetic-btn:active .btn-text {
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     transform: translate(-50%, -50%) translateZ(35px) scale(0.98);
 }
 @media (max-width: 768px) {
-    .kinetic-btn { min-width: 200px; height: 48px; }
-    .kinetic-btn.large { min-width: 260px; height: 54px; }
-    .kinetic-btn .btn-text { font-size: 0.7rem; letter-spacing: 2px; }
-    .kinetic-btn:hover .btn-text { letter-spacing: 3px; }
-    .kinetic-btn.header-telegram-btn { min-width: 110px !important; height: 36px !important; }
-    .kinetic-btn.header-telegram-btn .btn-text { font-size: 0.6rem !important; letter-spacing: 1px !important; text-transform: lowercase; }
-    .kinetic-btn.totop-btn { min-width: 40px !important; width: 40px !important; height: 40px !important; }
-    .kinetic-btn.totop-btn .btn-text { font-size: 0.9rem !important; }
+    .kinetic-btn { min-width: 160px; height: 44px; }
+    .kinetic-btn.large { min-width: 220px; height: 50px; }
+    .kinetic-btn .btn-text { font-size: 0.6rem; letter-spacing: 1.5px; }
+    .kinetic-btn:hover .btn-text { letter-spacing: 2px; }
+    .kinetic-btn.header-telegram-btn { min-width: 90px !important; height: 32px !important; }
+    .kinetic-btn.header-telegram-btn .btn-text { font-size: 0.5rem !important; letter-spacing: 0.5px !important; text-transform: lowercase; }
+    .kinetic-btn.totop-btn { min-width: 36px !important; width: 36px !important; height: 36px !important; }
+    .kinetic-btn.totop-btn .btn-text { font-size: 0.8rem !important; }
 }
 
 /* ============================================ */
@@ -2137,12 +2167,12 @@ h4 {
     .services-grid .service-card h3 { font-size: 1.6rem; }
     .services-grid .service-card p { font-size: 1rem; line-height: 1.5; }
     .services-grid .service-card .card-btn { font-size: 0.85rem; padding: 12px 24px; }
-    .kinetic-btn .btn-text { font-size: 0.9rem; letter-spacing: 5px; }
-    .kinetic-btn.small .btn-text { font-size: 0.8rem; letter-spacing: 4px; }
-    .kinetic-btn.large .btn-text { font-size: 1rem; letter-spacing: 6px; }
-    .kinetic-btn:hover .btn-text { letter-spacing: 6px; }
-    .kinetic-btn.small:hover .btn-text { letter-spacing: 5px; }
-    .kinetic-btn.large:hover .btn-text { letter-spacing: 8px; }
+    .kinetic-btn .btn-text { font-size: 0.75rem; letter-spacing: 2.5px; }
+    .kinetic-btn.small .btn-text { font-size: 0.7rem; letter-spacing: 2px; }
+    .kinetic-btn.large .btn-text { font-size: 0.85rem; letter-spacing: 3px; }
+    .kinetic-btn:hover .btn-text { letter-spacing: 3px; }
+    .kinetic-btn.small:hover .btn-text { letter-spacing: 2.5px; }
+    .kinetic-btn.large:hover .btn-text { letter-spacing: 3.5px; }
     .stat-number, .step-num, .calc-price, .price-card .price,
     .accordion-panel .panel-number, .panel-metrics span:last-child { font-size: 1.6rem; }
     .stat-number { font-size: 1.5rem; }
@@ -2170,16 +2200,16 @@ h4 {
     .footer-logo { font-size: 1.6rem; }
     .service-badge { font-size: 1rem; padding: 14px 24px; }
     .services-badges { gap: 24px; }
-    .kinetic-btn { min-width: 280px; height: 64px; }
-    .kinetic-btn.small { min-width: 220px; height: 56px; }
-    .kinetic-btn.large { min-width: 400px; height: 72px; }
-    .kinetic-btn .btn-text { font-size: 1rem; letter-spacing: 6px; }
-    .kinetic-btn.small .btn-text { font-size: 0.9rem; letter-spacing: 5px; }
-    .kinetic-btn.large .btn-text { font-size: 1.1rem; letter-spacing: 8px; }
-    .kinetic-btn.header-telegram-btn { min-width: 150px !important; height: 48px !important; }
-    .kinetic-btn.header-telegram-btn .btn-text { font-size: 0.8rem !important; letter-spacing: 2px !important; text-transform: lowercase; }
-    .kinetic-btn.totop-btn { min-width: 60px !important; width: 60px !important; height: 60px !important; }
-    .kinetic-btn.totop-btn .btn-text { font-size: 1.2rem !important; letter-spacing: 0 !important; }
+    .kinetic-btn { min-width: 220px; height: 56px; }
+    .kinetic-btn.small { min-width: 190px; height: 48px; }
+    .kinetic-btn.large { min-width: 300px; height: 64px; }
+    .kinetic-btn .btn-text { font-size: 0.8rem; letter-spacing: 3px; }
+    .kinetic-btn.small .btn-text { font-size: 0.7rem; letter-spacing: 2.5px; }
+    .kinetic-btn.large .btn-text { font-size: 0.9rem; letter-spacing: 4px; }
+    .kinetic-btn.header-telegram-btn { min-width: 120px !important; height: 40px !important; }
+    .kinetic-btn.header-telegram-btn .btn-text { font-size: 0.6rem !important; letter-spacing: 1px !important; text-transform: lowercase; }
+    .kinetic-btn.totop-btn { min-width: 50px !important; width: 50px !important; height: 50px !important; }
+    .kinetic-btn.totop-btn .btn-text { font-size: 1rem !important; letter-spacing: 0 !important; }
 }
 
 /* ============================================ */
