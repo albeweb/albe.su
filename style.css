@@ -2188,3 +2188,216 @@ h4 {
     .kinetic-btn.totop-btn { min-width: 60px !important; width: 60px !important; height: 60px !important; }
     .kinetic-btn.totop-btn .btn-text { font-size: 1.2rem !important; letter-spacing: 0 !important; }
 }
+/* ============================================ */
+/* 23. AI-КАРТОЧКА «ЖИДКАЯ РАМКА» (КИНЕТИЧЕСКАЯ) */
+/* ============================================ */
+
+.ai-liquid-card {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    backdrop-filter: blur(14px);
+    border-radius: 48px;
+    padding: 2rem;
+    transform-style: preserve-3d;
+    transition: transform 0.08s linear;
+    border: 1px solid rgba(255,255,255,0.08);
+    overflow: hidden;
+    box-shadow: 0 25px 40px -15px rgba(0,0,0,0.5);
+}
+.ai-liquid-card::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: var(--ig-gradient);
+    border-radius: 50px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+.ai-liquid-card:hover::before { opacity: 0.7; }
+.ai-liquid-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,0.12), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+    border-radius: 48px;
+}
+.ai-liquid-card:hover::after { opacity: 1; }
+
+.ai-corner {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-color: rgba(255,255,255,0.3);
+    border-style: solid;
+    transition: all 0.25s ease;
+    z-index: 5;
+    pointer-events: none;
+}
+.ai-corner-tl { top: 20px; left: 20px; border-width: 2px 0 0 2px; }
+.ai-corner-tr { top: 20px; right: 20px; border-width: 2px 2px 0 0; }
+.ai-corner-bl { bottom: 20px; left: 20px; border-width: 0 0 2px 2px; }
+.ai-corner-br { bottom: 20px; right: 20px; border-width: 0 2px 2px 0; }
+.ai-liquid-card:hover .ai-corner-tl { border-color: var(--ig-pink); filter: drop-shadow(0 0 6px var(--ig-pink)); }
+.ai-liquid-card:hover .ai-corner-tr { border-color: var(--ig-orange); filter: drop-shadow(0 0 6px var(--ig-orange)); }
+.ai-liquid-card:hover .ai-corner-bl { border-color: var(--ig-purple); filter: drop-shadow(0 0 6px var(--ig-purple)); }
+.ai-liquid-card:hover .ai-corner-br { border-color: var(--ig-yellow); filter: drop-shadow(0 0 6px var(--ig-yellow)); }
+
+.ai-card-content {
+    position: relative;
+    z-index: 10;
+    transform-style: preserve-3d;
+    transform: translateZ(20px);
+}
+.ai-badge {
+    display: inline-block;
+    font-family: 'EN Regular', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    background: rgba(255,255,255,0.05);
+    padding: 0.3rem 1rem;
+    border-radius: 40px;
+    color: var(--ig-pink);
+    border-left: 2px solid var(--ig-pink);
+    margin-bottom: 1.5rem;
+}
+.ai-card-content h2 {
+    font-family: 'EN Regular', sans-serif;
+    font-size: clamp(1.8rem, 5vw, 2.2rem);
+    font-weight: 400;
+    line-height: 1.2;
+    background: linear-gradient(135deg, var(--white), #C0C8D8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 1rem;
+}
+.ai-desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
+.ai-color-bar {
+    display: flex;
+    gap: 12px;
+    margin: 1rem 0 1.5rem;
+}
+.ai-color-bar span {
+    height: 4px;
+    flex: 1;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+.ai-color-bar .bar-pink { background: var(--ig-pink); box-shadow: 0 0 6px var(--ig-pink); }
+.ai-color-bar .bar-orange { background: var(--ig-orange); box-shadow: 0 0 6px var(--ig-orange); }
+.ai-color-bar .bar-purple { background: var(--ig-purple); box-shadow: 0 0 6px var(--ig-purple); }
+.ai-color-bar .bar-yellow { background: var(--ig-yellow); box-shadow: 0 0 6px var(--ig-yellow); }
+.ai-color-bar .bar-blue { background: var(--ig-blue); box-shadow: 0 0 6px var(--ig-blue); }
+
+.ai-stats-row {
+    display: flex;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+.ai-stat {
+    flex: 1;
+    text-align: center;
+    background: rgba(0,0,0,0.3);
+    padding: 0.8rem;
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: all 0.2s;
+}
+.ai-stat:hover {
+    border-color: var(--ig-pink);
+    background: rgba(214,41,118,0.1);
+}
+.ai-stat-number {
+    font-family: 'Zen Dots', monospace;
+    font-size: 1.4rem;
+    font-weight: 500;
+    background: var(--ig-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.ai-stat-label {
+    font-size: 0.65rem;
+    color: var(--gray);
+    letter-spacing: 1px;
+    margin-top: 4px;
+}
+.ai-card-btn {
+    background: transparent;
+    border: 1.5px solid var(--ig-orange);
+    padding: 0.8rem;
+    width: 100%;
+    font-family: 'Geist', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    color: var(--ig-orange);
+    cursor: pointer;
+    border-radius: 60px;
+    transition: all 0.25s;
+    backdrop-filter: blur(4px);
+}
+.ai-card-btn:hover {
+    background: var(--ig-gradient);
+    color: var(--bg-dark);
+    border-color: transparent;
+    box-shadow: 0 0 20px var(--ig-orange);
+}
+
+.ai-floating-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+    overflow: hidden;
+    border-radius: 48px;
+}
+.ai-line {
+    position: absolute;
+    background: linear-gradient(90deg, transparent, var(--ig-pink), var(--ig-purple), transparent);
+    height: 2px;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.ai-liquid-card:hover .ai-line { opacity: 0.3; }
+.ai-line-1 { top: 15%; left: -100%; animation: aiSlideLine 8s linear infinite; }
+.ai-line-2 { top: 50%; left: -100%; animation: aiSlideLine 12s linear infinite reverse; }
+.ai-line-3 { top: 85%; left: -100%; animation: aiSlideLine 6s linear infinite; }
+@keyframes aiSlideLine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+.ai-particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--ig-yellow);
+    border-radius: 1px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+}
+.ai-liquid-card:hover .ai-particle { opacity: 0.6; }
+
+@media (max-width: 768px) {
+    .ai-liquid-card { max-width: 100%; padding: 1.5rem; }
+    .ai-stats-row { gap: 0.8rem; }
+    .ai-stat { padding: 0.5rem; }
+    .ai-stat-number { font-size: 1.1rem; }
+}
