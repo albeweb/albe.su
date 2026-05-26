@@ -94,170 +94,7 @@ function initTechTooltips() {
     });
 }
 
-// ===== 3D ПАРАЛЛАКС ДЛЯ AI КАРТОЧЕК =====
-function initAICards() {
-    const cards = document.querySelectorAll('.ai-card');
-    if (cards.length === 0) return;
-    
-    cards.forEach(card => {
-        if (!card.querySelector('.ai-corner-tl')) {
-            const corners = ['tl', 'tr', 'bl', 'br'];
-            corners.forEach(pos => {
-                const corner = document.createElement('div');
-                corner.className = `ai-corner ai-corner-${pos}`;
-                card.appendChild(corner);
-            });
-        }
-        
-        if (!card.querySelector('.ai-floating-lines')) {
-            const linesContainer = document.createElement('div');
-            linesContainer.className = 'ai-floating-lines';
-            linesContainer.innerHTML = `
-                <div class="ai-line ai-line-1"></div>
-                <div class="ai-line ai-line-2"></div>
-                <div class="ai-line ai-line-3"></div>
-            `;
-            card.appendChild(linesContainer);
-        }
-        
-        if (!card.querySelector('.ai-particle')) {
-            const particles = [
-                { top: '20%', left: '10%' },
-                { top: '70%', left: '85%' },
-                { top: '45%', left: '30%' },
-                { top: '80%', left: '20%' },
-                { top: '15%', left: '70%' }
-            ];
-            particles.forEach(pos => {
-                const particle = document.createElement('div');
-                particle.className = 'ai-particle';
-                particle.style.top = pos.top;
-                particle.style.left = pos.left;
-                card.appendChild(particle);
-            });
-        }
-        
-        const content = card.querySelector('.ai-card-content');
-        const badge = card.querySelector('.ai-badge');
-        const title = card.querySelector('h3');
-        const desc = card.querySelector('p');
-        const colorBar = card.querySelector('.ai-color-bar');
-        const btn = card.querySelector('.ai-card-btn');
-        const cornersElements = card.querySelectorAll('.ai-corner');
-        
-        let targetRotateX = 0, targetRotateY = 0;
-        let currentRotateX = 0, currentRotateY = 0;
-        
-        function animate() {
-            currentRotateX += (targetRotateX - currentRotateX) * 0.12;
-            currentRotateY += (targetRotateY - currentRotateY) * 0.12;
-            card.style.transform = `rotateX(${currentRotateX}deg) rotateY(${currentRotateY}deg)`;
-            requestAnimationFrame(animate);
-        }
-        animate();
-        
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const relX = (e.clientX - rect.left) / rect.width - 0.5;
-            const relY = (e.clientY - rect.top) / rect.height - 0.5;
-            
-            targetRotateY = relX * 10;
-            targetRotateX = -relY * 8;
-            
-            const px = ((e.clientX - rect.left) / rect.width) * 100;
-            const py = ((e.clientY - rect.top) / rect.height) * 100;
-            card.style.setProperty('--x', px + '%');
-            card.style.setProperty('--y', py + '%');
-            
-            const shiftX = relX * 14;
-            const shiftY = relY * 8;
-            
-            if (badge) badge.style.transform = `translateX(${shiftX * 0.3}px) translateY(${shiftY * 0.2}px) translateZ(28px)`;
-            if (title) title.style.transform = `translateX(${shiftX * 0.5}px) translateY(${shiftY * 0.4}px) translateZ(40px)`;
-            if (desc) desc.style.transform = `translateX(${shiftX * 0.2}px) translateY(${shiftY * 0.2}px) translateZ(22px)`;
-            if (colorBar) colorBar.style.transform = `translateX(${shiftX * 0.4}px) translateY(${shiftY * 0.3}px) translateZ(28px)`;
-            if (btn) btn.style.transform = `translateX(${shiftX * 0.6}px) translateY(${shiftY * 0.6}px) translateZ(45px)`;
-            cornersElements.forEach(c => c.style.transform = `translateX(${shiftX * 0.1}px) translateY(${shiftY * 0.1}px)`);
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            targetRotateX = 0;
-            targetRotateY = 0;
-            const elements = [badge, title, desc, colorBar, btn];
-            elements.forEach(el => {
-                if (el) el.style.transform = '';
-            });
-            cornersElements.forEach(c => c.style.transform = '');
-        });
-    });
-}
-
-// ===== 2 ВИДЕО РЯДОМ, ВЕРТИКАЛЬНЫЕ, ЧЁРНО-БЕЛЫЕ, ПРИ НАВЕДЕНИИ ЦВЕТНЫЕ СО ЗВУКОМ =====
-function initAIVideos() {
-    const videoItems = document.querySelectorAll('.ai-video-item');
-    
-    if (videoItems.length === 0) return;
-    
-    videoItems.forEach(item => {
-        const iframe = item.querySelector('.ai-video-iframe');
-        if (!iframe) return;
-        
-        // Чёрно-белый фильтр
-        item.style.filter = 'grayscale(100%)';
-        item.style.transition = 'filter 0.3s ease, transform 0.3s ease';
-        item.style.cursor = 'pointer';
-        
-        // При наведении - включаем звук, убираем ч/б, запускаем видео
-        item.addEventListener('mouseenter', function() {
-            this.style.filter = 'grayscale(0%)';
-            // Пытаемся запустить видео
-            try {
-                if (iframe.contentWindow) {
-                    iframe.contentWindow.postMessage('{"method":"unmute"}', '*');
-                    iframe.contentWindow.postMessage('{"method":"play"}', '*');
-                }
-            } catch(e) {}
-            // Альтернативный способ
-            iframe.play();
-        });
-        
-        // При уходе - выключаем звук, возвращаем ч/б, ставим на паузу
-        item.addEventListener('mouseleave', function() {
-            this.style.filter = 'grayscale(100%)';
-            try {
-                if (iframe.contentWindow) {
-                    iframe.contentWindow.postMessage('{"method":"mute"}', '*');
-                    iframe.contentWindow.postMessage('{"method":"pause"}', '*');
-                }
-            } catch(e) {}
-            // Альтернативный способ
-            iframe.pause();
-        });
-    });
-}
-
-// ===== СИНХРОНИЗАЦИЯ ВЫСОТЫ ВИДЕО =====
-function syncVideosHeight() {
-    const cardsColumn = document.getElementById('aiCardsColumn');
-    const videoWrappers = document.querySelectorAll('.ai-video-frame-wrapper');
-    
-    if (!cardsColumn || videoWrappers.length === 0) return;
-    
-    const cardsHeight = cardsColumn.offsetHeight;
-    if (cardsHeight > 200) {
-        // Каждое видео имеет высоту = высоте карточек
-        videoWrappers.forEach(wrapper => {
-            wrapper.style.height = cardsHeight + 'px';
-        });
-    }
-}
-
-// ===== АВТОВОСПРОИЗВЕДЕНИЕ ВИДЕО (выключено, т.к. не нужно) =====
-function initAutoPlayVideos() {
-    // Видео не запускаются автоматически, только при наведении
-}
-
-// ===== КИНЕТИЧЕСКИЕ КНОПКИ =====
+// ===== КИНЕТИЧЕСКИЕ КНОПКИ (3 СЕГМЕНТА) =====
 function initKineticButtons() {
     const buttonsToConvert = document.querySelectorAll(
         '.btn-primary, .btn-outline, .hero-btn-primary, .hero-btn-outline, ' +
@@ -336,10 +173,12 @@ function initKineticButtons() {
     });
 }
 
+// Эффекты для одной кинетической кнопки
 function initKineticButtonEffects(btn, originalText) {
     const leftSeg = btn.querySelector('.segment-left');
     const centerSeg = btn.querySelector('.segment-center');
     const rightSeg = btn.querySelector('.segment-right');
+    const textSpan = btn.querySelector('.btn-text');
     
     if (!leftSeg || !centerSeg || !rightSeg) return;
     
@@ -354,10 +193,10 @@ function initKineticButtonEffects(btn, originalText) {
     };
     
     const hoverColors = {
-        left: '#D62976',
-        centerTop: '#F56040',
-        centerBottom: '#F56040',
-        right: '#833AB4'
+        left: '#FF3366',
+        centerTop: '#14C6B0',
+        centerBottom: '#14C6B0',
+        right: '#8B5CF6'
     };
     
     function triggerSparks(count = 3, clientX = null, clientY = null) {
@@ -617,7 +456,7 @@ function initSmoothScroll() {
     }
 }
 
-// ===== FAQ =====
+// ===== FAQ (старый, оставлен для совместимости) =====
 function initFaq() {
     var faqGrid = document.querySelector('.faq-grid');
     if (faqGrid) {
@@ -720,7 +559,7 @@ function initBurgerMenu() {
     }
 }
 
-// ===== ДОБАВЛЯЕМ ФУТЕР В АКТИВНУЮ ПАНЕЛЬ =====
+// ===== ДОБАВЛЯЕМ ФУТЕР С ЧАСАМИ И СТОИМОСТЬЮ В АКТИВНУЮ ПАНЕЛЬ =====
 function addFooterToActivePanel() {
     const activePanel = document.querySelector('.accordion-panel.active');
     if (!activePanel) return;
@@ -810,7 +649,7 @@ function initPortfolioAccordion() {
     }
 }
 
-// ===== 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК =====
+// ===== 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК (ТОЛЬКО ГОРИЗОНТАЛЬНЫЙ, БЕЗ ВЕРТИКАЛЬНОГО СМЕЩЕНИЯ) =====
 function initQuantumCards() {
     const cards = document.querySelectorAll('.services-grid .service-card');
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -826,8 +665,9 @@ function initQuantumCards() {
 
         if (!seg1 || !seg2 || !seg3 || !seg4) return;
 
-        let targetRotateY = 0;
+        let targetRotateY = 0;           // только горизонтальный наклон
         let currentRotateY = 0;
+        // Вертикальный наклон убран (targetRotateX всегда 0)
 
         let segTargets = {
             seg1: { x: 0, ry: 0 },
@@ -842,6 +682,7 @@ function initQuantumCards() {
             seg4: { x: 0, ry: 0 }
         };
 
+        // Лимиты для горизонтального смещения
         const MAX_X = 12;
         const MAX_RY = 4;
 
@@ -850,13 +691,17 @@ function initQuantumCards() {
         }
 
         function updateSegments() {
+            // seg1
             segCurrent.seg1.x += (segTargets.seg1.x - segCurrent.seg1.x) * 0.2;
             segCurrent.seg1.ry += (segTargets.seg1.ry - segCurrent.seg1.ry) * 0.2;
             seg1.style.transform = `translateX(${segCurrent.seg1.x}px) rotateY(${segCurrent.seg1.ry}deg) translateZ(-5px)`;
+            // seg2
             segCurrent.seg2.x += (segTargets.seg2.x - segCurrent.seg2.x) * 0.2;
             seg2.style.transform = `translateX(${segCurrent.seg2.x}px) translateZ(-5px)`;
+            // seg3
             segCurrent.seg3.x += (segTargets.seg3.x - segCurrent.seg3.x) * 0.2;
             seg3.style.transform = `translateX(${segCurrent.seg3.x}px) translateZ(-5px)`;
+            // seg4
             segCurrent.seg4.x += (segTargets.seg4.x - segCurrent.seg4.x) * 0.2;
             segCurrent.seg4.ry += (segTargets.seg4.ry - segCurrent.seg4.ry) * 0.2;
             seg4.style.transform = `translateX(${segCurrent.seg4.x}px) rotateY(${segCurrent.seg4.ry}deg) translateZ(-5px)`;
@@ -873,7 +718,9 @@ function initQuantumCards() {
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const relX = (e.clientX - rect.left) / rect.width - 0.5;
+            // вертикальная координата не используется для движения, только для блика
 
+            // Горизонтальный наклон карточки
             targetRotateY = relX * 12;
 
             const px = ((e.clientX - rect.left) / rect.width) * 100;
@@ -887,6 +734,7 @@ function initQuantumCards() {
                 if (seg) seg.style.borderColor = borderGlow;
             });
 
+            // Только горизонтальное смещение
             segTargets.seg1.x = limit(relX * -12, MAX_X);
             segTargets.seg1.ry = limit(relX * -4, MAX_RY);
             segTargets.seg2.x = limit(relX * -5, MAX_X);
@@ -917,7 +765,7 @@ function initQuantumCards() {
     });
 }
 
-// ===== АККОРДЕОН FAQ =====
+// ===== АККОРДЕОН FAQ В СТИЛЕ «КЕЙС» =====
 function initCaseAccordion() {
     const items = document.querySelectorAll('.case-item');
     if (items.length === 0) return;
@@ -946,7 +794,7 @@ function initCaseAccordion() {
     }
 
     function burstSparks(x, y) {
-        const colors = ['#D62976', '#F56040', '#833AB4', '#B0B3B8'];
+        const colors = ['#FF3366', '#14C6B0', '#10B981', '#8B5CF6'];
         const count = 12 + Math.floor(Math.random() * 12);
         for (let i = 0; i < count; i++) {
             const spark = sparks[i % sparks.length];
@@ -1015,7 +863,7 @@ function loadComponent(elementId, filePath, callback) {
         });
 }
 
-// ===== ЗАПУСК =====
+// ===== ЗАПУСК ВСЕХ ИНИЦИАЛИЗАЦИЙ =====
 document.addEventListener('DOMContentLoaded', function() {
     initTechTooltips();
     initCalculatorWithFallback();
@@ -1029,22 +877,12 @@ document.addEventListener('DOMContentLoaded', function() {
     initKineticButtons();
     initToTop();
     initCaseAccordion();
-    initAICards();
-    initAIVideos();        // Инициализация видео
-    syncVideosHeight();    // Синхронизация высоты
-    
-    window.addEventListener('resize', function() {
-        syncVideosHeight();
-    });
     
     loadComponent('header-placeholder', 'header.html', function() {
         initBurgerMenu();
         initHeaderFixed();
         setTimeout(() => {
             initKineticButtons();
-            initAICards();
-            initAIVideos();
-            syncVideosHeight();
         }, 100);
     });
     loadComponent('footer-placeholder', 'footer.html', function() {
