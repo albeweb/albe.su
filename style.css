@@ -1803,7 +1803,7 @@ button[type="submit"] {
 }
 
 /* ============================================ */
-/* 20. AI ВИДЕО СЛАЙДЕР (ФИНАЛЬНАЯ ВЕРСИЯ) */
+/* AI ВИДЕО СЛАЙДЕР - ВЕРТИКАЛЬНЫЕ ВИДЕО 9:16 */
 /* ============================================ */
 
 .ai-videos-column {
@@ -1839,8 +1839,10 @@ button[type="submit"] {
 .video-frame {
     position: relative;
     width: 100%;
+    padding-top: 177.78%; /* 9:16 вертикальное видео */
     background: #0a0a0f;
     overflow: hidden;
+    border-radius: 24px;
 }
 
 .video-frame iframe {
@@ -1915,6 +1917,45 @@ button[type="submit"] {
     transform: scale(1.2);
 }
 
+/* Адаптация под планшеты и мобильные */
+@media (max-width: 1024px) {
+    .ai-design-grid {
+        flex-direction: column;
+    }
+    .ai-cards-column {
+        order: 1;
+    }
+    .ai-videos-column {
+        order: 2;
+    }
+    .video-frame {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    .ai-video-frame-wrapper {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    .ai-video-controls {
+        max-width: 400px;
+        margin: 8px auto 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .ai-video-prev,
+    .ai-video-next {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+    .ai-video-controls {
+        gap: 20px;
+    }
+    .indicator.active {
+        width: 16px;
+    }
+}
 /* ============================================ */
 /* 21. MEDIA QUERIES */
 /* ============================================ */
