@@ -1990,7 +1990,7 @@ button[type="submit"] {
 }
 
 /* ============================================ */
-/* 2 ВИДЕО ВЕРТИКАЛЬНО, ЧЁРНО-БЕЛЫЕ, ПРИ НАВЕДЕНИИ ЦВЕТНЫЕ */
+/* 2 ВИДЕО ВЕРТИКАЛЬНЫЕ, СТОЯТ РЯДОМ */
 /* ============================================ */
 
 .ai-videos-wrapper {
@@ -2003,20 +2003,17 @@ button[type="submit"] {
 
 .ai-video-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 32px;
+    justify-content: center;
     width: 100%;
-    max-width: 320px;
 }
 
 .ai-video-item {
-    width: 100%;
+    flex: 1;
+    max-width: 280px;
     transition: filter 0.3s ease, transform 0.3s ease;
     cursor: pointer;
-}
-
-.ai-video-item:hover {
-    transform: translateY(-5px);
 }
 
 .ai-video-frame-wrapper {
@@ -2028,11 +2025,6 @@ button[type="submit"] {
     border: 2px solid rgba(214, 41, 118, 0.3);
     transition: all 0.3s ease;
     box-shadow: 0 0 0 4px rgba(0,0,0,0.3), 0 20px 35px -15px rgba(0,0,0,0.5);
-}
-
-.ai-video-frame-wrapper:hover {
-    border-color: var(--ig-pink);
-    box-shadow: 0 0 0 4px rgba(0,0,0,0.3), 0 20px 35px -15px rgba(214, 41, 118, 0.3);
 }
 
 .video-frame {
@@ -2051,31 +2043,14 @@ button[type="submit"] {
     object-fit: cover;
 }
 
-@media (max-width: 1024px) {
-    .ai-design-grid {
-        flex-direction: column;
-    }
-    .ai-cards-column {
-        order: 1;
-    }
-    .ai-videos-wrapper {
-        order: 2;
-    }
-    .ai-video-container {
-        max-width: 400px;
-        margin: 0 auto;
-    }
-    .ai-video-frame-wrapper {
-        border-radius: 28px;
-    }
-}
-
+/* Адаптация под мобильные */
 @media (max-width: 768px) {
     .ai-video-container {
-        max-width: 280px;
-        gap: 24px;
+        flex-direction: column;
+        align-items: center;
     }
-    .ai-video-frame-wrapper {
-        border-radius: 24px;
+    .ai-video-item {
+        max-width: 280px;
+        width: 100%;
     }
 }
