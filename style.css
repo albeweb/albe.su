@@ -679,6 +679,8 @@ h4 {
     white-space: normal;
     color: var(--text-main);
 }
+
+/* Hero статистика — розовая обводка + градиентные цифры */
 .hero-stats {
     display: flex;
     flex-direction: row;
@@ -698,10 +700,15 @@ h4 {
     padding: 12px 32px;
     background: rgba(10, 14, 23, 0.7);
     backdrop-filter: blur(4px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--ig-pink);
     border-radius: 16px;
     transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     cursor: default;
+}
+.stat-item:hover {
+    border-color: var(--ig-orange);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(214, 41, 118, 0.2);
 }
 .stat-number {
     font-size: 1.3rem;
@@ -709,6 +716,10 @@ h4 {
     line-height: 1.2;
     letter-spacing: -0.02em;
     margin-bottom: 4px;
+    background: var(--ig-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 .stat-label {
     font-size: 0.65rem;
@@ -717,6 +728,7 @@ h4 {
     letter-spacing: 2px;
     font-weight: 400;
 }
+
 .services-badges {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
