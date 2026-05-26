@@ -1,58 +1,58 @@
 // ===== ОПИСАНИЯ ТЕХНОЛОГИЙ ДЛЯ ТУЛТИПОВ =====
 const techDesc = {
-    react: "React / Next.js — библиотека для создания пользовательских интерфейсов. Next.js добавляет серверный рендеринг (SSR) и генерацию статических сайтов (SSG), что улучшает SEO и скорость загрузки.",
-    ts: "TypeScript — типизированный JavaScript. Позволяет находить ошибки на этапе разработки, улучшает читаемость кода и упрощает поддержку крупных проектов.",
-    redux: "Redux / RTK — управление состоянием приложения. Redux Toolkit упрощает настройку хранилища, уменьшает количество шаблонного кода и интегрируется с React.",
-    ssr: "SSR / SSG — серверный рендеринг и статическая генерация. SSR отдаёт готовый HTML с сервера, ускоряя первую загрузку. SSG генерирует статические файлы на этапе сборки.",
-    css: "CSS3 / SASS / Tailwind — современные технологии стилизации. SASS добавляет переменные и миксины. Tailwind — утилитарный CSS-фреймворк для быстрой вёрстки.",
-    node: "Node.js / Nest.js — серверный JavaScript. Node.js — асинхронная событийно-ориентированная платформа. Nest.js добавляет модульную архитектуру, похожую на Angular.",
-    python: "Python / Django — высокоуровневый язык для бэкенда и AI. Django предоставляет встроенную админ-панель, ORM и систему аутентификации.",
-    cpp: "C++ — язык для высокопроизводительных систем. Используется в финансах, игровой индустрии, embedded-системах и высоконагруженных сервисах.",
-    postgres: "PostgreSQL / MS SQL — мощные реляционные СУБД. Поддерживают сложные запросы, транзакции, хранимые процедуры и репликацию.",
-    redis: "Redis / Elasticsearch — Redis для кэширования и очередей сообщений, Elasticsearch для полнотекстового поиска и аналитики логов.",
-    rabbitmq: "RabbitMQ / Kafka — брокеры сообщений. RabbitMQ для маршрутизации и надёжной доставки, Kafka для потоковой обработки больших данных.",
-    kubernetes: "Kubernetes — оркестрация контейнеров. Автоматизирует развертывание, масштабирование и управление контейнеризированными приложениями.",
-    docker: "Docker — контейнеризация приложений. Упаковывает приложение со всеми зависимостями в контейнер, который работает одинаково в любой среде.",
-    yandex: "Yandex Cloud / Selectel — российские облачные провайдеры. Предоставляют виртуальные машины, объектное хранение, managed базы данных и Kubernetes.",
-    gitlab: "GitLab CI/CD — встроенная система непрерывной интеграции и доставки. Автоматическая сборка, тестирование и деплой кода при каждом коммите.",
-    terraform: "Terraform / Ansible — Infrastructure as Code. Terraform для создания и версионирования инфраструктуры, Ansible для настройки серверов.",
-    jenkins: "Jenkins / ArgoCD — CI/CD инструменты. Jenkins — гибкий сервер автоматизации сборки. ArgoCD — GitOps инструмент для Kubernetes.",
-    reactnative: "React Native / Expo — кроссплатформенная разработка мобильных приложений. Один код на JavaScript для iOS и Android. Expo упрощает запуск и тестирование.",
-    swift: "Swift / Objective C — языки разработки для iOS/macOS. Swift — современный, безопасный и выразительный язык от Apple. Objective C — для поддержки легаси кода.",
-    kotlin: "Kotlin / Java — языки для Android. Kotlin — официальный язык от Google, более лаконичный и безопасный чем Java, с поддержкой корутин.",
-    flutter: "Flutter — фреймворк Google для кроссплатформенной разработки. Использует язык Dart, собственный движок рендеринга и богатую библиотеку виджетов.",
-    ml: "ML / DL / NLP — машинное обучение, глубокое обучение, обработка естественного языка. Ключевые направления искусственного интеллекта.",
-    python_ml: "Python / Pandas / Sklearn — стандартный стек для Data Science. Pandas для обработки данных, Sklearn для классических алгоритмов ML.",
-    catboost: "CatBoost / OpenVINO — градиентный бустинг от Яндекса. OpenVINO для оптимизации и ускорения моделей на Intel процессорах.",
-    airflow: "Airflow / sqlalchemy — Airflow для оркестрации пайплайнов данных, sqlalchemy для работы с базами данных из Python (ORM).",
-    vision: "Computer Vision — компьютерное зрение. Распознавание объектов, лиц, сегментация изображений, анализ медицинских снимков.",
-    voice: "Voice technologies ASR/TTS — распознавание и синтез речи. Автоматические субтитры, голосовые ассистенты, озвучивание текста.",
-    postman: "Postman / Swagger — тестирование и документация API. Postman для ручных и автоматических тестов, Swagger для генерации документации.",
-    jmeter: "JMeter — нагрузочное тестирование. Симуляция высокой нагрузки для проверки производительности и стабильности сервисов.",
-    testrail: "TestRail — управление тест-кейсами. Система для хранения, выполнения тестов и формирования отчётов.",
-    charles: "Charles / Fiddler — снифферы трафика. Отладка HTTP/HTTPS запросов, подмена ответов, анализ трафика между клиентом и сервером.",
-    uml: "UML 2.x / BPMN 2.0 — нотации для визуализации архитектуры. UML для классов, компонентов и последовательностей, BPMN для бизнес-процессов.",
-    figma: "Figma — облачный инструмент для дизайна интерфейсов. Совместная работа в реальном времени, создание прототипов и дизайн-систем.",
-    enterprise: "Sparx Enterprise Architect — профессиональный инструмент для моделирования архитектуры предприятия. Поддерживает UML, BPMN, SysML.",
-    iso: "ISO/IEC 12207 / 15288 — международные стандарты для жизненного цикла программного обеспечения и системной инженерии.",
-    scrum: "SCRUM / Agile — гибкие методологии разработки. Итеративная поставка, адаптация к изменениям, кросс-функциональные команды.",
-    bigdata: "Big Data аналитика — обработка и анализ больших объёмов данных. Инструменты: Hadoop, Spark, ClickHouse, BigQuery.",
-    trading: "Trading аналитика — анализ финансовых рынков. Алгоритмическая торговля, прогнозирование цен, риск-менеджмент.",
-    blockchain: "Blockchain аналитика — анализ блокчейн-транзакций. Отслеживание движения средств, выявление мошенничества, анализ смарт-контрактов.",
-    graph: "Graph аналитика — анализ графовых структур. Социальные сети, рекомендательные системы, поиск кратчайших путей.",
-    vue: "Vue — прогрессивный фреймворк. Лёгкий, гибкий, для малых и средних проектов.",
-    gsap: "GSAP — профессиональная анимация. Плавные переходы, сложные таймлайны.",
-    three: "Three.js — 3D в браузере. Впечатляющие сцены, анимация продуктов.",
-    laravel: "Laravel — PHP-фреймворк. Портал, интернет-магазин, CRM.",
-    uiux: "UI/UX Research — исследование поведения. Интерфейсы, решающие бизнес-задачи.",
-    motion: "Motion Design — анимированные интерфейсы. Вовлечённость, впечатления.",
-    "3d": "3D Art — трёхмерная визуализация. Презентации, дополненная реальность.",
-    adobe: "Adobe Suite — графика, ретушь, подготовка элементов.",
-    audit: "SEO-аудит — анализ ошибок, скорости, дублей, метатегов.",
-    metrika: "Метрика/GA4 — сбор данных, вебвизор, цели, e-commerce.",
-    cluster: "Кластеризация — группировка запросов. Оптимальная структура страниц.",
-    core: "Core Web Vitals — LCP, CLS, FID. Влияют на ранжирование.",
-    semrush: "SEMrush / Ahrefs — анализ конкурентов, ключей, ссылок."
+    react: "react / next.js — библиотека для создания пользовательских интерфейсов. next.js добавляет серверный рендеринг (ssr) и генерацию статических сайтов (ssg), что улучшает seo и скорость загрузки.",
+    ts: "typescript — типизированный javascript. позволяет находить ошибки на этапе разработки, улучшает читаемость кода и упрощает поддержку крупных проектов.",
+    redux: "redux / rtk — управление состоянием приложения. redux toolkit упрощает настройку хранилища, уменьшает количество шаблонного кода и интегрируется с react.",
+    ssr: "ssr / ssg — серверный рендеринг и статическая генерация. ssr отдаёт готовый html с сервера, ускоряя первую загрузку. ssg генерирует статические файлы на этапе сборки.",
+    css: "css3 / sass / tailwind — современные технологии стилизации. sass добавляет переменные и миксины. tailwind — утилитарный css-фреймворк для быстрой вёрстки.",
+    node: "node.js / nest.js — серверный javascript. node.js — асинхронная событийно-ориентированная платформа. nest.js добавляет модульную архитектуру, похожую на angular.",
+    python: "python / django — высокоуровневый язык для бэкенда и ai. django предоставляет встроенную админ-панель, orm и систему аутентификации.",
+    cpp: "c++ — язык для высокопроизводительных систем. используется в финансах, игровой индустрии, embedded-системах и высоконагруженных сервисах.",
+    postgres: "postgresql / ms sql — мощные реляционные субд. поддерживают сложные запросы, транзакции, хранимые процедуры и репликацию.",
+    redis: "redis / elasticsearch — redis для кэширования и очередей сообщений, elasticsearch для полнотекстового поиска и аналитики логов.",
+    rabbitmq: "rabbitmq / kafka — брокеры сообщений. rabbitmq для маршрутизации и надёжной доставки, kafka для потоковой обработки больших данных.",
+    kubernetes: "kubernetes — оркестрация контейнеров. автоматизирует развертывание, масштабирование и управление контейнеризированными приложениями.",
+    docker: "docker — контейнеризация приложений. упаковывает приложение со всеми зависимостями в контейнер, который работает одинаково в любой среде.",
+    yandex: "yandex cloud / selectel — российские облачные провайдеры. предоставляют виртуальные машины, объектное хранение, managed базы данных и kubernetes.",
+    gitlab: "gitlab ci/cd — встроенная система непрерывной интеграции и доставки. автоматическая сборка, тестирование и деплой кода при каждом коммите.",
+    terraform: "terraform / ansible — infrastructure as code. terraform для создания и версионирования инфраструктуры, ansible для настройки серверов.",
+    jenkins: "jenkins / argocd — ci/cd инструменты. jenkins — гибкий сервер автоматизации сборки. argocd — gitops инструмент для kubernetes.",
+    reactnative: "react native / expo — кроссплатформенная разработка мобильных приложений. один код на javascript для ios и android. expo упрощает запуск и тестирование.",
+    swift: "swift / objective c — языки разработки для ios/macos. swift — современный, безопасный и выразительный язык от apple. objective c — для поддержки легаси кода.",
+    kotlin: "kotlin / java — языки для android. kotlin — официальный язык от google, более лаконичный и безопасный чем java, с поддержкой корутин.",
+    flutter: "flutter — фреймворк google для кроссплатформенной разработки. использует язык dart, собственный движок рендеринга и богатую библиотеку виджетов.",
+    ml: "ml / dl / nlp — машинное обучение, глубокое обучение, обработка естественного языка. ключевые направления искусственного интеллекта.",
+    python_ml: "python / pandas / sklearn — стандартный стек для data science. pandas для обработки данных, sklearn для классических алгоритмов ml.",
+    catboost: "catboost / openvino — градиентный бустинг от яндекса. openvino для оптимизации и ускорения моделей на intel процессорах.",
+    airflow: "airflow / sqlalchemy — airflow для оркестрации пайплайнов данных, sqlalchemy для работы с базами данных из python (orm).",
+    vision: "computer vision — компьютерное зрение. распознавание объектов, лиц, сегментация изображений, анализ медицинских снимков.",
+    voice: "voice technologies asr/tts — распознавание и синтез речи. автоматические субтитры, голосовые ассистенты, озвучивание текста.",
+    postman: "postman / swagger — тестирование и документация api. postman для ручных и автоматических тестов, swagger для генерации документации.",
+    jmeter: "jmeter — нагрузочное тестирование. симуляция высокой нагрузки для проверки производительности и стабильности сервисов.",
+    testrail: "testrail — управление тест-кейсами. система для хранения, выполнения тестов и формирования отчётов.",
+    charles: "charles / fiddler — снифферы трафика. отладка http/https запросов, подмена ответов, анализ трафика между клиентом и сервером.",
+    uml: "uml 2.x / bpmn 2.0 — нотации для визуализации архитектуры. uml для классов, компонентов и последовательностей, bpmn для бизнес-процессов.",
+    figma: "figma — облачный инструмент для дизайна интерфейсов. совместная работа в реальном времени, создание прототипов и дизайн-систем.",
+    enterprise: "sparx enterprise architect — профессиональный инструмент для моделирования архитектуры предприятия. поддерживает uml, bpmn, sysml.",
+    iso: "iso/iec 12207 / 15288 — международные стандарты для жизненного цикла программного обеспечения и системной инженерии.",
+    scrum: "scrum / agile — гибкие методологии разработки. итеративная поставка, адаптация к изменениям, кросс-функциональные команды.",
+    bigdata: "big data аналитика — обработка и анализ больших объёмов данных. инструменты: hadoop, spark, clickhouse, bigquery.",
+    trading: "trading аналитика — анализ финансовых рынков. алгоритмическая торговля, прогнозирование цен, риск-менеджмент.",
+    blockchain: "blockchain аналитика — анализ блокчейн-транзакций. отслеживание движения средств, выявление мошенничества, анализ смарт-контрактов.",
+    graph: "graph аналитика — анализ графовых структур. социальные сети, рекомендательные системы, поиск кратчайших путей.",
+    vue: "vue — прогрессивный фреймворк. лёгкий, гибкий, для малых и средних проектов.",
+    gsap: "gsap — профессиональная анимация. плавные переходы, сложные таймлайны.",
+    three: "three.js — 3d в браузере. впечатляющие сцены, анимация продуктов.",
+    laravel: "laravel — php-фреймворк. портал, интернет-магазин, crm.",
+    uiux: "ui/ux research — исследование поведения. интерфейсы, решающие бизнес-задачи.",
+    motion: "motion design — анимированные интерфейсы. вовлечённость, впечатления.",
+    "3d": "3d art — трёхмерная визуализация. презентации, дополненная реальность.",
+    adobe: "adobe suite — графика, ретушь, подготовка элементов.",
+    audit: "seo-аудит — анализ ошибок, скорости, дублей, метатегов.",
+    metrika: "метрика/ga4 — сбор данных, вебвизор, цели, e-commerce.",
+    cluster: "кластеризация — группировка запросов. оптимальная структура страниц.",
+    core: "core web vitals — lcp, cls, fid. влияют на ранжирование.",
+    semrush: "semrush / ahrefs — анализ конкурентов, ключей, ссылок."
 };
 
 // ===== ТУЛТИПЫ ДЛЯ ТЕХНОЛОГИЙ =====
@@ -68,7 +68,7 @@ function initTechTooltips() {
             if (rafId) cancelAnimationFrame(rafId);
             
             const tech = this.getAttribute('data-tech');
-            const desc = techDesc[tech] || "Технология, которую мы используем в наших проектах для достижения максимального результата.";
+            const desc = techDesc[tech] || "технология, которую мы используем в наших проектах для достижения максимального результата.";
             tooltip.innerHTML = '<strong>' + this.innerText + '</strong><br>' + desc;
             
             rafId = requestAnimationFrame(() => {
@@ -173,7 +173,7 @@ function initKineticButtons() {
     });
 }
 
-// Эффекты для одной кинетической кнопки
+// Эффекты для одной кинетической кнопки (цвета только из css)
 function initKineticButtonEffects(btn, originalText) {
     const leftSeg = btn.querySelector('.segment-left');
     const centerSeg = btn.querySelector('.segment-center');
@@ -184,20 +184,6 @@ function initKineticButtonEffects(btn, originalText) {
     
     let targetRotateX = 0, targetRotateY = 0;
     let currentRotateX = 0, currentRotateY = 0;
-    
-    const defaultColors = {
-        left: 'rgba(255, 255, 255, 0.3)',
-        centerTop: 'rgba(255, 255, 255, 0.3)',
-        centerBottom: 'rgba(255, 255, 255, 0.3)',
-        right: 'rgba(255, 255, 255, 0.3)'
-    };
-    
-    const hoverColors = {
-        left: '#FF3366',
-        centerTop: '#14C6B0',
-        centerBottom: '#14C6B0',
-        right: '#8B5CF6'
-    };
     
     function triggerSparks(count = 3, clientX = null, clientY = null) {
         const rect = btn.getBoundingClientRect();
@@ -227,23 +213,6 @@ function initKineticButtonEffects(btn, originalText) {
             spark.offsetHeight;
             spark.style.animation = 'sparkFloat 0.5s ease-out forwards';
         }
-    }
-    
-    function resetToWhite() {
-        leftSeg.style.borderColor = defaultColors.left;
-        centerSeg.style.borderTopColor = defaultColors.centerTop;
-        centerSeg.style.borderBottomColor = defaultColors.centerBottom;
-        rightSeg.style.borderColor = defaultColors.right;
-        leftSeg.style.boxShadow = '';
-        centerSeg.style.boxShadow = '';
-        rightSeg.style.boxShadow = '';
-    }
-    
-    function setHoverColors() {
-        leftSeg.style.borderColor = hoverColors.left;
-        centerSeg.style.borderTopColor = hoverColors.centerTop;
-        centerSeg.style.borderBottomColor = hoverColors.centerBottom;
-        rightSeg.style.borderColor = hoverColors.right;
     }
     
     function animateRotation() {
@@ -278,14 +247,12 @@ function initKineticButtonEffects(btn, originalText) {
     
     btn.addEventListener('mouseenter', () => {
         triggerSparks(3);
-        setHoverColors();
     });
     
     btn.addEventListener('mouseleave', () => {
         leftSeg.style.transform = '';
         rightSeg.style.transform = '';
         centerSeg.style.transform = '';
-        resetToWhite();
         targetRotateX = 0;
         targetRotateY = 0;
     });
@@ -297,8 +264,6 @@ function initKineticButtonEffects(btn, originalText) {
             btn.style.transform = '';
         }, 120);
     });
-    
-    resetToWhite();
 }
 
 // ===== КАЛЬКУЛЯТОР СТОИМОСТИ =====
@@ -311,19 +276,19 @@ let complexity = "simple";
 function getRec(serv) {
     let rec = [], exp = "";
     if (serv.has('front') || serv.has('design')) {
-        rec.push("React / Next.js, TypeScript, Tailwind");
-        exp += "<strong>React:</strong> SEO-рендеринг, UX. TypeScript — надёжность. Tailwind — быстрая вёрстка.<br>";
+        rec.push("react / next.js, typescript, tailwind");
+        exp += "<strong>react:</strong> seo-рендеринг, ux. typescript — надёжность. tailwind — быстрая вёрстка.<br>";
     }
     if (serv.has('back')) {
-        rec.push("Node.js / Python + PostgreSQL");
-        exp += "<strong>Node.js/Python:</strong> масштабируемый бэкенд, готовая архитектура.<br>";
+        rec.push("node.js / python + postgresql");
+        exp += "<strong>node.js/python:</strong> масштабируемый бэкенд, готовая архитектура.<br>";
     }
-    if (serv.has('crm')) exp += "<strong>CRM/ERP:</strong> автоматизация, 1С, единая база.<br>";
-    if (serv.has('ai')) exp += "<strong>AI/ML:</strong> нейросети, прогнозирование, персонализация.<br>";
-    if (serv.has('mobile')) exp += "<strong>React Native/Flutter:</strong> кроссплатформа, экономия бюджета.<br>";
-    if (rec.length === 0) rec.push("React + Node.js / Laravel");
+    if (serv.has('crm')) exp += "<strong>crm/erp:</strong> автоматизация, 1с, единая база.<br>";
+    if (serv.has('ai')) exp += "<strong>ai/ml:</strong> нейросети, прогнозирование, персонализация.<br>";
+    if (serv.has('mobile')) exp += "<strong>react native/flutter:</strong> кроссплатформа, экономия бюджета.<br>";
+    if (rec.length === 0) rec.push("react + node.js / laravel");
     let compText = "";
-    if (complexity === 'high' || complexity === 'enterprise') compText = "<br><br><strong>Enterprise:</strong> микросервисы, Docker, Kubernetes, Redis.";
+    if (complexity === 'high' || complexity === 'enterprise') compText = "<br><br><strong>enterprise:</strong> микросервисы, docker, kubernetes, redis.";
     return { rec: rec.join(". "), exp: exp + compText };
 }
 
@@ -333,7 +298,7 @@ function updateCalculator() {
     let fin = Math.round(h * cm[complexity]);
     let cost = fin * rate;
     let servList = Array.from(selected).map(function(s) {
-        var names = { design: "Дизайн", front: "Frontend", back: "Backend", seo: "SEO", cms: "CMS", crm: "CRM", ai: "AI", mobile: "Мобильное", support: "Поддержка" };
+        var names = { design: "дизайн", front: "frontend", back: "backend", seo: "seo", cms: "cms", crm: "crm", ai: "ai", mobile: "мобильное", support: "поддержка" };
         return names[s];
     }).join(", ");
     if (servList === "") servList = "—";
@@ -341,22 +306,22 @@ function updateCalculator() {
     var priceEl = document.getElementById('calcPrice');
     var hoursEl = document.getElementById('calcHoursInfo');
     if (priceEl) priceEl.innerHTML = cost.toLocaleString() + ' ₽';
-    if (hoursEl) hoursEl.innerHTML = '✔ Услуги: ' + servList + '<br>✔ Сложность: ' + (complexity === 'simple' ? 'Старт' : complexity === 'medium' ? 'Бизнес' : complexity === 'high' ? 'Премиум' : 'Enterprise') + '<br>✔ Часы: ' + h + ' ч × ' + cm[complexity] + ' = ' + fin + ' ч.';
+    if (hoursEl) hoursEl.innerHTML = '✔ услуги: ' + servList + '<br>✔ сложность: ' + (complexity === 'simple' ? 'старт' : complexity === 'medium' ? 'бизнес' : complexity === 'high' ? 'премиум' : 'enterprise') + '<br>✔ часы: ' + h + ' ч × ' + cm[complexity] + ' = ' + fin + ' ч.';
     
     var rec = getRec(selected);
     var phases = [
-        { n: "Аналитика и прототип", b: 10, m: 1.2 },
-        { n: "Дизайн", b: selected.has('design') ? 20 : 0, m: 1 },
-        { n: "Frontend", b: selected.has('front') ? 30 : 0, m: 1 },
-        { n: "Backend", b: selected.has('back') ? 40 : 0, m: 1 },
-        { n: "SEO", b: selected.has('seo') ? 15 : 0, m: 1 },
-        { n: "CMS", b: selected.has('cms') ? 25 : 0, m: 1 },
-        { n: "CRM/ERP", b: selected.has('crm') ? 60 : 0, m: 1 },
-        { n: "AI/ML", b: selected.has('ai') ? 90 : 0, m: 1 },
-        { n: "Мобильное", b: selected.has('mobile') ? 120 : 0, m: 1 },
-        { n: "Поддержка", b: selected.has('support') ? 8 : 0, m: 1 },
-        { n: "Тестирование", b: 15, m: 1.3 },
-        { n: "Деплой", b: 8, m: 1.1 }
+        { n: "аналитика и прототип", b: 10, m: 1.2 },
+        { n: "дизайн", b: selected.has('design') ? 20 : 0, m: 1 },
+        { n: "frontend", b: selected.has('front') ? 30 : 0, m: 1 },
+        { n: "backend", b: selected.has('back') ? 40 : 0, m: 1 },
+        { n: "seo", b: selected.has('seo') ? 15 : 0, m: 1 },
+        { n: "cms", b: selected.has('cms') ? 25 : 0, m: 1 },
+        { n: "crm/erp", b: selected.has('crm') ? 60 : 0, m: 1 },
+        { n: "ai/ml", b: selected.has('ai') ? 90 : 0, m: 1 },
+        { n: "мобильное", b: selected.has('mobile') ? 120 : 0, m: 1 },
+        { n: "поддержка", b: selected.has('support') ? 8 : 0, m: 1 },
+        { n: "тестирование", b: 15, m: 1.3 },
+        { n: "деплой", b: 8, m: 1.1 }
     ];
     var br = [], tot = 0;
     for (var i = 0; i < phases.length; i++) {
@@ -367,13 +332,13 @@ function updateCalculator() {
             tot += hh;
         }
     }
-    if (tot < fin && fin - tot > 5) br.push({ name: "Управление проектом", h: fin - tot });
+    if (tot < fin && fin - tot > 5) br.push({ name: "управление проектом", h: fin - tot });
     else if (tot > fin && br.length) {
         br[0].h -= tot - fin;
         if (br[0].h < 0) br[0].h = 0;
     }
     br = br.filter(function(b) { return b.h > 0; });
-    var timeHtml = '<div class="time-breakdown"><h4>Распределение ' + fin + ' часов:</h4>';
+    var timeHtml = '<div class="time-breakdown"><h4>распределение ' + fin + ' часов:</h4>';
     for (var i = 0; i < br.length; i++) {
         timeHtml += '<div class="time-breakdown-item"><span>' + br[i].name + '</span><span>' + br[i].h + ' ч</span></div>';
     }
@@ -382,9 +347,9 @@ function updateCalculator() {
     var stackEl = document.getElementById('stackExplanation');
     if (stackEl) {
         if (h === 0) {
-            stackEl.innerHTML = '<h4>Рекомендуемый стек</h4><p>Выберите услуги для расчёта</p>';
+            stackEl.innerHTML = '<h4>рекомендуемый стек</h4><p>выберите услуги для расчёта</p>';
         } else {
-            stackEl.innerHTML = '<h4>Рекомендуемый стек</h4><p><strong>' + rec.rec + '</strong></p><h4>Преимущества</h4><p>' + rec.exp + '</p>' + timeHtml + '<p style="margin-top:12px; font-size:0.85rem;">Выбор технологий основан на потребностях вашего проекта.</p>';
+            stackEl.innerHTML = '<h4>рекомендуемый стек</h4><p><strong>' + rec.rec + '</strong></p><h4>преимущества</h4><p>' + rec.exp + '</p>' + timeHtml + '<p style="margin-top:12px; font-size:0.85rem;">выбор технологий основан на потребностях вашего проекта.</p>';
         }
     }
 }
@@ -498,13 +463,13 @@ function initForm() {
             var email = document.getElementById('userEmail') ? document.getElementById('userEmail').value.trim() : '';
             
             if (!name || !phone || !email) {
-                if (stat) stat.innerHTML = '<div style="background:#990000; padding:12px; border-radius:8px;">❌ Заполните все обязательные поля (Имя, Телефон, Email)</div>';
+                if (stat) stat.innerHTML = '<div style="background:#990000; padding:12px; border-radius:8px;">❌ заполните все обязательные поля (имя, телефон, email)</div>';
                 setTimeout(function() { if (stat) stat.innerHTML = ''; }, 4000);
                 return;
             }
             
-            console.log('Заявка:', { name, phone, email });
-            if (stat) stat.innerHTML = '<div style="background:#F5B700; color:#0D1117; padding:12px; border-radius:8px;">✅ Спасибо! Менеджер свяжется с вами в ближайшее время.</div>';
+            console.log('заявка:', { name, phone, email });
+            if (stat) stat.innerHTML = '<div style="background:#F5B700; color:#0D1117; padding:12px; border-radius:8px;">✅ спасибо! менеджер свяжется с вами в ближайшее время.</div>';
             form.reset();
             setTimeout(function() { if (stat) stat.innerHTML = ''; }, 5000);
         });
@@ -579,11 +544,11 @@ function addFooterToActivePanel() {
     footer.className = 'active-panel-footer';
     footer.innerHTML = `
         <div class="footer-hours">
-            <span>ДЛИТЕЛЬНОСТЬ</span>
+            <span>длительность</span>
             <span>${hours}</span>
         </div>
         <div class="footer-price">
-            <span>СТОИМОСТЬ</span>
+            <span>стоимость</span>
             <span>${price}</span>
         </div>
     `;
@@ -649,7 +614,7 @@ function initPortfolioAccordion() {
     }
 }
 
-// ===== 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК (ТОЛЬКО ГОРИЗОНТАЛЬНЫЙ, БЕЗ ВЕРТИКАЛЬНОГО СМЕЩЕНИЯ) =====
+// ===== 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК (ТОЛЬКО ГОРИЗОНТАЛЬНЫЙ) =====
 function initQuantumCards() {
     const cards = document.querySelectorAll('.services-grid .service-card');
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -665,9 +630,8 @@ function initQuantumCards() {
 
         if (!seg1 || !seg2 || !seg3 || !seg4) return;
 
-        let targetRotateY = 0;           // только горизонтальный наклон
+        let targetRotateY = 0;
         let currentRotateY = 0;
-        // Вертикальный наклон убран (targetRotateX всегда 0)
 
         let segTargets = {
             seg1: { x: 0, ry: 0 },
@@ -682,7 +646,6 @@ function initQuantumCards() {
             seg4: { x: 0, ry: 0 }
         };
 
-        // Лимиты для горизонтального смещения
         const MAX_X = 12;
         const MAX_RY = 4;
 
@@ -691,17 +654,16 @@ function initQuantumCards() {
         }
 
         function updateSegments() {
-            // seg1
             segCurrent.seg1.x += (segTargets.seg1.x - segCurrent.seg1.x) * 0.2;
             segCurrent.seg1.ry += (segTargets.seg1.ry - segCurrent.seg1.ry) * 0.2;
             seg1.style.transform = `translateX(${segCurrent.seg1.x}px) rotateY(${segCurrent.seg1.ry}deg) translateZ(-5px)`;
-            // seg2
+            
             segCurrent.seg2.x += (segTargets.seg2.x - segCurrent.seg2.x) * 0.2;
             seg2.style.transform = `translateX(${segCurrent.seg2.x}px) translateZ(-5px)`;
-            // seg3
+            
             segCurrent.seg3.x += (segTargets.seg3.x - segCurrent.seg3.x) * 0.2;
             seg3.style.transform = `translateX(${segCurrent.seg3.x}px) translateZ(-5px)`;
-            // seg4
+            
             segCurrent.seg4.x += (segTargets.seg4.x - segCurrent.seg4.x) * 0.2;
             segCurrent.seg4.ry += (segTargets.seg4.ry - segCurrent.seg4.ry) * 0.2;
             seg4.style.transform = `translateX(${segCurrent.seg4.x}px) rotateY(${segCurrent.seg4.ry}deg) translateZ(-5px)`;
@@ -718,9 +680,7 @@ function initQuantumCards() {
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const relX = (e.clientX - rect.left) / rect.width - 0.5;
-            // вертикальная координата не используется для движения, только для блика
 
-            // Горизонтальный наклон карточки
             targetRotateY = relX * 12;
 
             const px = ((e.clientX - rect.left) / rect.width) * 100;
@@ -734,7 +694,6 @@ function initQuantumCards() {
                 if (seg) seg.style.borderColor = borderGlow;
             });
 
-            // Только горизонтальное смещение
             segTargets.seg1.x = limit(relX * -12, MAX_X);
             segTargets.seg1.ry = limit(relX * -4, MAX_RY);
             segTargets.seg2.x = limit(relX * -5, MAX_X);
@@ -765,7 +724,7 @@ function initQuantumCards() {
     });
 }
 
-// ===== АККОРДЕОН FAQ В СТИЛЕ «КЕЙС» =====
+// ===== АККОРДЕОН FAQ В СТИЛЕ «КЕЙС» (с искрами, цвета: белый + розовый + оранжевый) =====
 function initCaseAccordion() {
     const items = document.querySelectorAll('.case-item');
     if (items.length === 0) return;
@@ -794,7 +753,7 @@ function initCaseAccordion() {
     }
 
     function burstSparks(x, y) {
-        const colors = ['#FF3366', '#14C6B0', '#10B981', '#8B5CF6'];
+        const colors = ['rgba(255, 255, 255, 0.9)', 'rgba(255, 255, 255, 0.7)', '#D62976', '#F56040'];
         const count = 12 + Math.floor(Math.random() * 12);
         for (let i = 0; i < count; i++) {
             const spark = sparks[i % sparks.length];
@@ -850,7 +809,7 @@ function loadComponent(elementId, filePath, callback) {
     
     fetch(filePath)
         .then(response => {
-            if (!response.ok) throw new Error('Failed to load ' + filePath);
+            if (!response.ok) throw new Error('failed to load ' + filePath);
             return response.text();
         })
         .then(data => {
@@ -858,8 +817,8 @@ function loadComponent(elementId, filePath, callback) {
             if (callback) callback();
         })
         .catch(error => {
-            console.error('Ошибка загрузки компонента:', error);
-            placeholder.innerHTML = '<div style="padding:20px;text-align:center;">Ошибка загрузки</div>';
+            console.error('ошибка загрузки компонента:', error);
+            placeholder.innerHTML = '<div style="padding:20px;text-align:center;">ошибка загрузки</div>';
         });
 }
 
