@@ -67,62 +67,58 @@
         line-height: 1.5;
     }
     
-    /* Видео 16:9 */
-    .video-16x9-wrapper {
+    /* Блок AI дизайн — новая структура: карточки слева, видео справа */
+    .ai-innovation-layout {
         display: flex;
         flex-wrap: wrap;
-        gap: 3rem;
-        align-items: center;
-        justify-content: center;
+        gap: 48px;
+        align-items: stretch;
         margin-top: 2rem;
     }
-    .video-16x9-container {
+    .ai-cards-container {
         flex: 1;
         min-width: 280px;
-        border-radius: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+    .ai-video-container {
+        flex: 0.8;
+        min-width: 260px;
+        position: relative;
+        border-radius: 32px;
+        background: linear-gradient(135deg, #D62976, #F56040);
+        padding: 3px;
+    }
+    .ai-video-inner {
+        position: relative;
+        width: 100%;
+        padding-top: 177.78%; /* 9:16 = 16/9*100 = 177.78% */
+        border-radius: 30px;
         overflow: hidden;
         background: #000;
-        box-shadow: 0 25px 40px rgba(0,0,0,0.5);
-        transition: transform 0.2s;
     }
-    .video-16x9-container:hover {
-        transform: scale(1.02);
-    }
-    .video-16x9-container video,
-    .video-16x9-container .video-fallback {
-        width: 100%;
-        height: auto;
-        display: block;
-        aspect-ratio: 16 / 9;
-        object-fit: cover;
-    }
-    .video-caption {
-        text-align: center;
-        padding: 0.75rem;
-        font-size: 0.8rem;
-        background: rgba(0,0,0,0.7);
-        color: #D62976;
-        font-weight: 500;
-    }
-    .video-16x9-text {
-        flex: 1;
-        min-width: 260px;
-    }
-    .video-16x9-text ul {
-        list-style: none;
-        padding-left: 0;
-        margin: 1.5rem 0;
-    }
-    .video-16x9-text li {
-        margin-bottom: 0.75rem;
-        padding-left: 1.8rem;
-        position: relative;
-    }
-    .video-16x9-text li::before {
-        content: "▹";
-        color: #D62976;
+    .ai-video-inner iframe {
         position: absolute;
+        top: 0;
         left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        pointer-events: auto;
+    }
+    /* Скрываем элементы управления видео через CSS + атрибуты iframe */
+    .ai-video-inner iframe {
+        pointer-events: auto;
+    }
+    @media (max-width: 900px) {
+        .ai-innovation-layout {
+            flex-direction: column;
+        }
+        .ai-video-container {
+            max-width: 320px;
+            margin: 0 auto;
+        }
     }
     
     /* Отзывы */
@@ -473,48 +469,40 @@
     </div>
 </section>
 
-<!-- 4. AI дизайн + инновации + видео 16:9 -->
+<!-- 4. AI дизайн + инновации — новая структура: 3 карточки слева, вертикальное видео справа -->
 <section id="ai-innovation" class="section">
     <div class="container">
         <div class="section-header">
             <h2>AI дизайн + инновации</h2>
             <a href="#services" class="section-more-btn">Подробнее</a>
         </div>
-        <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-bottom: 60px;">
-            <div class="ai-card">
-                <h3>Генеративный UI/UX</h3>
-                <p>Нейросети создают тысячи вариантов интерфейсов за минуты. Мы дорабатываем лучший, экономя до 70% времени на прототипирование.</p>
-            </div>
-            <div class="ai-card">
-                <h3>Графика и иллюстрации</h3>
-                <p>Midjourney, DALL‑E — генерация уникальных изображений без стоков. Полное соответствие вашему бренду.</p>
-            </div>
-            <div class="ai-card">
-                <h3>Адаптивный редизайн</h3>
-                <p>AI анализирует поведение пользователей, предлагая точечные улучшения конверсии. Результат: +25% к ROI.</p>
-            </div>
-        </div>
         
-        <div class="video-16x9-wrapper">
-            <div class="video-16x9-container">
-                <div class="video-fallback" style="background: linear-gradient(145deg, #1a1f2e, #0a0e17); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; cursor: pointer;" onclick="alert('Демо-режим: здесь будет ваше видео 16:9 о возможностях AI в дизайне.')">
-                    <svg width="64" height="64" viewBox="0 0 24 24" fill="#D62976" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 5v14l11-7z"/>
-                    </svg>
-                    <p style="color:#D62976; margin-top: 1rem;">Видео 16:9<br>AI инновации в дизайне</p>
-                    <p style="font-size: 0.75rem; color: #8899aa;">Нажмите для просмотра</p>
+        <div class="ai-innovation-layout">
+            <!-- Левая колонка — 3 карточки вертикально -->
+            <div class="ai-cards-container">
+                <div class="ai-card">
+                    <h3>Генеративный UI/UX</h3>
+                    <p>Нейросети создают тысячи вариантов интерфейсов за минуты. Мы дорабатываем лучший, экономя до 70% времени на прототипирование.</p>
                 </div>
-                <div class="video-caption">Как AI меняет подход к дизайну и разработке</div>
+                <div class="ai-card">
+                    <h3>Графика и иллюстрации</h3>
+                    <p>Midjourney, DALL‑E, Kandinsky — генерация уникальных изображений без стоков. Полное соответствие вашему бренду.</p>
+                </div>
+                <div class="ai-card">
+                    <h3>Адаптивный редизайн</h3>
+                    <p>AI анализирует поведение пользователей и тепловые карты, предлагая точечные улучшения конверсии. Результат: +25% к ROI.</p>
+                </div>
             </div>
-            <div class="video-16x9-text">
-                <p>Мы внедряем передовые AI-технологии в каждый этап создания цифровых продуктов. Нейросети помогают нам:</p>
-                <ul>
-                    <li>✅ Генерировать тысячи вариантов дизайна за минуты</li>
-                    <li>✅ Автоматизировать рутинные задачи разработки</li>
-                    <li>✅ Создавать персонализированный пользовательский опыт</li>
-                    <li>✅ Анализировать поведение и предлагать улучшения</li>
-                </ul>
-                <p><strong style="color:#D62976;">Результат:</strong> скорость разработки выше на 40%, а качество решений превосходит традиционные подходы.</p>
+            
+            <!-- Правая колонка — вертикальное видео 9:16 с градиентной обводкой -->
+            <div class="ai-video-container">
+                <div class="ai-video-inner">
+                    <iframe src="https://kinescope.io/embed/tyTxHyuEgCojbTw7uPFQxm?autoplay=1&muted=1&loop=1&controls=0&showinfo=0&modestbranding=1&rel=0" 
+                            allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;" 
+                            frameborder="0" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
             </div>
         </div>
     </div>
@@ -708,8 +696,6 @@
 </main>
 
 <div id="footer-placeholder"></div>
-
-<div class="totop" id="toTopBtn">↑</div>
 
 <script src="common.js" defer></script>
 </body>
