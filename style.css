@@ -1803,7 +1803,7 @@ button[type="submit"] {
 }
 
 /* ============================================ */
-/* AI ВИДЕО СЛАЙДЕР - ФОРМА ТЕЛЕФОНА */
+/* AI ВИДЕО СЛАЙДЕР - ФИКСИРОВАННАЯ 9:16 */
 /* ============================================ */
 
 .ai-videos-column {
@@ -1850,7 +1850,7 @@ button[type="submit"] {
     box-shadow: 0 0 15px var(--ig-pink);
 }
 
-/* ОБВОДКА ПО ФОРМЕ ТЕЛЕФОНА — скруглённый вертикальный прямоугольник */
+/* ФИКСИРОВАННАЯ ПРОПОРЦИЯ 9:16 — НИЧЕГО НЕ ДЁРГАЕТСЯ */
 .ai-video-frame-wrapper {
     flex: 1;
     position: relative;
@@ -1860,6 +1860,8 @@ button[type="submit"] {
     border: 2px solid rgba(214, 41, 118, 0.5);
     transition: all 0.3s ease;
     box-shadow: 0 0 0 4px rgba(0,0,0,0.3), 0 20px 35px -15px rgba(0,0,0,0.5);
+    aspect-ratio: 9 / 16;
+    max-width: 100%;
 }
 
 .ai-video-frame-wrapper:hover {
@@ -1867,18 +1869,17 @@ button[type="submit"] {
     box-shadow: 0 0 0 4px rgba(0,0,0,0.3), 0 20px 35px -15px rgba(214, 41, 118, 0.3);
 }
 
-/* Контент видео — строго внутри обводки, как экран телефона */
+/* ВИДЕО ЗАПОЛНЯЕТ ВСЮ ОБЛАСТЬ БЕЗ ОБРЕЗКИ */
 .video-frame {
-    position: relative;
-    width: 100%;
-    background: #000;
-    overflow: hidden;
-}
-
-.video-frame iframe {
     position: absolute;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+}
+
+.video-frame iframe {
     width: 100%;
     height: 100%;
     border: none;
@@ -1901,11 +1902,11 @@ button[type="submit"] {
         order: 2;
     }
     .ai-video-slider-container {
-        max-width: 400px;
-        margin: 0 auto;
+        justify-content: center;
     }
     .ai-video-frame-wrapper {
-        border-radius: 36px;
+        max-width: 350px;
+        margin: 0 auto;
     }
     .ai-video-prev,
     .ai-video-next {
@@ -1926,7 +1927,8 @@ button[type="submit"] {
         gap: 10px;
     }
     .ai-video-frame-wrapper {
-        border-radius: 28px;
+        border-radius: 36px;
+        max-width: 280px;
     }
 }
 /* ============================================ */
