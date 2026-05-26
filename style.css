@@ -1803,7 +1803,7 @@ button[type="submit"] {
 }
 
 /* ============================================ */
-/* AI ВИДЕО СЛАЙДЕР - ОБВОДКА ПО ФОРМЕ, СТРЕЛКИ ПО БОКАМ */
+/* AI ВИДЕО СЛАЙДЕР - ФОРМА ТЕЛЕФОНА */
 /* ============================================ */
 
 .ai-videos-column {
@@ -1822,31 +1822,8 @@ button[type="submit"] {
     gap: 16px;
 }
 
-/* Стрелка слева */
-.ai-video-prev {
-    position: relative;
-    left: 0;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: rgba(18, 18, 26, 0.9);
-    backdrop-filter: blur(8px);
-    border: 1.5px solid var(--ig-pink);
-    color: var(--ig-pink);
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    z-index: 10;
-}
-
-/* Стрелка справа */
+.ai-video-prev,
 .ai-video-next {
-    position: relative;
-    right: 0;
     width: 48px;
     height: 48px;
     border-radius: 50%;
@@ -1873,27 +1850,28 @@ button[type="submit"] {
     box-shadow: 0 0 15px var(--ig-pink);
 }
 
-/* Контейнер видео */
+/* ОБВОДКА ПО ФОРМЕ ТЕЛЕФОНА — скруглённый вертикальный прямоугольник */
 .ai-video-frame-wrapper {
     flex: 1;
     position: relative;
     background: #0a0a0f;
-    border-radius: 24px;
+    border-radius: 48px;
     overflow: hidden;
-    border: 2px solid rgba(214, 41, 118, 0.3);
+    border: 2px solid rgba(214, 41, 118, 0.5);
     transition: all 0.3s ease;
+    box-shadow: 0 0 0 4px rgba(0,0,0,0.3), 0 20px 35px -15px rgba(0,0,0,0.5);
 }
 
 .ai-video-frame-wrapper:hover {
     border-color: var(--ig-pink);
-    box-shadow: 0 20px 35px -15px rgba(214, 41, 118, 0.3);
+    box-shadow: 0 0 0 4px rgba(0,0,0,0.3), 0 20px 35px -15px rgba(214, 41, 118, 0.3);
 }
 
-/* Рамка идёт ровно по форме видео */
+/* Контент видео — строго внутри обводки, как экран телефона */
 .video-frame {
     position: relative;
     width: 100%;
-    background: #0a0a0f;
+    background: #000;
     overflow: hidden;
 }
 
@@ -1907,12 +1885,11 @@ button[type="submit"] {
     object-fit: cover;
 }
 
-/* Убираем индикаторы снизу (стрелки по бокам) */
 .ai-video-indicators {
     display: none;
 }
 
-/* Адаптация под планшеты и мобильные */
+/* Адаптация */
 @media (max-width: 1024px) {
     .ai-design-grid {
         flex-direction: column;
@@ -1926,6 +1903,9 @@ button[type="submit"] {
     .ai-video-slider-container {
         max-width: 400px;
         margin: 0 auto;
+    }
+    .ai-video-frame-wrapper {
+        border-radius: 36px;
     }
     .ai-video-prev,
     .ai-video-next {
@@ -1944,6 +1924,9 @@ button[type="submit"] {
     }
     .ai-video-slider-container {
         gap: 10px;
+    }
+    .ai-video-frame-wrapper {
+        border-radius: 28px;
     }
 }
 /* ============================================ */
