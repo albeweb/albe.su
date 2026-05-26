@@ -254,7 +254,7 @@ h4 {
 .section-header h2 { margin-bottom: 0; }
 
 /* ============================================ */
-/* 7. AI ДИЗАЙН БЛОК - КАРТОЧКИ ПО ЭТАЛОНУ */
+/* 7. AI ДИЗАЙН БЛОК - КАРТОЧКИ */
 /* ============================================ */
 
 .ai-design-section {
@@ -390,28 +390,6 @@ h4 {
     opacity: 0.6;
 }
 
-/* Контент карточки */
-.ai-card .ai-card-content {
-    position: relative;
-    z-index: 10;
-    transform-style: preserve-3d;
-    transform: translateZ(20px);
-}
-
-.ai-card .ai-badge {
-    display: inline-block;
-    font-family: 'EN Regular', sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 3px;
-    background: rgba(255,255,255,0.05);
-    padding: 0.3rem 1rem;
-    border-radius: 40px;
-    color: var(--ig-pink);
-    border-left: 2px solid var(--ig-pink);
-    margin-bottom: 1.5rem;
-    text-transform: lowercase;
-}
-
 .ai-card h3 {
     font-family: 'EN Regular', sans-serif;
     font-size: clamp(1.5rem, 4vw, 2rem);
@@ -430,79 +408,6 @@ h4 {
     font-size: 0.9rem;
     line-height: 1.5;
     margin-bottom: 1.5rem;
-}
-
-/* Цветная полоса */
-.ai-card .ai-color-bar {
-    display: flex;
-    gap: 12px;
-    margin: 1rem 0 1.5rem;
-}
-.ai-card .ai-color-bar span {
-    height: 4px;
-    flex: 1;
-    border-radius: 4px;
-    transition: all 0.2s;
-}
-.ai-card .ai-color-bar .bar-pink { background: var(--ig-pink); box-shadow: 0 0 6px var(--ig-pink); }
-.ai-card .ai-color-bar .bar-orange { background: var(--ig-orange); box-shadow: 0 0 6px var(--ig-orange); }
-.ai-card .ai-color-bar .bar-purple { background: var(--ig-purple); box-shadow: 0 0 6px var(--ig-purple); }
-.ai-card .ai-color-bar .bar-yellow { background: var(--gray); box-shadow: 0 0 6px var(--gray); }
-.ai-card .ai-color-bar .bar-blue { background: var(--gray); box-shadow: 0 0 6px var(--gray); }
-
-.ai-card .ai-card-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-/* Кнопка AI карточки */
-.ai-card .ai-card-btn {
-    background: transparent;
-    border: 1.5px solid var(--ig-orange);
-    padding: 0.8rem;
-    width: 100%;
-    font-family: 'EN Regular', sans-serif;
-    font-weight: 400;
-    font-size: 0.9rem;
-    letter-spacing: 2px;
-    color: var(--ig-orange);
-    cursor: pointer;
-    border-radius: 60px;
-    transition: all 0.25s;
-    backdrop-filter: blur(4px);
-    text-transform: lowercase;
-}
-.ai-card .ai-card-btn:hover {
-    background: var(--ig-gradient);
-    color: var(--bg-dark);
-    border-color: transparent;
-    box-shadow: 0 0 20px var(--ig-orange);
-}
-
-/* Видео колонка */
-.ai-videos-column {
-    flex: 1;
-    min-width: 280px;
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-}
-
-.ai-video-item {
-    transition: transform 0.3s ease;
-}
-
-.ai-video-item:hover {
-    transform: translateY(-5px);
-}
-
-.video-frame {
-    transition: all 0.3s ease;
-}
-
-.video-frame:hover {
-    border-color: var(--ig-pink) !important;
-    box-shadow: 0 20px 35px -15px rgba(214,41,118,0.3);
 }
 
 /* ============================================ */
@@ -1898,94 +1803,7 @@ button[type="submit"] {
 }
 
 /* ============================================ */
-/* 20. MEDIA QUERIES */
-/* ============================================ */
-
-@media (max-width: 1400px) {
-    .container, .header .container, .hero .container { padding: 0 60px; }
-}
-
-@media (max-width: 1200px) {
-    .container, .header .container, .hero .container { padding: 0 50px; }
-    .competences-grid { grid-template-columns: repeat(2, 1fr); }
-    .blog-grid { grid-template-columns: repeat(2, 1fr); }
-    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 1024px) {
-    .container, .header .container, .hero .container { padding: 0 40px; }
-    .services-grid { grid-template-columns: repeat(2, 1fr); }
-    .ai-design-grid { flex-direction: column; }
-    .ai-cards-column { order: 1; }
-    .ai-videos-column { order: 2; flex-direction: row; flex-wrap: wrap; }
-    .ai-video-item { flex: 1; min-width: 200px; }
-}
-
-@media (max-width: 900px) {
-    .container, .header .container, .hero .container { padding: 0 30px; }
-    .hero-wrapper { flex-direction: column; align-items: center; gap: 50px; }
-    .hero-content { max-width: 100%; text-align: center; }
-    .hero-top { align-items: center; }
-    .services-badges, .hero-buttons { justify-content: center; }
-    .mission-grid-wrapper { flex-direction: column; gap: 30px; }
-    .testimonials-grid { grid-template-columns: 1fr; }
-    .blog-grid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 768px) {
-    .header .container { padding: 0 20px; }
-    .burger { display: flex; }
-    
-    .nav-menu {
-        position: fixed;
-        top: 0;
-        right: -320px;
-        background: rgba(13, 17, 23, 0.98);
-        backdrop-filter: blur(16px);
-        flex-direction: column;
-        width: 280px;
-        height: 100vh;
-        padding: 100px 24px 30px;
-        transition: right 0.3s ease-out;
-        border-left: 2px solid var(--ig-pink);
-        z-index: 1001;
-        gap: 1.5rem;
-        align-items: flex-start;
-    }
-    .nav-menu.active { right: 0; }
-    
-    .container, .header .container, .hero .container { padding: 0 20px; }
-    .section { padding: 60px 0; }
-    h1 { font-size: 3rem; }
-    h2 { font-size: 1.6rem; }
-    
-    .services-badges { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .hero-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .stat-item { min-width: auto; padding: 8px 16px; width: 100%; }
-    
-    .services-grid { grid-template-columns: 1fr; gap: 20px; }
-    .competences-grid { grid-template-columns: 1fr; }
-    .price-grid { grid-template-columns: 1fr; }
-    .steps-container { flex-direction: column; }
-    
-    .ai-videos-column { flex-direction: column; }
-    .portfolio-accordion { flex-direction: column; }
-    .accordion-panel { height: auto; }
-    
-    .contact-card { padding: 28px 20px; }
-    .form-row { grid-template-columns: 1fr; gap: 0; }
-}
-
-@media (max-width: 480px) {
-    .container, .header .container, .hero .container { padding: 0 16px; }
-    h1 { font-size: 2.2rem; }
-    h2 { font-size: 1.4rem; }
-    .service-badge { font-size: 0.7rem; padding: 6px 10px; }
-    .competence-card { padding: 20px 16px; }
-}
-
-/* ============================================ */
-/* AI ВИДЕО СЛАЙДЕР - ИСПРАВЛЕННЫЙ (УМЕНЬШЕННЫЙ) */
+/* 20. AI ВИДЕО СЛАЙДЕР (ФИНАЛЬНАЯ ВЕРСИЯ) */
 /* ============================================ */
 
 .ai-videos-column {
@@ -2021,10 +1839,8 @@ button[type="submit"] {
 .video-frame {
     position: relative;
     width: 100%;
-    /* Убираем фиксированный padding-top, высота будет управляться через JS */
     background: #0a0a0f;
     overflow: hidden;
-    border-radius: 24px;
 }
 
 .video-frame iframe {
@@ -2099,17 +1915,27 @@ button[type="submit"] {
     transform: scale(1.2);
 }
 
-/* Адаптация под планшеты и мобильные */
+/* ============================================ */
+/* 21. MEDIA QUERIES */
+/* ============================================ */
+
+@media (max-width: 1400px) {
+    .container, .header .container, .hero .container { padding: 0 60px; }
+}
+
+@media (max-width: 1200px) {
+    .container, .header .container, .hero .container { padding: 0 50px; }
+    .competences-grid { grid-template-columns: repeat(2, 1fr); }
+    .blog-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
 @media (max-width: 1024px) {
-    .ai-design-grid {
-        flex-direction: column;
-    }
-    .ai-cards-column {
-        order: 1;
-    }
-    .ai-videos-column {
-        order: 2;
-    }
+    .container, .header .container, .hero .container { padding: 0 40px; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .ai-design-grid { flex-direction: column; }
+    .ai-cards-column { order: 1; }
+    .ai-videos-column { order: 2; }
     .video-frame {
         max-width: 400px;
         margin: 0 auto;
@@ -2130,7 +1956,60 @@ button[type="submit"] {
     }
 }
 
+@media (max-width: 900px) {
+    .container, .header .container, .hero .container { padding: 0 30px; }
+    .hero-wrapper { flex-direction: column; align-items: center; gap: 50px; }
+    .hero-content { max-width: 100%; text-align: center; }
+    .hero-top { align-items: center; }
+    .services-badges, .hero-buttons { justify-content: center; }
+    .mission-grid-wrapper { flex-direction: column; gap: 30px; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .blog-grid { grid-template-columns: 1fr; }
+}
+
 @media (max-width: 768px) {
+    .header .container { padding: 0 20px; }
+    .burger { display: flex; }
+    
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -320px;
+        background: rgba(13, 17, 23, 0.98);
+        backdrop-filter: blur(16px);
+        flex-direction: column;
+        width: 280px;
+        height: 100vh;
+        padding: 100px 24px 30px;
+        transition: right 0.3s ease-out;
+        border-left: 2px solid var(--ig-pink);
+        z-index: 1001;
+        gap: 1.5rem;
+        align-items: flex-start;
+    }
+    .nav-menu.active { right: 0; }
+    
+    .container, .header .container, .hero .container { padding: 0 20px; }
+    .section { padding: 60px 0; }
+    h1 { font-size: 3rem; }
+    h2 { font-size: 1.6rem; }
+    
+    .services-badges { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .hero-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .stat-item { min-width: auto; padding: 8px 16px; width: 100%; }
+    
+    .services-grid { grid-template-columns: 1fr; gap: 20px; }
+    .competences-grid { grid-template-columns: 1fr; }
+    .price-grid { grid-template-columns: 1fr; }
+    .steps-container { flex-direction: column; }
+    
+    .ai-videos-column { flex-direction: column; }
+    .portfolio-accordion { flex-direction: column; }
+    .accordion-panel { height: auto; }
+    
+    .contact-card { padding: 28px 20px; }
+    .form-row { grid-template-columns: 1fr; gap: 0; }
+    
     .ai-video-prev,
     .ai-video-next {
         width: 36px;
@@ -2143,4 +2022,12 @@ button[type="submit"] {
     .indicator.active {
         width: 16px;
     }
+}
+
+@media (max-width: 480px) {
+    .container, .header .container, .hero .container { padding: 0 16px; }
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.4rem; }
+    .service-badge { font-size: 0.7rem; padding: 6px 10px; }
+    .competence-card { padding: 20px 16px; }
 }
