@@ -32,7 +32,7 @@
 }
 
 /* ============================================ */
-/* 2. CSS-ПЕРЕМЕННЫЕ (НОВАЯ ПАЛИТРА) */
+/* 2. CSS-ПЕРЕМЕННЫЕ (РОЗОВЫЙ + ОРАНЖЕВЫЙ) */
 /* ============================================ */
 
 :root {
@@ -40,10 +40,9 @@
     --text-main: #DEE2E6;
     --ig-pink: #D62976;
     --ig-orange: #F56040;
-    --ig-blue: #3A86FF;
     --gray-light: #a8b5c5;
     --gray-mid: #b0b3b8;
-    --ig-gradient: linear-gradient(135deg, var(--ig-pink), var(--ig-orange), var(--ig-blue));
+    --ig-gradient: linear-gradient(135deg, var(--ig-pink), var(--ig-orange));
     --white: #DEE2E6;
     --gray: #b0b3b8;
     --card-bg: rgba(10, 14, 23, 0.85);
@@ -557,8 +556,8 @@ h4 {
 }
 .code-line:nth-child(1) { color: var(--ig-pink); }
 .code-line:nth-child(2) { color: var(--ig-orange); }
-.code-line:nth-child(3) { color: var(--ig-blue); }
-.code-line:nth-child(4) { color: var(--gray-light); }
+.code-line:nth-child(3) { color: var(--gray-light); }
+.code-line:nth-child(4) { color: var(--gray-mid); }
 .code-line:nth-child(5) { color: var(--gray-mid); }
 @keyframes fall {
     0% { transform: translateY(-50px); opacity: 0; }
@@ -1357,7 +1356,7 @@ h4 {
     justify-content: flex-start;
     gap: 20px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    background: linear-gradient(135deg, rgba(214, 41, 118, 0.1), rgba(131, 58, 180, 0.05));
+    background: linear-gradient(135deg, rgba(214, 41, 118, 0.1), rgba(245, 96, 64, 0.05));
     flex-shrink: 0;
 }
 .accordion-panel.active .panel-number { display: none; }
@@ -1476,7 +1475,7 @@ h4 {
 .active-panel-footer {
     padding: 16px 28px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
-    background: linear-gradient(135deg, rgba(214, 41, 118, 0.05), rgba(131, 58, 180, 0.03));
+    background: linear-gradient(135deg, rgba(214, 41, 118, 0.05), rgba(245, 96, 64, 0.03));
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1691,8 +1690,8 @@ h4 {
 }
 .services-grid .service-card .dot-pink { background: var(--ig-pink); }
 .services-grid .service-card .dot-teal { background: var(--ig-orange); }
-.services-grid .service-card .dot-mint { background: var(--ig-blue); }
-.services-grid .service-card .dot-purple { background: var(--gray-light); }
+.services-grid .service-card .dot-mint { background: var(--gray-light); }
+.services-grid .service-card .dot-purple { background: var(--gray-mid); }
 @media (max-width: 1200px) {
     .services-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
     .services-grid .service-card { aspect-ratio: 1.4 / 1; }
@@ -1817,9 +1816,7 @@ h4 {
         rgba(214, 41, 118, 0.06) 0px, rgba(214, 41, 118, 0.06) 2px,
         transparent 2px, transparent 10px,
         rgba(245, 96, 64, 0.04) 10px, rgba(245, 96, 64, 0.04) 12px,
-        transparent 12px, transparent 22px,
-        rgba(58, 134, 255, 0.04) 22px, rgba(58, 134, 255, 0.04) 24px,
-        transparent 24px, transparent 32px);
+        transparent 12px, transparent 22px);
     pointer-events: none;
     opacity: 0.35;
 }
@@ -1945,8 +1942,8 @@ h4 {
 .case-number {
     font-size: 0.75rem;
     font-weight: 600;
-    color: var(--ig-blue);
-    background: rgba(58, 134, 255, 0.15);
+    color: var(--ig-pink);
+    background: rgba(214, 41, 118, 0.15);
     padding: 0.2rem 0.8rem;
     border-radius: 30px;
     letter-spacing: 1px;
@@ -2027,11 +2024,11 @@ h4 {
 .meta-tag {
     font-size: 0.7rem;
     font-family: monospace;
-    color: var(--ig-blue);
-    background: rgba(58, 134, 255, 0.08);
+    color: var(--ig-orange);
+    background: rgba(245, 96, 64, 0.08);
     padding: 0.2rem 0.7rem;
     border-radius: 20px;
-    border-left: 1px solid var(--ig-blue);
+    border-left: 1px solid var(--ig-orange);
 }
 .spark {
     position: fixed;
@@ -2065,7 +2062,7 @@ h4 {
 .services-section .stat-item:nth-child(1) .stat-number { color: var(--block-color); }
 
 .portfolio-section {
-    --block-color: var(--ig-blue);
+    --block-color: var(--ig-pink);
 }
 .portfolio-section .accordion-panel.active,
 .portfolio-section .accordion-panel:not(.active):hover { border-color: var(--block-color); }
@@ -2082,13 +2079,13 @@ h4 {
 .calculator-section .calc-total-block { border-left-color: var(--block-color); }
 
 .competences-section {
-    --block-color: var(--ig-blue);
+    --block-color: var(--ig-orange);
 }
 .competences-section .competence-card:hover,
 .competences-section .step-card:hover { border-color: var(--block-color); }
 .competences-section .tech-item:hover {
     border-color: var(--block-color);
-    background: rgba(58, 134, 255, 0.15);
+    background: rgba(245, 96, 64, 0.15);
 }
 
 .price-section {
@@ -2118,7 +2115,7 @@ h4 {
 }
 
 .footer {
-    --block-color: var(--ig-blue);
+    --block-color: var(--ig-pink);
 }
 .footer a:hover { color: var(--block-color); }
 
@@ -2243,7 +2240,7 @@ h4 {
 .ai-corner-br { bottom: 20px; right: 20px; border-width: 0 2px 2px 0; }
 .ai-liquid-card:hover .ai-corner-tl { border-color: var(--ig-pink); filter: drop-shadow(0 0 6px var(--ig-pink)); }
 .ai-liquid-card:hover .ai-corner-tr { border-color: var(--ig-orange); filter: drop-shadow(0 0 6px var(--ig-orange)); }
-.ai-liquid-card:hover .ai-corner-bl { border-color: var(--ig-blue); filter: drop-shadow(0 0 6px var(--ig-blue)); }
+.ai-liquid-card:hover .ai-corner-bl { border-color: var(--gray-light); filter: drop-shadow(0 0 6px var(--gray-light)); }
 .ai-liquid-card:hover .ai-corner-br { border-color: var(--gray-mid); filter: drop-shadow(0 0 6px var(--gray-mid)); }
 
 .ai-card-content {
@@ -2296,7 +2293,7 @@ h4 {
 .ai-color-bar .bar-orange { background: var(--ig-orange); box-shadow: 0 0 6px var(--ig-orange); }
 .ai-color-bar .bar-purple { background: var(--gray-light); box-shadow: 0 0 6px var(--gray-light); }
 .ai-color-bar .bar-yellow { background: var(--gray-mid); box-shadow: 0 0 6px var(--gray-mid); }
-.ai-color-bar .bar-blue { background: var(--ig-blue); box-shadow: 0 0 6px var(--ig-blue); }
+.ai-color-bar .bar-blue { background: var(--gray-mid); box-shadow: 0 0 6px var(--gray-mid); }
 
 .ai-stats-row {
     display: flex;
@@ -2366,7 +2363,7 @@ h4 {
 }
 .ai-line {
     position: absolute;
-    background: linear-gradient(90deg, transparent, var(--ig-pink), var(--ig-blue), transparent);
+    background: linear-gradient(90deg, transparent, var(--ig-pink), var(--ig-orange), transparent);
     height: 2px;
     width: 100%;
     opacity: 0;
