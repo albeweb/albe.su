@@ -17,7 +17,7 @@
 <meta property="og:url" content="https://albe.su/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0D1117">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23F5B700'/%3E%3Ctext x='20' y='28' font-size='24' text-anchor='middle' fill='black' font-weight='500'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23D62976'/%3E%3Ctext x='20' y='28' font-size='24' text-anchor='middle' fill='white' font-weight='500'%3EA%3C/text%3E%3C/svg%3E">
 
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -39,37 +39,36 @@
 <noscript><div><img src="https://mc.yandex.ru/watch/109373410" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 
-<!-- Основные стили -->
 <link rel="preload" as="style" href="style.css">
 <link rel="stylesheet" href="style.css">
 
-<!-- Дополнительные стили для новых блоков (AI дизайн и вертикальное видео) -->
 <style>
-    /* AI дизайн карточки - единый стиль с сервис-картами */
+    /* AI дизайн карточки */
     .ai-card {
-        background: rgba(20, 25, 35, 0.7);
-        backdrop-filter: blur(4px);
-        border: 1px solid rgba(245, 183, 0, 0.3);
+        background: rgba(10, 14, 23, 0.85);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(214, 41, 118, 0.3);
         border-radius: 24px;
         padding: 2rem;
         transition: all 0.3s ease;
     }
     .ai-card:hover {
-        border-color: #F5B700;
+        border-color: #D62976;
         transform: translateY(-8px);
         box-shadow: 0 20px 35px -10px rgba(0,0,0,0.4);
     }
     .ai-card h3 {
         font-size: 1.6rem;
         margin-bottom: 1rem;
-        color: #F5B700;
+        color: #D62976;
     }
     .ai-card p {
-        color: #B0C4DE;
+        color: #a8b5c5;
         line-height: 1.5;
     }
-    /* Вертикальное видео */
-    .vertical-video-wrapper {
+    
+    /* Видео 16:9 */
+    .video-16x9-wrapper {
         display: flex;
         flex-wrap: wrap;
         gap: 3rem;
@@ -77,25 +76,24 @@
         justify-content: center;
         margin-top: 2rem;
     }
-    .vertical-video-container {
-        flex: 0 0 auto;
-        width: 300px;
-        max-width: 100%;
-        border-radius: 32px;
+    .video-16x9-container {
+        flex: 1;
+        min-width: 280px;
+        border-radius: 24px;
         overflow: hidden;
         background: #000;
         box-shadow: 0 25px 40px rgba(0,0,0,0.5);
         transition: transform 0.2s;
     }
-    .vertical-video-container:hover {
+    .video-16x9-container:hover {
         transform: scale(1.02);
     }
-    .vertical-video-container video,
-    .vertical-video-container .video-fallback {
+    .video-16x9-container video,
+    .video-16x9-container .video-fallback {
         width: 100%;
         height: auto;
         display: block;
-        aspect-ratio: 9 / 16;
+        aspect-ratio: 16 / 9;
         object-fit: cover;
     }
     .video-caption {
@@ -103,36 +101,131 @@
         padding: 0.75rem;
         font-size: 0.8rem;
         background: rgba(0,0,0,0.7);
-        color: #F5B700;
+        color: #D62976;
         font-weight: 500;
     }
-    .vertical-video-text {
+    .video-16x9-text {
         flex: 1;
         min-width: 260px;
     }
-    .vertical-video-text ul {
+    .video-16x9-text ul {
         list-style: none;
         padding-left: 0;
         margin: 1.5rem 0;
     }
-    .vertical-video-text li {
+    .video-16x9-text li {
         margin-bottom: 0.75rem;
         padding-left: 1.8rem;
         position: relative;
     }
-    .vertical-video-text li::before {
+    .video-16x9-text li::before {
         content: "▹";
-        color: #F5B700;
+        color: #D62976;
         position: absolute;
         left: 0;
     }
-    @media (max-width: 768px) {
-        .vertical-video-wrapper {
-            flex-direction: column;
-            text-align: center;
+    
+    /* Отзывы */
+    .reviews-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin-top: 48px;
+    }
+    .review-card {
+        background: rgba(10, 14, 23, 0.85);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        padding: 28px;
+        transition: all 0.3s ease;
+    }
+    .review-card:hover {
+        border-color: #D62976;
+        transform: translateY(-5px);
+    }
+    .review-text {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: #a8b5c5;
+        margin-bottom: 20px;
+        font-style: italic;
+    }
+    .review-author {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .review-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #D62976, #F56040);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: white;
+    }
+    .review-author h4 {
+        margin: 0 0 4px 0;
+        font-size: 1rem;
+    }
+    .review-author p {
+        font-size: 0.75rem;
+        color: #b0b3b8;
+        margin: 0;
+    }
+    .review-rating {
+        color: #F56040;
+        margin-top: 12px;
+        font-size: 0.85rem;
+    }
+    
+    /* Логотипы клиентов */
+    .clients-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 40px;
+        margin-top: 48px;
+    }
+    .client-logo {
+        flex: 0 0 auto;
+        padding: 20px 30px;
+        background: rgba(10, 14, 23, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        transition: all 0.3s ease;
+        font-family: 'EN Regular', sans-serif;
+        font-size: 1.2rem;
+        color: #b0b3b8;
+        text-align: center;
+        min-width: 140px;
+    }
+    .client-logo:hover {
+        border-color: #D62976;
+        transform: translateY(-3px);
+        color: #DEE2E6;
+    }
+    
+    @media (max-width: 900px) {
+        .reviews-grid {
+            grid-template-columns: repeat(2, 1fr);
         }
-        .vertical-video-text ul {
-            text-align: left;
+    }
+    @media (max-width: 600px) {
+        .reviews-grid {
+            grid-template-columns: 1fr;
+        }
+        .clients-grid {
+            gap: 20px;
+        }
+        .client-logo {
+            min-width: 100px;
+            padding: 15px 20px;
+            font-size: 1rem;
         }
     }
 </style>
@@ -172,32 +265,7 @@
             "url": "https://albe.su/",
             "name": "ALBE DIGITAL",
             "description": "Разработка дизайна и сайтов под ключ — премиум дизайн, SEO, продвижение",
-            "publisher": {"@id": "https://albe.su/#organization"},
-            "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://albe.su/search?q={search_term_string}",
-                "query-input": "required name=search_term_string"
-            }
-        },
-        {
-            "@type": "LocalBusiness",
-            "@id": "https://albe.su/#localbusiness",
-            "name": "ALBE digital",
-            "image": "https://albe.su/images/bank.avif",
-            "description": "Разработка дизайна и сайтов под ключ, премиум дизайн, SEO-продвижение, AI-решения, мобильные приложения.",
-            "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Москва",
-                "addressRegion": "Москва",
-                "postalCode": "127051",
-                "streetAddress": "Цветной бульвар",
-                "addressCountry": "RU"
-            },
-            "telephone": "+79959870353",
-            "email": "albe.web@yandex.ru",
-            "openingHours": "Mo-Fr 10:00-19:00",
-            "priceRange": "от 120 000 ₽",
-            "sameAs": ["https://t.me/albe_web"]
+            "publisher": {"@id": "https://albe.su/#organization"}
         }
     ]
 }
@@ -221,15 +289,6 @@
         <div class="code-line" style="left:65%;animation-duration:13s;animation-delay:5s">&lt;SEO speed="fast" /&gt;</div>
         <div class="code-line" style="left:75%;animation-duration:8s;animation-delay:2.5s">git commit -m "launch success"</div>
         <div class="code-line" style="left:85%;animation-duration:16s;animation-delay:1.5s">const website = new ALBE();</div>
-        <div class="code-line" style="left:10%;animation-duration:11s;animation-delay:6s">&lt;React.StrictMode&gt;</div>
-        <div class="code-line" style="left:20%;animation-duration:13s;animation-delay:3.5s">function App() { return &lt;Hero /&gt;; }</div>
-        <div class="code-line" style="left:30%;animation-duration:9.5s;animation-delay:7s">.btn-gold { background: #F5B700; }</div>
-        <div class="code-line" style="left:40%;animation-duration:14.5s;animation-delay:1s">export default async function build()</div>
-        <div class="code-line" style="left:50%;animation-duration:12.5s;animation-delay:4.5s">import { SEO, Analytics } from '@/lib'</div>
-        <div class="code-line" style="left:60%;animation-duration:10.5s;animation-delay:8s">const meta = { title: "ALBE digital" }</div>
-        <div class="code-line" style="left:70%;animation-duration:15.5s;animation-delay:2s">@keyframes fadeIn { from { opacity: 0; } }</div>
-        <div class="code-line" style="left:80%;animation-duration:11.5s;animation-delay:5.5s">&lt;meta name="viewport" /&gt;</div>
-        <div class="code-line" style="left:90%;animation-duration:13.5s;animation-delay:.8s">console.log("ALBE launched")</div>
     </div>
     
     <div class="container">
@@ -277,11 +336,11 @@
     </div>
 </section>
 
-<!-- 2. Избранные проекты (КЕЙСЫ) — сразу после Hero -->
+<!-- 2. Кейсы / Портфолио -->
 <section id="portfolio" class="section">
     <div class="container">
         <div class="section-header">
-            <h2>Избранные проекты</h2>
+            <h2>Кейсы / Портфолио</h2>
             <a href="#portfolio" class="section-more-btn">Все проекты</a>
         </div>
         
@@ -289,198 +348,58 @@
             <div class="accordion-panel active">
                 <div class="accordion-panel-header">
                     <div class="panel-number">01</div>
-                    <div class="panel-title">
-                        <h3>NeoBank Platform</h3>
-                    </div>
-                    <div class="panel-stats">
-                        <span>320 ч</span>
-                        <span>640 000 ₽</span>
-                    </div>
+                    <div class="panel-title"><h3>NeoBank Platform</h3></div>
                 </div>
                 <div class="accordion-panel-content">
                     <div class="panel-image">
                         <picture><source srcset="images/bank.avif" type="image/avif"><img src="images/bank.avif" alt="Neo Bank Platform"></picture>
                     </div>
-                    <div class="panel-description">
-                        <p>Современная онлайн-банк платформа с персонализированными дашбордами, аналитикой расходов и интеграцией с платежными системами. Рост активных клиентов +210%.</p>
-                    </div>
+                    <div class="panel-description"><p>Современная онлайн-банк платформа с персонализированными дашбордами, аналитикой расходов и интеграцией с платежными системами. Рост активных клиентов +210%.</p></div>
                     <div class="panel-bottom">
-                        <div class="panel-tech">
-                            <h4>Технологии</h4>
-                            <div class="tech-items">
-                                <span>React 18</span><span>Next.js 14</span><span>TypeScript</span><span>Node.js</span><span>PostgreSQL</span><span>Docker</span>
-                            </div>
-                        </div>
-                        <div class="panel-metrics">
-                            <div><span>Длительность</span><span>8 недель</span></div>
-                            <div><span>Команда</span><span>3 разработчика + дизайнер</span></div>
-                            <div><span>Результат</span><span>+210% клиентов</span></div>
-                        </div>
+                        <div class="panel-tech"><h4>Технологии</h4><div class="tech-items"><span>React 18</span><span>Next.js 14</span><span>TypeScript</span><span>Node.js</span><span>PostgreSQL</span></div></div>
+                        <div class="panel-metrics"><div><span>Длительность</span><span>8 недель</span></div><div><span>Результат</span><span>+210% клиентов</span></div></div>
                     </div>
                 </div>
             </div>
             <div class="accordion-panel">
                 <div class="accordion-panel-header">
                     <div class="panel-number">02</div>
-                    <div class="panel-title">
-                        <h3>AI система</h3>
-                    </div>
-                    <div class="panel-stats">
-                        <span>480 ч</span>
-                        <span>960 000 ₽</span>
-                    </div>
+                    <div class="panel-title"><h3>AI система</h3></div>
                 </div>
                 <div class="accordion-panel-content">
-                    <div class="panel-image">
-                        <picture><source srcset="images/ai.avif" type="image/avif"><img src="images/ai.avif" alt="AI рекомендательная система"></picture>
-                    </div>
-                    <div class="panel-description">
-                        <p>Нейросетевая рекомендательная система для крупного интернет-магазина. Персонализация предложений увеличила конверсию на 34%.</p>
-                    </div>
+                    <div class="panel-image"><picture><source srcset="images/ai.avif" type="image/avif"><img src="images/ai.avif" alt="AI система"></picture></div>
+                    <div class="panel-description"><p>Нейросетевая рекомендательная система для крупного интернет-магазина. Персонализация предложений увеличила конверсию на 34%.</p></div>
                     <div class="panel-bottom">
-                        <div class="panel-tech">
-                            <h4>Технологии</h4>
-                            <div class="tech-items">
-                                <span>Python</span><span>Django</span><span>TensorFlow</span><span>PyTorch</span><span>Redis</span><span>React</span>
-                            </div>
-                        </div>
-                        <div class="panel-metrics">
-                            <div><span>Длительность</span><span>12 недель</span></div>
-                            <div><span>Команда</span><span>2 ML инженера + 2 разработчика</span></div>
-                            <div><span>Результат</span><span>+34% конверсии</span></div>
-                        </div>
+                        <div class="panel-tech"><h4>Технологии</h4><div class="tech-items"><span>Python</span><span>Django</span><span>TensorFlow</span><span>PyTorch</span><span>React</span></div></div>
+                        <div class="panel-metrics"><div><span>Длительность</span><span>12 недель</span></div><div><span>Результат</span><span>+34% конверсии</span></div></div>
                     </div>
                 </div>
             </div>
             <div class="accordion-panel">
                 <div class="accordion-panel-header">
                     <div class="panel-number">03</div>
-                    <div class="panel-title">
-                        <h3>FitTrack приложение</h3>
-                    </div>
-                    <div class="panel-stats">
-                        <span>600 ч</span>
-                        <span>1 200 000 ₽</span>
-                    </div>
+                    <div class="panel-title"><h3>FitTrack приложение</h3></div>
                 </div>
                 <div class="accordion-panel-content">
-                    <div class="panel-image">
-                        <picture><source srcset="images/app.avif" type="image/avif"><img src="images/app.avif" alt="FitTrack приложение"></picture>
-                    </div>
-                    <div class="panel-description">
-                        <p>Мобильное приложение для отслеживания тренировок и питания с интеграцией фитнес-браслетов и AI-тренером. Более 50 000 установок.</p>
-                    </div>
+                    <div class="panel-image"><picture><source srcset="images/app.avif" type="image/avif"><img src="images/app.avif" alt="FitTrack"></picture></div>
+                    <div class="panel-description"><p>Мобильное приложение для отслеживания тренировок и питания с AI-тренером. Более 50 000 установок.</p></div>
                     <div class="panel-bottom">
-                        <div class="panel-tech">
-                            <h4>Технологии</h4>
-                            <div class="tech-items">
-                                <span>React Native</span><span>TypeScript</span><span>Redux Toolkit</span><span>Node.js</span><span>MongoDB</span><span>Firebase</span>
-                            </div>
-                        </div>
-                        <div class="panel-metrics">
-                            <div><span>Длительность</span><span>14 недель</span></div>
-                            <div><span>Команда</span><span>2 мобильных разработчика + бэкенд</span></div>
-                            <div><span>Результат</span><span>50 000+ установок</span></div>
-                        </div>
+                        <div class="panel-tech"><h4>Технологии</h4><div class="tech-items"><span>React Native</span><span>TypeScript</span><span>Node.js</span><span>MongoDB</span></div></div>
+                        <div class="panel-metrics"><div><span>Длительность</span><span>14 недель</span></div><div><span>Результат</span><span>50 000+ установок</span></div></div>
                     </div>
                 </div>
             </div>
             <div class="accordion-panel">
                 <div class="accordion-panel-header">
                     <div class="panel-number">04</div>
-                    <div class="panel-title">
-                        <h3>Luxury Estate Portal</h3>
-                    </div>
-                    <div class="panel-stats">
-                        <span>720 ч</span>
-                        <span>1 440 000 ₽</span>
-                    </div>
+                    <div class="panel-title"><h3>Luxury Estate Portal</h3></div>
                 </div>
                 <div class="accordion-panel-content">
-                    <div class="panel-image">
-                        <picture><source srcset="images/bank.avif" type="image/avif"><img src="images/bank.avif" alt="Luxury Estate Portal"></picture>
-                    </div>
-                    <div class="panel-description">
-                        <p>Премиум портал для продажи элитной недвижимости с 3D-турами, интеграцией с CRM и автоматическим расчетом ипотеки. +40% среднего чека.</p>
-                    </div>
+                    <div class="panel-image"><picture><source srcset="images/bank.avif" type="image/avif"><img src="images/bank.avif" alt="Luxury Estate"></picture></div>
+                    <div class="panel-description"><p>Премиум портал для продажи элитной недвижимости с 3D-турами. +40% среднего чека.</p></div>
                     <div class="panel-bottom">
-                        <div class="panel-tech">
-                            <h4>Технологии</h4>
-                            <div class="tech-items">
-                                <span>Vue 3</span><span>Nuxt 3</span><span>Laravel</span><span>MySQL</span><span>Three.js</span><span>Docker</span>
-                            </div>
-                        </div>
-                        <div class="panel-metrics">
-                            <div><span>Длительность</span><span>16 недель</span></div>
-                            <div><span>Команда</span><span>3 разработчика + дизайнер</span></div>
-                            <div><span>Результат</span><span>+40% среднего чека</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="accordion-panel">
-                <div class="accordion-panel-header">
-                    <div class="panel-number">05</div>
-                    <div class="panel-title">
-                        <h3>LogiSmart Platform</h3>
-                    </div>
-                    <div class="panel-stats">
-                        <span>840 ч</span>
-                        <span>1 680 000 ₽</span>
-                    </div>
-                </div>
-                <div class="accordion-panel-content">
-                    <div class="panel-image">
-                        <picture><source srcset="images/ai.avif" type="image/avif"><img src="images/ai.avif" alt="LogiSmart Platform"></picture>
-                    </div>
-                    <div class="panel-description">
-                        <p>Система управления логистикой с IoT-трекингом, оптимизацией маршрутов на основе AI. Снижение затрат на доставку на 25%.</p>
-                    </div>
-                    <div class="panel-bottom">
-                        <div class="panel-tech">
-                            <h4>Технологии</h4>
-                            <div class="tech-items">
-                                <span>Go</span><span>React</span><span>WebSocket</span><span>TimescaleDB</span><span>Kafka</span><span>Kubernetes</span>
-                            </div>
-                        </div>
-                        <div class="panel-metrics">
-                            <div><span>Длительность</span><span>20 недель</span></div>
-                            <div><span>Команда</span><span>4 разработчика + аналитик</span></div>
-                            <div><span>Результат</span><span>-25% затрат на доставку</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="accordion-panel">
-                <div class="accordion-panel-header">
-                    <div class="panel-number">06</div>
-                    <div class="panel-title">
-                        <h3>EduTech платформа</h3>
-                    </div>
-                    <div class="panel-stats">
-                        <span>560 ч</span>
-                        <span>1 120 000 ₽</span>
-                    </div>
-                </div>
-                <div class="accordion-panel-content">
-                    <div class="panel-image">
-                        <picture><source srcset="images/app.avif" type="image/avif"><img src="images/app.avif" alt="EduTech платформа"></picture>
-                    </div>
-                    <div class="panel-description">
-                        <p>Онлайн-школа с системой управления обучением, видеолекциями, тестами и сертификацией. Более 10 000 активных пользователей.</p>
-                    </div>
-                    <div class="panel-bottom">
-                        <div class="panel-tech">
-                            <h4>Технологии</h4>
-                            <div class="tech-items">
-                                <span>Next.js 14</span><span>TypeScript</span><span>Prisma</span><span>PostgreSQL</span><span>Stripe</span><span>Tailwind</span>
-                            </div>
-                        </div>
-                        <div class="panel-metrics">
-                            <div><span>Длительность</span><span>12 недель</span></div>
-                            <div><span>Команда</span><span>2 разработчика + дизайнер</span></div>
-                            <div><span>Результат</span><span>10 000+ пользователей</span></div>
-                        </div>
+                        <div class="panel-tech"><h4>Технологии</h4><div class="tech-items"><span>Vue 3</span><span>Nuxt 3</span><span>Laravel</span><span>Three.js</span></div></div>
+                        <div class="panel-metrics"><div><span>Длительность</span><span>16 недель</span></div><div><span>Результат</span><span>+40% среднего чека</span></div></div>
                     </div>
                 </div>
             </div>
@@ -488,342 +407,160 @@
     </div>
 </section>
 
-<!-- 3. НОВЫЙ БЛОК: AI ДИЗАЙН -->
-<section id="ai-design" class="section">
+<!-- 3. Услуги / Эксклюзивные решения -->
+<section id="services" class="section">
     <div class="container">
         <div class="section-header">
-            <h2>AI дизайн — будущее уже здесь</h2>
+            <h2>Услуги / Эксклюзивные решения</h2>
+            <a href="#services" class="section-more-btn">Все услуги</a>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="segment seg-1"></div><div class="segment seg-2"></div><div class="segment seg-3"></div><div class="segment seg-4"></div>
+                <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+                <div class="card-content">
+                    <div><div class="color-strip"><div class="color-dot dot-pink"></div><div class="color-dot dot-teal"></div><div class="color-dot dot-mint"></div><div class="color-dot dot-purple"></div></div>
+                    <h3>Веб-разработка</h3><p>Современный стек: React, Vue, Node.js, Laravel. Высокая производительность.</p></div>
+                    <button class="card-btn">ПОДРОБНЕЕ</button>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="segment seg-1"></div><div class="segment seg-2"></div><div class="segment seg-3"></div><div class="segment seg-4"></div>
+                <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+                <div class="card-content">
+                    <div><div class="color-strip"><div class="color-dot dot-pink"></div><div class="color-dot dot-teal"></div><div class="color-dot dot-mint"></div><div class="color-dot dot-purple"></div></div>
+                    <h3>Иммерсивный дизайн</h3><p>Микровзаимодействия, 3D-сцены, анимация. Визуальный язык, который запоминается.</p></div>
+                    <button class="card-btn">ПОДРОБНЕЕ</button>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="segment seg-1"></div><div class="segment seg-2"></div><div class="segment seg-3"></div><div class="segment seg-4"></div>
+                <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+                <div class="card-content">
+                    <div><div class="color-strip"><div class="color-dot dot-pink"></div><div class="color-dot dot-teal"></div><div class="color-dot dot-mint"></div><div class="color-dot dot-purple"></div></div>
+                    <h3>E‑commerce платформы</h3><p>Интернет-магазины с конверсией 15%+, интеграция с 1С и CRM.</p></div>
+                    <button class="card-btn">ПОДРОБНЕЕ</button>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="segment seg-1"></div><div class="segment seg-2"></div><div class="segment seg-3"></div><div class="segment seg-4"></div>
+                <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+                <div class="card-content">
+                    <div><div class="color-strip"><div class="color-dot dot-pink"></div><div class="color-dot dot-teal"></div><div class="color-dot dot-mint"></div><div class="color-dot dot-purple"></div></div>
+                    <h3>SEO & аналитика</h3><p>Полная оптимизация: от семантики до лидерских позиций.</p></div>
+                    <button class="card-btn">ПОДРОБНЕЕ</button>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="segment seg-1"></div><div class="segment seg-2"></div><div class="segment seg-3"></div><div class="segment seg-4"></div>
+                <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+                <div class="card-content">
+                    <div><div class="color-strip"><div class="color-dot dot-pink"></div><div class="color-dot dot-teal"></div><div class="color-dot dot-mint"></div><div class="color-dot dot-purple"></div></div>
+                    <h3>AI & Machine Learning</h3><p>Чат-боты, рекомендательные системы, генеративный AI.</p></div>
+                    <button class="card-btn">ПОДРОБНЕЕ</button>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="segment seg-1"></div><div class="segment seg-2"></div><div class="segment seg-3"></div><div class="segment seg-4"></div>
+                <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+                <div class="card-content">
+                    <div><div class="color-strip"><div class="color-dot dot-pink"></div><div class="color-dot dot-teal"></div><div class="color-dot dot-mint"></div><div class="color-dot dot-purple"></div></div>
+                    <h3>Мобильные приложения</h3><p>iOS, Android, React Native, Flutter. Полный цикл от идеи до публикации.</p></div>
+                    <button class="card-btn">ПОДРОБНЕЕ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 4. AI дизайн + инновации + видео 16:9 -->
+<section id="ai-innovation" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2>AI дизайн + инновации</h2>
             <a href="#services" class="section-more-btn">Подробнее</a>
         </div>
-        <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+        <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-bottom: 60px;">
             <div class="ai-card">
                 <h3>Генеративный UI/UX</h3>
                 <p>Нейросети создают тысячи вариантов интерфейсов за минуты. Мы дорабатываем лучший, экономя до 70% времени на прототипирование.</p>
             </div>
             <div class="ai-card">
                 <h3>Графика и иллюстрации</h3>
-                <p>Midjourney, DALL‑E, Kandinsky — генерация уникальных изображений без стоков. Полное соответствие вашему бренду.</p>
+                <p>Midjourney, DALL‑E — генерация уникальных изображений без стоков. Полное соответствие вашему бренду.</p>
             </div>
             <div class="ai-card">
                 <h3>Адаптивный редизайн</h3>
-                <p>AI анализирует поведение пользователей и тепловые карты, предлагая точечные улучшения конверсии. Результат: +25% к ROI.</p>
+                <p>AI анализирует поведение пользователей, предлагая точечные улучшения конверсии. Результат: +25% к ROI.</p>
+            </div>
+        </div>
+        
+        <div class="video-16x9-wrapper">
+            <div class="video-16x9-container">
+                <div class="video-fallback" style="background: linear-gradient(145deg, #1a1f2e, #0a0e17); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; cursor: pointer;" onclick="alert('Демо-режим: здесь будет ваше видео 16:9 о возможностях AI в дизайне.')">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="#D62976" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    <p style="color:#D62976; margin-top: 1rem;">Видео 16:9<br>AI инновации в дизайне</p>
+                    <p style="font-size: 0.75rem; color: #8899aa;">Нажмите для просмотра</p>
+                </div>
+                <div class="video-caption">Как AI меняет подход к дизайну и разработке</div>
+            </div>
+            <div class="video-16x9-text">
+                <p>Мы внедряем передовые AI-технологии в каждый этап создания цифровых продуктов. Нейросети помогают нам:</p>
+                <ul>
+                    <li>✅ Генерировать тысячи вариантов дизайна за минуты</li>
+                    <li>✅ Автоматизировать рутинные задачи разработки</li>
+                    <li>✅ Создавать персонализированный пользовательский опыт</li>
+                    <li>✅ Анализировать поведение и предлагать улучшения</li>
+                </ul>
+                <p><strong style="color:#D62976;">Результат:</strong> скорость разработки выше на 40%, а качество решений превосходит традиционные подходы.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- 4. ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ (услуги) -->
-<section id="services" class="section" itemscope itemtype="https://schema.org/ItemList">
+<!-- 5. Процесс работы -->
+<section id="process" class="section">
     <div class="container">
         <div class="section-header">
-            <h2 itemprop="name">Эксклюзивные решения</h2>
-            <a href="#services" class="section-more-btn">Все услуги</a>
-        </div>
-        <div class="services-grid">
-            <!-- Карточка 1 -->
-            <div class="service-card" itemscope itemtype="https://schema.org/Service">
-                <div class="segment seg-1"></div>
-                <div class="segment seg-2"></div>
-                <div class="segment seg-3"></div>
-                <div class="segment seg-4"></div>
-                <div class="corner-tl"></div>
-                <div class="corner-tr"></div>
-                <div class="corner-bl"></div>
-                <div class="corner-br"></div>
-                <div class="card-content">
-                    <div>
-                        <div class="color-strip">
-                            <div class="color-dot dot-pink"></div>
-                            <div class="color-dot dot-teal"></div>
-                            <div class="color-dot dot-mint"></div>
-                            <div class="color-dot dot-purple"></div>
-                        </div>
-                        <h3 itemprop="name">Веб-разработка</h3>
-                        <p itemprop="description">Современный стек: React, Vue, Node.js, Laravel. Высокая производительность и масштабируемость.</p>
-                    </div>
-                    <button class="card-btn">ПОДРОБНЕЕ</button>
-                </div>
-            </div>
-
-            <!-- Карточка 2 -->
-            <div class="service-card" itemscope itemtype="https://schema.org/Service">
-                <div class="segment seg-1"></div>
-                <div class="segment seg-2"></div>
-                <div class="segment seg-3"></div>
-                <div class="segment seg-4"></div>
-                <div class="corner-tl"></div>
-                <div class="corner-tr"></div>
-                <div class="corner-bl"></div>
-                <div class="corner-br"></div>
-                <div class="card-content">
-                    <div>
-                        <div class="color-strip">
-                            <div class="color-dot dot-pink"></div>
-                            <div class="color-dot dot-teal"></div>
-                            <div class="color-dot dot-mint"></div>
-                            <div class="color-dot dot-purple"></div>
-                        </div>
-                        <h3 itemprop="name">Иммерсивный дизайн</h3>
-                        <p itemprop="description">Микровзаимодействия, 3D-сцены, анимация. Визуальный язык, который запоминается.</p>
-                    </div>
-                    <button class="card-btn">ПОДРОБНЕЕ</button>
-                </div>
-            </div>
-
-            <!-- Карточка 3 -->
-            <div class="service-card" itemscope itemtype="https://schema.org/Service">
-                <div class="segment seg-1"></div>
-                <div class="segment seg-2"></div>
-                <div class="segment seg-3"></div>
-                <div class="segment seg-4"></div>
-                <div class="corner-tl"></div>
-                <div class="corner-tr"></div>
-                <div class="corner-bl"></div>
-                <div class="corner-br"></div>
-                <div class="card-content">
-                    <div>
-                        <div class="color-strip">
-                            <div class="color-dot dot-pink"></div>
-                            <div class="color-dot dot-teal"></div>
-                            <div class="color-dot dot-mint"></div>
-                            <div class="color-dot dot-purple"></div>
-                        </div>
-                        <h3 itemprop="name">E‑commerce платформы</h3>
-                        <p itemprop="description">Интернет-магазины с конверсией 15%+, интеграция с 1С, CRM и маркетплейсами.</p>
-                    </div>
-                    <button class="card-btn">ПОДРОБНЕЕ</button>
-                </div>
-            </div>
-
-            <!-- Карточка 4 -->
-            <div class="service-card" itemscope itemtype="https://schema.org/Service">
-                <div class="segment seg-1"></div>
-                <div class="segment seg-2"></div>
-                <div class="segment seg-3"></div>
-                <div class="segment seg-4"></div>
-                <div class="corner-tl"></div>
-                <div class="corner-tr"></div>
-                <div class="corner-bl"></div>
-                <div class="corner-br"></div>
-                <div class="card-content">
-                    <div>
-                        <div class="color-strip">
-                            <div class="color-dot dot-pink"></div>
-                            <div class="color-dot dot-teal"></div>
-                            <div class="color-dot dot-mint"></div>
-                            <div class="color-dot dot-purple"></div>
-                        </div>
-                        <h3 itemprop="name">SEO & аналитика</h3>
-                        <p itemprop="description">Полная оптимизация: от семантики до лидерских позиций в Яндексе и Google.</p>
-                    </div>
-                    <button class="card-btn">ПОДРОБНЕЕ</button>
-                </div>
-            </div>
-
-            <!-- Карточка 5 -->
-            <div class="service-card" itemscope itemtype="https://schema.org/Service">
-                <div class="segment seg-1"></div>
-                <div class="segment seg-2"></div>
-                <div class="segment seg-3"></div>
-                <div class="segment seg-4"></div>
-                <div class="corner-tl"></div>
-                <div class="corner-tr"></div>
-                <div class="corner-bl"></div>
-                <div class="corner-br"></div>
-                <div class="card-content">
-                    <div>
-                        <div class="color-strip">
-                            <div class="color-dot dot-pink"></div>
-                            <div class="color-dot dot-teal"></div>
-                            <div class="color-dot dot-mint"></div>
-                            <div class="color-dot dot-purple"></div>
-                        </div>
-                        <h3 itemprop="name">AI & Machine Learning</h3>
-                        <p itemprop="description">Чат-боты, рекомендательные системы, аналитика данных, генеративный AI.</p>
-                    </div>
-                    <button class="card-btn">ПОДРОБНЕЕ</button>
-                </div>
-            </div>
-
-            <!-- Карточка 6 -->
-            <div class="service-card" itemscope itemtype="https://schema.org/Service">
-                <div class="segment seg-1"></div>
-                <div class="segment seg-2"></div>
-                <div class="segment seg-3"></div>
-                <div class="segment seg-4"></div>
-                <div class="corner-tl"></div>
-                <div class="corner-tr"></div>
-                <div class="corner-bl"></div>
-                <div class="corner-br"></div>
-                <div class="card-content">
-                    <div>
-                        <div class="color-strip">
-                            <div class="color-dot dot-pink"></div>
-                            <div class="color-dot dot-teal"></div>
-                            <div class="color-dot dot-mint"></div>
-                            <div class="color-dot dot-purple"></div>
-                        </div>
-                        <h3 itemprop="name">Мобильные приложения</h3>
-                        <p itemprop="description">iOS, Android, React Native, Flutter. Полный цикл от идеи до публикации.</p>
-                    </div>
-                    <button class="card-btn">ПОДРОБНЕЕ</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- 5. Как мы создаём лидеров рынка -->
-<section id="process" class="section" itemscope itemtype="https://schema.org/HowTo">
-    <div class="container">
-        <div class="section-header">
-            <h2 itemprop="name">Как мы создаём лидеров рынка</h2>
+            <h2>Процесс работы</h2>
             <a href="#services" class="section-more-btn">Подробнее</a>
         </div>
         <div class="steps-container">
-            <div class="step-card" itemprop="step" itemscope itemtype="https://schema.org/HowToStep"><div class="step-num" itemprop="position">01</div><h3 itemprop="name">Аналитика</h3><p itemprop="description">Изучаем нишу, конкурентов, ЦА. Формируем KPI.</p></div>
-            <div class="step-card" itemprop="step" itemscope itemtype="https://schema.org/HowToStep"><div class="step-num" itemprop="position">02</div><h3 itemprop="name">Прототипирование</h3><p itemprop="description">Интерактивные прототипы, тестирование гипотез.</p></div>
-            <div class="step-card" itemprop="step" itemscope itemtype="https://schema.org/HowToStep"><div class="step-num" itemprop="position">03</div><h3 itemprop="name">Дизайн & код</h3><p itemprop="description">Пиксель-перфект, чистый код, ежедневные билды.</p></div>
-            <div class="step-card" itemprop="step" itemscope itemtype="https://schema.org/HowToStep"><div class="step-num" itemprop="position">04</div><h3 itemprop="name">SEO & запуск</h3><p itemprop="description">Техническая SEO-оптимизация, деплой, мониторинг.</p></div>
+            <div class="step-card"><div class="step-num">01</div><h3>Аналитика</h3><p>Изучаем нишу, конкурентов, ЦА. Формируем KPI.</p></div>
+            <div class="step-card"><div class="step-num">02</div><h3>Прототипирование</h3><p>Интерактивные прототипы, тестирование гипотез.</p></div>
+            <div class="step-card"><div class="step-num">03</div><h3>Дизайн & код</h3><p>Пиксель-перфект, чистый код, ежедневные билды.</p></div>
+            <div class="step-card"><div class="step-num">04</div><h3>SEO & запуск</h3><p>Техническая SEO-оптимизация, деплой, мониторинг.</p></div>
         </div>
     </div>
 </section>
 
-<!-- 6. Наши компетенции (сетка 4x4) -->
+<!-- 6. Компетенции / Технологический стек -->
 <section id="competences" class="section">
     <div class="container">
         <div class="section-header">
-            <h2>Наши компетенции</h2>
+            <h2>Компетенции / Технологический стек</h2>
             <a href="#services" class="section-more-btn">Подробнее</a>
         </div>
         <div class="competences-grid">
-            <div class="competence-card">
-                <h3>Frontend</h3>
-                <p>Современные интерфейсы</p>
-                <div class="competence-tech-list">
-                    <div class="tech-item" data-tech="react">React / Next.js</div>
-                    <div class="tech-item" data-tech="ts">TypeScript</div>
-                    <div class="tech-item" data-tech="redux">Redux / RTK</div>
-                    <div class="tech-item" data-tech="ssr">SSR / SSG</div>
-                    <div class="tech-item" data-tech="css">CSS3 / SASS / Tailwind</div>
-                </div>
-            </div>
-            <div class="competence-card">
-                <h3>Backend</h3>
-                <p>Надёжная архитектура</p>
-                <div class="competence-tech-list">
-                    <div class="tech-item" data-tech="node">Node.js / Nest.js</div>
-                    <div class="tech-item" data-tech="python">Python / Django</div>
-                    <div class="tech-item" data-tech="cpp">C++</div>
-                    <div class="tech-item" data-tech="postgres">PostgreSQL / MS SQL</div>
-                    <div class="tech-item" data-tech="redis">Redis / Elasticsearch</div>
-                    <div class="tech-item" data-tech="rabbitmq">RabbitMQ / Kafka</div>
-                </div>
-            </div>
-            <div class="competence-card">
-                <h3>DevOps & Cloud</h3>
-                <p>Масштабирование и инфраструктура</p>
-                <div class="competence-tech-list">
-                    <div class="tech-item" data-tech="kubernetes">Kubernetes</div>
-                    <div class="tech-item" data-tech="docker">Docker</div>
-                    <div class="tech-item" data-tech="yandex">Yandex Cloud / Selectel</div>
-                    <div class="tech-item" data-tech="gitlab">GitLab CI/CD</div>
-                    <div class="tech-item" data-tech="terraform">Terraform / Ansible</div>
-                    <div class="tech-item" data-tech="jenkins">Jenkins / ArgoCD</div>
-                </div>
-            </div>
-            <div class="competence-card">
-                <h3>Mobile Development</h3>
-                <p>Кроссплатформенные приложения</p>
-                <div class="competence-tech-list">
-                    <div class="tech-item" data-tech="reactnative">React Native / Expo</div>
-                    <div class="tech-item" data-tech="swift">Swift / Objective C</div>
-                    <div class="tech-item" data-tech="kotlin">Kotlin / Java</div>
-                    <div class="tech-item" data-tech="flutter">Flutter</div>
-                </div>
-            </div>
-            <div class="competence-card">
-                <h3>AI & Machine Learning</h3>
-                <p>Нейросети и анализ данных</p>
-                <div class="competence-tech-list">
-                    <div class="tech-item" data-tech="ml">ML / DL / NLP</div>
-                    <div class="tech-item" data-tech="python_ml">Python / Pandas / Sklearn</div>
-                    <div class="tech-item" data-tech="catboost">CatBoost / OpenVINO</div>
-                    <div class="tech-item" data-tech="airflow">Airflow / sqlalchemy</div>
-                    <div class="tech-item" data-tech="vision">Computer Vision</div>
-                    <div class="tech-item" data-tech="voice">Voice technologies ASR/TTS</div>
-                </div>
-            </div>
-            <div class="competence-card">
-                <h3>Testing & QA</h3>
-                <p>Качество и надежность</p>
-                <div class="competence-tech-list">
-                    <div class="tech-item" data-tech="postman">Postman / Swagger</div>
-                    <div class="tech-item" data-tech="jmeter">JMeter</div>
-                    <div class="tech-item" data-tech="testrail">TestRail</div>
-                    <div class="tech-item" data-tech="charles">Charles / Fiddler</div>
-                </div>
-            </div>
-            <div class="competence-card">
-                <h3>Architecture & Design</h3>
-                <p>Проектирование систем</p>
-                <div class="competence-tech-list">
-                    <div class="tech-item" data-tech="uml">UML 2.x / BPMN 2.0</div>
-                    <div class="tech-item" data-tech="figma">Figma</div>
-                    <div class="tech-item" data-tech="enterprise">Sparx Enterprise Architect</div>
-                    <div class="tech-item" data-tech="iso">ISO/IEC 12207 / 15288</div>
-                    <div class="tech-item" data-tech="scrum">SCRUM / Agile</div>
-                </div>
-            </div>
-            <div class="competence-card">
-                <h3>Data Analytics</h3>
-                <p>Аналитика больших данных</p>
-                <div class="competence-tech-list">
-                    <div class="tech-item" data-tech="bigdata">Big Data аналитика</div>
-                    <div class="tech-item" data-tech="trading">Trading аналитика</div>
-                    <div class="tech-item" data-tech="blockchain">Blockchain аналитика</div>
-                    <div class="tech-item" data-tech="graph">Graph analytics</div>
-                </div>
-            </div>
+            <div class="competence-card"><h3>Frontend</h3><p>Современные интерфейсы</p><div class="competence-tech-list"><div class="tech-item">React / Next.js</div><div class="tech-item">TypeScript</div><div class="tech-item">Redux / RTK</div><div class="tech-item">Tailwind / CSS3</div></div></div>
+            <div class="competence-card"><h3>Backend</h3><p>Надёжная архитектура</p><div class="competence-tech-list"><div class="tech-item">Node.js / Nest.js</div><div class="tech-item">Python / Django</div><div class="tech-item">PostgreSQL / MS SQL</div><div class="tech-item">Redis / RabbitMQ</div></div></div>
+            <div class="competence-card"><h3>DevOps & Cloud</h3><p>Масштабирование</p><div class="competence-tech-list"><div class="tech-item">Kubernetes / Docker</div><div class="tech-item">Yandex Cloud / AWS</div><div class="tech-item">GitLab CI/CD</div><div class="tech-item">Terraform / Ansible</div></div></div>
+            <div class="competence-card"><h3>Mobile</h3><p>Кроссплатформенные приложения</p><div class="competence-tech-list"><div class="tech-item">React Native / Expo</div><div class="tech-item">Swift / iOS</div><div class="tech-item">Kotlin / Android</div><div class="tech-item">Flutter</div></div></div>
+            <div class="competence-card"><h3>AI & ML</h3><p>Нейросети и анализ данных</p><div class="competence-tech-list"><div class="tech-item">ML / DL / NLP</div><div class="tech-item">Python / Pandas</div><div class="tech-item">TensorFlow / PyTorch</div><div class="tech-item">Computer Vision</div></div></div>
+            <div class="competence-card"><h3>Testing & QA</h3><p>Качество и надежность</p><div class="competence-tech-list"><div class="tech-item">Postman / Swagger</div><div class="tech-item">JMeter</div><div class="tech-item">TestRail</div><div class="tech-item">Charles / Fiddler</div></div></div>
+            <div class="competence-card"><h3>Architecture</h3><p>Проектирование систем</p><div class="competence-tech-list"><div class="tech-item">UML / BPMN 2.0</div><div class="tech-item">Figma</div><div class="tech-item">SCRUM / Agile</div><div class="tech-item">Microservices</div></div></div>
+            <div class="competence-card"><h3>Data Analytics</h3><p>Аналитика больших данных</p><div class="competence-tech-list"><div class="tech-item">Big Data аналитика</div><div class="tech-item">Power BI / Tableau</div><div class="tech-item">SQL / Python</div><div class="tech-item">ETL процессы</div></div></div>
         </div>
     </div>
 </section>
 
-<!-- 7. Калькулятор стоимости -->
-<section id="calculator" class="section">
-    <div class="container">
-        <div class="section-header">
-            <h2>Калькулятор стоимости</h2>
-            <a href="#services" class="section-more-btn">Все услуги</a>
-        </div>
-        <div class="price-table" id="staticPriceTable">
-            <h3>Примеры стоимости разработки</h3>
-            <div class="price-grid">
-                <div class="price-card"><h4>Лендинг / Старт</h4><div class="price">от 120 000 ₽</div><ul><li>Дизайн (UI/UX)</li><li>Frontend разработка</li><li>Базовая SEO оптимизация</li><li>Адаптивная вёрстка</li><li>Срок: 2-3 недели</li></ul></div>
-                <div class="price-card"><h4>Бизнес / Сайт услуг</h4><div class="price">от 250 000 ₽</div><ul><li>Дизайн (UI/UX)</li><li>Frontend + Backend</li><li>CMS (админ-панель)</li><li>SEO оптимизация</li><li>CRM интеграция</li><li>Срок: 4-6 недель</li></ul></div>
-                <div class="price-card"><h4>Премиум / Интернет-магазин</h4><div class="price">от 450 000 ₽</div><ul><li>Дизайн (UI/UX)</li><li>Frontend + Backend</li><li>CMS + CRM интеграция</li><li>Полная SEO оптимизация</li><li>Платёжные системы</li><li>1С интеграция</li><li>Срок: 6-8 недель</li></ul></div>
-                <div class="price-card"><h4>Enterprise / Портал</h4><div class="price">от 1 200 000 ₽</div><ul><li>Полный цикл разработки</li><li>AI / ML решения</li><li>Мобильное приложение</li><li>Техподдержка 24/7</li><li>Микросервисная архитектура</li><li>Срок: от 10 недель</li></ul></div>
-            </div>
-            <p class="price-note">*Точная стоимость рассчитывается индивидуально в калькуляторе ниже</p>
-        </div>
-        <div class="calculator-card interactive-calculator" id="interactiveCalculator">
-            <div class="calculator-two-columns">
-                <div class="calculator-left">
-                    <div class="calc-group"><div class="calc-label">Услуги:</div><div class="calc-options" id="calcServices"><div data-service="design" class="calc-option">Дизайн (UI/UX)</div><div data-service="front" class="calc-option">Frontend</div><div data-service="back" class="calc-option">Backend</div><div data-service="seo" class="calc-option">SEO</div><div data-service="cms" class="calc-option">CMS</div><div data-service="crm" class="calc-option">CRM / ERP</div><div data-service="ai" class="calc-option">AI / ML</div><div data-service="mobile" class="calc-option">Мобильное приложение</div><div data-service="support" class="calc-option">Техподдержка</div></div></div>
-                    <div class="calc-group"><div class="calc-label">Сложность:</div><div class="calc-options" id="calcComplexity"><div data-complex="simple" class="calc-option">Старт (Лендинг)</div><div data-complex="medium" class="calc-option">Бизнес (Сайт услуг)</div><div data-complex="high" class="calc-option">Премиум (Магазин)</div><div data-complex="enterprise" class="calc-option">Enterprise (Портал)</div></div></div>
-                    <div class="calc-total-block"><div class="calc-price" id="calcPrice">0 ₽</div><div id="calcHoursInfo" style="font-size:.85rem;color:#B0C4DE"></div></div>
-                </div>
-                <div class="calculator-right stack-explanation" id="stackExplanation"><h4>Рекомендуемый стек</h4><p>Выберите услуги для расчёта</p></div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- 8. Почему выбирают нас -->
+<!-- 7. Почему ALBE? -->
 <section class="section">
     <div class="container">
         <div class="section-header">
-            <h2>Почему выбирают нас</h2>
+            <h2>Почему ALBE?</h2>
             <a href="#contact" class="section-more-btn">О компании</a>
         </div>
         <div class="mission-grid-wrapper">
@@ -841,198 +578,115 @@
     </div>
 </section>
 
-<!-- 9. НОВЫЙ БЛОК: РЕКЛАМА + ВЕРТИКАЛЬНОЕ ВИДЕО -->
-<section id="vertical-reel" class="section">
+<!-- 8. Отзывы клиентов -->
+<section id="reviews" class="section">
     <div class="container">
         <div class="section-header">
-            <h2>Наша реклама в действии</h2>
-            <a href="#contact" class="section-more-btn">Заказать видео</a>
+            <h2>Отзывы клиентов</h2>
+            <a href="#contact" class="section-more-btn">Оставить отзыв</a>
         </div>
-        <div class="vertical-video-wrapper">
-            <div class="vertical-video-container">
-                <!-- Замена реального видео: используем картинку-превью с имитацией плеера -->
-                <div class="video-fallback" style="background: linear-gradient(145deg, #1a1f2e, #0a0e17); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; cursor: pointer;" onclick="alert('Демо-режим: здесь будет ваше вертикальное видео для соцсетей.')">
-                    <svg width="64" height="64" viewBox="0 0 24 24" fill="#F5B700" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 5v14l11-7z"/>
-                    </svg>
-                    <p style="color:#F5B700; margin-top: 1rem;">Вертикальный ролик<br>9:16</p>
-                    <p style="font-size: 0.75rem; color: #8899aa;">Нажмите для просмотра</p>
-                </div>
-                <!-- Если есть реальное видео, раскомментируйте:
-                <video controls autoplay muted loop playsinline poster="images/reel-poster.avif">
-                    <source src="video/advert-vertical.mp4" type="video/mp4">
-                </video>
-                -->
-                <div class="video-caption">Пример вертикальной рекламы для TikTok / Reels</div>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-text">"Отличная команда! Сделали сайт под ключ за 6 недель. Результат превзошёл ожидания. Отдельное спасибо за SEO — вышли в топ-3 по 15 запросам."</div>
+                <div class="review-author"><div class="review-avatar">А</div><div><h4>Алексей Смирнов</h4><p>CEO, FinTech Solutions</p></div></div>
+                <div class="review-rating">★★★★★</div>
             </div>
-            <div class="vertical-video-text">
-                <p>Мы создаём короткие вертикальные ролики под TikTok, Instagram Reels и VK Клипы. Повышаем узнаваемость бренда и продажи через виральный контент.</p>
-                <ul>
-                    <li>✅ Адаптация под алгоритмы соцсетей</li>
-                    <li>✅ Нейросетевая анимация и AI-монтаж</li>
-                    <li>✅ Готовый креатив для таргета и посева</li>
-                    <li>✅ Съёмка или генерация с помощью ИИ</li>
-                </ul>
-                <button class="btn-primary" style="margin-top: 0.5rem;" onclick="location.href='#contact'">Заказать рекламное видео</button>
+            <div class="review-card">
+                <div class="review-text">"Разработали для нас мобильное приложение с AI-рекомендациями. Конверсия выросла на 40%. Работаем дальше!"</div>
+                <div class="review-author"><div class="review-avatar">Е</div><div><h4>Елена Воронова</h4><p>Product Owner, FitLife</p></div></div>
+                <div class="review-rating">★★★★★</div>
+            </div>
+            <div class="review-card">
+                <div class="review-text">"Профессионалы своего дела. Ребрендинг и разработка нового сайта — всё сделано на высшем уровне. Рекомендую!"</div>
+                <div class="review-author"><div class="review-avatar">М</div><div><h4>Михаил Кудрявцев</h4><p>Директор, Luxury Estate</p></div></div>
+                <div class="review-rating">★★★★★</div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- 10. Часто задаваемые вопросы (FAQ) -->
+<!-- 9. Логотипы / Клиенты / Бренды -->
+<section id="clients" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Нам доверяют</h2>
+            <a href="#contact" class="section-more-btn">Стать клиентом</a>
+        </div>
+        <div class="clients-grid">
+            <div class="client-logo">TECH Corp</div>
+            <div class="client-logo">FinStar</div>
+            <div class="client-logo">EcoLife</div>
+            <div class="client-logo">SmartHome</div>
+            <div class="client-logo">MediaGroup</div>
+            <div class="client-logo">RetailPro</div>
+        </div>
+    </div>
+</section>
+
+<!-- 10. Калькулятор стоимости -->
+<section id="calculator" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Калькулятор стоимости</h2>
+            <a href="#services" class="section-more-btn">Все услуги</a>
+        </div>
+        <div class="price-table" id="staticPriceTable">
+            <h3>Примеры стоимости разработки</h3>
+            <div class="price-grid">
+                <div class="price-card"><h4>Лендинг / Старт</h4><div class="price">от 120 000 ₽</div><ul><li>Дизайн (UI/UX)</li><li>Frontend разработка</li><li>Базовая SEO оптимизация</li><li>Срок: 2-3 недели</li></ul></div>
+                <div class="price-card"><h4>Бизнес / Сайт услуг</h4><div class="price">от 250 000 ₽</div><ul><li>Дизайн (UI/UX)</li><li>Frontend + Backend</li><li>CMS + CRM интеграция</li><li>Срок: 4-6 недель</li></ul></div>
+                <div class="price-card"><h4>Премиум / Интернет-магазин</h4><div class="price">от 450 000 ₽</div><ul><li>Полный цикл разработки</li><li>Платёжные системы</li><li>1С интеграция</li><li>Срок: 6-8 недель</li></ul></div>
+                <div class="price-card"><h4>Enterprise / Портал</h4><div class="price">от 1 200 000 ₽</div><ul><li>AI / ML решения</li><li>Мобильное приложение</li><li>Техподдержка 24/7</li><li>Срок: от 10 недель</li></ul></div>
+            </div>
+            <p class="price-note">*Точная стоимость рассчитывается индивидуально</p>
+        </div>
+        <div class="calculator-card interactive-calculator" id="interactiveCalculator">
+            <div class="calculator-two-columns">
+                <div class="calculator-left">
+                    <div class="calc-group"><div class="calc-label">Услуги:</div><div class="calc-options" id="calcServices"><div data-service="design" class="calc-option">Дизайн (UI/UX)</div><div data-service="front" class="calc-option">Frontend</div><div data-service="back" class="calc-option">Backend</div><div data-service="seo" class="calc-option">SEO</div><div data-service="cms" class="calc-option">CMS</div><div data-service="ai" class="calc-option">AI / ML</div><div data-service="mobile" class="calc-option">Мобильное приложение</div></div></div>
+                    <div class="calc-group"><div class="calc-label">Сложность:</div><div class="calc-options" id="calcComplexity"><div data-complex="simple" class="calc-option">Старт</div><div data-complex="medium" class="calc-option">Бизнес</div><div data-complex="high" class="calc-option">Премиум</div><div data-complex="enterprise" class="calc-option">Enterprise</div></div></div>
+                    <div class="calc-total-block"><div class="calc-price" id="calcPrice">0 ₽</div><div id="calcHoursInfo" style="font-size:.85rem;color:#a8b5c5"></div></div>
+                </div>
+                <div class="calculator-right stack-explanation" id="stackExplanation"><h4>Рекомендуемый стек</h4><p>Выберите услуги для расчёта</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 11. FAQ -->
 <section class="section" itemscope itemtype="https://schema.org/FAQPage">
     <div class="container">
         <div class="section-header">
-            <h2>Часто задаваемые вопросы</h2>
+            <h2>FAQ</h2>
             <a href="#services" class="section-more-btn">Подробнее</a>
         </div>
         <div class="cases-accordion" id="faqAccordion">
             <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <button class="case-lid">
-                    <div class="lid-left">
-                        <span class="case-number">КЕЙС 01</span>
-                        <span class="case-title" itemprop="name">Сколько стоит разработка сайта под ключ?</span>
-                    </div>
-                    <div class="case-handle"><div class="handle-bar"></div></div>
-                </button>
-                <div class="case-inside">
-                    <div class="case-content">
-                        <div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-                            <div itemprop="text">Стоимость разработки сайта рассчитывается индивидуально в нашем калькуляторе. Лендинг от 120 000 ₽, корпоративный сайт от 250 000 ₽, интернет-магазин от 450 000 ₽.</div>
-                            <div class="project-meta"><span class="meta-tag">индивидуальный расчёт</span><span class="meta-tag">прозрачные цены</span></div>
-                        </div>
-                    </div>
-                </div>
+                <button class="case-lid"><div class="lid-left"><span class="case-number">01</span><span class="case-title" itemprop="name">Сколько стоит разработка сайта под ключ?</span></div><div class="case-handle"><div class="handle-bar"></div></div></button>
+                <div class="case-inside"><div class="case-content"><div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><div itemprop="text">Стоимость рассчитывается индивидуально. Лендинг от 120 000 ₽, корпоративный сайт от 250 000 ₽, интернет-магазин от 450 000 ₽.</div></div></div></div>
             </div>
             <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <button class="case-lid">
-                    <div class="lid-left">
-                        <span class="case-number">КЕЙС 02</span>
-                        <span class="case-title" itemprop="name">Какие сроки разработки сайта?</span>
-                    </div>
-                    <div class="case-handle"><div class="handle-bar"></div></div>
-                </button>
-                <div class="case-inside">
-                    <div class="case-content">
-                        <div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-                            <div itemprop="text">Сроки разработки сайта под ключ составляют от 3 до 12 недель в зависимости от сложности проекта.</div>
-                            <div class="project-meta"><span class="meta-tag">3–12 недель</span><span class="meta-tag">под ключ</span></div>
-                        </div>
-                    </div>
-                </div>
+                <button class="case-lid"><div class="lid-left"><span class="case-number">02</span><span class="case-title" itemprop="name">Какие сроки разработки?</span></div><div class="case-handle"><div class="handle-bar"></div></div></button>
+                <div class="case-inside"><div class="case-content"><div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><div itemprop="text">Сроки разработки от 3 до 12 недель в зависимости от сложности проекта.</div></div></div></div>
             </div>
             <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <button class="case-lid">
-                    <div class="lid-left">
-                        <span class="case-number">КЕЙС 03</span>
-                        <span class="case-title" itemprop="name">Даёте гарантию на SEO продвижение?</span>
-                    </div>
-                    <div class="case-handle"><div class="handle-bar"></div></div>
-                </button>
-                <div class="case-inside">
-                    <div class="case-content">
-                        <div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-                            <div itemprop="text">Да, мы гарантируем выполнение KPI по SEO продвижению. Заключаем договор с чёткими показателями.</div>
-                            <div class="project-meta"><span class="meta-tag">гарантия KPI</span><span class="meta-tag">договор</span></div>
-                        </div>
-                    </div>
-                </div>
+                <button class="case-lid"><div class="lid-left"><span class="case-number">03</span><span class="case-title" itemprop="name">Даёте гарантию на SEO продвижение?</span></div><div class="case-handle"><div class="handle-bar"></div></div></button>
+                <div class="case-inside"><div class="case-content"><div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><div itemprop="text">Да, мы гарантируем выполнение KPI по SEO продвижению.</div></div></div></div>
             </div>
             <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <button class="case-lid">
-                    <div class="lid-left">
-                        <span class="case-number">КЕЙС 04</span>
-                        <span class="case-title" itemprop="name">Разрабатываете мобильные приложения?</span>
-                    </div>
-                    <div class="case-handle"><div class="handle-bar"></div></div>
-                </button>
-                <div class="case-inside">
-                    <div class="case-content">
-                        <div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-                            <div itemprop="text">Да, мы разрабатываем мобильные приложения под iOS, Android и кроссплатформенные решения.</div>
-                            <div class="project-meta"><span class="meta-tag">iOS / Android</span><span class="meta-tag">React Native</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <button class="case-lid">
-                    <div class="lid-left">
-                        <span class="case-number">КЕЙС 05</span>
-                        <span class="case-title" itemprop="name">Как происходит SEO оптимизация сайта?</span>
-                    </div>
-                    <div class="case-handle"><div class="handle-bar"></div></div>
-                </button>
-                <div class="case-inside">
-                    <div class="case-content">
-                        <div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-                            <div itemprop="text">SEO оптимизация включает технический аудит, сбор семантического ядра, оптимизацию метатегов и контента.</div>
-                            <div class="project-meta"><span class="meta-tag">технический аудит</span><span class="meta-tag">семантическое ядро</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <button class="case-lid">
-                    <div class="lid-left">
-                        <span class="case-number">КЕЙС 06</span>
-                        <span class="case-title" itemprop="name">Используете ли вы AI и нейросети?</span>
-                    </div>
-                    <div class="case-handle"><div class="handle-bar"></div></div>
-                </button>
-                <div class="case-inside">
-                    <div class="case-content">
-                        <div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-                            <div itemprop="text">Да, мы активно внедряем AI решения: чат-боты, рекомендательные системы, генеративный AI.</div>
-                            <div class="project-meta"><span class="meta-tag">чат-боты</span><span class="meta-tag">генеративный AI</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <button class="case-lid">
-                    <div class="lid-left">
-                        <span class="case-number">КЕЙС 07</span>
-                        <span class="case-title" itemprop="name">Предоставляете техническую поддержку?</span>
-                    </div>
-                    <div class="case-handle"><div class="handle-bar"></div></div>
-                </button>
-                <div class="case-inside">
-                    <div class="case-content">
-                        <div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-                            <div itemprop="text">Да, у нас есть круглосуточная техническая поддержка 24/7.</div>
-                            <div class="project-meta"><span class="meta-tag">24/7</span><span class="meta-tag">круглосуточно</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <button class="case-lid">
-                    <div class="lid-left">
-                        <span class="case-number">КЕЙС 08</span>
-                        <span class="case-title" itemprop="name">Как начать проект с ALBE digital?</span>
-                    </div>
-                    <div class="case-handle"><div class="handle-bar"></div></div>
-                </button>
-                <div class="case-inside">
-                    <div class="case-content">
-                        <div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-                            <div itemprop="text">Оставьте заявку на сайте или напишите в Telegram. Проведём бесплатную консультацию.</div>
-                            <div class="project-meta"><span class="meta-tag">бесплатная консультация</span><span class="meta-tag">telegram</span></div>
-                        </div>
-                    </div>
-                </div>
+                <button class="case-lid"><div class="lid-left"><span class="case-number">04</span><span class="case-title" itemprop="name">Используете ли вы AI и нейросети?</span></div><div class="case-handle"><div class="handle-bar"></div></div></button>
+                <div class="case-inside"><div class="case-content"><div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><div itemprop="text">Да, мы активно внедряем AI решения: чат-боты, рекомендательные системы, генеративный AI.</div></div></div></div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- 11. Контакты и форма -->
+<!-- 12. Контакты + форма -->
 <section id="contact" class="contact-section" itemscope itemtype="https://schema.org/ContactPage">
     <div class="container">
         <div class="contact-card">
             <div class="section-header">
-                <h2>Начнём проект?</h2>
+                <h2>Контакты</h2>
             </div>
             <p class="contact-desc">Оставьте заявку — Мы свяжемся с вами в течение 3 часов</p>
             <form id="mainForm" class="contact-form" action="#" method="post">
@@ -1045,7 +699,6 @@
                     <input type="text" id="userTelegram" placeholder="Telegram (username)">
                 </div>
                 <textarea rows="4" id="userMsg" placeholder="Опишите задачу"></textarea>
-                <textarea rows="3" id="userComment" placeholder="Комментарий (дополнительные пожелания)"></textarea>
                 <button type="submit" class="btn-primary">Отправить заявку</button>
                 <div id="formStatus" class="form-status"></div>
             </form>
