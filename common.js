@@ -724,6 +724,73 @@ function initQuantumCards() {
     });
 }
 
+// ===== 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК AI РЕКЛАМА =====
+function initAICards3D() {
+    const cards = document.querySelectorAll('.ai-card');
+    if (cards.length === 0) return;
+    
+    cards.forEach(card => {
+        const title = card.querySelector('h3');
+        const desc = card.querySelector('p');
+        const price = card.querySelector('.price-tag');
+        const corners = card.querySelectorAll('.corner');
+        const particles = card.querySelectorAll('.particle');
+        
+        let targetRotateX = 0, targetRotateY = 0;
+        let currentRotateX = 0, currentRotateY = 0;
+        
+        function animate() {
+            currentRotateX += (targetRotateX - currentRotateX) * 0.12;
+            currentRotateY += (targetRotateY - currentRotateY) * 0.12;
+            card.style.transform = `rotateX(${currentRotateX}deg) rotateY(${currentRotateY}deg)`;
+            requestAnimationFrame(animate);
+        }
+        animate();
+        
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const relX = (e.clientX - rect.left) / rect.width - 0.5;
+            const relY = (e.clientY - rect.top) / rect.height - 0.5;
+            
+            targetRotateY = relX * 10;
+            targetRotateX = -relY * 8;
+            
+            const px = ((e.clientX - rect.left) / rect.width) * 100;
+            const py = ((e.clientY - rect.top) / rect.height) * 100;
+            card.style.setProperty('--x', px + '%');
+            card.style.setProperty('--y', py + '%');
+            
+            const shiftX = relX * 14;
+            const shiftY = relY * 10;
+            
+            if (title) title.style.transform = `translateX(${shiftX * 0.5}px) translateY(${shiftY * 0.4}px) translateZ(35px)`;
+            if (desc) desc.style.transform = `translateX(${shiftX * 0.2}px) translateY(${shiftY * 0.2}px) translateZ(20px)`;
+            if (price) price.style.transform = `translateX(${shiftX * 0.3}px) translateY(${shiftY * 0.3}px) translateZ(25px)`;
+            
+            corners.forEach(corner => {
+                corner.style.transform = `translateX(${shiftX * 0.1}px) translateY(${shiftY * 0.1}px)`;
+            });
+            particles.forEach(particle => {
+                particle.style.transform = `translateX(${shiftX * 0.15}px) translateY(${shiftY * 0.15}px)`;
+            });
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            targetRotateX = 0;
+            targetRotateY = 0;
+            if (title) title.style.transform = '';
+            if (desc) desc.style.transform = '';
+            if (price) price.style.transform = '';
+            corners.forEach(corner => {
+                corner.style.transform = '';
+            });
+            particles.forEach(particle => {
+                particle.style.transform = '';
+            });
+        });
+    });
+}
+
 // ===== АККОРДЕОН FAQ В СТИЛЕ «КЕЙС» (с искрами, цвета: белый + розовый + оранжевый) =====
 function initCaseAccordion() {
     const items = document.querySelectorAll('.case-item');
@@ -836,6 +903,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initKineticButtons();
     initToTop();
     initCaseAccordion();
+    initAICards3D(); // Новая функция для карточек AI реклама
     
     loadComponent('header-placeholder', 'header.html', function() {
         initBurgerMenu();
