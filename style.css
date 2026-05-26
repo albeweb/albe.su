@@ -2881,7 +2881,7 @@ h4 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-    height: 100%;
+    height: auto;
 }
 
 .ai-video-item {
