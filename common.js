@@ -192,7 +192,7 @@ function initAICards() {
     });
 }
 
-// ===== AI ВИДЕО СЛАЙДЕР (ТОЛЬКО ПЕРЕКЛЮЧЕНИЕ, БЕЗ СИНХРОНИЗАЦИИ) =====
+// ===== AI ВИДЕО СЛАЙДЕР - ВЫСОТА РАВНА ЛЕВЫМ КАРТОЧКАМ =====
 function initAIVideoSlider() {
     const videoSources = [
         "https://kinescope.io/embed/it8tEfjsnaLMaCU712FV2S?autoplay=1&loop=1&muted=1&controls=0&show_title=0&show_logo=0&show_related=0&playsinline=1",
@@ -204,8 +204,18 @@ function initAIVideoSlider() {
     const iframe = document.getElementById('aiVideoIframe');
     const prevBtn = document.getElementById('aiVideoPrev');
     const nextBtn = document.getElementById('aiVideoNext');
+    const videoWrapper = document.querySelector('.ai-video-frame-wrapper');
+    const cardsColumn = document.getElementById('aiCardsColumn');
     
     if (!iframe) return;
+    
+    function syncVideoHeight() {
+        if (!cardsColumn || !videoWrapper) return;
+        const cardsHeight = cardsColumn.offsetHeight;
+        if (cardsHeight > 200) {
+            videoWrapper.style.height = cardsHeight + 'px';
+        }
+    }
     
     function updateVideo(index) {
         iframe.src = videoSources[index];
@@ -224,6 +234,24 @@ function initAIVideoSlider() {
             updateVideo(currentIndex);
         });
     }
+    
+    window.addEventListener('load', function() {
+        setTimeout(syncVideoHeight, 50);
+        setTimeout(syncVideoHeight, 200);
+        setTimeout(syncVideoHeight, 500);
+    });
+    window.addEventListener('resize', function() {
+        setTimeout(syncVideoHeight, 50);
+    });
+    
+    if (window.ResizeObserver && cardsColumn) {
+        const observer = new ResizeObserver(function() {
+            syncVideoHeight();
+        });
+        observer.observe(cardsColumn);
+    }
+    
+    syncVideoHeight();
 }
 
 // ===== АВТОВОСПРОИЗВЕДЕНИЕ ВИДЕО =====
