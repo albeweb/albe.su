@@ -1803,7 +1803,7 @@ button[type="submit"] {
 }
 
 /* ============================================ */
-/* AI ВИДЕО СЛАЙДЕР - ФИКСИРОВАННАЯ 9:16 */
+/* AI ВИДЕО СЛАЙДЕР - ТЕЛЕФОННОЕ РАЗРЕШЕНИЕ */
 /* ============================================ */
 
 .ai-videos-column {
@@ -1811,34 +1811,34 @@ button[type="submit"] {
     min-width: 280px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
 }
 
 .ai-video-slider-container {
     width: 100%;
-    position: relative;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 16px;
 }
 
 .ai-video-prev,
 .ai-video-next {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     background: rgba(18, 18, 26, 0.9);
     backdrop-filter: blur(8px);
     border: 1.5px solid var(--ig-pink);
     color: var(--ig-pink);
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    z-index: 10;
 }
 
 .ai-video-prev:hover,
@@ -1850,18 +1850,17 @@ button[type="submit"] {
     box-shadow: 0 0 15px var(--ig-pink);
 }
 
-/* ФИКСИРОВАННАЯ ПРОПОРЦИЯ 9:16 — НИЧЕГО НЕ ДЁРГАЕТСЯ */
+/* ТЕЛЕФОННОЕ РАЗРЕШЕНИЕ — НЕ НА ВСЮ ШИРИНУ, А КАК ТЕЛЕФОН */
 .ai-video-frame-wrapper {
-    flex: 1;
     position: relative;
+    width: 280px;
     background: #0a0a0f;
-    border-radius: 48px;
+    border-radius: 36px;
     overflow: hidden;
     border: 2px solid rgba(214, 41, 118, 0.5);
     transition: all 0.3s ease;
     box-shadow: 0 0 0 4px rgba(0,0,0,0.3), 0 20px 35px -15px rgba(0,0,0,0.5);
     aspect-ratio: 9 / 16;
-    max-width: 100%;
 }
 
 .ai-video-frame-wrapper:hover {
@@ -1869,7 +1868,6 @@ button[type="submit"] {
     box-shadow: 0 0 0 4px rgba(0,0,0,0.3), 0 20px 35px -15px rgba(214, 41, 118, 0.3);
 }
 
-/* ВИДЕО ЗАПОЛНЯЕТ ВСЮ ОБЛАСТЬ БЕЗ ОБРЕЗКИ */
 .video-frame {
     position: absolute;
     top: 0;
@@ -1886,11 +1884,7 @@ button[type="submit"] {
     object-fit: cover;
 }
 
-.ai-video-indicators {
-    display: none;
-}
-
-/* Адаптация */
+/* Адаптация под планшеты и мобильные */
 @media (max-width: 1024px) {
     .ai-design-grid {
         flex-direction: column;
@@ -1901,12 +1895,8 @@ button[type="submit"] {
     .ai-videos-column {
         order: 2;
     }
-    .ai-video-slider-container {
-        justify-content: center;
-    }
     .ai-video-frame-wrapper {
-        max-width: 350px;
-        margin: 0 auto;
+        width: 260px;
     }
     .ai-video-prev,
     .ai-video-next {
@@ -1917,6 +1907,10 @@ button[type="submit"] {
 }
 
 @media (max-width: 768px) {
+    .ai-video-frame-wrapper {
+        width: 220px;
+        border-radius: 28px;
+    }
     .ai-video-prev,
     .ai-video-next {
         width: 36px;
@@ -1925,10 +1919,6 @@ button[type="submit"] {
     }
     .ai-video-slider-container {
         gap: 10px;
-    }
-    .ai-video-frame-wrapper {
-        border-radius: 36px;
-        max-width: 280px;
     }
 }
 /* ============================================ */
