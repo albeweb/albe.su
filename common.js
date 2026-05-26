@@ -94,16 +94,18 @@ function initTechTooltips() {
     });
 }
 
-// ===== КИНЕТИЧЕСКИЕ КНОПКИ (3 СЕГМЕНТА) =====
+// ===== КИНЕТИЧЕСКИЕ КНОПКИ =====
 function initKineticButtons() {
     const buttonsToConvert = document.querySelectorAll(
-        '.btn-primary, .btn-outline, .hero-btn-primary, .hero-btn-outline, ' +
+        '.card-btn, .ai-card-btn, .btn-primary, .btn-outline, .hero-btn-primary, .hero-btn-outline, ' +
         '.section-more-btn, button[type="submit"], .header-telegram, #toTopBtn'
     );
     
     if (buttonsToConvert.length === 0) return;
     
     buttonsToConvert.forEach(oldBtn => {
+        if (oldBtn.closest('.kinetic-wrapper')) return;
+        
         const btnText = oldBtn.textContent.trim();
         const btnId = oldBtn.id;
         const btnClass = oldBtn.className;
@@ -123,6 +125,7 @@ function initKineticButtons() {
         if (btnClass.includes('hero-btn') || (btnClass.includes('btn-primary') && btnText.length > 15)) sizeClass = 'large';
         if (btnId === 'toTopBtn') sizeClass = 'totop-btn';
         if (btnClass.includes('header-telegram')) sizeClass = 'header-telegram-btn';
+        if (btnClass.includes('card-btn') || btnClass.includes('ai-card-btn')) sizeClass = '';
         
         const kineticBtn = document.createElement('div');
         kineticBtn.className = `kinetic-btn ${sizeClass}`;
@@ -173,7 +176,6 @@ function initKineticButtons() {
     });
 }
 
-// Эффекты для одной кинетической кнопки
 function initKineticButtonEffects(btn, originalText) {
     const leftSeg = btn.querySelector('.segment-left');
     const centerSeg = btn.querySelector('.segment-center');
@@ -185,18 +187,11 @@ function initKineticButtonEffects(btn, originalText) {
     let targetRotateX = 0, targetRotateY = 0;
     let currentRotateX = 0, currentRotateY = 0;
     
-    const defaultColors = {
-        left: 'rgba(255, 255, 255, 0.3)',
-        centerTop: 'rgba(255, 255, 255, 0.3)',
-        centerBottom: 'rgba(255, 255, 255, 0.3)',
-        right: 'rgba(255, 255, 255, 0.3)'
-    };
-    
     const hoverColors = {
-        left: '#FF3366',
-        centerTop: '#14C6B0',
-        centerBottom: '#14C6B0',
-        right: '#8B5CF6'
+        left: '#D62976',
+        centerTop: '#F56040',
+        centerBottom: '#F56040',
+        right: '#D62976'
     };
     
     function triggerSparks(count = 3, clientX = null, clientY = null) {
@@ -230,13 +225,10 @@ function initKineticButtonEffects(btn, originalText) {
     }
     
     function resetToWhite() {
-        leftSeg.style.borderColor = defaultColors.left;
-        centerSeg.style.borderTopColor = defaultColors.centerTop;
-        centerSeg.style.borderBottomColor = defaultColors.centerBottom;
-        rightSeg.style.borderColor = defaultColors.right;
-        leftSeg.style.boxShadow = '';
-        centerSeg.style.boxShadow = '';
-        rightSeg.style.boxShadow = '';
+        leftSeg.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+        centerSeg.style.borderTopColor = 'rgba(255, 255, 255, 0.15)';
+        centerSeg.style.borderBottomColor = 'rgba(255, 255, 255, 0.15)';
+        rightSeg.style.borderColor = 'rgba(255, 255, 255, 0.15)';
     }
     
     function setHoverColors() {
@@ -301,7 +293,7 @@ function initKineticButtonEffects(btn, originalText) {
     resetToWhite();
 }
 
-// ===== КАЛЬКУЛЯТОР СТОИМОСТИ =====
+// ===== КАЛЬКУЛЯТОР =====
 const rate = 2000;
 const sh = { design: 20, front: 30, back: 40, seo: 15, cms: 25, crm: 60, ai: 90, mobile: 120, support: 8 };
 const cm = { simple: 1, medium: 1.5, high: 2.2, enterprise: 3.5 };
@@ -456,36 +448,6 @@ function initSmoothScroll() {
     }
 }
 
-// ===== FAQ (старый, оставлен для совместимости) =====
-function initFaq() {
-    var faqGrid = document.querySelector('.faq-grid');
-    if (faqGrid) {
-        faqGrid.addEventListener('click', function(e) {
-            var button = e.target.closest('.faq-question');
-            if (!button) return;
-            e.preventDefault();
-            var item = button.closest('.faq-item');
-            if (!item) return;
-            var answer = item.querySelector('.faq-answer');
-            if (!answer) return;
-            var isActive = answer.classList.contains('active');
-            
-            var allAnswersList = document.querySelectorAll('.faq-answer');
-            for (var i = 0; i < allAnswersList.length; i++) {
-                allAnswersList[i].classList.remove('active');
-            }
-            var allButtons = document.querySelectorAll('.faq-question');
-            for (var i = 0; i < allButtons.length; i++) {
-                allButtons[i].classList.remove('active');
-            }
-            if (!isActive) {
-                answer.classList.add('active');
-                button.classList.add('active');
-            }
-        });
-    }
-}
-
 // ===== ФОРМА =====
 function initForm() {
     var form = document.getElementById('mainForm');
@@ -559,11 +521,10 @@ function initBurgerMenu() {
     }
 }
 
-// ===== ДОБАВЛЯЕМ ФУТЕР С ЧАСАМИ И СТОИМОСТЬЮ В АКТИВНУЮ ПАНЕЛЬ =====
+// ===== АККОРДЕОН ПОРТФОЛИО =====
 function addFooterToActivePanel() {
     const activePanel = document.querySelector('.accordion-panel.active');
     if (!activePanel) return;
-    
     if (activePanel.querySelector('.active-panel-footer')) return;
     
     const stats = activePanel.querySelector('.panel-stats');
@@ -596,10 +557,8 @@ function addFooterToActivePanel() {
     }
 }
 
-// ===== ГОРИЗОНТАЛЬНЫЙ АККОРДЕОН ПОРТФОЛИО =====
 function initPortfolioAccordion() {
     const panels = document.querySelectorAll('.accordion-panel');
-    
     if (panels.length === 0) return;
     
     function closeAllPanels() {
@@ -612,14 +571,12 @@ function initPortfolioAccordion() {
         if (!panel) return;
         closeAllPanels();
         panel.classList.add('active');
-        
         document.querySelectorAll('.active-panel-footer').forEach(footer => footer.remove());
         addFooterToActivePanel();
     }
     
     panels.forEach((panel) => {
         const header = panel.querySelector('.accordion-panel-header');
-        
         if (header) {
             header.style.cursor = 'pointer';
             header.addEventListener('click', function(e) {
@@ -628,16 +585,6 @@ function initPortfolioAccordion() {
                 openPanel(panel);
             });
         }
-        
-        panel.addEventListener('click', function(e) {
-            if (e.target.closest('a') || 
-                e.target.closest('button') || 
-                e.target.closest('.accordion-panel-content')) {
-                return;
-            }
-            if (panel.classList.contains('active')) return;
-            openPanel(panel);
-        });
     });
     
     const activePanel = document.querySelector('.accordion-panel.active');
@@ -649,7 +596,7 @@ function initPortfolioAccordion() {
     }
 }
 
-// ===== 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК (ТОЛЬКО ГОРИЗОНТАЛЬНЫЙ, БЕЗ ВЕРТИКАЛЬНОГО СМЕЩЕНИЯ) =====
+// ===== 3D КАРТОЧКИ УСЛУГ =====
 function initQuantumCards() {
     const cards = document.querySelectorAll('.services-grid .service-card');
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -665,9 +612,8 @@ function initQuantumCards() {
 
         if (!seg1 || !seg2 || !seg3 || !seg4) return;
 
-        let targetRotateY = 0;           // только горизонтальный наклон
+        let targetRotateY = 0;
         let currentRotateY = 0;
-        // Вертикальный наклон убран (targetRotateX всегда 0)
 
         let segTargets = {
             seg1: { x: 0, ry: 0 },
@@ -682,7 +628,6 @@ function initQuantumCards() {
             seg4: { x: 0, ry: 0 }
         };
 
-        // Лимиты для горизонтального смещения
         const MAX_X = 12;
         const MAX_RY = 4;
 
@@ -691,17 +636,13 @@ function initQuantumCards() {
         }
 
         function updateSegments() {
-            // seg1
             segCurrent.seg1.x += (segTargets.seg1.x - segCurrent.seg1.x) * 0.2;
             segCurrent.seg1.ry += (segTargets.seg1.ry - segCurrent.seg1.ry) * 0.2;
             seg1.style.transform = `translateX(${segCurrent.seg1.x}px) rotateY(${segCurrent.seg1.ry}deg) translateZ(-5px)`;
-            // seg2
             segCurrent.seg2.x += (segTargets.seg2.x - segCurrent.seg2.x) * 0.2;
             seg2.style.transform = `translateX(${segCurrent.seg2.x}px) translateZ(-5px)`;
-            // seg3
             segCurrent.seg3.x += (segTargets.seg3.x - segCurrent.seg3.x) * 0.2;
             seg3.style.transform = `translateX(${segCurrent.seg3.x}px) translateZ(-5px)`;
-            // seg4
             segCurrent.seg4.x += (segTargets.seg4.x - segCurrent.seg4.x) * 0.2;
             segCurrent.seg4.ry += (segTargets.seg4.ry - segCurrent.seg4.ry) * 0.2;
             seg4.style.transform = `translateX(${segCurrent.seg4.x}px) rotateY(${segCurrent.seg4.ry}deg) translateZ(-5px)`;
@@ -718,33 +659,23 @@ function initQuantumCards() {
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const relX = (e.clientX - rect.left) / rect.width - 0.5;
-            // вертикальная координата не используется для движения, только для блика
-
-            // Горизонтальный наклон карточки
             targetRotateY = relX * 12;
-
             const px = ((e.clientX - rect.left) / rect.width) * 100;
             const py = ((e.clientY - rect.top) / rect.height) * 100;
             card.style.setProperty('--x', px + '%');
             card.style.setProperty('--y', py + '%');
-
             const intensity = Math.min(1, Math.abs(relX));
             const borderGlow = `rgba(255, 255, 255, ${0.15 + intensity * 0.4})`;
             segments.forEach(seg => {
                 if (seg) seg.style.borderColor = borderGlow;
             });
-
-            // Только горизонтальное смещение
             segTargets.seg1.x = limit(relX * -12, MAX_X);
             segTargets.seg1.ry = limit(relX * -4, MAX_RY);
             segTargets.seg2.x = limit(relX * -5, MAX_X);
             segTargets.seg3.x = limit(relX * 5, MAX_X);
             segTargets.seg4.x = limit(relX * 12, MAX_X);
             segTargets.seg4.ry = limit(relX * 4, MAX_RY);
-
-            if (content) {
-                content.style.transform = `translateZ(25px)`;
-            }
+            if (content) content.style.transform = `translateZ(25px)`;
         });
 
         card.addEventListener('mouseleave', () => {
@@ -758,14 +689,12 @@ function initQuantumCards() {
             segments.forEach(seg => {
                 if (seg) seg.style.borderColor = '';
             });
-            if (content) {
-                content.style.transform = 'translateZ(25px)';
-            }
+            if (content) content.style.transform = 'translateZ(25px)';
         });
     });
 }
 
-// ===== АККОРДЕОН FAQ В СТИЛЕ «КЕЙС» =====
+// ===== АККОРДЕОН FAQ =====
 function initCaseAccordion() {
     const items = document.querySelectorAll('.case-item');
     if (items.length === 0) return;
@@ -794,7 +723,7 @@ function initCaseAccordion() {
     }
 
     function burstSparks(x, y) {
-        const colors = ['#FF3366', '#14C6B0', '#10B981', '#8B5CF6'];
+        const colors = ['#D62976', '#F56040', '#a8b5c5', '#b0b3b8'];
         const count = 12 + Math.floor(Math.random() * 12);
         for (let i = 0; i < count; i++) {
             const spark = sparks[i % sparks.length];
@@ -863,12 +792,11 @@ function loadComponent(elementId, filePath, callback) {
         });
 }
 
-// ===== ЗАПУСК ВСЕХ ИНИЦИАЛИЗАЦИЙ =====
+// ===== ЗАПУСК =====
 document.addEventListener('DOMContentLoaded', function() {
     initTechTooltips();
     initCalculatorWithFallback();
     initSmoothScroll();
-    initFaq();
     initForm();
     initHeaderFixed();
     initBurgerMenu();
