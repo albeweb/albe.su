@@ -94,7 +94,7 @@ function initTechTooltips() {
     });
 }
 
-// ===== 3D ПАРАЛЛАКС ДЛЯ AI КАРТОЧЕК (ЖИДКАЯ РАМКА) =====
+// ===== 3D ПАРАЛЛАКС ДЛЯ AI КАРТОЧЕК =====
 function initAICards() {
     const cards = document.querySelectorAll('.ai-card');
     if (cards.length === 0) return;
@@ -192,7 +192,7 @@ function initAICards() {
     });
 }
 
-// ===== 2 ВИДЕО, ЧЁРНО-БЕЛЫЕ, ПРИ НАВЕДЕНИИ ЦВЕТНЫЕ СО ЗВУКОМ =====
+// ===== 2 ВИДЕО РЯДОМ, ВЕРТИКАЛЬНЫЕ, ЧЁРНО-БЕЛЫЕ, ПРИ НАВЕДЕНИИ ЦВЕТНЫЕ СО ЗВУКОМ =====
 function initAIVideos() {
     const videoItems = document.querySelectorAll('.ai-video-item');
     
@@ -202,23 +202,26 @@ function initAIVideos() {
         const iframe = item.querySelector('.ai-video-iframe');
         if (!iframe) return;
         
-        // Устанавливаем чёрно-белый фильтр
+        // Чёрно-белый фильтр
         item.style.filter = 'grayscale(100%)';
         item.style.transition = 'filter 0.3s ease, transform 0.3s ease';
         item.style.cursor = 'pointer';
         
-        // При наведении мыши
+        // При наведении - включаем звук, убираем ч/б, запускаем видео
         item.addEventListener('mouseenter', function() {
             this.style.filter = 'grayscale(0%)';
+            // Пытаемся запустить видео
             try {
                 if (iframe.contentWindow) {
                     iframe.contentWindow.postMessage('{"method":"unmute"}', '*');
                     iframe.contentWindow.postMessage('{"method":"play"}', '*');
                 }
             } catch(e) {}
+            // Альтернативный способ
+            iframe.play();
         });
         
-        // При уходе мыши
+        // При уходе - выключаем звук, возвращаем ч/б, ставим на паузу
         item.addEventListener('mouseleave', function() {
             this.style.filter = 'grayscale(100%)';
             try {
@@ -227,47 +230,34 @@ function initAIVideos() {
                     iframe.contentWindow.postMessage('{"method":"pause"}', '*');
                 }
             } catch(e) {}
+            // Альтернативный способ
+            iframe.pause();
         });
     });
 }
 
-// ===== СИНХРОНИЗАЦИЯ ВЫСОТЫ ВИДЕО С ЛЕВЫМИ КАРТОЧКАМИ =====
+// ===== СИНХРОНИЗАЦИЯ ВЫСОТЫ ВИДЕО =====
 function syncVideosHeight() {
     const cardsColumn = document.getElementById('aiCardsColumn');
-    const videoItems = document.querySelectorAll('.ai-video-item');
+    const videoWrappers = document.querySelectorAll('.ai-video-frame-wrapper');
     
-    if (!cardsColumn || videoItems.length === 0) return;
+    if (!cardsColumn || videoWrappers.length === 0) return;
     
     const cardsHeight = cardsColumn.offsetHeight;
     if (cardsHeight > 200) {
-        const gap = 32;
-        const videoHeight = (cardsHeight - gap) / 2;
-        
-        videoItems.forEach(item => {
-            const wrapper = item.querySelector('.ai-video-frame-wrapper');
-            if (wrapper) {
-                wrapper.style.height = videoHeight + 'px';
-            }
+        // Каждое видео имеет высоту = высоте карточек
+        videoWrappers.forEach(wrapper => {
+            wrapper.style.height = cardsHeight + 'px';
         });
     }
 }
 
-// ===== АВТОВОСПРОИЗВЕДЕНИЕ ВИДЕО =====
+// ===== АВТОВОСПРОИЗВЕДЕНИЕ ВИДЕО (выключено, т.к. не нужно) =====
 function initAutoPlayVideos() {
-    const videoFrames = document.querySelectorAll('.video-frame iframe');
-    videoFrames.forEach(iframe => {
-        const src = iframe.src;
-        if (src && !src.includes('autoplay=1')) {
-            let newSrc = src;
-            if (!newSrc.includes('autoplay')) {
-                newSrc += (newSrc.includes('?') ? '&' : '?') + 'autoplay=0&loop=1&muted=1&controls=0';
-            }
-            iframe.src = newSrc;
-        }
-    });
+    // Видео не запускаются автоматически, только при наведении
 }
 
-// ===== КИНЕТИЧЕСКИЕ КНОПКИ (3 СЕГМЕНТА) =====
+// ===== КИНЕТИЧЕСКИЕ КНОПКИ =====
 function initKineticButtons() {
     const buttonsToConvert = document.querySelectorAll(
         '.btn-primary, .btn-outline, .hero-btn-primary, .hero-btn-outline, ' +
@@ -346,12 +336,10 @@ function initKineticButtons() {
     });
 }
 
-// Эффекты для одной кинетической кнопки
 function initKineticButtonEffects(btn, originalText) {
     const leftSeg = btn.querySelector('.segment-left');
     const centerSeg = btn.querySelector('.segment-center');
     const rightSeg = btn.querySelector('.segment-right');
-    const textSpan = btn.querySelector('.btn-text');
     
     if (!leftSeg || !centerSeg || !rightSeg) return;
     
@@ -629,7 +617,7 @@ function initSmoothScroll() {
     }
 }
 
-// ===== FAQ (старый, оставлен для совместимости) =====
+// ===== FAQ =====
 function initFaq() {
     var faqGrid = document.querySelector('.faq-grid');
     if (faqGrid) {
@@ -732,7 +720,7 @@ function initBurgerMenu() {
     }
 }
 
-// ===== ДОБАВЛЯЕМ ФУТЕР С ЧАСАМИ И СТОИМОСТЬЮ В АКТИВНУЮ ПАНЕЛЬ =====
+// ===== ДОБАВЛЯЕМ ФУТЕР В АКТИВНУЮ ПАНЕЛЬ =====
 function addFooterToActivePanel() {
     const activePanel = document.querySelector('.accordion-panel.active');
     if (!activePanel) return;
@@ -822,7 +810,7 @@ function initPortfolioAccordion() {
     }
 }
 
-// ===== 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК (ТОЛЬКО ГОРИЗОНТАЛЬНЫЙ) =====
+// ===== 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК =====
 function initQuantumCards() {
     const cards = document.querySelectorAll('.services-grid .service-card');
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -929,7 +917,7 @@ function initQuantumCards() {
     });
 }
 
-// ===== АККОРДЕОН FAQ В СТИЛЕ «КЕЙС» =====
+// ===== АККОРДЕОН FAQ =====
 function initCaseAccordion() {
     const items = document.querySelectorAll('.case-item');
     if (items.length === 0) return;
@@ -1027,7 +1015,7 @@ function loadComponent(elementId, filePath, callback) {
         });
 }
 
-// ===== ЗАПУСК ВСЕХ ИНИЦИАЛИЗАЦИЙ =====
+// ===== ЗАПУСК =====
 document.addEventListener('DOMContentLoaded', function() {
     initTechTooltips();
     initCalculatorWithFallback();
@@ -1042,8 +1030,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initToTop();
     initCaseAccordion();
     initAICards();
-    initAutoPlayVideos();
-    initAIVideos();        // Инициализация 2 видео
+    initAIVideos();        // Инициализация видео
     syncVideosHeight();    // Синхронизация высоты
     
     window.addEventListener('resize', function() {
