@@ -392,7 +392,7 @@
     </div>
 </section>
 
-<!-- AI ДИЗАЙН: 3 карточки + 2 ВИДЕО (чёрно-белые, при наведении цветные со звуком) -->
+<!-- AI ДИЗАЙН: 3 карточки + 2 ВИДЕО -->
 <section class="section ai-design-section">
     <div class="container">
         <div class="section-header">
@@ -420,7 +420,7 @@
                         <div class="ai-video-frame-wrapper">
                             <div class="video-frame">
                                 <iframe class="ai-video-iframe" 
-                                    src="https://kinescope.io/embed/tyTxHyuEgCojbTw7uPFQxm?autoplay=0&loop=1&muted=0&controls=0&show_title=0&show_logo=0&show_related=0&playsinline=1"
+                                    src="https://kinescope.io/embed/tyTxHyuEgCojbTw7uPFQxm?autoplay=0&loop=1&muted=1&controls=0&show_title=0&show_logo=0&show_related=0&playsinline=1" 
                                     allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;" 
                                     frameborder="0" 
                                     allowfullscreen>
@@ -432,7 +432,7 @@
                         <div class="ai-video-frame-wrapper">
                             <div class="video-frame">
                                 <iframe class="ai-video-iframe" 
-                                    src="https://kinescope.io/embed/wzToMP6ZpNgEfgDNY7ecHM?autoplay=0&loop=1&muted=0&controls=0&show_title=0&show_logo=0&show_related=0&playsinline=1"
+                                    src="https://kinescope.io/embed/wzToMP6ZpNgEfgDNY7ecHM?autoplay=0&loop=1&muted=1&controls=0&show_title=0&show_logo=0&show_related=0&playsinline=1" 
                                     allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;" 
                                     frameborder="0" 
                                     allowfullscreen>
@@ -446,6 +446,7 @@
     </div>
 </section>
 
+<!-- Остальные секции (услуги, процесс, компетенции, калькулятор, почему ALBE, отзывы, блог, FAQ, контакты) остаются без изменений -->
 <!-- ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ / УСЛУГИ -->
 <section id="services" class="section" itemscope itemtype="https://schema.org/ItemList">
     <div class="container">
@@ -1026,38 +1027,41 @@
 <script src="common.js" defer></script>
 
 <script>
-// Чёрно-белые видео, при наведении включаются цветные со звуком
+// Чёрно-белые видео, при наведении цветные со звуком
 (function() {
     const videoItems = document.querySelectorAll('.ai-video-item');
+    
+    if (videoItems.length === 0) return;
     
     videoItems.forEach(item => {
         const iframe = item.querySelector('.ai-video-iframe');
         if (!iframe) return;
         
-        // Чёрно-белый фильтр через CSS
+        // Устанавливаем чёрно-белый фильтр
         item.style.filter = 'grayscale(100%)';
-        item.style.transition = 'filter 0.3s ease';
+        item.style.transition = 'filter 0.3s ease, transform 0.3s ease';
+        item.style.cursor = 'pointer';
         
-        let isPlaying = false;
-        
-        // При наведении - включаем звук и убираем ч/б
+        // При наведении мыши
         item.addEventListener('mouseenter', function() {
             this.style.filter = 'grayscale(0%)';
             try {
-                iframe.contentWindow.postMessage('{"method":"unmute"}', '*');
-                iframe.contentWindow.postMessage('{"method":"play"}', '*');
+                if (iframe.contentWindow) {
+                    iframe.contentWindow.postMessage('{"method":"unmute"}', '*');
+                    iframe.contentWindow.postMessage('{"method":"play"}', '*');
+                }
             } catch(e) {}
-            isPlaying = true;
         });
         
-        // При уходе мыши - выключаем звук, возвращаем ч/б и ставим на паузу
+        // При уходе мыши
         item.addEventListener('mouseleave', function() {
             this.style.filter = 'grayscale(100%)';
             try {
-                iframe.contentWindow.postMessage('{"method":"mute"}', '*');
-                iframe.contentWindow.postMessage('{"method":"pause"}', '*');
+                if (iframe.contentWindow) {
+                    iframe.contentWindow.postMessage('{"method":"mute"}', '*');
+                    iframe.contentWindow.postMessage('{"method":"pause"}', '*');
+                }
             } catch(e) {}
-            isPlaying = false;
         });
     });
 })();
