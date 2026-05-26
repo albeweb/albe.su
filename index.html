@@ -39,7 +39,6 @@
 <noscript><div><img src="https://mc.yandex.ru/watch/109373410" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 
-<!-- Основные стили -->
 <link rel="preload" as="style" href="style.css">
 <link rel="stylesheet" href="style.css">
 
@@ -111,11 +110,10 @@
 </head>
 <body>
 
-<!-- Плейсхолдеры для загружаемых компонентов -->
 <div id="header-placeholder"></div>
 
 <main>
-<!-- Hero баннер -->
+<!-- Hero баннер (оригинальный, восстановлен) -->
 <section class="hero">
     <div class="code-rain" aria-hidden="true">
         <div class="code-line" style="left:5%;animation-duration:12s;animation-delay:0s">&lt;div class="digital"&gt;&lt;/div&gt;</div>
@@ -183,7 +181,7 @@
     </div>
 </section>
 
-<!-- КЕЙСЫ / ПОРТФОЛИО (уже есть) -->
+<!-- КЕЙСЫ / ПОРТФОЛИО -->
 <section id="portfolio" class="section">
     <div class="container">
         <div class="section-header">
@@ -394,7 +392,7 @@
     </div>
 </section>
 
-<!-- AI ДИЗАЙН: 3 карточки с описанием + 3 видео блока 9х16 -->
+<!-- AI ДИЗАЙН: 3 карточки + СЛАЙДЕР ВИДЕО -->
 <section class="section ai-design-section">
     <div class="container">
         <div class="section-header">
@@ -403,7 +401,7 @@
         </div>
         <div class="ai-design-grid">
             <!-- Левая колонка: 3 карточки -->
-            <div class="ai-cards-column">
+            <div class="ai-cards-column" id="aiCardsColumn">
                 <div class="ai-card">
                     <div class="ai-card-icon">🎨</div>
                     <h3>Генеративный дизайн</h3>
@@ -420,33 +418,27 @@
                     <p>Анализ вовлечённости зрителя в реальном времени. AI адаптирует контент под эмоциональное состояние пользователя.</p>
                 </div>
             </div>
-            <!-- Правая колонка: 3 видео 9:16 -->
+            <!-- Правая колонка: СЛАЙДЕР ВИДЕО -->
             <div class="ai-videos-column">
-                <div class="ai-video-item">
-                    <div class="video-frame" style="position: relative; padding-top: 177.78%; width: 100%; background: #0a0a0f; border-radius: 24px; overflow: hidden; border: 2px solid rgba(245,183,0,0.3);">
-                        <iframe src="https://kinescope.io/embed/wzToMP6ZpNgEfgDNY7ecHM?autoplay=1&loop=1&muted=1&controls=0&show_title=0&show_logo=0&show_related=0" 
-                            allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;" 
-                            frameborder="0" 
-                            allowfullscreen 
-                            style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;"></iframe>
+                <div class="ai-video-slider-container">
+                    <div class="ai-video-frame-wrapper" id="aiVideoFrame">
+                        <div class="video-frame" style="position: relative; width: 100%; background: #0a0a0f; border-radius: 24px; overflow: hidden; border: 2px solid rgba(214,41,118,0.3);">
+                            <iframe id="aiVideoIframe" 
+                                src="https://kinescope.io/embed/it8tEfjsnaLMaCU712FV2S?autoplay=1&loop=1&muted=1&controls=0&show_title=0&show_logo=0&show_related=0" 
+                                allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;" 
+                                frameborder="0" 
+                                allowfullscreen 
+                                style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;"></iframe>
+                        </div>
                     </div>
-                </div>
-                <div class="ai-video-item">
-                    <div class="video-frame" style="position: relative; padding-top: 182.34%; width: 100%; background: #0a0a0f; border-radius: 24px; overflow: hidden; border: 2px solid rgba(245,183,0,0.3);">
-                        <iframe src="https://kinescope.io/embed/it8tEfjsnaLMaCU712FV2S?autoplay=1&loop=1&muted=1&controls=0&show_title=0&show_logo=0&show_related=0" 
-                            allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;" 
-                            frameborder="0" 
-                            allowfullscreen 
-                            style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;"></iframe>
-                    </div>
-                </div>
-                <div class="ai-video-item">
-                    <div class="video-frame" style="position: relative; padding-top: 179.78%; width: 100%; background: #0a0a0f; border-radius: 24px; overflow: hidden; border: 2px solid rgba(245,183,0,0.3);">
-                        <iframe src="https://kinescope.io/embed/tyTxHyuEgCojbTw7uPFQxm?autoplay=1&loop=1&muted=1&controls=0&show_title=0&show_logo=0&show_related=0" 
-                            allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;" 
-                            frameborder="0" 
-                            allowfullscreen 
-                            style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;"></iframe>
+                    <div class="ai-video-controls">
+                        <button class="ai-video-prev" id="aiVideoPrev">←</button>
+                        <div class="ai-video-indicators" id="aiVideoIndicators">
+                            <span class="indicator active" data-index="0"></span>
+                            <span class="indicator" data-index="1"></span>
+                            <span class="indicator" data-index="2"></span>
+                        </div>
+                        <button class="ai-video-next" id="aiVideoNext">→</button>
                     </div>
                 </div>
             </div>
@@ -454,7 +446,7 @@
     </div>
 </section>
 
-<!-- ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ / УСЛУГИ (уже есть) -->
+<!-- ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ / УСЛУГИ -->
 <section id="services" class="section" itemscope itemtype="https://schema.org/ItemList">
     <div class="container">
         <div class="section-header">
@@ -604,7 +596,7 @@
     </div>
 </section>
 
-<!-- ПРОЦЕСС РАБОТЫ (уже есть) -->
+<!-- ПРОЦЕСС РАБОТЫ -->
 <section id="process" class="section" itemscope itemtype="https://schema.org/HowTo">
     <div class="container">
         <div class="section-header">
@@ -620,7 +612,7 @@
     </div>
 </section>
 
-<!-- КОМПЕТЕНЦИИ (уже есть) -->
+<!-- КОМПЕТЕНЦИИ -->
 <section id="competences" class="section">
     <div class="container">
         <div class="section-header">
@@ -720,7 +712,7 @@
     </div>
 </section>
 
-<!-- КАЛЬКУЛЯТОР СТОИМОСТИ (уже есть) -->
+<!-- КАЛЬКУЛЯТОР СТОИМОСТИ -->
 <section id="calculator" class="section">
     <div class="container">
         <div class="section-header">
@@ -750,7 +742,7 @@
     </div>
 </section>
 
-<!-- ПОЧЕМУ ALBE? (уже есть) -->
+<!-- ПОЧЕМУ ALBE? -->
 <section class="section">
     <div class="container">
         <div class="section-header">
@@ -772,15 +764,13 @@
     </div>
 </section>
 
-<!-- ОТЗЫВЫ + КЛИЕНТЫ (НОВЫЙ БЛОК) -->
+<!-- ОТЗЫВЫ + КЛИЕНТЫ -->
 <section class="section testimonials-section">
     <div class="container">
         <div class="section-header">
             <h2>Отзывы и клиенты</h2>
             <a href="#testimonials" class="section-more-btn">Все отзывы</a>
         </div>
-        
-        <!-- Логотипы клиентов -->
         <div class="clients-row">
             <div class="client-logo">ТЕХНОБАНК</div>
             <div class="client-logo">RETAIL GROUP</div>
@@ -789,8 +779,6 @@
             <div class="client-logo">FITNESS HUB</div>
             <div class="client-logo">PREMIUM REALTY</div>
         </div>
-        
-        <!-- Карточки отзывов -->
         <div class="testimonials-grid">
             <div class="testimonial-card">
                 <div class="testimonial-stars">★★★★★</div>
@@ -820,7 +808,7 @@
     </div>
 </section>
 
-<!-- БЛОГ / СТАТЬИ (НОВЫЙ БЛОК) -->
+<!-- БЛОГ / СТАТЬИ -->
 <section class="section blog-section">
     <div class="container">
         <div class="section-header">
@@ -856,7 +844,7 @@
     </div>
 </section>
 
-<!-- FAQ (уже есть) -->
+<!-- FAQ -->
 <section class="section" itemscope itemtype="https://schema.org/FAQPage">
     <div class="container">
         <div class="section-header">
@@ -1036,5 +1024,99 @@
 <div class="totop" id="toTopBtn">↑</div>
 
 <script src="common.js" defer></script>
+
+<script>
+// Дополнительный скрипт для AI видео слайдера и синхронизации высоты
+(function() {
+    // Порядок видео: 2 → 3 → 1
+    const videoSources = [
+        "https://kinescope.io/embed/it8tEfjsnaLMaCU712FV2S?autoplay=1&loop=1&muted=1&controls=0&show_title=0&show_logo=0&show_related=0",
+        "https://kinescope.io/embed/tyTxHyuEgCojbTw7uPFQxm?autoplay=1&loop=1&muted=1&controls=0&show_title=0&show_logo=0&show_related=0",
+        "https://kinescope.io/embed/wzToMP6ZpNgEfgDNY7ecHM?autoplay=1&loop=1&muted=1&controls=0&show_title=0&show_logo=0&show_related=0"
+    ];
+    
+    let currentVideoIndex = 0;
+    const iframe = document.getElementById('aiVideoIframe');
+    const prevBtn = document.getElementById('aiVideoPrev');
+    const nextBtn = document.getElementById('aiVideoNext');
+    const indicators = document.querySelectorAll('.indicator');
+    
+    function updateVideo(index) {
+        if (!iframe) return;
+        const newSrc = videoSources[index];
+        iframe.src = newSrc;
+        
+        // Обновляем индикаторы
+        indicators.forEach((ind, i) => {
+            if (i === index) {
+                ind.classList.add('active');
+            } else {
+                ind.classList.remove('active');
+            }
+        });
+    }
+    
+    function nextVideo() {
+        currentVideoIndex = (currentVideoIndex + 1) % videoSources.length;
+        updateVideo(currentVideoIndex);
+    }
+    
+    function prevVideo() {
+        currentVideoIndex = (currentVideoIndex - 1 + videoSources.length) % videoSources.length;
+        updateVideo(currentVideoIndex);
+    }
+    
+    if (prevBtn) prevBtn.addEventListener('click', prevVideo);
+    if (nextBtn) nextBtn.addEventListener('click', nextVideo);
+    
+    // Клик по индикаторам
+    indicators.forEach((ind, idx) => {
+        ind.addEventListener('click', () => {
+            currentVideoIndex = idx;
+            updateVideo(currentVideoIndex);
+        });
+    });
+    
+    // Синхронизация высоты видео с высотой 3 карточек
+    function syncVideoHeight() {
+        const cardsColumn = document.getElementById('aiCardsColumn');
+        const videoFrame = document.querySelector('.ai-video-frame-wrapper');
+        const videoContainer = document.querySelector('.ai-videos-column');
+        
+        if (cardsColumn && videoFrame && videoContainer) {
+            const cardsHeight = cardsColumn.offsetHeight;
+            const videoFrameRect = videoFrame.getBoundingClientRect();
+            const currentPadding = parseFloat(window.getComputedStyle(videoFrame).paddingTop) || 0;
+            const newHeight = cardsHeight - 60;
+            
+            if (newHeight > 200) {
+                const aspectRatio = (currentPadding / 100) * 0.9;
+                videoFrame.style.height = newHeight + 'px';
+                videoFrame.style.paddingTop = '0';
+                videoContainer.style.minHeight = newHeight + 'px';
+            }
+        }
+    }
+    
+    window.addEventListener('load', () => {
+        setTimeout(syncVideoHeight, 100);
+        setTimeout(syncVideoHeight, 500);
+    });
+    window.addEventListener('resize', syncVideoHeight);
+    
+    // Принудительное автовоспроизведение (запасной вариант)
+    if (iframe) {
+        iframe.addEventListener('load', () => {
+            // Видео уже имеет autoplay в src, но на всякий случай
+            const playAttempt = setInterval(() => {
+                if (iframe.contentWindow) {
+                    iframe.contentWindow.postMessage('{"method":"play"}', '*');
+                }
+            }, 1000);
+            setTimeout(() => clearInterval(playAttempt), 5000);
+        });
+    }
+})();
+</script>
 </body>
 </html>
