@@ -94,13 +94,12 @@ function initTechTooltips() {
     });
 }
 
-// ===== НОВОЕ: 3D ПАРАЛЛАКС ДЛЯ AI КАРТОЧЕК (ЖИДКАЯ РАМКА) =====
+// ===== 3D ПАРАЛЛАКС ДЛЯ AI КАРТОЧЕК (ЖИДКАЯ РАМКА) =====
 function initAICards() {
     const cards = document.querySelectorAll('.ai-card');
     if (cards.length === 0) return;
     
     cards.forEach(card => {
-        // Добавляем угловые элементы, если их нет
         if (!card.querySelector('.ai-corner-tl')) {
             const corners = ['tl', 'tr', 'bl', 'br'];
             corners.forEach(pos => {
@@ -110,7 +109,6 @@ function initAICards() {
             });
         }
         
-        // Добавляем floating lines, если их нет
         if (!card.querySelector('.ai-floating-lines')) {
             const linesContainer = document.createElement('div');
             linesContainer.className = 'ai-floating-lines';
@@ -122,7 +120,6 @@ function initAICards() {
             card.appendChild(linesContainer);
         }
         
-        // Добавляем частицы, если их нет
         if (!card.querySelector('.ai-particle')) {
             const particles = [
                 { top: '20%', left: '10%' },
@@ -172,7 +169,6 @@ function initAICards() {
             card.style.setProperty('--x', px + '%');
             card.style.setProperty('--y', py + '%');
             
-            // Параллакс слоёв (только горизонтальное смещение)
             const shiftX = relX * 14;
             const shiftY = relY * 8;
             
@@ -196,11 +192,81 @@ function initAICards() {
     });
 }
 
-// ===== НОВОЕ: АВТОВОСПРОИЗВЕДЕНИЕ ВИДЕО (на случай, если параметры iframe не сработали) =====
+// ===== НОВОЕ: AI ВИДЕО СЛАЙДЕР =====
+function initAIVideoSlider() {
+    const videoSources = [
+        "https://kinescope.io/embed/it8tEfjsnaLMaCU712FV2S?autoplay=1&loop=1&muted=1&controls=0&show_title=0&show_logo=0&show_related=0&playsinline=1",
+        "https://kinescope.io/embed/tyTxHyuEgCojbTw7uPFQxm?autoplay=1&loop=1&muted=1&controls=0&show_title=0&show_logo=0&show_related=0&playsinline=1",
+        "https://kinescope.io/embed/wzToMP6ZpNgEfgDNY7ecHM?autoplay=1&loop=1&muted=1&controls=0&show_title=0&show_logo=0&show_related=0&playsinline=1"
+    ];
+    
+    let currentIndex = 0;
+    const iframe = document.getElementById('aiVideoIframe');
+    const prevBtn = document.getElementById('aiVideoPrev');
+    const nextBtn = document.getElementById('aiVideoNext');
+    const indicators = document.querySelectorAll('.indicator');
+    const videoWrapper = document.querySelector('.ai-video-frame-wrapper');
+    const cardsColumn = document.getElementById('aiCardsColumn');
+    
+    if (!iframe) return;
+    
+    function updateVideo(index) {
+        iframe.src = videoSources[index];
+        indicators.forEach((ind, i) => {
+            ind.classList.toggle('active', i === index);
+        });
+    }
+    
+    function nextVideo() {
+        currentIndex = (currentIndex + 1) % videoSources.length;
+        updateVideo(currentIndex);
+    }
+    
+    function prevVideo() {
+        currentIndex = (currentIndex - 1 + videoSources.length) % videoSources.length;
+        updateVideo(currentIndex);
+    }
+    
+    if (prevBtn) prevBtn.addEventListener('click', prevVideo);
+    if (nextBtn) nextBtn.addEventListener('click', nextVideo);
+    
+    indicators.forEach((ind, idx) => {
+        ind.addEventListener('click', () => {
+            currentIndex = idx;
+            updateVideo(currentIndex);
+        });
+    });
+    
+    function syncVideoHeight() {
+        if (!cardsColumn || !videoWrapper) return;
+        const cardsHeight = cardsColumn.offsetHeight;
+        const targetHeight = Math.min(cardsHeight * 0.85, 500);
+        if (targetHeight > 200) {
+            videoWrapper.style.height = targetHeight + 'px';
+            videoWrapper.style.minHeight = targetHeight + 'px';
+        }
+    }
+    
+    window.addEventListener('load', function() {
+        setTimeout(syncVideoHeight, 100);
+        setTimeout(syncVideoHeight, 300);
+    });
+    window.addEventListener('resize', function() {
+        setTimeout(syncVideoHeight, 50);
+    });
+    
+    if (window.ResizeObserver) {
+        const resizeObserver = new ResizeObserver(function() {
+            syncVideoHeight();
+        });
+        if (cardsColumn) resizeObserver.observe(cardsColumn);
+    }
+}
+
+// ===== АВТОВОСПРОИЗВЕДЕНИЕ ВИДЕО =====
 function initAutoPlayVideos() {
     const videoFrames = document.querySelectorAll('.video-frame iframe');
     videoFrames.forEach(iframe => {
-        // Пытаемся перезагрузить iframe с параметрами autoplay и loop
         const src = iframe.src;
         if (src && !src.includes('autoplay=1')) {
             let newSrc = src;
@@ -767,7 +833,7 @@ function initPortfolioAccordion() {
     }
 }
 
-// ===== 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК (ТОЛЬКО ГОРИЗОНТАЛЬНЫЙ, БЕЗ ВЕРТИКАЛЬНОГО СМЕЩЕНИЯ) =====
+// ===== 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК (ТОЛЬКО ГОРИЗОНТАЛЬНЫЙ) =====
 function initQuantumCards() {
     const cards = document.querySelectorAll('.services-grid .service-card');
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -986,15 +1052,17 @@ document.addEventListener('DOMContentLoaded', function() {
     initKineticButtons();
     initToTop();
     initCaseAccordion();
-    initAICards();        // НОВОЕ: 3D параллакс для AI карточек
-    initAutoPlayVideos(); // НОВОЕ: автовоспроизведение видео
+    initAICards();
+    initAutoPlayVideos();
+    initAIVideoSlider();  // НОВОЕ: инициализация слайдера AI видео
     
     loadComponent('header-placeholder', 'header.html', function() {
         initBurgerMenu();
         initHeaderFixed();
         setTimeout(() => {
             initKineticButtons();
-            initAICards();  // повторная инициализация после загрузки header
+            initAICards();
+            initAIVideoSlider();  // повторная инициализация после загрузки header
         }, 100);
     });
     loadComponent('footer-placeholder', 'footer.html', function() {
