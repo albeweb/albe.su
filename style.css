@@ -982,6 +982,25 @@ button[type="submit"] {
     text-transform: lowercase;
 }
 
+.hero-title-line2 .word-teal {
+    color: var(--ig-pink);
+}
+.hero-title-line2 .word-white {
+    color: var(--white);
+}
+.hero-title-line2 .word-gold {
+    color: var(--ig-orange);
+}
+
+.phrase-underkey {
+    font-size: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    display: inline;
+    white-space: normal;
+    color: var(--white);
+}
+
 .hero-stats {
     display: flex;
     flex-direction: row;
@@ -1060,6 +1079,12 @@ button[type="submit"] {
     backdrop-filter: blur(12px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     border-color: var(--ig-pink);
+}
+
+.hero-quote {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* ============================================ */
