@@ -464,7 +464,6 @@ h4 {
     object-fit: cover;
 }
 
-/* Синхронизация высоты с левыми карточками */
 .ai-video-item {
     width: auto;
 }
@@ -864,7 +863,7 @@ button[type="submit"] {
 }
 
 /* ============================================ */
-/* 13. HERO БАННЕР */
+/* 13. HERO БАННЕР (ИСПРАВЛЕН - ТОЛЬКО ЦВЕТА СЛОВ) */
 /* ============================================ */
 
 .hero {
@@ -931,6 +930,15 @@ button[type="submit"] {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.hero-top {
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-bottom {
+    margin-top: auto;
 }
 
 .hero-title {
@@ -2011,71 +2019,5 @@ button[type="submit"] {
     .competence-card { padding: 20px 16px; }
     .ai-video-item {
         width: 240px;
-    }
-}
-
-/* ============================================ */
-/* 2 ВИДЕО ВЕРТИКАЛЬНЫЕ, СТОЯТ РЯДОМ */
-/* ============================================ */
-
-.ai-videos-wrapper {
-    flex: 1;
-    min-width: 280px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.ai-video-container {
-    display: flex;
-    flex-direction: row;
-    gap: 32px;
-    justify-content: center;
-    width: 100%;
-}
-
-.ai-video-item {
-    flex: 1;
-    max-width: 280px;
-    transition: filter 0.3s ease, transform 0.3s ease;
-    cursor: pointer;
-}
-
-.ai-video-frame-wrapper {
-    position: relative;
-    width: 100%;
-    background: #0a0a0f;
-    border-radius: 36px;
-    overflow: hidden;
-    border: 2px solid rgba(214, 41, 118, 0.3);
-    transition: all 0.3s ease;
-    box-shadow: 0 0 0 4px rgba(0,0,0,0.3), 0 20px 35px -15px rgba(0,0,0,0.5);
-}
-
-.video-frame {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #000;
-}
-
-.video-frame iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    object-fit: cover;
-}
-
-/* Адаптация под мобильные */
-@media (max-width: 768px) {
-    .ai-video-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    .ai-video-item {
-        max-width: 280px;
-        width: 100%;
     }
 }
