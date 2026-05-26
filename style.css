@@ -1803,7 +1803,7 @@ button[type="submit"] {
 }
 
 /* ============================================ */
-/* AI ВИДЕО СЛАЙДЕР - ТЕЛЕФОННОЕ РАЗРЕШЕНИЕ */
+/* AI ВИДЕО СЛАЙДЕР - ВЫСОТА РАВНА КАРТОЧКАМ */
 /* ============================================ */
 
 .ai-videos-column {
@@ -1850,10 +1850,9 @@ button[type="submit"] {
     box-shadow: 0 0 15px var(--ig-pink);
 }
 
-/* ТЕЛЕФОННОЕ РАЗРЕШЕНИЕ — НЕ НА ВСЮ ШИРИНУ, А КАК ТЕЛЕФОН */
+/* ВЫСОТА УСТАНАВЛИВАЕТСЯ ЧЕРЕЗ JS, ШИРИНА АВТОМАТИЧЕСКИ ПО ПРОПОРЦИИ 9:16 */
 .ai-video-frame-wrapper {
     position: relative;
-    width: 280px;
     background: #0a0a0f;
     border-radius: 36px;
     overflow: hidden;
@@ -1884,7 +1883,7 @@ button[type="submit"] {
     object-fit: cover;
 }
 
-/* Адаптация под планшеты и мобильные */
+/* Адаптация */
 @media (max-width: 1024px) {
     .ai-design-grid {
         flex-direction: column;
@@ -1896,7 +1895,8 @@ button[type="submit"] {
         order: 2;
     }
     .ai-video-frame-wrapper {
-        width: 260px;
+        max-width: 300px;
+        margin: 0 auto;
     }
     .ai-video-prev,
     .ai-video-next {
@@ -1908,7 +1908,7 @@ button[type="submit"] {
 
 @media (max-width: 768px) {
     .ai-video-frame-wrapper {
-        width: 220px;
+        max-width: 260px;
         border-radius: 28px;
     }
     .ai-video-prev,
