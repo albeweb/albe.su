@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -43,6 +42,100 @@
 <!-- Основные стили -->
 <link rel="preload" as="style" href="style.css">
 <link rel="stylesheet" href="style.css">
+
+<!-- Дополнительные стили для новых блоков (AI дизайн и вертикальное видео) -->
+<style>
+    /* AI дизайн карточки - единый стиль с сервис-картами */
+    .ai-card {
+        background: rgba(20, 25, 35, 0.7);
+        backdrop-filter: blur(4px);
+        border: 1px solid rgba(245, 183, 0, 0.3);
+        border-radius: 24px;
+        padding: 2rem;
+        transition: all 0.3s ease;
+    }
+    .ai-card:hover {
+        border-color: #F5B700;
+        transform: translateY(-8px);
+        box-shadow: 0 20px 35px -10px rgba(0,0,0,0.4);
+    }
+    .ai-card h3 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+        color: #F5B700;
+    }
+    .ai-card p {
+        color: #B0C4DE;
+        line-height: 1.5;
+    }
+    /* Вертикальное видео */
+    .vertical-video-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3rem;
+        align-items: center;
+        justify-content: center;
+        margin-top: 2rem;
+    }
+    .vertical-video-container {
+        flex: 0 0 auto;
+        width: 300px;
+        max-width: 100%;
+        border-radius: 32px;
+        overflow: hidden;
+        background: #000;
+        box-shadow: 0 25px 40px rgba(0,0,0,0.5);
+        transition: transform 0.2s;
+    }
+    .vertical-video-container:hover {
+        transform: scale(1.02);
+    }
+    .vertical-video-container video,
+    .vertical-video-container .video-fallback {
+        width: 100%;
+        height: auto;
+        display: block;
+        aspect-ratio: 9 / 16;
+        object-fit: cover;
+    }
+    .video-caption {
+        text-align: center;
+        padding: 0.75rem;
+        font-size: 0.8rem;
+        background: rgba(0,0,0,0.7);
+        color: #F5B700;
+        font-weight: 500;
+    }
+    .vertical-video-text {
+        flex: 1;
+        min-width: 260px;
+    }
+    .vertical-video-text ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 1.5rem 0;
+    }
+    .vertical-video-text li {
+        margin-bottom: 0.75rem;
+        padding-left: 1.8rem;
+        position: relative;
+    }
+    .vertical-video-text li::before {
+        content: "▹";
+        color: #F5B700;
+        position: absolute;
+        left: 0;
+    }
+    @media (max-width: 768px) {
+        .vertical-video-wrapper {
+            flex-direction: column;
+            text-align: center;
+        }
+        .vertical-video-text ul {
+            text-align: left;
+        }
+    }
+</style>
 
 <script type="application/ld+json">
 {
@@ -112,11 +205,11 @@
 </head>
 <body>
 
-<!-- Плейсхолдеры для загружаемых компонентов -->
 <div id="header-placeholder"></div>
 
 <main>
-<!-- Hero баннер -->
+
+<!-- 1. Hero баннер -->
 <section class="hero">
     <div class="code-rain" aria-hidden="true">
         <div class="code-line" style="left:5%;animation-duration:12s;animation-delay:0s">&lt;div class="digital"&gt;&lt;/div&gt;</div>
@@ -184,168 +277,7 @@
     </div>
 </section>
 
-<!-- ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ - ИСПРАВЛЕННАЯ ВЕРСИЯ -->
-<section id="services" class="section" itemscope itemtype="https://schema.org/ItemList">
-    <div class="container">
-        <div class="section-header">
-            <h2 itemprop="name">Эксклюзивные решения</h2>
-            <a href="#services" class="section-more-btn">Все услуги</a>
-        </div>
-        <div class="services-grid">
-            <!-- Карточка 1 -->
-            <div class="service-card" itemscope itemtype="https://schema.org/Service">
-                <div class="segment seg-1"></div>
-                <div class="segment seg-2"></div>
-                <div class="segment seg-3"></div>
-                <div class="segment seg-4"></div>
-                <div class="corner-tl"></div>
-                <div class="corner-tr"></div>
-                <div class="corner-bl"></div>
-                <div class="corner-br"></div>
-                <div class="card-content">
-                    <div>
-                        <div class="color-strip">
-                            <div class="color-dot dot-pink"></div>
-                            <div class="color-dot dot-teal"></div>
-                            <div class="color-dot dot-mint"></div>
-                            <div class="color-dot dot-purple"></div>
-                        </div>
-                        <h3 itemprop="name">Веб-разработка</h3>
-                        <p itemprop="description">Современный стек: React, Vue, Node.js, Laravel. Высокая производительность и масштабируемость.</p>
-                    </div>
-                    <button class="card-btn">ПОДРОБНЕЕ</button>
-                </div>
-            </div>
-
-            <!-- Карточка 2 -->
-            <div class="service-card" itemscope itemtype="https://schema.org/Service">
-                <div class="segment seg-1"></div>
-                <div class="segment seg-2"></div>
-                <div class="segment seg-3"></div>
-                <div class="segment seg-4"></div>
-                <div class="corner-tl"></div>
-                <div class="corner-tr"></div>
-                <div class="corner-bl"></div>
-                <div class="corner-br"></div>
-                <div class="card-content">
-                    <div>
-                        <div class="color-strip">
-                            <div class="color-dot dot-pink"></div>
-                            <div class="color-dot dot-teal"></div>
-                            <div class="color-dot dot-mint"></div>
-                            <div class="color-dot dot-purple"></div>
-                        </div>
-                        <h3 itemprop="name">Иммерсивный дизайн</h3>
-                        <p itemprop="description">Микровзаимодействия, 3D-сцены, анимация. Визуальный язык, который запоминается.</p>
-                    </div>
-                    <button class="card-btn">ПОДРОБНЕЕ</button>
-                </div>
-            </div>
-
-            <!-- Карточка 3 -->
-            <div class="service-card" itemscope itemtype="https://schema.org/Service">
-                <div class="segment seg-1"></div>
-                <div class="segment seg-2"></div>
-                <div class="segment seg-3"></div>
-                <div class="segment seg-4"></div>
-                <div class="corner-tl"></div>
-                <div class="corner-tr"></div>
-                <div class="corner-bl"></div>
-                <div class="corner-br"></div>
-                <div class="card-content">
-                    <div>
-                        <div class="color-strip">
-                            <div class="color-dot dot-pink"></div>
-                            <div class="color-dot dot-teal"></div>
-                            <div class="color-dot dot-mint"></div>
-                            <div class="color-dot dot-purple"></div>
-                        </div>
-                        <h3 itemprop="name">E‑commerce платформы</h3>
-                        <p itemprop="description">Интернет-магазины с конверсией 15%+, интеграция с 1С, CRM и маркетплейсами.</p>
-                    </div>
-                    <button class="card-btn">ПОДРОБНЕЕ</button>
-                </div>
-            </div>
-
-            <!-- Карточка 4 -->
-            <div class="service-card" itemscope itemtype="https://schema.org/Service">
-                <div class="segment seg-1"></div>
-                <div class="segment seg-2"></div>
-                <div class="segment seg-3"></div>
-                <div class="segment seg-4"></div>
-                <div class="corner-tl"></div>
-                <div class="corner-tr"></div>
-                <div class="corner-bl"></div>
-                <div class="corner-br"></div>
-                <div class="card-content">
-                    <div>
-                        <div class="color-strip">
-                            <div class="color-dot dot-pink"></div>
-                            <div class="color-dot dot-teal"></div>
-                            <div class="color-dot dot-mint"></div>
-                            <div class="color-dot dot-purple"></div>
-                        </div>
-                        <h3 itemprop="name">SEO & аналитика</h3>
-                        <p itemprop="description">Полная оптимизация: от семантики до лидерских позиций в Яндексе и Google.</p>
-                    </div>
-                    <button class="card-btn">ПОДРОБНЕЕ</button>
-                </div>
-            </div>
-
-            <!-- Карточка 5 -->
-            <div class="service-card" itemscope itemtype="https://schema.org/Service">
-                <div class="segment seg-1"></div>
-                <div class="segment seg-2"></div>
-                <div class="segment seg-3"></div>
-                <div class="segment seg-4"></div>
-                <div class="corner-tl"></div>
-                <div class="corner-tr"></div>
-                <div class="corner-bl"></div>
-                <div class="corner-br"></div>
-                <div class="card-content">
-                    <div>
-                        <div class="color-strip">
-                            <div class="color-dot dot-pink"></div>
-                            <div class="color-dot dot-teal"></div>
-                            <div class="color-dot dot-mint"></div>
-                            <div class="color-dot dot-purple"></div>
-                        </div>
-                        <h3 itemprop="name">AI & Machine Learning</h3>
-                        <p itemprop="description">Чат-боты, рекомендательные системы, аналитика данных, генеративный AI.</p>
-                    </div>
-                    <button class="card-btn">ПОДРОБНЕЕ</button>
-                </div>
-            </div>
-
-            <!-- Карточка 6 -->
-            <div class="service-card" itemscope itemtype="https://schema.org/Service">
-                <div class="segment seg-1"></div>
-                <div class="segment seg-2"></div>
-                <div class="segment seg-3"></div>
-                <div class="segment seg-4"></div>
-                <div class="corner-tl"></div>
-                <div class="corner-tr"></div>
-                <div class="corner-bl"></div>
-                <div class="corner-br"></div>
-                <div class="card-content">
-                    <div>
-                        <div class="color-strip">
-                            <div class="color-dot dot-pink"></div>
-                            <div class="color-dot dot-teal"></div>
-                            <div class="color-dot dot-mint"></div>
-                            <div class="color-dot dot-purple"></div>
-                        </div>
-                        <h3 itemprop="name">Мобильные приложения</h3>
-                        <p itemprop="description">iOS, Android, React Native, Flutter. Полный цикл от идеи до публикации.</p>
-                    </div>
-                    <button class="card-btn">ПОДРОБНЕЕ</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ГОРИЗОНТАЛЬНЫЙ АККОРДЕОН ПОРТФОЛИО -->
+<!-- 2. Избранные проекты (КЕЙСЫ) — сразу после Hero -->
 <section id="portfolio" class="section">
     <div class="container">
         <div class="section-header">
@@ -556,6 +488,192 @@
     </div>
 </section>
 
+<!-- 3. НОВЫЙ БЛОК: AI ДИЗАЙН -->
+<section id="ai-design" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2>AI дизайн — будущее уже здесь</h2>
+            <a href="#services" class="section-more-btn">Подробнее</a>
+        </div>
+        <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+            <div class="ai-card">
+                <h3>Генеративный UI/UX</h3>
+                <p>Нейросети создают тысячи вариантов интерфейсов за минуты. Мы дорабатываем лучший, экономя до 70% времени на прототипирование.</p>
+            </div>
+            <div class="ai-card">
+                <h3>Графика и иллюстрации</h3>
+                <p>Midjourney, DALL‑E, Kandinsky — генерация уникальных изображений без стоков. Полное соответствие вашему бренду.</p>
+            </div>
+            <div class="ai-card">
+                <h3>Адаптивный редизайн</h3>
+                <p>AI анализирует поведение пользователей и тепловые карты, предлагая точечные улучшения конверсии. Результат: +25% к ROI.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 4. ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ (услуги) -->
+<section id="services" class="section" itemscope itemtype="https://schema.org/ItemList">
+    <div class="container">
+        <div class="section-header">
+            <h2 itemprop="name">Эксклюзивные решения</h2>
+            <a href="#services" class="section-more-btn">Все услуги</a>
+        </div>
+        <div class="services-grid">
+            <!-- Карточка 1 -->
+            <div class="service-card" itemscope itemtype="https://schema.org/Service">
+                <div class="segment seg-1"></div>
+                <div class="segment seg-2"></div>
+                <div class="segment seg-3"></div>
+                <div class="segment seg-4"></div>
+                <div class="corner-tl"></div>
+                <div class="corner-tr"></div>
+                <div class="corner-bl"></div>
+                <div class="corner-br"></div>
+                <div class="card-content">
+                    <div>
+                        <div class="color-strip">
+                            <div class="color-dot dot-pink"></div>
+                            <div class="color-dot dot-teal"></div>
+                            <div class="color-dot dot-mint"></div>
+                            <div class="color-dot dot-purple"></div>
+                        </div>
+                        <h3 itemprop="name">Веб-разработка</h3>
+                        <p itemprop="description">Современный стек: React, Vue, Node.js, Laravel. Высокая производительность и масштабируемость.</p>
+                    </div>
+                    <button class="card-btn">ПОДРОБНЕЕ</button>
+                </div>
+            </div>
+
+            <!-- Карточка 2 -->
+            <div class="service-card" itemscope itemtype="https://schema.org/Service">
+                <div class="segment seg-1"></div>
+                <div class="segment seg-2"></div>
+                <div class="segment seg-3"></div>
+                <div class="segment seg-4"></div>
+                <div class="corner-tl"></div>
+                <div class="corner-tr"></div>
+                <div class="corner-bl"></div>
+                <div class="corner-br"></div>
+                <div class="card-content">
+                    <div>
+                        <div class="color-strip">
+                            <div class="color-dot dot-pink"></div>
+                            <div class="color-dot dot-teal"></div>
+                            <div class="color-dot dot-mint"></div>
+                            <div class="color-dot dot-purple"></div>
+                        </div>
+                        <h3 itemprop="name">Иммерсивный дизайн</h3>
+                        <p itemprop="description">Микровзаимодействия, 3D-сцены, анимация. Визуальный язык, который запоминается.</p>
+                    </div>
+                    <button class="card-btn">ПОДРОБНЕЕ</button>
+                </div>
+            </div>
+
+            <!-- Карточка 3 -->
+            <div class="service-card" itemscope itemtype="https://schema.org/Service">
+                <div class="segment seg-1"></div>
+                <div class="segment seg-2"></div>
+                <div class="segment seg-3"></div>
+                <div class="segment seg-4"></div>
+                <div class="corner-tl"></div>
+                <div class="corner-tr"></div>
+                <div class="corner-bl"></div>
+                <div class="corner-br"></div>
+                <div class="card-content">
+                    <div>
+                        <div class="color-strip">
+                            <div class="color-dot dot-pink"></div>
+                            <div class="color-dot dot-teal"></div>
+                            <div class="color-dot dot-mint"></div>
+                            <div class="color-dot dot-purple"></div>
+                        </div>
+                        <h3 itemprop="name">E‑commerce платформы</h3>
+                        <p itemprop="description">Интернет-магазины с конверсией 15%+, интеграция с 1С, CRM и маркетплейсами.</p>
+                    </div>
+                    <button class="card-btn">ПОДРОБНЕЕ</button>
+                </div>
+            </div>
+
+            <!-- Карточка 4 -->
+            <div class="service-card" itemscope itemtype="https://schema.org/Service">
+                <div class="segment seg-1"></div>
+                <div class="segment seg-2"></div>
+                <div class="segment seg-3"></div>
+                <div class="segment seg-4"></div>
+                <div class="corner-tl"></div>
+                <div class="corner-tr"></div>
+                <div class="corner-bl"></div>
+                <div class="corner-br"></div>
+                <div class="card-content">
+                    <div>
+                        <div class="color-strip">
+                            <div class="color-dot dot-pink"></div>
+                            <div class="color-dot dot-teal"></div>
+                            <div class="color-dot dot-mint"></div>
+                            <div class="color-dot dot-purple"></div>
+                        </div>
+                        <h3 itemprop="name">SEO & аналитика</h3>
+                        <p itemprop="description">Полная оптимизация: от семантики до лидерских позиций в Яндексе и Google.</p>
+                    </div>
+                    <button class="card-btn">ПОДРОБНЕЕ</button>
+                </div>
+            </div>
+
+            <!-- Карточка 5 -->
+            <div class="service-card" itemscope itemtype="https://schema.org/Service">
+                <div class="segment seg-1"></div>
+                <div class="segment seg-2"></div>
+                <div class="segment seg-3"></div>
+                <div class="segment seg-4"></div>
+                <div class="corner-tl"></div>
+                <div class="corner-tr"></div>
+                <div class="corner-bl"></div>
+                <div class="corner-br"></div>
+                <div class="card-content">
+                    <div>
+                        <div class="color-strip">
+                            <div class="color-dot dot-pink"></div>
+                            <div class="color-dot dot-teal"></div>
+                            <div class="color-dot dot-mint"></div>
+                            <div class="color-dot dot-purple"></div>
+                        </div>
+                        <h3 itemprop="name">AI & Machine Learning</h3>
+                        <p itemprop="description">Чат-боты, рекомендательные системы, аналитика данных, генеративный AI.</p>
+                    </div>
+                    <button class="card-btn">ПОДРОБНЕЕ</button>
+                </div>
+            </div>
+
+            <!-- Карточка 6 -->
+            <div class="service-card" itemscope itemtype="https://schema.org/Service">
+                <div class="segment seg-1"></div>
+                <div class="segment seg-2"></div>
+                <div class="segment seg-3"></div>
+                <div class="segment seg-4"></div>
+                <div class="corner-tl"></div>
+                <div class="corner-tr"></div>
+                <div class="corner-bl"></div>
+                <div class="corner-br"></div>
+                <div class="card-content">
+                    <div>
+                        <div class="color-strip">
+                            <div class="color-dot dot-pink"></div>
+                            <div class="color-dot dot-teal"></div>
+                            <div class="color-dot dot-mint"></div>
+                            <div class="color-dot dot-purple"></div>
+                        </div>
+                        <h3 itemprop="name">Мобильные приложения</h3>
+                        <p itemprop="description">iOS, Android, React Native, Flutter. Полный цикл от идеи до публикации.</p>
+                    </div>
+                    <button class="card-btn">ПОДРОБНЕЕ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 5. Как мы создаём лидеров рынка -->
 <section id="process" class="section" itemscope itemtype="https://schema.org/HowTo">
     <div class="container">
         <div class="section-header">
@@ -571,7 +689,7 @@
     </div>
 </section>
 
-<!-- НАШИ КОМПЕТЕНЦИИ - СЕТКА 4x4 -->
+<!-- 6. Наши компетенции (сетка 4x4) -->
 <section id="competences" class="section">
     <div class="container">
         <div class="section-header">
@@ -671,7 +789,7 @@
     </div>
 </section>
 
-<!-- Калькулятор -->
+<!-- 7. Калькулятор стоимости -->
 <section id="calculator" class="section">
     <div class="container">
         <div class="section-header">
@@ -701,6 +819,7 @@
     </div>
 </section>
 
+<!-- 8. Почему выбирают нас -->
 <section class="section">
     <div class="container">
         <div class="section-header">
@@ -722,7 +841,45 @@
     </div>
 </section>
 
-<!-- НОВЫЙ АККОРДЕОН FAQ В СТИЛЕ «КЕЙС» -->
+<!-- 9. НОВЫЙ БЛОК: РЕКЛАМА + ВЕРТИКАЛЬНОЕ ВИДЕО -->
+<section id="vertical-reel" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Наша реклама в действии</h2>
+            <a href="#contact" class="section-more-btn">Заказать видео</a>
+        </div>
+        <div class="vertical-video-wrapper">
+            <div class="vertical-video-container">
+                <!-- Замена реального видео: используем картинку-превью с имитацией плеера -->
+                <div class="video-fallback" style="background: linear-gradient(145deg, #1a1f2e, #0a0e17); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; cursor: pointer;" onclick="alert('Демо-режим: здесь будет ваше вертикальное видео для соцсетей.')">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="#F5B700" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    <p style="color:#F5B700; margin-top: 1rem;">Вертикальный ролик<br>9:16</p>
+                    <p style="font-size: 0.75rem; color: #8899aa;">Нажмите для просмотра</p>
+                </div>
+                <!-- Если есть реальное видео, раскомментируйте:
+                <video controls autoplay muted loop playsinline poster="images/reel-poster.avif">
+                    <source src="video/advert-vertical.mp4" type="video/mp4">
+                </video>
+                -->
+                <div class="video-caption">Пример вертикальной рекламы для TikTok / Reels</div>
+            </div>
+            <div class="vertical-video-text">
+                <p>Мы создаём короткие вертикальные ролики под TikTok, Instagram Reels и VK Клипы. Повышаем узнаваемость бренда и продажи через виральный контент.</p>
+                <ul>
+                    <li>✅ Адаптация под алгоритмы соцсетей</li>
+                    <li>✅ Нейросетевая анимация и AI-монтаж</li>
+                    <li>✅ Готовый креатив для таргета и посева</li>
+                    <li>✅ Съёмка или генерация с помощью ИИ</li>
+                </ul>
+                <button class="btn-primary" style="margin-top: 0.5rem;" onclick="location.href='#contact'">Заказать рекламное видео</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 10. Часто задаваемые вопросы (FAQ) -->
 <section class="section" itemscope itemtype="https://schema.org/FAQPage">
     <div class="container">
         <div class="section-header">
@@ -730,7 +887,6 @@
             <a href="#services" class="section-more-btn">Подробнее</a>
         </div>
         <div class="cases-accordion" id="faqAccordion">
-            <!-- Кейс 01 -->
             <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                 <button class="case-lid">
                     <div class="lid-left">
@@ -748,7 +904,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Кейс 02 -->
             <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                 <button class="case-lid">
                     <div class="lid-left">
@@ -766,7 +921,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Кейс 03 -->
             <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                 <button class="case-lid">
                     <div class="lid-left">
@@ -784,7 +938,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Кейс 04 -->
             <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                 <button class="case-lid">
                     <div class="lid-left">
@@ -802,7 +955,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Кейс 05 -->
             <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                 <button class="case-lid">
                     <div class="lid-left">
@@ -820,7 +972,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Кейс 06 -->
             <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                 <button class="case-lid">
                     <div class="lid-left">
@@ -838,7 +989,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Кейс 07 -->
             <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                 <button class="case-lid">
                     <div class="lid-left">
@@ -856,7 +1006,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Кейс 08 -->
             <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                 <button class="case-lid">
                     <div class="lid-left">
@@ -878,7 +1027,7 @@
     </div>
 </section>
 
-<!-- Контакты -->
+<!-- 11. Контакты и форма -->
 <section id="contact" class="contact-section" itemscope itemtype="https://schema.org/ContactPage">
     <div class="container">
         <div class="contact-card">
