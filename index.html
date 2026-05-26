@@ -43,31 +43,203 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
-    /* AI дизайн карточки */
-    .ai-card {
+    /* ============================================ */
+    /* СТИЛИ ДЛЯ AI КАРТОЧЕК "ЖИДКАЯ РАМКА" */
+    /* ============================================ */
+    
+    .ai-liquid-card {
+        position: relative;
+        width: 100%;
         background: rgba(10, 14, 23, 0.85);
-        backdrop-filter: blur(8px);
-        border: 1px solid rgba(214, 41, 118, 0.3);
-        border-radius: 24px;
+        backdrop-filter: blur(14px);
+        border-radius: 48px;
         padding: 2rem;
-        transition: all 0.3s ease;
-    }
-    .ai-card:hover {
-        border-color: #D62976;
-        transform: translateY(-8px);
-        box-shadow: 0 20px 35px -10px rgba(0,0,0,0.4);
-    }
-    .ai-card h3 {
-        font-size: 1.6rem;
-        margin-bottom: 1rem;
-        color: #D62976;
-    }
-    .ai-card p {
-        color: #a8b5c5;
-        line-height: 1.5;
+        transform-style: preserve-3d;
+        transition: transform 0.08s linear;
+        border: 1px solid rgba(255,255,255,0.08);
+        overflow: hidden;
+        box-shadow: 0 25px 40px -15px rgba(0,0,0,0.5);
     }
     
-    /* Блок AI дизайн — новая структура: карточки слева, видео справа */
+    /* Жидкая рамка (градиентная обводка) */
+    .ai-liquid-card::before {
+        content: '';
+        position: absolute;
+        inset: -2px;
+        background: linear-gradient(135deg, #D62976, #F56040);
+        border-radius: 50px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: -1;
+    }
+    .ai-liquid-card:hover::before {
+        opacity: 0.7;
+    }
+    
+    /* Свечение под курсором */
+    .ai-liquid-card::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,0.12), transparent 70%);
+        opacity: 0;
+        transition: opacity 0.2s;
+        pointer-events: none;
+        border-radius: 48px;
+    }
+    .ai-liquid-card:hover::after {
+        opacity: 1;
+    }
+    
+    /* Угловые акценты */
+    .ai-corner {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        border-color: rgba(255,255,255,0.3);
+        border-style: solid;
+        transition: all 0.25s ease;
+        z-index: 5;
+        pointer-events: none;
+    }
+    .ai-corner-tl { top: 20px; left: 20px; border-width: 2px 0 0 2px; }
+    .ai-corner-tr { top: 20px; right: 20px; border-width: 2px 2px 0 0; }
+    .ai-corner-bl { bottom: 20px; left: 20px; border-width: 0 0 2px 2px; }
+    .ai-corner-br { bottom: 20px; right: 20px; border-width: 0 2px 2px 0; }
+    
+    .ai-liquid-card:hover .ai-corner-tl { border-color: #D62976; filter: drop-shadow(0 0 6px #D62976); }
+    .ai-liquid-card:hover .ai-corner-tr { border-color: #F56040; filter: drop-shadow(0 0 6px #F56040); }
+    .ai-liquid-card:hover .ai-corner-bl { border-color: #a8b5c5; filter: drop-shadow(0 0 6px #a8b5c5); }
+    .ai-liquid-card:hover .ai-corner-br { border-color: #b0b3b8; filter: drop-shadow(0 0 6px #b0b3b8); }
+    
+    /* Контент — парящие слои */
+    .ai-card-content {
+        position: relative;
+        z-index: 10;
+        transform-style: preserve-3d;
+        transform: translateZ(20px);
+    }
+    
+    .ai-badge {
+        display: inline-block;
+        font-family: 'EN Regular', sans-serif;
+        font-size: 0.7rem;
+        letter-spacing: 3px;
+        background: rgba(255,255,255,0.05);
+        padding: 0.3rem 1rem;
+        border-radius: 40px;
+        color: #D62976;
+        border-left: 2px solid #D62976;
+        margin-bottom: 1.5rem;
+    }
+    
+    .ai-card-content h3 {
+        font-family: 'EN Regular', sans-serif;
+        font-size: clamp(1.4rem, 4vw, 1.8rem);
+        font-weight: 400;
+        line-height: 1.2;
+        background: linear-gradient(135deg, #DEE2E6, #C0C8D8);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin-bottom: 1rem;
+    }
+    
+    .ai-desc {
+        color: #a8b5c5;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+    }
+    
+    /* Цветная полоса */
+    .ai-color-bar {
+        display: flex;
+        gap: 8px;
+        margin: 1rem 0 1rem;
+    }
+    .ai-color-bar span {
+        height: 3px;
+        flex: 1;
+        border-radius: 3px;
+        transition: all 0.2s;
+    }
+    .ai-color-bar .bar-pink { background: #D62976; }
+    .ai-color-bar .bar-orange { background: #F56040; }
+    .ai-color-bar .bar-purple { background: #a8b5c5; }
+    .ai-color-bar .bar-mid { background: #b0b3b8; }
+    
+    /* Кнопка */
+    .ai-card-btn {
+        background: transparent;
+        border: 1.5px solid #F56040;
+        padding: 0.7rem;
+        width: 100%;
+        font-family: 'Geist', sans-serif;
+        font-weight: 600;
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+        color: #F56040;
+        cursor: pointer;
+        border-radius: 60px;
+        transition: all 0.25s;
+        backdrop-filter: blur(4px);
+        margin-top: 0.5rem;
+    }
+    .ai-card-btn:hover {
+        background: linear-gradient(135deg, #D62976, #F56040);
+        color: #0A0E17;
+        border-color: transparent;
+        box-shadow: 0 0 20px #F56040;
+    }
+    
+    /* Плавающие линии */
+    .ai-floating-lines {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 2;
+        overflow: hidden;
+        border-radius: 48px;
+    }
+    .ai-line {
+        position: absolute;
+        background: linear-gradient(90deg, transparent, #D62976, #F56040, transparent);
+        height: 2px;
+        width: 100%;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    .ai-liquid-card:hover .ai-line {
+        opacity: 0.3;
+    }
+    .ai-line-1 { top: 15%; left: -100%; animation: aiSlideLine 8s linear infinite; }
+    .ai-line-2 { top: 50%; left: -100%; animation: aiSlideLine 12s linear infinite reverse; }
+    .ai-line-3 { top: 85%; left: -100%; animation: aiSlideLine 6s linear infinite; }
+    @keyframes aiSlideLine {
+        0% { left: -100%; }
+        100% { left: 100%; }
+    }
+    
+    /* Частицы */
+    .ai-particle {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        background: #a8b5c5;
+        border-radius: 1px;
+        opacity: 0;
+        transition: opacity 0.2s;
+        pointer-events: none;
+    }
+    .ai-liquid-card:hover .ai-particle {
+        opacity: 0.6;
+    }
+    
+    /* Блок AI дизайн — новая структура */
     .ai-innovation-layout {
         display: flex;
         flex-wrap: wrap;
@@ -93,7 +265,7 @@
     .ai-video-inner {
         position: relative;
         width: 100%;
-        padding-top: 177.78%; /* 9:16 = 16/9*100 = 177.78% */
+        padding-top: 177.78%;
         border-radius: 30px;
         overflow: hidden;
         background: #000;
@@ -106,19 +278,6 @@
         height: 100%;
         border: none;
         pointer-events: auto;
-    }
-    /* Скрываем элементы управления видео через CSS + атрибуты iframe */
-    .ai-video-inner iframe {
-        pointer-events: auto;
-    }
-    @media (max-width: 900px) {
-        .ai-innovation-layout {
-            flex-direction: column;
-        }
-        .ai-video-container {
-            max-width: 320px;
-            margin: 0 auto;
-        }
     }
     
     /* Отзывы */
@@ -207,6 +366,13 @@
     }
     
     @media (max-width: 900px) {
+        .ai-innovation-layout {
+            flex-direction: column;
+        }
+        .ai-video-container {
+            max-width: 320px;
+            margin: 0 auto;
+        }
         .reviews-grid {
             grid-template-columns: repeat(2, 1fr);
         }
@@ -222,6 +388,11 @@
             min-width: 100px;
             padding: 15px 20px;
             font-size: 1rem;
+        }
+    }
+    @media (max-width: 768px) {
+        .ai-liquid-card {
+            padding: 1.5rem;
         }
     }
 </style>
@@ -265,6 +436,69 @@
         }
     ]
 }
+</script>
+
+<script>
+    // Скрипт для параллакса AI карточек
+    document.addEventListener('DOMContentLoaded', function() {
+        const cards = document.querySelectorAll('.ai-liquid-card');
+        
+        cards.forEach(card => {
+            let targetRotateX = 0, targetRotateY = 0;
+            let currentRotateX = 0, currentRotateY = 0;
+            
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const relX = (e.clientX - rect.left) / rect.width - 0.5;
+                const relY = (e.clientY - rect.top) / rect.height - 0.5;
+                
+                targetRotateY = relX * 10;
+                targetRotateX = -relY * 8;
+                
+                const px = ((e.clientX - rect.left) / rect.width) * 100;
+                const py = ((e.clientY - rect.top) / rect.height) * 100;
+                card.style.setProperty('--x', px + '%');
+                card.style.setProperty('--y', py + '%');
+                
+                // Параллакс слоёв
+                const content = card.querySelector('.ai-card-content');
+                const badge = card.querySelector('.ai-badge');
+                const title = card.querySelector('h3');
+                const desc = card.querySelector('.ai-desc');
+                const colorBar = card.querySelector('.ai-color-bar');
+                const btn = card.querySelector('.ai-card-btn');
+                const corners = card.querySelectorAll('.ai-corner');
+                
+                const shiftX = relX * 12;
+                const shiftY = relY * 8;
+                
+                if (badge) badge.style.transform = `translateX(${shiftX * 0.3}px) translateY(${shiftY * 0.2}px) translateZ(28px)`;
+                if (title) title.style.transform = `translateX(${shiftX * 0.5}px) translateY(${shiftY * 0.4}px) translateZ(40px)`;
+                if (desc) desc.style.transform = `translateX(${shiftX * 0.2}px) translateY(${shiftY * 0.2}px) translateZ(22px)`;
+                if (colorBar) colorBar.style.transform = `translateX(${shiftX * 0.4}px) translateY(${shiftY * 0.3}px) translateZ(28px)`;
+                if (btn) btn.style.transform = `translateX(${shiftX * 0.6}px) translateY(${shiftY * 0.5}px) translateZ(35px)`;
+                corners.forEach(c => c.style.transform = `translateX(${shiftX * 0.1}px) translateY(${shiftY * 0.1}px)`);
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                targetRotateX = 0;
+                targetRotateY = 0;
+                const elements = ['.ai-badge', 'h3', '.ai-desc', '.ai-color-bar', '.ai-card-btn', '.ai-corner'];
+                elements.forEach(sel => {
+                    const el = card.querySelector(sel);
+                    if (el) el.style.transform = '';
+                });
+            });
+            
+            function animate() {
+                currentRotateX += (targetRotateX - currentRotateX) * 0.12;
+                currentRotateY += (targetRotateY - currentRotateY) * 0.12;
+                card.style.transform = `rotateX(${currentRotateX}deg) rotateY(${currentRotateY}deg)`;
+                requestAnimationFrame(animate);
+            }
+            animate();
+        });
+    });
 </script>
 </head>
 <body>
@@ -469,7 +703,7 @@
     </div>
 </section>
 
-<!-- 4. AI дизайн + инновации — новая структура: 3 карточки слева, вертикальное видео справа -->
+<!-- 4. AI дизайн + инновации — НОВЫЕ КАРТОЧКИ "ЖИДКАЯ РАМКА" -->
 <section id="ai-innovation" class="section">
     <div class="container">
         <div class="section-header">
@@ -478,19 +712,99 @@
         </div>
         
         <div class="ai-innovation-layout">
-            <!-- Левая колонка — 3 карточки вертикально -->
+            <!-- Левая колонка — 3 карточки в стиле "Жидкая рамка" -->
             <div class="ai-cards-container">
-                <div class="ai-card">
-                    <h3>Генеративный UI/UX</h3>
-                    <p>Нейросети создают тысячи вариантов интерфейсов за минуты. Мы дорабатываем лучший, экономя до 70% времени на прототипирование.</p>
+                <!-- Карточка 1 -->
+                <div class="ai-liquid-card">
+                    <div class="ai-corner ai-corner-tl"></div>
+                    <div class="ai-corner ai-corner-tr"></div>
+                    <div class="ai-corner ai-corner-bl"></div>
+                    <div class="ai-corner ai-corner-br"></div>
+                    
+                    <div class="ai-floating-lines">
+                        <div class="ai-line ai-line-1"></div>
+                        <div class="ai-line ai-line-2"></div>
+                        <div class="ai-line ai-line-3"></div>
+                    </div>
+                    
+                    <div class="ai-particle" style="top: 20%; left: 10%;"></div>
+                    <div class="ai-particle" style="top: 70%; left: 85%;"></div>
+                    <div class="ai-particle" style="top: 45%; left: 30%;"></div>
+                    
+                    <div class="ai-card-content">
+                        <div class="ai-badge">⟡ AI GENERATION ⟡</div>
+                        <h3>Генеративный UI/UX</h3>
+                        <div class="ai-color-bar">
+                            <span class="bar-pink"></span>
+                            <span class="bar-orange"></span>
+                            <span class="bar-purple"></span>
+                            <span class="bar-mid"></span>
+                        </div>
+                        <div class="ai-desc">Нейросети создают тысячи вариантов интерфейсов за минуты. Мы дорабатываем лучший, экономя до 70% времени на прототипирование.</div>
+                        <button class="ai-card-btn">УЗНАТЬ БОЛЬШЕ</button>
+                    </div>
                 </div>
-                <div class="ai-card">
-                    <h3>Графика и иллюстрации</h3>
-                    <p>Midjourney, DALL‑E, Kandinsky — генерация уникальных изображений без стоков. Полное соответствие вашему бренду.</p>
+                
+                <!-- Карточка 2 -->
+                <div class="ai-liquid-card">
+                    <div class="ai-corner ai-corner-tl"></div>
+                    <div class="ai-corner ai-corner-tr"></div>
+                    <div class="ai-corner ai-corner-bl"></div>
+                    <div class="ai-corner ai-corner-br"></div>
+                    
+                    <div class="ai-floating-lines">
+                        <div class="ai-line ai-line-1"></div>
+                        <div class="ai-line ai-line-2"></div>
+                        <div class="ai-line ai-line-3"></div>
+                    </div>
+                    
+                    <div class="ai-particle" style="top: 30%; left: 15%;"></div>
+                    <div class="ai-particle" style="top: 60%; left: 75%;"></div>
+                    <div class="ai-particle" style="top: 80%; left: 40%;"></div>
+                    
+                    <div class="ai-card-content">
+                        <div class="ai-badge">⟡ AI VISUALS ⟡</div>
+                        <h3>Графика и иллюстрации</h3>
+                        <div class="ai-color-bar">
+                            <span class="bar-pink"></span>
+                            <span class="bar-orange"></span>
+                            <span class="bar-purple"></span>
+                            <span class="bar-mid"></span>
+                        </div>
+                        <div class="ai-desc">Midjourney, DALL‑E, Kandinsky — генерация уникальных изображений без стоков. Полное соответствие вашему бренду.</div>
+                        <button class="ai-card-btn">УЗНАТЬ БОЛЬШЕ</button>
+                    </div>
                 </div>
-                <div class="ai-card">
-                    <h3>Адаптивный редизайн</h3>
-                    <p>AI анализирует поведение пользователей и тепловые карты, предлагая точечные улучшения конверсии. Результат: +25% к ROI.</p>
+                
+                <!-- Карточка 3 -->
+                <div class="ai-liquid-card">
+                    <div class="ai-corner ai-corner-tl"></div>
+                    <div class="ai-corner ai-corner-tr"></div>
+                    <div class="ai-corner ai-corner-bl"></div>
+                    <div class="ai-corner ai-corner-br"></div>
+                    
+                    <div class="ai-floating-lines">
+                        <div class="ai-line ai-line-1"></div>
+                        <div class="ai-line ai-line-2"></div>
+                        <div class="ai-line ai-line-3"></div>
+                    </div>
+                    
+                    <div class="ai-particle" style="top: 15%; left: 70%;"></div>
+                    <div class="ai-particle" style="top: 50%; left: 20%;"></div>
+                    <div class="ai-particle" style="top: 85%; left: 90%;"></div>
+                    
+                    <div class="ai-card-content">
+                        <div class="ai-badge">⟡ AI OPTIMIZATION ⟡</div>
+                        <h3>Адаптивный редизайн</h3>
+                        <div class="ai-color-bar">
+                            <span class="bar-pink"></span>
+                            <span class="bar-orange"></span>
+                            <span class="bar-purple"></span>
+                            <span class="bar-mid"></span>
+                        </div>
+                        <div class="ai-desc">AI анализирует поведение пользователей и тепловые карты, предлагая точечные улучшения конверсии. Результат: +25% к ROI.</div>
+                        <button class="ai-card-btn">УЗНАТЬ БОЛЬШЕ</button>
+                    </div>
                 </div>
             </div>
             
