@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>ALBE DIGITAL | Разработка дизайна и сайтов под ключ — премиум, SEO, AI</title>
 <meta name="description" content="ALBE digital — разработка дизайна и сайтов под ключ. Премиум дизайн, SEO-продвижение, AI-решения, мобильные приложения. Калькулятор стоимости, поддержка 24/7.">
-<meta name="keywords" content="разработка сайтов под ключ, премиум дизайн, seo продвижение, albe digital, создание сайтов, разработка дизайна">
+<meta name="keywords" content="разработка сайтов под ключ, премиум дизайн, seo продвижение, albe digital">
 <meta name="author" content="Albe Digital">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://albe.su/">
@@ -27,7 +27,6 @@
         for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
         k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
     })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
-
     ym(109373410, 'init', {
         clickmap:true,
         trackLinks:true,
@@ -39,7 +38,7 @@
 <noscript><div><img src="https://mc.yandex.ru/watch/109373410" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 
-<link rel="stylesheet" href="style.css?v=202505261500">
+<link rel="stylesheet" href="style.css?v=202505262300">
 
 <script type="application/ld+json">
 {
@@ -83,6 +82,7 @@
 </script>
 
 <script>
+    // Параллакс AI карточек
     document.addEventListener('DOMContentLoaded', function() {
         const cards = document.querySelectorAll('.ai-liquid-card');
         cards.forEach(card => {
@@ -114,8 +114,7 @@
                 corners.forEach(c => c.style.transform = `translateX(${shiftX * 0.1}px) translateY(${shiftY * 0.1}px)`);
             });
             card.addEventListener('mouseleave', () => {
-                targetRotateX = 0;
-                targetRotateY = 0;
+                targetRotateX = 0; targetRotateY = 0;
                 const elements = ['.ai-badge', 'h3', '.ai-desc', '.ai-color-bar', '.ai-card-btn', '.ai-corner'];
                 elements.forEach(sel => {
                     const el = card.querySelector(sel);
@@ -139,6 +138,7 @@
 
 <main>
 
+<!-- 1. Hero -->
 <section class="hero">
     <div class="code-rain" aria-hidden="true">
         <div class="code-line" style="left:5%;animation-duration:12s;animation-delay:0s">&lt;div class="digital"&gt;&lt;/div&gt;</div>
@@ -151,6 +151,7 @@
         <div class="code-line" style="left:75%;animation-duration:8s;animation-delay:2.5s">git commit -m "launch success"</div>
         <div class="code-line" style="left:85%;animation-duration:16s;animation-delay:1.5s">const website = new ALBE();</div>
     </div>
+    
     <div class="container">
         <div class="hero-wrapper">
             <div class="hero-content">
@@ -192,6 +193,7 @@
     </div>
 </section>
 
+<!-- 2. Кейсы / Портфолио -->
 <section id="portfolio" class="section">
     <div class="container">
         <div class="section-header">
@@ -259,6 +261,7 @@
     </div>
 </section>
 
+<!-- 3. Услуги / Эксклюзивные решения -->
 <section id="services" class="section">
     <div class="container">
         <div class="section-header">
@@ -276,6 +279,7 @@
     </div>
 </section>
 
+<!-- 4. AI дизайн + инновации -->
 <section id="ai-innovation" class="section">
     <div class="container">
         <div class="section-header">
@@ -330,6 +334,7 @@
     </div>
 </section>
 
+<!-- 5. Процесс работы -->
 <section id="process" class="section">
     <div class="container">
         <div class="section-header"><h2>Процесс работы</h2><a href="#services" class="section-more-btn">Подробнее</a></div>
@@ -342,6 +347,7 @@
     </div>
 </section>
 
+<!-- 6. Компетенции / Технологический стек -->
 <section id="competences" class="section">
     <div class="container">
         <div class="section-header"><h2>Компетенции / Технологический стек</h2><a href="#services" class="section-more-btn">Подробнее</a></div>
@@ -358,6 +364,7 @@
     </div>
 </section>
 
+<!-- 7. Почему ALBE? -->
 <section class="section">
     <div class="container">
         <div class="section-header"><h2>Почему ALBE?</h2><a href="#contact" class="section-more-btn">О компании</a></div>
@@ -376,6 +383,7 @@
     </div>
 </section>
 
+<!-- 8. Отзывы клиентов -->
 <section id="reviews" class="section">
     <div class="container">
         <div class="section-header"><h2>Отзывы клиентов</h2><a href="#contact" class="section-more-btn">Оставить отзыв</a></div>
@@ -387,6 +395,7 @@
     </div>
 </section>
 
+<!-- 9. Логотипы / Клиенты / Бренды -->
 <section id="clients" class="section">
     <div class="container">
         <div class="section-header"><h2>Нам доверяют</h2><a href="#contact" class="section-more-btn">Стать клиентом</a></div>
@@ -396,6 +405,7 @@
     </div>
 </section>
 
+<!-- 10. Калькулятор стоимости -->
 <section id="calculator" class="section">
     <div class="container">
         <div class="section-header"><h2>Калькулятор стоимости</h2><a href="#services" class="section-more-btn">Все услуги</a></div>
@@ -422,6 +432,7 @@
     </div>
 </section>
 
+<!-- 11. FAQ -->
 <section class="section" itemscope itemtype="https://schema.org/FAQPage">
     <div class="container">
         <div class="section-header"><h2>FAQ</h2><a href="#services" class="section-more-btn">Подробнее</a></div>
@@ -434,6 +445,7 @@
     </div>
 </section>
 
+<!-- 12. Контакты + форма -->
 <section id="contact" class="contact-section" itemscope itemtype="https://schema.org/ContactPage">
     <div class="container">
         <div class="contact-card">
