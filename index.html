@@ -392,7 +392,7 @@
     </div>
 </section>
 
-<!-- AI ДИЗАЙН: 3 карточки + СЛАЙДЕР ВИДЕО -->
+<!-- AI ДИЗАЙН: 3 карточки + 2 ВИДЕО (чёрно-белые, при наведении цветные со звуком) -->
 <section class="section ai-design-section">
     <div class="container">
         <div class="section-header">
@@ -414,26 +414,31 @@
                     <p>Анализ вовлечённости зрителя в реальном времени. AI адаптирует контент под эмоциональное состояние пользователя.</p>
                 </div>
             </div>
-            <div class="ai-videos-column">
-                <div class="ai-video-slider-container">
-                    <div class="ai-video-frame-wrapper" id="aiVideoFrameWrapper">
-                        <div class="video-frame" id="videoFrame">
-                            <iframe id="aiVideoIframe" 
-                                src="https://kinescope.io/embed/it8tEfjsnaLMaCU712FV2S?autoplay=1&loop=1&muted=1&controls=0&show_title=0&show_logo=0&show_related=0&playsinline=1" 
-                                allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;" 
-                                frameborder="0" 
-                                allowfullscreen>
-                            </iframe>
+            <div class="ai-videos-wrapper">
+                <div class="ai-video-container">
+                    <div class="ai-video-item" data-video="2">
+                        <div class="ai-video-frame-wrapper">
+                            <div class="video-frame">
+                                <iframe class="ai-video-iframe" 
+                                    src="https://kinescope.io/embed/tyTxHyuEgCojbTw7uPFQxm?autoplay=0&loop=1&muted=0&controls=0&show_title=0&show_logo=0&show_related=0&playsinline=1"
+                                    allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;" 
+                                    frameborder="0" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
                         </div>
                     </div>
-                    <div class="ai-video-controls">
-                        <button class="ai-video-prev" id="aiVideoPrev">←</button>
-                        <div class="ai-video-indicators" id="aiVideoIndicators">
-                            <span class="indicator active" data-index="0"></span>
-                            <span class="indicator" data-index="1"></span>
-                            <span class="indicator" data-index="2"></span>
+                    <div class="ai-video-item" data-video="3">
+                        <div class="ai-video-frame-wrapper">
+                            <div class="video-frame">
+                                <iframe class="ai-video-iframe" 
+                                    src="https://kinescope.io/embed/wzToMP6ZpNgEfgDNY7ecHM?autoplay=0&loop=1&muted=0&controls=0&show_title=0&show_logo=0&show_related=0&playsinline=1"
+                                    allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;" 
+                                    frameborder="0" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
                         </div>
-                        <button class="ai-video-next" id="aiVideoNext">→</button>
                     </div>
                 </div>
             </div>
@@ -1021,87 +1026,41 @@
 <script src="common.js" defer></script>
 
 <script>
-// AI видео слайдер с точной синхронизацией высоты
+// Чёрно-белые видео, при наведении включаются цветные со звуком
 (function() {
-    const videoSources = [
-        "https://kinescope.io/embed/it8tEfjsnaLMaCU712FV2S?autoplay=1&loop=1&muted=1&controls=0&show_title=0&show_logo=0&show_related=0&playsinline=1",
-        "https://kinescope.io/embed/tyTxHyuEgCojbTw7uPFQxm?autoplay=1&loop=1&muted=1&controls=0&show_title=0&show_logo=0&show_related=0&playsinline=1",
-        "https://kinescope.io/embed/wzToMP6ZpNgEfgDNY7ecHM?autoplay=1&loop=1&muted=1&controls=0&show_title=0&show_logo=0&show_related=0&playsinline=1"
-    ];
+    const videoItems = document.querySelectorAll('.ai-video-item');
     
-    let currentIndex = 0;
-    const iframe = document.getElementById('aiVideoIframe');
-    const prevBtn = document.getElementById('aiVideoPrev');
-    const nextBtn = document.getElementById('aiVideoNext');
-    const indicators = document.querySelectorAll('.indicator');
-    const videoWrapper = document.querySelector('.ai-video-frame-wrapper');
-    const videoFrame = document.querySelector('.video-frame');
-    const cardsColumn = document.getElementById('aiCardsColumn');
-    
-    if (!iframe) return;
-    
-    // Точная синхронизация высоты видео с высотой 3 карточек
-    function syncVideoHeight() {
-        if (!cardsColumn || !videoWrapper || !videoFrame) return;
+    videoItems.forEach(item => {
+        const iframe = item.querySelector('.ai-video-iframe');
+        if (!iframe) return;
         
-        // Получаем точную высоту колонки с 3 карточками
-        const cardsHeight = cardsColumn.offsetHeight;
+        // Чёрно-белый фильтр через CSS
+        item.style.filter = 'grayscale(100%)';
+        item.style.transition = 'filter 0.3s ease';
         
-        if (cardsHeight > 200) {
-            // Убираем padding-top, выставляем фиксированную высоту
-            videoFrame.style.paddingTop = '0';
-            videoFrame.style.height = cardsHeight + 'px';
-            videoWrapper.style.height = cardsHeight + 'px';
-        }
-    }
-    
-    function updateVideo(index) {
-        iframe.src = videoSources[index];
-        indicators.forEach((ind, i) => {
-            ind.classList.toggle('active', i === index);
+        let isPlaying = false;
+        
+        // При наведении - включаем звук и убираем ч/б
+        item.addEventListener('mouseenter', function() {
+            this.style.filter = 'grayscale(0%)';
+            try {
+                iframe.contentWindow.postMessage('{"method":"unmute"}', '*');
+                iframe.contentWindow.postMessage('{"method":"play"}', '*');
+            } catch(e) {}
+            isPlaying = true;
         });
-    }
-    
-    if (prevBtn) {
-        prevBtn.addEventListener('click', function() {
-            currentIndex = (currentIndex - 1 + videoSources.length) % videoSources.length;
-            updateVideo(currentIndex);
-        });
-    }
-    
-    if (nextBtn) {
-        nextBtn.addEventListener('click', function() {
-            currentIndex = (currentIndex + 1) % videoSources.length;
-            updateVideo(currentIndex);
-        });
-    }
-    
-    indicators.forEach((ind, idx) => {
-        ind.addEventListener('click', function() {
-            currentIndex = idx;
-            updateVideo(currentIndex);
+        
+        // При уходе мыши - выключаем звук, возвращаем ч/б и ставим на паузу
+        item.addEventListener('mouseleave', function() {
+            this.style.filter = 'grayscale(100%)';
+            try {
+                iframe.contentWindow.postMessage('{"method":"mute"}', '*');
+                iframe.contentWindow.postMessage('{"method":"pause"}', '*');
+            } catch(e) {}
+            isPlaying = false;
         });
     });
-    
-    // Запускаем синхронизацию при загрузке и изменении размера
-    window.addEventListener('load', function() {
-        setTimeout(syncVideoHeight, 50);
-        setTimeout(syncVideoHeight, 200);
-    });
-    
-    window.addEventListener('resize', function() {
-        setTimeout(syncVideoHeight, 50);
-    });
-    
-    // Наблюдатель за изменениями размера карточек
-    if (window.ResizeObserver && cardsColumn) {
-        const observer = new ResizeObserver(function() {
-            syncVideoHeight();
-        });
-        observer.observe(cardsColumn);
-    }
-    
-    // Первый запуск
-    syncVideoHeight();
 })();
 </script>
+</body>
+</html>
