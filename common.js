@@ -94,18 +94,16 @@ function initTechTooltips() {
     });
 }
 
-// ===== КИНЕТИЧЕСКИЕ КНОПКИ (3 СЕГМЕНТА) — ИСПРАВЛЕНЫ =====
+// ===== КИНЕТИЧЕСКИЕ КНОПКИ (3 СЕГМЕНТА) =====
 function initKineticButtons() {
     const buttonsToConvert = document.querySelectorAll(
-        '.card-btn, .ai-card-btn, .btn-primary, .btn-outline, .hero-btn-primary, .hero-btn-outline, ' +
+        '.btn-primary, .btn-outline, .hero-btn-primary, .hero-btn-outline, ' +
         '.section-more-btn, button[type="submit"], .header-telegram, #toTopBtn'
     );
     
     if (buttonsToConvert.length === 0) return;
     
     buttonsToConvert.forEach(oldBtn => {
-        if (oldBtn.closest('.kinetic-wrapper')) return;
-        
         const btnText = oldBtn.textContent.trim();
         const btnId = oldBtn.id;
         const btnClass = oldBtn.className;
@@ -125,7 +123,6 @@ function initKineticButtons() {
         if (btnClass.includes('hero-btn') || (btnClass.includes('btn-primary') && btnText.length > 15)) sizeClass = 'large';
         if (btnId === 'toTopBtn') sizeClass = 'totop-btn';
         if (btnClass.includes('header-telegram')) sizeClass = 'header-telegram-btn';
-        if (btnClass.includes('card-btn') || btnClass.includes('ai-card-btn')) sizeClass = '';
         
         const kineticBtn = document.createElement('div');
         kineticBtn.className = `kinetic-btn ${sizeClass}`;
@@ -176,7 +173,7 @@ function initKineticButtons() {
     });
 }
 
-// Эффекты для одной кинетической кнопки — ИСПРАВЛЕНЫ ЦВЕТА
+// Эффекты для одной кинетической кнопки
 function initKineticButtonEffects(btn, originalText) {
     const leftSeg = btn.querySelector('.segment-left');
     const centerSeg = btn.querySelector('.segment-center');
@@ -188,12 +185,18 @@ function initKineticButtonEffects(btn, originalText) {
     let targetRotateX = 0, targetRotateY = 0;
     let currentRotateX = 0, currentRotateY = 0;
     
-    // ИСПРАВЛЕНЫ ЦВЕТА — теперь розовый и оранжевый
+    const defaultColors = {
+        left: 'rgba(255, 255, 255, 0.3)',
+        centerTop: 'rgba(255, 255, 255, 0.3)',
+        centerBottom: 'rgba(255, 255, 255, 0.3)',
+        right: 'rgba(255, 255, 255, 0.3)'
+    };
+    
     const hoverColors = {
-        left: '#D62976',      // розовый
-        centerTop: '#F56040', // оранжевый
-        centerBottom: '#F56040',
-        right: '#D62976'      // розовый
+        left: '#FF3366',
+        centerTop: '#14C6B0',
+        centerBottom: '#14C6B0',
+        right: '#8B5CF6'
     };
     
     function triggerSparks(count = 3, clientX = null, clientY = null) {
@@ -227,10 +230,10 @@ function initKineticButtonEffects(btn, originalText) {
     }
     
     function resetToWhite() {
-        leftSeg.style.borderColor = 'rgba(255, 255, 255, 0.15)';
-        centerSeg.style.borderTopColor = 'rgba(255, 255, 255, 0.15)';
-        centerSeg.style.borderBottomColor = 'rgba(255, 255, 255, 0.15)';
-        rightSeg.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+        leftSeg.style.borderColor = defaultColors.left;
+        centerSeg.style.borderTopColor = defaultColors.centerTop;
+        centerSeg.style.borderBottomColor = defaultColors.centerBottom;
+        rightSeg.style.borderColor = defaultColors.right;
         leftSeg.style.boxShadow = '';
         centerSeg.style.boxShadow = '';
         rightSeg.style.boxShadow = '';
@@ -646,7 +649,7 @@ function initPortfolioAccordion() {
     }
 }
 
-// ===== 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК (ТОЛЬКО ГОРИЗОНТАЛЬНЫЙ) =====
+// ===== 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК (ТОЛЬКО ГОРИЗОНТАЛЬНЫЙ, БЕЗ ВЕРТИКАЛЬНОГО СМЕЩЕНИЯ) =====
 function initQuantumCards() {
     const cards = document.querySelectorAll('.services-grid .service-card');
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -662,8 +665,9 @@ function initQuantumCards() {
 
         if (!seg1 || !seg2 || !seg3 || !seg4) return;
 
-        let targetRotateY = 0;
+        let targetRotateY = 0;           // только горизонтальный наклон
         let currentRotateY = 0;
+        // Вертикальный наклон убран (targetRotateX всегда 0)
 
         let segTargets = {
             seg1: { x: 0, ry: 0 },
@@ -678,6 +682,7 @@ function initQuantumCards() {
             seg4: { x: 0, ry: 0 }
         };
 
+        // Лимиты для горизонтального смещения
         const MAX_X = 12;
         const MAX_RY = 4;
 
@@ -686,13 +691,17 @@ function initQuantumCards() {
         }
 
         function updateSegments() {
+            // seg1
             segCurrent.seg1.x += (segTargets.seg1.x - segCurrent.seg1.x) * 0.2;
             segCurrent.seg1.ry += (segTargets.seg1.ry - segCurrent.seg1.ry) * 0.2;
             seg1.style.transform = `translateX(${segCurrent.seg1.x}px) rotateY(${segCurrent.seg1.ry}deg) translateZ(-5px)`;
+            // seg2
             segCurrent.seg2.x += (segTargets.seg2.x - segCurrent.seg2.x) * 0.2;
             seg2.style.transform = `translateX(${segCurrent.seg2.x}px) translateZ(-5px)`;
+            // seg3
             segCurrent.seg3.x += (segTargets.seg3.x - segCurrent.seg3.x) * 0.2;
             seg3.style.transform = `translateX(${segCurrent.seg3.x}px) translateZ(-5px)`;
+            // seg4
             segCurrent.seg4.x += (segTargets.seg4.x - segCurrent.seg4.x) * 0.2;
             segCurrent.seg4.ry += (segTargets.seg4.ry - segCurrent.seg4.ry) * 0.2;
             seg4.style.transform = `translateX(${segCurrent.seg4.x}px) rotateY(${segCurrent.seg4.ry}deg) translateZ(-5px)`;
@@ -709,7 +718,9 @@ function initQuantumCards() {
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const relX = (e.clientX - rect.left) / rect.width - 0.5;
+            // вертикальная координата не используется для движения, только для блика
 
+            // Горизонтальный наклон карточки
             targetRotateY = relX * 12;
 
             const px = ((e.clientX - rect.left) / rect.width) * 100;
@@ -723,6 +734,7 @@ function initQuantumCards() {
                 if (seg) seg.style.borderColor = borderGlow;
             });
 
+            // Только горизонтальное смещение
             segTargets.seg1.x = limit(relX * -12, MAX_X);
             segTargets.seg1.ry = limit(relX * -4, MAX_RY);
             segTargets.seg2.x = limit(relX * -5, MAX_X);
@@ -782,7 +794,7 @@ function initCaseAccordion() {
     }
 
     function burstSparks(x, y) {
-        const colors = ['#D62976', '#F56040', '#a8b5c5', '#b0b3b8'];
+        const colors = ['#FF3366', '#14C6B0', '#10B981', '#8B5CF6'];
         const count = 12 + Math.floor(Math.random() * 12);
         for (let i = 0; i < count; i++) {
             const spark = sparks[i % sparks.length];
