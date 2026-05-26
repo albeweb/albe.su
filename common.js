@@ -192,7 +192,7 @@ function initAICards() {
     });
 }
 
-// ===== НОВОЕ: AI ВИДЕО СЛАЙДЕР =====
+// ===== AI ВИДЕО СЛАЙДЕР (ТОЛЬКО ПЕРЕКЛЮЧЕНИЕ, БЕЗ СИНХРОНИЗАЦИИ) =====
 function initAIVideoSlider() {
     const videoSources = [
         "https://kinescope.io/embed/it8tEfjsnaLMaCU712FV2S?autoplay=1&loop=1&muted=1&controls=0&show_title=0&show_logo=0&show_related=0&playsinline=1",
@@ -204,62 +204,25 @@ function initAIVideoSlider() {
     const iframe = document.getElementById('aiVideoIframe');
     const prevBtn = document.getElementById('aiVideoPrev');
     const nextBtn = document.getElementById('aiVideoNext');
-    const indicators = document.querySelectorAll('.indicator');
-    const videoWrapper = document.querySelector('.ai-video-frame-wrapper');
-    const cardsColumn = document.getElementById('aiCardsColumn');
     
     if (!iframe) return;
     
     function updateVideo(index) {
         iframe.src = videoSources[index];
-        indicators.forEach((ind, i) => {
-            ind.classList.toggle('active', i === index);
-        });
     }
     
-    function nextVideo() {
-        currentIndex = (currentIndex + 1) % videoSources.length;
-        updateVideo(currentIndex);
-    }
-    
-    function prevVideo() {
-        currentIndex = (currentIndex - 1 + videoSources.length) % videoSources.length;
-        updateVideo(currentIndex);
-    }
-    
-    if (prevBtn) prevBtn.addEventListener('click', prevVideo);
-    if (nextBtn) nextBtn.addEventListener('click', nextVideo);
-    
-    indicators.forEach((ind, idx) => {
-        ind.addEventListener('click', () => {
-            currentIndex = idx;
+    if (prevBtn) {
+        prevBtn.addEventListener('click', function() {
+            currentIndex = (currentIndex - 1 + videoSources.length) % videoSources.length;
             updateVideo(currentIndex);
         });
-    });
-    
-    function syncVideoHeight() {
-        if (!cardsColumn || !videoWrapper) return;
-        const cardsHeight = cardsColumn.offsetHeight;
-        const targetHeight = Math.min(cardsHeight * 0.85, 500);
-        if (targetHeight > 200) {
-            videoWrapper.style.height = targetHeight + 'px';
-            videoWrapper.style.minHeight = targetHeight + 'px';
-        }
     }
     
-    window.addEventListener('load', function() {
-        setTimeout(syncVideoHeight, 100);
-        setTimeout(syncVideoHeight, 300);
-    });
-    window.addEventListener('resize', function() {
-        setTimeout(syncVideoHeight, 50);
-    });
-    
-    if (window.ResizeObserver) {
-        const resizeObserver = new ResizeObserver(function() {
-            syncVideoHeight();
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function() {
+            currentIndex = (currentIndex + 1) % videoSources.length;
+            updateVideo(currentIndex);
         });
-        if (cardsColumn) resizeObserver.observe(cardsColumn);
     }
 }
 
@@ -1054,7 +1017,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initCaseAccordion();
     initAICards();
     initAutoPlayVideos();
-    initAIVideoSlider();  // НОВОЕ: инициализация слайдера AI видео
+    initAIVideoSlider();
     
     loadComponent('header-placeholder', 'header.html', function() {
         initBurgerMenu();
@@ -1062,7 +1025,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
             initKineticButtons();
             initAICards();
-            initAIVideoSlider();  // повторная инициализация после загрузки header
+            initAIVideoSlider();
         }, 100);
     });
     loadComponent('footer-placeholder', 'footer.html', function() {
