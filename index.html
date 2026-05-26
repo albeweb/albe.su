@@ -39,363 +39,8 @@
 <noscript><div><img src="https://mc.yandex.ru/watch/109373410" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 
-<link rel="preload" as="style" href="style.css">
-<link rel="stylesheet" href="style.css">
-
-<style>
-    /* ============================================ */
-    /* СТИЛИ ДЛЯ AI КАРТОЧЕК "ЖИДКАЯ РАМКА" */
-    /* ============================================ */
-    
-    .ai-liquid-card {
-        position: relative;
-        width: 100%;
-        background: rgba(10, 14, 23, 0.85);
-        backdrop-filter: blur(14px);
-        border-radius: 48px;
-        padding: 2rem;
-        transform-style: preserve-3d;
-        transition: transform 0.08s linear;
-        border: 1px solid rgba(255,255,255,0.08);
-        overflow: hidden;
-        box-shadow: 0 25px 40px -15px rgba(0,0,0,0.5);
-    }
-    
-    /* Жидкая рамка (градиентная обводка) */
-    .ai-liquid-card::before {
-        content: '';
-        position: absolute;
-        inset: -2px;
-        background: linear-gradient(135deg, #D62976, #F56040);
-        border-radius: 50px;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        z-index: -1;
-    }
-    .ai-liquid-card:hover::before {
-        opacity: 0.7;
-    }
-    
-    /* Свечение под курсором */
-    .ai-liquid-card::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,0.12), transparent 70%);
-        opacity: 0;
-        transition: opacity 0.2s;
-        pointer-events: none;
-        border-radius: 48px;
-    }
-    .ai-liquid-card:hover::after {
-        opacity: 1;
-    }
-    
-    /* Угловые акценты */
-    .ai-corner {
-        position: absolute;
-        width: 40px;
-        height: 40px;
-        border-color: rgba(255,255,255,0.3);
-        border-style: solid;
-        transition: all 0.25s ease;
-        z-index: 5;
-        pointer-events: none;
-    }
-    .ai-corner-tl { top: 20px; left: 20px; border-width: 2px 0 0 2px; }
-    .ai-corner-tr { top: 20px; right: 20px; border-width: 2px 2px 0 0; }
-    .ai-corner-bl { bottom: 20px; left: 20px; border-width: 0 0 2px 2px; }
-    .ai-corner-br { bottom: 20px; right: 20px; border-width: 0 2px 2px 0; }
-    
-    .ai-liquid-card:hover .ai-corner-tl { border-color: #D62976; filter: drop-shadow(0 0 6px #D62976); }
-    .ai-liquid-card:hover .ai-corner-tr { border-color: #F56040; filter: drop-shadow(0 0 6px #F56040); }
-    .ai-liquid-card:hover .ai-corner-bl { border-color: #a8b5c5; filter: drop-shadow(0 0 6px #a8b5c5); }
-    .ai-liquid-card:hover .ai-corner-br { border-color: #b0b3b8; filter: drop-shadow(0 0 6px #b0b3b8); }
-    
-    /* Контент — парящие слои */
-    .ai-card-content {
-        position: relative;
-        z-index: 10;
-        transform-style: preserve-3d;
-        transform: translateZ(20px);
-    }
-    
-    .ai-badge {
-        display: inline-block;
-        font-family: 'EN Regular', sans-serif;
-        font-size: 0.7rem;
-        letter-spacing: 3px;
-        background: rgba(255,255,255,0.05);
-        padding: 0.3rem 1rem;
-        border-radius: 40px;
-        color: #D62976;
-        border-left: 2px solid #D62976;
-        margin-bottom: 1.5rem;
-    }
-    
-    .ai-card-content h3 {
-        font-family: 'EN Regular', sans-serif;
-        font-size: clamp(1.4rem, 4vw, 1.8rem);
-        font-weight: 400;
-        line-height: 1.2;
-        background: linear-gradient(135deg, #DEE2E6, #C0C8D8);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        margin-bottom: 1rem;
-    }
-    
-    .ai-desc {
-        color: #a8b5c5;
-        font-size: 0.95rem;
-        line-height: 1.5;
-        margin-bottom: 1rem;
-    }
-    
-    /* Цветная полоса */
-    .ai-color-bar {
-        display: flex;
-        gap: 8px;
-        margin: 1rem 0 1rem;
-    }
-    .ai-color-bar span {
-        height: 3px;
-        flex: 1;
-        border-radius: 3px;
-        transition: all 0.2s;
-    }
-    .ai-color-bar .bar-pink { background: #D62976; }
-    .ai-color-bar .bar-orange { background: #F56040; }
-    .ai-color-bar .bar-purple { background: #a8b5c5; }
-    .ai-color-bar .bar-mid { background: #b0b3b8; }
-    
-    /* Кнопка */
-    .ai-card-btn {
-        background: transparent;
-        border: 1.5px solid #F56040;
-        padding: 0.7rem;
-        width: 100%;
-        font-family: 'Geist', sans-serif;
-        font-weight: 600;
-        font-size: 0.8rem;
-        letter-spacing: 2px;
-        color: #F56040;
-        cursor: pointer;
-        border-radius: 60px;
-        transition: all 0.25s;
-        backdrop-filter: blur(4px);
-        margin-top: 0.5rem;
-    }
-    .ai-card-btn:hover {
-        background: linear-gradient(135deg, #D62976, #F56040);
-        color: #0A0E17;
-        border-color: transparent;
-        box-shadow: 0 0 20px #F56040;
-    }
-    
-    /* Плавающие линии */
-    .ai-floating-lines {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 2;
-        overflow: hidden;
-        border-radius: 48px;
-    }
-    .ai-line {
-        position: absolute;
-        background: linear-gradient(90deg, transparent, #D62976, #F56040, transparent);
-        height: 2px;
-        width: 100%;
-        opacity: 0;
-        transition: opacity 0.3s;
-    }
-    .ai-liquid-card:hover .ai-line {
-        opacity: 0.3;
-    }
-    .ai-line-1 { top: 15%; left: -100%; animation: aiSlideLine 8s linear infinite; }
-    .ai-line-2 { top: 50%; left: -100%; animation: aiSlideLine 12s linear infinite reverse; }
-    .ai-line-3 { top: 85%; left: -100%; animation: aiSlideLine 6s linear infinite; }
-    @keyframes aiSlideLine {
-        0% { left: -100%; }
-        100% { left: 100%; }
-    }
-    
-    /* Частицы */
-    .ai-particle {
-        position: absolute;
-        width: 2px;
-        height: 2px;
-        background: #a8b5c5;
-        border-radius: 1px;
-        opacity: 0;
-        transition: opacity 0.2s;
-        pointer-events: none;
-    }
-    .ai-liquid-card:hover .ai-particle {
-        opacity: 0.6;
-    }
-    
-    /* Блок AI дизайн — новая структура */
-    .ai-innovation-layout {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 48px;
-        align-items: stretch;
-        margin-top: 2rem;
-    }
-    .ai-cards-container {
-        flex: 1;
-        min-width: 280px;
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-    }
-    .ai-video-container {
-        flex: 0.8;
-        min-width: 260px;
-        position: relative;
-        border-radius: 32px;
-        background: linear-gradient(135deg, #D62976, #F56040);
-        padding: 3px;
-    }
-    .ai-video-inner {
-        position: relative;
-        width: 100%;
-        padding-top: 177.78%;
-        border-radius: 30px;
-        overflow: hidden;
-        background: #000;
-    }
-    .ai-video-inner iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: none;
-        pointer-events: auto;
-    }
-    
-    /* Отзывы */
-    .reviews-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
-        margin-top: 48px;
-    }
-    .review-card {
-        background: rgba(10, 14, 23, 0.85);
-        backdrop-filter: blur(8px);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 20px;
-        padding: 28px;
-        transition: all 0.3s ease;
-    }
-    .review-card:hover {
-        border-color: #D62976;
-        transform: translateY(-5px);
-    }
-    .review-text {
-        font-size: 0.95rem;
-        line-height: 1.5;
-        color: #a8b5c5;
-        margin-bottom: 20px;
-        font-style: italic;
-    }
-    .review-author {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-    }
-    .review-avatar {
-        width: 48px;
-        height: 48px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #D62976, #F56040);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: white;
-    }
-    .review-author h4 {
-        margin: 0 0 4px 0;
-        font-size: 1rem;
-    }
-    .review-author p {
-        font-size: 0.75rem;
-        color: #b0b3b8;
-        margin: 0;
-    }
-    .review-rating {
-        color: #F56040;
-        margin-top: 12px;
-        font-size: 0.85rem;
-    }
-    
-    /* Логотипы клиентов */
-    .clients-grid {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 40px;
-        margin-top: 48px;
-    }
-    .client-logo {
-        flex: 0 0 auto;
-        padding: 20px 30px;
-        background: rgba(10, 14, 23, 0.7);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 16px;
-        transition: all 0.3s ease;
-        font-family: 'EN Regular', sans-serif;
-        font-size: 1.2rem;
-        color: #b0b3b8;
-        text-align: center;
-        min-width: 140px;
-    }
-    .client-logo:hover {
-        border-color: #D62976;
-        transform: translateY(-3px);
-        color: #DEE2E6;
-    }
-    
-    @media (max-width: 900px) {
-        .ai-innovation-layout {
-            flex-direction: column;
-        }
-        .ai-video-container {
-            max-width: 320px;
-            margin: 0 auto;
-        }
-        .reviews-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-    @media (max-width: 600px) {
-        .reviews-grid {
-            grid-template-columns: 1fr;
-        }
-        .clients-grid {
-            gap: 20px;
-        }
-        .client-logo {
-            min-width: 100px;
-            padding: 15px 20px;
-            font-size: 1rem;
-        }
-    }
-    @media (max-width: 768px) {
-        .ai-liquid-card {
-            padding: 1.5rem;
-        }
-    }
-</style>
+<link rel="preload" as="style" href="style.css?v=2">
+<link rel="stylesheet" href="style.css?v=2">
 
 <script type="application/ld+json">
 {
@@ -460,8 +105,6 @@
                 card.style.setProperty('--x', px + '%');
                 card.style.setProperty('--y', py + '%');
                 
-                // Параллакс слоёв
-                const content = card.querySelector('.ai-card-content');
                 const badge = card.querySelector('.ai-badge');
                 const title = card.querySelector('h3');
                 const desc = card.querySelector('.ai-desc');
@@ -507,7 +150,7 @@
 
 <main>
 
-<!-- 1. Hero баннер -->
+<!-- 1. Hero -->
 <section class="hero">
     <div class="code-rain" aria-hidden="true">
         <div class="code-line" style="left:5%;animation-duration:12s;animation-delay:0s">&lt;div class="digital"&gt;&lt;/div&gt;</div>
@@ -526,7 +169,6 @@
             <div class="hero-content">
                 <div class="hero-top">
                     <div class="hero-tag">DIGITAL AGENCY</div>
-                    
                     <h1 class="hero-title">
                         <span class="hero-title-line1">РАЗРАБОТКА</span>
                         <span class="hero-title-line2">
@@ -536,14 +178,12 @@
                             <span class="word-white phrase-underkey"> под ключ</span>
                         </span>
                     </h1>
-
                     <div class="hero-stats">
                         <div class="stat-item"><div class="stat-number">7+</div><div class="stat-label">лет опыта</div></div>
                         <div class="stat-item"><div class="stat-number">150+</div><div class="stat-label">проектов</div></div>
                         <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">поддержка</div></div>
                         <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">результат</div></div>
                     </div>
-
                     <div class="services-badges">
                         <span class="service-badge">Премиум дизайн</span>
                         <span class="service-badge">Мобильные приложения</span>
@@ -555,7 +195,6 @@
                         <span class="service-badge">CRM интеграция</span>
                     </div>
                 </div>
-
                 <div class="hero-bottom">
                     <div class="hero-quote">
                         <span class="quote-text">В ALBE МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ — МЫ СОЗДАЕМ БИЗНЕС</span>
@@ -573,7 +212,6 @@
             <h2>Кейсы / Портфолио</h2>
             <a href="#portfolio" class="section-more-btn">Все проекты</a>
         </div>
-        
         <div class="portfolio-accordion">
             <div class="accordion-panel active">
                 <div class="accordion-panel-header">
@@ -581,9 +219,7 @@
                     <div class="panel-title"><h3>NeoBank Platform</h3></div>
                 </div>
                 <div class="accordion-panel-content">
-                    <div class="panel-image">
-                        <picture><source srcset="images/bank.avif" type="image/avif"><img src="images/bank.avif" alt="Neo Bank Platform"></picture>
-                    </div>
+                    <div class="panel-image"><picture><source srcset="images/bank.avif" type="image/avif"><img src="images/bank.avif" alt="Neo Bank Platform"></picture></div>
                     <div class="panel-description"><p>Современная онлайн-банк платформа с персонализированными дашбордами, аналитикой расходов и интеграцией с платежными системами. Рост активных клиентов +210%.</p></div>
                     <div class="panel-bottom">
                         <div class="panel-tech"><h4>Технологии</h4><div class="tech-items"><span>React 18</span><span>Next.js 14</span><span>TypeScript</span><span>Node.js</span><span>PostgreSQL</span></div></div>
@@ -637,7 +273,7 @@
     </div>
 </section>
 
-<!-- 3. Услуги / Эксклюзивные решения -->
+<!-- 3. Услуги -->
 <section id="services" class="section">
     <div class="container">
         <div class="section-header">
@@ -645,177 +281,65 @@
             <a href="#services" class="section-more-btn">Все услуги</a>
         </div>
         <div class="services-grid">
-            <div class="service-card">
-                <div class="segment seg-1"></div><div class="segment seg-2"></div><div class="segment seg-3"></div><div class="segment seg-4"></div>
-                <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
-                <div class="card-content">
-                    <div><div class="color-strip"><div class="color-dot dot-pink"></div><div class="color-dot dot-teal"></div><div class="color-dot dot-mint"></div><div class="color-dot dot-purple"></div></div>
-                    <h3>Веб-разработка</h3><p>Современный стек: React, Vue, Node.js, Laravel. Высокая производительность.</p></div>
-                    <button class="card-btn">ПОДРОБНЕЕ</button>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="segment seg-1"></div><div class="segment seg-2"></div><div class="segment seg-3"></div><div class="segment seg-4"></div>
-                <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
-                <div class="card-content">
-                    <div><div class="color-strip"><div class="color-dot dot-pink"></div><div class="color-dot dot-teal"></div><div class="color-dot dot-mint"></div><div class="color-dot dot-purple"></div></div>
-                    <h3>Иммерсивный дизайн</h3><p>Микровзаимодействия, 3D-сцены, анимация. Визуальный язык, который запоминается.</p></div>
-                    <button class="card-btn">ПОДРОБНЕЕ</button>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="segment seg-1"></div><div class="segment seg-2"></div><div class="segment seg-3"></div><div class="segment seg-4"></div>
-                <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
-                <div class="card-content">
-                    <div><div class="color-strip"><div class="color-dot dot-pink"></div><div class="color-dot dot-teal"></div><div class="color-dot dot-mint"></div><div class="color-dot dot-purple"></div></div>
-                    <h3>E‑commerce платформы</h3><p>Интернет-магазины с конверсией 15%+, интеграция с 1С и CRM.</p></div>
-                    <button class="card-btn">ПОДРОБНЕЕ</button>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="segment seg-1"></div><div class="segment seg-2"></div><div class="segment seg-3"></div><div class="segment seg-4"></div>
-                <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
-                <div class="card-content">
-                    <div><div class="color-strip"><div class="color-dot dot-pink"></div><div class="color-dot dot-teal"></div><div class="color-dot dot-mint"></div><div class="color-dot dot-purple"></div></div>
-                    <h3>SEO & аналитика</h3><p>Полная оптимизация: от семантики до лидерских позиций.</p></div>
-                    <button class="card-btn">ПОДРОБНЕЕ</button>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="segment seg-1"></div><div class="segment seg-2"></div><div class="segment seg-3"></div><div class="segment seg-4"></div>
-                <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
-                <div class="card-content">
-                    <div><div class="color-strip"><div class="color-dot dot-pink"></div><div class="color-dot dot-teal"></div><div class="color-dot dot-mint"></div><div class="color-dot dot-purple"></div></div>
-                    <h3>AI & Machine Learning</h3><p>Чат-боты, рекомендательные системы, генеративный AI.</p></div>
-                    <button class="card-btn">ПОДРОБНЕЕ</button>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="segment seg-1"></div><div class="segment seg-2"></div><div class="segment seg-3"></div><div class="segment seg-4"></div>
-                <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
-                <div class="card-content">
-                    <div><div class="color-strip"><div class="color-dot dot-pink"></div><div class="color-dot dot-teal"></div><div class="color-dot dot-mint"></div><div class="color-dot dot-purple"></div></div>
-                    <h3>Мобильные приложения</h3><p>iOS, Android, React Native, Flutter. Полный цикл от идеи до публикации.</p></div>
-                    <button class="card-btn">ПОДРОБНЕЕ</button>
-                </div>
-            </div>
+            <div class="service-card"><div class="segment seg-1"></div><div class="segment seg-2"></div><div class="segment seg-3"></div><div class="segment seg-4"></div><div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div><div class="card-content"><div><div class="color-strip"><div class="color-dot dot-pink"></div><div class="color-dot dot-teal"></div><div class="color-dot dot-mint"></div><div class="color-dot dot-purple"></div></div><h3>Веб-разработка</h3><p>Современный стек: React, Vue, Node.js, Laravel. Высокая производительность.</p></div><button class="card-btn">ПОДРОБНЕЕ</button></div></div>
+            <div class="service-card"><div class="segment seg-1"></div><div class="segment seg-2"></div><div class="segment seg-3"></div><div class="segment seg-4"></div><div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div><div class="card-content"><div><div class="color-strip"><div class="color-dot dot-pink"></div><div class="color-dot dot-teal"></div><div class="color-dot dot-mint"></div><div class="color-dot dot-purple"></div></div><h3>Иммерсивный дизайн</h3><p>Микровзаимодействия, 3D-сцены, анимация. Визуальный язык, который запоминается.</p></div><button class="card-btn">ПОДРОБНЕЕ</button></div></div>
+            <div class="service-card"><div class="segment seg-1"></div><div class="segment seg-2"></div><div class="segment seg-3"></div><div class="segment seg-4"></div><div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div><div class="card-content"><div><div class="color-strip"><div class="color-dot dot-pink"></div><div class="color-dot dot-teal"></div><div class="color-dot dot-mint"></div><div class="color-dot dot-purple"></div></div><h3>E‑commerce платформы</h3><p>Интернет-магазины с конверсией 15%+, интеграция с 1С и CRM.</p></div><button class="card-btn">ПОДРОБНЕЕ</button></div></div>
+            <div class="service-card"><div class="segment seg-1"></div><div class="segment seg-2"></div><div class="segment seg-3"></div><div class="segment seg-4"></div><div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div><div class="card-content"><div><div class="color-strip"><div class="color-dot dot-pink"></div><div class="color-dot dot-teal"></div><div class="color-dot dot-mint"></div><div class="color-dot dot-purple"></div></div><h3>SEO & аналитика</h3><p>Полная оптимизация: от семантики до лидерских позиций.</p></div><button class="card-btn">ПОДРОБНЕЕ</button></div></div>
+            <div class="service-card"><div class="segment seg-1"></div><div class="segment seg-2"></div><div class="segment seg-3"></div><div class="segment seg-4"></div><div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div><div class="card-content"><div><div class="color-strip"><div class="color-dot dot-pink"></div><div class="color-dot dot-teal"></div><div class="color-dot dot-mint"></div><div class="color-dot dot-purple"></div></div><h3>AI & Machine Learning</h3><p>Чат-боты, рекомендательные системы, генеративный AI.</p></div><button class="card-btn">ПОДРОБНЕЕ</button></div></div>
+            <div class="service-card"><div class="segment seg-1"></div><div class="segment seg-2"></div><div class="segment seg-3"></div><div class="segment seg-4"></div><div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div><div class="card-content"><div><div class="color-strip"><div class="color-dot dot-pink"></div><div class="color-dot dot-teal"></div><div class="color-dot dot-mint"></div><div class="color-dot dot-purple"></div></div><h3>Мобильные приложения</h3><p>iOS, Android, React Native, Flutter. Полный цикл от идеи до публикации.</p></div><button class="card-btn">ПОДРОБНЕЕ</button></div></div>
         </div>
     </div>
 </section>
 
-<!-- 4. AI дизайн + инновации — НОВЫЕ КАРТОЧКИ "ЖИДКАЯ РАМКА" -->
+<!-- 4. AI дизайн + инновации -->
 <section id="ai-innovation" class="section">
     <div class="container">
         <div class="section-header">
             <h2>AI дизайн + инновации</h2>
             <a href="#services" class="section-more-btn">Подробнее</a>
         </div>
-        
         <div class="ai-innovation-layout">
-            <!-- Левая колонка — 3 карточки в стиле "Жидкая рамка" -->
             <div class="ai-cards-container">
-                <!-- Карточка 1 -->
                 <div class="ai-liquid-card">
-                    <div class="ai-corner ai-corner-tl"></div>
-                    <div class="ai-corner ai-corner-tr"></div>
-                    <div class="ai-corner ai-corner-bl"></div>
-                    <div class="ai-corner ai-corner-br"></div>
-                    
-                    <div class="ai-floating-lines">
-                        <div class="ai-line ai-line-1"></div>
-                        <div class="ai-line ai-line-2"></div>
-                        <div class="ai-line ai-line-3"></div>
-                    </div>
-                    
-                    <div class="ai-particle" style="top: 20%; left: 10%;"></div>
-                    <div class="ai-particle" style="top: 70%; left: 85%;"></div>
-                    <div class="ai-particle" style="top: 45%; left: 30%;"></div>
-                    
+                    <div class="ai-corner ai-corner-tl"></div><div class="ai-corner ai-corner-tr"></div><div class="ai-corner ai-corner-bl"></div><div class="ai-corner ai-corner-br"></div>
+                    <div class="ai-floating-lines"><div class="ai-line ai-line-1"></div><div class="ai-line ai-line-2"></div><div class="ai-line ai-line-3"></div></div>
+                    <div class="ai-particle" style="top:20%;left:10%"></div><div class="ai-particle" style="top:70%;left:85%"></div><div class="ai-particle" style="top:45%;left:30%"></div>
                     <div class="ai-card-content">
                         <div class="ai-badge">⟡ AI GENERATION ⟡</div>
                         <h3>Генеративный UI/UX</h3>
-                        <div class="ai-color-bar">
-                            <span class="bar-pink"></span>
-                            <span class="bar-orange"></span>
-                            <span class="bar-purple"></span>
-                            <span class="bar-mid"></span>
-                        </div>
+                        <div class="ai-color-bar"><span class="bar-pink"></span><span class="bar-orange"></span><span class="bar-purple"></span><span class="bar-mid"></span></div>
                         <div class="ai-desc">Нейросети создают тысячи вариантов интерфейсов за минуты. Мы дорабатываем лучший, экономя до 70% времени на прототипирование.</div>
                         <button class="ai-card-btn">УЗНАТЬ БОЛЬШЕ</button>
                     </div>
                 </div>
-                
-                <!-- Карточка 2 -->
                 <div class="ai-liquid-card">
-                    <div class="ai-corner ai-corner-tl"></div>
-                    <div class="ai-corner ai-corner-tr"></div>
-                    <div class="ai-corner ai-corner-bl"></div>
-                    <div class="ai-corner ai-corner-br"></div>
-                    
-                    <div class="ai-floating-lines">
-                        <div class="ai-line ai-line-1"></div>
-                        <div class="ai-line ai-line-2"></div>
-                        <div class="ai-line ai-line-3"></div>
-                    </div>
-                    
-                    <div class="ai-particle" style="top: 30%; left: 15%;"></div>
-                    <div class="ai-particle" style="top: 60%; left: 75%;"></div>
-                    <div class="ai-particle" style="top: 80%; left: 40%;"></div>
-                    
+                    <div class="ai-corner ai-corner-tl"></div><div class="ai-corner ai-corner-tr"></div><div class="ai-corner ai-corner-bl"></div><div class="ai-corner ai-corner-br"></div>
+                    <div class="ai-floating-lines"><div class="ai-line ai-line-1"></div><div class="ai-line ai-line-2"></div><div class="ai-line ai-line-3"></div></div>
+                    <div class="ai-particle" style="top:30%;left:15%"></div><div class="ai-particle" style="top:60%;left:75%"></div><div class="ai-particle" style="top:80%;left:40%"></div>
                     <div class="ai-card-content">
                         <div class="ai-badge">⟡ AI VISUALS ⟡</div>
                         <h3>Графика и иллюстрации</h3>
-                        <div class="ai-color-bar">
-                            <span class="bar-pink"></span>
-                            <span class="bar-orange"></span>
-                            <span class="bar-purple"></span>
-                            <span class="bar-mid"></span>
-                        </div>
+                        <div class="ai-color-bar"><span class="bar-pink"></span><span class="bar-orange"></span><span class="bar-purple"></span><span class="bar-mid"></span></div>
                         <div class="ai-desc">Midjourney, DALL‑E, Kandinsky — генерация уникальных изображений без стоков. Полное соответствие вашему бренду.</div>
                         <button class="ai-card-btn">УЗНАТЬ БОЛЬШЕ</button>
                     </div>
                 </div>
-                
-                <!-- Карточка 3 -->
                 <div class="ai-liquid-card">
-                    <div class="ai-corner ai-corner-tl"></div>
-                    <div class="ai-corner ai-corner-tr"></div>
-                    <div class="ai-corner ai-corner-bl"></div>
-                    <div class="ai-corner ai-corner-br"></div>
-                    
-                    <div class="ai-floating-lines">
-                        <div class="ai-line ai-line-1"></div>
-                        <div class="ai-line ai-line-2"></div>
-                        <div class="ai-line ai-line-3"></div>
-                    </div>
-                    
-                    <div class="ai-particle" style="top: 15%; left: 70%;"></div>
-                    <div class="ai-particle" style="top: 50%; left: 20%;"></div>
-                    <div class="ai-particle" style="top: 85%; left: 90%;"></div>
-                    
+                    <div class="ai-corner ai-corner-tl"></div><div class="ai-corner ai-corner-tr"></div><div class="ai-corner ai-corner-bl"></div><div class="ai-corner ai-corner-br"></div>
+                    <div class="ai-floating-lines"><div class="ai-line ai-line-1"></div><div class="ai-line ai-line-2"></div><div class="ai-line ai-line-3"></div></div>
+                    <div class="ai-particle" style="top:15%;left:70%"></div><div class="ai-particle" style="top:50%;left:20%"></div><div class="ai-particle" style="top:85%;left:90%"></div>
                     <div class="ai-card-content">
                         <div class="ai-badge">⟡ AI OPTIMIZATION ⟡</div>
                         <h3>Адаптивный редизайн</h3>
-                        <div class="ai-color-bar">
-                            <span class="bar-pink"></span>
-                            <span class="bar-orange"></span>
-                            <span class="bar-purple"></span>
-                            <span class="bar-mid"></span>
-                        </div>
+                        <div class="ai-color-bar"><span class="bar-pink"></span><span class="bar-orange"></span><span class="bar-purple"></span><span class="bar-mid"></span></div>
                         <div class="ai-desc">AI анализирует поведение пользователей и тепловые карты, предлагая точечные улучшения конверсии. Результат: +25% к ROI.</div>
                         <button class="ai-card-btn">УЗНАТЬ БОЛЬШЕ</button>
                     </div>
                 </div>
             </div>
-            
-            <!-- Правая колонка — вертикальное видео 9:16 с градиентной обводкой -->
             <div class="ai-video-container">
                 <div class="ai-video-inner">
-                    <iframe src="https://kinescope.io/embed/tyTxHyuEgCojbTw7uPFQxm?autoplay=1&muted=1&loop=1&controls=0&showinfo=0&modestbranding=1&rel=0" 
-                            allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;" 
-                            frameborder="0" 
-                            allowfullscreen>
-                    </iframe>
+                    <iframe src="https://kinescope.io/embed/tyTxHyuEgCojbTw7uPFQxm?autoplay=1&muted=1&loop=1&controls=0&showinfo=0&modestbranding=1&rel=0" allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
@@ -825,10 +349,7 @@
 <!-- 5. Процесс работы -->
 <section id="process" class="section">
     <div class="container">
-        <div class="section-header">
-            <h2>Процесс работы</h2>
-            <a href="#services" class="section-more-btn">Подробнее</a>
-        </div>
+        <div class="section-header"><h2>Процесс работы</h2><a href="#services" class="section-more-btn">Подробнее</a></div>
         <div class="steps-container">
             <div class="step-card"><div class="step-num">01</div><h3>Аналитика</h3><p>Изучаем нишу, конкурентов, ЦА. Формируем KPI.</p></div>
             <div class="step-card"><div class="step-num">02</div><h3>Прототипирование</h3><p>Интерактивные прототипы, тестирование гипотез.</p></div>
@@ -838,13 +359,10 @@
     </div>
 </section>
 
-<!-- 6. Компетенции / Технологический стек -->
+<!-- 6. Компетенции -->
 <section id="competences" class="section">
     <div class="container">
-        <div class="section-header">
-            <h2>Компетенции / Технологический стек</h2>
-            <a href="#services" class="section-more-btn">Подробнее</a>
-        </div>
+        <div class="section-header"><h2>Компетенции / Технологический стек</h2><a href="#services" class="section-more-btn">Подробнее</a></div>
         <div class="competences-grid">
             <div class="competence-card"><h3>Frontend</h3><p>Современные интерфейсы</p><div class="competence-tech-list"><div class="tech-item">React / Next.js</div><div class="tech-item">TypeScript</div><div class="tech-item">Redux / RTK</div><div class="tech-item">Tailwind / CSS3</div></div></div>
             <div class="competence-card"><h3>Backend</h3><p>Надёжная архитектура</p><div class="competence-tech-list"><div class="tech-item">Node.js / Nest.js</div><div class="tech-item">Python / Django</div><div class="tech-item">PostgreSQL / MS SQL</div><div class="tech-item">Redis / RabbitMQ</div></div></div>
@@ -858,13 +376,10 @@
     </div>
 </section>
 
-<!-- 7. Почему ALBE? -->
+<!-- 7. Почему ALBE -->
 <section class="section">
     <div class="container">
-        <div class="section-header">
-            <h2>Почему ALBE?</h2>
-            <a href="#contact" class="section-more-btn">О компании</a>
-        </div>
+        <div class="section-header"><h2>Почему ALBE?</h2><a href="#contact" class="section-more-btn">О компании</a></div>
         <div class="mission-grid-wrapper">
             <div class="mission-text">
                 <p><strong>ALBE digital</strong> — это стратегический партнёр, а не просто подрядчик. Мы разрабатываем продукты, которые масштабируют бизнес и увеличивают прибыль. Каждый проект сопровождается глубокой <strong>SEO-проработкой</strong> и техническим аудитом, что гарантирует высокие позиции в поисковых системах с первых недель после запуска.</p>
@@ -880,58 +395,32 @@
     </div>
 </section>
 
-<!-- 8. Отзывы клиентов -->
+<!-- 8. Отзывы -->
 <section id="reviews" class="section">
     <div class="container">
-        <div class="section-header">
-            <h2>Отзывы клиентов</h2>
-            <a href="#contact" class="section-more-btn">Оставить отзыв</a>
-        </div>
+        <div class="section-header"><h2>Отзывы клиентов</h2><a href="#contact" class="section-more-btn">Оставить отзыв</a></div>
         <div class="reviews-grid">
-            <div class="review-card">
-                <div class="review-text">"Отличная команда! Сделали сайт под ключ за 6 недель. Результат превзошёл ожидания. Отдельное спасибо за SEO — вышли в топ-3 по 15 запросам."</div>
-                <div class="review-author"><div class="review-avatar">А</div><div><h4>Алексей Смирнов</h4><p>CEO, FinTech Solutions</p></div></div>
-                <div class="review-rating">★★★★★</div>
-            </div>
-            <div class="review-card">
-                <div class="review-text">"Разработали для нас мобильное приложение с AI-рекомендациями. Конверсия выросла на 40%. Работаем дальше!"</div>
-                <div class="review-author"><div class="review-avatar">Е</div><div><h4>Елена Воронова</h4><p>Product Owner, FitLife</p></div></div>
-                <div class="review-rating">★★★★★</div>
-            </div>
-            <div class="review-card">
-                <div class="review-text">"Профессионалы своего дела. Ребрендинг и разработка нового сайта — всё сделано на высшем уровне. Рекомендую!"</div>
-                <div class="review-author"><div class="review-avatar">М</div><div><h4>Михаил Кудрявцев</h4><p>Директор, Luxury Estate</p></div></div>
-                <div class="review-rating">★★★★★</div>
-            </div>
+            <div class="review-card"><div class="review-text">"Отличная команда! Сделали сайт под ключ за 6 недель. Результат превзошёл ожидания. Отдельное спасибо за SEO — вышли в топ-3 по 15 запросам."</div><div class="review-author"><div class="review-avatar">А</div><div><h4>Алексей Смирнов</h4><p>CEO, FinTech Solutions</p></div></div><div class="review-rating">★★★★★</div></div>
+            <div class="review-card"><div class="review-text">"Разработали для нас мобильное приложение с AI-рекомендациями. Конверсия выросла на 40%. Работаем дальше!"</div><div class="review-author"><div class="review-avatar">Е</div><div><h4>Елена Воронова</h4><p>Product Owner, FitLife</p></div></div><div class="review-rating">★★★★★</div></div>
+            <div class="review-card"><div class="review-text">"Профессионалы своего дела. Ребрендинг и разработка нового сайта — всё сделано на высшем уровне. Рекомендую!"</div><div class="review-author"><div class="review-avatar">М</div><div><h4>Михаил Кудрявцев</h4><p>Директор, Luxury Estate</p></div></div><div class="review-rating">★★★★★</div></div>
         </div>
     </div>
 </section>
 
-<!-- 9. Логотипы / Клиенты / Бренды -->
+<!-- 9. Логотипы / Клиенты -->
 <section id="clients" class="section">
     <div class="container">
-        <div class="section-header">
-            <h2>Нам доверяют</h2>
-            <a href="#contact" class="section-more-btn">Стать клиентом</a>
-        </div>
+        <div class="section-header"><h2>Нам доверяют</h2><a href="#contact" class="section-more-btn">Стать клиентом</a></div>
         <div class="clients-grid">
-            <div class="client-logo">TECH Corp</div>
-            <div class="client-logo">FinStar</div>
-            <div class="client-logo">EcoLife</div>
-            <div class="client-logo">SmartHome</div>
-            <div class="client-logo">MediaGroup</div>
-            <div class="client-logo">RetailPro</div>
+            <div class="client-logo">TECH Corp</div><div class="client-logo">FinStar</div><div class="client-logo">EcoLife</div><div class="client-logo">SmartHome</div><div class="client-logo">MediaGroup</div><div class="client-logo">RetailPro</div>
         </div>
     </div>
 </section>
 
-<!-- 10. Калькулятор стоимости -->
+<!-- 10. Калькулятор -->
 <section id="calculator" class="section">
     <div class="container">
-        <div class="section-header">
-            <h2>Калькулятор стоимости</h2>
-            <a href="#services" class="section-more-btn">Все услуги</a>
-        </div>
+        <div class="section-header"><h2>Калькулятор стоимости</h2><a href="#services" class="section-more-btn">Все услуги</a></div>
         <div class="price-table" id="staticPriceTable">
             <h3>Примеры стоимости разработки</h3>
             <div class="price-grid">
@@ -958,48 +447,25 @@
 <!-- 11. FAQ -->
 <section class="section" itemscope itemtype="https://schema.org/FAQPage">
     <div class="container">
-        <div class="section-header">
-            <h2>FAQ</h2>
-            <a href="#services" class="section-more-btn">Подробнее</a>
-        </div>
+        <div class="section-header"><h2>FAQ</h2><a href="#services" class="section-more-btn">Подробнее</a></div>
         <div class="cases-accordion" id="faqAccordion">
-            <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <button class="case-lid"><div class="lid-left"><span class="case-number">01</span><span class="case-title" itemprop="name">Сколько стоит разработка сайта под ключ?</span></div><div class="case-handle"><div class="handle-bar"></div></div></button>
-                <div class="case-inside"><div class="case-content"><div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><div itemprop="text">Стоимость рассчитывается индивидуально. Лендинг от 120 000 ₽, корпоративный сайт от 250 000 ₽, интернет-магазин от 450 000 ₽.</div></div></div></div>
-            </div>
-            <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <button class="case-lid"><div class="lid-left"><span class="case-number">02</span><span class="case-title" itemprop="name">Какие сроки разработки?</span></div><div class="case-handle"><div class="handle-bar"></div></div></button>
-                <div class="case-inside"><div class="case-content"><div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><div itemprop="text">Сроки разработки от 3 до 12 недель в зависимости от сложности проекта.</div></div></div></div>
-            </div>
-            <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <button class="case-lid"><div class="lid-left"><span class="case-number">03</span><span class="case-title" itemprop="name">Даёте гарантию на SEO продвижение?</span></div><div class="case-handle"><div class="handle-bar"></div></div></button>
-                <div class="case-inside"><div class="case-content"><div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><div itemprop="text">Да, мы гарантируем выполнение KPI по SEO продвижению.</div></div></div></div>
-            </div>
-            <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <button class="case-lid"><div class="lid-left"><span class="case-number">04</span><span class="case-title" itemprop="name">Используете ли вы AI и нейросети?</span></div><div class="case-handle"><div class="handle-bar"></div></div></button>
-                <div class="case-inside"><div class="case-content"><div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><div itemprop="text">Да, мы активно внедряем AI решения: чат-боты, рекомендательные системы, генеративный AI.</div></div></div></div>
-            </div>
+            <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><button class="case-lid"><div class="lid-left"><span class="case-number">01</span><span class="case-title" itemprop="name">Сколько стоит разработка сайта под ключ?</span></div><div class="case-handle"><div class="handle-bar"></div></div></button><div class="case-inside"><div class="case-content"><div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><div itemprop="text">Стоимость рассчитывается индивидуально. Лендинг от 120 000 ₽, корпоративный сайт от 250 000 ₽, интернет-магазин от 450 000 ₽.</div></div></div></div></div>
+            <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><button class="case-lid"><div class="lid-left"><span class="case-number">02</span><span class="case-title" itemprop="name">Какие сроки разработки?</span></div><div class="case-handle"><div class="handle-bar"></div></div></button><div class="case-inside"><div class="case-content"><div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><div itemprop="text">Сроки разработки от 3 до 12 недель в зависимости от сложности проекта.</div></div></div></div></div>
+            <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><button class="case-lid"><div class="lid-left"><span class="case-number">03</span><span class="case-title" itemprop="name">Даёте гарантию на SEO продвижение?</span></div><div class="case-handle"><div class="handle-bar"></div></div></button><div class="case-inside"><div class="case-content"><div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><div itemprop="text">Да, мы гарантируем выполнение KPI по SEO продвижению.</div></div></div></div></div>
+            <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><button class="case-lid"><div class="lid-left"><span class="case-number">04</span><span class="case-title" itemprop="name">Используете ли вы AI и нейросети?</span></div><div class="case-handle"><div class="handle-bar"></div></div></button><div class="case-inside"><div class="case-content"><div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><div itemprop="text">Да, мы активно внедряем AI решения: чат-боты, рекомендательные системы, генеративный AI.</div></div></div></div></div>
         </div>
     </div>
 </section>
 
-<!-- 12. Контакты + форма -->
+<!-- 12. Контакты -->
 <section id="contact" class="contact-section" itemscope itemtype="https://schema.org/ContactPage">
     <div class="container">
         <div class="contact-card">
-            <div class="section-header">
-                <h2>Контакты</h2>
-            </div>
+            <div class="section-header"><h2>Контакты</h2></div>
             <p class="contact-desc">Оставьте заявку — Мы свяжемся с вами в течение 3 часов</p>
             <form id="mainForm" class="contact-form" action="#" method="post">
-                <div class="form-row">
-                    <input type="text" id="userName" placeholder="Имя *" required>
-                    <input type="tel" id="userPhone" placeholder="Телефон *" required>
-                </div>
-                <div class="form-row">
-                    <input type="email" id="userEmail" placeholder="Email *" required>
-                    <input type="text" id="userTelegram" placeholder="Telegram (username)">
-                </div>
+                <div class="form-row"><input type="text" id="userName" placeholder="Имя *" required><input type="tel" id="userPhone" placeholder="Телефон *" required></div>
+                <div class="form-row"><input type="email" id="userEmail" placeholder="Email *" required><input type="text" id="userTelegram" placeholder="Telegram (username)"></div>
                 <textarea rows="4" id="userMsg" placeholder="Опишите задачу"></textarea>
                 <button type="submit" class="btn-primary">Отправить заявку</button>
                 <div id="formStatus" class="form-status"></div>
