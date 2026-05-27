@@ -1669,7 +1669,7 @@ h4 {
 .panel-metrics span:last-child {
     color: var(--white);
     font-weight: 500;
-    font-size: 0.75rem;
+    font-size: 0.6rem;
 }
 
 /* Футер активной панели с часами и суммой - УМЕНЬШЕННЫЙ */
