@@ -2857,3 +2857,62 @@ h4 {
 .video-placeholder:hover .play-overlay {
     background: rgba(0, 0, 0, 0.1);
 }
+
+/* ============================================ */
+/* УНИКАЛЬНЫЙ СКРОЛЛБАР В СТИЛЕ ГРАДИЕНТА */
+/* ============================================ */
+
+/* Для WebKit браузеров (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(18, 18, 26, 0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--ig-gradient);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--ig-pink), var(--ig-orange));
+    opacity: 0.8;
+}
+
+/* Для Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--ig-pink) rgba(18, 18, 26, 0.3);
+}
+
+/* Анимация для скроллбара */
+::-webkit-scrollbar-thumb {
+    transition: background 0.3s ease;
+}
+
+/* Стиль для скролла внутри модального окна */
+.modal-content::-webkit-scrollbar {
+    width: 3px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: var(--ig-gradient);
+    border-radius: 3px;
+}
+
+/* Для ПК версии — чуть шире для удобства */
+@media (min-width: 1200px) {
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+}
