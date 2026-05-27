@@ -1,4 +1,4 @@
-============================================ */
+/* ============================================ */
 /* 1. ЛОКАЛЬНОЕ ПОДКЛЮЧЕНИЕ ШРИФТОВ */
 /* ============================================ */
 
@@ -116,7 +116,6 @@ h1, h2,
     font-family: 'EN Regular', sans-serif;
     font-weight: 400;
     letter-spacing: -0.02em;
-    text-transform: lowercase;
 }
 
 h3, h4, h5, h6,
@@ -127,7 +126,6 @@ h3, h4, h5, h6,
     font-family: 'Geist', sans-serif;
     font-weight: 500;
     letter-spacing: -0.02em;
-    text-transform: lowercase;
 }
 
 .logo, 
@@ -141,7 +139,6 @@ h3, h4, h5, h6,
 .footer-price span:last-child,
 .panel-metrics span:last-child {
     font-family: 'Zen Dots', monospace;
-    text-transform: lowercase;
 }
 
 p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-card p,
@@ -161,7 +158,6 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
     font-size: 0.9rem;
     color: var(--gray);
     letter-spacing: 3px;
-    text-transform: lowercase;
     display: inline-block;
 }
 
@@ -176,7 +172,6 @@ h1 {
     font-weight: 400;
     letter-spacing: -0.02em;
     color: var(--white);
-    text-transform: lowercase;
 }
 
 h2 {
@@ -189,7 +184,6 @@ h2 {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    text-transform: lowercase;
 }
 
 h2::after {
@@ -207,7 +201,6 @@ h3 {
     font-size: 1.5rem;
     margin-bottom: 0.75rem;
     color: var(--white);
-    text-transform: lowercase;
 }
 
 h4 {
@@ -215,7 +208,6 @@ h4 {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
     color: var(--white);
-    text-transform: lowercase;
 }
 
 .section { padding: 100px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
@@ -329,7 +321,6 @@ h4 {
     border: 1px solid rgba(255, 255, 255, 0.08);
     transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     border-radius: 16px;
-    text-transform: lowercase;
 }
 
 .faq-question:hover {
@@ -484,7 +475,6 @@ h4 {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    text-transform: lowercase;
 }
 
 .logo-letter {
@@ -511,7 +501,6 @@ h4 {
     padding: 8px 0;
     position: relative;
     transition: all 0.2s ease;
-    text-transform: lowercase;
 }
 
 .nav-link::after {
@@ -657,7 +646,6 @@ h4 {
     letter-spacing: 6px;
     margin-bottom: 1.5rem;
     color: var(--gray);
-    text-transform: lowercase;
     opacity: 0.9;
     display: inline-block;
 }
@@ -680,7 +668,6 @@ h4 {
     
     text-shadow: 0 2px 5px rgba(0,0,0,0.3), 0 4px 15px rgba(0,0,0,0.2);
     display: inline-block;
-    text-transform: lowercase;
 }
 
 .hero-title-line1::before {
@@ -733,7 +720,6 @@ h4 {
     margin-bottom: 0;
     white-space: normal;
     color: var(--white);
-    text-transform: lowercase;
 }
 
 .hero-title-line2 .word-teal, 
@@ -804,7 +790,6 @@ h4 {
 .stat-label {
     font-size: 0.65rem;
     color: var(--gray);
-    text-transform: lowercase;
     letter-spacing: 2px;
     font-weight: 400;
 }
@@ -829,7 +814,6 @@ h4 {
     cursor: default;
     letter-spacing: 0.3px;
     text-align: center;
-    text-transform: lowercase;
 }
 
 .service-badge:hover {
@@ -875,7 +859,6 @@ h4 {
     font-weight: 500;
     color: var(--ig-pink);
     font-size: 0.9rem;
-    text-transform: lowercase;
 }
 
 .calc-options {
@@ -1204,7 +1187,6 @@ h4 {
     color: transparent;
     font-size: 1.4rem;
     font-weight: 500;
-    text-transform: lowercase;
 }
 
 .footer a {
@@ -1212,7 +1194,6 @@ h4 {
     text-decoration: none;
     transition: 0.2s;
     font-size: 0.9rem;
-    text-transform: lowercase;
 }
 
 .footer a:hover { color: var(--ig-pink); }
@@ -1257,7 +1238,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 15. MEDIA QUERIES – без изменений (сокращены для краткости) */
+/* 15. MEDIA QUERIES */
 /* ============================================ */
 
 @media (max-width: 1400px) {
@@ -1477,7 +1458,7 @@ h4 {
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 20px;
     overflow: hidden;
-    height: 800px;
+    min-height: 500px;
     box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.3);
 }
 
@@ -1640,7 +1621,6 @@ h4 {
     margin-bottom: 10px;
     font-weight: 500;
     letter-spacing: 2px;
-    text-transform: lowercase;
 }
 
 .tech-items {
@@ -1689,7 +1669,6 @@ h4 {
 .panel-metrics span:first-child {
     color: var(--gray);
     font-size: 0.65rem;
-    text-transform: lowercase;
     letter-spacing: 1px;
 }
 
@@ -2220,7 +2199,6 @@ h4 {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    text-transform: lowercase;
     white-space: nowrap;
     z-index: 20;
     pointer-events: none;
@@ -2399,7 +2377,6 @@ h4 {
     border-radius: 30px;
     letter-spacing: 1px;
     transition: all 0.2s;
-    text-transform: lowercase;
 }
 
 .case-item.active .case-number {
@@ -2413,7 +2390,6 @@ h4 {
     font-weight: 500;
     color: var(--white);
     letter-spacing: -0.2px;
-    text-transform: lowercase;
 }
 
 .case-handle {
@@ -2718,7 +2694,7 @@ h4 {
 /* ============================================ */
 
 .ai-reklama-section {
-    min-height: auto; /* Убираем фиксированную высоту */
+    min-height: auto;
     overflow: visible;
 }
 
@@ -2750,32 +2726,121 @@ h4 {
     transition: box-shadow 0.3s ease;
 }
 
-/* ... (остальные стили для карточек без изменений) ... */
-.ai-card::before { content: ''; position: absolute; inset: -2px; background: var(--ig-gradient); border-radius: 34px; opacity: 0; transition: opacity 0.3s ease; z-index: -1; }
+.ai-card::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: var(--ig-gradient);
+    border-radius: 34px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
 .ai-card:hover::before { opacity: 0.7; }
-.ai-card::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255, 255, 255, 0.12), transparent 70%); opacity: 0; transition: opacity 0.2s; pointer-events: none; border-radius: 32px; }
+
+.ai-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255, 255, 255, 0.12), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+    border-radius: 32px;
+}
 .ai-card:hover::after { opacity: 1; }
-.ai-card .corner { position: absolute; width: 30px; height: 30px; border-color: rgba(255, 255, 255, 0.3); border-style: solid; transition: all 0.25s ease; z-index: 5; pointer-events: none; }
+
+.ai-card .corner {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-color: rgba(255, 255, 255, 0.3);
+    border-style: solid;
+    transition: all 0.25s ease;
+    z-index: 5;
+    pointer-events: none;
+}
 .ai-card .corner-tl { top: 16px; left: 16px; border-width: 2px 0 0 2px; }
 .ai-card .corner-tr { top: 16px; right: 16px; border-width: 2px 2px 0 0; }
 .ai-card .corner-bl { bottom: 16px; left: 16px; border-width: 0 0 2px 2px; }
 .ai-card .corner-br { bottom: 16px; right: 16px; border-width: 0 2px 2px 0; }
+
 .ai-card:hover .corner-tl { border-color: var(--ig-pink); filter: drop-shadow(0 0 6px var(--ig-pink)); }
 .ai-card:hover .corner-tr { border-color: var(--ig-orange); filter: drop-shadow(0 0 6px var(--ig-orange)); }
 .ai-card:hover .corner-bl { border-color: var(--ig-purple); filter: drop-shadow(0 0 6px var(--ig-purple)); }
 .ai-card:hover .corner-br { border-color: var(--ig-pink); filter: drop-shadow(0 0 6px var(--ig-pink)); }
-.ai-card .lines { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; overflow: hidden; border-radius: 32px; }
-.ai-card .line { position: absolute; background: linear-gradient(90deg, transparent, var(--ig-pink), var(--ig-orange), transparent); height: 2px; width: 100%; opacity: 0; transition: opacity 0.3s; }
+
+.ai-card .lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+    overflow: hidden;
+    border-radius: 32px;
+}
+
+.ai-card .line {
+    position: absolute;
+    background: linear-gradient(90deg, transparent, var(--ig-pink), var(--ig-orange), transparent);
+    height: 2px;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
 .ai-card:hover .line { opacity: 0.3; }
+
 .ai-card .line-1 { top: 15%; left: -100%; animation: slideLine 8s linear infinite; }
 .ai-card .line-2 { top: 50%; left: -100%; animation: slideLine 12s linear infinite reverse; }
 .ai-card .line-3 { top: 85%; left: -100%; animation: slideLine 6s linear infinite; }
-@keyframes slideLine { 0% { left: -100%; } 100% { left: 100%; } }
-.ai-card .particle { position: absolute; width: 2px; height: 2px; background: var(--gray); border-radius: 1px; opacity: 0; transition: opacity 0.2s; pointer-events: none; }
+
+@keyframes slideLine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.ai-card .particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--gray);
+    border-radius: 1px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+}
 .ai-card:hover .particle { opacity: 0.6; }
-.ai-card h3 { font-size: 1.6rem; font-weight: 400; background: linear-gradient(135deg, var(--white), #C0C8D8); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 1rem; transition: transform 0.1s ease; text-transform: lowercase; }
-.ai-card p { color: var(--gray); font-size: 0.95rem; line-height: 1.5; transition: transform 0.1s ease; }
-.ai-card .price-tag { display: inline-block; background: var(--ig-gradient); padding: 8px 16px; border-radius: 30px; margin-top: 1rem; font-size: 1rem; font-weight: 600; color: var(--white); }
+
+.ai-card h3 {
+    font-size: 1.6rem;
+    font-weight: 400;
+    background: linear-gradient(135deg, var(--white), #C0C8D8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 1rem;
+    transition: transform 0.1s ease;
+}
+
+.ai-card p {
+    color: var(--gray);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    transition: transform 0.1s ease;
+}
+
+.ai-card .price-tag {
+    display: inline-block;
+    background: var(--ig-gradient);
+    padding: 8px 16px;
+    border-radius: 30px;
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white);
+}
 
 .ai-videos-wrapper {
     flex: 7;
@@ -2798,7 +2863,6 @@ h4 {
     transition: all 0.3s ease;
     background: #000;
 }
-
 .ai-video-item:hover {
     border-color: var(--ig-pink);
 }
@@ -2809,7 +2873,6 @@ h4 {
     padding-top: 177.78%;
     background: #000;
 }
-
 .video-frame iframe {
     position: absolute;
     top: 0;
@@ -2819,7 +2882,6 @@ h4 {
     border: none;
 }
 
-/* ===== АДАПТИВ ТОЛЬКО ДЛЯ AI РЕКЛАМА (ПРАВИЛЬНЫЙ) ===== */
 @media (max-width: 1024px) {
     .ai-design-grid {
         flex-direction: column;
@@ -2831,21 +2893,20 @@ h4 {
         order: 2;
     }
     .ai-video-container {
-        grid-template-columns: repeat(3, 1fr); /* На планшете 3 колонки */
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
-/* ГЛАВНОЕ ИСПРАВЛЕНИЕ ДЛЯ МОБИЛЬНЫХ (ШИРИНА ДО 768px) */
 @media (max-width: 768px) {
     .ai-reklama-section {
-        min-height: auto !important; /* Принудительно убираем высоту */
+        min-height: auto !important;
         overflow: visible !important;
         margin-bottom: 0;
         padding-bottom: 0;
     }
     
     .ai-video-container {
-        grid-template-columns: 1fr !important; /* ОДНА колонка на телефоне */
+        grid-template-columns: 1fr !important;
         gap: 20px;
     }
     
@@ -2860,7 +2921,6 @@ h4 {
         font-size: 0.9rem;
     }
     
-    /* Дополнительная страховка: убираем скролл у родительского контейнера */
     .ai-videos-wrapper,
     .ai-video-container,
     .ai-video-item {
