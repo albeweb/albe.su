@@ -903,7 +903,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initKineticButtons();
     initToTop();
     initCaseAccordion();
-    initAICards3D(); // Новая функция для карточек AI реклама
+    // initAICards3D(); // ОТКЛЮЧЕНО — убирает второй скролл при наведении на карточки AI реклама
     
     loadComponent('header-placeholder', 'header.html', function() {
         initBurgerMenu();
