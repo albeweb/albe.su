@@ -180,7 +180,10 @@ h2 {
     font-weight: 400;
     position: relative;
     display: inline-block;
-    color: var(--white); /* БЕЛЫЙ цвет для всех h2 */
+    background: var(--ig-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 h2::after {
@@ -207,64 +210,8 @@ h4 {
     color: var(--white);
 }
 
-/* ============================================ */
-/* ЦВЕТНЫЕ ЗАГОЛОВКИ В КАРТОЧКАХ */
-/* ============================================ */
+.section { padding: 100px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
 
-/* Service card h3 - цвет по теме */
-.service-card h3 {
-    background: linear-gradient(135deg, var(--ig-pink), var(--ig-orange));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-/* Portfolio card h3 */
-.portfolio-info h3 {
-    background: linear-gradient(135deg, var(--ig-purple), var(--ig-pink));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-/* Step card h3 */
-.step-card h3 {
-    background: linear-gradient(135deg, var(--ig-orange), var(--ig-pink));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-/* Competence card h3 */
-.competence-card h3 {
-    background: linear-gradient(135deg, var(--white), #C8D0E0);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-/* FAQ question */
-.faq-question {
-    color: var(--ig-pink); /* уже задано, оставляем */
-}
-
-/* Price card h4 */
-.price-card h4 {
-    color: var(--ig-pink); /* уже задано, оставляем */
-}
-
-/* Contact card h2 - переопределяем (оставляем белым как и все h2) */
-.contact-card h2 {
-    color: var(--white);
-}
-
-/* AI card h3 */
-.ai-card h3 {
-    background: linear-gradient(135deg, var(--white), #C0C8D8);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
 /* ============================================ */
 /* 6. КАРТОЧКИ И ОБЩИЕ БЛОКИ */
 /* ============================================ */
@@ -2366,20 +2313,20 @@ h4 {
 }
 
 /* ============================================ */
-/* 20. АККОРДЕОН FAQ В СТИЛЕ «КЕЙС» (ИСПРАВЛЕН) */
+/* 20. АККОРДЕОН FAQ В СТИЛЕ «КЕЙС» */
 /* ============================================ */
 
 .cases-accordion {
     display: flex;
     flex-direction: column;
-    gap: 1rem; /* Уменьшено расстояние */
+    gap: 1.5rem;
     margin-top: 2rem;
 }
 
 .case-item {
-    background: rgba(18, 18, 26, 0.75); /* ФОН В ЦВЕТА ПАЛИТРЫ */
+    background: rgba(10, 10, 10, 0.6);
     backdrop-filter: blur(10px);
-    border-radius: 20px;
+    border-radius: 24px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     transition: all 0.3s ease;
     transform-style: preserve-3d;
@@ -2393,7 +2340,7 @@ h4 {
 
 .case-lid {
     position: relative;
-    padding: 1rem 1.5rem; /* Уменьшено */
+    padding: 1.2rem 1.8rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -2503,18 +2450,18 @@ h4 {
 }
 
 .case-item.active .case-inside {
-    max-height: 250px; /* Уменьшено для компактности */
+    max-height: 380px;
 }
 
 .case-content {
-    padding: 0rem 1.5rem 1.2rem 1.5rem; /* Уменьшено */
+    padding: 0.2rem 1.8rem 1.6rem 1.8rem;
     transform: translateZ(8px);
 }
 
 .case-text {
     color: var(--gray);
-    line-height: 1.5;
-    font-size: 0.85rem; /* Уменьшено */
+    line-height: 1.6;
+    font-size: 0.92rem;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     padding-top: 1rem;
 }
@@ -2522,12 +2469,12 @@ h4 {
 .project-meta {
     display: flex;
     gap: 1rem;
-    margin-top: 0.8rem; /* Уменьшено */
+    margin-top: 1rem;
     flex-wrap: wrap;
 }
 
 .meta-tag {
-    font-size: 0.65rem; /* Уменьшено */
+    font-size: 0.7rem;
     font-family: monospace;
     color: var(--ig-purple);
     background: rgba(131, 58, 180, 0.08);
@@ -2553,9 +2500,9 @@ h4 {
 }
 
 @media (max-width: 640px) {
-    .case-lid { padding: 0.8rem 1rem; }
+    .case-lid { padding: 1rem 1.2rem; }
     .case-title { font-size: 0.85rem; }
-    .case-content { padding: 0 1rem 1rem 1rem; }
+    .case-content { padding: 0 1.2rem 1.2rem 1.2rem; }
     .case-number { font-size: 0.7rem; }
 }
 
@@ -2637,14 +2584,14 @@ h4 {
     }
 
     .case-title {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
     .case-text {
-        font-size: 0.9rem;
-        line-height: 1.5;
+        font-size: 1rem;
+        line-height: 1.6;
     }
     .case-number {
-        font-size: 0.8rem;
+        font-size: 0.85rem;
         padding: 0.3rem 1rem;
     }
 
