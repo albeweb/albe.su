@@ -102,7 +102,7 @@ body::before {
 }
 
 /* ============================================ */
-/* 4. НАЗНАЧЕНИЕ ШРИФТОВ */
+/* 4. НАЗНАЧЕНИЕ ШРИФТОВ (ИСПРАВЛЕНО) */
 /* ============================================ */
 
 h1, h2,
@@ -116,6 +116,24 @@ h1, h2,
     font-family: 'EN Regular', sans-serif;
     font-weight: 400;
     letter-spacing: -0.02em;
+}
+
+/* ВСЕ H2 ТЕПЕРЬ БЕЛЫЕ (градиент убран) */
+h2, .section-header h2, .contact-card h2 {
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+    color: var(--white) !important;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+    width: 70px;
+    height: 2px;
+    background: var(--ig-gradient);
 }
 
 h3, h4, h5, h6,
@@ -162,7 +180,40 @@ p, .hero-desc, .service-card p, .portfolio-info p, .step-card p, .competence-car
 }
 
 /* ============================================ */
-/* 5. СТИЛИ ДЛЯ ЗАГОЛОВКОВ */
+/* 5. ЦВЕТНЫЕ ЗАГОЛОВКИ В КАРТОЧКАХ (ДОБАВЛЕНО) */
+/* ============================================ */
+
+.service-card h3 {
+    background: linear-gradient(135deg, var(--ig-pink), var(--ig-orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.competence-card h3 {
+    background: linear-gradient(135deg, var(--ig-purple), var(--ig-pink));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.step-card h3 {
+    color: var(--ig-orange);
+}
+
+.price-card h4 {
+    color: var(--ig-pink);
+}
+
+.ai-card h3 {
+    background: linear-gradient(135deg, var(--ig-pink), var(--ig-purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* ============================================ */
+/* 6. СТИЛИ ДЛЯ ЗАГОЛОВКОВ */
 /* ============================================ */
 
 h1 {
@@ -172,28 +223,6 @@ h1 {
     font-weight: 400;
     letter-spacing: -0.02em;
     color: var(--white);
-}
-
-h2 {
-    font-size: clamp(1.8rem, 5vw, 3.8rem);
-    margin-bottom: 2rem;
-    font-weight: 400;
-    position: relative;
-    display: inline-block;
-    background: var(--ig-gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-h2::after {
-    content: '';
-    position: absolute;
-    bottom: -12px;
-    left: 0;
-    width: 70px;
-    height: 2px;
-    background: var(--ig-gradient);
 }
 
 h3 {
@@ -213,7 +242,7 @@ h4 {
 .section { padding: 100px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
 
 /* ============================================ */
-/* 6. КАРТОЧКИ И ОБЩИЕ БЛОКИ */
+/* 7. КАРТОЧКИ И ОБЩИЕ БЛОКИ */
 /* ============================================ */
 
 .portfolio-card, .step-card,
@@ -347,7 +376,7 @@ h4 {
 .faq-question.active::after { content: '−'; }
 
 /* ============================================ */
-/* 7. КОНТАКТЫ */
+/* 8. КОНТАКТЫ */
 /* ============================================ */
 
 .contact-section {
@@ -431,7 +460,31 @@ h4 {
 }
 
 /* ============================================ */
-/* 8. HEADER */
+/* 9. КНОПКА ОТПРАВИТЬ - УВЕЛИЧЕНА (ИСПРАВЛЕНО) */
+/* ============================================ */
+
+.contact-form button[type="submit"] {
+    padding: 16px 24px;
+    font-size: 1rem;
+    width: 100%;
+    white-space: nowrap;
+    background: var(--ig-gradient);
+    border: none;
+    border-radius: 60px;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.contact-form button[type="submit"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(214, 41, 118, 0.3);
+}
+
+/* ============================================ */
+/* 10. HEADER */
 /* ============================================ */
 
 .header {
@@ -550,7 +603,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 9. HERO БАННЕР */
+/* 11. HERO БАННЕР */
 /* ============================================ */
 
 .hero {
@@ -838,7 +891,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 10. КАЛЬКУЛЯТОР */
+/* 12. КАЛЬКУЛЯТОР */
 /* ============================================ */
 
 .calculator-card { padding: 40px; margin: 40px 0; }
@@ -936,7 +989,7 @@ h4 {
 .time-breakdown-item span:first-child { color: var(--ig-orange); }
 
 /* ============================================ */
-/* 11. КОМПЕТЕНЦИИ И ТЕХНОЛОГИИ */
+/* 13. КОМПЕТЕНЦИИ И ТЕХНОЛОГИИ */
 /* ============================================ */
 
 .steps-container {
@@ -999,17 +1052,6 @@ h4 {
     border-color: var(--ig-pink);
     box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
     background: rgba(25, 25, 32, 0.98);
-}
-
-.competence-card h3 {
-    font-size: 1.4rem;
-    margin-bottom: 10px;
-    font-weight: 600;
-    background: linear-gradient(135deg, var(--white), #C8D0E0);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    letter-spacing: -0.02em;
 }
 
 .competence-card > p {
@@ -1079,7 +1121,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 12. ТАБЛИЦА ЦЕН */
+/* 14. ТАБЛИЦА ЦЕН */
 /* ============================================ */
 
 .price-table {
@@ -1116,12 +1158,6 @@ h4 {
     border-color: var(--ig-pink);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(8px);
-}
-
-.price-card h4 {
-    font-size: 1.2rem;
-    color: var(--ig-pink);
-    margin-bottom: 12px;
 }
 
 .price-card .price {
@@ -1164,7 +1200,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 13. FOOTER */
+/* 15. FOOTER */
 /* ============================================ */
 
 .footer {
@@ -1203,7 +1239,222 @@ h4 {
 }
 
 /* ============================================ */
-/* 14. CLS FIX */
+/* 16. КЕЙСЫ - УМЕНЬШЕНА ВЫСОТА И ШРИФТЫ (ИСПРАВЛЕНО) */
+/* ============================================ */
+
+.cases-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 2rem;
+}
+
+.case-item {
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+}
+
+.case-item:hover {
+    border-color: var(--ig-pink);
+}
+
+.case-lid {
+    padding: 0.6rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+    background: transparent;
+    border: none;
+}
+
+.lid-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.case-number {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--ig-purple);
+    background: rgba(131, 58, 180, 0.15);
+    padding: 0.2rem 0.7rem;
+    border-radius: 30px;
+}
+
+.case-title {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--white);
+}
+
+.case-handle {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.handle-bar {
+    width: 20px;
+    height: 2px;
+    background: var(--gray);
+    border-radius: 2px;
+    position: relative;
+}
+
+.case-inside {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.case-item.active .case-inside {
+    max-height: 200px;
+}
+
+.case-content {
+    padding: 0 1rem 1rem 1rem;
+}
+
+.case-text {
+    color: var(--gray);
+    line-height: 1.4;
+    font-size: 0.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 0.5rem;
+}
+
+.project-meta {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.meta-tag {
+    font-size: 0.6rem;
+    font-family: monospace;
+    color: var(--ig-orange);
+    background: rgba(245, 96, 64, 0.08);
+    padding: 0.1rem 0.5rem;
+    border-radius: 16px;
+    border-left: 1px solid var(--ig-orange);
+}
+
+/* ============================================ */
+/* 17. ВИДЕО - ПЛЕЙ-ИКОНКА И РАЗНЫЕ ЦВЕТА ЗАГЛУШЕК (ДОБАВЛЕНО) */
+/* ============================================ */
+
+.ai-video-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.video-placeholder {
+    position: relative;
+    cursor: pointer;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 2px solid rgba(214, 41, 118, 0.4);
+    transition: all 0.3s ease;
+}
+
+.video-placeholder:hover {
+    border-color: var(--ig-pink);
+    transform: translateY(-5px);
+}
+
+/* Разные цвета фона-заглушки */
+.video-placeholder:nth-child(1) .video-frame {
+    background: linear-gradient(135deg, #2a0a2a, #1a0520);
+}
+.video-placeholder:nth-child(2) .video-frame {
+    background: linear-gradient(135deg, #2a1a0a, #0a0a2a);
+}
+.video-placeholder:nth-child(3) .video-frame {
+    background: linear-gradient(135deg, #0a2a1a, #2a0a1a);
+}
+.video-placeholder:nth-child(4) .video-frame {
+    background: linear-gradient(135deg, #2a0a2a, #2a0a1a);
+}
+.video-placeholder:nth-child(5) .video-frame {
+    background: linear-gradient(135deg, #1a2a0a, #0a2a2a);
+}
+.video-placeholder:nth-child(6) .video-frame {
+    background: linear-gradient(135deg, #2a0a2a, #0a0a2a);
+}
+
+.video-frame {
+    position: relative;
+    width: 100%;
+    padding-top: 177.78%;
+    overflow: hidden;
+}
+
+.video-frame img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+}
+
+.play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.play-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(214, 41, 118, 0.85);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(214, 41, 118, 0.5);
+}
+
+.play-icon svg {
+    width: 28px;
+    height: 28px;
+    fill: white;
+    margin-left: 4px;
+}
+
+.video-placeholder:hover .play-icon {
+    transform: scale(1.1);
+    background: var(--ig-pink);
+    box-shadow: 0 0 30px var(--ig-pink);
+}
+
+.video-placeholder:hover .play-overlay {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================ */
+/* 18. CLS FIX */
 /* ============================================ */
 
 #mainHeader {
@@ -1238,7 +1489,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 15. MEDIA QUERIES */
+/* 19. MEDIA QUERIES */
 /* ============================================ */
 
 @media (max-width: 1400px) {
@@ -1258,6 +1509,9 @@ h4 {
         grid-template-columns: repeat(2, 1fr);
     }
     .price-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .ai-video-container {
         grid-template-columns: repeat(2, 1fr);
     }
 }
@@ -1282,6 +1536,9 @@ h4 {
     .mission-grid-wrapper { flex-direction: column; gap: 30px; }
     .mission-text { text-align: center; }
     .faq-grid { grid-template-columns: 1fr; }
+    .ai-video-container {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1378,6 +1635,10 @@ h4 {
     
     body::before { display: none; }
     .hero { background: #0A0E12; }
+    
+    .case-lid { padding: 0.5rem 0.8rem; }
+    .case-title { font-size: 0.75rem; }
+    .case-text { font-size: 0.7rem; }
 }
 
 @media (max-width: 550px) {
@@ -1420,6 +1681,20 @@ h4 {
     .faq-question { padding: 14px 16px; font-size: 0.85rem; }
     
     .tech-item { padding: 5px 10px; font-size: 0.7rem; }
+    
+    .contact-form button[type="submit"] {
+        padding: 14px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .play-icon {
+        width: 45px;
+        height: 45px;
+    }
+    .play-icon svg {
+        width: 20px;
+        height: 20px;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1432,7 +1707,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 16. ПОРТФОЛИО - ПРЕМИАЛЬНЫЙ ГОРИЗОНТАЛЬНЫЙ АККОРДЕОН */
+/* 20. ПОРТФОЛИО - ПРЕМИАЛЬНЫЙ ГОРИЗОНТАЛЬНЫЙ АККОРДЕОН */
 /* ============================================ */
 
 .portfolio-accordion {
@@ -1768,7 +2043,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 17. ТУЛТИПЫ ДЛЯ ТЕХНОЛОГИЙ */
+/* 21. ТУЛТИПЫ ДЛЯ ТЕХНОЛОГИЙ */
 /* ============================================ */
 
 .tech-tooltip {
@@ -1797,7 +2072,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 18. ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ — КВАНТОВЫЙ СТИЛЬ */
+/* 22. ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ — КВАНТОВЫЙ СТИЛЬ */
 /* ============================================ */
 
 .services-grid {
@@ -2035,7 +2310,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 19. КИНЕТИЧЕСКИЕ КНОПКИ (3 СЕГМЕНТА) */
+/* 23. КИНЕТИЧЕСКИЕ КНОПКИ (3 СЕГМЕНТА) */
 /* ============================================ */
 
 .kinetic-wrapper {
@@ -2313,7 +2588,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 20. АККОРДЕОН FAQ В СТИЛЕ «КЕЙС» */
+/* 24. АККОРДЕОН FAQ В СТИЛЕ «КЕЙС» */
 /* ============================================ */
 
 .cases-accordion {
@@ -2507,7 +2782,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 21. УВЕЛИЧЕНИЕ ШРИФТОВ ДЛЯ ПК (ширина ≥1200px) */
+/* 25. УВЕЛИЧЕНИЕ ШРИФТОВ ДЛЯ ПК (ширина ≥1200px) */
 /* ============================================ */
 
 @media (min-width: 1200px) {
@@ -2690,7 +2965,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 22. AI РЕКЛАМА — ИСПРАВЛЕННЫЙ БЛОК */
+/* 26. AI РЕКЛАМА — ИСПРАВЛЕННЫЙ БЛОК */
 /* ============================================ */
 
 .ai-reklama-section {
@@ -2818,7 +3093,7 @@ h4 {
 .ai-card h3 {
     font-size: 1.6rem;
     font-weight: 400;
-    background: linear-gradient(135deg, var(--white), #C0C8D8);
+    background: linear-gradient(135deg, var(--ig-pink), var(--ig-purple));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -2848,40 +3123,6 @@ h4 {
     flex: 7;
     min-width: 0;
     overflow: visible;
-}
-
-.ai-video-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    overflow: visible;
-}
-
-.ai-video-item {
-    position: relative;
-    border-radius: 28px;
-    overflow: hidden;
-    border: 2px solid rgba(214, 41, 118, 0.5);
-    transition: all 0.3s ease;
-    background: #000;
-}
-.ai-video-item:hover {
-    border-color: var(--ig-pink);
-}
-
-.video-frame {
-    position: relative;
-    width: 100%;
-    padding-top: 177.78%;
-    background: #000;
-}
-.video-frame iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
 }
 
 @media (max-width: 1024px) {
@@ -2931,7 +3172,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 23. ПЛЕЙСХОЛДЕРЫ ДЛЯ ВИДЕО (ОТЛОЖЕННАЯ ЗАГРУЗКА) */
+/* 27. ПЛЕЙСХОЛДЕРЫ ДЛЯ ВИДЕО (ОТЛОЖЕННАЯ ЗАГРУЗКА) */
 /* ============================================ */
 
 .video-placeholder {
