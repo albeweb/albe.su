@@ -180,10 +180,7 @@ h2 {
     font-weight: 400;
     position: relative;
     display: inline-block;
-    background: var(--ig-gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: var(--white); /* БЕЛЫЙ цвет для всех h2 */
 }
 
 h2::after {
@@ -210,7 +207,64 @@ h4 {
     color: var(--white);
 }
 
-.section { padding: 100px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+/* ============================================ */
+/* ЦВЕТНЫЕ ЗАГОЛОВКИ В КАРТОЧКАХ */
+/* ============================================ */
+
+/* Service card h3 - цвет по теме */
+.service-card h3 {
+    background: linear-gradient(135deg, var(--ig-pink), var(--ig-orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Portfolio card h3 */
+.portfolio-info h3 {
+    background: linear-gradient(135deg, var(--ig-purple), var(--ig-pink));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Step card h3 */
+.step-card h3 {
+    background: linear-gradient(135deg, var(--ig-orange), var(--ig-pink));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Competence card h3 */
+.competence-card h3 {
+    background: linear-gradient(135deg, var(--white), #C8D0E0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* FAQ question */
+.faq-question {
+    color: var(--ig-pink); /* уже задано, оставляем */
+}
+
+/* Price card h4 */
+.price-card h4 {
+    color: var(--ig-pink); /* уже задано, оставляем */
+}
+
+/* Contact card h2 - переопределяем (оставляем белым как и все h2) */
+.contact-card h2 {
+    color: var(--white);
+}
+
+/* AI card h3 */
+.ai-card h3 {
+    background: linear-gradient(135deg, var(--white), #C0C8D8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
 
 /* ============================================ */
 /* 6. КАРТОЧКИ И ОБЩИЕ БЛОКИ */
