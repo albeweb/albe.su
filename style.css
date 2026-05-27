@@ -1463,13 +1463,13 @@ h4 {
 }
 
 /* ============================================ */
-/* 16. ПОРТФОЛИО - ПРЕМИАЛЬНЫЙ ГОРИЗОНТАЛЬНЫЙ АККОРДЕОН */
+/* 16. ПОРТФОЛИО - ПРЕМИАЛЬНЫЙ ГОРИЗОНТАЛЬНЫЙ АККОРДЕОН — УМЕНЬШЕННАЯ ВЫСОТА */
 /* ============================================ */
 
 .portfolio-accordion {
     display: flex;
     width: 100%;
-    margin-top: 48px;
+    margin-top: 32px; /* уменьшено с 48px */
     gap: 12px;
     background: transparent;
     border-radius: 24px;
@@ -1489,31 +1489,19 @@ h4 {
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 20px;
     overflow: hidden;
-    min-height: 500px;
+    min-height: 380px !important; /* Уменьшено с 500px */
+    max-height: 380px !important; /* Ограничиваем максимальную высоту */
     box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.3);
 }
 
+/* Активная панель тоже ограничиваем по высоте */
 .accordion-panel.active {
     flex: 3.5;
     background: rgba(20, 25, 32, 0.98);
     border: 1px solid var(--ig-pink);
     box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
-}
-
-.accordion-panel::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--ig-gradient);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.accordion-panel.active::before {
-    opacity: 1;
+    min-height: 380px !important;
+    max-height: 380px !important;
 }
 
 .accordion-panel:not(.active) .accordion-panel-header {
@@ -1522,96 +1510,48 @@ h4 {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 20px 15px;
+    padding: 15px 12px !important; /* Уменьшено */
     height: 100%;
     background: rgba(0, 0, 0, 0.2);
 }
 
-.accordion-panel:not(.active) .panel-number {
-    font-size: 2.2rem;
-    margin-bottom: 20px;
-    letter-spacing: 6px;
-    background: var(--ig-gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    opacity: 0.9;
-    display: block;
-}
-
-.accordion-panel:not(.active) .panel-title h3 {
-    font-size: 1.2rem;
-    color: var(--white);
-    font-weight: 500;
-    letter-spacing: 4px;
-    text-align: center;
-    line-height: 1.4;
-}
-
-.accordion-panel:not(.active) .panel-stats {
-    display: none;
-}
-
-.accordion-panel:not(.active):hover {
-    border-color: var(--ig-pink);
-    transform: translateX(-2px);
-    background: rgba(30, 35, 45, 0.95);
-}
-
 .accordion-panel.active .accordion-panel-header {
-    padding: 20px 28px;
+    padding: 12px 20px !important; /* Уменьшено с 20px 28px */
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    gap: 20px;
+    gap: 15px; /* Уменьшено с 20px */
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     background: linear-gradient(135deg, rgba(214, 41, 118, 0.1), rgba(131, 58, 180, 0.05));
     flex-shrink: 0;
 }
 
-.accordion-panel.active .panel-number {
-    display: none;
-}
-
 .accordion-panel.active .panel-title h3 {
-    font-size: 1.3rem;
+    font-size: 1.1rem; /* Уменьшено с 1.3rem */
     color: var(--white);
-    letter-spacing: 4px;
+    letter-spacing: 3px; /* Уменьшено с 4px */
     font-weight: 600;
     margin: 0;
 }
 
-.accordion-panel.active .panel-stats {
-    display: none;
-}
-
 .accordion-panel-content {
     display: none;
-    padding: 24px 28px;
+    padding: 16px 20px !important; /* Уменьшено с 24px 28px */
     flex: 1;
     background: rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
-    overflow: hidden;
-}
-
-.accordion-panel.active .accordion-panel-content {
-    display: flex;
-    animation: fadeInContent 0.3s ease;
-}
-
-@keyframes fadeInContent {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    overflow-y: auto; /* Добавляем скролл если контента много */
 }
 
 .panel-image {
-    margin-bottom: 20px;
+    margin-bottom: 12px; /* Уменьшено с 20px */
     border-radius: 16px;
     overflow: hidden;
     aspect-ratio: 2 / 1;
     flex-shrink: 0;
+    max-height: 120px; /* Ограничиваем высоту изображения */
 }
 
 .panel-image img {
@@ -1622,19 +1562,15 @@ h4 {
     transition: transform 0.5s ease;
 }
 
-.panel-image img:hover {
-    transform: scale(1.03);
-}
-
 .panel-description {
     flex: 1;
-    margin-bottom: 20px;
+    margin-bottom: 12px; /* Уменьшено с 20px */
     overflow-y: auto;
 }
 
 .panel-description p {
-    font-size: 0.95rem;
-    line-height: 1.6;
+    font-size: 0.85rem !important; /* Уменьшено с 0.95rem */
+    line-height: 1.4 !important; /* Уменьшено с 1.6 */
     color: var(--gray);
     margin: 0;
 }
@@ -1642,75 +1578,64 @@ h4 {
 .panel-bottom {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 10px; /* Уменьшено с 16px */
     flex-shrink: 0;
 }
 
 .panel-tech h4 {
-    font-size: 0.75rem;
+    font-size: 0.65rem; /* Уменьшено с 0.75rem */
     color: var(--ig-orange);
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     font-weight: 500;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 
 .tech-items {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 5px; /* Уменьшено с 8px */
 }
 
 .tech-items span {
     background: rgba(255, 255, 255, 0.08);
-    padding: 5px 12px;
-    font-size: 0.75rem;
+    padding: 3px 8px; /* Уменьшено с 5px 12px */
+    font-size: 0.65rem !important; /* Уменьшено с 0.75rem */
     border-radius: 20px;
     color: var(--white);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.2s ease;
-}
-
-.tech-items span:hover {
-    background: var(--ig-pink);
-    color: #0A0A0A;
-    transform: translateY(-2px);
 }
 
 .panel-metrics {
     background: rgba(255, 255, 255, 0.04);
-    padding: 14px 18px;
+    padding: 10px 12px; /* Уменьшено с 14px 18px */
     border-radius: 16px;
     display: flex;
     justify-content: space-between;
-    gap: 20px;
+    gap: 12px;
 }
 
 .panel-metrics div {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px; /* Уменьшено с 4px */
     flex: 1;
     text-align: center;
 }
 
-.panel-metrics div:not(:last-child) {
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
-}
-
 .panel-metrics span:first-child {
     color: var(--gray);
-    font-size: 0.65rem;
-    letter-spacing: 1px;
+    font-size: 0.55rem; /* Уменьшено с 0.65rem */
+    letter-spacing: 0.5px;
 }
 
 .panel-metrics span:last-child {
     color: var(--white);
     font-weight: 500;
-    font-size: 0.85rem;
+    font-size: 0.7rem; /* Уменьшено с 0.85rem */
 }
 
 .active-panel-footer {
-    padding: 16px 28px;
+    padding: 10px 20px; /* Уменьшено с 16px 28px */
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     background: linear-gradient(135deg, rgba(214, 41, 118, 0.05), rgba(131, 58, 180, 0.03));
     display: flex;
@@ -1719,17 +1644,10 @@ h4 {
     flex-shrink: 0;
 }
 
-.active-panel-footer .footer-hours,
-.active-panel-footer .footer-price {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
 .active-panel-footer .footer-hours span:first-child,
 .active-panel-footer .footer-price span:first-child {
     color: var(--gray);
-    font-size: 0.75rem;
+    font-size: 0.65rem;
     letter-spacing: 1px;
 }
 
@@ -1737,7 +1655,7 @@ h4 {
 .active-panel-footer .footer-price span:last-child {
     color: var(--ig-orange);
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 
 @media (max-width: 900px) {
@@ -1747,57 +1665,20 @@ h4 {
     }
     
     .accordion-panel {
-        height: auto;
+        min-height: auto !important;
+        max-height: none !important;
     }
     
     .accordion-panel:not(.active) .accordion-panel-header {
         flex-direction: row;
         justify-content: space-between;
-        padding: 16px 20px;
-    }
-    
-    .accordion-panel:not(.active) .panel-number {
-        font-size: 1.3rem;
-        margin-bottom: 0;
-    }
-    
-    .accordion-panel:not(.active) .panel-title h3 {
-        font-size: 1rem;
-        letter-spacing: 2px;
-    }
-    
-    .accordion-panel.active .panel-title h3 {
-        font-size: 1.1rem;
+        padding: 12px 16px !important;
     }
     
     .accordion-panel-content {
-        padding: 20px;
-    }
-    
-    .panel-metrics {
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .panel-metrics div {
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 8px 0;
-    }
-    
-    .panel-metrics div:not(:last-child) {
-        border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .active-panel-footer {
-        padding: 12px 20px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
+        padding: 12px 16px !important;
     }
 }
-
 /* ============================================ */
 /* 17. ТУЛТИПЫ ДЛЯ ТЕХНОЛОГИЙ */
 /* ============================================ */
