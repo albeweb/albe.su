@@ -3103,7 +3103,7 @@ h4 {
 /* Планшеты */
 @media (min-width: 769px) and (max-width: 1200px) {
     .kinetic-btn.totop-btn {
-        bottom: 50px !important;
-        right: 50px !important;
+        bottom: 0px !important;
+        right: 0px !important;
     }
 }
