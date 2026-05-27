@@ -2916,3 +2916,21 @@ h4 {
         height: 6px;
     }
 }
+
+/* ============================================ */
+/* СКРЫВАЕМ КИНЕТИЧЕСКИЕ КНОПКИ ВО ВСЕХ БЛОКАХ, КРОМЕ ХЕДЕРА И КОНТАКТОВ */
+/* ============================================ */
+
+/* Скрываем все кинетические кнопки внутри секций */
+.section .kinetic-btn,
+.section .kinetic-wrapper {
+    display: none !important;
+}
+
+/* Показываем только в контактной секции и в хедере */
+.contact-section .kinetic-btn,
+.contact-section .kinetic-wrapper,
+.header .kinetic-btn,
+.header .kinetic-wrapper {
+    display: inline-flex !important;
+}
