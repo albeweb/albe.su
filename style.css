@@ -1463,7 +1463,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 16. ПОРТФОЛИО - ПРЕМИАЛЬНЫЙ ГОРИЗОНТАЛЬНЫЙ АККОРДЕОН — УМЕНЬШЕННАЯ ВЫСОТА */
+/* 16. ПОРТФОЛИО - ПРЕМИАЛЬНЫЙ ГОРИЗОНТАЛЬНЫЙ АККОРДЕОН — ВЫСОТА 700px */
 /* ============================================ */
 
 .portfolio-accordion {
@@ -1489,8 +1489,8 @@ h4 {
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 20px;
     overflow: hidden;
-    min-height: 600px !important; /* было 500px, уменьшил */
-    max-height: 600px !important; /* добавил ограничение */
+    min-height: 700px;
+    max-height: 700px;
     box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.3);
 }
 
@@ -1499,94 +1499,224 @@ h4 {
     background: rgba(20, 25, 32, 0.98);
     border: 1px solid var(--ig-pink);
     box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
-    min-height: 600px !important;
-    max-height: 600px !important;
+    min-height: 700px;
+    max-height: 700px;
 }
 
-/* Уменьшаем отступы в заголовке неактивных панелей */
+/* Закрытые панели */
 .accordion-panel:not(.active) .accordion-panel-header {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 12px 10px !important; /* уменьшено */
+    padding: 20px 15px;
     height: 100%;
     background: rgba(0, 0, 0, 0.2);
 }
 
 .accordion-panel:not(.active) .panel-number {
-    font-size: 1.6rem; /* уменьшено с 2.2rem */
-    margin-bottom: 8px; /* уменьшено с 20px */
-    letter-spacing: 4px;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    letter-spacing: 6px;
+    background: var(--ig-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    opacity: 0.9;
+    display: block;
 }
 
 .accordion-panel:not(.active) .panel-title h3 {
-    font-size: 0.9rem; /* уменьшено с 1.2rem */
-    letter-spacing: 2px;
+    font-size: 1.2rem;
+    color: var(--white);
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-align: center;
+    line-height: 1.4;
 }
 
-/* Уменьшаем отступы в активной панели */
+/* Активная панель - заголовок */
 .accordion-panel.active .accordion-panel-header {
-    padding: 10px 16px !important; /* уменьшено с 20px 28px */
-    gap: 12px;
+    padding: 16px 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(135deg, rgba(214, 41, 118, 0.1), rgba(131, 58, 180, 0.05));
+    flex-shrink: 0;
+}
+
+.accordion-panel.active .panel-number {
+    display: none;
 }
 
 .accordion-panel.active .panel-title h3 {
-    font-size: 0.95rem; /* уменьшено с 1.3rem */
-    letter-spacing: 2px;
+    font-size: 1.3rem;
+    color: var(--white);
+    letter-spacing: 4px;
+    font-weight: 600;
+    margin: 0;
 }
 
-/* Уменьшаем отступы контента */
+/* Контент активной панели */
 .accordion-panel-content {
-    padding: 12px 16px !important; /* уменьшено с 24px 28px */
-    overflow-y: auto;
+    display: none;
+    padding: 20px 24px;
+    flex: 1;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
 }
 
+.accordion-panel.active .accordion-panel-content {
+    display: flex;
+    animation: fadeInContent 0.3s ease;
+}
+
+/* Изображение */
 .panel-image {
-    margin-bottom: 10px !important;
-    max-height: 90px !important; /* ограничиваем высоту изображения */
-    min-height: 70px;
+    margin-bottom: 16px;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 2 / 1;
+    flex-shrink: 0;
 }
 
+.panel-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+/* Описание */
 .panel-description {
-    margin-bottom: 10px !important;
+    flex-shrink: 0;
+    margin-bottom: 16px;
 }
 
 .panel-description p {
-    font-size: 0.75rem !important;
-    line-height: 1.3 !important;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--gray);
+    margin: 0;
 }
 
+/* Нижняя часть */
 .panel-bottom {
-    gap: 8px !important;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-shrink: 0;
 }
 
 .panel-tech h4 {
-    font-size: 0.6rem !important;
-    margin-bottom: 4px;
+    font-size: 0.7rem;
+    color: var(--ig-orange);
+    margin-bottom: 8px;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+.tech-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
 }
 
 .tech-items span {
-    padding: 2px 6px !important;
-    font-size: 0.6rem !important;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 4px 10px;
+    font-size: 0.7rem;
+    border-radius: 20px;
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Метрики - УМЕНЬШЕННЫЕ */
 .panel-metrics {
-    padding: 8px 10px !important;
-    gap: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 10px 14px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.panel-metrics div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    text-align: center;
+}
+
+.panel-metrics div:not(:last-child) {
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .panel-metrics span:first-child {
-    font-size: 0.5rem !important;
+    color: var(--gray);
+    font-size: 0.6rem;
+    letter-spacing: 1px;
 }
 
 .panel-metrics span:last-child {
-    font-size: 0.65rem !important;
+    color: var(--white);
+    font-weight: 500;
+    font-size: 0.75rem;
 }
 
-/* На мобильных устройствах снимаем ограничения */
+/* Футер активной панели с часами и суммой - УМЕНЬШЕННЫЙ */
+.active-panel-footer {
+    padding: 12px 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(135deg, rgba(214, 41, 118, 0.05), rgba(131, 58, 180, 0.03));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.active-panel-footer .footer-hours,
+.active-panel-footer .footer-price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.active-panel-footer .footer-hours span:first-child,
+.active-panel-footer .footer-price span:first-child {
+    color: var(--gray);
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+}
+
+.active-panel-footer .footer-hours span:last-child,
+.active-panel-footer .footer-price span:last-child {
+    color: var(--ig-orange);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Анимация */
+@keyframes fadeInContent {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Мобильная версия */
 @media (max-width: 900px) {
+    .portfolio-accordion {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
     .accordion-panel,
     .accordion-panel.active {
         min-height: auto !important;
@@ -1596,11 +1726,48 @@ h4 {
     .accordion-panel:not(.active) .accordion-panel-header {
         flex-direction: row;
         justify-content: space-between;
-        padding: 12px 16px !important;
+        padding: 16px 20px;
     }
     
-    .panel-image {
-        max-height: 160px !important;
+    .accordion-panel:not(.active) .panel-number {
+        font-size: 1.3rem;
+        margin-bottom: 0;
+    }
+    
+    .accordion-panel:not(.active) .panel-title h3 {
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+    
+    .accordion-panel.active .panel-title h3 {
+        font-size: 1.1rem;
+    }
+    
+    .accordion-panel-content {
+        padding: 20px;
+    }
+    
+    .panel-metrics {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .panel-metrics div {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 8px 0;
+    }
+    
+    .panel-metrics div:not(:last-child) {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .active-panel-footer {
+        padding: 12px 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
     }
 }
 /* ============================================ */
