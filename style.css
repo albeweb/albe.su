@@ -2720,6 +2720,7 @@ h4 {
 .ai-reklama-section {
     min-height: auto;
     overflow: visible;
+    padding-bottom: 60px;
 }
 
 .ai-design-grid {
