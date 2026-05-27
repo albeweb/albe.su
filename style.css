@@ -2714,18 +2714,18 @@ h4 {
 }
 
 /* ============================================ */
-/* 22. AI РЕКЛАМА — НОВЫЙ БЛОК */
+/* 22. AI РЕКЛАМА */
 /* ============================================ */
 
 .ai-reklama-section {
-    min-height: 600px;
+    min-height: auto;
     overflow: visible;
 }
 
 .ai-design-grid {
     display: flex;
     gap: 48px;
-    align-items: stretch;
+    align-items: flex-start;
     flex-wrap: wrap;
 }
 
@@ -2878,20 +2878,18 @@ h4 {
 .ai-videos-wrapper {
     flex: 7;
     min-width: 0;
-    overflow: visible;
 }
 
 .ai-video-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-    overflow: visible;
 }
 
 .ai-video-item {
     position: relative;
     border-radius: 28px;
-    overflow: visible;
+    overflow: hidden;
     border: 2px solid rgba(214, 41, 118, 0.5);
     transition: all 0.3s ease;
     background: #000;
@@ -2904,7 +2902,7 @@ h4 {
 .video-frame {
     position: relative;
     width: 100%;
-    padding-top: 177.78%;
+    aspect-ratio: 9 / 16;
     background: #000;
 }
 
@@ -2917,7 +2915,6 @@ h4 {
     border: none;
 }
 
-/* Адаптив */
 @media (max-width: 1024px) {
     .ai-design-grid {
         flex-direction: column;
@@ -2946,8 +2943,5 @@ h4 {
     }
     .ai-card p {
         font-size: 0.9rem;
-    }
-    .ai-reklama-section {
-        min-height: auto;
     }
 }
