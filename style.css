@@ -2724,6 +2724,8 @@ h4 {
     transform-style: preserve-3d;
     cursor: default;
     transition: box-shadow 0.3s ease;
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
 .ai-card::before {
