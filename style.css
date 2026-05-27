@@ -92,34 +92,41 @@ body::before {
 /* 3. ТИПОГРАФИКА */
 /* ============================================ */
 
-h1, h2, .hero-title, .hero-title-line1, .hero-title-line2,
-.section-header h2, .contact-card h2, .price-table h3,
-.hero-tag, .quote-text, .nav-link {
+h1, h2,
+.hero-title, .hero-title-line1, .hero-title-line2,
+.section-header h2,
+.contact-card h2,
+.price-table h3,
+.hero-tag,
+.quote-text,
+.nav-link {
     font-family: 'EN Regular', sans-serif;
     font-weight: 400;
     letter-spacing: -0.02em;
 }
 
-h3, h4, h5, h6, .service-card h3, .portfolio-info h3, .step-card h3,
-.competence-card h3, .faq-question, .price-card h4, .price-card .price,
-.service-badge, .calc-label, .stack-explanation h4, .footer-logo, .footer h4,
-.step-num {
+h3, h4, h5, h6,
+.service-card h3, .portfolio-info h3, .step-card h3,
+.competence-card h3, .faq-question, .price-card h4,
+.price-card .price, .service-badge, .calc-label,
+.stack-explanation h4, .footer-logo, .footer h4, .step-num {
     font-family: 'Geist', sans-serif;
     font-weight: 500;
     letter-spacing: -0.02em;
 }
 
-.logo, .stat-number, .accordion-panel .panel-number, .price-card .price,
-.calc-price, .step-num, .stat-item .stat-number, .footer-hours span:last-child,
+.logo, .stat-number, .accordion-panel .panel-number,
+.price-card .price, .calc-price, .step-num,
+.stat-item .stat-number, .footer-hours span:last-child,
 .footer-price span:last-child, .panel-metrics span:last-child {
     font-family: 'Zen Dots', monospace;
 }
 
 p, .hero-desc, .service-card p, .portfolio-info p, .step-card p,
-.competence-card p, .mission-text p, .faq-answer, .footer p, .footer a,
-.tech-item, .calc-option, .time-breakdown-item, .stack-explanation p,
-input, textarea, .stat-label, .price-card li, .price-note,
-.panel-description p, .contact-desc {
+.competence-card p, .mission-text p, .faq-answer, .footer p,
+.footer a, .tech-item, .calc-option, .time-breakdown-item,
+.stack-explanation p, input, textarea, .stat-label, .price-card li,
+.price-note, .panel-description p, .contact-desc {
     font-family: 'Geist', sans-serif;
     font-weight: 400;
     font-size: 1rem;
@@ -127,20 +134,47 @@ input, textarea, .stat-label, .price-card li, .price-note,
     color: var(--gray);
 }
 
-h1 { font-size: clamp(3rem, 8vw, 9rem); line-height: 1; margin-bottom: 0.5rem; color: var(--white); }
-h2 {
-    font-size: clamp(1.8rem, 5vw, 3.8rem);
-    margin-bottom: 2rem;
-    position: relative;
-    display: inline-block;
-    background: var(--ig-gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+/* ВСЕ ЗАГОЛОВКИ БЕЛЫЕ */
+h1, h2, h3, h4, h5, h6,
+.hero-title, .hero-title-line1, .hero-title-line2,
+.section-header h2, .contact-card h2, .price-table h3,
+.hero-tag, .quote-text, .nav-link, .service-card h3,
+.portfolio-info h3, .step-card h3, .competence-card h3,
+.faq-question, .price-card h4, .price-card .price,
+.service-badge, .calc-label, .stack-explanation h4,
+.footer-logo, .footer h4, .step-num, .logo,
+.accordion-panel .panel-number, .calc-price,
+.panel-metrics span:last-child,
+.active-panel-footer .footer-hours span:last-child,
+.active-panel-footer .footer-price span:last-child,
+.ai-card h3, .case-title, .case-number {
+    color: var(--white);
 }
-h2::after { content: ''; position: absolute; bottom: -12px; left: 0; width: 70px; height: 2px; background: var(--ig-gradient); }
-h3 { font-size: 1.5rem; margin-bottom: 0.75rem; color: var(--white); }
-h4 { font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--white); }
+
+/* Специальные случаи */
+.section-header h2, .contact-card h2, .price-table h3,
+.hero-title-line1 {
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    color: var(--white);
+    text-shadow: none;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+    width: 70px;
+    height: 2px;
+    background: var(--ig-gradient);
+}
+
+h1 { font-size: clamp(3rem, 8vw, 9rem); line-height: 1; margin-bottom: 0.5rem; }
+h2 { font-size: clamp(1.8rem, 5vw, 3.8rem); margin-bottom: 2rem; position: relative; display: inline-block; }
+h3 { font-size: 1.5rem; margin-bottom: 0.75rem; }
+h4 { font-size: 1.2rem; margin-bottom: 0.5rem; }
 .section { padding: 100px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
 .service-badge, .quote-text { font-weight: 400; }
 .quote-text { font-size: 0.9rem; color: var(--gray); letter-spacing: 3px; display: inline-block; }
