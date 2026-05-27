@@ -2717,6 +2717,10 @@ h4 {
 /* 23. AI РЕКЛАМА */
 /* ============================================ */
 
+.ai-reklama-section {
+    min-height: 600px;
+}
+
 .ai-design-grid { display: flex; gap: 48px; align-items: stretch; flex-wrap: wrap; }
 .ai-cards-column { flex: 3; min-width: 260px; display: flex; flex-direction: column; gap: 24px; }
 
@@ -2731,7 +2735,6 @@ h4 {
     transform-style: preserve-3d;
     cursor: default;
     transition: box-shadow 0.3s ease;
-    min-height: auto;
 }
 
 .ai-card::before {
@@ -2869,7 +2872,7 @@ h4 {
 
 @media (max-width: 768px) {
     .ai-video-container { grid-template-columns: 1fr; gap: 20px; }
-    .ai-card { padding: 1.5rem; min-height: auto; }
+    .ai-card { padding: 1.5rem; }
     .ai-card h3 { font-size: 1.4rem; }
     .ai-card p { font-size: 0.9rem; }
 }
