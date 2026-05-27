@@ -3004,3 +3004,106 @@ h4 {
         height: 48px;
     }
 }
+
+/* ============================================ */
+/* КИНЕТИЧЕСКАЯ КНОПКА НАВЕРХ — ПЛАВАЮЩАЯ */
+/* ============================================ */
+
+/* Переопределяем позиционирование для кинетической кнопки наверх */
+.kinetic-btn.totop-btn {
+    position: fixed !important;
+    bottom: 100px !important;
+    right: 100px !important;
+    min-width: 60px !important;
+    width: 60px !important;
+    height: 60px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    transform: none !important;
+    z-index: 9999 !important;
+}
+
+/* Настройка сегментов для кнопки наверх */
+.kinetic-btn.totop-btn .segment-left,
+.kinetic-btn.totop-btn .segment-right,
+.kinetic-btn.totop-btn .segment-center {
+    display: block !important;
+    background: #0A0A0C !important;
+    backdrop-filter: blur(4px) !important;
+}
+
+/* Левая часть — левая половина круга */
+.kinetic-btn.totop-btn .segment-left {
+    width: 50% !important;
+    left: 0 !important;
+    border-radius: 60px 0 0 60px !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    border-right: none !important;
+    clip-path: polygon(0% 0%, 100% 0%, 85% 100%, 0% 100%) !important;
+}
+
+/* Правая часть — правая половина круга */
+.kinetic-btn.totop-btn .segment-right {
+    width: 50% !important;
+    right: 0 !important;
+    left: auto !important;
+    border-radius: 0 60px 60px 0 !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    border-left: none !important;
+    clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%) !important;
+}
+
+/* Центральная часть — скрываем для круглой кнопки */
+.kinetic-btn.totop-btn .segment-center {
+    display: none !important;
+}
+
+/* Текст внутри кнопки (стрелка вверх) */
+.kinetic-btn.totop-btn .btn-text {
+    font-size: 1.8rem !important;
+    letter-spacing: 0 !important;
+    background: var(--ig-gradient) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    transform: translate(-50%, -50%) translateZ(30px) !important;
+}
+
+/* Эффекты при наведении */
+.kinetic-btn.totop-btn:hover .segment-left {
+    border-color: var(--ig-pink) !important;
+    transform: translateX(-3px) rotateY(-2deg) !important;
+}
+
+.kinetic-btn.totop-btn:hover .segment-right {
+    border-color: var(--ig-purple) !important;
+    transform: translateX(3px) rotateY(2deg) !important;
+}
+
+.kinetic-btn.totop-btn:hover .btn-text {
+    letter-spacing: 2px !important;
+    transform: translate(-50%, -50%) translateZ(35px) !important;
+}
+
+/* Мобильные устройства */
+@media (max-width: 768px) {
+    .kinetic-btn.totop-btn {
+        bottom: 20px !important;
+        right: 20px !important;
+        min-width: 50px !important;
+        width: 50px !important;
+        height: 50px !important;
+    }
+    
+    .kinetic-btn.totop-btn .btn-text {
+        font-size: 1.4rem !important;
+    }
+}
+
+/* Планшеты */
+@media (min-width: 769px) and (max-width: 1200px) {
+    .kinetic-btn.totop-btn {
+        bottom: 50px !important;
+        right: 50px !important;
+    }
+}
