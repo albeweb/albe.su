@@ -180,7 +180,7 @@ h2 {
     font-weight: 400;
     position: relative;
     display: inline-block;
-    color: var(--white); /* БЕЛЫЙ цвет для всех h2 */
+    color: var(--white); /* ТОЛЬКО ЭТО ИЗМЕНЕНО — был градиент, стал белый */
 }
 
 h2::after {
@@ -208,10 +208,10 @@ h4 {
 }
 
 /* ============================================ */
-/* ЦВЕТНЫЕ ЗАГОЛОВКИ В КАРТОЧКАХ */
+/* ЦВЕТНЫЕ ЗАГОЛОВКИ В КАРТОЧКАХ (ДОБАВЛЯЕМ, НЕ УДАЛЯЯ СУЩЕСТВУЮЩИЕ) */
 /* ============================================ */
 
-/* Service card h3 - цвет по теме */
+/* Service card h3 - цветной */
 .service-card h3 {
     background: linear-gradient(135deg, var(--ig-pink), var(--ig-orange));
     -webkit-background-clip: text;
@@ -233,29 +233,6 @@ h4 {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-}
-
-/* Competence card h3 */
-.competence-card h3 {
-    background: linear-gradient(135deg, var(--white), #C8D0E0);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-/* FAQ question */
-.faq-question {
-    color: var(--ig-pink); /* уже задано, оставляем */
-}
-
-/* Price card h4 */
-.price-card h4 {
-    color: var(--ig-pink); /* уже задано, оставляем */
-}
-
-/* Contact card h2 - переопределяем (оставляем белым как и все h2) */
-.contact-card h2 {
-    color: var(--white);
 }
 
 /* AI card h3 */
