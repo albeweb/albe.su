@@ -1463,7 +1463,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 16. ПОРТФОЛИО - ПРЕМИАЛЬНЫЙ ГОРИЗОНТАЛЬНЫЙ АККОРДЕОН — ВЫСОТА 700px */
+/* 16. ПОРТФОЛИО - ПРЕМИАЛЬНЫЙ ГОРИЗОНТАЛЬНЫЙ АККОРДЕОН */
 /* ============================================ */
 
 .portfolio-accordion {
@@ -1489,8 +1489,8 @@ h4 {
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 20px;
     overflow: hidden;
-    min-height: 700px;
-    max-height: 700px;
+    min-height: 650px;
+    max-height: 650px;
     box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.3);
 }
 
@@ -1499,11 +1499,27 @@ h4 {
     background: rgba(20, 25, 32, 0.98);
     border: 1px solid var(--ig-pink);
     box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
-    min-height: 700px;
-    max-height: 700px;
+    min-height: 650px;
+    max-height: 650px;
 }
 
-/* Закрытые панели */
+.accordion-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--ig-gradient);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.accordion-panel.active::before {
+    opacity: 1;
+}
+
+/* ===== ЗАКРЫТЫЕ ПАНЕЛИ ===== */
 .accordion-panel:not(.active) .accordion-panel-header {
     display: flex;
     flex-direction: column;
@@ -1516,9 +1532,9 @@ h4 {
 }
 
 .accordion-panel:not(.active) .panel-number {
-    font-size: 2.2rem;
-    margin-bottom: 20px;
-    letter-spacing: 6px;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    letter-spacing: 4px;
     background: var(--ig-gradient);
     -webkit-background-clip: text;
     background-clip: text;
@@ -1528,22 +1544,32 @@ h4 {
 }
 
 .accordion-panel:not(.active) .panel-title h3 {
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: var(--white);
     font-weight: 500;
-    letter-spacing: 4px;
+    letter-spacing: 3px;
     text-align: center;
-    line-height: 1.4;
+    line-height: 1.3;
 }
 
-/* Активная панель - заголовок */
+.accordion-panel:not(.active) .panel-stats {
+    display: none;
+}
+
+.accordion-panel:not(.active):hover {
+    border-color: var(--ig-pink);
+    transform: translateX(-2px);
+    background: rgba(30, 35, 45, 0.95);
+}
+
+/* ===== АКТИВНАЯ ПАНЕЛЬ - ЗАГОЛОВОК ===== */
 .accordion-panel.active .accordion-panel-header {
-    padding: 16px 24px;
+    padding: 12px 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    gap: 20px;
+    gap: 15px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     background: linear-gradient(135deg, rgba(214, 41, 118, 0.1), rgba(131, 58, 180, 0.05));
     flex-shrink: 0;
@@ -1554,20 +1580,23 @@ h4 {
 }
 
 .accordion-panel.active .panel-title h3 {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     color: var(--white);
-    letter-spacing: 4px;
+    letter-spacing: 3px;
     font-weight: 600;
     margin: 0;
 }
 
-/* Контент активной панели */
+.accordion-panel.active .panel-stats {
+    display: none;
+}
+
+/* ===== КОНТЕНТ АКТИВНОЙ ПАНЕЛИ ===== */
 .accordion-panel-content {
     display: none;
-    padding: 20px 24px;
+    padding: 16px 20px;
     flex: 1;
     background: rgba(0, 0, 0, 0.2);
-    display: flex;
     flex-direction: column;
     overflow: visible;
 }
@@ -1577,10 +1606,15 @@ h4 {
     animation: fadeInContent 0.3s ease;
 }
 
-/* Изображение */
+@keyframes fadeInContent {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ИЗОБРАЖЕНИЕ */
 .panel-image {
-    margin-bottom: 16px;
-    border-radius: 16px;
+    margin-bottom: 12px;
+    border-radius: 14px;
     overflow: hidden;
     aspect-ratio: 2 / 1;
     flex-shrink: 0;
@@ -1594,64 +1628,76 @@ h4 {
     transition: transform 0.5s ease;
 }
 
-/* Описание */
+.panel-image img:hover {
+    transform: scale(1.02);
+}
+
+/* ОПИСАНИЕ */
 .panel-description {
     flex-shrink: 0;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 
 .panel-description p {
-    font-size: 0.9rem;
-    line-height: 1.5;
+    font-size: 0.8rem;
+    line-height: 1.4;
     color: var(--gray);
     margin: 0;
 }
 
-/* Нижняя часть */
+/* НИЖНЯЯ ЧАСТЬ */
 .panel-bottom {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
     flex-shrink: 0;
 }
 
+/* ТЕХНОЛОГИИ */
 .panel-tech h4 {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     color: var(--ig-orange);
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     font-weight: 500;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
 }
 
 .tech-items {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 5px;
 }
 
 .tech-items span {
     background: rgba(255, 255, 255, 0.08);
-    padding: 4px 10px;
-    font-size: 0.7rem;
-    border-radius: 20px;
+    padding: 3px 8px;
+    font-size: 0.65rem;
+    border-radius: 16px;
     color: var(--white);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.2s ease;
 }
 
-/* Метрики - УМЕНЬШЕННЫЕ */
+.tech-items span:hover {
+    background: var(--ig-pink);
+    color: #0A0A0A;
+    transform: translateY(-1px);
+}
+
+/* МЕТРИКИ (Длительность, Команда, Результат) - УМЕНЬШЕННЫЙ ШРИФТ */
 .panel-metrics {
     background: rgba(255, 255, 255, 0.04);
-    padding: 10px 14px;
-    border-radius: 16px;
+    padding: 8px 12px;
+    border-radius: 14px;
     display: flex;
     justify-content: space-between;
-    gap: 16px;
+    gap: 12px;
 }
 
 .panel-metrics div {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 3px;
     flex: 1;
     text-align: center;
 }
@@ -1662,19 +1708,20 @@ h4 {
 
 .panel-metrics span:first-child {
     color: var(--gray);
-    font-size: 0.6rem;
-    letter-spacing: 1px;
+    font-size: 0.55rem;
+    letter-spacing: 0.5px;
 }
 
 .panel-metrics span:last-child {
     color: var(--white);
     font-weight: 500;
-    font-size: 0.6rem;
+    font-size: 0.7rem;
+    line-height: 1.3;
 }
 
-/* Футер активной панели с часами и суммой - УМЕНЬШЕННЫЙ */
+/* ФУТЕР С ЧАСАМИ И СУММОЙ - УМЕНЬШЕННЫЙ */
 .active-panel-footer {
-    padding: 12px 24px;
+    padding: 10px 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     background: linear-gradient(135deg, rgba(214, 41, 118, 0.05), rgba(131, 58, 180, 0.03));
     display: flex;
@@ -1693,24 +1740,18 @@ h4 {
 .active-panel-footer .footer-hours span:first-child,
 .active-panel-footer .footer-price span:first-child {
     color: var(--gray);
-    font-size: 0.7rem;
-    letter-spacing: 1px;
+    font-size: 0.65rem;
+    letter-spacing: 0.5px;
 }
 
 .active-panel-footer .footer-hours span:last-child,
 .active-panel-footer .footer-price span:last-child {
     color: var(--ig-orange);
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
-/* Анимация */
-@keyframes fadeInContent {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* Мобильная версия */
+/* ===== МОБИЛЬНАЯ ВЕРСИЯ ===== */
 @media (max-width: 900px) {
     .portfolio-accordion {
         flex-direction: column;
@@ -1726,36 +1767,40 @@ h4 {
     .accordion-panel:not(.active) .accordion-panel-header {
         flex-direction: row;
         justify-content: space-between;
-        padding: 16px 20px;
+        padding: 14px 18px;
     }
     
     .accordion-panel:not(.active) .panel-number {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         margin-bottom: 0;
     }
     
     .accordion-panel:not(.active) .panel-title h3 {
-        font-size: 1rem;
+        font-size: 0.9rem;
         letter-spacing: 2px;
     }
     
     .accordion-panel.active .panel-title h3 {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
     
     .accordion-panel-content {
-        padding: 20px;
+        padding: 16px;
+    }
+    
+    .panel-image {
+        max-height: 150px;
     }
     
     .panel-metrics {
         flex-direction: column;
-        gap: 10px;
+        gap: 8px;
     }
     
     .panel-metrics div {
         flex-direction: row;
         justify-content: space-between;
-        padding: 8px 0;
+        padding: 6px 0;
     }
     
     .panel-metrics div:not(:last-child) {
@@ -1764,10 +1809,10 @@ h4 {
     }
     
     .active-panel-footer {
-        padding: 12px 20px;
+        padding: 10px 16px;
         flex-direction: column;
         align-items: flex-start;
-        gap: 8px;
+        gap: 6px;
     }
 }
 /* ============================================ */
