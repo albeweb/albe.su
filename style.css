@@ -1489,8 +1489,8 @@ h4 {
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 20px;
     overflow: hidden;
-    min-height: 650px;
-    max-height: 650px;
+    min-height: 800px;
+    max-height: 800px;
     box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.3);
 }
 
@@ -1499,8 +1499,8 @@ h4 {
     background: rgba(20, 25, 32, 0.98);
     border: 1px solid var(--ig-pink);
     box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
-    min-height: 650px;
-    max-height: 650px;
+    min-height: 800px;
+    max-height: 800px;
 }
 
 .accordion-panel::before {
