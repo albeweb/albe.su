@@ -1499,8 +1499,8 @@ h4 {
     background: rgba(20, 25, 32, 0.98);
     border: 1px solid var(--ig-pink);
     box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
-    min-height: 320px !important;
-    max-height: 320px !important;
+    min-height: 600px !important;
+    max-height: 600px !important;
 }
 
 /* Уменьшаем отступы в заголовке неактивных панелей */
