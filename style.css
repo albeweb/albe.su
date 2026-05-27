@@ -1579,8 +1579,11 @@ h4 {
     display: none;
 }
 
+/* ======================================================================== */
+/* 1. ЗАГОЛОВОК АКТИВНОЙ КАРТОЧКИ (NeoBank Platform, AI система и т.д.)    */
+/* ======================================================================== */
 .accordion-panel.active .panel-title h3 {
-    font-size: 1.3rem;
+    font-size: 1.3rem;  /* ← МЕНЯЙ ЗДЕСЬ (рекомендуем: 1.2rem - 1.5rem) */
     color: var(--white);
     letter-spacing: 3px;
     font-weight: 600;
@@ -1632,14 +1635,16 @@ h4 {
     transform: scale(1.02);
 }
 
-/* ОПИСАНИЕ */
+/* ======================================================================== */
+/* 2. ОПИСАНИЕ ПРОЕКТА                                                     */
+/* ======================================================================== */
 .panel-description {
     flex-shrink: 0;
     margin-bottom: 16px;
 }
 
 .panel-description p {
-    font-size: 0.95rem;
+    font-size: 0.95rem;  /* ← МЕНЯЙ ЗДЕСЬ (рекомендуем: 0.9rem - 1rem) */
     line-height: 1.5;
     color: var(--gray);
     margin: 0;
@@ -1653,9 +1658,11 @@ h4 {
     flex-shrink: 0;
 }
 
-/* ТЕХНОЛОГИИ */
+/* ======================================================================== */
+/* 3. ТЕХНОЛОГИИ (React, Next.js, TypeScript и т.д.)                       */
+/* ======================================================================== */
 .panel-tech h4 {
-    font-size: 0.75rem;
+    font-size: 0.75rem;  /* ← ЗАГОЛОВОК "ТЕХНОЛОГИИ" (рекомендуем: 0.7rem - 0.8rem) */
     color: var(--ig-orange);
     margin-bottom: 8px;
     font-weight: 500;
@@ -1671,7 +1678,7 @@ h4 {
 .tech-items span {
     background: rgba(255, 255, 255, 0.08);
     padding: 5px 12px;
-    font-size: 0.75rem;
+    font-size: 0.75rem;  /* ← МЕНЯЙ ЗДЕСЬ (рекомендуем: 0.7rem - 0.85rem) */
     border-radius: 20px;
     color: var(--white);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1684,7 +1691,9 @@ h4 {
     transform: translateY(-1px);
 }
 
-/* МЕТРИКИ (Длительность, Команда, Результат) */
+/* ======================================================================== */
+/* 4. МЕТРИКИ (Длительность, Команда, Результат)                            */
+/* ======================================================================== */
 .panel-metrics {
     background: rgba(255, 255, 255, 0.04);
     padding: 10px 14px;
@@ -1706,20 +1715,24 @@ h4 {
     border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* ЛЕЙБЛЫ МЕТРИК ("Длительность", "Команда", "Результат") */
 .panel-metrics span:first-child {
     color: var(--gray);
-    font-size: 0.65rem;
+    font-size: 0.65rem;  /* ← МЕНЯЙ ЗДЕСЬ (рекомендуем: 0.6rem - 0.7rem) */
     letter-spacing: 0.5px;
 }
 
+/* ЗНАЧЕНИЯ МЕТРИК ("8 недель", "3 разработчика", "+210%") */
 .panel-metrics span:last-child {
     color: var(--white);
     font-weight: 500;
-    font-size: 0.8rem;
+    font-size: 0.8rem;  /* ← МЕНЯЙ ЗДЕСЬ (рекомендуем: 0.75rem - 0.9rem) */
     line-height: 1.3;
 }
 
-/* ФУТЕР С ЧАСАМИ И СУММОЙ */
+/* ======================================================================== */
+/* 5. ФУТЕР С ЧАСАМИ И СУММОЙ                                               */
+/* ======================================================================== */
 .active-panel-footer {
     padding: 12px 24px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -1737,18 +1750,20 @@ h4 {
     gap: 10px;
 }
 
+/* ЛЕЙБЛЫ ФУТЕРА ("Часы:", "Стоимость:") */
 .active-panel-footer .footer-hours span:first-child,
 .active-panel-footer .footer-price span:first-child {
     color: var(--gray);
-    font-size: 0.75rem;
+    font-size: 0.75rem;  /* ← МЕНЯЙ ЗДЕСЬ (рекомендуем: 0.7rem - 0.8rem) */
     letter-spacing: 0.5px;
 }
 
+/* ЗНАЧЕНИЯ ФУТЕРА ("320 ч", "640 000 ₽") */
 .active-panel-footer .footer-hours span:last-child,
 .active-panel-footer .footer-price span:last-child {
     color: var(--ig-orange);
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1rem;  /* ← МЕНЯЙ ЗДЕСЬ (рекомендуем: 0.9rem - 1.1rem) */
 }
 
 /* ===== МОБИЛЬНАЯ ВЕРСИЯ ===== */
