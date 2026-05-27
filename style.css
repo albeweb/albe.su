@@ -2717,9 +2717,9 @@ h4 {
 /* 22. AI РЕКЛАМА — НОВЫЙ БЛОК */
 /* ============================================ */
 
-/* ВЫСОТА ВСЕЙ СЕКЦИИ — МЕНЯЙ ЗНАЧЕНИЕ НИЖЕ */
 .ai-reklama-section {
     min-height: 600px;
+    overflow: visible;
 }
 
 .ai-design-grid {
@@ -2729,7 +2729,6 @@ h4 {
     flex-wrap: wrap;
 }
 
-/* КАРТОЧКИ — 30% */
 .ai-cards-column {
     flex: 3;
     min-width: 260px;
@@ -2876,22 +2875,23 @@ h4 {
     color: var(--white);
 }
 
-/* ВИДЕО — 70% */
 .ai-videos-wrapper {
     flex: 7;
     min-width: 0;
+    overflow: visible;
 }
 
 .ai-video-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
+    overflow: visible;
 }
 
 .ai-video-item {
     position: relative;
     border-radius: 28px;
-    overflow: hidden;
+    overflow: visible;
     border: 2px solid rgba(214, 41, 118, 0.5);
     transition: all 0.3s ease;
     background: #000;
@@ -2917,7 +2917,7 @@ h4 {
     border: none;
 }
 
-/* Адаптив для AI реклама */
+/* Адаптив */
 @media (max-width: 1024px) {
     .ai-design-grid {
         flex-direction: column;
