@@ -835,7 +835,7 @@ h4 {
     background: rgba(13, 13, 18, 0.7);
     backdrop-filter: blur(8px);
     padding: 10px 16px;
-    font-size: 0.85rem;
+    font-size: 1rem;
     font-weight: 400;
     border: 1px solid rgba(255, 255, 255, 0.08);
     color: var(--white);
