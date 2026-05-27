@@ -2934,3 +2934,73 @@ h4 {
 .header .kinetic-wrapper {
     display: inline-flex !important;
 }
+
+/* Стили для видео-плейсхолдеров с иконкой play */
+.video-placeholder {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 28px;
+    overflow: hidden;
+}
+
+.video-placeholder .video-frame {
+    position: relative;
+    width: 100%;
+    padding-top: 177.78%;
+    background: #1A1A2E;
+    overflow: hidden;
+}
+
+.video-placeholder .video-frame img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.video-placeholder:hover .video-frame img {
+    transform: scale(1.05);
+}
+
+.play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.play-icon {
+    width: 64px;
+    height: 64px;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.9;
+}
+
+.video-placeholder:hover .play-overlay {
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.video-placeholder:hover .play-icon {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+/* На мобильных устройствах иконка чуть меньше */
+@media (max-width: 768px) {
+    .play-icon {
+        width: 48px;
+        height: 48px;
+    }
+}
