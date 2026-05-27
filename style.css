@@ -3219,3 +3219,46 @@ h4 {
 .video-placeholder:hover .play-overlay {
     background: rgba(0, 0, 0, 0.1);
 }
+
+/* Убираем скролл у кейсов */
+.case-inside {
+    max-height: 0;
+    overflow: hidden;  /* было overflow-y: auto - убираем */
+    transition: max-height 0.5s ease;
+}
+
+.case-item.active .case-inside {
+    max-height: 280px;  /* увеличил, чтобы скролл не появлялся */
+    overflow-y: visible; /* явно запрещаем скролл */
+}
+
+/* Убираем скролл у аккордеона портфолио */
+.panel-description {
+    flex: 1;
+    margin-bottom: 20px;
+    overflow-y: visible; /* вместо auto */
+}
+
+/* Убираем скролл у всего body и html (дублирование) */
+html, body {
+    overflow-x: hidden !important;
+    overflow-y: auto !important; /* один вертикальный скролл */
+    max-width: 100% !important;
+    position: relative;
+    width: 100%;
+}
+
+/* Убираем возможные скроллы у контейнеров */
+.container, .section, .hero, .footer {
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+}
+
+/* Убираем скролл у accordion-panel-content */
+.accordion-panel-content {
+    display: none;
+    padding: 24px 28px;
+    flex: 1;
+    background: rgba(0, 0, 0, 0.2);
+    overflow-y: visible !important; /* было hidden, но скролл не нужен */
+}
