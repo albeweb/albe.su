@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -114,25 +115,40 @@
 <div id="header-placeholder"></div>
 
 <main>
-<!-- ========== HERO БАННЕР (5 СЛОЁВ) ========== -->
+<!-- ========== HERO БАННЕР (ГРАДИЕНТ ВИДЕН) ========== -->
 <section class="hero-section">
-    <!-- СЛОЙ 1: Фон (через background секции) -->
+    <!-- СЛОЙ 1: Фон (чёрный) -->
     
-    <!-- СЛОЙ 2: Градиент -->
-    <div class="gradient-layer"></div>
-    
-    <!-- СЛОЙ 3: Буквы A L B E (с анимацией появления) -->
-    <div class="letters-layer">
-        <span class="letter letter-a">A</span>
-        <span class="letter letter-l">L</span>
-        <span class="letter letter-b">B</span>
-        <span class="letter letter-e">E</span>
+    <!-- СЛОЙ 2: Canvas с падающим кодом (САМЫЙ НИЖНИЙ из видимых) -->
+    <canvas id="matrixCanvas" class="hero-canvas-bottom"></canvas>
+
+    <!-- СЛОЙ 3: Маска с градиентом (ВЫШЕ canvas, чтобы градиент был виден) -->
+    <div class="masked-container">
+        <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <defs>
+                <radialGradient id="dynamicGrad" cx="50%" cy="50%" r="75%">
+                    <stop offset="0%" stop-color="#F5B700" stop-opacity="0.95">
+                        <animate attributeName="stop-color" values="#F5B700;#10B981;#06B6D4;#4C1D95;#F5B700" dur="8s" repeatCount="indefinite"/>
+                    </stop>
+                    <stop offset="33%" stop-color="#10B981" stop-opacity="0.7">
+                        <animate attributeName="stop-color" values="#10B981;#06B6D4;#4C1D95;#F5B700;#10B981" dur="8s" repeatCount="indefinite"/>
+                    </stop>
+                    <stop offset="66%" stop-color="#06B6D4" stop-opacity="0.4">
+                        <animate attributeName="stop-color" values="#06B6D4;#4C1D95;#F5B700;#10B981;#06B6D4" dur="8s" repeatCount="indefinite"/>
+                    </stop>
+                    <stop offset="100%" stop-color="#4C1D95" stop-opacity="0.1">
+                        <animate attributeName="stop-color" values="#4C1D95;#F5B700;#10B981;#06B6D4;#4C1D95" dur="8s" repeatCount="indefinite"/>
+                    </stop>
+                </radialGradient>
+                <mask id="fullGradientMask">
+                    <rect width="100%" height="100%" fill="white" />
+                </mask>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#dynamicGrad)" mask="url(#fullGradientMask)" />
+        </svg>
     </div>
-    
-    <!-- СЛОЙ 4: Canvas с падающим кодом (ПОВЕРХ букв) -->
-    <canvas id="matrixCanvas" class="hero-canvas-top"></canvas>
-    
-    <!-- СЛОЙ 5: Весь текст (САМЫЙ ВЕРХНИЙ) -->
+
+    <!-- СЛОЙ 4: Текст (САМЫЙ ВЕРХНИЙ) -->
     <div class="hero-text agency-tag" id="agencyTag">DIGITAL AGENCY</div>
     <div class="hero-text main-title" id="mainTitle">разработка</div>
     <div class="hero-text sub-line" id="subLine">дизайна и сайтов под ключ</div>
@@ -162,43 +178,28 @@
 </section>
 
 <style>
-/* ===== СТИЛИ 5 СЛОЁВ ===== */
-
 .hero-section {
     position: relative;
     min-height: 100vh;
-    background: #05070A;  /* СЛОЙ 1: Фон */
+    background: #05070A;
     overflow: hidden;
     z-index: 1;
 }
 
-/* СЛОЙ 2: Градиент */
-.gradient-layer {
+/* СЛОЙ 2: Canvas — САМЫЙ НИЖНИЙ (под градиентом) */
+.hero-canvas-bottom {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 10;
+    display: block;
+    z-index: 5;
     pointer-events: none;
-    background: radial-gradient(circle at 50% 50%, 
-        rgba(245,183,0,0.95), 
-        rgba(16,185,129,0.7), 
-        rgba(6,182,212,0.4), 
-        rgba(76,29,149,0.1));
-    animation: gradientShift 8s ease infinite;
 }
 
-@keyframes gradientShift {
-    0% { background: radial-gradient(circle at 50% 50%, rgba(245,183,0,0.95), rgba(16,185,129,0.7), rgba(6,182,212,0.4), rgba(76,29,149,0.1)); }
-    25% { background: radial-gradient(circle at 50% 50%, rgba(16,185,129,0.95), rgba(6,182,212,0.7), rgba(76,29,149,0.4), rgba(245,183,0,0.1)); }
-    50% { background: radial-gradient(circle at 50% 50%, rgba(6,182,212,0.95), rgba(76,29,149,0.7), rgba(245,183,0,0.4), rgba(16,185,129,0.1)); }
-    75% { background: radial-gradient(circle at 50% 50%, rgba(76,29,149,0.95), rgba(245,183,0,0.7), rgba(16,185,129,0.4), rgba(6,182,212,0.1)); }
-    100% { background: radial-gradient(circle at 50% 50%, rgba(245,183,0,0.95), rgba(16,185,129,0.7), rgba(6,182,212,0.4), rgba(76,29,149,0.1)); }
-}
-
-/* СЛОЙ 3: Буквы A L B E */
-.letters-layer {
+/* СЛОЙ 3: Маска с градиентом — ВЫШЕ canvas */
+.masked-container {
     position: absolute;
     top: 0;
     left: 0;
@@ -206,49 +207,20 @@
     height: 100%;
     z-index: 20;
     pointer-events: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2vw;
 }
 
-.letter {
-    font-family: 'Zen Dots', monospace;
-    font-size: 18vw;
-    font-weight: 400;
-    color: rgba(255,255,255,0.15);
-    text-shadow: 0 0 30px rgba(245,183,0,0.3);
-    opacity: 0;
-    transform: scale(0.8);
-}
-
-/* Анимация букв */
-.letter-a { animation: revealLetter 0.6s ease forwards 0.2s; }
-.letter-l { animation: revealLetter 0.6s ease forwards 0.5s; }
-.letter-b { animation: revealLetter 0.6s ease forwards 0.8s; }
-.letter-e { animation: revealLetter 0.6s ease forwards 1.1s; }
-
-@keyframes revealLetter {
-    0% { opacity: 0; transform: scale(0.8); }
-    100% { opacity: 1; transform: scale(1); }
-}
-
-/* СЛОЙ 4: Canvas (падающий код ПОВЕРХ букв) */
-.hero-canvas-top {
+.masked-container svg {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    display: block;
-    z-index: 30;
-    pointer-events: none;
 }
 
-/* СЛОЙ 5: Текст (САМЫЙ ВЕРХНИЙ) */
+/* СЛОЙ 4: Текст — САМЫЙ ВЕРХНИЙ */
 .hero-text {
     position: absolute;
-    z-index: 50;
+    z-index: 30;
     font-family: 'Geist', sans-serif;
     color: white;
     text-shadow: 0 0 5px currentColor;
@@ -306,7 +278,7 @@
     left: 100px;
     display: flex;
     gap: 3rem;
-    z-index: 50;
+    z-index: 30;
     opacity: 0;
     transition: opacity 0.8s ease;
 }
@@ -349,12 +321,12 @@
     gap: 0.9rem;
     max-width: 50%;
     justify-content: flex-end;
-    z-index: 50;
+    z-index: 30;
 }
 
 .hero-badges .badge {
     font-family: 'Geist', sans-serif;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.4);
     backdrop-filter: blur(4px);
     padding: 0.6rem 1.4rem;
     border-radius: 60px;
@@ -377,7 +349,7 @@
     text-shadow: 0 0 5px rgba(255,255,255,0.3);
     white-space: nowrap;
     pointer-events: none;
-    z-index: 50;
+    z-index: 30;
     opacity: 0;
     transition: opacity 0.8s ease;
 }
@@ -398,7 +370,7 @@
     letter-spacing: 2px;
     white-space: nowrap;
     pointer-events: none;
-    z-index: 50;
+    z-index: 30;
     text-align: right;
 }
 
@@ -449,7 +421,6 @@
     .hero-stats .stat-number { font-size: 2rem; }
     .main-title { left: 150px; }
     .sub-line { left: 150px; }
-    .letter { font-size: 15vw; gap: 1vw; }
 }
 
 @media (max-width: 900px) {
@@ -465,7 +436,6 @@
     .hero-right-phrase { left: 5%; top: auto; bottom: 40%; transform: none; font-size: 1rem; white-space: normal; max-width: 90%; text-align: left; }
     .hero-business-line { right: 5%; bottom: 15%; font-size: 1.8rem; white-space: normal; text-align: right; max-width: 85%; }
     .cursor { height: 1.8rem; }
-    .letter { font-size: 12vw; gap: 2vw; }
 }
 
 @media (max-width: 600px) {
@@ -481,12 +451,11 @@
     .cursor { height: 1.4rem; }
     .hero-badges { bottom: 5%; gap: 0.4rem; }
     .hero-badges .badge { font-size: 0.55rem; padding: 0.25rem 0.6rem; }
-    .letter { font-size: 10vw; gap: 3vw; }
 }
 </style>
 
 <script>
-// СЛОЙ 4: Matrix Canvas Effect (падающий код ПОВЕРХ букв)
+// Matrix Canvas Effect (падающий код, САМЫЙ НИЖНИЙ слой)
 (function() {
     const canvas = document.getElementById('matrixCanvas');
     if (!canvas) return;
@@ -521,8 +490,8 @@
         if (now - lastFrameTime < frameInterval) return;
         lastFrameTime = now;
         
-        // Очень прозрачный фон, чтобы буквы были видны
-        ctx.fillStyle = 'rgba(5,7,10,0.05)';
+        // ОЧЕНЬ прозрачный фон, чтобы градиент был виден
+        ctx.fillStyle = 'rgba(5,7,10,0.03)';
         ctx.fillRect(0, 0, w, h);
         ctx.textAlign = 'center';
         
@@ -551,7 +520,7 @@
     requestAnimationFrame(drawMatrix);
 })();
 
-// Анимации появления текстовых элементов (СЛОЙ 5)
+// Анимации появления текстовых элементов
 (function() {
     const permanentElements = ['agencyTag', 'mainTitle', 'subLine', 'badgesGrid'];
     permanentElements.forEach((id, idx) => {
@@ -610,24 +579,6 @@
                 businessLineEl.innerHTML = '';
                 index = 0;
             }
-            
-            // Перезапуск анимации букв
-            const letters = document.querySelectorAll('.letter');
-            letters.forEach(letter => {
-                letter.style.animation = 'none';
-                letter.style.opacity = '0';
-                letter.style.transform = 'scale(0.8)';
-            });
-            setTimeout(() => {
-                letters.forEach(letter => {
-                    letter.style.animation = '';
-                });
-                document.querySelector('.letter-a').style.animation = 'revealLetter 0.6s ease forwards 0.2s';
-                document.querySelector('.letter-l').style.animation = 'revealLetter 0.6s ease forwards 0.5s';
-                document.querySelector('.letter-b').style.animation = 'revealLetter 0.6s ease forwards 0.8s';
-                document.querySelector('.letter-e').style.animation = 'revealLetter 0.6s ease forwards 1.1s';
-            }, 50);
-            
             setTimeout(() => {
                 permanentElements.forEach((id, idx) => {
                     setTimeout(() => {
