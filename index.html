@@ -115,7 +115,7 @@
 <div id="header-placeholder"></div>
 
 <main>
-<!-- ========== HERO БАННЕР (ДИНАМИЧЕСКАЯ СМЕНА СЛОВ, ЖЁЛТЫЙ ЦВЕТ) ========== -->
+<!-- ========== HERO БАННЕР (ИСПРАВЛЕННЫЙ) ========== -->
 <section class="hero-section">
     <!-- СЛОЙ 1: Фон (чёрный) -->
     
@@ -543,7 +543,27 @@
     requestAnimationFrame(drawMatrix);
 })();
 
-// Анимация смены слов внизу справа (исправленная)
+// Анимация появления статических элементов
+(function() {
+    const permanentElements = ['agencyTag', 'leftPhrase', 'badgesGrid'];
+    permanentElements.forEach((id, idx) => {
+        const el = document.getElementById(id);
+        if (el) {
+            setTimeout(() => {
+                el.classList.add('visible');
+            }, 1300 + idx * 150);
+        }
+    });
+    
+    const statsRow = document.getElementById('statsRow');
+    if (statsRow) {
+        setTimeout(() => {
+            statsRow.classList.add('visible');
+        }, 2000);
+    }
+})();
+
+// Анимация смены слов внизу справа (исправленная, без глюков)
 (function() {
     const wordsList = [
         "БИЗНЕС",
@@ -563,16 +583,17 @@
     let charIndex = 0;
     let typingSpeed = 100;
     let pauseBetweenWords = 1500;
-    let isFirstRun = true;
     
     const businessLineEl = document.getElementById('businessLine');
     const staticText = "МЫ СОЗДАЕМ ";
     
     function updateDisplay(wordPart) {
         if (!businessLineEl) return;
-        // Оборачиваем динамическую часть в span с жёлтым цветом
-        const dynamicWord = wordPart;
-        businessLineEl.innerHTML = staticText + '<span class="dynamic-word-yellow">' + dynamicWord + '</span><span class="cursor"></span>';
+        if (wordPart === "") {
+            businessLineEl.innerHTML = staticText + '<span class="cursor"></span>';
+        } else {
+            businessLineEl.innerHTML = staticText + '<span class="dynamic-word-yellow">' + wordPart + '</span><span class="cursor"></span>';
+        }
     }
     
     function typeEffect() {
@@ -608,49 +629,38 @@
         setTimeout(typeEffect, typingSpeed);
     }
     
-    // Анимации появления текстовых элементов
-    const permanentElements = ['agencyTag', 'leftPhrase', 'badgesGrid'];
-    permanentElements.forEach((id, idx) => {
-        const el = document.getElementById(id);
-        if (el) {
-            setTimeout(() => {
-                el.classList.add('visible');
-            }, 1300 + idx * 150);
-        }
-    });
-    
-    const statsRow = document.getElementById('statsRow');
-    if (statsRow) {
-        setTimeout(() => {
-            statsRow.classList.add('visible');
-        }, 2000);
-    }
-    
-    // Запуск анимации печати после появления текста
+    // Запуск анимации печати после появления всех элементов
     setTimeout(() => {
-        charIndex = 0;
-        isDeleting = false;
-        wordIndex = 0;
-        updateDisplay("");
-        setTimeout(() => {
-            typeEffect();
-        }, 300);
-    }, 2500);
+        if (businessLineEl) {
+            charIndex = 0;
+            isDeleting = false;
+            wordIndex = 0;
+            updateDisplay("");
+            setTimeout(() => {
+                typeEffect();
+            }, 300);
+        }
+    }, 2800);
     
     // Рестарт
     const restartBtn = document.getElementById('restartBtn');
     if (restartBtn) {
         restartBtn.addEventListener('click', () => {
+            // Сбрасываем видимость статических элементов
+            const permanentElements = ['agencyTag', 'leftPhrase', 'badgesGrid'];
             permanentElements.forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.classList.remove('visible');
             });
+            const statsRow = document.getElementById('statsRow');
             if (statsRow) statsRow.classList.remove('visible');
             
+            // Сбрасываем динамическую фразу
             if (businessLineEl) {
                 businessLineEl.innerHTML = "";
             }
             
+            // Сбрасываем анимацию букв ALBE
             const albeLetters = document.querySelectorAll('.albe-letter');
             albeLetters.forEach(letter => {
                 letter.style.animation = 'none';
@@ -658,11 +668,13 @@
             });
             
             setTimeout(() => {
+                // Перезапуск анимации букв
                 albeLetters.forEach((letter, i) => {
                     const delays = [0.2, 0.5, 0.8, 1.1];
                     letter.style.animation = `flyFromTopLeft 0.7s ease-out forwards ${delays[i]}s`;
                 });
                 
+                // Показываем статические элементы
                 permanentElements.forEach((id, idx) => {
                     setTimeout(() => {
                         const el = document.getElementById(id);
@@ -675,15 +687,18 @@
                     }, 2000);
                 }
                 
+                // Перезапуск печати
                 setTimeout(() => {
-                    charIndex = 0;
-                    isDeleting = false;
-                    wordIndex = 0;
-                    updateDisplay("");
-                    setTimeout(() => {
-                        typeEffect();
-                    }, 300);
-                }, 2500);
+                    if (businessLineEl) {
+                        charIndex = 0;
+                        isDeleting = false;
+                        wordIndex = 0;
+                        updateDisplay("");
+                        setTimeout(() => {
+                            typeEffect();
+                        }, 300);
+                    }
+                }, 2800);
             }, 50);
         });
     }
