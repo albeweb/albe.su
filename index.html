@@ -111,74 +111,72 @@
 </head>
 <body>
 
-<!-- Плейсхолдеры для загружаемых компонентов -->
 <div id="header-placeholder"></div>
 
 <main>
-<!-- ========== HERO БАННЕР (ЭТАЛОН) ========== -->
-<canvas id="matrixCanvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: block; z-index: 0;"></canvas>
+<!-- ========== HERO БАННЕР (ИСПРАВЛЕННЫЙ - НЕ ПЕРЕКРЫВАЕТ КОНТЕНТ) ========== -->
+<section class="hero-section">
+    <canvas id="matrixCanvas" class="hero-canvas"></canvas>
 
-<!-- Маска A L B E -->
-<div class="masked-container">
-    <svg width="100%" height="100%" style="position: absolute; top:0; left:0;">
-        <defs>
-            <radialGradient id="dynamicGrad" cx="50%" cy="50%" r="75%">
-                <stop offset="0%" stop-color="#F5B700" stop-opacity="0.95">
-                    <animate attributeName="stop-color" values="#F5B700;#10B981;#06B6D4;#4C1D95;#F5B700" dur="8s" repeatCount="indefinite"/>
-                </stop>
-                <stop offset="33%" stop-color="#10B981" stop-opacity="0.7">
-                    <animate attributeName="stop-color" values="#10B981;#06B6D4;#4C1D95;#F5B700;#10B981" dur="8s" repeatCount="indefinite"/>
-                </stop>
-                <stop offset="66%" stop-color="#06B6D4" stop-opacity="0.4">
-                    <animate attributeName="stop-color" values="#06B6D4;#4C1D95;#F5B700;#10B981;#06B6D4" dur="8s" repeatCount="indefinite"/>
-                </stop>
-                <stop offset="100%" stop-color="#4C1D95" stop-opacity="0.1">
-                    <animate attributeName="stop-color" values="#4C1D95;#F5B700;#10B981;#06B6D4;#4C1D95" dur="8s" repeatCount="indefinite"/>
-                </stop>
-            </radialGradient>
-            <mask id="letterMask">
-                <rect width="100%" height="100%" fill="white" />
-                <text x="25%" y="45%" font-family="'EN Regular', sans-serif" font-size="14vw" font-weight="bold" fill="black" text-anchor="middle" class="mask-letter" style="animation: revealLetter 0.6s ease forwards 0.2s;">A</text>
-                <text x="41.6%" y="45%" font-family="'EN Regular', sans-serif" font-size="14vw" font-weight="bold" fill="black" text-anchor="middle" class="mask-letter" style="animation: revealLetter 0.6s ease forwards 0.5s;">L</text>
-                <text x="58.3%" y="45%" font-family="'EN Regular', sans-serif" font-size="14vw" font-weight="bold" fill="black" text-anchor="middle" class="mask-letter" style="animation: revealLetter 0.6s ease forwards 0.8s;">B</text>
-                <text x="75%" y="45%" font-family="'EN Regular', sans-serif" font-size="14vw" font-weight="bold" fill="black" text-anchor="middle" class="mask-letter" style="animation: revealLetter 0.6s ease forwards 1.1s;">E</text>
-            </mask>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#dynamicGrad)" mask="url(#letterMask)" />
-    </svg>
-</div>
+    <div class="masked-container">
+        <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <defs>
+                <radialGradient id="dynamicGrad" cx="50%" cy="50%" r="75%">
+                    <stop offset="0%" stop-color="#F5B700" stop-opacity="0.95">
+                        <animate attributeName="stop-color" values="#F5B700;#10B981;#06B6D4;#4C1D95;#F5B700" dur="8s" repeatCount="indefinite"/>
+                    </stop>
+                    <stop offset="33%" stop-color="#10B981" stop-opacity="0.7">
+                        <animate attributeName="stop-color" values="#10B981;#06B6D4;#4C1D95;#F5B700;#10B981" dur="8s" repeatCount="indefinite"/>
+                    </stop>
+                    <stop offset="66%" stop-color="#06B6D4" stop-opacity="0.4">
+                        <animate attributeName="stop-color" values="#06B6D4;#4C1D95;#F5B700;#10B981;#06B6D4" dur="8s" repeatCount="indefinite"/>
+                    </stop>
+                    <stop offset="100%" stop-color="#4C1D95" stop-opacity="0.1">
+                        <animate attributeName="stop-color" values="#4C1D95;#F5B700;#10B981;#06B6D4;#4C1D95" dur="8s" repeatCount="indefinite"/>
+                    </stop>
+                </radialGradient>
+                <mask id="letterMask">
+                    <rect width="100%" height="100%" fill="white" />
+                    <text x="25" y="52" font-family="'EN Regular', sans-serif" font-size="18" font-weight="bold" fill="black" text-anchor="middle" class="mask-letter">A</text>
+                    <text x="41.6" y="52" font-family="'EN Regular', sans-serif" font-size="18" font-weight="bold" fill="black" text-anchor="middle" class="mask-letter">L</text>
+                    <text x="58.3" y="52" font-family="'EN Regular', sans-serif" font-size="18" font-weight="bold" fill="black" text-anchor="middle" class="mask-letter">B</text>
+                    <text x="75" y="52" font-family="'EN Regular', sans-serif" font-size="18" font-weight="bold" fill="black" text-anchor="middle" class="mask-letter">E</text>
+                </mask>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#dynamicGrad)" mask="url(#letterMask)" />
+        </svg>
+    </div>
 
-<!-- Текстовые элементы -->
-<div class="over-text agency-tag" id="agencyTag">DIGITAL AGENCY</div>
-<div class="over-text main-title" id="mainTitle">разработка</div>
-<div class="over-text sub-line" id="subLine">дизайна и сайтов под ключ</div>
+    <div class="hero-text agency-tag" id="agencyTag">DIGITAL AGENCY</div>
+    <div class="hero-text main-title" id="mainTitle">разработка</div>
+    <div class="hero-text sub-line" id="subLine">дизайна и сайтов под ключ</div>
 
-<div class="over-text badges-grid" id="badgesGrid">
-    <span class="badge">Премиум дизайн</span>
-    <span class="badge">Мобильные приложения</span>
-    <span class="badge">AI решения</span>
-    <span class="badge">UI/UX проектирование</span>
-    <span class="badge">SEO стратегия</span>
-    <span class="badge">Веб-разработка</span>
-    <span class="badge">E-commerce</span>
-    <span class="badge">CRM интеграция</span>
-</div>
+    <div class="hero-badges" id="badgesGrid">
+        <span class="badge">Премиум дизайн</span>
+        <span class="badge">Мобильные приложения</span>
+        <span class="badge">AI решения</span>
+        <span class="badge">UI/UX проектирование</span>
+        <span class="badge">SEO стратегия</span>
+        <span class="badge">Веб-разработка</span>
+        <span class="badge">E-commerce</span>
+        <span class="badge">CRM интеграция</span>
+    </div>
 
-<div class="right-phrase" id="rightPhrase">МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ</div>
-<div class="business-line" id="businessLine"></div>
+    <div class="hero-right-phrase" id="rightPhrase">МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ</div>
+    <div class="hero-business-line" id="businessLine"></div>
 
-<!-- Статистика -->
-<div class="stats-row" id="statsRow">
-    <div class="stat-item"><div class="stat-number">7+</div><div class="stat-label">лет опыта</div></div>
-    <div class="stat-item"><div class="stat-number">150+</div><div class="stat-label">проектов</div></div>
-    <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">поддержка</div></div>
-    <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">результат</div></div>
-</div>
+    <div class="hero-stats" id="statsRow">
+        <div class="stat-item"><div class="stat-number">7+</div><div class="stat-label">лет опыта</div></div>
+        <div class="stat-item"><div class="stat-number">150+</div><div class="stat-label">проектов</div></div>
+        <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">поддержка</div></div>
+        <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">результат</div></div>
+    </div>
 
-<button class="restart-btn" id="restartBtn">⟳ Рестарт</button>
+    <button class="restart-btn" id="restartBtn">⟳ Рестарт</button>
+</section>
 
 <style>
-/* Стили для hero-баннера */
+/* ===== СТИЛИ HERO-БАННЕРА (ПРАВИЛЬНЫЕ, БЕЗ FIXED) ===== */
 @font-face {
     font-family: 'EN Regular';
     src: url('https://fonts.cdnfonts.com/css/sf-pro-display') format('woff2');
@@ -188,8 +186,26 @@
     src: url('https://fonts.cdnfonts.com/css/zen-dots') format('woff2');
 }
 
-.masked-container {
-    position: fixed;
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    background: #05070A;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.hero-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 0;
+}
+
+.hero-section .masked-container {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -200,15 +216,17 @@
     justify-content: center;
     align-items: center;
 }
-.masked-container svg {
+
+.hero-section .masked-container svg {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
 }
-.over-text {
-    position: fixed;
+
+.hero-text {
+    position: absolute;
     z-index: 20;
     font-family: 'Geist', sans-serif;
     color: white;
@@ -218,10 +236,12 @@
     transform: translateY(15px);
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
-.over-text.visible {
+
+.hero-text.visible {
     opacity: 1;
     transform: translateY(0);
 }
+
 .agency-tag {
     top: calc(6% + 100px);
     left: 100px;
@@ -232,6 +252,7 @@
     text-shadow: 0 0 6px rgba(255,255,255,0.3);
     white-space: nowrap;
 }
+
 .main-title {
     top: calc(18% + 270px);
     left: 200px;
@@ -245,6 +266,7 @@
     text-shadow: none;
     line-height: 1.1;
 }
+
 .sub-line {
     top: calc(34% + 270px);
     left: 200px;
@@ -256,8 +278,9 @@
     color: transparent;
     white-space: nowrap;
 }
-.stats-row {
-    position: fixed;
+
+.hero-stats {
+    position: absolute;
     bottom: 100px;
     left: 100px;
     display: flex;
@@ -266,32 +289,38 @@
     opacity: 0;
     transition: opacity 0.8s ease;
 }
-.stats-row.visible {
+
+.hero-stats.visible {
     opacity: 1;
 }
-.stat-item {
+
+.hero-stats .stat-item {
     font-family: 'Zen Dots', monospace;
     font-size: 2.8rem;
     text-align: center;
     color: white;
 }
-.stat-item .stat-label {
+
+.hero-stats .stat-item .stat-label {
     font-size: 0.8rem;
     letter-spacing: 2px;
     font-family: 'Geist', monospace;
     color: #B0B3B8;
     margin-top: 5px;
 }
-.stat-item:nth-child(1) .stat-number { color: #10B981; }
-.stat-item:nth-child(2) .stat-number { color: #06B6D4; }
-.stat-item:nth-child(3) .stat-number { color: #4C1D95; }
-.stat-item:nth-child(4) .stat-number { color: #F5B700; }
-.stat-number {
+
+.hero-stats .stat-item:nth-child(1) .stat-number { color: #10B981; }
+.hero-stats .stat-item:nth-child(2) .stat-number { color: #06B6D4; }
+.hero-stats .stat-item:nth-child(3) .stat-number { color: #4C1D95; }
+.hero-stats .stat-item:nth-child(4) .stat-number { color: #F5B700; }
+
+.hero-stats .stat-number {
     font-size: 2.8rem;
     font-weight: 400;
 }
-.badges-grid {
-    position: fixed;
+
+.hero-badges {
+    position: absolute;
     bottom: 10%;
     right: 5%;
     display: flex;
@@ -301,7 +330,8 @@
     justify-content: flex-end;
     z-index: 25;
 }
-.badge {
+
+.hero-badges .badge {
     background: rgba(76,29,149,0.35);
     backdrop-filter: blur(8px);
     padding: 0.6rem 1.4rem;
@@ -312,8 +342,9 @@
     white-space: nowrap;
     font-weight: 500;
 }
-.right-phrase {
-    position: fixed;
+
+.hero-right-phrase {
+    position: absolute;
     left: 58%;
     top: calc(45% + 100px);
     transform: translateY(-50%);
@@ -328,11 +359,13 @@
     opacity: 0;
     transition: opacity 0.8s ease;
 }
-.right-phrase.visible {
+
+.hero-right-phrase.visible {
     opacity: 1;
 }
-.business-line {
-    position: fixed;
+
+.hero-business-line {
+    position: absolute;
     right: 100px;
     bottom: 24%;
     font-family: 'Geist', sans-serif;
@@ -346,6 +379,7 @@
     z-index: 25;
     text-align: right;
 }
+
 .cursor {
     display: inline-block;
     width: 4px;
@@ -355,12 +389,14 @@
     margin-left: 8px;
     animation: blink 0.8s step-end infinite;
 }
+
 @keyframes blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
 }
+
 .restart-btn {
-    position: fixed;
+    position: absolute;
     bottom: 20px;
     right: 20px;
     z-index: 100;
@@ -375,54 +411,63 @@
     transition: 0.2s;
     font-size: 0.8rem;
 }
+
 .restart-btn:hover {
     transform: scale(1.05);
     background: #ffcc33;
 }
+
 @keyframes revealLetter {
     0% { opacity: 0; transform: scale(0.8); }
     100% { opacity: 1; transform: scale(1); }
 }
-.mask-letter { opacity: 0; }
+
+.mask-letter { opacity: 0; animation: revealLetter 0.6s ease forwards; }
+.mask-letter:nth-child(1) { animation-delay: 0.2s; }
+.mask-letter:nth-child(2) { animation-delay: 0.5s; }
+.mask-letter:nth-child(3) { animation-delay: 0.8s; }
+.mask-letter:nth-child(4) { animation-delay: 1.1s; }
 
 @media (max-width: 1200px) {
-    .right-phrase { left: 52%; font-size: 1.4rem; }
-    .business-line { font-size: 2.5rem; right: 50px; bottom: 20%; }
+    .hero-right-phrase { left: 52%; font-size: 1.4rem; }
+    .hero-business-line { font-size: 2.5rem; right: 50px; bottom: 20%; }
     .cursor { height: 2.5rem; }
     .agency-tag { font-size: 1.4rem; left: 80px; }
-    .stats-row { gap: 2rem; left: 80px; bottom: 80px; }
-    .stat-item { font-size: 2rem; }
-    .stat-number { font-size: 2rem; }
+    .hero-stats { gap: 2rem; left: 80px; bottom: 80px; }
+    .hero-stats .stat-item { font-size: 2rem; }
+    .hero-stats .stat-number { font-size: 2rem; }
     .main-title { left: 150px; }
     .sub-line { left: 150px; }
 }
+
 @media (max-width: 900px) {
     .agency-tag { left: 40px; font-size: 1.2rem; top: calc(6% + 60px); }
     .main-title { left: 40px; font-size: 2rem; top: calc(18% + 220px); }
     .sub-line { left: 40px; font-size: 1.1rem; top: calc(34% + 220px); white-space: normal; max-width: 85%; }
-    .stats-row { left: 40px; bottom: 80px; gap: 1rem; flex-wrap: wrap; }
-    .stat-item { font-size: 1.3rem; }
-    .stat-number { font-size: 1.3rem; }
-    .stat-label { font-size: 0.6rem; }
-    .badges-grid { bottom: 8%; max-width: 90%; gap: 0.5rem; }
-    .badge { font-size: 0.6rem; padding: 0.3rem 0.8rem; }
-    .right-phrase { left: 5%; top: auto; bottom: 40%; transform: none; font-size: 1rem; white-space: normal; max-width: 90%; text-align: left; }
-    .business-line { right: 5%; bottom: 15%; font-size: 1.8rem; white-space: normal; text-align: right; max-width: 85%; }
+    .hero-stats { left: 40px; bottom: 80px; gap: 1rem; flex-wrap: wrap; }
+    .hero-stats .stat-item { font-size: 1.3rem; }
+    .hero-stats .stat-number { font-size: 1.3rem; }
+    .hero-stats .stat-label { font-size: 0.6rem; }
+    .hero-badges { bottom: 8%; max-width: 90%; gap: 0.5rem; }
+    .hero-badges .badge { font-size: 0.6rem; padding: 0.3rem 0.8rem; }
+    .hero-right-phrase { left: 5%; top: auto; bottom: 40%; transform: none; font-size: 1rem; white-space: normal; max-width: 90%; text-align: left; }
+    .hero-business-line { right: 5%; bottom: 15%; font-size: 1.8rem; white-space: normal; text-align: right; max-width: 85%; }
     .cursor { height: 1.8rem; }
 }
+
 @media (max-width: 600px) {
     .agency-tag { left: 20px; font-size: 0.75rem; top: calc(6% + 40px); }
     .main-title { left: 20px; font-size: 1.8rem; top: calc(18% + 180px); }
     .sub-line { left: 20px; font-size: 0.9rem; top: calc(34% + 180px); }
-    .stats-row { left: 20px; bottom: 70px; gap: 0.8rem; }
-    .stat-item { font-size: 1rem; }
-    .stat-number { font-size: 1rem; }
-    .stat-label { font-size: 0.5rem; }
-    .right-phrase { bottom: 35%; font-size: 0.85rem; }
-    .business-line { bottom: 10%; font-size: 1.4rem; }
+    .hero-stats { left: 20px; bottom: 70px; gap: 0.8rem; }
+    .hero-stats .stat-item { font-size: 1rem; }
+    .hero-stats .stat-number { font-size: 1rem; }
+    .hero-stats .stat-label { font-size: 0.5rem; }
+    .hero-right-phrase { bottom: 35%; font-size: 0.85rem; }
+    .hero-business-line { bottom: 10%; font-size: 1.4rem; }
     .cursor { height: 1.4rem; }
-    .badges-grid { bottom: 5%; gap: 0.4rem; }
-    .badge { font-size: 0.55rem; padding: 0.25rem 0.6rem; }
+    .hero-badges { bottom: 5%; gap: 0.4rem; }
+    .hero-badges .badge { font-size: 0.55rem; padding: 0.25rem 0.6rem; }
 }
 </style>
 
@@ -443,8 +488,9 @@
     const frameInterval = 1000 / targetFPS;
     
     function resizeMatrix() {
-        w = window.innerWidth;
-        h = window.innerHeight;
+        const section = canvas.closest('.hero-section');
+        w = section ? section.clientWidth : window.innerWidth;
+        h = section ? section.clientHeight : window.innerHeight;
         canvas.width = w;
         canvas.height = h;
         cols = Math.floor(w / fontSize);
@@ -549,16 +595,7 @@
                 businessLineEl.innerHTML = '';
                 index = 0;
             }
-            const maskLetters = document.querySelectorAll('.mask-letter');
-            maskLetters.forEach(letter => {
-                letter.style.animation = 'none';
-                letter.style.opacity = '0';
-            });
             setTimeout(() => {
-                maskLetters.forEach((letter, i) => {
-                    const delays = ['0.2s', '0.5s', '0.8s', '1.1s'];
-                    letter.style.animation = `revealLetter 0.6s ease forwards ${delays[i]}`;
-                });
                 permanentElements.forEach((id, idx) => {
                     setTimeout(() => {
                         const el = document.getElementById(id);
@@ -594,7 +631,6 @@
             <a href="#services" class="section-more-btn">Все услуги</a>
         </div>
         <div class="services-grid">
-            <!-- Карточка 1 -->
             <div class="service-card" itemscope itemtype="https://schema.org/Service">
                 <div class="segment seg-1"></div>
                 <div class="segment seg-2"></div>
@@ -618,8 +654,6 @@
                     <button class="card-btn">ПОДРОБНЕЕ</button>
                 </div>
             </div>
-
-            <!-- Карточка 2 -->
             <div class="service-card" itemscope itemtype="https://schema.org/Service">
                 <div class="segment seg-1"></div>
                 <div class="segment seg-2"></div>
@@ -643,8 +677,6 @@
                     <button class="card-btn">ПОДРОБНЕЕ</button>
                 </div>
             </div>
-
-            <!-- Карточка 3 -->
             <div class="service-card" itemscope itemtype="https://schema.org/Service">
                 <div class="segment seg-1"></div>
                 <div class="segment seg-2"></div>
@@ -668,8 +700,6 @@
                     <button class="card-btn">ПОДРОБНЕЕ</button>
                 </div>
             </div>
-
-            <!-- Карточка 4 -->
             <div class="service-card" itemscope itemtype="https://schema.org/Service">
                 <div class="segment seg-1"></div>
                 <div class="segment seg-2"></div>
@@ -693,8 +723,6 @@
                     <button class="card-btn">ПОДРОБНЕЕ</button>
                 </div>
             </div>
-
-            <!-- Карточка 5 -->
             <div class="service-card" itemscope itemtype="https://schema.org/Service">
                 <div class="segment seg-1"></div>
                 <div class="segment seg-2"></div>
@@ -718,8 +746,6 @@
                     <button class="card-btn">ПОДРОБНЕЕ</button>
                 </div>
             </div>
-
-            <!-- Карточка 6 -->
             <div class="service-card" itemscope itemtype="https://schema.org/Service">
                 <div class="segment seg-1"></div>
                 <div class="segment seg-2"></div>
@@ -747,7 +773,7 @@
     </div>
 </section>
 
-<!-- AI РЕКЛАМА — С ОТЛОЖЕННОЙ ЗАГРУЗКОЙ ВИДЕО -->
+<!-- AI РЕКЛАМА -->
 <section id="ai-reklama" class="section ai-reklama-section">
     <div class="container">
         <div class="section-header">
@@ -755,7 +781,6 @@
             <a href="#services" class="section-more-btn">Все услуги</a>
         </div>
         <div class="ai-design-grid">
-            <!-- КАРТОЧКИ -->
             <div class="ai-cards-column">
                 <div class="ai-card">
                     <div class="corner corner-tl"></div>
@@ -821,17 +846,12 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- ВИДЕО С ПЛЕЙСХОЛДЕРАМИ И ПРЕВЬЮ -->
             <div class="ai-videos-wrapper">
                 <div class="ai-video-container">
                     <div class="ai-video-item">
                         <div class="video-placeholder" data-video-id="tyTxHyuEgCojbTw7uPFQxm">
                             <div class="video-frame">
-                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='711' viewBox='0 0 400 711'%3E%3Crect width='400' height='711' fill='%23833AB4'/%3E%3Ctext x='200' y='355' text-anchor='middle' fill='white' font-size='18' font-family='Geist'%3EAI РОЛИК 1%3C/text%3E%3C/svg%3E" 
-                                     alt="Превью видео 1" 
-                                     loading="lazy"
-                                     style="width:100%; height:100%; object-fit:cover; display:block;">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='711' viewBox='0 0 400 711'%3E%3Crect width='400' height='711' fill='%23833AB4'/%3E%3Ctext x='200' y='355' text-anchor='middle' fill='white' font-size='18' font-family='Geist'%3EAI РОЛИК 1%3C/text%3E%3C/svg%3E" alt="Превью видео 1" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
                                 <div class="play-overlay">
                                     <svg class="play-icon" viewBox="0 0 24 24" width="64" height="64" fill="white">
                                         <path d="M8 5v14l11-7z"/>
@@ -843,10 +863,7 @@
                     <div class="ai-video-item">
                         <div class="video-placeholder" data-video-id="wzToMP6ZpNgEfgDNY7ecHM">
                             <div class="video-frame">
-                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='711' viewBox='0 0 400 711'%3E%3Crect width='400' height='711' fill='%23D62976'/%3E%3Ctext x='200' y='355' text-anchor='middle' fill='white' font-size='18' font-family='Geist'%3EAI РОЛИК 2%3C/text%3E%3C/svg%3E" 
-                                     alt="Превью видео 2" 
-                                     loading="lazy"
-                                     style="width:100%; height:100%; object-fit:cover; display:block;">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='711' viewBox='0 0 400 711'%3E%3Crect width='400' height='711' fill='%23D62976'/%3E%3Ctext x='200' y='355' text-anchor='middle' fill='white' font-size='18' font-family='Geist'%3EAI РОЛИК 2%3C/text%3E%3C/svg%3E" alt="Превью видео 2" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
                                 <div class="play-overlay">
                                     <svg class="play-icon" viewBox="0 0 24 24" width="64" height="64" fill="white">
                                         <path d="M8 5v14l11-7z"/>
@@ -858,10 +875,7 @@
                     <div class="ai-video-item">
                         <div class="video-placeholder" data-video-id="it8tEfjsnaLMaCU712FV2S">
                             <div class="video-frame">
-                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='729' viewBox='0 0 400 729'%3E%3Crect width='400' height='729' fill='%23F56040'/%3E%3Ctext x='200' y='364' text-anchor='middle' fill='white' font-size='18' font-family='Geist'%3EAI РОЛИК 3%3C/text%3E%3C/svg%3E" 
-                                     alt="Превью видео 3" 
-                                     loading="lazy"
-                                     style="width:100%; height:100%; object-fit:cover; display:block;">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='729' viewBox='0 0 400 729'%3E%3Crect width='400' height='729' fill='%23F56040'/%3E%3Ctext x='200' y='364' text-anchor='middle' fill='white' font-size='18' font-family='Geist'%3EAI РОЛИК 3%3C/text%3E%3C/svg%3E" alt="Превью видео 3" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
                                 <div class="play-overlay">
                                     <svg class="play-icon" viewBox="0 0 24 24" width="64" height="64" fill="white">
                                         <path d="M8 5v14l11-7z"/>
@@ -892,7 +906,7 @@
     </div>
 </section>
 
-<!-- НАШИ КОМПЕТЕНЦИИ - СЕТКА 4x4 -->
+<!-- НАШИ КОМПЕТЕНЦИИ -->
 <section id="competences" class="section">
     <div class="container">
         <div class="section-header">
@@ -1044,7 +1058,7 @@
     </div>
 </section>
 
-<!-- АККОРДЕОН FAQ В СТИЛЕ «КЕЙС» -->
+<!-- FAQ АККОРДЕОН -->
 <section id="faq" class="section" itemscope itemtype="https://schema.org/FAQPage">
     <div class="container">
         <div class="section-header">
@@ -1052,7 +1066,6 @@
             <a href="#services" class="section-more-btn">Подробнее</a>
         </div>
         <div class="cases-accordion" id="faqAccordion">
-            <!-- Кейс 01 -->
             <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                 <button class="case-lid">
                     <div class="lid-left">
@@ -1070,7 +1083,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Кейс 02 -->
             <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                 <button class="case-lid">
                     <div class="lid-left">
@@ -1088,7 +1100,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Кейс 03 -->
             <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                 <button class="case-lid">
                     <div class="lid-left">
@@ -1106,7 +1117,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Кейс 04 -->
             <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                 <button class="case-lid">
                     <div class="lid-left">
@@ -1124,7 +1134,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Кейс 05 -->
             <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                 <button class="case-lid">
                     <div class="lid-left">
@@ -1142,7 +1151,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Кейс 06 -->
             <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                 <button class="case-lid">
                     <div class="lid-left">
@@ -1160,7 +1168,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Кейс 07 -->
             <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                 <button class="case-lid">
                     <div class="lid-left">
@@ -1178,7 +1185,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Кейс 08 -->
             <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                 <button class="case-lid">
                     <div class="lid-left">
@@ -1232,7 +1238,7 @@
 
 <div id="footer-placeholder"></div>
 
-<!-- Модальное окно для подробного описания услуг -->
+<!-- Модальное окно -->
 <div id="serviceModal" class="service-modal">
     <div class="modal-content">
         <span class="modal-close">×</span>
@@ -1255,7 +1261,16 @@
 </div>
 
 <style>
-/* Стили для модального окна */
+/* Стили для модального окна и остальных секций */
+:root {
+    --card-bg: rgba(18, 22, 35, 0.8);
+    --ig-pink: #D62976;
+    --ig-gradient: linear-gradient(135deg, #D62976, #F56040, #F5B700);
+    --ig-orange: #F56040;
+    --gray: #B0C4DE;
+    --white: #FFFFFF;
+}
+
 .service-modal {
     display: none;
     position: fixed;
@@ -1392,7 +1407,6 @@
     transform: translateY(-2px);
 }
 
-/* Стили для видео-плейсхолдеров */
 .video-placeholder {
     position: relative;
     width: 100%;
@@ -1454,7 +1468,6 @@
     opacity: 1;
 }
 
-/* Стили для кнопки наверх */
 .totop {
     position: fixed;
     bottom: 30px;
@@ -1515,7 +1528,7 @@
 <script src="common.js" defer></script>
 
 <script>
-// ===== КНОПКА НАВЕРХ =====
+// КНОПКА НАВЕРХ
 (function initToTop() {
     const toTopBtn = document.getElementById('toTopBtn');
     if (!toTopBtn) return;
@@ -1533,7 +1546,7 @@
     });
 })();
 
-// ===== ОТЛОЖЕННАЯ ЗАГРУЗКА ВИДЕО =====
+// ОТЛОЖЕННАЯ ЗАГРУЗКА ВИДЕО
 (function initLazyKinescope() {
     const placeholders = document.querySelectorAll('.video-placeholder');
     if (placeholders.length === 0) return;
@@ -1566,7 +1579,7 @@
     });
 })();
 
-// ===== ДАННЫЕ ДЛЯ МОДАЛЬНОГО ОКНА =====
+// ДАННЫЕ ДЛЯ МОДАЛЬНОГО ОКНА
 const serviceDetails = {
     "Веб-разработка": {
         description: "Мы создаём высокопроизводительные веб-приложения, которые выдерживают высокие нагрузки и обеспечивают мгновенный отклик. Наши решения масштабируются от стартапов до enterprise-уровня.",
@@ -1675,7 +1688,6 @@ const serviceDetails = {
     }
 };
 
-// Открытие модального окна
 function openServiceModal(serviceName) {
     const details = serviceDetails[serviceName];
     if (!details) return;
@@ -1707,14 +1719,12 @@ function openServiceModal(serviceName) {
     document.body.style.overflow = 'hidden';
 }
 
-// Закрытие модального окна
 function closeModal() {
     const modal = document.getElementById('serviceModal');
     modal.classList.remove('active');
     document.body.style.overflow = '';
 }
 
-// Назначаем обработчики на кнопки
 document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('.service-card');
     const modal = document.getElementById('serviceModal');
