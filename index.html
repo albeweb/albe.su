@@ -114,9 +114,9 @@
 <div id="header-placeholder"></div>
 
 <main>
-<!-- ========== HERO БАННЕР (4 СЛОЯ) ========== -->
+<!-- ========== HERO БАННЕР (ПРАВИЛЬНЫЕ СЛОИ) ========== -->
 <section class="hero-section">
-    <!-- СЛОЙ 1: Фон (чёрный) — через background секции -->
+    <!-- СЛОЙ 1: Фон (чёрный) -->
     
     <!-- СЛОЙ 2: Маска с градиентом -->
     <div class="masked-container">
@@ -144,7 +144,10 @@
         </svg>
     </div>
 
-    <!-- СЛОЙ 3: Текст -->
+    <!-- СЛОЙ 3: Canvas с падающим кодом (ПОД текстом) -->
+    <canvas id="matrixCanvas" class="hero-canvas-bottom"></canvas>
+
+    <!-- СЛОЙ 4: Текст (САМЫЙ ВЕРХНИЙ) -->
     <div class="hero-text agency-tag" id="agencyTag">DIGITAL AGENCY</div>
     <div class="hero-text main-title" id="mainTitle">разработка</div>
     <div class="hero-text sub-line" id="subLine">дизайна и сайтов под ключ</div>
@@ -171,18 +174,13 @@
     </div>
 
     <button class="restart-btn" id="restartBtn">⟳ Рестарт</button>
-
-    <!-- СЛОЙ 4: Canvas с падающим кодом (поверх всего!) -->
-    <canvas id="matrixCanvas" class="hero-canvas-top"></canvas>
 </section>
 
 <style>
-/* СТИЛИ ДЛЯ 4 СЛОЁВ */
-
 .hero-section {
     position: relative;
     min-height: 100vh;
-    background: #05070A;  /* СЛОЙ 1: Фон */
+    background: #05070A;
     overflow: hidden;
     z-index: 1;
 }
@@ -196,9 +194,6 @@
     height: 100%;
     z-index: 10;
     pointer-events: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .masked-container svg {
@@ -209,10 +204,22 @@
     height: 100%;
 }
 
-/* СЛОЙ 3: Текст */
+/* СЛОЙ 3: Canvas — под текстом, но над градиентом */
+.hero-canvas-bottom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 15;
+    pointer-events: none;
+}
+
+/* СЛОЙ 4: Текст — САМЫЙ ВЕРХНИЙ */
 .hero-text {
     position: absolute;
-    z-index: 20;
+    z-index: 30;
     font-family: 'Geist', sans-serif;
     color: white;
     text-shadow: 0 0 5px currentColor;
@@ -270,7 +277,7 @@
     left: 100px;
     display: flex;
     gap: 3rem;
-    z-index: 25;
+    z-index: 30;
     opacity: 0;
     transition: opacity 0.8s ease;
 }
@@ -313,18 +320,18 @@
     gap: 0.9rem;
     max-width: 50%;
     justify-content: flex-end;
-    z-index: 25;
+    z-index: 30;
 }
 
 .hero-badges .badge {
     font-family: 'Geist', sans-serif;
-    background: rgba(76,29,149,0.35);
-    backdrop-filter: blur(8px);
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
     padding: 0.6rem 1.4rem;
     border-radius: 60px;
     font-size: 0.85rem;
-    border: 1px solid #4C1D95;
-    color: #B0B3B8;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #FFFFFF;
     white-space: nowrap;
     font-weight: 500;
 }
@@ -341,7 +348,7 @@
     text-shadow: 0 0 5px rgba(255,255,255,0.3);
     white-space: nowrap;
     pointer-events: none;
-    z-index: 25;
+    z-index: 30;
     opacity: 0;
     transition: opacity 0.8s ease;
 }
@@ -357,12 +364,12 @@
     font-family: 'Geist', sans-serif;
     font-size: 3.73rem;
     font-weight: 900;
-    color: #000000;
-    text-shadow: none;
+    color: #FFFFFF;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     letter-spacing: 2px;
     white-space: nowrap;
     pointer-events: none;
-    z-index: 25;
+    z-index: 30;
     text-align: right;
 }
 
@@ -401,18 +408,6 @@
 .restart-btn:hover {
     transform: scale(1.05);
     background: #ffcc33;
-}
-
-/* СЛОЙ 4: Canvas с падающим кодом (ПОВЕРХ ВСЕГО!) */
-.hero-canvas-top {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    z-index: 30;          /* ВЫШЕ текста (20) и градиента (10) */
-    pointer-events: none;  /* Чтобы клики проходили сквозь canvas к кнопкам */
 }
 
 @media (max-width: 1200px) {
@@ -459,7 +454,7 @@
 </style>
 
 <script>
-// СЛОЙ 4: Matrix Canvas Effect (падающий код поверх всего)
+// Matrix Canvas Effect (падающий код, слой 3)
 (function() {
     const canvas = document.getElementById('matrixCanvas');
     if (!canvas) return;
@@ -494,7 +489,7 @@
         if (now - lastFrameTime < frameInterval) return;
         lastFrameTime = now;
         
-        ctx.fillStyle = 'rgba(5,7,10,0.06)';
+        ctx.fillStyle = 'rgba(5,7,10,0.08)';
         ctx.fillRect(0, 0, w, h);
         ctx.textAlign = 'center';
         
