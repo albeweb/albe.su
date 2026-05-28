@@ -115,7 +115,7 @@
 <div id="header-placeholder"></div>
 
 <main>
-<!-- ========== HERO БАННЕР (albe строчные, жёлтая a) ========== -->
+<!-- ========== HERO БАННЕР (albe строчные, жёлтая a, "разработка" опущена на 30px) ========== -->
 <section class="hero-section">
     <!-- СЛОЙ 1: Фон (чёрный) -->
     
@@ -296,8 +296,9 @@
     white-space: nowrap;
 }
 
+/* ИЗМЕНЕНО: "разработка" опущена на 30px вниз (было 270, стало 300) */
 .main-title {
-    top: calc(18% + 270px);
+    top: calc(18% + 300px);
     left: 200px;
     font-family: 'Geist', sans-serif;
     font-size: clamp(3rem, 10vw, 7rem);
@@ -477,7 +478,7 @@
 
 @media (max-width: 900px) {
     .agency-tag { left: 40px; font-size: 1.2rem; top: calc(6% + 60px); }
-    .main-title { left: 40px; font-size: 2rem; top: calc(18% + 220px); }
+    .main-title { left: 40px; font-size: 2rem; top: calc(18% + 250px); }
     .sub-line { left: 40px; font-size: 1.1rem; top: calc(34% + 220px); white-space: normal; max-width: 85%; }
     .hero-stats { left: 40px; bottom: 80px; gap: 1rem; flex-wrap: wrap; }
     .hero-stats .stat-item { font-size: 1.3rem; }
@@ -494,7 +495,7 @@
 
 @media (max-width: 600px) {
     .agency-tag { left: 20px; font-size: 0.75rem; top: calc(6% + 40px); }
-    .main-title { left: 20px; font-size: 1.8rem; top: calc(18% + 180px); }
+    .main-title { left: 20px; font-size: 1.8rem; top: calc(18% + 210px); }
     .sub-line { left: 20px; font-size: 0.9rem; top: calc(34% + 180px); }
     .hero-stats { left: 20px; bottom: 70px; gap: 0.8rem; }
     .hero-stats .stat-item { font-size: 1rem; }
