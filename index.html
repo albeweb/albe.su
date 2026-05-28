@@ -114,7 +114,7 @@
 <div id="header-placeholder"></div>
 
 <main>
-<!-- ========== HERO БАННЕР (БЕЗ КНОПКИ РЕСТАРТ) ========== -->
+<!-- ========== HERO БАННЕР (ОЧИЩЕННАЯ ВЕРСИЯ) ========== -->
 <section class="hero-section">
     <canvas id="matrixCanvas" class="hero-canvas-bottom"></canvas>
 
@@ -440,7 +440,7 @@ main {
 </style>
 
 <script>
-// Matrix Canvas Effect
+// Matrix Canvas Effect (падающий код)
 (function() {
     const canvas = document.getElementById('matrixCanvas');
     if (!canvas) return;
@@ -510,9 +510,9 @@ main {
     if (statsRow) setTimeout(() => statsRow.classList.add('visible'), 2000);
 })();
 
-// Анимация печати слов (без кнопки рестарт)
+// Анимация печати слов (только один массив)
 (function() {
-    const words = ["ДИЗАЙН", "WEB3", "BLOCKCHAIN", "AI РЕКЛАМУ", "ПРИЛОЖЕНИЯ", "SEO СТРАТЕГИЮ", "CRM/ERP", "САЙТЫ", "БИЗНЕС", "БУДУЩЕЕ"];
+    const words = ["БИЗНЕС", "ДИЗАЙН", "WEB3", "BLOCKCHAIN", "AI РЕКЛАМУ", "ПРИЛОЖЕНИЯ", "SEO ОПТИМИЗАЦИЮ", "CRM/ERP", "САЙТЫ", "БУДУЩЕЕ"];
     let wordIndex = 0;
     let isDeleting = false;
     let text = "";
