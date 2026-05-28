@@ -2838,3 +2838,67 @@ h4 {
 .hero-etalon.loaded {
     opacity: 1;
 }
+/* ============================================ */
+/* HERO НА ВСЮ ВЫСОТУ ЭКРАНА */
+/* ============================================ */
+
+/* Шапка — фиксированная поверх всего */
+.header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: transparent;
+}
+
+.header.scrolled {
+    background: rgba(10, 14, 23, 0.95);
+    backdrop-filter: blur(12px);
+}
+
+/* Плейсхолдер шапки — невидимый, но сохраняет место */
+#header-placeholder {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    pointer-events: none;
+}
+
+#header-placeholder .header {
+    pointer-events: auto;
+}
+
+/* Hero — на всю высоту экрана */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    min-height: 100vh;
+    max-height: 100vh;
+    background: #05070A;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Компенсация для контента под hero */
+main {
+    padding-top: 0;
+}
+
+/* Первая секция после hero */
+#services {
+    margin-top: 0;
+    position: relative;
+    z-index: 2;
+    background: #05070A;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        height: 100vh;
+        min-height: 100vh;
+        max-height: 100vh;
+    }
+}
