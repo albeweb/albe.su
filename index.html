@@ -108,725 +108,19 @@
     ]
 }
 </script>
-
-<style>
-    /* Базовые переменные для остальных секций */
-    :root {
-        --bg-dark: #05070A;
-        --card-bg: rgba(20, 25, 35, 0.7);
-        --ig-pink: #D62976;
-        --ig-orange: #F56040;
-        --ig-yellow: #F5B700;
-        --ig-gradient: linear-gradient(135deg, #D62976, #F56040, #F5B700);
-        --gray: #B0C4DE;
-        --white: #FFFFFF;
-    }
-    
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    
-    body {
-        background: #05070A;
-        font-family: 'Geist', 'Inter', sans-serif;
-        overflow-x: hidden;
-    }
-    
-    /* Стили для hero-баннера (матрица) */
-    .hero-matrix {
-        position: relative;
-        width: 100%;
-        height: 100vh;
-        overflow: hidden;
-        background: #05070A;
-    }
-    
-    .hero-matrix canvas {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: block;
-        z-index: 0;
-    }
-    
-    .masked-container {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 10;
-        pointer-events: none;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .masked-container svg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-    
-    .over-text {
-        position: absolute;
-        z-index: 20;
-        font-family: 'Geist', sans-serif;
-        color: white;
-        text-shadow: 0 0 5px currentColor;
-        pointer-events: none;
-        opacity: 0;
-        transform: translateY(15px);
-        transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-    
-    .over-text.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    
-    .agency-tag {
-        top: calc(6% + 100px);
-        left: 100px;
-        font-family: 'Geist', monospace;
-        font-size: 1.8rem;
-        letter-spacing: 8px;
-        color: #FFFFFF;
-        text-shadow: 0 0 6px rgba(255,255,255,0.3);
-        white-space: nowrap;
-    }
-    
-    .main-title {
-        top: calc(18% + 270px);
-        left: 200px;
-        font-family: 'EN Regular', 'SF Pro Display', sans-serif;
-        font-size: clamp(3rem, 10vw, 7rem);
-        background: linear-gradient(135deg, #F5B700, #F5B700, #10B981, #06B6D4);
-        background-size: 200% auto;
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        text-shadow: none;
-        line-height: 1.1;
-    }
-    
-    .sub-line {
-        top: calc(34% + 270px);
-        left: 200px;
-        font-family: 'EN Regular', 'SF Pro Display', sans-serif;
-        font-size: clamp(1.5rem, 5vw, 2.8rem);
-        background: linear-gradient(135deg, #F5B700, #10B981, #06B6D4, #4C1D95);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        white-space: nowrap;
-    }
-    
-    .stats-row {
-        position: absolute;
-        bottom: 100px;
-        left: 100px;
-        display: flex;
-        gap: 3rem;
-        z-index: 25;
-        opacity: 0;
-        transition: opacity 0.8s ease;
-    }
-    
-    .stats-row.visible {
-        opacity: 1;
-    }
-    
-    .stat-item {
-        font-family: 'Zen Dots', monospace;
-        font-size: 2.8rem;
-        text-align: center;
-        color: white;
-    }
-    
-    .stat-item .stat-label {
-        font-size: 0.8rem;
-        letter-spacing: 2px;
-        font-family: 'Geist', monospace;
-        color: #B0B3B8;
-        margin-top: 5px;
-    }
-    
-    .stat-item:nth-child(1) .stat-number { color: #10B981; }
-    .stat-item:nth-child(2) .stat-number { color: #06B6D4; }
-    .stat-item:nth-child(3) .stat-number { color: #4C1D95; }
-    .stat-item:nth-child(4) .stat-number { color: #F5B700; }
-    
-    .stat-number {
-        font-size: 2.8rem;
-        font-weight: 400;
-    }
-    
-    .badges-grid {
-        position: absolute;
-        bottom: 10%;
-        right: 5%;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.9rem;
-        max-width: 50%;
-        justify-content: flex-end;
-        z-index: 25;
-    }
-    
-    .badge {
-        background: rgba(76,29,149,0.35);
-        backdrop-filter: blur(8px);
-        padding: 0.6rem 1.4rem;
-        border-radius: 60px;
-        font-size: 0.85rem;
-        border: 1px solid #4C1D95;
-        color: #B0B3B8;
-        white-space: nowrap;
-        font-weight: 500;
-    }
-    
-    .right-phrase {
-        position: absolute;
-        left: 58%;
-        top: calc(45% + 100px);
-        transform: translateY(-50%);
-        font-family: 'Geist', sans-serif;
-        font-size: 1.8rem;
-        font-weight: 500;
-        color: #FFFFFF;
-        text-shadow: 0 0 5px rgba(255,255,255,0.3);
-        white-space: nowrap;
-        pointer-events: none;
-        z-index: 25;
-        opacity: 0;
-        transition: opacity 0.8s ease;
-    }
-    
-    .right-phrase.visible {
-        opacity: 1;
-    }
-    
-    .business-line {
-        position: absolute;
-        right: 100px;
-        bottom: 24%;
-        font-family: 'Geist', sans-serif;
-        font-size: 3.73rem;
-        font-weight: 900;
-        color: #000000;
-        text-shadow: none;
-        letter-spacing: 2px;
-        white-space: nowrap;
-        pointer-events: none;
-        z-index: 25;
-        text-align: right;
-    }
-    
-    .cursor {
-        display: inline-block;
-        width: 4px;
-        height: 3.73rem;
-        background-color: #F5B700;
-        vertical-align: middle;
-        margin-left: 8px;
-        animation: blink 0.8s step-end infinite;
-    }
-    
-    @keyframes blink {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0; }
-    }
-    
-    @keyframes revealLetter {
-        0% { opacity: 0; transform: scale(0.8); }
-        100% { opacity: 1; transform: scale(1); }
-    }
-    
-    .mask-letter { opacity: 0; }
-    
-    @media (max-width: 1200px) {
-        .right-phrase { left: 52%; font-size: 1.4rem; }
-        .business-line { font-size: 2.5rem; right: 50px; bottom: 20%; }
-        .cursor { height: 2.5rem; }
-        .agency-tag { font-size: 1.4rem; left: 80px; top: calc(6% + 60px); }
-        .stats-row { gap: 2rem; left: 80px; bottom: 80px; }
-        .stat-item { font-size: 2rem; }
-        .stat-number { font-size: 2rem; }
-        .main-title { left: 150px; top: calc(18% + 220px); }
-        .sub-line { left: 150px; top: calc(34% + 220px); }
-    }
-    
-    @media (max-width: 900px) {
-        .agency-tag { left: 40px; font-size: 1.2rem; top: calc(6% + 40px); }
-        .main-title { left: 40px; font-size: 2rem; top: calc(18% + 180px); }
-        .sub-line { left: 40px; font-size: 1.1rem; top: calc(34% + 180px); white-space: normal; max-width: 85%; }
-        .stats-row { left: 40px; bottom: 80px; gap: 1rem; flex-wrap: wrap; }
-        .stat-item { font-size: 1.3rem; }
-        .stat-number { font-size: 1.3rem; }
-        .stat-label { font-size: 0.6rem; }
-        .badges-grid { bottom: 8%; max-width: 90%; gap: 0.5rem; }
-        .badge { font-size: 0.6rem; padding: 0.3rem 0.8rem; }
-        .right-phrase { left: 5%; top: auto; bottom: 40%; transform: none; font-size: 1rem; white-space: normal; max-width: 90%; text-align: left; }
-        .business-line { right: 5%; bottom: 15%; font-size: 1.8rem; white-space: normal; text-align: right; max-width: 85%; }
-        .cursor { height: 1.8rem; }
-    }
-    
-    @media (max-width: 600px) {
-        .agency-tag { left: 20px; font-size: 0.75rem; top: calc(6% + 30px); }
-        .main-title { left: 20px; font-size: 1.8rem; top: calc(18% + 140px); }
-        .sub-line { left: 20px; font-size: 0.9rem; top: calc(34% + 140px); }
-        .stats-row { left: 20px; bottom: 70px; gap: 0.8rem; }
-        .stat-item { font-size: 1rem; }
-        .stat-number { font-size: 1rem; }
-        .stat-label { font-size: 0.5rem; }
-        .right-phrase { bottom: 35%; font-size: 0.85rem; }
-        .business-line { bottom: 10%; font-size: 1.4rem; }
-        .cursor { height: 1.4rem; }
-        .badges-grid { bottom: 5%; gap: 0.4rem; }
-        .badge { font-size: 0.55rem; padding: 0.25rem 0.6rem; }
-    }
-    
-    /* Остальные стили для секций */
-    .container {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 0 30px;
-    }
-    
-    .section {
-        padding: 80px 0;
-        position: relative;
-        z-index: 30;
-        background: #05070A;
-    }
-    
-    .section-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        margin-bottom: 48px;
-        flex-wrap: wrap;
-        gap: 20px;
-    }
-    
-    .section-header h2 {
-        font-size: 2.2rem;
-        background: linear-gradient(135deg, #F5B700, #D62976);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-    }
-    
-    .section-more-btn {
-        color: var(--ig-yellow);
-        text-decoration: none;
-        font-weight: 500;
-        border-bottom: 1px solid var(--ig-yellow);
-        padding-bottom: 4px;
-        transition: 0.3s;
-    }
-    
-    .services-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap: 30px;
-    }
-    
-    .service-card {
-        background: var(--card-bg);
-        backdrop-filter: blur(12px);
-        border-radius: 24px;
-        padding: 28px;
-        position: relative;
-        border: 1px solid rgba(214,41,118,0.3);
-        transition: all 0.3s ease;
-        cursor: pointer;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-    
-    .service-card:hover {
-        transform: translateY(-5px);
-        border-color: var(--ig-pink);
-        box-shadow: 0 10px 30px rgba(214,41,118,0.2);
-    }
-    
-    .color-strip {
-        display: flex;
-        gap: 8px;
-        margin-bottom: 20px;
-    }
-    
-    .color-dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-    }
-    
-    .dot-pink { background: #D62976; }
-    .dot-teal { background: #06B6D4; }
-    .dot-mint { background: #10B981; }
-    .dot-purple { background: #4C1D95; }
-    
-    .service-card h3 {
-        font-size: 1.5rem;
-        margin-bottom: 16px;
-        color: white;
-    }
-    
-    .service-card p {
-        color: var(--gray);
-        line-height: 1.5;
-        margin-bottom: 24px;
-    }
-    
-    .card-btn {
-        background: transparent;
-        border: 1px solid var(--ig-pink);
-        color: var(--ig-pink);
-        padding: 10px 20px;
-        border-radius: 40px;
-        cursor: pointer;
-        transition: 0.3s;
-        font-weight: 600;
-    }
-    
-    .card-btn:hover {
-        background: var(--ig-gradient);
-        color: white;
-        border-color: transparent;
-    }
-    
-    /* Компетенции */
-    .competences-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 24px;
-    }
-    
-    .competence-card {
-        background: rgba(20,25,35,0.6);
-        backdrop-filter: blur(8px);
-        border-radius: 20px;
-        padding: 24px;
-        border: 1px solid rgba(245,183,0,0.2);
-    }
-    
-    .competence-card h3 {
-        color: var(--ig-yellow);
-        margin-bottom: 12px;
-    }
-    
-    .competence-card p {
-        color: var(--gray);
-        margin-bottom: 16px;
-        font-size: 0.9rem;
-    }
-    
-    .competence-tech-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-    
-    .tech-item {
-        background: rgba(214,41,118,0.2);
-        padding: 4px 12px;
-        border-radius: 20px;
-        font-size: 0.75rem;
-        color: var(--gray);
-    }
-    
-    /* Калькулятор */
-    .calculator-card {
-        background: var(--card-bg);
-        backdrop-filter: blur(12px);
-        border-radius: 28px;
-        padding: 32px;
-        border: 1px solid rgba(245,183,0,0.3);
-    }
-    
-    .calc-options {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-bottom: 24px;
-    }
-    
-    .calc-option {
-        background: rgba(255,255,255,0.05);
-        padding: 8px 20px;
-        border-radius: 40px;
-        cursor: pointer;
-        transition: 0.2s;
-        font-size: 0.9rem;
-    }
-    
-    .calc-option.selected {
-        background: var(--ig-gradient);
-        color: white;
-    }
-    
-    .calc-price {
-        font-size: 2rem;
-        font-weight: bold;
-        color: var(--ig-yellow);
-        margin-top: 20px;
-    }
-    
-    .price-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 24px;
-        margin: 32px 0;
-    }
-    
-    .price-card {
-        background: rgba(20,25,35,0.5);
-        border-radius: 20px;
-        padding: 24px;
-    }
-    
-    .price-card h4 {
-        color: white;
-        margin-bottom: 12px;
-    }
-    
-    .price-card .price {
-        font-size: 1.6rem;
-        color: var(--ig-yellow);
-        font-weight: bold;
-        margin-bottom: 16px;
-    }
-    
-    .price-card li {
-        color: var(--gray);
-        font-size: 0.85rem;
-        margin-left: 20px;
-        line-height: 1.8;
-    }
-    
-    /* FAQ аккордеон */
-    .cases-accordion {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-    }
-    
-    .case-item {
-        border-bottom: 1px solid rgba(245,183,0,0.2);
-    }
-    
-    .case-lid {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px 0;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        font-family: inherit;
-    }
-    
-    .lid-left {
-        display: flex;
-        gap: 20px;
-        align-items: baseline;
-        flex-wrap: wrap;
-    }
-    
-    .case-number {
-        color: var(--ig-yellow);
-        font-size: 0.8rem;
-        letter-spacing: 2px;
-    }
-    
-    .case-title {
-        color: white;
-        font-size: 1.1rem;
-        font-weight: 500;
-    }
-    
-    .case-handle .handle-bar {
-        width: 24px;
-        height: 2px;
-        background: var(--ig-yellow);
-        transition: 0.3s;
-    }
-    
-    .case-item.active .handle-bar {
-        transform: rotate(45deg);
-        background: var(--ig-pink);
-    }
-    
-    .case-inside {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease;
-    }
-    
-    .case-item.active .case-inside {
-        max-height: 300px;
-    }
-    
-    .case-content {
-        padding: 0 0 20px 0;
-    }
-    
-    .case-text {
-        color: var(--gray);
-        line-height: 1.6;
-    }
-    
-    /* Контакты */
-    .contact-card {
-        background: var(--card-bg);
-        backdrop-filter: blur(12px);
-        border-radius: 32px;
-        padding: 48px;
-        border: 1px solid rgba(245,183,0,0.3);
-    }
-    
-    .contact-form {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        margin-top: 32px;
-    }
-    
-    .form-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-    }
-    
-    .contact-form input,
-    .contact-form textarea {
-        background: rgba(0,0,0,0.4);
-        border: 1px solid rgba(245,183,0,0.3);
-        padding: 14px 18px;
-        border-radius: 16px;
-        color: white;
-        font-family: inherit;
-    }
-    
-    .btn-primary {
-        background: var(--ig-gradient);
-        border: none;
-        padding: 14px 32px;
-        border-radius: 40px;
-        color: white;
-        font-weight: bold;
-        cursor: pointer;
-        transition: 0.3s;
-    }
-    
-    .totop {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        width: 50px;
-        height: 50px;
-        background: var(--ig-gradient);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        color: white;
-        font-size: 24px;
-        transition: 0.3s;
-        z-index: 999;
-        opacity: 0;
-        visibility: hidden;
-    }
-    
-    .totop.visible {
-        opacity: 1;
-        visibility: visible;
-    }
-    
-    /* Модальное окно */
-    .service-modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.9);
-        backdrop-filter: blur(12px);
-        z-index: 2000;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .service-modal.active {
-        display: flex;
-    }
-    
-    .modal-content {
-        background: var(--card-bg);
-        border: 1px solid var(--ig-pink);
-        border-radius: 28px;
-        max-width: 600px;
-        width: 90%;
-        max-height: 85vh;
-        overflow-y: auto;
-        position: relative;
-    }
-    
-    .modal-close {
-        position: absolute;
-        top: 20px;
-        right: 24px;
-        font-size: 32px;
-        cursor: pointer;
-    }
-    
-    .modal-body {
-        padding: 40px 32px;
-    }
-    
-    .restart-btn {
-        position: fixed;
-        bottom: 20px;
-        left: 20px;
-        z-index: 100;
-        background: #F5B700;
-        border: none;
-        padding: 8px 16px;
-        border-radius: 40px;
-        cursor: pointer;
-        font-weight: bold;
-        font-family: 'Geist', monospace;
-        pointer-events: auto;
-        transition: 0.2s;
-        font-size: 0.8rem;
-        z-index: 1000;
-    }
-    
-    .restart-btn:hover {
-        transform: scale(1.05);
-    }
-</style>
 </head>
 <body>
 
-<!-- НОВЫЙ HERO БАННЕР С МАТРИЦЕЙ -->
-<div class="hero-matrix">
-    <canvas id="matrixCanvas"></canvas>
-    
-    <div class="masked-container">
+<!-- Плейсхолдеры для загружаемых компонентов -->
+<div id="header-placeholder"></div>
+
+<main>
+<!-- ========== НОВЫЙ HERO БАННЕР (ЗАМЕНА) ========== -->
+<section style="position: relative; background: #05070A; overflow: hidden; min-height: 100vh;">
+    <canvas id="matrixCanvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: block; z-index: 0;"></canvas>
+
+    <!-- Маска A L B E -->
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; pointer-events: none; display: flex; justify-content: center; align-items: center;">
         <svg width="100%" height="100%" style="position: absolute; top:0; left:0;">
             <defs>
                 <radialGradient id="dynamicGrad" cx="50%" cy="50%" r="75%">
@@ -853,12 +147,20 @@
             </defs>
             <rect width="100%" height="100%" fill="url(#dynamicGrad)" mask="url(#letterMask)" />
         </svg>
+        <style>
+            @keyframes revealLetter {
+                0% { opacity: 0; transform: scale(0.8); }
+                100% { opacity: 1; transform: scale(1); }
+            }
+            .mask-letter { opacity: 0; }
+        </style>
     </div>
-    
+
+    <!-- Текстовые элементы -->
     <div class="over-text agency-tag" id="agencyTag">DIGITAL AGENCY</div>
     <div class="over-text main-title" id="mainTitle">разработка</div>
     <div class="over-text sub-line" id="subLine">дизайна и сайтов под ключ</div>
-    
+
     <div class="over-text badges-grid" id="badgesGrid">
         <span class="badge">Премиум дизайн</span>
         <span class="badge">Мобильные приложения</span>
@@ -869,47 +171,231 @@
         <span class="badge">E-commerce</span>
         <span class="badge">CRM интеграция</span>
     </div>
-    
+
     <div class="right-phrase" id="rightPhrase">МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ</div>
     <div class="business-line" id="businessLine"></div>
-    
+
+    <!-- Статистика -->
     <div class="stats-row" id="statsRow">
         <div class="stat-item"><div class="stat-number">7+</div><div class="stat-label">лет опыта</div></div>
         <div class="stat-item"><div class="stat-number">150+</div><div class="stat-label">проектов</div></div>
         <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">поддержка</div></div>
         <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">результат</div></div>
     </div>
+
+    <button class="restart-btn" id="restartBtn" style="position: fixed; bottom: 20px; right: 20px; z-index: 100; background: #F5B700; border: none; padding: 10px 20px; border-radius: 40px; cursor: pointer; font-weight: bold; font-family: 'Geist', monospace; pointer-events: auto; transition: 0.2s; font-size: 0.8rem;">⟳ Рестарт</button>
+</section>
+
+<style>
+    /* Стили для нового hero-баннера */
+    @font-face {
+        font-family: 'EN Regular';
+        src: url('https://fonts.cdnfonts.com/css/sf-pro-display') format('woff2');
+    }
+    @font-face {
+        font-family: 'Geist';
+        src: url('https://fonts.cdnfonts.com/css/geist-sans') format('woff2');
+    }
+    @font-face {
+        font-family: 'Zen Dots';
+        src: url('https://fonts.cdnfonts.com/css/zen-dots') format('woff2');
+    }
     
-    <button class="restart-btn" id="restartBtn">⟳ Рестарт анимации</button>
-</div>
-
-<main>
-    <!-- ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ -->
-    <section id="services" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Эксклюзивные решения</h2>
-                <a href="#services" class="section-more-btn">Все услуги</a>
-            </div>
-            <div class="services-grid">
-                <div class="service-card"><div class="color-strip"><div class="color-dot dot-pink"></div><div class="color-dot dot-teal"></div><div class="color-dot dot-mint"></div><div class="color-dot dot-purple"></div></div><h3>Веб-разработка</h3><p>Современный стек: React, Vue, Node.js, Laravel. Высокая производительность.</p><button class="card-btn">ПОДРОБНЕЕ</button></div>
-                <div class="service-card"><div class="color-strip"><div class="color-dot dot-pink"></div><div class="color-dot dot-teal"></div><div class="color-dot dot-mint"></div><div class="color-dot dot-purple"></div></div><h3>Иммерсивный дизайн</h3><p>Микровзаимодействия, 3D-сцены, анимация. Визуальный язык, который запоминается.</p><button class="card-btn">ПОДРОБНЕЕ</button></div>
-                <div class="service-card"><div class="color-strip"><div class="color-dot dot-pink"></div><div class="color-dot dot-teal"></div><div class="color-dot dot-mint"></div><div class="color-dot dot-purple"></div></div><h3>E-commerce платформы</h3><p>Интернет-магазины с конверсией 15%+, интеграция с 1С, CRM и маркетплейсами.</p><button class="card-btn">ПОДРОБНЕЕ</button></div>
-                <div class="service-card"><div class="color-strip"><div class="color-dot dot-pink"></div><div class="color-dot dot-teal"></div><div class="color-dot dot-mint"></div><div class="color-dot dot-purple"></div></div><h3>SEO и аналитика</h3><p>Полная оптимизация: от семантики до лидерских позиций в Яндексе и Google.</p><button class="card-btn">ПОДРОБНЕЕ</button></div>
-                <div class="service-card"><div class="color-strip"><div class="color-dot dot-pink"></div><div class="color-dot dot-teal"></div><div class="color-dot dot-mint"></div><div class="color-dot dot-purple"></div></div><h3>AI и Machine Learning</h3><p>Чат-боты, рекомендательные системы, аналитика данных, генеративный AI.</p><button class="card-btn">ПОДРОБНЕЕ</button></div>
-                <div class="service-card"><div class="color-strip"><div class="color-dot dot-pink"></div><div class="color-dot dot-teal"></div><div class="color-dot dot-mint"></div><div class="color-dot dot-purple"></div></div><h3>Мобильные приложения</h3><p>iOS, Android, React Native, Flutter. Полный цикл от идеи до публикации.</p><button class="card-btn">ПОДРОБНЕЕ</button></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Остальные секции (AI реклама, компетенции, калькулятор, миссия, FAQ, контакты) остаются без изменений -->
-    <!-- ... (весь остальной код секций сохранён, но для краткости я оставлю заглушку) ... -->
-</main>
-
-<div class="totop" id="toTopBtn">↑</div>
+    .over-text {
+        position: absolute;
+        z-index: 20;
+        font-family: 'Geist', sans-serif;
+        color: white;
+        text-shadow: 0 0 5px currentColor;
+        pointer-events: none;
+        opacity: 0;
+        transform: translateY(15px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .over-text.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .agency-tag {
+        top: calc(6% + 100px);
+        left: 100px;
+        font-family: 'Geist', monospace;
+        font-size: 1.8rem;
+        letter-spacing: 8px;
+        color: #FFFFFF;
+        text-shadow: 0 0 6px rgba(255,255,255,0.3);
+        white-space: nowrap;
+    }
+    .main-title {
+        top: calc(18% + 270px);
+        left: 200px;
+        font-family: 'EN Regular', sans-serif;
+        font-size: clamp(3rem, 10vw, 7rem);
+        background: linear-gradient(135deg, #F5B700, #F5B700, #10B981, #06B6D4);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: none;
+        line-height: 1.1;
+    }
+    .sub-line {
+        top: calc(34% + 270px);
+        left: 200px;
+        font-family: 'EN Regular', sans-serif;
+        font-size: clamp(1.5rem, 5vw, 2.8rem);
+        background: linear-gradient(135deg, #F5B700, #10B981, #06B6D4, #4C1D95);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        white-space: nowrap;
+    }
+    .stats-row {
+        position: absolute;
+        bottom: 100px;
+        left: 100px;
+        display: flex;
+        gap: 3rem;
+        z-index: 25;
+        opacity: 0;
+        transition: opacity 0.8s ease;
+    }
+    .stats-row.visible {
+        opacity: 1;
+    }
+    .stat-item {
+        font-family: 'Zen Dots', monospace;
+        font-size: 2.8rem;
+        text-align: center;
+        color: white;
+    }
+    .stat-item .stat-label {
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+        font-family: 'Geist', monospace;
+        color: #B0B3B8;
+        margin-top: 5px;
+    }
+    .stat-item:nth-child(1) .stat-number { color: #10B981; }
+    .stat-item:nth-child(2) .stat-number { color: #06B6D4; }
+    .stat-item:nth-child(3) .stat-number { color: #4C1D95; }
+    .stat-item:nth-child(4) .stat-number { color: #F5B700; }
+    .stat-number {
+        font-size: 2.8rem;
+        font-weight: 400;
+    }
+    .badges-grid {
+        position: absolute;
+        bottom: 10%;
+        right: 5%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.9rem;
+        max-width: 50%;
+        justify-content: flex-end;
+        z-index: 25;
+    }
+    .badge {
+        background: rgba(76,29,149,0.35);
+        backdrop-filter: blur(8px);
+        padding: 0.6rem 1.4rem;
+        border-radius: 60px;
+        font-size: 0.85rem;
+        border: 1px solid #4C1D95;
+        color: #B0B3B8;
+        white-space: nowrap;
+        font-weight: 500;
+    }
+    .right-phrase {
+        position: absolute;
+        left: 58%;
+        top: calc(45% + 100px);
+        transform: translateY(-50%);
+        font-family: 'Geist', sans-serif;
+        font-size: 1.8rem;
+        font-weight: 500;
+        color: #FFFFFF;
+        text-shadow: 0 0 5px rgba(255,255,255,0.3);
+        white-space: nowrap;
+        pointer-events: none;
+        z-index: 25;
+        opacity: 0;
+        transition: opacity 0.8s ease;
+    }
+    .right-phrase.visible {
+        opacity: 1;
+    }
+    .business-line {
+        position: absolute;
+        right: 100px;
+        bottom: 24%;
+        font-family: 'Geist', sans-serif;
+        font-size: 3.73rem;
+        font-weight: 900;
+        color: #000000;
+        text-shadow: none;
+        letter-spacing: 2px;
+        white-space: nowrap;
+        pointer-events: none;
+        z-index: 25;
+        text-align: right;
+    }
+    .cursor {
+        display: inline-block;
+        width: 4px;
+        height: 3.73rem;
+        background-color: #F5B700;
+        vertical-align: middle;
+        margin-left: 8px;
+        animation: blink 0.8s step-end infinite;
+    }
+    @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+    }
+    @media (max-width: 1200px) {
+        .right-phrase { left: 52%; font-size: 1.4rem; }
+        .business-line { font-size: 2.5rem; right: 50px; bottom: 20%; }
+        .cursor { height: 2.5rem; }
+        .agency-tag { font-size: 1.4rem; left: 80px; }
+        .stats-row { gap: 2rem; left: 80px; bottom: 80px; }
+        .stat-item { font-size: 2rem; }
+        .stat-number { font-size: 2rem; }
+        .main-title { left: 150px; }
+        .sub-line { left: 150px; }
+    }
+    @media (max-width: 900px) {
+        .agency-tag { left: 40px; font-size: 1.2rem; top: calc(6% + 60px); }
+        .main-title { left: 40px; font-size: 2rem; top: calc(18% + 220px); }
+        .sub-line { left: 40px; font-size: 1.1rem; top: calc(34% + 220px); white-space: normal; max-width: 85%; }
+        .stats-row { left: 40px; bottom: 80px; gap: 1rem; flex-wrap: wrap; }
+        .stat-item { font-size: 1.3rem; }
+        .stat-number { font-size: 1.3rem; }
+        .stat-label { font-size: 0.6rem; }
+        .badges-grid { bottom: 8%; max-width: 90%; gap: 0.5rem; }
+        .badge { font-size: 0.6rem; padding: 0.3rem 0.8rem; }
+        .right-phrase { left: 5%; top: auto; bottom: 40%; transform: none; font-size: 1rem; white-space: normal; max-width: 90%; text-align: left; }
+        .business-line { right: 5%; bottom: 15%; font-size: 1.8rem; white-space: normal; text-align: right; max-width: 85%; }
+        .cursor { height: 1.8rem; }
+    }
+    @media (max-width: 600px) {
+        .agency-tag { left: 20px; font-size: 0.75rem; top: calc(6% + 40px); }
+        .main-title { left: 20px; font-size: 1.8rem; top: calc(18% + 180px); }
+        .sub-line { left: 20px; font-size: 0.9rem; top: calc(34% + 180px); }
+        .stats-row { left: 20px; bottom: 70px; gap: 0.8rem; }
+        .stat-item { font-size: 1rem; }
+        .stat-number { font-size: 1rem; }
+        .stat-label { font-size: 0.5rem; }
+        .right-phrase { bottom: 35%; font-size: 0.85rem; }
+        .business-line { bottom: 10%; font-size: 1.4rem; }
+        .cursor { height: 1.4rem; }
+        .badges-grid { bottom: 5%; gap: 0.4rem; }
+        .badge { font-size: 0.55rem; padding: 0.25rem 0.6rem; }
+    }
+</style>
 
 <script>
-    // Матричный фон для hero
+    // Matrix Canvas Effect
     (function() {
         const canvas = document.getElementById('matrixCanvas');
         if (!canvas) return;
@@ -942,9 +428,11 @@
             requestAnimationFrame(drawMatrix);
             if (now - lastFrameTime < frameInterval) return;
             lastFrameTime = now;
+            
             ctx.fillStyle = 'rgba(5,7,10,0.06)';
             ctx.fillRect(0, 0, w, h);
             ctx.textAlign = 'center';
+            
             for (let i = 0; i < drops.length; i++) {
                 const item = getRandomItem();
                 const x = i * fontSize + fontSize/2;
@@ -970,56 +458,1278 @@
         requestAnimationFrame(drawMatrix);
     })();
     
-    // Анимация появления текстов
-    const permanentElements = ['agencyTag', 'mainTitle', 'subLine', 'badgesGrid'];
-    permanentElements.forEach((id, idx) => {
-        const el = document.getElementById(id);
-        if (el) setTimeout(() => el.classList.add('visible'), 1300 + idx * 150);
-    });
-    const statsRow = document.getElementById('statsRow');
-    if (statsRow) setTimeout(() => statsRow.classList.add('visible'), 2000);
-    const rightPhraseEl = document.getElementById('rightPhrase');
-    if (rightPhraseEl) setTimeout(() => rightPhraseEl.classList.add('visible'), 2300);
-    
-    const businessLineEl = document.getElementById('businessLine');
-    const fullText = "МЫ СОЗДАЕМ БИЗНЕС";
-    let index = 0;
-    function typeWriter() {
-        if (index < fullText.length) {
-            businessLineEl.innerHTML = fullText.substring(0, index + 1) + '<span class="cursor"></span>';
-            index++;
-            setTimeout(typeWriter, 100);
-        } else {
-            businessLineEl.innerHTML = fullText;
+    // Анимации появления
+    (function() {
+        const permanentElements = ['agencyTag', 'mainTitle', 'subLine', 'badgesGrid'];
+        permanentElements.forEach((id, idx) => {
+            const el = document.getElementById(id);
+            if (el) {
+                setTimeout(() => {
+                    el.classList.add('visible');
+                }, 1300 + idx * 150);
+            }
+        });
+        
+        const statsRow = document.getElementById('statsRow');
+        if (statsRow) {
+            setTimeout(() => {
+                statsRow.classList.add('visible');
+            }, 2000);
         }
+        
+        const rightPhraseEl = document.getElementById('rightPhrase');
+        if (rightPhraseEl) {
+            setTimeout(() => {
+                rightPhraseEl.classList.add('visible');
+            }, 2300);
+        }
+        
+        const businessLineEl = document.getElementById('businessLine');
+        const fullText = "МЫ СОЗДАЕМ БИЗНЕС";
+        let index = 0;
+        
+        function typeWriter() {
+            if (index < fullText.length) {
+                businessLineEl.innerHTML = fullText.substring(0, index + 1) + '<span class="cursor"></span>';
+                index++;
+                setTimeout(typeWriter, 100);
+            } else {
+                businessLineEl.innerHTML = fullText;
+            }
+        }
+        
+        if (businessLineEl) {
+            setTimeout(() => {
+                typeWriter();
+            }, 2900);
+        }
+        
+        const restartBtn = document.getElementById('restartBtn');
+        if (restartBtn) {
+            restartBtn.addEventListener('click', () => {
+                permanentElements.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.classList.remove('visible');
+                });
+                if (statsRow) statsRow.classList.remove('visible');
+                if (rightPhraseEl) rightPhraseEl.classList.remove('visible');
+                if (businessLineEl) {
+                    businessLineEl.innerHTML = '';
+                    index = 0;
+                }
+                const maskLetters = document.querySelectorAll('.mask-letter');
+                maskLetters.forEach(letter => {
+                    letter.style.animation = 'none';
+                    letter.style.opacity = '0';
+                });
+                setTimeout(() => {
+                    maskLetters.forEach((letter, i) => {
+                        const delays = ['0.2s', '0.5s', '0.8s', '1.1s'];
+                        letter.style.animation = `revealLetter 0.6s ease forwards ${delays[i]}`;
+                    });
+                    permanentElements.forEach((id, idx) => {
+                        setTimeout(() => {
+                            const el = document.getElementById(id);
+                            if (el) el.classList.add('visible');
+                        }, 1300 + idx * 150);
+                    });
+                    if (statsRow) {
+                        setTimeout(() => {
+                            statsRow.classList.add('visible');
+                        }, 2000);
+                    }
+                    if (rightPhraseEl) {
+                        setTimeout(() => {
+                            rightPhraseEl.classList.add('visible');
+                        }, 2300);
+                    }
+                    if (businessLineEl) {
+                        setTimeout(() => {
+                            typeWriter();
+                        }, 2900);
+                    }
+                }, 50);
+            });
+        }
+    })();
+</script>
+
+<!-- ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ -->
+<section id="services" class="section" itemscope itemtype="https://schema.org/ItemList">
+    <div class="container">
+        <div class="section-header">
+            <h2 itemprop="name">Эксклюзивные решения</h2>
+            <a href="#services" class="section-more-btn">Все услуги</a>
+        </div>
+        <div class="services-grid">
+            <!-- Карточка 1 -->
+            <div class="service-card" itemscope itemtype="https://schema.org/Service">
+                <div class="segment seg-1"></div>
+                <div class="segment seg-2"></div>
+                <div class="segment seg-3"></div>
+                <div class="segment seg-4"></div>
+                <div class="corner-tl"></div>
+                <div class="corner-tr"></div>
+                <div class="corner-bl"></div>
+                <div class="corner-br"></div>
+                <div class="card-content">
+                    <div>
+                        <div class="color-strip">
+                            <div class="color-dot dot-pink"></div>
+                            <div class="color-dot dot-teal"></div>
+                            <div class="color-dot dot-mint"></div>
+                            <div class="color-dot dot-purple"></div>
+                        </div>
+                        <h3 itemprop="name">Веб-разработка</h3>
+                        <p itemprop="description">Современный стек: React, Vue, Node.js, Laravel. Высокая производительность и масштабируемость.</p>
+                    </div>
+                    <button class="card-btn">ПОДРОБНЕЕ</button>
+                </div>
+            </div>
+
+            <!-- Карточка 2 -->
+            <div class="service-card" itemscope itemtype="https://schema.org/Service">
+                <div class="segment seg-1"></div>
+                <div class="segment seg-2"></div>
+                <div class="segment seg-3"></div>
+                <div class="segment seg-4"></div>
+                <div class="corner-tl"></div>
+                <div class="corner-tr"></div>
+                <div class="corner-bl"></div>
+                <div class="corner-br"></div>
+                <div class="card-content">
+                    <div>
+                        <div class="color-strip">
+                            <div class="color-dot dot-pink"></div>
+                            <div class="color-dot dot-teal"></div>
+                            <div class="color-dot dot-mint"></div>
+                            <div class="color-dot dot-purple"></div>
+                        </div>
+                        <h3 itemprop="name">Иммерсивный дизайн</h3>
+                        <p itemprop="description">Микровзаимодействия, 3D-сцены, анимация. Визуальный язык, который запоминается.</p>
+                    </div>
+                    <button class="card-btn">ПОДРОБНЕЕ</button>
+                </div>
+            </div>
+
+            <!-- Карточка 3 -->
+            <div class="service-card" itemscope itemtype="https://schema.org/Service">
+                <div class="segment seg-1"></div>
+                <div class="segment seg-2"></div>
+                <div class="segment seg-3"></div>
+                <div class="segment seg-4"></div>
+                <div class="corner-tl"></div>
+                <div class="corner-tr"></div>
+                <div class="corner-bl"></div>
+                <div class="corner-br"></div>
+                <div class="card-content">
+                    <div>
+                        <div class="color-strip">
+                            <div class="color-dot dot-pink"></div>
+                            <div class="color-dot dot-teal"></div>
+                            <div class="color-dot dot-mint"></div>
+                            <div class="color-dot dot-purple"></div>
+                        </div>
+                        <h3 itemprop="name">E-commerce платформы</h3>
+                        <p itemprop="description">Интернет-магазины с конверсией 15%+, интеграция с 1С, CRM и маркетплейсами.</p>
+                    </div>
+                    <button class="card-btn">ПОДРОБНЕЕ</button>
+                </div>
+            </div>
+
+            <!-- Карточка 4 -->
+            <div class="service-card" itemscope itemtype="https://schema.org/Service">
+                <div class="segment seg-1"></div>
+                <div class="segment seg-2"></div>
+                <div class="segment seg-3"></div>
+                <div class="segment seg-4"></div>
+                <div class="corner-tl"></div>
+                <div class="corner-tr"></div>
+                <div class="corner-bl"></div>
+                <div class="corner-br"></div>
+                <div class="card-content">
+                    <div>
+                        <div class="color-strip">
+                            <div class="color-dot dot-pink"></div>
+                            <div class="color-dot dot-teal"></div>
+                            <div class="color-dot dot-mint"></div>
+                            <div class="color-dot dot-purple"></div>
+                        </div>
+                        <h3 itemprop="name">SEO и аналитика</h3>
+                        <p itemprop="description">Полная оптимизация: от семантики до лидерских позиций в Яндексе и Google.</p>
+                    </div>
+                    <button class="card-btn">ПОДРОБНЕЕ</button>
+                </div>
+            </div>
+
+            <!-- Карточка 5 -->
+            <div class="service-card" itemscope itemtype="https://schema.org/Service">
+                <div class="segment seg-1"></div>
+                <div class="segment seg-2"></div>
+                <div class="segment seg-3"></div>
+                <div class="segment seg-4"></div>
+                <div class="corner-tl"></div>
+                <div class="corner-tr"></div>
+                <div class="corner-bl"></div>
+                <div class="corner-br"></div>
+                <div class="card-content">
+                    <div>
+                        <div class="color-strip">
+                            <div class="color-dot dot-pink"></div>
+                            <div class="color-dot dot-teal"></div>
+                            <div class="color-dot dot-mint"></div>
+                            <div class="color-dot dot-purple"></div>
+                        </div>
+                        <h3 itemprop="name">AI и Machine Learning</h3>
+                        <p itemprop="description">Чат-боты, рекомендательные системы, аналитика данных, генеративный AI.</p>
+                    </div>
+                    <button class="card-btn">ПОДРОБНЕЕ</button>
+                </div>
+            </div>
+
+            <!-- Карточка 6 -->
+            <div class="service-card" itemscope itemtype="https://schema.org/Service">
+                <div class="segment seg-1"></div>
+                <div class="segment seg-2"></div>
+                <div class="segment seg-3"></div>
+                <div class="segment seg-4"></div>
+                <div class="corner-tl"></div>
+                <div class="corner-tr"></div>
+                <div class="corner-bl"></div>
+                <div class="corner-br"></div>
+                <div class="card-content">
+                    <div>
+                        <div class="color-strip">
+                            <div class="color-dot dot-pink"></div>
+                            <div class="color-dot dot-teal"></div>
+                            <div class="color-dot dot-mint"></div>
+                            <div class="color-dot dot-purple"></div>
+                        </div>
+                        <h3 itemprop="name">Мобильные приложения</h3>
+                        <p itemprop="description">iOS, Android, React Native, Flutter. Полный цикл от идеи до публикации.</p>
+                    </div>
+                    <button class="card-btn">ПОДРОБНЕЕ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AI РЕКЛАМА — С ОТЛОЖЕННОЙ ЗАГРУЗКОЙ ВИДЕО -->
+<section id="ai-reklama" class="section ai-reklama-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>AI реклама</h2>
+            <a href="#services" class="section-more-btn">Все услуги</a>
+        </div>
+        <div class="ai-design-grid">
+            <!-- КАРТОЧКИ -->
+            <div class="ai-cards-column">
+                <div class="ai-card">
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-tr"></div>
+                    <div class="corner corner-bl"></div>
+                    <div class="corner corner-br"></div>
+                    <div class="lines">
+                        <div class="line line-1"></div>
+                        <div class="line line-2"></div>
+                        <div class="line line-3"></div>
+                    </div>
+                    <div class="particle" style="top:20%;left:10%"></div>
+                    <div class="particle" style="top:70%;left:85%"></div>
+                    <div class="particle" style="top:45%;left:30%"></div>
+                    <div class="particle" style="top:80%;left:20%"></div>
+                    <div class="particle" style="top:15%;left:70%"></div>
+                    <div>
+                        <h3>нейросети в рекламе</h3>
+                        <p>Создаём продающие видео-ролики премиум класса.</p>
+                        <div class="price-tag">от 20 000 ₽ / 30 сек</div>
+                    </div>
+                </div>
+                <div class="ai-card">
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-tr"></div>
+                    <div class="corner corner-bl"></div>
+                    <div class="corner corner-br"></div>
+                    <div class="lines">
+                        <div class="line line-1"></div>
+                        <div class="line line-2"></div>
+                        <div class="line line-3"></div>
+                    </div>
+                    <div class="particle" style="top:20%;left:10%"></div>
+                    <div class="particle" style="top:70%;left:85%"></div>
+                    <div class="particle" style="top:45%;left:30%"></div>
+                    <div class="particle" style="top:80%;left:20%"></div>
+                    <div class="particle" style="top:15%;left:70%"></div>
+                    <div>
+                        <h3>скорость и качество</h3>
+                        <p>Ролик под ключ за 3 дня. Без потери качества. Правки, субтитры, адаптация под соцсети — включены в стоимость.</p>
+                        <div class="price-tag">срок от 3 дней</div>
+                    </div>
+                </div>
+                <div class="ai-card">
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-tr"></div>
+                    <div class="corner corner-bl"></div>
+                    <div class="corner corner-br"></div>
+                    <div class="lines">
+                        <div class="line line-1"></div>
+                        <div class="line line-2"></div>
+                        <div class="line line-3"></div>
+                    </div>
+                    <div class="particle" style="top:20%;left:10%"></div>
+                    <div class="particle" style="top:70%;left:85%"></div>
+                    <div class="particle" style="top:45%;left:30%"></div>
+                    <div class="particle" style="top:80%;left:20%"></div>
+                    <div class="particle" style="top:15%;left:70%"></div>
+                    <div>
+                        <h3>премиум результат</h3>
+                        <p>Уникальный визуальный стиль, AI аватар, профессиональная озвучка и вовлекающий сценарий.</p>
+                        <div class="price-tag">окупаемость до 30 дней</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ВИДЕО С ПЛЕЙСХОЛДЕРАМИ И ПРЕВЬЮ -->
+            <div class="ai-videos-wrapper">
+                <div class="ai-video-container">
+                    <div class="ai-video-item">
+                        <div class="video-placeholder" data-video-id="tyTxHyuEgCojbTw7uPFQxm">
+                            <div class="video-frame">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='711' viewBox='0 0 400 711'%3E%3Crect width='400' height='711' fill='%23833AB4'/%3E%3Ctext x='200' y='355' text-anchor='middle' fill='white' font-size='18' font-family='Geist'%3EAI РОЛИК 1%3C/text%3E%3C/svg%3E" 
+                                     alt="Превью видео 1" 
+                                     loading="lazy"
+                                     style="width:100%; height:100%; object-fit:cover; display:block;">
+                                <div class="play-overlay">
+                                    <svg class="play-icon" viewBox="0 0 24 24" width="64" height="64" fill="white">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ai-video-item">
+                        <div class="video-placeholder" data-video-id="wzToMP6ZpNgEfgDNY7ecHM">
+                            <div class="video-frame">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='711' viewBox='0 0 400 711'%3E%3Crect width='400' height='711' fill='%23D62976'/%3E%3Ctext x='200' y='355' text-anchor='middle' fill='white' font-size='18' font-family='Geist'%3EAI РОЛИК 2%3C/text%3E%3C/svg%3E" 
+                                     alt="Превью видео 2" 
+                                     loading="lazy"
+                                     style="width:100%; height:100%; object-fit:cover; display:block;">
+                                <div class="play-overlay">
+                                    <svg class="play-icon" viewBox="0 0 24 24" width="64" height="64" fill="white">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ai-video-item">
+                        <div class="video-placeholder" data-video-id="it8tEfjsnaLMaCU712FV2S">
+                            <div class="video-frame">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='729' viewBox='0 0 400 729'%3E%3Crect width='400' height='729' fill='%23F56040'/%3E%3Ctext x='200' y='364' text-anchor='middle' fill='white' font-size='18' font-family='Geist'%3EAI РОЛИК 3%3C/text%3E%3C/svg%3E" 
+                                     alt="Превью видео 3" 
+                                     loading="lazy"
+                                     style="width:100%; height:100%; object-fit:cover; display:block;">
+                                <div class="play-overlay">
+                                    <svg class="play-icon" viewBox="0 0 24 24" width="64" height="64" fill="white">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- КАК МЫ СОЗДАЁМ ЛИДЕРОВ РЫНКА -->
+<section id="process" class="section" itemscope itemtype="https://schema.org/HowTo">
+    <div class="container">
+        <div class="section-header">
+            <h2 itemprop="name">Как мы создаём лидеров рынка</h2>
+            <a href="#services" class="section-more-btn">Подробнее</a>
+        </div>
+        <div class="steps-container">
+            <div class="step-card" itemprop="step" itemscope itemtype="https://schema.org/HowToStep"><div class="step-num" itemprop="position">01</div><h3 itemprop="name">Аналитика</h3><p itemprop="description">Изучаем нишу, конкурентов, ЦА. Формируем KPI.</p></div>
+            <div class="step-card" itemprop="step" itemscope itemtype="https://schema.org/HowToStep"><div class="step-num" itemprop="position">02</div><h3 itemprop="name">Прототипирование</h3><p itemprop="description">Интерактивные прототипы, тестирование гипотез.</p></div>
+            <div class="step-card" itemprop="step" itemscope itemtype="https://schema.org/HowToStep"><div class="step-num" itemprop="position">03</div><h3 itemprop="name">Дизайн и код</h3><p itemprop="description">Пиксель-перфект, чистый код, ежедневные билды.</p></div>
+            <div class="step-card" itemprop="step" itemscope itemtype="https://schema.org/HowToStep"><div class="step-num" itemprop="position">04</div><h3 itemprop="name">SEO и запуск</h3><p itemprop="description">Техническая SEO-оптимизация, деплой, мониторинг.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- НАШИ КОМПЕТЕНЦИИ - СЕТКА 4x4 -->
+<section id="competences" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Наши компетенции</h2>
+            <a href="#services" class="section-more-btn">Подробнее</a>
+        </div>
+        <div class="competences-grid">
+            <div class="competence-card">
+                <h3>Frontend</h3>
+                <p>Современные интерфейсы</p>
+                <div class="competence-tech-list">
+                    <div class="tech-item" data-tech="react">React / Next.js</div>
+                    <div class="tech-item" data-tech="ts">TypeScript</div>
+                    <div class="tech-item" data-tech="redux">Redux / RTK</div>
+                    <div class="tech-item" data-tech="ssr">SSR / SSG</div>
+                    <div class="tech-item" data-tech="css">CSS3 / SASS / Tailwind</div>
+                </div>
+            </div>
+            <div class="competence-card">
+                <h3>Backend</h3>
+                <p>Надёжная архитектура</p>
+                <div class="competence-tech-list">
+                    <div class="tech-item" data-tech="node">Node.js / Nest.js</div>
+                    <div class="tech-item" data-tech="python">Python / Django</div>
+                    <div class="tech-item" data-tech="cpp">C++</div>
+                    <div class="tech-item" data-tech="postgres">PostgreSQL / MS SQL</div>
+                    <div class="tech-item" data-tech="redis">Redis / Elasticsearch</div>
+                    <div class="tech-item" data-tech="rabbitmq">RabbitMQ / Kafka</div>
+                </div>
+            </div>
+            <div class="competence-card">
+                <h3>DevOps и Cloud</h3>
+                <p>Масштабирование и инфраструктура</p>
+                <div class="competence-tech-list">
+                    <div class="tech-item" data-tech="kubernetes">Kubernetes</div>
+                    <div class="tech-item" data-tech="docker">Docker</div>
+                    <div class="tech-item" data-tech="yandex">Yandex Cloud / Selectel</div>
+                    <div class="tech-item" data-tech="gitlab">GitLab CI/CD</div>
+                    <div class="tech-item" data-tech="terraform">Terraform / Ansible</div>
+                    <div class="tech-item" data-tech="jenkins">Jenkins / ArgoCD</div>
+                </div>
+            </div>
+            <div class="competence-card">
+                <h3>Mobile Development</h3>
+                <p>Кроссплатформенные приложения</p>
+                <div class="competence-tech-list">
+                    <div class="tech-item" data-tech="reactnative">React Native / Expo</div>
+                    <div class="tech-item" data-tech="swift">Swift / Objective C</div>
+                    <div class="tech-item" data-tech="kotlin">Kotlin / Java</div>
+                    <div class="tech-item" data-tech="flutter">Flutter</div>
+                </div>
+            </div>
+            <div class="competence-card">
+                <h3>AI и Machine Learning</h3>
+                <p>Нейросети и анализ данных</p>
+                <div class="competence-tech-list">
+                    <div class="tech-item" data-tech="ml">ML / DL / NLP</div>
+                    <div class="tech-item" data-tech="python_ml">Python / Pandas / Sklearn</div>
+                    <div class="tech-item" data-tech="catboost">CatBoost / OpenVINO</div>
+                    <div class="tech-item" data-tech="airflow">Airflow / sqlalchemy</div>
+                    <div class="tech-item" data-tech="vision">Computer Vision</div>
+                    <div class="tech-item" data-tech="voice">Voice technologies ASR/TTS</div>
+                </div>
+            </div>
+            <div class="competence-card">
+                <h3>Testing и QA</h3>
+                <p>Качество и надежность</p>
+                <div class="competence-tech-list">
+                    <div class="tech-item" data-tech="postman">Postman / Swagger</div>
+                    <div class="tech-item" data-tech="jmeter">JMeter</div>
+                    <div class="tech-item" data-tech="testrail">TestRail</div>
+                    <div class="tech-item" data-tech="charles">Charles / Fiddler</div>
+                </div>
+            </div>
+            <div class="competence-card">
+                <h3>Architecture и Design</h3>
+                <p>Проектирование систем</p>
+                <div class="competence-tech-list">
+                    <div class="tech-item" data-tech="uml">UML 2.x / BPMN 2.0</div>
+                    <div class="tech-item" data-tech="figma">Figma</div>
+                    <div class="tech-item" data-tech="enterprise">Sparx Enterprise Architect</div>
+                    <div class="tech-item" data-tech="iso">ISO/IEC 12207 / 15288</div>
+                    <div class="tech-item" data-tech="scrum">SCRUM / Agile</div>
+                </div>
+            </div>
+            <div class="competence-card">
+                <h3>Data Analytics</h3>
+                <p>Аналитика больших данных</p>
+                <div class="competence-tech-list">
+                    <div class="tech-item" data-tech="bigdata">Big Data аналитика</div>
+                    <div class="tech-item" data-tech="trading">Trading аналитика</div>
+                    <div class="tech-item" data-tech="blockchain">Blockchain аналитика</div>
+                    <div class="tech-item" data-tech="graph">Graph analytics</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Калькулятор -->
+<section id="calculator" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Калькулятор стоимости</h2>
+            <a href="#services" class="section-more-btn">Все услуги</a>
+        </div>
+        <div class="price-table" id="staticPriceTable">
+            <h3>Примеры стоимости разработки</h3>
+            <div class="price-grid">
+                <div class="price-card"><h4>Лендинг / Старт</h4><div class="price">от 120 000 ₽</div><ul><li>Дизайн (UI/UX)</li><li>Frontend разработка</li><li>Базовая SEO оптимизация</li><li>Адаптивная вёрстка</li><li>Срок: 2-3 недели</li></ul></div>
+                <div class="price-card"><h4>Бизнес / Сайт услуг</h4><div class="price">от 250 000 ₽</div><ul><li>Дизайн (UI/UX)</li><li>Frontend + Backend</li><li>CMS (админ-панель)</li><li>SEO оптимизация</li><li>CRM интеграция</li><li>Срок: 4-6 недель</li></ul></div>
+                <div class="price-card"><h4>Премиум / Интернет-магазин</h4><div class="price">от 450 000 ₽</div><ul><li>Дизайн (UI/UX)</li><li>Frontend + Backend</li><li>CMS + CRM интеграция</li><li>Полная SEO оптимизация</li><li>Платёжные системы</li><li>1С интеграция</li><li>Срок: 6-8 недель</li></ul></div>
+                <div class="price-card"><h4>Enterprise / Портал</h4><div class="price">от 1 200 000 ₽</div><ul><li>Полный цикл разработки</li><li>AI / ML решения</li><li>Мобильное приложение</li><li>Техподдержка 24/7</li><li>Микросервисная архитектура</li><li>Срок: от 10 недель</li></ul></div>
+            </div>
+            <p class="price-note">Точная стоимость рассчитывается индивидуально в калькуляторе ниже</p>
+        </div>
+        <div class="calculator-card interactive-calculator" id="interactiveCalculator">
+            <div class="calculator-two-columns">
+                <div class="calculator-left">
+                    <div class="calc-group"><div class="calc-label">Услуги:</div><div class="calc-options" id="calcServices"><div data-service="design" class="calc-option">Дизайн (UI/UX)</div><div data-service="front" class="calc-option">Frontend</div><div data-service="back" class="calc-option">Backend</div><div data-service="seo" class="calc-option">SEO</div><div data-service="cms" class="calc-option">CMS</div><div data-service="crm" class="calc-option">CRM / ERP</div><div data-service="ai" class="calc-option">AI / ML</div><div data-service="mobile" class="calc-option">Мобильное приложение</div><div data-service="support" class="calc-option">Техподдержка</div></div></div>
+                    <div class="calc-group"><div class="calc-label">Сложность:</div><div class="calc-options" id="calcComplexity"><div data-complex="simple" class="calc-option">Старт (Лендинг)</div><div data-complex="medium" class="calc-option">Бизнес (Сайт услуг)</div><div data-complex="high" class="calc-option">Премиум (Магазин)</div><div data-complex="enterprise" class="calc-option">Enterprise (Портал)</div></div></div>
+                    <div class="calc-total-block"><div class="calc-price" id="calcPrice">0 ₽</div><div id="calcHoursInfo" style="font-size:.85rem;color:#B0C4DE"></div></div>
+                </div>
+                <div class="calculator-right stack-explanation" id="stackExplanation"><h4>Рекомендуемый стек</h4><p>Выберите услуги для расчёта</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Почему выбирают нас -->
+<section id="mission" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Почему выбирают нас</h2>
+            <a href="#contact" class="section-more-btn">О компании</a>
+        </div>
+        <div class="mission-grid-wrapper">
+            <div class="mission-text">
+                <p><strong>ALBE digital</strong> — это стратегический партнёр, а не просто подрядчик. Мы разрабатываем продукты, которые масштабируют бизнес и увеличивают прибыль. Каждый проект сопровождается глубокой <strong>SEO-проработкой</strong> и техническим аудитом, что гарантирует высокие позиции в поисковых системах с первых недель после запуска.</p>
+                <p>Наши клиенты из ритейла, финтеха и образования получают прирост органического трафика до 300% за 6 месяцев. Мы внедряем <strong>AI-решения</strong> для автоматизации маркетинга и продаж, а также разрабатываем мобильные приложения, повышающие лояльность аудитории. Работаем с брендами по всей России.</p>
+            </div>
+            <div class="mission-grid">
+                <picture><source srcset="images/bank.avif" type="image/avif"><img class="mission-grid-card" src="images/bank.avif" alt="Наша команда" loading="lazy"></picture>
+                <picture><source srcset="images/ai.avif" type="image/avif"><img class="mission-grid-card" src="images/ai.avif" alt="Процесс разработки" loading="lazy"></picture>
+                <picture><source srcset="images/app.avif" type="image/avif"><img class="mission-grid-card" src="images/app.avif" alt="Результаты работы" loading="lazy"></picture>
+                <picture><source srcset="images/office.avif" type="image/avif"><img class="mission-grid-card" src="images/office.avif" alt="Клиенты" loading="lazy"></picture>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- АККОРДЕОН FAQ В СТИЛЕ «КЕЙС» -->
+<section id="faq" class="section" itemscope itemtype="https://schema.org/FAQPage">
+    <div class="container">
+        <div class="section-header">
+            <h2>Часто задаваемые вопросы</h2>
+            <a href="#services" class="section-more-btn">Подробнее</a>
+        </div>
+        <div class="cases-accordion" id="faqAccordion">
+            <!-- Кейс 01 -->
+            <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <button class="case-lid">
+                    <div class="lid-left">
+                        <span class="case-number">КЕЙС 01</span>
+                        <span class="case-title" itemprop="name">Сколько стоит разработка сайта под ключ?</span>
+                    </div>
+                    <div class="case-handle"><div class="handle-bar"></div></div>
+                </button>
+                <div class="case-inside">
+                    <div class="case-content">
+                        <div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+                            <div itemprop="text">Стоимость разработки сайта рассчитывается индивидуально в нашем калькуляторе. Лендинг от 120 000 ₽, корпоративный сайт от 250 000 ₽, интернет-магазин от 450 000 ₽.</div>
+                            <div class="project-meta"><span class="meta-tag">индивидуальный расчёт</span><span class="meta-tag">прозрачные цены</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Кейс 02 -->
+            <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <button class="case-lid">
+                    <div class="lid-left">
+                        <span class="case-number">КЕЙС 02</span>
+                        <span class="case-title" itemprop="name">Какие сроки разработки сайта?</span>
+                    </div>
+                    <div class="case-handle"><div class="handle-bar"></div></div>
+                </button>
+                <div class="case-inside">
+                    <div class="case-content">
+                        <div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+                            <div itemprop="text">Сроки разработки сайта под ключ составляют от 3 до 12 недель в зависимости от сложности проекта.</div>
+                            <div class="project-meta"><span class="meta-tag">3–12 недель</span><span class="meta-tag">под ключ</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Кейс 03 -->
+            <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <button class="case-lid">
+                    <div class="lid-left">
+                        <span class="case-number">КЕЙС 03</span>
+                        <span class="case-title" itemprop="name">Даёте гарантию на SEO продвижение?</span>
+                    </div>
+                    <div class="case-handle"><div class="handle-bar"></div></div>
+                </button>
+                <div class="case-inside">
+                    <div class="case-content">
+                        <div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+                            <div itemprop="text">Да, мы гарантируем выполнение KPI по SEO продвижению. Заключаем договор с чёткими показателями.</div>
+                            <div class="project-meta"><span class="meta-tag">гарантия KPI</span><span class="meta-tag">договор</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Кейс 04 -->
+            <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <button class="case-lid">
+                    <div class="lid-left">
+                        <span class="case-number">КЕЙС 04</span>
+                        <span class="case-title" itemprop="name">Разрабатываете мобильные приложения?</span>
+                    </div>
+                    <div class="case-handle"><div class="handle-bar"></div></div>
+                </button>
+                <div class="case-inside">
+                    <div class="case-content">
+                        <div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+                            <div itemprop="text">Да, мы разрабатываем мобильные приложения под iOS, Android и кроссплатформенные решения.</div>
+                            <div class="project-meta"><span class="meta-tag">iOS / Android</span><span class="meta-tag">React Native</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Кейс 05 -->
+            <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <button class="case-lid">
+                    <div class="lid-left">
+                        <span class="case-number">КЕЙС 05</span>
+                        <span class="case-title" itemprop="name">Как происходит SEO оптимизация сайта?</span>
+                    </div>
+                    <div class="case-handle"><div class="handle-bar"></div></div>
+                </button>
+                <div class="case-inside">
+                    <div class="case-content">
+                        <div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+                            <div itemprop="text">SEO оптимизация включает технический аудит, сбор семантического ядра, оптимизацию метатегов и контента.</div>
+                            <div class="project-meta"><span class="meta-tag">технический аудит</span><span class="meta-tag">семантическое ядро</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Кейс 06 -->
+            <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <button class="case-lid">
+                    <div class="lid-left">
+                        <span class="case-number">КЕЙС 06</span>
+                        <span class="case-title" itemprop="name">Используете ли вы AI и нейросети?</span>
+                    </div>
+                    <div class="case-handle"><div class="handle-bar"></div></div>
+                </button>
+                <div class="case-inside">
+                    <div class="case-content">
+                        <div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+                            <div itemprop="text">Да, мы активно внедряем AI решения: чат-боты, рекомендательные системы, генеративный AI.</div>
+                            <div class="project-meta"><span class="meta-tag">чат-боты</span><span class="meta-tag">генеративный AI</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Кейс 07 -->
+            <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <button class="case-lid">
+                    <div class="lid-left">
+                        <span class="case-number">КЕЙС 07</span>
+                        <span class="case-title" itemprop="name">Предоставляете техническую поддержку?</span>
+                    </div>
+                    <div class="case-handle"><div class="handle-bar"></div></div>
+                </button>
+                <div class="case-inside">
+                    <div class="case-content">
+                        <div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+                            <div itemprop="text">Да, у нас есть круглосуточная техническая поддержка 24/7.</div>
+                            <div class="project-meta"><span class="meta-tag">24/7</span><span class="meta-tag">круглосуточно</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Кейс 08 -->
+            <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <button class="case-lid">
+                    <div class="lid-left">
+                        <span class="case-number">КЕЙС 08</span>
+                        <span class="case-title" itemprop="name">Как начать проект с ALBE digital?</span>
+                    </div>
+                    <div class="case-handle"><div class="handle-bar"></div></div>
+                </button>
+                <div class="case-inside">
+                    <div class="case-content">
+                        <div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+                            <div itemprop="text">Оставьте заявку на сайте или напишите в Telegram. Проведём бесплатную консультацию.</div>
+                            <div class="project-meta"><span class="meta-tag">бесплатная консультация</span><span class="meta-tag">telegram</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Контакты -->
+<section id="contact" class="contact-section" itemscope itemtype="https://schema.org/ContactPage">
+    <div class="container">
+        <div class="contact-card">
+            <div class="section-header">
+                <h2>Начнём проект?</h2>
+            </div>
+            <p class="contact-desc">Оставьте заявку — Мы свяжемся с вами в течение 3 часов</p>
+            <form id="mainForm" class="contact-form" action="#" method="post">
+                <div class="form-row">
+                    <input type="text" id="userName" placeholder="Имя *" required>
+                    <input type="tel" id="userPhone" placeholder="Телефон *" required>
+                </div>
+                <div class="form-row">
+                    <input type="email" id="userEmail" placeholder="Email *" required>
+                    <input type="text" id="userTelegram" placeholder="Telegram (username)">
+                </div>
+                <textarea rows="4" id="userMsg" placeholder="Опишите задачу"></textarea>
+                <textarea rows="3" id="userComment" placeholder="Комментарий (дополнительные пожелания)"></textarea>
+                <button type="submit" class="btn-primary">Отправить заявку</button>
+                <div id="formStatus" class="form-status"></div>
+            </form>
+        </div>
+    </div>
+</section>
+</main>
+
+<!-- КНОПКА НАВЕРХ -->
+<div class="totop" id="toTopBtn">↑</div>
+
+<div id="footer-placeholder"></div>
+
+<!-- Модальное окно для подробного описания услуг -->
+<div id="serviceModal" class="service-modal">
+    <div class="modal-content">
+        <span class="modal-close">×</span>
+        <div class="modal-body">
+            <h3 id="modalTitle"></h3>
+            <div class="modal-description">
+                <p id="modalDescription"></p>
+            </div>
+            <div class="modal-stack">
+                <h4>Почему мы используем этот стек</h4>
+                <ul id="modalStackList"></ul>
+            </div>
+            <div class="modal-advantages">
+                <h4>Ключевые преимущества</h4>
+                <ul id="modalAdvantages"></ul>
+            </div>
+            <button class="modal-btn" id="modalContactBtn">Обсудить проект</button>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Стили для модального окна (без изменений) */
+.service-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(12px);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.service-modal.active {
+    display: flex;
+    animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--ig-pink);
+    border-radius: 28px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    animation: modalSlideUp 0.3s ease;
+}
+
+@keyframes modalSlideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    font-size: 32px;
+    color: var(--gray);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.modal-close:hover {
+    color: var(--ig-pink);
+    transform: rotate(90deg);
+}
+
+.modal-body {
+    padding: 40px 32px;
+}
+
+.modal-body h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    background: var(--ig-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.modal-description p {
+    color: var(--gray);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.modal-stack h4,
+.modal-advantages h4 {
+    color: var(--ig-pink);
+    font-size: 1.1rem;
+    margin: 20px 0 12px 0;
+    letter-spacing: 1px;
+}
+
+.modal-stack ul,
+.modal-advantages ul {
+    list-style: none;
+    padding: 0;
+}
+
+.modal-stack li,
+.modal-advantages li {
+    color: var(--gray);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding: 8px 0 8px 24px;
+    position: relative;
+}
+
+.modal-stack li::before,
+.modal-advantages li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: var(--ig-orange);
+}
+
+.modal-btn {
+    background: transparent;
+    border: 2px solid var(--ig-pink);
+    color: var(--ig-pink);
+    padding: 14px 32px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 60px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 28px;
+    width: 100%;
+    font-family: 'Geist', sans-serif;
+}
+
+.modal-btn:hover {
+    background: var(--ig-gradient);
+    color: var(--white);
+    border-color: transparent;
+    transform: translateY(-2px);
+}
+
+/* Стили для видео-плейсхолдеров */
+.video-placeholder {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 28px;
+    overflow: hidden;
+}
+
+.video-placeholder .video-frame {
+    position: relative;
+    width: 100%;
+    padding-top: 177.78%;
+    background: #1A1A2E;
+    overflow: hidden;
+}
+
+.video-placeholder .video-frame img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.video-placeholder:hover .video-frame img {
+    transform: scale(1.05);
+}
+
+.play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.play-icon {
+    width: 64px;
+    height: 64px;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.9;
+}
+
+.video-placeholder:hover .play-overlay {
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.video-placeholder:hover .play-icon {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+/* Стили для кнопки наверх */
+.totop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--ig-gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.totop.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.totop:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(214, 41, 118, 0.4);
+}
+
+@media (max-width: 768px) {
+    .modal-body {
+        padding: 30px 24px;
     }
-    if (businessLineEl) setTimeout(() => typeWriter(), 2900);
+    .modal-body h3 {
+        font-size: 1.4rem;
+    }
+    .modal-stack li,
+    .modal-advantages li {
+        font-size: 0.85rem;
+    }
+    .play-icon {
+        width: 48px;
+        height: 48px;
+    }
+    .totop {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+}
+</style>
+
+<script src="common.js" defer></script>
+
+<script>
+// ===== КНОПКА НАВЕРХ =====
+(function initToTop() {
+    const toTopBtn = document.getElementById('toTopBtn');
+    if (!toTopBtn) return;
     
-    const restartBtn = document.getElementById('restartBtn');
-    restartBtn.addEventListener('click', () => {
-        permanentElements.forEach(id => { const el = document.getElementById(id); if (el) el.classList.remove('visible'); });
-        if (statsRow) statsRow.classList.remove('visible');
-        if (rightPhraseEl) rightPhraseEl.classList.remove('visible');
-        if (businessLineEl) { businessLineEl.innerHTML = ''; index = 0; }
-        const maskLetters = document.querySelectorAll('.mask-letter');
-        maskLetters.forEach(letter => { letter.style.animation = 'none'; letter.style.opacity = '0'; });
-        setTimeout(() => {
-            maskLetters.forEach((letter, i) => { const delays = ['0.2s', '0.5s', '0.8s', '1.1s']; letter.style.animation = `revealLetter 0.6s ease forwards ${delays[i]}`; });
-            permanentElements.forEach((id, idx) => { setTimeout(() => { const el = document.getElementById(id); if (el) el.classList.add('visible'); }, 1300 + idx * 150); });
-            if (statsRow) setTimeout(() => statsRow.classList.add('visible'), 2000);
-            if (rightPhraseEl) setTimeout(() => rightPhraseEl.classList.add('visible'), 2300);
-            if (businessLineEl) setTimeout(() => typeWriter(), 2900);
-        }, 50);
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            toTopBtn.classList.add('visible');
+        } else {
+            toTopBtn.classList.remove('visible');
+        }
     });
     
-    // Кнопка наверх
-    const toTopBtn = document.getElementById('toTopBtn');
-    window.addEventListener('scroll', () => { if (window.scrollY > 300) toTopBtn.classList.add('visible'); else toTopBtn.classList.remove('visible'); });
-    toTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    toTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+})();
+
+// ===== ОТЛОЖЕННАЯ ЗАГРУЗКА ВИДЕО =====
+(function initLazyKinescope() {
+    const placeholders = document.querySelectorAll('.video-placeholder');
+    if (placeholders.length === 0) return;
     
-    // Модальное окно (заглушка)
-    const serviceDetails = { /* ... данные ... */ };
-    // Для краткости модальное окно оставлено без полной реализации, но структура сохранена
+    placeholders.forEach(placeholder => {
+        const videoId = placeholder.getAttribute('data-video-id');
+        if (!videoId) return;
+        
+        placeholder.addEventListener('click', () => {
+            if (placeholder.querySelector('iframe')) return;
+            
+            const iframe = document.createElement('iframe');
+            iframe.src = `https://kinescope.io/embed/${videoId}?autoplay=1&controls=1&loop=1&show_logo=0&playsinline=1`;
+            iframe.allow = "autoplay; fullscreen; picture-in-picture; encrypted-media";
+            iframe.style.position = "absolute";
+            iframe.style.top = "0";
+            iframe.style.left = "0";
+            iframe.style.width = "100%";
+            iframe.style.height = "100%";
+            iframe.style.border = "none";
+            
+            const videoFrame = placeholder.querySelector('.video-frame');
+            if (videoFrame) {
+                videoFrame.innerHTML = '';
+                videoFrame.appendChild(iframe);
+            }
+            
+            placeholder.classList.add('loaded');
+        });
+    });
+})();
+
+// ===== ДАННЫЕ ДЛЯ МОДАЛЬНОГО ОКНА =====
+const serviceDetails = {
+    "Веб-разработка": {
+        description: "Мы создаём высокопроизводительные веб-приложения, которые выдерживают высокие нагрузки и обеспечивают мгновенный отклик. Наши решения масштабируются от стартапов до enterprise-уровня.",
+        stack: [
+            "React / Next.js — для создания быстрых SPA и SSR-приложений с отличной SEO",
+            "TypeScript — типобезопасный код, который легче поддерживать и рефакторить",
+            "Node.js / Nest.js — высокопроизводительный бэкенд с модульной архитектурой",
+            "PostgreSQL / MongoDB — выбор БД под задачи проекта",
+            "Docker / Kubernetes — контейнеризация и оркестрация для лёгкого масштабирования"
+        ],
+        advantages: [
+            "Скорость загрузки страниц до 0.3 секунды",
+            "Высокая безопасность благодаря TypeScript и аудиту кода",
+            "SEO-оптимизация из коробки с Next.js",
+            "Легкое масштабирование от 100 до 100 000+ пользователей",
+            "CI/CD пайплайны для быстрых и безопасных деплоев"
+        ]
+    },
+    "Иммерсивный дизайн": {
+        description: "Мы создаём дизайн, который не просто красив — он вовлекает пользователя в взаимодействие, запоминается и повышает конверсию. Микроанимации, 3D-сцены и плавные переходы делают ваш продукт уникальным.",
+        stack: [
+            "Figma / Adobe XD — профессиональное прототипирование",
+            "Three.js — 3D-графика и анимация в браузере",
+            "GSAP / Framer Motion — плавные микроанимации",
+            "Lottie — легковесные JSON-анимации",
+            "WebGL — аппаратно-ускоренная графика"
+        ],
+        advantages: [
+            "Увеличение вовлеченности пользователей на 40-60%",
+            "Повышение конверсии за счет понятной навигации",
+            "Премиум восприятие бренда",
+            "Адаптивный дизайн под все устройства",
+            "Оптимизированная производительность без лагов"
+        ]
+    },
+    "E-commerce платформы": {
+        description: "Разрабатываем интернет-магазины с нуля, которые конвертируют до 15% посетителей в покупателей. Полная интеграция с 1С, CRM, платежными системами и маркетплейсами.",
+        stack: [
+            "Next.js / Nuxt.js — быстрый frontend с SSR",
+            "Node.js / Laravel — надёжный бэкенд",
+            "PostgreSQL — основная БД",
+            "Redis — кэширование и сессии",
+            "Elasticsearch — быстрый поиск по товарам",
+            "RabbitMQ — обработка заказов в очередях"
+        ],
+        advantages: [
+            "Конверсия до 15%+",
+            "Интеграция с Wildberries, Ozon, Яндекс.Маркет",
+            "50+ платежных систем",
+            "Встроенная аналитика продаж",
+            "Автоматическая синхронизация с 1С"
+        ]
+    },
+    "SEO и аналитика": {
+        description: "Выводим сайты в топ-10 Яндекса и Google. Полный цикл: от сбора семантики до технической оптимизации и наращивания ссылочной массы.",
+        stack: [
+            "Яндекс.Вебмастер / Google Search Console — мониторинг позиций",
+            "KeyCollector / Semrush — сбор семантического ядра",
+            "Screaming Frog — технический аудит",
+            "Яндекс.Метрика / GA4 — аналитика поведения",
+            "Ahrefs / Serpstat — анализ конкурентов"
+        ],
+        advantages: [
+            "Рост трафика до 300% за 6 месяцев",
+            "Попадание в топ-10 по 70+ запросам",
+            "Техническая оптимизация под Core Web Vitals",
+            "Ежемесячная детальная отчетность",
+            "Гарантия KPI в договоре"
+        ]
+    },
+    "AI и Machine Learning": {
+        description: "Внедряем нейросети в ваш бизнес: от чат-ботов до рекомендательных систем и генеративного AI. Автоматизируем процессы и увеличиваем прибыль.",
+        stack: [
+            "Python / FastAPI — основной язык для ML",
+            "TensorFlow / PyTorch — фреймворки глубокого обучения",
+            "CatBoost / LightGBM — градиентный бустинг",
+            "OpenAI / YandexGPT — генеративные модели",
+            "Airflow — оркестрация пайплайнов",
+            "PostgreSQL / ClickHouse — хранение данных"
+        ],
+        advantages: [
+            "Автоматизация до 80% рутинных задач",
+            "Рост конверсии от персонализации на 25-40%",
+            "Чат-боты, отвечающие как люди",
+            "Точность прогнозов до 95%",
+            "Обработка терабайт данных в реальном времени"
+        ]
+    },
+    "Мобильные приложения": {
+        description: "Разрабатываем нативные и кроссплатформенные приложения под iOS и Android. Полный цикл: от идеи до публикации в App Store и Google Play.",
+        stack: [
+            "React Native / Expo — быстрая кроссплатформа",
+            "Swift / Kotlin — нативная разработка",
+            "Flutter — единый код для iOS/Android",
+            "Firebase — аналитика и push-уведомления",
+            "GraphQL / REST API — связь с бэкендом",
+            "Realm / SQLite — локальное хранение"
+        ],
+        advantages: [
+            "Публикация в App Store и Google Play",
+            "Оффлайн-режим и push-уведомления",
+            "Биометрическая авторизация",
+            "60 FPS производительность",
+            "Горячие обновления без стора"
+        ]
+    }
+};
+
+// Открытие модального окна
+function openServiceModal(serviceName) {
+    const details = serviceDetails[serviceName];
+    if (!details) return;
+    
+    const modal = document.getElementById('serviceModal');
+    const title = document.getElementById('modalTitle');
+    const description = document.getElementById('modalDescription');
+    const stackList = document.getElementById('modalStackList');
+    const advantagesList = document.getElementById('modalAdvantages');
+    
+    title.textContent = serviceName;
+    description.textContent = details.description;
+    
+    stackList.innerHTML = '';
+    details.stack.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        stackList.appendChild(li);
+    });
+    
+    advantagesList.innerHTML = '';
+    details.advantages.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        advantagesList.appendChild(li);
+    });
+    
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+// Закрытие модального окна
+function closeModal() {
+    const modal = document.getElementById('serviceModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Назначаем обработчики на кнопки
+document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.service-card');
+    const modal = document.getElementById('serviceModal');
+    const closeBtn = document.querySelector('.modal-close');
+    const contactBtn = document.getElementById('modalContactBtn');
+    
+    cards.forEach(card => {
+        const btn = card.querySelector('.card-btn');
+        const titleElement = card.querySelector('h3');
+        
+        if (btn && titleElement) {
+            const serviceName = titleElement.textContent.trim();
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openServiceModal(serviceName);
+            });
+        }
+    });
+    
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeModal);
+    }
+    
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    }
+    
+    if (contactBtn) {
+        contactBtn.addEventListener('click', () => {
+            closeModal();
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+    
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+});
 </script>
 </body>
 </html>
