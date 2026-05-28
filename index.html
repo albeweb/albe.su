@@ -114,41 +114,41 @@
 <div id="header-placeholder"></div>
 
 <main>
-<!-- ========== HERO БАННЕР (С РАБОТАЮЩЕЙ АНИМАЦИЕЙ БУКВ) ========== -->
+<!-- ========== HERO БАННЕР ========== -->
 <section class="hero-section">
     <canvas id="matrixCanvas" class="hero-canvas"></canvas>
 
-    <!-- Маска A L B E -->
-  <div class="masked-container">
-    <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
-        <defs>
-            <radialGradient id="dynamicGrad" cx="50%" cy="50%" r="75%">
-                <stop offset="0%" stop-color="#F5B700" stop-opacity="0.95">
-                    <animate attributeName="stop-color" values="#F5B700;#10B981;#06B6D4;#4C1D95;#F5B700" dur="8s" repeatCount="indefinite"/>
-                </stop>
-                <stop offset="33%" stop-color="#10B981" stop-opacity="0.7">
-                    <animate attributeName="stop-color" values="#10B981;#06B6D4;#4C1D95;#F5B700;#10B981" dur="8s" repeatCount="indefinite"/>
-                </stop>
-                <stop offset="66%" stop-color="#06B6D4" stop-opacity="0.4">
-                    <animate attributeName="stop-color" values="#06B6D4;#4C1D95;#F5B700;#10B981;#06B6D4" dur="8s" repeatCount="indefinite"/>
-                </stop>
-                <stop offset="100%" stop-color="#4C1D95" stop-opacity="0.1">
-                    <animate attributeName="stop-color" values="#4C1D95;#F5B700;#10B981;#06B6D4;#4C1D95" dur="8s" repeatCount="indefinite"/>
-                </stop>
-            </radialGradient>
-            <mask id="letterMask">
-                <rect width="100%" height="100%" fill="white" />
-                <text x="25" y="52" font-family="'EN Regular', sans-serif" font-size="18" font-weight="bold" fill="black" text-anchor="middle" class="mask-letter mask-letter-a">A</text>
-                <text x="41.6" y="52" font-family="'EN Regular', sans-serif" font-size="18" font-weight="bold" fill="black" text-anchor="middle" class="mask-letter mask-letter-l">L</text>
-                <text x="58.3" y="52" font-family="'EN Regular', sans-serif" font-size="18" font-weight="bold" fill="black" text-anchor="middle" class="mask-letter mask-letter-b">B</text>
-                <text x="75" y="52" font-family="'EN Regular', sans-serif" font-size="18" font-weight="bold" fill="black" text-anchor="middle" class="mask-letter mask-letter-e">E</text>
-            </mask>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#dynamicGrad)" mask="url(#letterMask)" />
-    </svg>
-</div>
+    <!-- Маска A L B E (Zen Dots) -->
+    <div class="masked-container">
+        <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <defs>
+                <radialGradient id="dynamicGrad" cx="50%" cy="50%" r="75%">
+                    <stop offset="0%" stop-color="#F5B700" stop-opacity="0.95">
+                        <animate attributeName="stop-color" values="#F5B700;#10B981;#06B6D4;#4C1D95;#F5B700" dur="8s" repeatCount="indefinite"/>
+                    </stop>
+                    <stop offset="33%" stop-color="#10B981" stop-opacity="0.7">
+                        <animate attributeName="stop-color" values="#10B981;#06B6D4;#4C1D95;#F5B700;#10B981" dur="8s" repeatCount="indefinite"/>
+                    </stop>
+                    <stop offset="66%" stop-color="#06B6D4" stop-opacity="0.4">
+                        <animate attributeName="stop-color" values="#06B6D4;#4C1D95;#F5B700;#10B981;#06B6D4" dur="8s" repeatCount="indefinite"/>
+                    </stop>
+                    <stop offset="100%" stop-color="#4C1D95" stop-opacity="0.1">
+                        <animate attributeName="stop-color" values="#4C1D95;#F5B700;#10B981;#06B6D4;#4C1D95" dur="8s" repeatCount="indefinite"/>
+                    </stop>
+                </radialGradient>
+                <mask id="letterMask">
+                    <rect width="100%" height="100%" fill="white" />
+                    <text x="25" y="52" font-family="'Zen Dots', monospace" font-size="16" font-weight="400" fill="black" text-anchor="middle" class="mask-letter mask-letter-a">A</text>
+                    <text x="41.6" y="52" font-family="'Zen Dots', monospace" font-size="16" font-weight="400" fill="black" text-anchor="middle" class="mask-letter mask-letter-l">L</text>
+                    <text x="58.3" y="52" font-family="'Zen Dots', monospace" font-size="16" font-weight="400" fill="black" text-anchor="middle" class="mask-letter mask-letter-b">B</text>
+                    <text x="75" y="52" font-family="'Zen Dots', monospace" font-size="16" font-weight="400" fill="black" text-anchor="middle" class="mask-letter mask-letter-e">E</text>
+                </mask>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#dynamicGrad)" mask="url(#letterMask)" />
+        </svg>
+    </div>
 
-    <!-- Текстовые элементы -->
+    <!-- Текстовые элементы (Geist) -->
     <div class="hero-text agency-tag" id="agencyTag">DIGITAL AGENCY</div>
     <div class="hero-text main-title" id="mainTitle">разработка</div>
     <div class="hero-text sub-line" id="subLine">дизайна и сайтов под ключ</div>
@@ -178,7 +178,12 @@
 </section>
 
 <style>
-/* Стили hero-баннера с работающей анимацией букв */
+/* Стили hero-баннера */
+@font-face {
+    font-family: 'Zen Dots';
+    src: url('https://fonts.cdnfonts.com/css/zen-dots') format('woff2');
+}
+
 .hero-section {
     position: relative;
     min-height: 100vh;
@@ -249,7 +254,7 @@
 .main-title {
     top: calc(18% + 270px);
     left: 200px;
-    font-family: 'EN Regular', sans-serif;
+    font-family: 'Geist', sans-serif;
     font-size: clamp(3rem, 10vw, 7rem);
     background: linear-gradient(135deg, #F5B700, #F5B700, #10B981, #06B6D4);
     background-size: 200% auto;
@@ -263,7 +268,7 @@
 .sub-line {
     top: calc(34% + 270px);
     left: 200px;
-    font-family: 'EN Regular', sans-serif;
+    font-family: 'Geist', sans-serif;
     font-size: clamp(1.5rem, 5vw, 2.8rem);
     background: linear-gradient(135deg, #F5B700, #10B981, #06B6D4, #4C1D95);
     -webkit-background-clip: text;
@@ -288,7 +293,7 @@
 }
 
 .hero-stats .stat-item {
-    font-family: 'Zen Dots', monospace;
+    font-family: 'Geist', monospace;
     font-size: 2.8rem;
     text-align: center;
     color: white;
@@ -325,6 +330,7 @@
 }
 
 .hero-badges .badge {
+    font-family: 'Geist', sans-serif;
     background: rgba(76,29,149,0.35);
     backdrop-filter: blur(8px);
     padding: 0.6rem 1.4rem;
