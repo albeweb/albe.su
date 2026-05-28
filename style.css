@@ -2902,3 +2902,262 @@ main {
         max-height: 100vh;
     }
 }
+/* ============================================ */
+/* 25. HERO БАННЕР (ОЧИЩЕННАЯ ВЕРСИЯ) */
+/* ============================================ */
+
+.hero-canvas-bottom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.masked-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+    pointer-events: none;
+}
+
+.masked-container svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-text {
+    position: absolute;
+    z-index: 30;
+    font-family: 'Geist', sans-serif;
+    color: white;
+    text-shadow: 0 0 5px currentColor;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.hero-text.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.albe-letters {
+    position: absolute;
+    top: calc(50% - 100px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 3vw;
+    z-index: 30;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.albe-letter {
+    font-family: 'Zen Dots', monospace;
+    font-size: 14vw;
+    font-weight: 400;
+    color: white;
+    text-shadow: 0 0 10px rgba(245,183,0,0.5);
+    opacity: 0;
+    display: inline-block;
+    animation: flyFromTopLeft 0.7s ease-out forwards;
+}
+
+.albe-a {
+    color: #F5B700 !important;
+    text-shadow: 0 0 15px rgba(245,183,0,0.8);
+}
+
+@keyframes flyFromTopLeft {
+    0% { opacity: 0; transform: translate(-100px, -100px) scale(0.6); }
+    100% { opacity: 1; transform: translate(0, 0) scale(1); }
+}
+
+.left-phrase {
+    top: calc(50% + 30px);
+    left: 100px;
+    font-family: 'Geist', sans-serif;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 600;
+    color: #FFFFFF;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+    white-space: nowrap;
+    letter-spacing: 2px;
+}
+
+.agency-tag {
+    top: calc(6% + 100px);
+    left: 100px;
+    font-family: 'Geist', monospace;
+    font-size: 1.8rem;
+    letter-spacing: 8px;
+    color: #FFFFFF;
+    text-shadow: 0 0 6px rgba(255,255,255,0.3);
+    white-space: nowrap;
+}
+
+.hero-stats {
+    position: absolute;
+    bottom: 100px;
+    left: 100px;
+    display: flex;
+    gap: 3rem;
+    z-index: 30;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.hero-stats.visible { opacity: 1; }
+
+.hero-stats .stat-item {
+    font-family: 'Geist', monospace;
+    font-size: 2.8rem;
+    text-align: center;
+    color: white;
+}
+
+.hero-stats .stat-item .stat-label {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    font-family: 'Geist', monospace;
+    color: #B0B3B8;
+    margin-top: 5px;
+}
+
+.hero-stats .stat-item:nth-child(1) .stat-number { color: #10B981; }
+.hero-stats .stat-item:nth-child(2) .stat-number { color: #06B6D4; }
+.hero-stats .stat-item:nth-child(3) .stat-number { color: #4C1D95; }
+.hero-stats .stat-item:nth-child(4) .stat-number { color: #F5B700; }
+.hero-stats .stat-number { font-size: 2.8rem; font-weight: 400; }
+
+.hero-badges {
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    max-width: 50%;
+    justify-content: flex-end;
+    z-index: 30;
+}
+
+.hero-badges .badge {
+    font-family: 'Geist', sans-serif;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(4px);
+    padding: 0.6rem 1.4rem;
+    border-radius: 60px;
+    font-size: 0.85rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #FFFFFF;
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+.static-prefix {
+    position: absolute;
+    right: 300px;
+    bottom: calc(28% + 50px);
+    font-family: 'Geist', sans-serif;
+    font-size: 4rem;
+    font-weight: 900;
+    color: #FFFFFF;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    letter-spacing: 2px;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 30;
+    text-align: right;
+    opacity: 0;
+}
+
+.dynamic-word-container {
+    position: absolute;
+    right: 100px;
+    bottom: calc(18% + 50px);
+    font-family: 'Geist', sans-serif;
+    font-size: 4rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 30;
+    text-align: right;
+    opacity: 0;
+}
+
+.dynamic-word-yellow {
+    color: #F5B700 !important;
+    text-shadow: 0 0 10px rgba(245,183,0,0.8);
+}
+
+.cursor {
+    display: inline-block;
+    width: 4px;
+    height: 3.73rem;
+    background-color: #F5B700;
+    vertical-align: middle;
+    margin-left: 8px;
+    animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* Медиа-запросы для hero */
+@media (max-width: 1200px) {
+    .static-prefix { font-size: 2.5rem; right: 100px; bottom: calc(28% + 50px); }
+    .dynamic-word-container { font-size: 2.5rem; right: 50px; bottom: calc(18% + 50px); }
+    .cursor { height: 2.5rem; }
+    .agency-tag { font-size: 1.4rem; left: 80px; }
+    .hero-stats { gap: 2rem; left: 80px; bottom: 80px; }
+    .hero-stats .stat-item { font-size: 2rem; }
+    .hero-stats .stat-number { font-size: 2rem; }
+    .albe-letter { font-size: 12vw; }
+    .albe-letters { gap: 2.5vw; top: calc(50% - 80px); }
+    .left-phrase { font-size: clamp(1.3rem, 3.5vw, 2rem); left: 80px; top: calc(50% + 20px); }
+}
+
+@media (max-width: 900px) {
+    .agency-tag { left: 40px; font-size: 1.2rem; top: calc(6% + 60px); }
+    .hero-stats { left: 40px; bottom: 80px; gap: 1rem; flex-wrap: wrap; }
+    .hero-stats .stat-item { font-size: 1.3rem; }
+    .hero-stats .stat-number { font-size: 1.3rem; }
+    .hero-stats .stat-label { font-size: 0.6rem; }
+    .hero-badges { bottom: 8%; max-width: 90%; gap: 0.5rem; }
+    .hero-badges .badge { font-size: 0.6rem; padding: 0.3rem 0.8rem; }
+    .static-prefix { right: 5%; bottom: calc(25% + 50px); font-size: 1.8rem; white-space: normal; text-align: right; max-width: 85%; }
+    .dynamic-word-container { right: 5%; bottom: calc(15% + 50px); font-size: 1.8rem; white-space: normal; text-align: right; max-width: 85%; }
+    .cursor { height: 1.8rem; }
+    .albe-letter { font-size: 10vw; }
+    .albe-letters { gap: 2vw; top: calc(50% - 60px); }
+    .left-phrase { font-size: clamp(1rem, 3vw, 1.5rem); left: 40px; top: calc(50% + 15px); }
+}
+
+@media (max-width: 600px) {
+    .agency-tag { left: 20px; font-size: 0.75rem; top: calc(6% + 40px); }
+    .hero-stats { left: 20px; bottom: 70px; gap: 0.8rem; }
+    .hero-stats .stat-item { font-size: 1rem; }
+    .hero-stats .stat-number { font-size: 1rem; }
+    .hero-stats .stat-label { font-size: 0.5rem; }
+    .static-prefix { bottom: calc(22% + 50px); font-size: 1.4rem; right: 20px; }
+    .dynamic-word-container { bottom: calc(12% + 50px); font-size: 1.4rem; right: 20px; }
+    .cursor { height: 1.4rem; }
+    .hero-badges { bottom: 5%; gap: 0.4rem; }
+    .hero-badges .badge { font-size: 0.55rem; padding: 0.25rem 0.6rem; }
+    .albe-letter { font-size: 8vw; }
+    .albe-letters { gap: 1.5vw; top: calc(50% - 50px); }
+    .left-phrase { font-size: 0.85rem; left: 20px; top: calc(50% + 10px); white-space: normal; max-width: 90%; }
+}
