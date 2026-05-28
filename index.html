@@ -115,7 +115,7 @@
 <div id="header-placeholder"></div>
 
 <main>
-<!-- ========== HERO БАННЕР (ИСПРАВЛЕННЫЙ) ========== -->
+<!-- ========== HERO БАННЕР (ИСПРАВЛЕННАЯ АНИМАЦИЯ) ========== -->
 <section class="hero-section">
     <!-- СЛОЙ 1: Фон (чёрный) -->
     
@@ -383,8 +383,6 @@
     font-family: 'Geist', sans-serif;
     font-size: 3.73rem;
     font-weight: 900;
-    color: #FFFFFF;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     letter-spacing: 2px;
     white-space: nowrap;
     pointer-events: none;
@@ -392,7 +390,12 @@
     text-align: right;
 }
 
-/* Жёлтый цвет для динамического слова */
+/* Статическая часть "МЫ СОЗДАЕМ " — белая */
+.static-part {
+    color: #FFFFFF;
+}
+
+/* Динамическое слово — жёлтое */
 .dynamic-word-yellow {
     color: #F5B700 !important;
     text-shadow: 0 0 10px rgba(245,183,0,0.8);
@@ -563,7 +566,7 @@
     }
 })();
 
-// Анимация смены слов внизу справа (исправленная, без глюков)
+// Анимация печати (первый раз полностью, потом только слова)
 (function() {
     const wordsList = [
         "БИЗНЕС",
@@ -583,59 +586,101 @@
     let charIndex = 0;
     let typingSpeed = 100;
     let pauseBetweenWords = 1500;
+    let isFirstRun = true;  // Первый раз печатаем полную фразу
     
     const businessLineEl = document.getElementById('businessLine');
     const staticText = "МЫ СОЗДАЕМ ";
     
-    function updateDisplay(wordPart) {
+    function updateDisplay(staticPart, dynamicPart, showCursor = true) {
         if (!businessLineEl) return;
-        if (wordPart === "") {
-            businessLineEl.innerHTML = staticText + '<span class="cursor"></span>';
+        const staticSpan = '<span class="static-part">' + staticPart + '</span>';
+        const dynamicSpan = '<span class="dynamic-word-yellow">' + dynamicPart + '</span>';
+        const cursorSpan = showCursor ? '<span class="cursor"></span>' : '';
+        
+        if (dynamicPart === "") {
+            businessLineEl.innerHTML = staticSpan + cursorSpan;
         } else {
-            businessLineEl.innerHTML = staticText + '<span class="dynamic-word-yellow">' + wordPart + '</span><span class="cursor"></span>';
+            businessLineEl.innerHTML = staticSpan + dynamicSpan + cursorSpan;
         }
     }
     
     function typeEffect() {
         if (!businessLineEl) return;
         
-        const fullWord = wordsList[wordIndex];
-        
-        if (isDeleting) {
-            if (charIndex > 0) {
-                charIndex--;
-                updateDisplay(fullWord.substring(0, charIndex));
-                typingSpeed = 50;
+        if (isFirstRun) {
+            // Первый раз: печатаем полную фразу "МЫ СОЗДАЕМ БИЗНЕС"
+            const targetWord = wordsList[0];
+            const fullStatic = staticText;
+            const fullDynamic = targetWord;
+            
+            if (isDeleting) {
+                // Стираем динамическое слово
+                if (charIndex > 0) {
+                    charIndex--;
+                    updateDisplay(fullStatic, fullDynamic.substring(0, charIndex));
+                    typingSpeed = 50;
+                } else {
+                    // Переключаемся на обычный режим после первого цикла
+                    isDeleting = false;
+                    isFirstRun = false;
+                    wordIndex = 1; // следующее слово
+                    typingSpeed = 200;
+                    setTimeout(typeEffect, typingSpeed);
+                    return;
+                }
             } else {
-                isDeleting = false;
-                wordIndex = (wordIndex + 1) % wordsList.length;
-                typingSpeed = 200;
-                setTimeout(typeEffect, typingSpeed);
-                return;
+                if (charIndex < fullDynamic.length) {
+                    charIndex++;
+                    updateDisplay(fullStatic, fullDynamic.substring(0, charIndex));
+                    typingSpeed = 100;
+                }
+                
+                if (charIndex === fullDynamic.length) {
+                    isDeleting = true;
+                    typingSpeed = pauseBetweenWords;
+                }
             }
         } else {
-            if (charIndex < fullWord.length) {
-                charIndex++;
-                updateDisplay(fullWord.substring(0, charIndex));
-                typingSpeed = 100;
-            }
+            // Обычный режим: меняем только слово, "МЫ СОЗДАЕМ " остаётся
+            const targetWord = wordsList[wordIndex];
             
-            if (charIndex === fullWord.length) {
-                isDeleting = true;
-                typingSpeed = pauseBetweenWords;
+            if (isDeleting) {
+                if (charIndex > 0) {
+                    charIndex--;
+                    updateDisplay(staticText, targetWord.substring(0, charIndex));
+                    typingSpeed = 50;
+                } else {
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % wordsList.length;
+                    typingSpeed = 200;
+                    setTimeout(typeEffect, typingSpeed);
+                    return;
+                }
+            } else {
+                if (charIndex < targetWord.length) {
+                    charIndex++;
+                    updateDisplay(staticText, targetWord.substring(0, charIndex));
+                    typingSpeed = 100;
+                }
+                
+                if (charIndex === targetWord.length) {
+                    isDeleting = true;
+                    typingSpeed = pauseBetweenWords;
+                }
             }
         }
         
         setTimeout(typeEffect, typingSpeed);
     }
     
-    // Запуск анимации печати после появления всех элементов
+    // Запуск анимации
     setTimeout(() => {
         if (businessLineEl) {
             charIndex = 0;
             isDeleting = false;
             wordIndex = 0;
-            updateDisplay("");
+            isFirstRun = true;
+            updateDisplay("МЫ СОЗДАЕМ ", "");
             setTimeout(() => {
                 typeEffect();
             }, 300);
@@ -646,9 +691,9 @@
     const restartBtn = document.getElementById('restartBtn');
     if (restartBtn) {
         restartBtn.addEventListener('click', () => {
-            // Сбрасываем видимость статических элементов
-            const permanentElements = ['agencyTag', 'leftPhrase', 'badgesGrid'];
-            permanentElements.forEach(id => {
+            // Сбрасываем статические элементы
+            const permElements = ['agencyTag', 'leftPhrase', 'badgesGrid'];
+            permElements.forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.classList.remove('visible');
             });
@@ -660,7 +705,7 @@
                 businessLineEl.innerHTML = "";
             }
             
-            // Сбрасываем анимацию букв ALBE
+            // Сбрасываем буквы ALBE
             const albeLetters = document.querySelectorAll('.albe-letter');
             albeLetters.forEach(letter => {
                 letter.style.animation = 'none';
@@ -668,14 +713,14 @@
             });
             
             setTimeout(() => {
-                // Перезапуск анимации букв
+                // Перезапуск букв
                 albeLetters.forEach((letter, i) => {
                     const delays = [0.2, 0.5, 0.8, 1.1];
                     letter.style.animation = `flyFromTopLeft 0.7s ease-out forwards ${delays[i]}s`;
                 });
                 
                 // Показываем статические элементы
-                permanentElements.forEach((id, idx) => {
+                permElements.forEach((id, idx) => {
                     setTimeout(() => {
                         const el = document.getElementById(id);
                         if (el) el.classList.add('visible');
@@ -693,7 +738,8 @@
                         charIndex = 0;
                         isDeleting = false;
                         wordIndex = 0;
-                        updateDisplay("");
+                        isFirstRun = true;
+                        updateDisplay("МЫ СОЗДАЕМ ", "");
                         setTimeout(() => {
                             typeEffect();
                         }, 300);
