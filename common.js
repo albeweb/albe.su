@@ -1,4 +1,6 @@
-// ===== ОПИСАНИЯ ТЕХНОЛОГИЙ ДЛЯ ТУЛТИПОВ =====
+// ============================================
+// ОПИСАНИЯ ТЕХНОЛОГИЙ ДЛЯ ТУЛТИПОВ
+// ============================================
 const techDesc = {
     react: "react / next.js — библиотека для создания пользовательских интерфейсов. next.js добавляет серверный рендеринг (ssr) и генерацию статических сайтов (ssg), что улучшает seo и скорость загрузки.",
     ts: "typescript — типизированный javascript. позволяет находить ошибки на этапе разработки, улучшает читаемость кода и упрощает поддержку крупных проектов.",
@@ -55,7 +57,9 @@ const techDesc = {
     semrush: "semrush / ahrefs — анализ конкурентов, ключей, ссылок."
 };
 
-// ===== ТУЛТИПЫ ДЛЯ ТЕХНОЛОГИЙ =====
+// ============================================
+// ТУЛТИПЫ ДЛЯ ТЕХНОЛОГИЙ
+// ============================================
 function initTechTooltips() {
     const tooltip = document.createElement('div');
     tooltip.className = 'tech-tooltip';
@@ -94,179 +98,9 @@ function initTechTooltips() {
     });
 }
 
-// ===== КИНЕТИЧЕСКИЕ КНОПКИ (3 СЕГМЕНТА) =====
-function initKineticButtons() {
-    const buttonsToConvert = document.querySelectorAll(
-        '.btn-primary, .btn-outline, .hero-btn-primary, .hero-btn-outline, ' +
-        '.section-more-btn, button[type="submit"], .header-telegram, #toTopBtn'
-    );
-    
-    if (buttonsToConvert.length === 0) return;
-    
-    buttonsToConvert.forEach(oldBtn => {
-        const btnText = oldBtn.textContent.trim();
-        const btnId = oldBtn.id;
-        const btnClass = oldBtn.className;
-        const parent = oldBtn.parentNode;
-        let telegramLink = null;
-        
-        if (oldBtn.classList.contains('header-telegram')) {
-            telegramLink = oldBtn.getAttribute('href');
-        }
-        
-        const wrapper = document.createElement('div');
-        wrapper.className = 'kinetic-wrapper';
-        if (btnId) wrapper.id = btnId;
-        
-        let sizeClass = '';
-        if (btnClass.includes('section-more-btn')) sizeClass = 'small';
-        if (btnClass.includes('hero-btn') || (btnClass.includes('btn-primary') && btnText.length > 15)) sizeClass = 'large';
-        if (btnId === 'toTopBtn') sizeClass = 'totop-btn';
-        if (btnClass.includes('header-telegram')) sizeClass = 'header-telegram-btn';
-        
-        const kineticBtn = document.createElement('div');
-        kineticBtn.className = `kinetic-btn ${sizeClass}`;
-        if (telegramLink) {
-            kineticBtn.setAttribute('data-telegram-link', telegramLink);
-        }
-        
-        const segLeft = document.createElement('div');
-        segLeft.className = 'segment segment-left';
-        const segCenter = document.createElement('div');
-        segCenter.className = 'segment segment-center';
-        const segRight = document.createElement('div');
-        segRight.className = 'segment segment-right';
-        
-        const textSpan = document.createElement('div');
-        textSpan.className = 'btn-text';
-        textSpan.textContent = btnText;
-        
-        for (let i = 0; i < 6; i++) {
-            const spark = document.createElement('div');
-            spark.className = 'spark';
-            kineticBtn.appendChild(spark);
-        }
-        
-        kineticBtn.appendChild(segLeft);
-        kineticBtn.appendChild(segCenter);
-        kineticBtn.appendChild(segRight);
-        kineticBtn.appendChild(textSpan);
-        
-        wrapper.appendChild(kineticBtn);
-        parent.replaceChild(wrapper, oldBtn);
-        
-        initKineticButtonEffects(kineticBtn, btnText);
-        
-        if (btnId === 'toTopBtn') {
-            kineticBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        }
-        
-        if (telegramLink) {
-            kineticBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                window.open(telegramLink, '_blank');
-            });
-        }
-    });
-}
-
-// Эффекты для одной кинетической кнопки (цвета только из css)
-function initKineticButtonEffects(btn, originalText) {
-    const leftSeg = btn.querySelector('.segment-left');
-    const centerSeg = btn.querySelector('.segment-center');
-    const rightSeg = btn.querySelector('.segment-right');
-    const textSpan = btn.querySelector('.btn-text');
-    
-    if (!leftSeg || !centerSeg || !rightSeg) return;
-    
-    let targetRotateX = 0, targetRotateY = 0;
-    let currentRotateX = 0, currentRotateY = 0;
-    
-    function triggerSparks(count = 3, clientX = null, clientY = null) {
-        const rect = btn.getBoundingClientRect();
-        const sparksList = btn.querySelectorAll('.spark');
-        
-        for (let i = 0; i < Math.min(count, sparksList.length); i++) {
-            const spark = sparksList[i];
-            const angle = Math.random() * Math.PI * 2;
-            const radius = 25 + Math.random() * 35;
-            const dx = Math.cos(angle) * radius * (Math.random() > 0.5 ? 1 : -1);
-            const dy = Math.sin(angle) * radius * 0.5 - 8;
-            
-            spark.style.setProperty('--dx', dx + 'px');
-            spark.style.setProperty('--dy', dy + 'px');
-            
-            if (clientX && clientY) {
-                const localX = ((clientX - rect.left) / rect.width) * 100;
-                const localY = ((clientY - rect.top) / rect.height) * 100;
-                spark.style.left = localX + '%';
-                spark.style.top = localY + '%';
-            } else {
-                spark.style.left = (Math.random() * 80 + 10) + '%';
-                spark.style.top = (Math.random() * 70 + 15) + '%';
-            }
-            
-            spark.style.animation = 'none';
-            spark.offsetHeight;
-            spark.style.animation = 'sparkFloat 0.5s ease-out forwards';
-        }
-    }
-    
-    function animateRotation() {
-        currentRotateX += (targetRotateX - currentRotateX) * 0.12;
-        currentRotateY += (targetRotateY - currentRotateY) * 0.12;
-        btn.style.transform = `rotateX(${currentRotateX}deg) rotateY(${currentRotateY}deg)`;
-        requestAnimationFrame(animateRotation);
-    }
-    animateRotation();
-    
-    btn.addEventListener('mousemove', (e) => {
-        const rect = btn.getBoundingClientRect();
-        const relX = (e.clientX - rect.left) / rect.width - 0.5;
-        const relY = (e.clientY - rect.top) / rect.height - 0.5;
-        
-        targetRotateY = relX * 10;
-        targetRotateX = -relY * 8;
-        
-        const px = ((e.clientX - rect.left) / rect.width) * 100;
-        const py = ((e.clientY - rect.top) / rect.height) * 100;
-        btn.style.setProperty('--x', px + '%');
-        btn.style.setProperty('--y', py + '%');
-        
-        leftSeg.style.transform = `translateX(${relX * -8}px) rotateY(${relX * -5}deg) translateZ(${relY * 4}px)`;
-        rightSeg.style.transform = `translateX(${relX * 8}px) rotateY(${relX * 5}deg) translateZ(${relY * 4}px)`;
-        centerSeg.style.transform = `translateY(${relY * 5}px) translateZ(${Math.abs(relX) * 8}px)`;
-        
-        if (Math.random() < 0.05) {
-            triggerSparks(1, e.clientX, e.clientY);
-        }
-    });
-    
-    btn.addEventListener('mouseenter', () => {
-        triggerSparks(3);
-    });
-    
-    btn.addEventListener('mouseleave', () => {
-        leftSeg.style.transform = '';
-        rightSeg.style.transform = '';
-        centerSeg.style.transform = '';
-        targetRotateX = 0;
-        targetRotateY = 0;
-    });
-    
-    btn.addEventListener('click', (e) => {
-        triggerSparks(8, e.clientX, e.clientY);
-        btn.style.transform = `scale(0.97)`;
-        setTimeout(() => {
-            btn.style.transform = '';
-        }, 120);
-    });
-}
-
-// ===== КАЛЬКУЛЯТОР СТОИМОСТИ =====
+// ============================================
+// КАЛЬКУЛЯТОР СТОИМОСТИ
+// ============================================
 const rate = 2000;
 const sh = { design: 20, front: 30, back: 40, seo: 15, cms: 25, crm: 60, ai: 90, mobile: 120, support: 8 };
 const cm = { simple: 1, medium: 1.5, high: 2.2, enterprise: 3.5 };
@@ -404,7 +238,9 @@ function initCalculatorWithFallback() {
     }
 }
 
-// ===== ПЛАВНЫЙ СКРОЛЛ =====
+// ============================================
+// ПЛАВНЫЙ СКРОЛЛ
+// ============================================
 function initSmoothScroll() {
     var links = document.querySelectorAll('a[href^="#"]');
     for (var i = 0; i < links.length; i++) {
@@ -421,7 +257,9 @@ function initSmoothScroll() {
     }
 }
 
-// ===== FAQ (старый, оставлен для совместимости) =====
+// ============================================
+// FAQ (старый, оставлен для совместимости)
+// ============================================
 function initFaq() {
     var faqGrid = document.querySelector('.faq-grid');
     if (faqGrid) {
@@ -451,7 +289,9 @@ function initFaq() {
     }
 }
 
-// ===== ФОРМА =====
+// ============================================
+// ФОРМА
+// ============================================
 function initForm() {
     var form = document.getElementById('mainForm');
     var stat = document.getElementById('formStatus');
@@ -476,17 +316,9 @@ function initForm() {
     }
 }
 
-// ===== КНОПКА НАВЕРХ =====
-function initToTop() {
-    window.addEventListener('scroll', function() {
-        const btn = document.querySelector('#toTopBtn');
-        if (btn) {
-            btn.style.display = window.scrollY > 400 ? 'flex' : 'none';
-        }
-    });
-}
-
-// ===== ФИКСАЦИЯ ШАПКИ =====
+// ============================================
+// ФИКСАЦИЯ ШАПКИ
+// ============================================
 function initHeaderFixed() {
     var header = document.getElementById('mainHeader');
     if (!header) return;
@@ -502,7 +334,9 @@ function initHeaderFixed() {
     handleHeaderScroll();
 }
 
-// ===== БУРГЕР-МЕНЮ =====
+// ============================================
+// БУРГЕР-МЕНЮ
+// ============================================
 function initBurgerMenu() {
     const burgerBtn = document.getElementById('burgerBtn');
     const navMenu = document.getElementById('navMenu');
@@ -524,7 +358,9 @@ function initBurgerMenu() {
     }
 }
 
-// ===== ДОБАВЛЯЕМ ФУТЕР С ЧАСАМИ И СТОИМОСТЬЮ В АКТИВНУЮ ПАНЕЛЬ =====
+// ============================================
+// ДОБАВЛЯЕМ ФУТЕР С ЧАСАМИ И СТОИМОСТЬЮ В АКТИВНУЮ ПАНЕЛЬ
+// ============================================
 function addFooterToActivePanel() {
     const activePanel = document.querySelector('.accordion-panel.active');
     if (!activePanel) return;
@@ -561,7 +397,9 @@ function addFooterToActivePanel() {
     }
 }
 
-// ===== ГОРИЗОНТАЛЬНЫЙ АККОРДЕОН ПОРТФОЛИО =====
+// ============================================
+// ГОРИЗОНТАЛЬНЫЙ АККОРДЕОН ПОРТФОЛИО
+// ============================================
 function initPortfolioAccordion() {
     const panels = document.querySelectorAll('.accordion-panel');
     
@@ -614,7 +452,9 @@ function initPortfolioAccordion() {
     }
 }
 
-// ===== 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК (ТОЛЬКО ГОРИЗОНТАЛЬНЫЙ) =====
+// ============================================
+// 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК (ТОЛЬКО ГОРИЗОНТАЛЬНЫЙ)
+// ============================================
 function initQuantumCards() {
     const cards = document.querySelectorAll('.services-grid .service-card');
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -724,74 +564,203 @@ function initQuantumCards() {
     });
 }
 
-// ===== 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК AI РЕКЛАМА =====
-function initAICards3D() {
-    const cards = document.querySelectorAll('.ai-card');
-    if (cards.length === 0) return;
+// ============================================
+// КИНЕТИЧЕСКИЕ КНОПКИ (3 СЕГМЕНТА)
+// ============================================
+function initKineticButtons() {
+    const buttonsToConvert = document.querySelectorAll(
+        '.btn-primary, .btn-outline, .hero-btn-primary, .hero-btn-outline, ' +
+        '.section-more-btn, button[type="submit"], .header-telegram, #toTopBtn'
+    );
     
-    cards.forEach(card => {
-        const title = card.querySelector('h3');
-        const desc = card.querySelector('p');
-        const price = card.querySelector('.price-tag');
-        const corners = card.querySelectorAll('.corner');
-        const particles = card.querySelectorAll('.particle');
+    if (buttonsToConvert.length === 0) return;
+    
+    buttonsToConvert.forEach(oldBtn => {
+        const btnText = oldBtn.textContent.trim();
+        const btnId = oldBtn.id;
+        const btnClass = oldBtn.className;
+        const parent = oldBtn.parentNode;
+        let telegramLink = null;
         
-        let targetRotateX = 0, targetRotateY = 0;
-        let currentRotateX = 0, currentRotateY = 0;
-        
-        function animate() {
-            currentRotateX += (targetRotateX - currentRotateX) * 0.12;
-            currentRotateY += (targetRotateY - currentRotateY) * 0.12;
-            card.style.transform = `rotateX(${currentRotateX}deg) rotateY(${currentRotateY}deg)`;
-            requestAnimationFrame(animate);
+        if (oldBtn.classList.contains('header-telegram')) {
+            telegramLink = oldBtn.getAttribute('href');
         }
-        animate();
         
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const relX = (e.clientX - rect.left) / rect.width - 0.5;
-            const relY = (e.clientY - rect.top) / rect.height - 0.5;
-            
-            targetRotateY = relX * 10;
-            targetRotateX = -relY * 8;
-            
-            const px = ((e.clientX - rect.left) / rect.width) * 100;
-            const py = ((e.clientY - rect.top) / rect.height) * 100;
-            card.style.setProperty('--x', px + '%');
-            card.style.setProperty('--y', py + '%');
-            
-            const shiftX = relX * 14;
-            const shiftY = relY * 10;
-            
-            if (title) title.style.transform = `translateX(${shiftX * 0.5}px) translateY(${shiftY * 0.4}px) translateZ(35px)`;
-            if (desc) desc.style.transform = `translateX(${shiftX * 0.2}px) translateY(${shiftY * 0.2}px) translateZ(20px)`;
-            if (price) price.style.transform = `translateX(${shiftX * 0.3}px) translateY(${shiftY * 0.3}px) translateZ(25px)`;
-            
-            corners.forEach(corner => {
-                corner.style.transform = `translateX(${shiftX * 0.1}px) translateY(${shiftY * 0.1}px)`;
-            });
-            particles.forEach(particle => {
-                particle.style.transform = `translateX(${shiftX * 0.15}px) translateY(${shiftY * 0.15}px)`;
-            });
-        });
+        const wrapper = document.createElement('div');
+        wrapper.className = 'kinetic-wrapper';
+        if (btnId) wrapper.id = btnId;
         
-        card.addEventListener('mouseleave', () => {
-            targetRotateX = 0;
-            targetRotateY = 0;
-            if (title) title.style.transform = '';
-            if (desc) desc.style.transform = '';
-            if (price) price.style.transform = '';
-            corners.forEach(corner => {
-                corner.style.transform = '';
+        let sizeClass = '';
+        if (btnClass.includes('section-more-btn')) sizeClass = 'small';
+        if (btnClass.includes('hero-btn') || (btnClass.includes('btn-primary') && btnText.length > 15)) sizeClass = 'large';
+        if (btnId === 'toTopBtn') sizeClass = 'totop-btn';
+        if (btnClass.includes('header-telegram')) sizeClass = 'header-telegram-btn';
+        
+        const kineticBtn = document.createElement('div');
+        kineticBtn.className = `kinetic-btn ${sizeClass}`;
+        if (telegramLink) {
+            kineticBtn.setAttribute('data-telegram-link', telegramLink);
+        }
+        
+        const segLeft = document.createElement('div');
+        segLeft.className = 'segment segment-left';
+        const segCenter = document.createElement('div');
+        segCenter.className = 'segment segment-center';
+        const segRight = document.createElement('div');
+        segRight.className = 'segment segment-right';
+        
+        const textSpan = document.createElement('div');
+        textSpan.className = 'btn-text';
+        textSpan.textContent = btnText;
+        
+        for (let i = 0; i < 6; i++) {
+            const spark = document.createElement('div');
+            spark.className = 'spark';
+            kineticBtn.appendChild(spark);
+        }
+        
+        kineticBtn.appendChild(segLeft);
+        kineticBtn.appendChild(segCenter);
+        kineticBtn.appendChild(segRight);
+        kineticBtn.appendChild(textSpan);
+        
+        wrapper.appendChild(kineticBtn);
+        parent.replaceChild(wrapper, oldBtn);
+        
+        initKineticButtonEffects(kineticBtn, btnText);
+        
+        if (btnId === 'toTopBtn') {
+            kineticBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
-            particles.forEach(particle => {
-                particle.style.transform = '';
+        }
+        
+        if (telegramLink) {
+            kineticBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                window.open(telegramLink, '_blank');
             });
-        });
+        }
     });
 }
 
-// ===== АККОРДЕОН FAQ В СТИЛЕ «КЕЙС» (с искрами, цвета: белый + розовый + оранжевый) =====
+// Эффекты для одной кинетической кнопки
+function initKineticButtonEffects(btn, originalText) {
+    const leftSeg = btn.querySelector('.segment-left');
+    const centerSeg = btn.querySelector('.segment-center');
+    const rightSeg = btn.querySelector('.segment-right');
+    const textSpan = btn.querySelector('.btn-text');
+    
+    if (!leftSeg || !centerSeg || !rightSeg) return;
+    
+    let targetRotateX = 0, targetRotateY = 0;
+    let currentRotateX = 0, currentRotateY = 0;
+    
+    function triggerSparks(count = 3, clientX = null, clientY = null) {
+        const rect = btn.getBoundingClientRect();
+        const sparksList = btn.querySelectorAll('.spark');
+        
+        for (let i = 0; i < Math.min(count, sparksList.length); i++) {
+            const spark = sparksList[i];
+            const angle = Math.random() * Math.PI * 2;
+            const radius = 25 + Math.random() * 35;
+            const dx = Math.cos(angle) * radius * (Math.random() > 0.5 ? 1 : -1);
+            const dy = Math.sin(angle) * radius * 0.5 - 8;
+            
+            spark.style.setProperty('--dx', dx + 'px');
+            spark.style.setProperty('--dy', dy + 'px');
+            
+            if (clientX && clientY) {
+                const localX = ((clientX - rect.left) / rect.width) * 100;
+                const localY = ((clientY - rect.top) / rect.height) * 100;
+                spark.style.left = localX + '%';
+                spark.style.top = localY + '%';
+            } else {
+                spark.style.left = (Math.random() * 80 + 10) + '%';
+                spark.style.top = (Math.random() * 70 + 15) + '%';
+            }
+            
+            spark.style.animation = 'none';
+            spark.offsetHeight;
+            spark.style.animation = 'sparkFloat 0.5s ease-out forwards';
+        }
+    }
+    
+    function animateRotation() {
+        currentRotateX += (targetRotateX - currentRotateX) * 0.12;
+        currentRotateY += (targetRotateY - currentRotateY) * 0.12;
+        btn.style.transform = `rotateX(${currentRotateX}deg) rotateY(${currentRotateY}deg)`;
+        requestAnimationFrame(animateRotation);
+    }
+    animateRotation();
+    
+    btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const relX = (e.clientX - rect.left) / rect.width - 0.5;
+        const relY = (e.clientY - rect.top) / rect.height - 0.5;
+        
+        targetRotateY = relX * 10;
+        targetRotateX = -relY * 8;
+        
+        const px = ((e.clientX - rect.left) / rect.width) * 100;
+        const py = ((e.clientY - rect.top) / rect.height) * 100;
+        btn.style.setProperty('--x', px + '%');
+        btn.style.setProperty('--y', py + '%');
+        
+        leftSeg.style.transform = `translateX(${relX * -8}px) rotateY(${relX * -5}deg) translateZ(${relY * 4}px)`;
+        rightSeg.style.transform = `translateX(${relX * 8}px) rotateY(${relX * 5}deg) translateZ(${relY * 4}px)`;
+        centerSeg.style.transform = `translateY(${relY * 5}px) translateZ(${Math.abs(relX) * 8}px)`;
+        
+        if (Math.random() < 0.05) {
+            triggerSparks(1, e.clientX, e.clientY);
+        }
+    });
+    
+    btn.addEventListener('mouseenter', () => {
+        triggerSparks(3);
+    });
+    
+    btn.addEventListener('mouseleave', () => {
+        leftSeg.style.transform = '';
+        rightSeg.style.transform = '';
+        centerSeg.style.transform = '';
+        targetRotateX = 0;
+        targetRotateY = 0;
+    });
+    
+    btn.addEventListener('click', (e) => {
+        triggerSparks(8, e.clientX, e.clientY);
+        btn.style.transform = `scale(0.97)`;
+        setTimeout(() => {
+            btn.style.transform = '';
+        }, 120);
+    });
+}
+
+// ============================================
+// КНОПКА НАВЕРХ
+// ============================================
+function initToTop() {
+    const toTopBtn = document.getElementById('toTopBtn');
+    if (!toTopBtn) return;
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            toTopBtn.classList.add('visible');
+        } else {
+            toTopBtn.classList.remove('visible');
+        }
+    });
+    
+    toTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+// ============================================
+// АККОРДЕОН FAQ В СТИЛЕ «КЕЙС»
+// ============================================
 function initCaseAccordion() {
     const items = document.querySelectorAll('.case-item');
     if (items.length === 0) return;
@@ -869,7 +838,9 @@ function initCaseAccordion() {
     });
 }
 
-// ===== ЗАГРУЗКА КОМПОНЕНТОВ =====
+// ============================================
+// ЗАГРУЗКА КОМПОНЕНТОВ (HEADER, FOOTER)
+// ============================================
 function loadComponent(elementId, filePath, callback) {
     const placeholder = document.getElementById(elementId);
     if (!placeholder) return;
@@ -889,8 +860,177 @@ function loadComponent(elementId, filePath, callback) {
         });
 }
 
-// ===== ЗАПУСК ВСЕХ ИНИЦИАЛИЗАЦИЙ =====
+// ============================================
+// ЭТАЛОННЫЙ HERO БАННЕР (НОВАЯ ВЕРСИЯ)
+// ============================================
+
+// Функция инициализации падающего кода
+function initMatrixRain() {
+    const canvas = document.getElementById('matrixCanvas');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    let w = window.innerWidth;
+    let h = window.innerHeight;
+    
+    canvas.width = w;
+    canvas.height = h;
+    
+    const chars = "01<>/{}[]=+-*&%$#@!~ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const words = ['DESIGN', 'CODE', 'AI', 'ALBE', 'DIGITAL'];
+    const colors = ['#F5B700', '#10B981', '#06B6D4', '#4C1D95'];
+    const fontSize = 14;
+    let cols = Math.floor(w / fontSize);
+    let drops = [];
+    
+    for (let i = 0; i < cols; i++) {
+        drops[i] = Math.random() * -h;
+    }
+    
+    let lastFrameTime = 0;
+    const targetFPS = 30;
+    const frameInterval = 1000 / targetFPS;
+    
+    function getRandomItem() {
+        return (Math.random() < 0.04) ? words[Math.floor(Math.random() * words.length)] : chars[Math.floor(Math.random() * chars.length)];
+    }
+    
+    function drawMatrix(now) {
+        requestAnimationFrame(drawMatrix);
+        if (now - lastFrameTime < frameInterval) return;
+        lastFrameTime = now;
+        
+        ctx.fillStyle = 'rgba(5,7,10,0.06)';
+        ctx.fillRect(0, 0, w, h);
+        ctx.textAlign = 'center';
+        
+        for (let i = 0; i < drops.length; i++) {
+            const item = getRandomItem();
+            const x = i * fontSize + fontSize/2;
+            const y = drops[i] * fontSize;
+            let color, fontStyle;
+            
+            if (item.length > 1) {
+                color = '#F5B700';
+                fontStyle = `bold ${fontSize}px "Monaco", monospace`;
+            } else {
+                color = colors[Math.floor(Math.random() * colors.length)];
+                fontStyle = `${fontSize}px "Monaco", monospace`;
+            }
+            ctx.font = fontStyle;
+            ctx.fillStyle = color;
+            ctx.fillText(item, x, y);
+            
+            if (y > h && Math.random() > 0.99) {
+                drops[i] = 0;
+            }
+            drops[i] += 0.6;
+        }
+    }
+    
+    drawMatrix();
+    
+    window.addEventListener('resize', () => {
+        w = window.innerWidth;
+        h = window.innerHeight;
+        canvas.width = w;
+        canvas.height = h;
+        cols = Math.floor(w / fontSize);
+        drops = [];
+        for (let i = 0; i < cols; i++) {
+            drops[i] = Math.random() * -h;
+        }
+    });
+}
+
+// Функция печатающего текста
+function initTypewriter() {
+    const businessLine = document.getElementById('businessLine');
+    if (!businessLine) return;
+    
+    const fullText = "МЫ СОЗДАЕМ БИЗНЕС";
+    let index = 0;
+    
+    function typeWriter() {
+        if (index < fullText.length) {
+            businessLine.innerHTML = fullText.substring(0, index + 1) + '<span class="cursor"></span>';
+            index++;
+            setTimeout(typeWriter, 100);
+        } else {
+            businessLine.innerHTML = fullText;
+        }
+    }
+    
+    setTimeout(typeWriter, 2900);
+}
+
+// Функция добавления класса loaded для появления элементов
+function initHeroLoaded() {
+    const hero = document.querySelector('.hero-etalon');
+    if (!hero) return;
+    
+    setTimeout(() => {
+        hero.classList.add('loaded');
+    }, 1300);
+}
+
+// Функция рестарта
+function initHeroRestart() {
+    const restartBtn = document.getElementById('restartHeroBtn');
+    if (!restartBtn) return;
+    
+    restartBtn.addEventListener('click', () => {
+        const hero = document.querySelector('.hero-etalon');
+        const businessLine = document.getElementById('businessLine');
+        
+        if (hero) hero.classList.remove('loaded');
+        if (businessLine) {
+            businessLine.innerHTML = '';
+        }
+        
+        const maskLetters = document.querySelectorAll('.mask-letter');
+        maskLetters.forEach(letter => {
+            letter.style.animation = 'none';
+            letter.style.opacity = '0';
+        });
+        
+        setTimeout(() => {
+            maskLetters.forEach((letter, i) => {
+                const delays = ['0.2s', '0.5s', '0.8s', '1.1s'];
+                letter.style.animation = `revealLetter 0.6s ease forwards ${delays[i]}`;
+            });
+            
+            if (hero) hero.classList.add('loaded');
+            
+            if (businessLine) {
+                let index = 0;
+                const fullText = "МЫ СОЗДАЕМ БИЗНЕС";
+                function restartTypewriter() {
+                    if (index < fullText.length) {
+                        businessLine.innerHTML = fullText.substring(0, index + 1) + '<span class="cursor"></span>';
+                        index++;
+                        setTimeout(restartTypewriter, 100);
+                    } else {
+                        businessLine.innerHTML = fullText;
+                    }
+                }
+                restartTypewriter();
+            }
+        }, 50);
+    });
+}
+
+// ============================================
+// ЗАПУСК ВСЕХ ИНИЦИАЛИЗАЦИЙ
+// ============================================
 document.addEventListener('DOMContentLoaded', function() {
+    // Инициализация эталонного баннера
+    initMatrixRain();
+    initHeroLoaded();
+    initTypewriter();
+    initHeroRestart();
+    
+    // Инициализация остальных функций
     initTechTooltips();
     initCalculatorWithFallback();
     initSmoothScroll();
@@ -903,8 +1043,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initKineticButtons();
     initToTop();
     initCaseAccordion();
-    // initAICards3D(); // ОТКЛЮЧЕНО — убирает второй скролл при наведении на карточки AI реклама
     
+    // Загрузка компонентов header и footer
     loadComponent('header-placeholder', 'header.html', function() {
         initBurgerMenu();
         initHeaderFixed();
