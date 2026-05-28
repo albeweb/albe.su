@@ -2835,7 +2835,7 @@ h4 {
 }
 
 /* ============================================ */
-/* ЭТАЛОННЫЙ HERO БАННЕР (для твоих классов) */
+/* 24. ЭТАЛОННЫЙ HERO БАННЕР (ПОЛНАЯ ВЕРСИЯ) */
 /* ============================================ */
 
 .hero-etalon {
@@ -2889,8 +2889,7 @@ h4 {
     100% { opacity: 1; transform: scale(1); }
 }
 
-/* DIGITAL AGENCY — 100px от левого края */
-.agency-tag {
+.etalon-agency {
     position: absolute;
     top: calc(6% + 100px);
     left: 100px;
@@ -2906,17 +2905,17 @@ h4 {
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.hero-etalon.loaded .agency-tag {
+.hero-etalon.loaded .etalon-agency {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* разработка */
-.main-title {
+.etalon-title {
     position: absolute;
     top: calc(18% + 270px);
     left: 200px;
-    font-family: 'EN Regular', sans-serif;
+    font-family: 'Geist', sans-serif;
+    font-weight: 500;
     font-size: clamp(3rem, 10vw, 7rem);
     background: linear-gradient(135deg, #F5B700, #F5B700, #10B981, #06B6D4);
     background-size: 200% auto;
@@ -2932,17 +2931,17 @@ h4 {
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.hero-etalon.loaded .main-title {
+.hero-etalon.loaded .etalon-title {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* дизайна и сайтов под ключ */
-.sub-line {
+.etalon-subtitle {
     position: absolute;
     top: calc(34% + 270px);
     left: 200px;
-    font-family: 'EN Regular', sans-serif;
+    font-family: 'Geist', sans-serif;
+    font-weight: 500;
     font-size: clamp(1.5rem, 5vw, 2.8rem);
     background: linear-gradient(135deg, #F5B700, #10B981, #06B6D4, #4C1D95);
     -webkit-background-clip: text;
@@ -2956,13 +2955,12 @@ h4 {
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.hero-etalon.loaded .sub-line {
+.hero-etalon.loaded .etalon-subtitle {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Статистика */
-.stats-row {
+.etalon-stats {
     position: absolute;
     bottom: 100px;
     left: 100px;
@@ -2974,19 +2972,26 @@ h4 {
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.hero-etalon.loaded .stats-row {
+.hero-etalon.loaded .etalon-stats {
     opacity: 1;
     transform: translateY(0);
 }
 
-.stat-item {
+.etalon-stat {
     font-family: 'Zen Dots', monospace;
     font-size: 2.8rem;
     text-align: center;
     color: white;
 }
 
-.stat-item .stat-label {
+.etalon-stat .stat-number {
+    font-size: 2.8rem;
+    font-weight: 400;
+    display: block;
+    line-height: 1.2;
+}
+
+.etalon-stat .stat-label {
     font-size: 0.8rem;
     letter-spacing: 2px;
     font-family: 'Geist', monospace;
@@ -2995,18 +3000,12 @@ h4 {
     display: block;
 }
 
-.stat-item:nth-child(1) .stat-number { color: #10B981; }
-.stat-item:nth-child(2) .stat-number { color: #06B6D4; }
-.stat-item:nth-child(3) .stat-number { color: #4C1D95; }
-.stat-item:nth-child(4) .stat-number { color: #F5B700; }
+.etalon-stat:nth-child(1) .stat-number { color: #10B981; }
+.etalon-stat:nth-child(2) .stat-number { color: #06B6D4; }
+.etalon-stat:nth-child(3) .stat-number { color: #4C1D95; }
+.etalon-stat:nth-child(4) .stat-number { color: #F5B700; }
 
-.stat-number {
-    font-size: 2.8rem;
-    font-weight: 400;
-}
-
-/* Бейджики */
-.badges-grid {
+.etalon-badges {
     position: absolute;
     bottom: 10%;
     right: 5%;
@@ -3021,12 +3020,12 @@ h4 {
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.hero-etalon.loaded .badges-grid {
+.hero-etalon.loaded .etalon-badges {
     opacity: 1;
     transform: translateY(0);
 }
 
-.badges-grid .badge {
+.etalon-badges .badge {
     background: rgba(76,29,149,0.35);
     backdrop-filter: blur(8px);
     padding: 0.6rem 1.4rem;
@@ -3039,15 +3038,14 @@ h4 {
     transition: all 0.2s ease;
 }
 
-.badges-grid .badge:hover {
+.etalon-badges .badge:hover {
     background: var(--color-purple);
     color: white;
     transform: translateY(-2px);
     border-color: var(--color-purple);
 }
 
-/* Фраза справа от маски */
-.right-phrase {
+.etalon-right-phrase {
     position: absolute;
     left: 58%;
     top: 50%;
@@ -3064,12 +3062,11 @@ h4 {
     transition: opacity 0.8s ease;
 }
 
-.hero-etalon.loaded .right-phrase {
+.hero-etalon.loaded .etalon-right-phrase {
     opacity: 1;
 }
 
-/* Печатающаяся фраза */
-.business-line {
+.etalon-business-line {
     position: absolute;
     right: 100px;
     bottom: 24%;
@@ -3085,7 +3082,7 @@ h4 {
     text-align: right;
 }
 
-.business-line .cursor {
+.etalon-business-line .cursor {
     display: inline-block;
     width: 4px;
     height: 3.73rem;
@@ -3101,33 +3098,33 @@ h4 {
 }
 
 @media (max-width: 1200px) {
-    .right-phrase { left: 52%; font-size: 1.4rem; }
-    .business-line { font-size: 2.5rem; right: 50px; bottom: 20%; }
-    .business-line .cursor { height: 2.5rem; }
-    .agency-tag { font-size: 1.4rem; left: 80px; }
-    .stats-row { gap: 2rem; left: 80px; bottom: 80px; }
-    .stat-item { font-size: 2rem; }
-    .stat-number { font-size: 2rem; }
-    .main-title { left: 150px; }
-    .sub-line { left: 150px; }
+    .etalon-right-phrase { left: 52%; font-size: 1.4rem; }
+    .etalon-business-line { font-size: 2.5rem; right: 50px; bottom: 20%; }
+    .etalon-business-line .cursor { height: 2.5rem; }
+    .etalon-agency { font-size: 1.4rem; left: 80px; }
+    .etalon-stats { gap: 2rem; left: 80px; bottom: 80px; }
+    .etalon-stat { font-size: 2rem; }
+    .etalon-stat .stat-number { font-size: 2rem; }
+    .etalon-title { left: 150px; }
+    .etalon-subtitle { left: 150px; }
 }
 
 @media (max-width: 900px) {
     .hero-etalon { min-height: auto; height: auto; padding: 120px 0 80px; }
-    .agency-tag { left: 20px; font-size: 1rem; top: 20px; }
-    .main-title { left: 20px; font-size: 2rem; top: 100px; }
-    .sub-line { left: 20px; font-size: 1rem; top: 160px; white-space: normal; max-width: 85%; }
-    .stats-row {
+    .etalon-agency { left: 20px; font-size: 1rem; top: 20px; }
+    .etalon-title { left: 20px; font-size: 2rem; top: 100px; }
+    .etalon-subtitle { left: 20px; font-size: 1rem; top: 160px; white-space: normal; max-width: 85%; }
+    .etalon-stats {
         position: static;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
         margin: 200px 20px 40px;
     }
-    .stat-item { font-size: 1.3rem; }
-    .stat-number { font-size: 1.3rem; }
-    .stat-item .stat-label { font-size: 0.6rem; }
-    .badges-grid {
+    .etalon-stat { font-size: 1.3rem; }
+    .etalon-stat .stat-number { font-size: 1.3rem; }
+    .etalon-stat .stat-label { font-size: 0.6rem; }
+    .etalon-badges {
         position: static;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -3135,8 +3132,8 @@ h4 {
         margin: 0 20px 40px;
         max-width: none;
     }
-    .badges-grid .badge { font-size: 0.6rem; padding: 0.4rem 0.8rem; text-align: center; }
-    .right-phrase {
+    .etalon-badges .badge { font-size: 0.6rem; padding: 0.4rem 0.8rem; text-align: center; }
+    .etalon-right-phrase {
         position: static;
         margin: 20px;
         font-size: 1rem;
@@ -3144,14 +3141,14 @@ h4 {
         text-align: left;
         transform: none;
     }
-    .business-line {
+    .etalon-business-line {
         position: static;
         margin: 20px;
         font-size: 1.6rem;
         white-space: normal;
         text-align: right;
     }
-    .business-line .cursor { height: 1.6rem; }
+    .etalon-business-line .cursor { height: 1.6rem; }
 }
 
 .hero-etalon {
