@@ -114,7 +114,7 @@
 <div id="header-placeholder"></div>
 
 <main>
-<!-- ========== HERO БАННЕР (НА ВСЮ ВЫСОТУ ЭКРАНА) ========== -->
+<!-- ========== HERO БАННЕР (БЕЗ КНОПКИ РЕСТАРТ) ========== -->
 <section class="hero-section">
     <canvas id="matrixCanvas" class="hero-canvas-bottom"></canvas>
 
@@ -173,8 +173,6 @@
         <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">поддержка</div></div>
         <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">результат</div></div>
     </div>
-
-    <button class="restart-btn" id="restartBtn">⟳ Рестарт</button>
 </section>
 
 <style>
@@ -374,23 +372,6 @@
     animation: blink 0.8s step-end infinite;
 }
 @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
-.restart-btn {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    z-index: 100;
-    background: #F5B700;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 40px;
-    cursor: pointer;
-    font-weight: bold;
-    font-family: 'Geist', monospace;
-    pointer-events: auto;
-    transition: 0.2s;
-    font-size: 0.8rem;
-}
-.restart-btn:hover { transform: scale(1.05); background: #ffcc33; }
 
 /* Фиксация шапки поверх hero */
 #header-placeholder {
@@ -529,7 +510,7 @@ main {
     if (statsRow) setTimeout(() => statsRow.classList.add('visible'), 2000);
 })();
 
-// Анимация печати слов
+// Анимация печати слов (без кнопки рестарт)
 (function() {
     const words = ["БИЗНЕС", "ДИЗАЙН", "WEB3", "BLOCKCHAIN", "AI РЕКЛАМУ", "ПРИЛОЖЕНИЯ", "SEO ОПТИМИЗАЦИЮ", "CRM/ERP", "САЙТЫ", "БУДУЩЕЕ"];
     let wordIndex = 0;
@@ -576,51 +557,6 @@ main {
             }, 300);
         }
     }, 2800);
-    
-    const restartBtn = document.getElementById('restartBtn');
-    if (restartBtn) {
-        restartBtn.addEventListener('click', () => {
-            const permElements = ['agencyTag', 'leftPhrase', 'badgesGrid', 'staticPrefix', 'dynamicWordContainer'];
-            permElements.forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.style.opacity = "0";
-            });
-            const statsRow = document.getElementById('statsRow');
-            if (statsRow) statsRow.classList.remove('visible');
-            if (el) {
-                el.innerHTML = "";
-                el.style.opacity = "0";
-            }
-            const albeLetters = document.querySelectorAll('.albe-letter');
-            albeLetters.forEach(letter => {
-                letter.style.animation = 'none';
-                letter.style.opacity = '0';
-            });
-            setTimeout(() => {
-                albeLetters.forEach((letter, i) => {
-                    const delays = [0.2, 0.5, 0.8, 1.1];
-                    letter.style.animation = `flyFromTopLeft 0.7s ease-out forwards ${delays[i]}s`;
-                });
-                permElements.forEach((id, idx) => {
-                    setTimeout(() => {
-                        const el = document.getElementById(id);
-                        if (el) el.style.opacity = "1";
-                    }, 1300 + idx * 100);
-                });
-                if (statsRow) setTimeout(() => statsRow.classList.add('visible'), 2000);
-                setTimeout(() => {
-                    if (el) {
-                        wordIndex = 0;
-                        isDeleting = false;
-                        text = "";
-                        el.style.opacity = "1";
-                        el.innerHTML = '<span class="cursor"></span>';
-                        setTimeout(() => { type(); }, 300);
-                    }
-                }, 2800);
-            }, 50);
-        });
-    }
 })();
 </script>
 
