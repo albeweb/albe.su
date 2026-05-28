@@ -698,7 +698,6 @@
         const toTopBtn = document.getElementById('toTopBtn');
         if (!toTopBtn) return;
         
-        // Преобразуем существующую кнопку в кинетическую
         const btnText = toTopBtn.textContent.trim();
         const parent = toTopBtn.parentNode;
         
@@ -734,10 +733,8 @@
         wrapper.appendChild(kineticBtn);
         parent.replaceChild(wrapper, toTopBtn);
         
-        // Инициализируем эффекты для кнопки
         initKineticButtonEffects(kineticBtn, btnText);
         
-        // Добавляем обработчик скролла для видимости
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
                 wrapper.classList.add('visible');
@@ -950,6 +947,191 @@
     }
 
     // ============================================
+    // МОДАЛЬНОЕ ОКНО ДЛЯ УСЛУГ
+    // ============================================
+
+    const serviceDetails = {
+        "Веб-разработка": {
+            description: "Мы создаём высокопроизводительные веб-приложения, которые выдерживают высокие нагрузки и обеспечивают мгновенный отклик. Наши решения масштабируются от стартапов до enterprise-уровня.",
+            stack: [
+                "React / Next.js — для создания быстрых SPA и SSR-приложений с отличной SEO",
+                "TypeScript — типобезопасный код, который легче поддерживать и рефакторить",
+                "Node.js / Nest.js — высокопроизводительный бэкенд с модульной архитектурой",
+                "PostgreSQL / MongoDB — выбор БД под задачи проекта",
+                "Docker / Kubernetes — контейнеризация и оркестрация для лёгкого масштабирования"
+            ],
+            advantages: [
+                "Скорость загрузки страниц до 0.3 секунды",
+                "Высокая безопасность благодаря TypeScript и аудиту кода",
+                "SEO-оптимизация из коробки с Next.js",
+                "Легкое масштабирование от 100 до 100 000+ пользователей",
+                "CI/CD пайплайны для быстрых и безопасных деплоев"
+            ]
+        },
+        "Иммерсивный дизайн": {
+            description: "Мы создаём дизайн, который не просто красив — он вовлекает пользователя в взаимодействие, запоминается и повышает конверсию. Микроанимации, 3D-сцены и плавные переходы делают ваш продукт уникальным.",
+            stack: [
+                "Figma / Adobe XD — профессиональное прототипирование",
+                "Three.js — 3D-графика и анимация в браузере",
+                "GSAP / Framer Motion — плавные микроанимации",
+                "Lottie — легковесные JSON-анимации",
+                "WebGL — аппаратно-ускоренная графика"
+            ],
+            advantages: [
+                "Увеличение вовлеченности пользователей на 40-60%",
+                "Повышение конверсии за счет понятной навигации",
+                "Премиум восприятие бренда",
+                "Адаптивный дизайн под все устройства",
+                "Оптимизированная производительность без лагов"
+            ]
+        },
+        "E-commerce платформы": {
+            description: "Разрабатываем интернет-магазины с нуля, которые конвертируют до 15% посетителей в покупателей. Полная интеграция с 1С, CRM, платежными системами и маркетплейсами.",
+            stack: [
+                "Next.js / Nuxt.js — быстрый frontend с SSR",
+                "Node.js / Laravel — надёжный бэкенд",
+                "PostgreSQL — основная БД",
+                "Redis — кэширование и сессии",
+                "Elasticsearch — быстрый поиск по товарам",
+                "RabbitMQ — обработка заказов в очередях"
+            ],
+            advantages: [
+                "Конверсия до 15%+",
+                "Интеграция с Wildberries, Ozon, Яндекс.Маркет",
+                "50+ платежных систем",
+                "Встроенная аналитика продаж",
+                "Автоматическая синхронизация с 1С"
+            ]
+        },
+        "SEO и аналитика": {
+            description: "Выводим сайты в топ-10 Яндекса и Google. Полный цикл: от сбора семантики до технической оптимизации и наращивания ссылочной массы.",
+            stack: [
+                "Яндекс.Вебмастер / Google Search Console — мониторинг позиций",
+                "KeyCollector / Semrush — сбор семантического ядра",
+                "Screaming Frog — технический аудит",
+                "Яндекс.Метрика / GA4 — аналитика поведения",
+                "Ahrefs / Serpstat — анализ конкурентов"
+            ],
+            advantages: [
+                "Рост трафика до 300% за 6 месяцев",
+                "Попадание в топ-10 по 70+ запросам",
+                "Техническая оптимизация под Core Web Vitals",
+                "Ежемесячная детальная отчетность",
+                "Гарантия KPI в договоре"
+            ]
+        },
+        "AI и Machine Learning": {
+            description: "Внедряем нейросети в ваш бизнес: от чат-ботов до рекомендательных систем и генеративного AI. Автоматизируем процессы и увеличиваем прибыль.",
+            stack: [
+                "Python / FastAPI — основной язык для ML",
+                "TensorFlow / PyTorch — фреймворки глубокого обучения",
+                "CatBoost / LightGBM — градиентный бустинг",
+                "OpenAI / YandexGPT — генеративные модели",
+                "Airflow — оркестрация пайплайнов",
+                "PostgreSQL / ClickHouse — хранение данных"
+            ],
+            advantages: [
+                "Автоматизация до 80% рутинных задач",
+                "Рост конверсии от персонализации на 25-40%",
+                "Чат-боты, отвечающие как люди",
+                "Точность прогнозов до 95%",
+                "Обработка терабайт данных в реальном времени"
+            ]
+        },
+        "Мобильные приложения": {
+            description: "Разрабатываем нативные и кроссплатформенные приложения под iOS и Android. Полный цикл: от идеи до публикации в App Store и Google Play.",
+            stack: [
+                "React Native / Expo — быстрая кроссплатформа",
+                "Swift / Kotlin — нативная разработка",
+                "Flutter — единый код для iOS/Android",
+                "Firebase — аналитика и push-уведомления",
+                "GraphQL / REST API — связь с бэкендом",
+                "Realm / SQLite — локальное хранение"
+            ],
+            advantages: [
+                "Публикация в App Store и Google Play",
+                "Оффлайн-режим и push-уведомления",
+                "Биометрическая авторизация",
+                "60 FPS производительность",
+                "Горячие обновления без стора"
+            ]
+        }
+    };
+
+    function openServiceModal(serviceName) {
+        const details = serviceDetails[serviceName];
+        if (!details) return;
+        
+        const modal = document.getElementById('serviceModal');
+        const title = document.getElementById('modalTitle');
+        const description = document.getElementById('modalDescription');
+        const stackList = document.getElementById('modalStackList');
+        const advantagesList = document.getElementById('modalAdvantages');
+        
+        title.textContent = serviceName;
+        description.textContent = details.description;
+        
+        stackList.innerHTML = '';
+        details.stack.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item;
+            stackList.appendChild(li);
+        });
+        
+        advantagesList.innerHTML = '';
+        details.advantages.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item;
+            advantagesList.appendChild(li);
+        });
+        
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('serviceModal');
+        if (modal) modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function initServiceModal() {
+        const cards = document.querySelectorAll('.service-card');
+        const modal = document.getElementById('serviceModal');
+        const closeBtn = document.querySelector('.modal-close');
+        const contactBtn = document.getElementById('modalContactBtn');
+        
+        cards.forEach(card => {
+            const btn = card.querySelector('.card-btn');
+            const titleElement = card.querySelector('h3');
+            
+            if (btn && titleElement) {
+                const serviceName = titleElement.textContent.trim();
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    openServiceModal(serviceName);
+                });
+            }
+        });
+        
+        if (closeBtn) closeBtn.addEventListener('click', closeModal);
+        if (modal) modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+        if (contactBtn) contactBtn.addEventListener('click', () => {
+            closeModal();
+            const contactSection = document.getElementById('contact');
+            if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const modalEl = document.getElementById('serviceModal');
+                if (modalEl && modalEl.classList.contains('active')) closeModal();
+            }
+        });
+    }
+
+    // ============================================
     // ЗАПУСК ВСЕХ ИНИЦИАЛИЗАЦИЙ
     // ============================================
     document.addEventListener('DOMContentLoaded', function() {
@@ -970,6 +1152,7 @@
         initCaseAccordion();
         initLazyKinescope();
         initKineticToTop();
+        initServiceModal();
         
         // Загрузка компонентов header и footer
         loadComponent('header-placeholder', 'header.html', function() {
