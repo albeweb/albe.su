@@ -115,443 +115,475 @@
 <div id="header-placeholder"></div>
 
 <main>
-<!-- ========== НОВЫЙ HERO БАННЕР (ЗАМЕНА) ========== -->
-<section style="position: relative; background: #05070A; overflow: hidden; min-height: 100vh;">
-    <canvas id="matrixCanvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: block; z-index: 0;"></canvas>
+<!-- ========== HERO БАННЕР (ЭТАЛОН) ========== -->
+<canvas id="matrixCanvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: block; z-index: 0;"></canvas>
 
-    <!-- Маска A L B E -->
-    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; pointer-events: none; display: flex; justify-content: center; align-items: center;">
-        <svg width="100%" height="100%" style="position: absolute; top:0; left:0;">
-            <defs>
-                <radialGradient id="dynamicGrad" cx="50%" cy="50%" r="75%">
-                    <stop offset="0%" stop-color="#F5B700" stop-opacity="0.95">
-                        <animate attributeName="stop-color" values="#F5B700;#10B981;#06B6D4;#4C1D95;#F5B700" dur="8s" repeatCount="indefinite"/>
-                    </stop>
-                    <stop offset="33%" stop-color="#10B981" stop-opacity="0.7">
-                        <animate attributeName="stop-color" values="#10B981;#06B6D4;#4C1D95;#F5B700;#10B981" dur="8s" repeatCount="indefinite"/>
-                    </stop>
-                    <stop offset="66%" stop-color="#06B6D4" stop-opacity="0.4">
-                        <animate attributeName="stop-color" values="#06B6D4;#4C1D95;#F5B700;#10B981;#06B6D4" dur="8s" repeatCount="indefinite"/>
-                    </stop>
-                    <stop offset="100%" stop-color="#4C1D95" stop-opacity="0.1">
-                        <animate attributeName="stop-color" values="#4C1D95;#F5B700;#10B981;#06B6D4;#4C1D95" dur="8s" repeatCount="indefinite"/>
-                    </stop>
-                </radialGradient>
-                <mask id="letterMask">
-                    <rect width="100%" height="100%" fill="white" />
-                    <text x="25%" y="45%" font-family="'EN Regular', sans-serif" font-size="14vw" font-weight="bold" fill="black" text-anchor="middle" class="mask-letter" style="animation: revealLetter 0.6s ease forwards 0.2s;">A</text>
-                    <text x="41.6%" y="45%" font-family="'EN Regular', sans-serif" font-size="14vw" font-weight="bold" fill="black" text-anchor="middle" class="mask-letter" style="animation: revealLetter 0.6s ease forwards 0.5s;">L</text>
-                    <text x="58.3%" y="45%" font-family="'EN Regular', sans-serif" font-size="14vw" font-weight="bold" fill="black" text-anchor="middle" class="mask-letter" style="animation: revealLetter 0.6s ease forwards 0.8s;">B</text>
-                    <text x="75%" y="45%" font-family="'EN Regular', sans-serif" font-size="14vw" font-weight="bold" fill="black" text-anchor="middle" class="mask-letter" style="animation: revealLetter 0.6s ease forwards 1.1s;">E</text>
-                </mask>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#dynamicGrad)" mask="url(#letterMask)" />
-        </svg>
-        <style>
-            @keyframes revealLetter {
-                0% { opacity: 0; transform: scale(0.8); }
-                100% { opacity: 1; transform: scale(1); }
-            }
-            .mask-letter { opacity: 0; }
-        </style>
-    </div>
+<!-- Маска A L B E -->
+<div class="masked-container">
+    <svg width="100%" height="100%" style="position: absolute; top:0; left:0;">
+        <defs>
+            <radialGradient id="dynamicGrad" cx="50%" cy="50%" r="75%">
+                <stop offset="0%" stop-color="#F5B700" stop-opacity="0.95">
+                    <animate attributeName="stop-color" values="#F5B700;#10B981;#06B6D4;#4C1D95;#F5B700" dur="8s" repeatCount="indefinite"/>
+                </stop>
+                <stop offset="33%" stop-color="#10B981" stop-opacity="0.7">
+                    <animate attributeName="stop-color" values="#10B981;#06B6D4;#4C1D95;#F5B700;#10B981" dur="8s" repeatCount="indefinite"/>
+                </stop>
+                <stop offset="66%" stop-color="#06B6D4" stop-opacity="0.4">
+                    <animate attributeName="stop-color" values="#06B6D4;#4C1D95;#F5B700;#10B981;#06B6D4" dur="8s" repeatCount="indefinite"/>
+                </stop>
+                <stop offset="100%" stop-color="#4C1D95" stop-opacity="0.1">
+                    <animate attributeName="stop-color" values="#4C1D95;#F5B700;#10B981;#06B6D4;#4C1D95" dur="8s" repeatCount="indefinite"/>
+                </stop>
+            </radialGradient>
+            <mask id="letterMask">
+                <rect width="100%" height="100%" fill="white" />
+                <text x="25%" y="45%" font-family="'EN Regular', sans-serif" font-size="14vw" font-weight="bold" fill="black" text-anchor="middle" class="mask-letter" style="animation: revealLetter 0.6s ease forwards 0.2s;">A</text>
+                <text x="41.6%" y="45%" font-family="'EN Regular', sans-serif" font-size="14vw" font-weight="bold" fill="black" text-anchor="middle" class="mask-letter" style="animation: revealLetter 0.6s ease forwards 0.5s;">L</text>
+                <text x="58.3%" y="45%" font-family="'EN Regular', sans-serif" font-size="14vw" font-weight="bold" fill="black" text-anchor="middle" class="mask-letter" style="animation: revealLetter 0.6s ease forwards 0.8s;">B</text>
+                <text x="75%" y="45%" font-family="'EN Regular', sans-serif" font-size="14vw" font-weight="bold" fill="black" text-anchor="middle" class="mask-letter" style="animation: revealLetter 0.6s ease forwards 1.1s;">E</text>
+            </mask>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#dynamicGrad)" mask="url(#letterMask)" />
+    </svg>
+</div>
 
-    <!-- Текстовые элементы -->
-    <div class="over-text agency-tag" id="agencyTag">DIGITAL AGENCY</div>
-    <div class="over-text main-title" id="mainTitle">разработка</div>
-    <div class="over-text sub-line" id="subLine">дизайна и сайтов под ключ</div>
+<!-- Текстовые элементы -->
+<div class="over-text agency-tag" id="agencyTag">DIGITAL AGENCY</div>
+<div class="over-text main-title" id="mainTitle">разработка</div>
+<div class="over-text sub-line" id="subLine">дизайна и сайтов под ключ</div>
 
-    <div class="over-text badges-grid" id="badgesGrid">
-        <span class="badge">Премиум дизайн</span>
-        <span class="badge">Мобильные приложения</span>
-        <span class="badge">AI решения</span>
-        <span class="badge">UI/UX проектирование</span>
-        <span class="badge">SEO стратегия</span>
-        <span class="badge">Веб-разработка</span>
-        <span class="badge">E-commerce</span>
-        <span class="badge">CRM интеграция</span>
-    </div>
+<div class="over-text badges-grid" id="badgesGrid">
+    <span class="badge">Премиум дизайн</span>
+    <span class="badge">Мобильные приложения</span>
+    <span class="badge">AI решения</span>
+    <span class="badge">UI/UX проектирование</span>
+    <span class="badge">SEO стратегия</span>
+    <span class="badge">Веб-разработка</span>
+    <span class="badge">E-commerce</span>
+    <span class="badge">CRM интеграция</span>
+</div>
 
-    <div class="right-phrase" id="rightPhrase">МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ</div>
-    <div class="business-line" id="businessLine"></div>
+<div class="right-phrase" id="rightPhrase">МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ</div>
+<div class="business-line" id="businessLine"></div>
 
-    <!-- Статистика -->
-    <div class="stats-row" id="statsRow">
-        <div class="stat-item"><div class="stat-number">7+</div><div class="stat-label">лет опыта</div></div>
-        <div class="stat-item"><div class="stat-number">150+</div><div class="stat-label">проектов</div></div>
-        <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">поддержка</div></div>
-        <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">результат</div></div>
-    </div>
+<!-- Статистика -->
+<div class="stats-row" id="statsRow">
+    <div class="stat-item"><div class="stat-number">7+</div><div class="stat-label">лет опыта</div></div>
+    <div class="stat-item"><div class="stat-number">150+</div><div class="stat-label">проектов</div></div>
+    <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">поддержка</div></div>
+    <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">результат</div></div>
+</div>
 
-    <button class="restart-btn" id="restartBtn" style="position: fixed; bottom: 20px; right: 20px; z-index: 100; background: #F5B700; border: none; padding: 10px 20px; border-radius: 40px; cursor: pointer; font-weight: bold; font-family: 'Geist', monospace; pointer-events: auto; transition: 0.2s; font-size: 0.8rem;">⟳ Рестарт</button>
-</section>
+<button class="restart-btn" id="restartBtn">⟳ Рестарт</button>
 
 <style>
-    /* Стили для нового hero-баннера */
-    @font-face {
-        font-family: 'EN Regular';
-        src: url('https://fonts.cdnfonts.com/css/sf-pro-display') format('woff2');
-    }
-    @font-face {
-        font-family: 'Geist';
-        src: url('https://fonts.cdnfonts.com/css/geist-sans') format('woff2');
-    }
-    @font-face {
-        font-family: 'Zen Dots';
-        src: url('https://fonts.cdnfonts.com/css/zen-dots') format('woff2');
-    }
-    
-    .over-text {
-        position: absolute;
-        z-index: 20;
-        font-family: 'Geist', sans-serif;
-        color: white;
-        text-shadow: 0 0 5px currentColor;
-        pointer-events: none;
-        opacity: 0;
-        transform: translateY(15px);
-        transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-    .over-text.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    .agency-tag {
-        top: calc(6% + 100px);
-        left: 100px;
-        font-family: 'Geist', monospace;
-        font-size: 1.8rem;
-        letter-spacing: 8px;
-        color: #FFFFFF;
-        text-shadow: 0 0 6px rgba(255,255,255,0.3);
-        white-space: nowrap;
-    }
-    .main-title {
-        top: calc(18% + 270px);
-        left: 200px;
-        font-family: 'EN Regular', sans-serif;
-        font-size: clamp(3rem, 10vw, 7rem);
-        background: linear-gradient(135deg, #F5B700, #F5B700, #10B981, #06B6D4);
-        background-size: 200% auto;
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        text-shadow: none;
-        line-height: 1.1;
-    }
-    .sub-line {
-        top: calc(34% + 270px);
-        left: 200px;
-        font-family: 'EN Regular', sans-serif;
-        font-size: clamp(1.5rem, 5vw, 2.8rem);
-        background: linear-gradient(135deg, #F5B700, #10B981, #06B6D4, #4C1D95);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        white-space: nowrap;
-    }
-    .stats-row {
-        position: absolute;
-        bottom: 100px;
-        left: 100px;
-        display: flex;
-        gap: 3rem;
-        z-index: 25;
-        opacity: 0;
-        transition: opacity 0.8s ease;
-    }
-    .stats-row.visible {
-        opacity: 1;
-    }
-    .stat-item {
-        font-family: 'Zen Dots', monospace;
-        font-size: 2.8rem;
-        text-align: center;
-        color: white;
-    }
-    .stat-item .stat-label {
-        font-size: 0.8rem;
-        letter-spacing: 2px;
-        font-family: 'Geist', monospace;
-        color: #B0B3B8;
-        margin-top: 5px;
-    }
-    .stat-item:nth-child(1) .stat-number { color: #10B981; }
-    .stat-item:nth-child(2) .stat-number { color: #06B6D4; }
-    .stat-item:nth-child(3) .stat-number { color: #4C1D95; }
-    .stat-item:nth-child(4) .stat-number { color: #F5B700; }
-    .stat-number {
-        font-size: 2.8rem;
-        font-weight: 400;
-    }
-    .badges-grid {
-        position: absolute;
-        bottom: 10%;
-        right: 5%;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.9rem;
-        max-width: 50%;
-        justify-content: flex-end;
-        z-index: 25;
-    }
-    .badge {
-        background: rgba(76,29,149,0.35);
-        backdrop-filter: blur(8px);
-        padding: 0.6rem 1.4rem;
-        border-radius: 60px;
-        font-size: 0.85rem;
-        border: 1px solid #4C1D95;
-        color: #B0B3B8;
-        white-space: nowrap;
-        font-weight: 500;
-    }
-    .right-phrase {
-        position: absolute;
-        left: 58%;
-        top: calc(45% + 100px);
-        transform: translateY(-50%);
-        font-family: 'Geist', sans-serif;
-        font-size: 1.8rem;
-        font-weight: 500;
-        color: #FFFFFF;
-        text-shadow: 0 0 5px rgba(255,255,255,0.3);
-        white-space: nowrap;
-        pointer-events: none;
-        z-index: 25;
-        opacity: 0;
-        transition: opacity 0.8s ease;
-    }
-    .right-phrase.visible {
-        opacity: 1;
-    }
-    .business-line {
-        position: absolute;
-        right: 100px;
-        bottom: 24%;
-        font-family: 'Geist', sans-serif;
-        font-size: 3.73rem;
-        font-weight: 900;
-        color: #000000;
-        text-shadow: none;
-        letter-spacing: 2px;
-        white-space: nowrap;
-        pointer-events: none;
-        z-index: 25;
-        text-align: right;
-    }
-    .cursor {
-        display: inline-block;
-        width: 4px;
-        height: 3.73rem;
-        background-color: #F5B700;
-        vertical-align: middle;
-        margin-left: 8px;
-        animation: blink 0.8s step-end infinite;
-    }
-    @keyframes blink {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0; }
-    }
-    @media (max-width: 1200px) {
-        .right-phrase { left: 52%; font-size: 1.4rem; }
-        .business-line { font-size: 2.5rem; right: 50px; bottom: 20%; }
-        .cursor { height: 2.5rem; }
-        .agency-tag { font-size: 1.4rem; left: 80px; }
-        .stats-row { gap: 2rem; left: 80px; bottom: 80px; }
-        .stat-item { font-size: 2rem; }
-        .stat-number { font-size: 2rem; }
-        .main-title { left: 150px; }
-        .sub-line { left: 150px; }
-    }
-    @media (max-width: 900px) {
-        .agency-tag { left: 40px; font-size: 1.2rem; top: calc(6% + 60px); }
-        .main-title { left: 40px; font-size: 2rem; top: calc(18% + 220px); }
-        .sub-line { left: 40px; font-size: 1.1rem; top: calc(34% + 220px); white-space: normal; max-width: 85%; }
-        .stats-row { left: 40px; bottom: 80px; gap: 1rem; flex-wrap: wrap; }
-        .stat-item { font-size: 1.3rem; }
-        .stat-number { font-size: 1.3rem; }
-        .stat-label { font-size: 0.6rem; }
-        .badges-grid { bottom: 8%; max-width: 90%; gap: 0.5rem; }
-        .badge { font-size: 0.6rem; padding: 0.3rem 0.8rem; }
-        .right-phrase { left: 5%; top: auto; bottom: 40%; transform: none; font-size: 1rem; white-space: normal; max-width: 90%; text-align: left; }
-        .business-line { right: 5%; bottom: 15%; font-size: 1.8rem; white-space: normal; text-align: right; max-width: 85%; }
-        .cursor { height: 1.8rem; }
-    }
-    @media (max-width: 600px) {
-        .agency-tag { left: 20px; font-size: 0.75rem; top: calc(6% + 40px); }
-        .main-title { left: 20px; font-size: 1.8rem; top: calc(18% + 180px); }
-        .sub-line { left: 20px; font-size: 0.9rem; top: calc(34% + 180px); }
-        .stats-row { left: 20px; bottom: 70px; gap: 0.8rem; }
-        .stat-item { font-size: 1rem; }
-        .stat-number { font-size: 1rem; }
-        .stat-label { font-size: 0.5rem; }
-        .right-phrase { bottom: 35%; font-size: 0.85rem; }
-        .business-line { bottom: 10%; font-size: 1.4rem; }
-        .cursor { height: 1.4rem; }
-        .badges-grid { bottom: 5%; gap: 0.4rem; }
-        .badge { font-size: 0.55rem; padding: 0.25rem 0.6rem; }
-    }
+/* Стили для hero-баннера */
+@font-face {
+    font-family: 'EN Regular';
+    src: url('https://fonts.cdnfonts.com/css/sf-pro-display') format('woff2');
+}
+@font-face {
+    font-family: 'Zen Dots';
+    src: url('https://fonts.cdnfonts.com/css/zen-dots') format('woff2');
+}
+
+.masked-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.masked-container svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.over-text {
+    position: fixed;
+    z-index: 20;
+    font-family: 'Geist', sans-serif;
+    color: white;
+    text-shadow: 0 0 5px currentColor;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.over-text.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.agency-tag {
+    top: calc(6% + 100px);
+    left: 100px;
+    font-family: 'Geist', monospace;
+    font-size: 1.8rem;
+    letter-spacing: 8px;
+    color: #FFFFFF;
+    text-shadow: 0 0 6px rgba(255,255,255,0.3);
+    white-space: nowrap;
+}
+.main-title {
+    top: calc(18% + 270px);
+    left: 200px;
+    font-family: 'EN Regular', sans-serif;
+    font-size: clamp(3rem, 10vw, 7rem);
+    background: linear-gradient(135deg, #F5B700, #F5B700, #10B981, #06B6D4);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: none;
+    line-height: 1.1;
+}
+.sub-line {
+    top: calc(34% + 270px);
+    left: 200px;
+    font-family: 'EN Regular', sans-serif;
+    font-size: clamp(1.5rem, 5vw, 2.8rem);
+    background: linear-gradient(135deg, #F5B700, #10B981, #06B6D4, #4C1D95);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    white-space: nowrap;
+}
+.stats-row {
+    position: fixed;
+    bottom: 100px;
+    left: 100px;
+    display: flex;
+    gap: 3rem;
+    z-index: 25;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+.stats-row.visible {
+    opacity: 1;
+}
+.stat-item {
+    font-family: 'Zen Dots', monospace;
+    font-size: 2.8rem;
+    text-align: center;
+    color: white;
+}
+.stat-item .stat-label {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    font-family: 'Geist', monospace;
+    color: #B0B3B8;
+    margin-top: 5px;
+}
+.stat-item:nth-child(1) .stat-number { color: #10B981; }
+.stat-item:nth-child(2) .stat-number { color: #06B6D4; }
+.stat-item:nth-child(3) .stat-number { color: #4C1D95; }
+.stat-item:nth-child(4) .stat-number { color: #F5B700; }
+.stat-number {
+    font-size: 2.8rem;
+    font-weight: 400;
+}
+.badges-grid {
+    position: fixed;
+    bottom: 10%;
+    right: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    max-width: 50%;
+    justify-content: flex-end;
+    z-index: 25;
+}
+.badge {
+    background: rgba(76,29,149,0.35);
+    backdrop-filter: blur(8px);
+    padding: 0.6rem 1.4rem;
+    border-radius: 60px;
+    font-size: 0.85rem;
+    border: 1px solid #4C1D95;
+    color: #B0B3B8;
+    white-space: nowrap;
+    font-weight: 500;
+}
+.right-phrase {
+    position: fixed;
+    left: 58%;
+    top: calc(45% + 100px);
+    transform: translateY(-50%);
+    font-family: 'Geist', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #FFFFFF;
+    text-shadow: 0 0 5px rgba(255,255,255,0.3);
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 25;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+.right-phrase.visible {
+    opacity: 1;
+}
+.business-line {
+    position: fixed;
+    right: 100px;
+    bottom: 24%;
+    font-family: 'Geist', sans-serif;
+    font-size: 3.73rem;
+    font-weight: 900;
+    color: #000000;
+    text-shadow: none;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 25;
+    text-align: right;
+}
+.cursor {
+    display: inline-block;
+    width: 4px;
+    height: 3.73rem;
+    background-color: #F5B700;
+    vertical-align: middle;
+    margin-left: 8px;
+    animation: blink 0.8s step-end infinite;
+}
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+.restart-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+    background: #F5B700;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Geist', monospace;
+    pointer-events: auto;
+    transition: 0.2s;
+    font-size: 0.8rem;
+}
+.restart-btn:hover {
+    transform: scale(1.05);
+    background: #ffcc33;
+}
+@keyframes revealLetter {
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+}
+.mask-letter { opacity: 0; }
+
+@media (max-width: 1200px) {
+    .right-phrase { left: 52%; font-size: 1.4rem; }
+    .business-line { font-size: 2.5rem; right: 50px; bottom: 20%; }
+    .cursor { height: 2.5rem; }
+    .agency-tag { font-size: 1.4rem; left: 80px; }
+    .stats-row { gap: 2rem; left: 80px; bottom: 80px; }
+    .stat-item { font-size: 2rem; }
+    .stat-number { font-size: 2rem; }
+    .main-title { left: 150px; }
+    .sub-line { left: 150px; }
+}
+@media (max-width: 900px) {
+    .agency-tag { left: 40px; font-size: 1.2rem; top: calc(6% + 60px); }
+    .main-title { left: 40px; font-size: 2rem; top: calc(18% + 220px); }
+    .sub-line { left: 40px; font-size: 1.1rem; top: calc(34% + 220px); white-space: normal; max-width: 85%; }
+    .stats-row { left: 40px; bottom: 80px; gap: 1rem; flex-wrap: wrap; }
+    .stat-item { font-size: 1.3rem; }
+    .stat-number { font-size: 1.3rem; }
+    .stat-label { font-size: 0.6rem; }
+    .badges-grid { bottom: 8%; max-width: 90%; gap: 0.5rem; }
+    .badge { font-size: 0.6rem; padding: 0.3rem 0.8rem; }
+    .right-phrase { left: 5%; top: auto; bottom: 40%; transform: none; font-size: 1rem; white-space: normal; max-width: 90%; text-align: left; }
+    .business-line { right: 5%; bottom: 15%; font-size: 1.8rem; white-space: normal; text-align: right; max-width: 85%; }
+    .cursor { height: 1.8rem; }
+}
+@media (max-width: 600px) {
+    .agency-tag { left: 20px; font-size: 0.75rem; top: calc(6% + 40px); }
+    .main-title { left: 20px; font-size: 1.8rem; top: calc(18% + 180px); }
+    .sub-line { left: 20px; font-size: 0.9rem; top: calc(34% + 180px); }
+    .stats-row { left: 20px; bottom: 70px; gap: 0.8rem; }
+    .stat-item { font-size: 1rem; }
+    .stat-number { font-size: 1rem; }
+    .stat-label { font-size: 0.5rem; }
+    .right-phrase { bottom: 35%; font-size: 0.85rem; }
+    .business-line { bottom: 10%; font-size: 1.4rem; }
+    .cursor { height: 1.4rem; }
+    .badges-grid { bottom: 5%; gap: 0.4rem; }
+    .badge { font-size: 0.55rem; padding: 0.25rem 0.6rem; }
+}
 </style>
 
 <script>
-    // Matrix Canvas Effect
-    (function() {
-        const canvas = document.getElementById('matrixCanvas');
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-        let w, h;
-        const symbols = "01<>/{}[]=+-*&%$#@!~ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        const words = ['DESIGN', 'CODE', 'AI', 'ALBE', 'DIGITAL'];
-        const colors = ['#F5B700', '#10B981', '#06B6D4', '#4C1D95'];
-        const fontSize = 14;
-        let cols, drops;
-        let lastFrameTime = 0;
-        const targetFPS = 30;
-        const frameInterval = 1000 / targetFPS;
-        
-        function resizeMatrix() {
-            w = window.innerWidth;
-            h = window.innerHeight;
-            canvas.width = w;
-            canvas.height = h;
-            cols = Math.floor(w / fontSize);
-            drops = [];
-            for (let i = 0; i < cols; i++) drops[i] = Math.random() * -h;
-        }
-        
-        function getRandomItem() {
-            return (Math.random() < 0.04) ? words[Math.floor(Math.random() * words.length)] : symbols[Math.floor(Math.random() * symbols.length)];
-        }
-        
-        function drawMatrix(now) {
-            requestAnimationFrame(drawMatrix);
-            if (now - lastFrameTime < frameInterval) return;
-            lastFrameTime = now;
-            
-            ctx.fillStyle = 'rgba(5,7,10,0.06)';
-            ctx.fillRect(0, 0, w, h);
-            ctx.textAlign = 'center';
-            
-            for (let i = 0; i < drops.length; i++) {
-                const item = getRandomItem();
-                const x = i * fontSize + fontSize/2;
-                const y = drops[i] * fontSize;
-                let color, fontStyle;
-                if (item.length > 1) {
-                    color = '#F5B700';
-                    fontStyle = `bold ${fontSize}px "Monaco", monospace`;
-                } else {
-                    color = colors[Math.floor(Math.random() * colors.length)];
-                    fontStyle = `${fontSize}px "Monaco", monospace`;
-                }
-                ctx.font = fontStyle;
-                ctx.fillStyle = color;
-                ctx.fillText(item, x, y);
-                if (y > h && Math.random() > 0.99) drops[i] = 0;
-                drops[i] += 0.6;
-            }
-        }
-        
-        window.addEventListener('resize', () => { resizeMatrix(); });
-        resizeMatrix();
-        requestAnimationFrame(drawMatrix);
-    })();
+// Matrix Canvas Effect
+(function() {
+    const canvas = document.getElementById('matrixCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let w, h;
+    const symbols = "01<>/{}[]=+-*&%$#@!~ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const words = ['DESIGN', 'CODE', 'AI', 'ALBE', 'DIGITAL'];
+    const colors = ['#F5B700', '#10B981', '#06B6D4', '#4C1D95'];
+    const fontSize = 14;
+    let cols, drops;
+    let lastFrameTime = 0;
+    const targetFPS = 30;
+    const frameInterval = 1000 / targetFPS;
     
-    // Анимации появления
-    (function() {
-        const permanentElements = ['agencyTag', 'mainTitle', 'subLine', 'badgesGrid'];
-        permanentElements.forEach((id, idx) => {
-            const el = document.getElementById(id);
-            if (el) {
-                setTimeout(() => {
-                    el.classList.add('visible');
-                }, 1300 + idx * 150);
-            }
-        });
+    function resizeMatrix() {
+        w = window.innerWidth;
+        h = window.innerHeight;
+        canvas.width = w;
+        canvas.height = h;
+        cols = Math.floor(w / fontSize);
+        drops = [];
+        for (let i = 0; i < cols; i++) drops[i] = Math.random() * -h;
+    }
+    
+    function getRandomItem() {
+        return (Math.random() < 0.04) ? words[Math.floor(Math.random() * words.length)] : symbols[Math.floor(Math.random() * symbols.length)];
+    }
+    
+    function drawMatrix(now) {
+        requestAnimationFrame(drawMatrix);
+        if (now - lastFrameTime < frameInterval) return;
+        lastFrameTime = now;
         
-        const statsRow = document.getElementById('statsRow');
-        if (statsRow) {
-            setTimeout(() => {
-                statsRow.classList.add('visible');
-            }, 2000);
-        }
+        ctx.fillStyle = 'rgba(5,7,10,0.06)';
+        ctx.fillRect(0, 0, w, h);
+        ctx.textAlign = 'center';
         
-        const rightPhraseEl = document.getElementById('rightPhrase');
-        if (rightPhraseEl) {
-            setTimeout(() => {
-                rightPhraseEl.classList.add('visible');
-            }, 2300);
-        }
-        
-        const businessLineEl = document.getElementById('businessLine');
-        const fullText = "МЫ СОЗДАЕМ БИЗНЕС";
-        let index = 0;
-        
-        function typeWriter() {
-            if (index < fullText.length) {
-                businessLineEl.innerHTML = fullText.substring(0, index + 1) + '<span class="cursor"></span>';
-                index++;
-                setTimeout(typeWriter, 100);
+        for (let i = 0; i < drops.length; i++) {
+            const item = getRandomItem();
+            const x = i * fontSize + fontSize/2;
+            const y = drops[i] * fontSize;
+            let color, fontStyle;
+            if (item.length > 1) {
+                color = '#F5B700';
+                fontStyle = `bold ${fontSize}px "Monaco", monospace`;
             } else {
-                businessLineEl.innerHTML = fullText;
+                color = colors[Math.floor(Math.random() * colors.length)];
+                fontStyle = `${fontSize}px "Monaco", monospace`;
             }
+            ctx.font = fontStyle;
+            ctx.fillStyle = color;
+            ctx.fillText(item, x, y);
+            if (y > h && Math.random() > 0.99) drops[i] = 0;
+            drops[i] += 0.6;
         }
-        
-        if (businessLineEl) {
+    }
+    
+    window.addEventListener('resize', () => { resizeMatrix(); });
+    resizeMatrix();
+    requestAnimationFrame(drawMatrix);
+})();
+
+// Анимации появления
+(function() {
+    const permanentElements = ['agencyTag', 'mainTitle', 'subLine', 'badgesGrid'];
+    permanentElements.forEach((id, idx) => {
+        const el = document.getElementById(id);
+        if (el) {
             setTimeout(() => {
-                typeWriter();
-            }, 2900);
+                el.classList.add('visible');
+            }, 1300 + idx * 150);
         }
-        
-        const restartBtn = document.getElementById('restartBtn');
-        if (restartBtn) {
-            restartBtn.addEventListener('click', () => {
-                permanentElements.forEach(id => {
-                    const el = document.getElementById(id);
-                    if (el) el.classList.remove('visible');
-                });
-                if (statsRow) statsRow.classList.remove('visible');
-                if (rightPhraseEl) rightPhraseEl.classList.remove('visible');
-                if (businessLineEl) {
-                    businessLineEl.innerHTML = '';
-                    index = 0;
-                }
-                const maskLetters = document.querySelectorAll('.mask-letter');
-                maskLetters.forEach(letter => {
-                    letter.style.animation = 'none';
-                    letter.style.opacity = '0';
-                });
-                setTimeout(() => {
-                    maskLetters.forEach((letter, i) => {
-                        const delays = ['0.2s', '0.5s', '0.8s', '1.1s'];
-                        letter.style.animation = `revealLetter 0.6s ease forwards ${delays[i]}`;
-                    });
-                    permanentElements.forEach((id, idx) => {
-                        setTimeout(() => {
-                            const el = document.getElementById(id);
-                            if (el) el.classList.add('visible');
-                        }, 1300 + idx * 150);
-                    });
-                    if (statsRow) {
-                        setTimeout(() => {
-                            statsRow.classList.add('visible');
-                        }, 2000);
-                    }
-                    if (rightPhraseEl) {
-                        setTimeout(() => {
-                            rightPhraseEl.classList.add('visible');
-                        }, 2300);
-                    }
-                    if (businessLineEl) {
-                        setTimeout(() => {
-                            typeWriter();
-                        }, 2900);
-                    }
-                }, 50);
+    });
+    
+    const statsRow = document.getElementById('statsRow');
+    if (statsRow) {
+        setTimeout(() => {
+            statsRow.classList.add('visible');
+        }, 2000);
+    }
+    
+    const rightPhraseEl = document.getElementById('rightPhrase');
+    if (rightPhraseEl) {
+        setTimeout(() => {
+            rightPhraseEl.classList.add('visible');
+        }, 2300);
+    }
+    
+    const businessLineEl = document.getElementById('businessLine');
+    const fullText = "МЫ СОЗДАЕМ БИЗНЕС";
+    let index = 0;
+    
+    function typeWriter() {
+        if (index < fullText.length) {
+            businessLineEl.innerHTML = fullText.substring(0, index + 1) + '<span class="cursor"></span>';
+            index++;
+            setTimeout(typeWriter, 100);
+        } else {
+            businessLineEl.innerHTML = fullText;
+        }
+    }
+    
+    if (businessLineEl) {
+        setTimeout(() => {
+            typeWriter();
+        }, 2900);
+    }
+    
+    const restartBtn = document.getElementById('restartBtn');
+    if (restartBtn) {
+        restartBtn.addEventListener('click', () => {
+            permanentElements.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.classList.remove('visible');
             });
-        }
-    })();
+            if (statsRow) statsRow.classList.remove('visible');
+            if (rightPhraseEl) rightPhraseEl.classList.remove('visible');
+            if (businessLineEl) {
+                businessLineEl.innerHTML = '';
+                index = 0;
+            }
+            const maskLetters = document.querySelectorAll('.mask-letter');
+            maskLetters.forEach(letter => {
+                letter.style.animation = 'none';
+                letter.style.opacity = '0';
+            });
+            setTimeout(() => {
+                maskLetters.forEach((letter, i) => {
+                    const delays = ['0.2s', '0.5s', '0.8s', '1.1s'];
+                    letter.style.animation = `revealLetter 0.6s ease forwards ${delays[i]}`;
+                });
+                permanentElements.forEach((id, idx) => {
+                    setTimeout(() => {
+                        const el = document.getElementById(id);
+                        if (el) el.classList.add('visible');
+                    }, 1300 + idx * 150);
+                });
+                if (statsRow) {
+                    setTimeout(() => {
+                        statsRow.classList.add('visible');
+                    }, 2000);
+                }
+                if (rightPhraseEl) {
+                    setTimeout(() => {
+                        rightPhraseEl.classList.add('visible');
+                    }, 2300);
+                }
+                if (businessLineEl) {
+                    setTimeout(() => {
+                        typeWriter();
+                    }, 2900);
+                }
+            }, 50);
+        });
+    }
+})();
 </script>
 
 <!-- ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ -->
@@ -1223,7 +1255,7 @@
 </div>
 
 <style>
-/* Стили для модального окна (без изменений) */
+/* Стили для модального окна */
 .service-modal {
     display: none;
     position: fixed;
