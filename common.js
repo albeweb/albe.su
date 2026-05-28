@@ -861,10 +861,10 @@ function loadComponent(elementId, filePath, callback) {
 }
 
 // ============================================
-// ЭТАЛОННЫЙ HERO БАННЕР
+// HERO БАННЕР (СКРИПТЫ)
 // ============================================
 
-function initMatrixRain() {
+function initHeroMatrixRain() {
     const canvas = document.getElementById('matrixCanvas');
     if (!canvas) return;
     
@@ -876,7 +876,7 @@ function initMatrixRain() {
     canvas.height = h;
     
     const chars = "01<>/{}[]=+-*&%$#@!~ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    const words = ['DESIGN', 'CODE', 'AI', 'ALBE', 'DIGITAL'];
+    const wordsArr = ['DESIGN', 'CODE', 'AI', 'ALBE', 'DIGITAL'];
     const colors = ['#F5B700', '#10B981', '#06B6D4', '#4C1D95'];
     const fontSize = 14;
     let cols = Math.floor(w / fontSize);
@@ -891,7 +891,7 @@ function initMatrixRain() {
     const frameInterval = 1000 / targetFPS;
     
     function getRandomItem() {
-        return (Math.random() < 0.04) ? words[Math.floor(Math.random() * words.length)] : chars[Math.floor(Math.random() * chars.length)];
+        return (Math.random() < 0.04) ? wordsArr[Math.floor(Math.random() * wordsArr.length)] : chars[Math.floor(Math.random() * chars.length)];
     }
     
     function drawMatrix(now) {
@@ -899,7 +899,7 @@ function initMatrixRain() {
         if (now - lastFrameTime < frameInterval) return;
         lastFrameTime = now;
         
-        ctx.fillStyle = 'rgba(5,7,10,0.06)';
+        ctx.fillStyle = 'rgba(5,7,10,0.03)';
         ctx.fillRect(0, 0, w, h);
         ctx.textAlign = 'center';
         
@@ -942,88 +942,72 @@ function initMatrixRain() {
     });
 }
 
-function initHeroLoaded() {
-    const hero = document.querySelector('.hero-etalon');
-    if (!hero) return;
-    setTimeout(() => {
-        hero.classList.add('loaded');
-    }, 1300);
+function initHeroStaticElements() {
+    const elements = ['agencyTag', 'leftPhrase', 'badgesGrid', 'staticPrefix', 'dynamicWordContainer'];
+    elements.forEach((id, idx) => {
+        const el = document.getElementById(id);
+        if (el) setTimeout(() => el.style.opacity = "1", 1300 + idx * 100);
+    });
+    const statsRow = document.getElementById('statsRow');
+    if (statsRow) setTimeout(() => statsRow.classList.add('visible'), 2000);
 }
 
-function initTypewriter() {
-    const businessLine = document.getElementById('businessLine');
-    if (!businessLine) return;
+function initHeroTypewriter() {
+    const words = ["БИЗНЕС", "БУДУЩЕЕ", "ИННОВАЦИИ"];
+    let wordIndex = 0;
+    let isDeleting = false;
+    let text = "";
+    let typingSpeed = 100;
+    const pauseTime = 1500;
+    const el = document.getElementById('dynamicWordContainer');
     
-    const fullText = "МЫ СОЗДАЕМ БИЗНЕС";
-    let index = 0;
-    
-    function typeWriter() {
-        if (index < fullText.length) {
-            businessLine.innerHTML = fullText.substring(0, index + 1) + '<span class="cursor"></span>';
-            index++;
-            setTimeout(typeWriter, 100);
+    function type() {
+        if (!el) return;
+        const fullWord = words[wordIndex];
+        
+        if (isDeleting) {
+            text = fullWord.substring(0, text.length - 1);
+            typingSpeed = 50;
         } else {
-            businessLine.innerHTML = fullText;
+            text = fullWord.substring(0, text.length + 1);
+            typingSpeed = 100;
         }
+        
+        el.innerHTML = '<span class="dynamic-word-yellow">' + text + '</span><span class="cursor"></span>';
+        
+        if (!isDeleting && text === fullWord) {
+            isDeleting = true;
+            setTimeout(type, pauseTime);
+            return;
+        } else if (isDeleting && text === "") {
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+            setTimeout(type, 200);
+            return;
+        }
+        
+        setTimeout(type, typingSpeed);
     }
     
-    setTimeout(typeWriter, 2900);
-}
-
-function initHeroRestart() {
-    const restartBtn = document.getElementById('restartHeroBtn');
-    if (!restartBtn) return;
-    
-    restartBtn.addEventListener('click', () => {
-        const hero = document.querySelector('.hero-etalon');
-        const businessLine = document.getElementById('businessLine');
-        
-        if (hero) hero.classList.remove('loaded');
-        if (businessLine) {
-            businessLine.innerHTML = '';
+    setTimeout(() => {
+        if (el) {
+            el.style.opacity = "1";
+            el.innerHTML = '<span class="cursor"></span>';
+            setTimeout(() => {
+                type();
+            }, 300);
         }
-        
-        const maskLetters = document.querySelectorAll('.mask-letter');
-        maskLetters.forEach(letter => {
-            letter.style.animation = 'none';
-            letter.style.opacity = '0';
-        });
-        
-        setTimeout(() => {
-            maskLetters.forEach((letter, i) => {
-                const delays = ['0.2s', '0.5s', '0.8s', '1.1s'];
-                letter.style.animation = `revealLetter 0.6s ease forwards ${delays[i]}`;
-            });
-            
-            if (hero) hero.classList.add('loaded');
-            
-            if (businessLine) {
-                let index = 0;
-                const fullText = "МЫ СОЗДАЕМ БИЗНЕС";
-                function restartTypewriter() {
-                    if (index < fullText.length) {
-                        businessLine.innerHTML = fullText.substring(0, index + 1) + '<span class="cursor"></span>';
-                        index++;
-                        setTimeout(restartTypewriter, 100);
-                    } else {
-                        businessLine.innerHTML = fullText;
-                    }
-                }
-                restartTypewriter();
-            }
-        }, 50);
-    });
+    }, 2800);
 }
 
 // ============================================
 // ЗАПУСК ВСЕХ ИНИЦИАЛИЗАЦИЙ
 // ============================================
 document.addEventListener('DOMContentLoaded', function() {
-    // Инициализация эталонного баннера
-    initMatrixRain();
-    initHeroLoaded();
-    initTypewriter();
-    initHeroRestart();
+    // Инициализация hero-баннера
+    initHeroMatrixRain();
+    initHeroStaticElements();
+    initHeroTypewriter();
     
     // Инициализация остальных функций
     initTechTooltips();
