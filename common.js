@@ -1058,3 +1058,119 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 100);
     });
 });
+// ============================================
+// ЭТАЛОННЫЙ HERO БАННЕР
+// ============================================
+
+function initMatrixRain() {
+    const canvas = document.getElementById('matrixCanvas');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    let w = window.innerWidth;
+    let h = window.innerHeight;
+    
+    canvas.width = w;
+    canvas.height = h;
+    
+    const chars = "01<>/{}[]=+-*&%$#@!~ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const words = ['DESIGN', 'CODE', 'AI', 'ALBE', 'DIGITAL'];
+    const colors = ['#F5B700', '#10B981', '#06B6D4', '#4C1D95'];
+    const fontSize = 14;
+    let cols = Math.floor(w / fontSize);
+    let drops = [];
+    
+    for (let i = 0; i < cols; i++) {
+        drops[i] = Math.random() * -h;
+    }
+    
+    let lastFrameTime = 0;
+    const targetFPS = 30;
+    const frameInterval = 1000 / targetFPS;
+    
+    function getRandomItem() {
+        return (Math.random() < 0.04) ? words[Math.floor(Math.random() * words.length)] : chars[Math.floor(Math.random() * chars.length)];
+    }
+    
+    function drawMatrix(now) {
+        requestAnimationFrame(drawMatrix);
+        if (now - lastFrameTime < frameInterval) return;
+        lastFrameTime = now;
+        
+        ctx.fillStyle = 'rgba(5,7,10,0.06)';
+        ctx.fillRect(0, 0, w, h);
+        ctx.textAlign = 'center';
+        
+        for (let i = 0; i < drops.length; i++) {
+            const item = getRandomItem();
+            const x = i * fontSize + fontSize/2;
+            const y = drops[i] * fontSize;
+            let color, fontStyle;
+            
+            if (item.length > 1) {
+                color = '#F5B700';
+                fontStyle = `bold ${fontSize}px "Monaco", monospace`;
+            } else {
+                color = colors[Math.floor(Math.random() * colors.length)];
+                fontStyle = `${fontSize}px "Monaco", monospace`;
+            }
+            ctx.font = fontStyle;
+            ctx.fillStyle = color;
+            ctx.fillText(item, x, y);
+            
+            if (y > h && Math.random() > 0.99) {
+                drops[i] = 0;
+            }
+            drops[i] += 0.6;
+        }
+    }
+    
+    drawMatrix();
+    
+    window.addEventListener('resize', () => {
+        w = window.innerWidth;
+        h = window.innerHeight;
+        canvas.width = w;
+        canvas.height = h;
+        cols = Math.floor(w / fontSize);
+        drops = [];
+        for (let i = 0; i < cols; i++) {
+            drops[i] = Math.random() * -h;
+        }
+    });
+}
+
+function initHeroLoaded() {
+    const hero = document.querySelector('.hero-etalon');
+    if (!hero) return;
+    setTimeout(() => {
+        hero.classList.add('loaded');
+    }, 1300);
+}
+
+function initTypewriter() {
+    const businessLine = document.getElementById('businessLine');
+    if (!businessLine) return;
+    
+    const fullText = "МЫ СОЗДАЕМ БИЗНЕС";
+    let index = 0;
+    
+    function typeWriter() {
+        if (index < fullText.length) {
+            businessLine.innerHTML = fullText.substring(0, index + 1) + '<span class="cursor"></span>';
+            index++;
+            setTimeout(typeWriter, 100);
+        } else {
+            businessLine.innerHTML = fullText;
+        }
+    }
+    
+    setTimeout(typeWriter, 2900);
+}
+
+// Вызов функций для баннера (добавьте в существующий DOMContentLoaded)
+document.addEventListener('DOMContentLoaded', function() {
+    initMatrixRain();
+    initHeroLoaded();
+    initTypewriter();
+});
