@@ -115,72 +115,66 @@
 <div id="header-placeholder"></div>
 
 <main>
-<!-- Hero баннер -->
-<section class="hero">
-    <div class="code-rain" aria-hidden="true">
-        <div class="code-line" style="left:5%;animation-duration:12s;animation-delay:0s">&lt;div class="digital"&gt;&lt;/div&gt;</div>
-        <div class="code-line" style="left:15%;animation-duration:10s;animation-delay:2s">const future = await ai();</div>
-        <div class="code-line" style="left:25%;animation-duration:14s;animation-delay:1s">import { design } from 'agency';</div>
-        <div class="code-line" style="left:35%;animation-duration:9s;animation-delay:4s">function createProduct() { return ∞; }</div>
-        <div class="code-line" style="left:45%;animation-duration:15s;animation-delay:.5s">.digital-agency { opacity: 1; }</div>
-        <div class="code-line" style="left:55%;animation-duration:11s;animation-delay:3s">npm install premium-website</div>
-        <div class="code-line" style="left:65%;animation-duration:13s;animation-delay:5s">&lt;SEO speed="fast" /&gt;</div>
-        <div class="code-line" style="left:75%;animation-duration:8s;animation-delay:2.5s">git commit -m "launch success"</div>
-        <div class="code-line" style="left:85%;animation-duration:16s;animation-delay:1.5s">const website = new ALBE();</div>
-        <div class="code-line" style="left:10%;animation-duration:11s;animation-delay:6s">&lt;React.StrictMode&gt;</div>
-        <div class="code-line" style="left:20%;animation-duration:13s;animation-delay:3.5s">function App() { return &lt;Hero /&gt;; }</div>
-        <div class="code-line" style="left:30%;animation-duration:9.5s;animation-delay:7s">.btn-gold { background: #F5B700; }</div>
-        <div class="code-line" style="left:40%;animation-duration:14.5s;animation-delay:1s">export default async function build()</div>
-        <div class="code-line" style="left:50%;animation-duration:12.5s;animation-delay:4.5s">import { SEO, Analytics } from '@/lib'</div>
-        <div class="code-line" style="left:60%;animation-duration:10.5s;animation-delay:8s">const meta = { title: "ALBE digital" }</div>
-        <div class="code-line" style="left:70%;animation-duration:15.5s;animation-delay:2s">@keyframes fadeIn { from { opacity: 0; } }</div>
-        <div class="code-line" style="left:80%;animation-duration:11.5s;animation-delay:5.5s">&lt;meta name="viewport" /&gt;</div>
-        <div class="code-line" style="left:90%;animation-duration:13.5s;animation-delay:.8s">console.log("ALBE launched")</div>
+<!-- ========== ЭТАЛОННЫЙ HERO БАННЕР ========== -->
+<section class="hero-etalon">
+    <canvas id="matrixCanvas" class="hero-canvas"></canvas>
+    
+    <!-- SVG маска с буквами A L B E (центрированы по горизонтали) -->
+    <div class="mask-container">
+        <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <defs>
+                <radialGradient id="maskGrad" cx="50%" cy="50%" r="70%">
+                    <stop offset="0%" stop-color="#F5B700" stop-opacity="0.95"/>
+                    <stop offset="33%" stop-color="#10B981" stop-opacity="0.7"/>
+                    <stop offset="66%" stop-color="#06B6D4" stop-opacity="0.4"/>
+                    <stop offset="100%" stop-color="#4C1D95" stop-opacity="0.1"/>
+                </radialGradient>
+                <mask id="letterMask">
+                    <rect width="100%" height="100%" fill="white" />
+                    <text x="25" y="52" font-family="'EN Regular', sans-serif" font-size="18" font-weight="bold" fill="black" text-anchor="middle" class="mask-letter mask-a">A</text>
+                    <text x="41.6" y="52" font-family="'EN Regular', sans-serif" font-size="18" font-weight="bold" fill="black" text-anchor="middle" class="mask-letter mask-l">L</text>
+                    <text x="58.3" y="52" font-family="'EN Regular', sans-serif" font-size="18" font-weight="bold" fill="black" text-anchor="middle" class="mask-letter mask-b">B</text>
+                    <text x="75" y="52" font-family="'EN Regular', sans-serif" font-size="18" font-weight="bold" fill="black" text-anchor="middle" class="mask-letter mask-e">E</text>
+                </mask>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#maskGrad)" mask="url(#letterMask)" />
+        </svg>
     </div>
     
-    <div class="container">
-        <div class="hero-wrapper">
-            <div class="hero-content">
-                <div class="hero-top">
-                    <div class="hero-tag">DIGITAL AGENCY</div>
-                    
-                    <h1 class="hero-title">
-                        <span class="hero-title-line1">разработка</span>
-                        <span class="hero-title-line2">
-                            <span class="word-teal">дизайна</span>
-                            <span class="word-white">и</span>
-                            <span class="word-gold">сайтов</span>
-                            <span class="word-white phrase-underkey"> под ключ</span>
-                        </span>
-                    </h1>
-
-                    <div class="hero-stats">
-                        <div class="stat-item"><div class="stat-number">7+</div><div class="stat-label">лет опыта</div></div>
-                        <div class="stat-item"><div class="stat-number">150+</div><div class="stat-label">проектов</div></div>
-                        <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">поддержка</div></div>
-                        <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">результат</div></div>
-                    </div>
-
-                    <div class="services-badges">
-                        <span class="service-badge">Премиум дизайн</span>
-                        <span class="service-badge">Мобильные приложения</span>
-                        <span class="service-badge">AI решения</span>
-                        <span class="service-badge">UI/UX проектирование</span>
-                        <span class="service-badge">SEO стратегия</span>
-                        <span class="service-badge">Веб-разработка</span>
-                        <span class="service-badge">E-commerce</span>
-                        <span class="service-badge">CRM интеграция</span>
-                    </div>
-                </div>
-
-                <div class="hero-bottom">
-                    <div class="hero-quote">
-                        <span class="quote-text">В ALBE МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ — МЫ СОЗДАЕМ БИЗНЕС</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- DIGITAL AGENCY (100px от левого края) -->
+    <div class="etalon-agency">DIGITAL AGENCY</div>
+    
+    <!-- разработка (200px от левого края) -->
+    <h1 class="etalon-title">разработка</h1>
+    
+    <!-- дизайна и сайтов под ключ (200px от левого края) -->
+    <p class="etalon-subtitle">дизайна и сайтов под ключ</p>
+    
+    <!-- Статистика в строку (100px от левого края, 100px от нижнего) -->
+    <div class="etalon-stats">
+        <div class="etalon-stat"><span class="stat-number">7+</span><span class="stat-label">лет опыта</span></div>
+        <div class="etalon-stat"><span class="stat-number">150+</span><span class="stat-label">проектов</span></div>
+        <div class="etalon-stat"><span class="stat-number">24/7</span><span class="stat-label">поддержка</span></div>
+        <div class="etalon-stat"><span class="stat-number">100%</span><span class="stat-label">результат</span></div>
     </div>
+    
+    <!-- Бейджики (прижаты к правому краю) -->
+    <div class="etalon-badges">
+        <span class="badge">Премиум дизайн</span>
+        <span class="badge">Мобильные приложения</span>
+        <span class="badge">AI решения</span>
+        <span class="badge">UI/UX проектирование</span>
+        <span class="badge">SEO стратегия</span>
+        <span class="badge">Веб-разработка</span>
+        <span class="badge">E-commerce</span>
+        <span class="badge">CRM интеграция</span>
+    </div>
+    
+    <!-- Фраза справа от маски -->
+    <div class="etalon-right-phrase">МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ</div>
+    
+    <!-- Печатающаяся фраза -->
+    <div class="etalon-business-line" id="businessLine"></div>
 </section>
 
 <!-- КЕЙСЫ / ПОРТФОЛИО -->
