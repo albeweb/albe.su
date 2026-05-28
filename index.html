@@ -114,11 +114,11 @@
 <div id="header-placeholder"></div>
 
 <main>
-<!-- ========== HERO БАННЕР ========== -->
+<!-- ========== HERO БАННЕР (4 СЛОЯ) ========== -->
 <section class="hero-section">
-    <canvas id="matrixCanvas" class="hero-canvas"></canvas>
-
-    <!-- Маска A L B E (Zen Dots) -->
+    <!-- СЛОЙ 1: Фон (чёрный) — через background секции -->
+    
+    <!-- СЛОЙ 2: Маска с градиентом -->
     <div class="masked-container">
         <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
             <defs>
@@ -136,19 +136,15 @@
                         <animate attributeName="stop-color" values="#4C1D95;#F5B700;#10B981;#06B6D4;#4C1D95" dur="8s" repeatCount="indefinite"/>
                     </stop>
                 </radialGradient>
-                <mask id="letterMask">
+                <mask id="fullGradientMask">
                     <rect width="100%" height="100%" fill="white" />
-                    <text x="25" y="52" font-family="'Zen Dots', monospace" font-size="16" font-weight="400" fill="black" text-anchor="middle" class="mask-letter">A</text>
-                    <text x="41.6" y="52" font-family="'Zen Dots', monospace" font-size="16" font-weight="400" fill="black" text-anchor="middle" class="mask-letter" style="animation-delay: 0.3s;">L</text>
-                    <text x="58.3" y="52" font-family="'Zen Dots', monospace" font-size="16" font-weight="400" fill="black" text-anchor="middle" class="mask-letter" style="animation-delay: 0.6s;">B</text>
-                    <text x="75" y="52" font-family="'Zen Dots', monospace" font-size="16" font-weight="400" fill="black" text-anchor="middle" class="mask-letter" style="animation-delay: 0.9s;">E</text>
                 </mask>
             </defs>
-            <rect width="100%" height="100%" fill="url(#dynamicGrad)" mask="url(#letterMask)" />
+            <rect width="100%" height="100%" fill="url(#dynamicGrad)" mask="url(#fullGradientMask)" />
         </svg>
     </div>
 
-    <!-- Текстовые элементы (Geist) -->
+    <!-- СЛОЙ 3: Текст -->
     <div class="hero-text agency-tag" id="agencyTag">DIGITAL AGENCY</div>
     <div class="hero-text main-title" id="mainTitle">разработка</div>
     <div class="hero-text sub-line" id="subLine">дизайна и сайтов под ключ</div>
@@ -175,28 +171,23 @@
     </div>
 
     <button class="restart-btn" id="restartBtn">⟳ Рестарт</button>
+
+    <!-- СЛОЙ 4: Canvas с падающим кодом (поверх всего!) -->
+    <canvas id="matrixCanvas" class="hero-canvas-top"></canvas>
 </section>
 
 <style>
-/* Стили hero-баннера */
+/* СТИЛИ ДЛЯ 4 СЛОЁВ */
+
 .hero-section {
     position: relative;
     min-height: 100vh;
-    background: #05070A;
+    background: #05070A;  /* СЛОЙ 1: Фон */
     overflow: hidden;
     z-index: 1;
 }
 
-.hero-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    z-index: 0;
-}
-
+/* СЛОЙ 2: Маска с градиентом */
 .masked-container {
     position: absolute;
     top: 0;
@@ -218,6 +209,7 @@
     height: 100%;
 }
 
+/* СЛОЙ 3: Текст */
 .hero-text {
     position: absolute;
     z-index: 20;
@@ -411,28 +403,17 @@
     background: #ffcc33;
 }
 
-/* Анимация появления букв A L B E */
-@keyframes revealLetter {
-    0% {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
+/* СЛОЙ 4: Canvas с падающим кодом (ПОВЕРХ ВСЕГО!) */
+.hero-canvas-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 30;          /* ВЫШЕ текста (20) и градиента (10) */
+    pointer-events: none;  /* Чтобы клики проходили сквозь canvas к кнопкам */
 }
-
-.mask-letter {
-    opacity: 0;
-    animation: revealLetter 0.6s ease forwards;
-}
-
-/* Индивидуальные задержки для каждой буквы */
-.mask-letter:nth-child(1) { animation-delay: 0.2s; }
-.mask-letter:nth-child(2) { animation-delay: 0.5s; }
-.mask-letter:nth-child(3) { animation-delay: 0.8s; }
-.mask-letter:nth-child(4) { animation-delay: 1.1s; }
 
 @media (max-width: 1200px) {
     .hero-right-phrase { left: 52%; font-size: 1.4rem; }
@@ -478,7 +459,7 @@
 </style>
 
 <script>
-// Matrix Canvas Effect
+// СЛОЙ 4: Matrix Canvas Effect (падающий код поверх всего)
 (function() {
     const canvas = document.getElementById('matrixCanvas');
     if (!canvas) return;
@@ -601,18 +582,6 @@
                 businessLineEl.innerHTML = '';
                 index = 0;
             }
-            const maskLetters = document.querySelectorAll('.mask-letter');
-            maskLetters.forEach(letter => {
-                const newLetter = letter.cloneNode(true);
-                letter.parentNode.replaceChild(newLetter, letter);
-            });
-            const newMaskLetters = document.querySelectorAll('.mask-letter');
-            newMaskLetters.forEach((letter, i) => {
-                const delays = [0.2, 0.5, 0.8, 1.1];
-                letter.style.animation = 'none';
-                letter.offsetHeight;
-                letter.style.animation = `revealLetter 0.6s ease forwards ${delays[i]}s`;
-            });
             setTimeout(() => {
                 permanentElements.forEach((id, idx) => {
                     setTimeout(() => {
