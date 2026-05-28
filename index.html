@@ -115,14 +115,10 @@
 <div id="header-placeholder"></div>
 
 <main>
-<!-- ========== HERO БАННЕР (ИСПРАВЛЕННАЯ АНИМАЦИЯ) ========== -->
+<!-- ========== HERO БАННЕР (СТАТИЧНАЯ "МЫ СОЗДАЕМ" + ПЕЧАТЬ СЛОВ) ========== -->
 <section class="hero-section">
-    <!-- СЛОЙ 1: Фон (чёрный) -->
-    
-    <!-- СЛОЙ 2: Canvas с падающим кодом -->
     <canvas id="matrixCanvas" class="hero-canvas-bottom"></canvas>
 
-    <!-- СЛОЙ 3: Маска с градиентом -->
     <div class="masked-container">
         <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
             <defs>
@@ -148,9 +144,6 @@
         </svg>
     </div>
 
-    <!-- СЛОЙ 4: Текст -->
-    
-    <!-- Буквы A L B E -->
     <div class="albe-letters">
         <span class="albe-letter albe-a" style="animation-delay: 0.2s;">A</span>
         <span class="albe-letter" style="animation-delay: 0.5s;">L</span>
@@ -158,9 +151,7 @@
         <span class="albe-letter" style="animation-delay: 1.1s;">E</span>
     </div>
 
-    <!-- Фраза "МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ" — слева с отступом 100px -->
     <div class="hero-text left-phrase" id="leftPhrase">МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ</div>
-
     <div class="hero-text agency-tag" id="agencyTag">DIGITAL AGENCY</div>
 
     <div class="hero-badges" id="badgesGrid">
@@ -174,8 +165,11 @@
         <span class="badge">CRM интеграция</span>
     </div>
 
-    <!-- Динамическая фраза внизу справа -->
-    <div class="hero-business-line" id="businessLine"></div>
+    <!-- СТАТИЧНАЯ "МЫ СОЗДАЕМ" (поднята выше) -->
+    <div class="static-prefix" id="staticPrefix">МЫ СОЗДАЕМ</div>
+
+    <!-- Динамическое слово (печатается ниже) -->
+    <div class="dynamic-word-container" id="dynamicWordContainer"></div>
 
     <div class="hero-stats" id="statsRow">
         <div class="stat-item"><div class="stat-number">7+</div><div class="stat-label">лет опыта</div></div>
@@ -195,8 +189,6 @@
     overflow: hidden;
     z-index: 1;
 }
-
-/* СЛОЙ 2: Canvas — под градиентом */
 .hero-canvas-bottom {
     position: absolute;
     top: 0;
@@ -207,8 +199,6 @@
     z-index: 5;
     pointer-events: none;
 }
-
-/* СЛОЙ 3: Маска с градиентом */
 .masked-container {
     position: absolute;
     top: 0;
@@ -218,7 +208,6 @@
     z-index: 20;
     pointer-events: none;
 }
-
 .masked-container svg {
     position: absolute;
     top: 0;
@@ -226,8 +215,6 @@
     width: 100%;
     height: 100%;
 }
-
-/* СЛОЙ 4: Текст */
 .hero-text {
     position: absolute;
     z-index: 30;
@@ -239,13 +226,10 @@
     transform: translateY(15px);
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
-
 .hero-text.visible {
     opacity: 1;
     transform: translateY(0);
 }
-
-/* Стили для букв A L B E */
 .albe-letters {
     position: absolute;
     top: calc(50% - 100px);
@@ -257,7 +241,6 @@
     pointer-events: none;
     white-space: nowrap;
 }
-
 .albe-letter {
     font-family: 'Zen Dots', monospace;
     font-size: 14vw;
@@ -268,25 +251,14 @@
     display: inline-block;
     animation: flyFromTopLeft 0.7s ease-out forwards;
 }
-
-/* Буква "A" — ЖЁЛТАЯ */
 .albe-a {
     color: #F5B700 !important;
     text-shadow: 0 0 15px rgba(245,183,0,0.8);
 }
-
 @keyframes flyFromTopLeft {
-    0% {
-        opacity: 0;
-        transform: translate(-100px, -100px) scale(0.6);
-    }
-    100% {
-        opacity: 1;
-        transform: translate(0, 0) scale(1);
-    }
+    0% { opacity: 0; transform: translate(-100px, -100px) scale(0.6); }
+    100% { opacity: 1; transform: translate(0, 0) scale(1); }
 }
-
-/* Фраза "МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ" — СЛЕВА, ОТСТУП 100px */
 .left-phrase {
     top: calc(50% + 30px);
     left: 100px;
@@ -298,7 +270,6 @@
     white-space: nowrap;
     letter-spacing: 2px;
 }
-
 .agency-tag {
     top: calc(6% + 100px);
     left: 100px;
@@ -309,7 +280,6 @@
     text-shadow: 0 0 6px rgba(255,255,255,0.3);
     white-space: nowrap;
 }
-
 .hero-stats {
     position: absolute;
     bottom: 100px;
@@ -320,18 +290,13 @@
     opacity: 0;
     transition: opacity 0.8s ease;
 }
-
-.hero-stats.visible {
-    opacity: 1;
-}
-
+.hero-stats.visible { opacity: 1; }
 .hero-stats .stat-item {
     font-family: 'Geist', monospace;
     font-size: 2.8rem;
     text-align: center;
     color: white;
 }
-
 .hero-stats .stat-item .stat-label {
     font-size: 0.8rem;
     letter-spacing: 2px;
@@ -339,17 +304,11 @@
     color: #B0B3B8;
     margin-top: 5px;
 }
-
 .hero-stats .stat-item:nth-child(1) .stat-number { color: #10B981; }
 .hero-stats .stat-item:nth-child(2) .stat-number { color: #06B6D4; }
 .hero-stats .stat-item:nth-child(3) .stat-number { color: #4C1D95; }
 .hero-stats .stat-item:nth-child(4) .stat-number { color: #F5B700; }
-
-.hero-stats .stat-number {
-    font-size: 2.8rem;
-    font-weight: 400;
-}
-
+.hero-stats .stat-number { font-size: 2.8rem; font-weight: 400; }
 .hero-badges {
     position: absolute;
     bottom: 10%;
@@ -361,7 +320,6 @@
     justify-content: flex-end;
     z-index: 30;
 }
-
 .hero-badges .badge {
     font-family: 'Geist', sans-serif;
     background: rgba(0,0,0,0.4);
@@ -375,11 +333,29 @@
     font-weight: 500;
 }
 
-/* Динамическая фраза внизу справа */
-.hero-business-line {
+/* СТАТИЧНАЯ "МЫ СОЗДАЕМ" — поднята выше, всегда видна */
+.static-prefix {
     position: absolute;
     right: 100px;
-    bottom: 24%;
+    bottom: 28%;
+    font-family: 'Geist', sans-serif;
+    font-size: 3.73rem;
+    font-weight: 900;
+    color: #FFFFFF;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    letter-spacing: 2px;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 30;
+    text-align: right;
+    opacity: 0;
+}
+
+/* Контейнер для динамического слова (под статической фразой) */
+.dynamic-word-container {
+    position: absolute;
+    right: 100px;
+    bottom: 18%;
     font-family: 'Geist', sans-serif;
     font-size: 3.73rem;
     font-weight: 900;
@@ -388,14 +364,10 @@
     pointer-events: none;
     z-index: 30;
     text-align: right;
+    opacity: 0;
 }
 
-/* Статическая часть "МЫ СОЗДАЕМ " — белая */
-.static-part {
-    color: #FFFFFF;
-}
-
-/* Динамическое слово — жёлтое */
+/* Жёлтый цвет для печатаемых слов */
 .dynamic-word-yellow {
     color: #F5B700 !important;
     text-shadow: 0 0 10px rgba(245,183,0,0.8);
@@ -410,11 +382,7 @@
     margin-left: 8px;
     animation: blink 0.8s step-end infinite;
 }
-
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
 
 .restart-btn {
     position: absolute;
@@ -432,14 +400,11 @@
     transition: 0.2s;
     font-size: 0.8rem;
 }
-
-.restart-btn:hover {
-    transform: scale(1.05);
-    background: #ffcc33;
-}
+.restart-btn:hover { transform: scale(1.05); background: #ffcc33; }
 
 @media (max-width: 1200px) {
-    .hero-business-line { font-size: 2.5rem; right: 50px; bottom: 20%; }
+    .static-prefix { font-size: 2.5rem; right: 50px; bottom: 28%; }
+    .dynamic-word-container { font-size: 2.5rem; right: 50px; bottom: 18%; }
     .cursor { height: 2.5rem; }
     .agency-tag { font-size: 1.4rem; left: 80px; }
     .hero-stats { gap: 2rem; left: 80px; bottom: 80px; }
@@ -449,7 +414,6 @@
     .albe-letters { gap: 2.5vw; top: calc(50% - 80px); }
     .left-phrase { font-size: clamp(1.3rem, 3.5vw, 2rem); left: 80px; top: calc(50% + 20px); }
 }
-
 @media (max-width: 900px) {
     .agency-tag { left: 40px; font-size: 1.2rem; top: calc(6% + 60px); }
     .hero-stats { left: 40px; bottom: 80px; gap: 1rem; flex-wrap: wrap; }
@@ -458,20 +422,21 @@
     .hero-stats .stat-label { font-size: 0.6rem; }
     .hero-badges { bottom: 8%; max-width: 90%; gap: 0.5rem; }
     .hero-badges .badge { font-size: 0.6rem; padding: 0.3rem 0.8rem; }
-    .hero-business-line { right: 5%; bottom: 15%; font-size: 1.8rem; white-space: normal; text-align: right; max-width: 85%; }
+    .static-prefix { right: 5%; bottom: 25%; font-size: 1.8rem; white-space: normal; text-align: right; max-width: 85%; }
+    .dynamic-word-container { right: 5%; bottom: 15%; font-size: 1.8rem; white-space: normal; text-align: right; max-width: 85%; }
     .cursor { height: 1.8rem; }
     .albe-letter { font-size: 10vw; }
     .albe-letters { gap: 2vw; top: calc(50% - 60px); }
     .left-phrase { font-size: clamp(1rem, 3vw, 1.5rem); left: 40px; top: calc(50% + 15px); }
 }
-
 @media (max-width: 600px) {
     .agency-tag { left: 20px; font-size: 0.75rem; top: calc(6% + 40px); }
     .hero-stats { left: 20px; bottom: 70px; gap: 0.8rem; }
     .hero-stats .stat-item { font-size: 1rem; }
     .hero-stats .stat-number { font-size: 1rem; }
     .hero-stats .stat-label { font-size: 0.5rem; }
-    .hero-business-line { bottom: 10%; font-size: 1.4rem; }
+    .static-prefix { bottom: 22%; font-size: 1.4rem; }
+    .dynamic-word-container { bottom: 12%; font-size: 1.4rem; }
     .cursor { height: 1.4rem; }
     .hero-badges { bottom: 5%; gap: 0.4rem; }
     .hero-badges .badge { font-size: 0.55rem; padding: 0.25rem 0.6rem; }
@@ -489,7 +454,7 @@
     const ctx = canvas.getContext('2d');
     let w, h;
     const symbols = "01<>/{}[]=+-*&%$#@!~ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    const words = ['DESIGN', 'CODE', 'AI', 'ALBE', 'DIGITAL'];
+    const wordsArr = ['DESIGN', 'CODE', 'AI', 'ALBE', 'DIGITAL'];
     const colors = ['#F5B700', '#10B981', '#06B6D4', '#4C1D95'];
     const fontSize = 14;
     let cols, drops;
@@ -507,20 +472,16 @@
         drops = [];
         for (let i = 0; i < cols; i++) drops[i] = Math.random() * -h;
     }
-    
     function getRandomItem() {
-        return (Math.random() < 0.04) ? words[Math.floor(Math.random() * words.length)] : symbols[Math.floor(Math.random() * symbols.length)];
+        return (Math.random() < 0.04) ? wordsArr[Math.floor(Math.random() * wordsArr.length)] : symbols[Math.floor(Math.random() * symbols.length)];
     }
-    
     function drawMatrix(now) {
         requestAnimationFrame(drawMatrix);
         if (now - lastFrameTime < frameInterval) return;
         lastFrameTime = now;
-        
         ctx.fillStyle = 'rgba(5,7,10,0.03)';
         ctx.fillRect(0, 0, w, h);
         ctx.textAlign = 'center';
-        
         for (let i = 0; i < drops.length; i++) {
             const item = getRandomItem();
             const x = i * fontSize + fontSize/2;
@@ -540,209 +501,109 @@
             drops[i] += 0.6;
         }
     }
-    
     window.addEventListener('resize', () => { resizeMatrix(); });
     resizeMatrix();
     requestAnimationFrame(drawMatrix);
 })();
 
-// Анимация появления статических элементов
+// Появление статических элементов
 (function() {
-    const permanentElements = ['agencyTag', 'leftPhrase', 'badgesGrid'];
-    permanentElements.forEach((id, idx) => {
+    const elements = ['agencyTag', 'leftPhrase', 'badgesGrid', 'staticPrefix', 'dynamicWordContainer'];
+    elements.forEach((id, idx) => {
         const el = document.getElementById(id);
-        if (el) {
-            setTimeout(() => {
-                el.classList.add('visible');
-            }, 1300 + idx * 150);
-        }
+        if (el) setTimeout(() => el.style.opacity = "1", 1300 + idx * 100);
     });
-    
     const statsRow = document.getElementById('statsRow');
-    if (statsRow) {
-        setTimeout(() => {
-            statsRow.classList.add('visible');
-        }, 2000);
-    }
+    if (statsRow) setTimeout(() => statsRow.classList.add('visible'), 2000);
 })();
 
-// Анимация печати (первый раз полностью, потом только слова)
+// Анимация печати слов (только слова, "МЫ СОЗДАЕМ" статична)
 (function() {
-    const wordsList = [
-        "БИЗНЕС",
-        "ДИЗАЙН",
-        "WEB3",
-        "BLOCKCHAIN",
-        "AI РЕКЛАМУ",
-        "ПРИЛОЖЕНИЯ",
-        "SEO ОПТИМИЗАЦИЮ",
-        "CRM/ERP",
-        "САЙТЫ",
-        "БУДУЩЕЕ"
-    ];
-    
+    const words = ["БИЗНЕС", "ДИЗАЙН", "WEB3", "BLOCKCHAIN", "AI РЕКЛАМУ", "ПРИЛОЖЕНИЯ", "SEO ОПТИМИЗАЦИЮ", "CRM/ERP", "САЙТЫ", "БУДУЩЕЕ"];
     let wordIndex = 0;
     let isDeleting = false;
-    let charIndex = 0;
+    let text = "";
     let typingSpeed = 100;
-    let pauseBetweenWords = 1500;
-    let isFirstRun = true;  // Первый раз печатаем полную фразу
+    const pauseTime = 1500;
+    const el = document.getElementById('dynamicWordContainer');
     
-    const businessLineEl = document.getElementById('businessLine');
-    const staticText = "МЫ СОЗДАЕМ ";
-    
-    function updateDisplay(staticPart, dynamicPart, showCursor = true) {
-        if (!businessLineEl) return;
-        const staticSpan = '<span class="static-part">' + staticPart + '</span>';
-        const dynamicSpan = '<span class="dynamic-word-yellow">' + dynamicPart + '</span>';
-        const cursorSpan = showCursor ? '<span class="cursor"></span>' : '';
+    function type() {
+        if (!el) return;
+        const fullWord = words[wordIndex];
         
-        if (dynamicPart === "") {
-            businessLineEl.innerHTML = staticSpan + cursorSpan;
+        if (isDeleting) {
+            text = fullWord.substring(0, text.length - 1);
+            typingSpeed = 50;
         } else {
-            businessLineEl.innerHTML = staticSpan + dynamicSpan + cursorSpan;
-        }
-    }
-    
-    function typeEffect() {
-        if (!businessLineEl) return;
-        
-        if (isFirstRun) {
-            // Первый раз: печатаем полную фразу "МЫ СОЗДАЕМ БИЗНЕС"
-            const targetWord = wordsList[0];
-            const fullStatic = staticText;
-            const fullDynamic = targetWord;
-            
-            if (isDeleting) {
-                // Стираем динамическое слово
-                if (charIndex > 0) {
-                    charIndex--;
-                    updateDisplay(fullStatic, fullDynamic.substring(0, charIndex));
-                    typingSpeed = 50;
-                } else {
-                    // Переключаемся на обычный режим после первого цикла
-                    isDeleting = false;
-                    isFirstRun = false;
-                    wordIndex = 1; // следующее слово
-                    typingSpeed = 200;
-                    setTimeout(typeEffect, typingSpeed);
-                    return;
-                }
-            } else {
-                if (charIndex < fullDynamic.length) {
-                    charIndex++;
-                    updateDisplay(fullStatic, fullDynamic.substring(0, charIndex));
-                    typingSpeed = 100;
-                }
-                
-                if (charIndex === fullDynamic.length) {
-                    isDeleting = true;
-                    typingSpeed = pauseBetweenWords;
-                }
-            }
-        } else {
-            // Обычный режим: меняем только слово, "МЫ СОЗДАЕМ " остаётся
-            const targetWord = wordsList[wordIndex];
-            
-            if (isDeleting) {
-                if (charIndex > 0) {
-                    charIndex--;
-                    updateDisplay(staticText, targetWord.substring(0, charIndex));
-                    typingSpeed = 50;
-                } else {
-                    isDeleting = false;
-                    wordIndex = (wordIndex + 1) % wordsList.length;
-                    typingSpeed = 200;
-                    setTimeout(typeEffect, typingSpeed);
-                    return;
-                }
-            } else {
-                if (charIndex < targetWord.length) {
-                    charIndex++;
-                    updateDisplay(staticText, targetWord.substring(0, charIndex));
-                    typingSpeed = 100;
-                }
-                
-                if (charIndex === targetWord.length) {
-                    isDeleting = true;
-                    typingSpeed = pauseBetweenWords;
-                }
-            }
+            text = fullWord.substring(0, text.length + 1);
+            typingSpeed = 100;
         }
         
-        setTimeout(typeEffect, typingSpeed);
-    }
-    
-    // Запуск анимации
-    setTimeout(() => {
-        if (businessLineEl) {
-            charIndex = 0;
+        el.innerHTML = '<span class="dynamic-word-yellow">' + text + '</span><span class="cursor"></span>';
+        
+        if (!isDeleting && text === fullWord) {
+            isDeleting = true;
+            setTimeout(type, pauseTime);
+            return;
+        } else if (isDeleting && text === "") {
             isDeleting = false;
-            wordIndex = 0;
-            isFirstRun = true;
-            updateDisplay("МЫ СОЗДАЕМ ", "");
+            wordIndex = (wordIndex + 1) % words.length;
+            setTimeout(type, 200);
+            return;
+        }
+        
+        setTimeout(type, typingSpeed);
+    }
+    
+    setTimeout(() => {
+        if (el) {
+            el.style.opacity = "1";
+            el.innerHTML = '<span class="cursor"></span>';
             setTimeout(() => {
-                typeEffect();
+                type();
             }, 300);
         }
     }, 2800);
     
-    // Рестарт
     const restartBtn = document.getElementById('restartBtn');
     if (restartBtn) {
         restartBtn.addEventListener('click', () => {
-            // Сбрасываем статические элементы
-            const permElements = ['agencyTag', 'leftPhrase', 'badgesGrid'];
+            const permElements = ['agencyTag', 'leftPhrase', 'badgesGrid', 'staticPrefix', 'dynamicWordContainer'];
             permElements.forEach(id => {
                 const el = document.getElementById(id);
-                if (el) el.classList.remove('visible');
+                if (el) el.style.opacity = "0";
             });
             const statsRow = document.getElementById('statsRow');
             if (statsRow) statsRow.classList.remove('visible');
-            
-            // Сбрасываем динамическую фразу
-            if (businessLineEl) {
-                businessLineEl.innerHTML = "";
+            if (el) {
+                el.innerHTML = "";
+                el.style.opacity = "0";
             }
-            
-            // Сбрасываем буквы ALBE
             const albeLetters = document.querySelectorAll('.albe-letter');
             albeLetters.forEach(letter => {
                 letter.style.animation = 'none';
                 letter.style.opacity = '0';
             });
-            
             setTimeout(() => {
-                // Перезапуск букв
                 albeLetters.forEach((letter, i) => {
                     const delays = [0.2, 0.5, 0.8, 1.1];
                     letter.style.animation = `flyFromTopLeft 0.7s ease-out forwards ${delays[i]}s`;
                 });
-                
-                // Показываем статические элементы
                 permElements.forEach((id, idx) => {
                     setTimeout(() => {
                         const el = document.getElementById(id);
-                        if (el) el.classList.add('visible');
-                    }, 1300 + idx * 150);
+                        if (el) el.style.opacity = "1";
+                    }, 1300 + idx * 100);
                 });
-                if (statsRow) {
-                    setTimeout(() => {
-                        statsRow.classList.add('visible');
-                    }, 2000);
-                }
-                
-                // Перезапуск печати
+                if (statsRow) setTimeout(() => statsRow.classList.add('visible'), 2000);
                 setTimeout(() => {
-                    if (businessLineEl) {
-                        charIndex = 0;
-                        isDeleting = false;
+                    if (el) {
                         wordIndex = 0;
-                        isFirstRun = true;
-                        updateDisplay("МЫ СОЗДАЕМ ", "");
-                        setTimeout(() => {
-                            typeEffect();
-                        }, 300);
+                        isDeleting = false;
+                        text = "";
+                        el.style.opacity = "1";
+                        el.innerHTML = '<span class="cursor"></span>';
+                        setTimeout(() => { type(); }, 300);
                     }
                 }, 2800);
             }, 50);
