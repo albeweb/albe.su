@@ -2,15 +2,6 @@
 /* 1. ЛОКАЛЬНОЕ ПОДКЛЮЧЕНИЕ ШРИФТОВ */
 /* ============================================ */
 
-/* EN Regular (Etude Noire) - для H1 и H2 */
-@font-face {
-    font-family: 'EN Regular';
-    src: url('EN Regular.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-
 /* Geist Regular (400) - для основного текста */
 @font-face {
     font-family: 'Geist';
@@ -113,7 +104,7 @@ h1, h2,
 .contact-card h2,
 .price-table h3,
 .nav-link {
-    font-family: 'EN Regular', sans-serif;
+    font-family: 'Geist', sans-serif;
     font-weight: 400;
     letter-spacing: -0.02em;
 }
@@ -1757,7 +1748,7 @@ h4 {
     z-index: 20;
     pointer-events: none;
     transition: letter-spacing 0.2s ease, transform 0.2s ease;
-    font-family: 'EN Regular', 'Geist', sans-serif;
+    font-family: 'Geist', sans-serif;
 }
 
 .kinetic-btn.small .btn-text {
@@ -2614,7 +2605,8 @@ h4 {
     position: absolute;
     top: calc(18% + 270px);
     left: 200px;
-    font-family: 'EN Regular', sans-serif;
+    font-family: 'Geist', sans-serif;
+    font-weight: 500;
     font-size: clamp(3rem, 10vw, 7rem);
     background: linear-gradient(135deg, #F5B700, #F5B700, #10B981, #06B6D4);
     background-size: 200% auto;
@@ -2640,7 +2632,8 @@ h4 {
     position: absolute;
     top: calc(34% + 270px);
     left: 200px;
-    font-family: 'EN Regular', sans-serif;
+    font-family: 'Geist', sans-serif;
+    font-weight: 500;
     font-size: clamp(1.5rem, 5vw, 2.8rem);
     background: linear-gradient(135deg, #F5B700, #10B981, #06B6D4, #4C1D95);
     -webkit-background-clip: text;
