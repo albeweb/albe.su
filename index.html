@@ -114,11 +114,14 @@
 <div id="header-placeholder"></div>
 
 <main>
-<!-- ========== HERO БАННЕР (ПРАВИЛЬНЫЕ СЛОИ) ========== -->
+<!-- ========== HERO БАННЕР (ГРАДИЕНТ ВИДЕН) ========== -->
 <section class="hero-section">
     <!-- СЛОЙ 1: Фон (чёрный) -->
     
-    <!-- СЛОЙ 2: Маска с градиентом -->
+    <!-- СЛОЙ 2: Canvas с падающим кодом (САМЫЙ НИЖНИЙ из видимых) -->
+    <canvas id="matrixCanvas" class="hero-canvas-bottom"></canvas>
+
+    <!-- СЛОЙ 3: Маска с градиентом (ВЫШЕ canvas, чтобы градиент был виден) -->
     <div class="masked-container">
         <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
             <defs>
@@ -143,9 +146,6 @@
             <rect width="100%" height="100%" fill="url(#dynamicGrad)" mask="url(#fullGradientMask)" />
         </svg>
     </div>
-
-    <!-- СЛОЙ 3: Canvas с падающим кодом (ПОД текстом) -->
-    <canvas id="matrixCanvas" class="hero-canvas-bottom"></canvas>
 
     <!-- СЛОЙ 4: Текст (САМЫЙ ВЕРХНИЙ) -->
     <div class="hero-text agency-tag" id="agencyTag">DIGITAL AGENCY</div>
@@ -185,14 +185,26 @@
     z-index: 1;
 }
 
-/* СЛОЙ 2: Маска с градиентом */
+/* СЛОЙ 2: Canvas — САМЫЙ НИЖНИЙ (под градиентом) */
+.hero-canvas-bottom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* СЛОЙ 3: Маска с градиентом — ВЫШЕ canvas */
 .masked-container {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 10;
+    z-index: 20;
     pointer-events: none;
 }
 
@@ -202,18 +214,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-}
-
-/* СЛОЙ 3: Canvas — под текстом, но над градиентом */
-.hero-canvas-bottom {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    z-index: 15;
-    pointer-events: none;
 }
 
 /* СЛОЙ 4: Текст — САМЫЙ ВЕРХНИЙ */
@@ -325,7 +325,7 @@
 
 .hero-badges .badge {
     font-family: 'Geist', sans-serif;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.4);
     backdrop-filter: blur(4px);
     padding: 0.6rem 1.4rem;
     border-radius: 60px;
@@ -454,7 +454,7 @@
 </style>
 
 <script>
-// Matrix Canvas Effect (падающий код, слой 3)
+// Matrix Canvas Effect (падающий код, САМЫЙ НИЖНИЙ слой)
 (function() {
     const canvas = document.getElementById('matrixCanvas');
     if (!canvas) return;
@@ -489,7 +489,8 @@
         if (now - lastFrameTime < frameInterval) return;
         lastFrameTime = now;
         
-        ctx.fillStyle = 'rgba(5,7,10,0.08)';
+        // ОЧЕНЬ прозрачный фон, чтобы градиент был виден
+        ctx.fillStyle = 'rgba(5,7,10,0.03)';
         ctx.fillRect(0, 0, w, h);
         ctx.textAlign = 'center';
         
