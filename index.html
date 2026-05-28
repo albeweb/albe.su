@@ -165,10 +165,10 @@
         <span class="badge">CRM интеграция</span>
     </div>
 
-    <!-- СТАТИЧНАЯ "МЫ СОЗДАЕМ" (поднята выше) -->
+    <!-- СТАТИЧНАЯ "МЫ СОЗДАЕМ" (200px от правого края, поднята на 50px) -->
     <div class="static-prefix" id="staticPrefix">МЫ СОЗДАЕМ</div>
 
-    <!-- Динамическое слово (печатается ниже) -->
+    <!-- Динамическое слово (печатается ниже, поднято на 50px) -->
     <div class="dynamic-word-container" id="dynamicWordContainer"></div>
 
     <div class="hero-stats" id="statsRow">
@@ -333,11 +333,11 @@
     font-weight: 500;
 }
 
-/* СТАТИЧНАЯ "МЫ СОЗДАЕМ" — поднята выше, всегда видна */
+/* СТАТИЧНАЯ "МЫ СОЗДАЕМ" — 200px от правого края, поднята на 50px */
 .static-prefix {
     position: absolute;
-    right: 100px;
-    bottom: 28%;
+    right: 200px;
+    bottom: calc(28% + 50px);
     font-family: 'Geist', sans-serif;
     font-size: 3.73rem;
     font-weight: 900;
@@ -351,11 +351,11 @@
     opacity: 0;
 }
 
-/* Контейнер для динамического слова (под статической фразой) */
+/* Контейнер для динамического слова — поднят на 50px */
 .dynamic-word-container {
     position: absolute;
-    right: 100px;
-    bottom: 18%;
+    right: 200px;
+    bottom: calc(18% + 50px);
     font-family: 'Geist', sans-serif;
     font-size: 3.73rem;
     font-weight: 900;
@@ -367,7 +367,6 @@
     opacity: 0;
 }
 
-/* Жёлтый цвет для печатаемых слов */
 .dynamic-word-yellow {
     color: #F5B700 !important;
     text-shadow: 0 0 10px rgba(245,183,0,0.8);
@@ -403,8 +402,8 @@
 .restart-btn:hover { transform: scale(1.05); background: #ffcc33; }
 
 @media (max-width: 1200px) {
-    .static-prefix { font-size: 2.5rem; right: 50px; bottom: 28%; }
-    .dynamic-word-container { font-size: 2.5rem; right: 50px; bottom: 18%; }
+    .static-prefix { font-size: 2.5rem; right: 100px; bottom: calc(28% + 50px); }
+    .dynamic-word-container { font-size: 2.5rem; right: 100px; bottom: calc(18% + 50px); }
     .cursor { height: 2.5rem; }
     .agency-tag { font-size: 1.4rem; left: 80px; }
     .hero-stats { gap: 2rem; left: 80px; bottom: 80px; }
@@ -422,8 +421,8 @@
     .hero-stats .stat-label { font-size: 0.6rem; }
     .hero-badges { bottom: 8%; max-width: 90%; gap: 0.5rem; }
     .hero-badges .badge { font-size: 0.6rem; padding: 0.3rem 0.8rem; }
-    .static-prefix { right: 5%; bottom: 25%; font-size: 1.8rem; white-space: normal; text-align: right; max-width: 85%; }
-    .dynamic-word-container { right: 5%; bottom: 15%; font-size: 1.8rem; white-space: normal; text-align: right; max-width: 85%; }
+    .static-prefix { right: 5%; bottom: calc(25% + 50px); font-size: 1.8rem; white-space: normal; text-align: right; max-width: 85%; }
+    .dynamic-word-container { right: 5%; bottom: calc(15% + 50px); font-size: 1.8rem; white-space: normal; text-align: right; max-width: 85%; }
     .cursor { height: 1.8rem; }
     .albe-letter { font-size: 10vw; }
     .albe-letters { gap: 2vw; top: calc(50% - 60px); }
@@ -435,8 +434,8 @@
     .hero-stats .stat-item { font-size: 1rem; }
     .hero-stats .stat-number { font-size: 1rem; }
     .hero-stats .stat-label { font-size: 0.5rem; }
-    .static-prefix { bottom: 22%; font-size: 1.4rem; }
-    .dynamic-word-container { bottom: 12%; font-size: 1.4rem; }
+    .static-prefix { bottom: calc(22% + 50px); font-size: 1.4rem; right: 20px; }
+    .dynamic-word-container { bottom: calc(12% + 50px); font-size: 1.4rem; right: 20px; }
     .cursor { height: 1.4rem; }
     .hero-badges { bottom: 5%; gap: 0.4rem; }
     .hero-badges .badge { font-size: 0.55rem; padding: 0.25rem 0.6rem; }
@@ -517,7 +516,7 @@
     if (statsRow) setTimeout(() => statsRow.classList.add('visible'), 2000);
 })();
 
-// Анимация печати слов (только слова, "МЫ СОЗДАЕМ" статична)
+// Анимация печати слов
 (function() {
     const words = ["БИЗНЕС", "ДИЗАЙН", "WEB3", "BLOCKCHAIN", "AI РЕКЛАМУ", "ПРИЛОЖЕНИЯ", "SEO ОПТИМИЗАЦИЮ", "CRM/ERP", "САЙТЫ", "БУДУЩЕЕ"];
     let wordIndex = 0;
