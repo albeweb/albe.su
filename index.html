@@ -115,7 +115,7 @@
 <div id="header-placeholder"></div>
 
 <main>
-<!-- ========== HERO БАННЕР (СТАТИЧНАЯ "МЫ СОЗДАЕМ" + ПЕЧАТЬ СЛОВ) ========== -->
+<!-- ========== HERO БАННЕР ========== -->
 <section class="hero-section">
     <canvas id="matrixCanvas" class="hero-canvas-bottom"></canvas>
 
@@ -165,10 +165,10 @@
         <span class="badge">CRM интеграция</span>
     </div>
 
-    <!-- СТАТИЧНАЯ "МЫ СОЗДАЕМ" (200px от правого края, поднята на 50px) -->
+    <!-- СТАТИЧНАЯ "МЫ СОЗДАЕМ" — 200px от правого края, поднята на 50px -->
     <div class="static-prefix" id="staticPrefix">МЫ СОЗДАЕМ</div>
 
-    <!-- Динамическое слово (печатается ниже, поднято на 50px) -->
+    <!-- Динамическое слово — 100px от правого края, поднято на 50px -->
     <div class="dynamic-word-container" id="dynamicWordContainer"></div>
 
     <div class="hero-stats" id="statsRow">
@@ -333,7 +333,7 @@
     font-weight: 500;
 }
 
-/* СТАТИЧНАЯ "МЫ СОЗДАЕМ" — 200px от правого края, поднята на 50px */
+/* СТАТИЧНАЯ "МЫ СОЗДАЕМ" — 200px от правого края */
 .static-prefix {
     position: absolute;
     right: 200px;
@@ -351,10 +351,10 @@
     opacity: 0;
 }
 
-/* Контейнер для динамического слова — поднят на 50px */
+/* Контейнер для динамического слова — 100px от правого края */
 .dynamic-word-container {
     position: absolute;
-    right: 200px;
+    right: 100px;
     bottom: calc(18% + 50px);
     font-family: 'Geist', sans-serif;
     font-size: 3.73rem;
@@ -403,7 +403,7 @@
 
 @media (max-width: 1200px) {
     .static-prefix { font-size: 2.5rem; right: 100px; bottom: calc(28% + 50px); }
-    .dynamic-word-container { font-size: 2.5rem; right: 100px; bottom: calc(18% + 50px); }
+    .dynamic-word-container { font-size: 2.5rem; right: 50px; bottom: calc(18% + 50px); }
     .cursor { height: 2.5rem; }
     .agency-tag { font-size: 1.4rem; left: 80px; }
     .hero-stats { gap: 2rem; left: 80px; bottom: 80px; }
