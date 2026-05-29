@@ -864,7 +864,7 @@
     }
 
     function initHeroTypewriter() {
-        const words = ["БИЗНЕС", "БУДУЩЕЕ", "ИННОВАЦИИ"];
+        const words = ["БИЗНЕС", "БУДУЩЕЕ", "ТЕХНОЛОГИИ"];
         let wordIndex = 0;
         let isDeleting = false;
         let text = "";
