@@ -3012,11 +3012,11 @@ main {
     animation: fadeInUp 0.6s ease-out 0.3s forwards;
 }
 
-/* ФРАЗА 2: МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ - ПОД ALBE СЛЕВА, ОТСТУП 200px */
+/* ФРАЗА 2: МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ - ОТСТУП ОТ ЛЕВОГО КРАЯ 400px, ПОДНЯТА НА 100px ВЫШЕ */
 .hero-subtitle-bottom {
     position: absolute;
-    top: calc(50% + 100px);
-    left: 200px;
+    top: calc(50% + 20px);  /* было +120px, стало +20px (подняли на 100px) */
+    left: 400px;  /* было 200px, стало 400px */
     font-family: 'Geist', sans-serif;
     font-size: 2rem;
     font-weight: 500;
@@ -3044,8 +3044,8 @@ main {
     
     .hero-subtitle-bottom {
         font-size: 1.6rem;
-        left: 100px;
-        top: calc(50% + 80px);
+        left: 200px;
+        top: calc(50% + 40px);
     }
 }
 
