@@ -3074,3 +3074,102 @@ main {
         max-width: 90% !important;
     }
 }
+/* ============================================ */
+/* ПОВЫШЕНИЕ КОНТРАСТНОСТИ — ТОЧЕЧНЫЕ ИСПРАВЛЕНИЯ */
+/* ============================================ */
+
+/* 1. Текст "рекомендуемый стек" в калькуляторе */
+.stack-explanation h4 {
+    color: #06B6D4 !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+}
+
+/* 2. Текст внутри stack-explanation (выберите услуги для расчёта) */
+.stack-explanation p {
+    color: #E5E7EB !important;
+    font-size: 0.95rem !important;
+}
+
+/* 3. Цифры КЕЙС 01, 02 и т.д. в FAQ */
+.case-number {
+    color: #F5B700 !important;
+    background: rgba(245, 183, 0, 0.15) !important;
+    font-weight: 700 !important;
+}
+
+/* 4. Текст вопросов в FAQ */
+.case-title {
+    color: #FFFFFF !important;
+    font-weight: 500 !important;
+}
+
+/* 5. Текст ответов в FAQ */
+.case-text {
+    color: #D1D5DB !important;
+    line-height: 1.5 !important;
+}
+
+/* 6. Цены в карточках калькулятора */
+.price-card .price {
+    color: #F5B700 !important;
+    font-weight: 700 !important;
+}
+
+/* 7. Заголовки карточек цен */
+.price-card h4 {
+    color: #06B6D4 !important;
+    font-weight: 600 !important;
+}
+
+/* 8. Текст в калькуляторе (услуги) */
+.calc-option {
+    color: #D1D5DB !important;
+}
+
+.calc-option.selected {
+    color: #FFFFFF !important;
+}
+
+/* 9. Подписи в калькуляторе */
+.calc-label {
+    color: #F5B700 !important;
+    font-weight: 600 !important;
+}
+
+/* 10. Итоговая цена */
+.calc-price {
+    font-size: 1.8rem !important;
+    font-weight: 700 !important;
+}
+
+/* 11. Текст в модальном окне */
+.modal-description p,
+.modal-stack li,
+.modal-advantages li {
+    color: #D1D5DB !important;
+}
+
+/* 12. Текст "Все услуги" и "Подробнее" */
+.section-more-btn {
+    color: #06B6D4 !important;
+    font-weight: 500 !important;
+}
+
+/* 13. Текст в компетенциях */
+.competence-card > p,
+.tech-item {
+    color: #D1D5DB !important;
+}
+
+/* 14. Текст в миссии */
+.mission-text p {
+    color: #D1D5DB !important;
+}
+
+/* 15. Цена в AI карточках */
+.ai-card .price-tag {
+    background: linear-gradient(135deg, #F5B700, #10B981) !important;
+    color: #000000 !important;
+    font-weight: 700 !important;
+}
