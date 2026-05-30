@@ -40,25 +40,8 @@
 <noscript><div><img src="https://mc.yandex.ru/watch/109373410" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 
-<!-- Критический CSS (inline) -->
-<style>
-    /* Сброс и базовые стили для быстрого рендеринга */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0D1117; color: #fff; line-height: 1.5; }
-    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-    .section { padding: 80px 0; }
-    .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 48px; flex-wrap: wrap; gap: 16px; }
-    .section-header h2 { font-size: 2rem; font-weight: 600; background: linear-gradient(135deg, #D62976, #F5B700); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .section-more-btn { color: #8B9BB4; text-decoration: none; font-weight: 500; transition: color .3s; border-bottom: 1px solid rgba(255,255,255,0.2); }
-    .section-more-btn:hover { color: #fff; }
-    .btn-primary { background: linear-gradient(135deg, #D62976, #F5B700); border: none; padding: 14px 32px; border-radius: 40px; color: #0D1117; font-weight: 600; cursor: pointer; transition: transform .2s, opacity .2s; font-size: 1rem; }
-    .btn-primary:hover { transform: translateY(-2px); opacity: 0.9; }
-    @media (max-width: 768px) { .section { padding: 48px 0; } .section-header h2 { font-size: 1.5rem; } }
-</style>
-
-<!-- Некритичный CSS с отложенной загрузкой -->
-<link rel="preload" as="style" href="style.css" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="style.css"></noscript>
+<!-- CSS - нормальная загрузка без preload глюков -->
+<link rel="stylesheet" href="style.css">
 
 <script type="application/ld+json">
 {
@@ -156,7 +139,6 @@
         </svg>
     </div>
 
-    <!-- Уникальный H1 без дублирования -->
     <h1 class="hero-subtitle-top">РАЗРАБОТКА САЙТОВ ПОД КЛЮЧ</h1>
 
     <div class="albe-letters" aria-label="ALBE">
@@ -341,7 +323,6 @@
     </div>
 </section>
 
-<!-- AI реклама секция с корректными alt и размерами -->
 <section id="ai-reklama" class="section ai-reklama-section">
     <div class="container">
         <div class="section-header">
@@ -594,7 +575,7 @@
             <h2>Калькулятор стоимости</h2>
             <a href="/calculator/" class="section-more-btn">Рассчитать</a>
         </div>
-        <!-- Только интерактивный калькулятор, убрал дублирующую статическую таблицу -->
+        <!-- Сохранена только интерактивная версия — нет дублирования -->
         <div class="calculator-card interactive-calculator" id="interactiveCalculator">
             <div class="calculator-two-columns">
                 <div class="calculator-left">
@@ -608,7 +589,6 @@
     </div>
 </section>
 
-<!-- Секция "Почему выбирают нас" с добавленным H2 -->
 <section id="mission" class="section">
     <div class="container">
         <div class="section-header">
@@ -784,8 +764,8 @@
                 <h2>Начнём проект?</h2>
             </div>
             <p class="contact-desc">Оставьте заявку — Мы свяжемся с вами в течение 3 часов</p>
-            <!-- Убран action, чтобы форма не отправлялась на несуществующий обработчик -->
-            <form id="mainForm" class="contact-form" onsubmit="event.preventDefault(); alert('Спасибо! Мы свяжемся с вами в ближайшее время.');">
+            <!-- Исправлено: action восстановлен, но для продакшена замените на реальный URL обработчика -->
+            <form id="mainForm" class="contact-form" action="/send-message.php" method="post">
                 <div class="form-row">
                     <input type="text" id="userName" name="name" placeholder="Имя *" required>
                     <input type="tel" id="userPhone" name="phone" placeholder="Телефон *" required>
