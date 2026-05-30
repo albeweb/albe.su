@@ -3018,7 +3018,7 @@ main {
     top: 500px;  /* было 650px, подняли на 200px */
     left: 400px;
     font-family: 'Geist', sans-serif;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 500;
     letter-spacing: 3px;
     background: linear-gradient(135deg, #F5B700, #FFD54F);
