@@ -2994,10 +2994,10 @@ main {
 /* 26. ДОПОЛНИТЕЛЬНЫЕ ФРАЗЫ В HERO */
 /* ============================================ */
 
-/* ФРАЗА 1: РАЗРАБОТКА ПОД КЛЮЧ - НАД ALBE, такое же расстояние от верхней границы ALBE */
+/* ФРАЗА 1: РАЗРАБОТКА ПОД КЛЮЧ - НАД ALBE, ОТСТУП ОТ ПРАВОГО КРАЯ 400px, ЖЕЛТЫМ ЦВЕТОМ */
 .hero-subtitle-top {
     position: absolute;
-    top: calc(50% - 120px);  /* расстояние от верхней границы ALBE */
+    top: 200px;
     right: 400px;
     font-family: 'Geist', sans-serif;
     font-size: 1.8rem;
@@ -3012,10 +3012,10 @@ main {
     animation: fadeInUp 0.6s ease-out 0.3s forwards;
 }
 
-/* ФРАЗА 2: МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ - ПОД ALBE, отступ от левого края 400px */
+/* ФРАЗА 2: МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ - ПОД ALBE, ОТСТУП ОТ ЛЕВОГО КРАЯ 400px */
 .hero-subtitle-bottom {
     position: absolute;
-    top: calc(50% + 120px);  /* расстояние от нижней границы ALBE */
+    top: 650px;
     left: 400px;
     font-family: 'Geist', sans-serif;
     font-size: 2rem;
@@ -3031,4 +3031,46 @@ main {
     text-shadow: 0 0 8px rgba(245, 183, 0, 0.3);
     opacity: 0;
     animation: fadeInUp 0.6s ease-out 0.5s forwards;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 1200px) {
+    .hero-subtitle-top {
+        font-size: 1.4rem;
+        letter-spacing: 6px;
+        right: 200px;
+        top: 160px;
+    }
+    
+    .hero-subtitle-bottom {
+        font-size: 1.6rem;
+        left: 200px;
+        top: 550px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-subtitle-top {
+        position: relative !important;
+        top: auto !important;
+        right: auto !important;
+        text-align: center !important;
+        margin: 80px auto 10px auto !important;
+        font-size: 0.9rem !important;
+        letter-spacing: 4px !important;
+        white-space: normal !important;
+        max-width: 90% !important;
+    }
+    
+    .hero-subtitle-bottom {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        text-align: center !important;
+        margin: 0 auto 20px auto !important;
+        font-size: 1rem !important;
+        letter-spacing: 1.5px !important;
+        white-space: normal !important;
+        max-width: 90% !important;
+    }
 }
