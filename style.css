@@ -2994,56 +2994,25 @@ main {
 /* 26. ДОПОЛНИТЕЛЬНЫЕ ФРАЗЫ В HERO */
 /* ============================================ */
 
-/* Родительский контейнер-обертка для ALBE и фраз */
-.albe-wrapper {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 30;
-}
-
-/* ФРАЗА 1: РАЗРАБОТКА ПОД КЛЮЧ - НАД ALBE, ЖЕЛТЫМ ЦВЕТОМ */
+/* ФРАЗА 1: РАЗРАБОТКА ПОД КЛЮЧ - отступ сверху 400px, отступ слева 300px, желтым цветом */
 .hero-subtitle-top {
+    position: absolute;
+    top: 400px;
+    left: 300px;
     font-family: 'Geist', sans-serif;
     font-size: 1.8rem;
     font-weight: 500;
     letter-spacing: 8px;
     color: #F5B700;
     white-space: nowrap;
+    z-index: 30;
+    pointer-events: none;
     text-shadow: 0 0 10px rgba(245, 183, 0, 0.5);
-    margin-bottom: 30px;
     opacity: 0;
     animation: fadeInUp 0.6s ease-out 0.3s forwards;
 }
 
-/* Буквы ALBE */
-.albe-letters {
-    display: flex;
-    gap: 3vw;
-    white-space: nowrap;
-}
-
-.albe-letter {
-    font-family: 'Zen Dots', monospace;
-    font-size: 14vw;
-    font-weight: 400;
-    color: white;
-    text-shadow: 0 0 10px rgba(245,183,0,0.5);
-    opacity: 0;
-    display: inline-block;
-    animation: flyFromTopLeft 0.7s ease-out forwards;
-}
-
-.albe-a {
-    color: #F5B700 !important;
-    text-shadow: 0 0 15px rgba(245,183,0,0.8);
-}
-
-/* ФРАЗА 2: МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ - ПОД ALBE, ОТСТУП 200px ОТ ЛЕВОГО КРАЯ */
+/* ФРАЗА 2: МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ - под ALBE слева, отступ от левого края 200px */
 .hero-subtitle-bottom {
     position: absolute;
     top: calc(50% + 120px);
@@ -3062,4 +3031,31 @@ main {
     text-shadow: 0 0 8px rgba(245, 183, 0, 0.3);
     opacity: 0;
     animation: fadeInUp 0.6s ease-out 0.5s forwards;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+    .hero-subtitle-top {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        text-align: center !important;
+        margin: 40px auto 10px auto !important;
+        font-size: 0.9rem !important;
+        letter-spacing: 4px !important;
+        white-space: normal !important;
+        max-width: 90% !important;
+    }
+    
+    .hero-subtitle-bottom {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        text-align: center !important;
+        margin: 0 auto 20px auto !important;
+        font-size: 1rem !important;
+        letter-spacing: 1.5px !important;
+        white-space: normal !important;
+        max-width: 90% !important;
+    }
 }
