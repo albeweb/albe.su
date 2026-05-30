@@ -366,7 +366,7 @@ h4 {
 .faq-question.active::after { content: '−'; }
 
 /* ============================================ */
-/* 7. КОНТАКТЫ */
+/* 7. КОНТАКТЫ (старый блок, оставлен для совместимости) */
 /* ============================================ */
 
 .contact-section {
@@ -3015,7 +3015,7 @@ main {
 /* ФРАЗА 2: МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ - ПОДНЯТА НА 200px ВЫШЕ */
 .hero-subtitle-bottom {
     position: absolute;
-    top: 480px;  /* было 650px, подняли на 200px */
+    top: 480px;
     left: 390px;
     font-family: 'Geist', sans-serif;
     font-size: 1.6rem;
@@ -3074,6 +3074,7 @@ main {
         max-width: 90% !important;
     }
 }
+
 /* ============================================ */
 /* ПОВЫШЕНИЕ КОНТРАСТНОСТИ — ТОЧЕЧНЫЕ ИСПРАВЛЕНИЯ */
 /* ============================================ */
@@ -3413,5 +3414,331 @@ main {
     
     .btn-primary {
         min-height: 48px !important;
+    }
+}
+
+/* ============================================ */
+/* 27. НОВЫЙ БЛОК КОНТАКТОВ (contacts-new-section) */
+/* ============================================ */
+
+.contacts-new-section {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 100px 28px 120px 28px;
+    position: relative;
+}
+
+.contacts-new-section .section-header {
+    text-align: center;
+    margin-bottom: 70px;
+    position: relative;
+    z-index: 2;
+}
+
+.contacts-new-section .section-header h2 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+}
+
+.contacts-new-section .section-header h2 span {
+    color: #f5b700;
+}
+
+.contacts-new-section .section-header h2::after {
+    display: none;
+}
+
+.contacts-new-section .section-desc {
+    font-size: 1.1rem;
+    color: #c6b8ec;
+    max-width: 560px;
+    margin: 18px auto 0;
+    font-weight: 400;
+}
+
+.contacts-new-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 44px;
+    align-items: stretch;
+    position: relative;
+    z-index: 2;
+}
+
+/* КАРТОЧКИ */
+.contact-new-info-card, .vk-new-widget-card {
+    background: #100c1c;
+    border-radius: 44px;
+    display: flex;
+    flex-direction: column;
+    min-height: 620px;
+    box-shadow: 0 25px 35px -18px rgba(0, 0, 0, 0.5);
+    transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* ЛЕВАЯ КАРТОЧКА */
+.contact-new-info-card {
+    border: 1px solid rgba(16, 185, 129, 0.45);
+    padding: 38px 34px;
+    justify-content: space-between;
+}
+
+.contact-new-info-card:hover {
+    border-color: #10b981;
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 32px 45px -12px rgba(16, 185, 129, 0.4), 0 0 0 1px rgba(16, 185, 129, 0.3) inset;
+}
+
+/* ПРАВАЯ КАРТОЧКА */
+.vk-new-widget-card {
+    border: 1px solid rgba(76, 29, 149, 0.45);
+    padding: 38px 30px 40px 30px;
+}
+
+.vk-new-widget-card:hover {
+    border-color: #4c1d95;
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 32px 45px -12px rgba(76, 29, 149, 0.4), 0 0 0 1px rgba(76, 29, 149, 0.3) inset;
+}
+
+/* ЛЕВАЯ КАРТОЧКА — детали */
+.contact-new-info-title {
+    font-size: 1.9rem;
+    font-weight: 700;
+    margin-bottom: 44px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    letter-spacing: -0.3px;
+    color: #ffffff;
+}
+
+.contact-new-info-title i {
+    font-size: 2rem;
+    color: #06b6d4;
+    background: rgba(6, 182, 212, 0.12);
+    padding: 12px;
+    border-radius: 28px;
+}
+
+.contact-new-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 40px;
+    padding: 6px 12px 6px 6px;
+    border-radius: 80px;
+    transition: all 0.25s ease;
+    border: 1px solid transparent;
+}
+
+.contact-new-item:hover {
+    border-color: rgba(6, 182, 212, 0.5);
+    background: rgba(6, 182, 212, 0.12);
+    transform: translateX(8px);
+}
+
+.contact-new-icon {
+    width: 52px;
+    height: 52px;
+    background: rgba(16, 185, 129, 0.12);
+    border-radius: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    color: #10b981;
+}
+
+.contact-new-details {
+    flex: 1;
+}
+
+.contact-new-details .label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    color: #06b6d4;
+    margin-bottom: 5px;
+}
+
+.contact-new-details .value {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #fff0fd;
+    word-break: break-word;
+}
+
+.contact-new-details .value a {
+    color: #fff0fd;
+    text-decoration: none;
+    border-bottom: 1px dashed rgba(6, 182, 212, 0.5);
+    transition: 0.2s;
+}
+
+.contact-new-details .value a:hover {
+    color: #06b6d4;
+    border-bottom-color: #06b6d4;
+}
+
+/* ПРАВАЯ КАРТОЧКА — VK */
+.vk-new-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+    padding-bottom: 18px;
+    border-bottom: 1.5px solid rgba(245, 183, 0, 0.35);
+}
+
+.vk-new-header i {
+    font-size: 2rem;
+    color: #f5b700;
+    background: rgba(245, 183, 0, 0.12);
+    padding: 12px;
+    border-radius: 28px;
+    transition: transform 0.2s;
+}
+
+.vk-new-header:hover i {
+    transform: scale(1.05);
+}
+
+.vk-new-header h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: -0.3px;
+}
+
+.vk-new-header p {
+    font-size: 0.8rem;
+    color: #ffffff;
+    margin-top: 4px;
+    opacity: 0.85;
+}
+
+.vk-group-widget {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    border-radius: 32px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.25);
+    min-height: 340px;
+    transition: all 0.3s;
+}
+
+.vk-group-widget iframe {
+    border-radius: 28px;
+    box-shadow: 0 8px 20px -10px black;
+    border: none;
+    width: 100%;
+    max-width: 100%;
+    background: #1a122a;
+    transition: transform 0.3s;
+}
+
+.vk-new-widget-card:hover .vk-group-widget iframe {
+    transform: scale(1.01);
+}
+
+.subscribers-simple {
+    text-align: center;
+    margin-top: 28px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+    letter-spacing: 0.3px;
+}
+
+.subscribers-simple span {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #f5b700;
+}
+
+.vk-button-wrapper {
+    text-align: center;
+    margin-top: 16px;
+}
+
+.join-button {
+    background: rgba(76, 29, 149, 0.2);
+    backdrop-filter: blur(8px);
+    border: 1.5px solid rgba(76, 29, 149, 0.45);
+    border-radius: 80px;
+    padding: 14px 32px;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.join-button i {
+    font-size: 1.5rem;
+    color: #f5b700;
+    transition: transform 0.2s;
+}
+
+.join-button span {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.join-button:hover {
+    background: rgba(76, 29, 149, 0.35);
+    border-color: #4c1d95;
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 12px 22px -8px rgba(76, 29, 149, 0.4);
+}
+
+.join-button:hover i {
+    transform: rotate(5deg) scale(1.1);
+    color: #f5b700;
+}
+
+@media (max-width: 950px) {
+    .contacts-new-grid {
+        gap: 32px;
+    }
+    .contact-new-info-card, .vk-new-widget-card {
+        min-height: auto;
+    }
+    .contacts-new-section .section-header h2 {
+        font-size: 2.6rem;
+    }
+    .join-button {
+        padding: 12px 28px;
+    }
+}
+
+@media (max-width: 750px) {
+    .contacts-new-grid {
+        grid-template-columns: 1fr;
+    }
+    .contacts-new-section {
+        padding: 60px 20px;
+    }
+    .contact-new-details .value {
+        font-size: 1.1rem;
+    }
+    .vk-new-header h3 {
+        font-size: 1.5rem;
     }
 }
