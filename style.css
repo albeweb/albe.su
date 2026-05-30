@@ -2994,11 +2994,11 @@ main {
 /* 26. ДОПОЛНИТЕЛЬНЫЕ ФРАЗЫ В HERO */
 /* ============================================ */
 
-/* ФРАЗА 1: РАЗРАБОТКА ПОД КЛЮЧ - отступ сверху 400px, отступ слева 300px, желтым цветом */
+/* ФРАЗА 1: РАЗРАБОТКА ПОД КЛЮЧ - ПО ПРАВОМУ КРАЮ, НАД ALBE, ЖЕЛТЫМ ЦВЕТОМ */
 .hero-subtitle-top {
     position: absolute;
-    top: 400px;
-    left: 300px;
+    bottom: calc(50% + 80px);
+    right: 100px;
     font-family: 'Geist', sans-serif;
     font-size: 1.8rem;
     font-weight: 500;
@@ -3012,10 +3012,10 @@ main {
     animation: fadeInUp 0.6s ease-out 0.3s forwards;
 }
 
-/* ФРАЗА 2: МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ - под ALBE слева, отступ от левого края 200px */
+/* ФРАЗА 2: МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ - ПОД ALBE СЛЕВА, ОТСТУП 200px */
 .hero-subtitle-bottom {
     position: absolute;
-    top: calc(50% + 120px);
+    top: calc(50% + 100px);
     left: 200px;
     font-family: 'Geist', sans-serif;
     font-size: 2rem;
@@ -3034,13 +3034,29 @@ main {
 }
 
 /* Мобильная адаптация */
+@media (max-width: 1200px) {
+    .hero-subtitle-top {
+        font-size: 1.4rem;
+        letter-spacing: 6px;
+        right: 50px;
+        bottom: calc(50% + 60px);
+    }
+    
+    .hero-subtitle-bottom {
+        font-size: 1.6rem;
+        left: 100px;
+        top: calc(50% + 80px);
+    }
+}
+
 @media (max-width: 768px) {
     .hero-subtitle-top {
         position: relative !important;
         top: auto !important;
-        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
         text-align: center !important;
-        margin: 40px auto 10px auto !important;
+        margin: 80px auto 10px auto !important;
         font-size: 0.9rem !important;
         letter-spacing: 4px !important;
         white-space: normal !important;
