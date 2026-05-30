@@ -2991,15 +2991,15 @@ main {
 }
 
 /* ============================================ */
-/* 26. ДОПОЛНИТЕЛЬНЫЕ ФРАЗЫ В HERO (РАЗРАБОТКА ПОД КЛЮЧ И МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ) */
+/* 26. ДОПОЛНИТЕЛЬНЫЕ ФРАЗЫ В HERO */
 /* ============================================ */
 
-/* ФРАЗА 1: РАЗРАБОТКА ПОД КЛЮЧ — начинается от буквы B, размер как у DIGITAL AGENCY */
+/* ФРАЗА 1: РАЗРАБОТКА ПОД КЛЮЧ - НАД ALBE, СИММЕТРИЧНО DIGITAL AGENCY */
 .hero-subtitle-top {
     position: absolute;
-    bottom: calc(50% + 120px);
+    bottom: calc(50% + 80px);
     left: 50%;
-    transform: translateX(calc(-50% + 45px));
+    transform: translateX(-50%);
     font-family: 'Geist', sans-serif;
     font-size: 1.8rem;
     font-weight: 500;
@@ -3016,12 +3016,11 @@ main {
     animation: fadeInUp 0.6s ease-out 0.3s forwards;
 }
 
-/* ФРАЗА 2: МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ — под ALBE, шрифт увеличен в 2 раза */
+/* ФРАЗА 2: МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ - ПОД ALBE СЛЕВА, ОТСТУП 200px ОТ ЛЕВОГО КРАЯ */
 .hero-subtitle-bottom {
     position: absolute;
     top: calc(50% + 100px);
-    left: 50%;
-    transform: translateX(-50%);
+    left: 200px;
     font-family: 'Geist', sans-serif;
     font-size: 2rem;
     font-weight: 500;
@@ -3043,13 +3042,12 @@ main {
     .hero-subtitle-top {
         font-size: 1.4rem;
         letter-spacing: 6px;
-        transform: translateX(calc(-50% + 35px));
-        bottom: calc(50% + 100px);
+        bottom: calc(50% + 60px);
     }
     
     .hero-subtitle-bottom {
         font-size: 1.6rem;
-        letter-spacing: 2px;
+        left: 100px;
         top: calc(50% + 80px);
     }
 }
@@ -3073,7 +3071,6 @@ main {
         position: relative !important;
         top: auto !important;
         left: auto !important;
-        transform: none !important;
         text-align: center !important;
         margin: 0 auto 20px auto !important;
         font-size: 1rem !important;
