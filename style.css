@@ -2994,64 +2994,63 @@ main {
 /* 26. ДОПОЛНИТЕЛЬНЫЕ ФРАЗЫ В HERO (РАЗРАБОТКА ПОД КЛЮЧ И МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ) */
 /* ============================================ */
 
-/* ФРАЗА 1: РАЗРАБОТКА ПОД КЛЮЧ — над ALBE, симметрично DIGITAL AGENCY */
+/* ФРАЗА 1: РАЗРАБОТКА ПОД КЛЮЧ — начинается от буквы B, размер как у DIGITAL AGENCY */
 .hero-subtitle-top {
     position: absolute;
-    top: calc(50% - 230px);
+    bottom: calc(50% + 120px);
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(calc(-50% + 45px));
     font-family: 'Geist', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.8rem;
     font-weight: 500;
     letter-spacing: 8px;
-    color: rgba(255, 255, 255, 0.85);
-    text-shadow: 0 0 8px rgba(245, 183, 0, 0.4);
-    white-space: nowrap;
-    z-index: 30;
-    pointer-events: none;
-    background: linear-gradient(135deg, #F5B700, #FFD54F);
+    background: linear-gradient(135deg, #FFFFFF, #B0B3B8);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    white-space: nowrap;
+    z-index: 30;
+    pointer-events: none;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
     opacity: 0;
     animation: fadeInUp 0.6s ease-out 0.3s forwards;
 }
 
-/* ФРАЗА 2: МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ — под ALBE слева, отступ 200px от левого края */
+/* ФРАЗА 2: МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ — под ALBE, шрифт увеличен в 2 раза */
 .hero-subtitle-bottom {
     position: absolute;
-    bottom: calc(50% - 180px);
-    left: 200px;
+    top: calc(50% + 100px);
+    left: 50%;
+    transform: translateX(-50%);
     font-family: 'Geist', sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    letter-spacing: 2px;
-    color: rgba(255, 255, 255, 0.7);
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    white-space: nowrap;
-    z-index: 30;
-    pointer-events: none;
-    background: linear-gradient(135deg, #B0B3B8, #FFFFFF);
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: 3px;
+    background: linear-gradient(135deg, #F5B700, #FFD54F);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    white-space: nowrap;
+    z-index: 30;
+    pointer-events: none;
+    text-shadow: 0 0 8px rgba(245, 183, 0, 0.3);
     opacity: 0;
     animation: fadeInUp 0.6s ease-out 0.5s forwards;
 }
 
-/* Мобильная адаптация для новых фраз */
+/* Мобильная адаптация */
 @media (max-width: 1200px) {
     .hero-subtitle-top {
-        top: calc(50% - 200px);
-        font-size: 1rem;
+        font-size: 1.4rem;
         letter-spacing: 6px;
+        transform: translateX(calc(-50% + 35px));
+        bottom: calc(50% + 100px);
     }
     
     .hero-subtitle-bottom {
-        left: 150px;
-        bottom: calc(50% - 160px);
-        font-size: 0.85rem;
-        letter-spacing: 1.5px;
+        font-size: 1.6rem;
+        letter-spacing: 2px;
+        top: calc(50% + 80px);
     }
 }
 
@@ -3060,10 +3059,11 @@ main {
         position: relative !important;
         top: auto !important;
         left: auto !important;
+        bottom: auto !important;
         transform: none !important;
         text-align: center !important;
         margin: 80px auto 10px auto !important;
-        font-size: 0.75rem !important;
+        font-size: 0.9rem !important;
         letter-spacing: 4px !important;
         white-space: normal !important;
         max-width: 90% !important;
@@ -3071,12 +3071,13 @@ main {
     
     .hero-subtitle-bottom {
         position: relative !important;
-        bottom: auto !important;
+        top: auto !important;
         left: auto !important;
+        transform: none !important;
         text-align: center !important;
-        margin: 10px auto 30px auto !important;
-        font-size: 0.7rem !important;
-        letter-spacing: 1px !important;
+        margin: 0 auto 20px auto !important;
+        font-size: 1rem !important;
+        letter-spacing: 1.5px !important;
         white-space: normal !important;
         max-width: 90% !important;
     }
@@ -3084,13 +3085,13 @@ main {
 
 @media (max-width: 480px) {
     .hero-subtitle-top {
-        font-size: 0.65rem !important;
+        font-size: 0.75rem !important;
         letter-spacing: 3px !important;
         margin-top: 60px !important;
     }
     
     .hero-subtitle-bottom {
-        font-size: 0.6rem !important;
-        margin-bottom: 20px !important;
+        font-size: 0.85rem !important;
+        margin-bottom: 15px !important;
     }
 }
