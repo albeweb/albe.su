@@ -118,6 +118,7 @@
 <section class="hero-section">
     <canvas id="matrixCanvas" class="hero-canvas-bottom"></canvas>
 
+    <!-- Градиентный фон -->
     <div class="masked-container">
         <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
             <defs>
@@ -143,6 +144,7 @@
         </svg>
     </div>
 
+    <!-- Буквы ALBE -->
     <div class="albe-letters">
         <span class="albe-letter albe-a" style="animation-delay: 0.2s;">A</span>
         <span class="albe-letter" style="animation-delay: 0.5s;">L</span>
@@ -150,9 +152,12 @@
         <span class="albe-letter" style="animation-delay: 1.1s;">E</span>
     </div>
 
-    <div class="hero-text left-phrase" id="leftPhrase"></div>
-    <div class="hero-text agency-tag" id="agencyTag">DIGITAL AGENCY</div>
+    <!-- Фраза под буквами ALBE с отступом 200px от левого края -->
+    <div class="hero-static-phrase">
+        МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ
+    </div>
 
+    <!-- Бейджи -->
     <div class="hero-badges" id="badgesGrid">
         <span class="badge">Премиум дизайн</span>
         <span class="badge">Мобильные приложения</span>
@@ -164,9 +169,7 @@
         <span class="badge">CRM интеграция</span>
     </div>
 
-    <div class="static-prefix" id="staticPrefix">МЫ СОЗДАЕМ</div>
-    <div class="dynamic-word-container" id="dynamicWordContainer"></div>
-
+    <!-- Статистика -->
     <div class="hero-stats" id="statsRow">
         <div class="stat-item"><div class="stat-number">7+</div><div class="stat-label">лет опыта</div></div>
         <div class="stat-item"><div class="stat-number">150+</div><div class="stat-label">проектов</div></div>
@@ -174,7 +177,6 @@
         <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">результат</div></div>
     </div>
 </section>
-
 <!-- ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ -->
 <section id="services" class="section" itemscope itemtype="https://schema.org/ItemList">
     <div class="container">
