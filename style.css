@@ -2994,10 +2994,10 @@ main {
 /* 26. ДОПОЛНИТЕЛЬНЫЕ ФРАЗЫ В HERO */
 /* ============================================ */
 
-/* ФРАЗА 1: РАЗРАБОТКА ПОД КЛЮЧ - ОТСТУП ОТ ПРАВОГО КРАЯ 400px, ПОДНЯТА НА 200px ВВЕРХ */
+/* ФРАЗА 1: РАЗРАБОТКА ПОД КЛЮЧ - такое же расстояние от ALBE, как и нижняя фраза */
 .hero-subtitle-top {
     position: absolute;
-    bottom: calc(50% + 200px);
+    bottom: calc(50% + 20px);  /* такое же расстояние, как у нижней фразы, но от нижней границы ALBE */
     right: 400px;
     font-family: 'Geist', sans-serif;
     font-size: 1.8rem;
@@ -3012,11 +3012,11 @@ main {
     animation: fadeInUp 0.6s ease-out 0.3s forwards;
 }
 
-/* ФРАЗА 2: МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ - ОТСТУП ОТ ЛЕВОГО КРАЯ 400px, ПОДНЯТА НА 100px ВЫШЕ */
+/* ФРАЗА 2: МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ - отступ от левого края 400px */
 .hero-subtitle-bottom {
     position: absolute;
-    top: calc(50% + 20px);  /* было +120px, стало +20px (подняли на 100px) */
-    left: 400px;  /* было 200px, стало 400px */
+    top: calc(50% + 20px);  /* расстояние от ALBE */
+    left: 400px;
     font-family: 'Geist', sans-serif;
     font-size: 2rem;
     font-weight: 500;
@@ -3039,13 +3039,13 @@ main {
         font-size: 1.4rem;
         letter-spacing: 6px;
         right: 200px;
-        bottom: calc(50% + 160px);
+        bottom: calc(50% + 20px);
     }
     
     .hero-subtitle-bottom {
         font-size: 1.6rem;
         left: 200px;
-        top: calc(50% + 40px);
+        top: calc(50% + 20px);
     }
 }
 
