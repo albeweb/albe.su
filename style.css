@@ -2994,11 +2994,11 @@ main {
 /* 26. ДОПОЛНИТЕЛЬНЫЕ ФРАЗЫ В HERO */
 /* ============================================ */
 
-/* ФРАЗА 1: РАЗРАБОТКА ПОД КЛЮЧ - ПО ПРАВОМУ КРАЮ, НАД ALBE, ЖЕЛТЫМ ЦВЕТОМ */
+/* ФРАЗА 1: РАЗРАБОТКА ПОД КЛЮЧ - ОТСТУП ОТ ПРАВОГО КРАЯ 400px, ПОДНЯТА НА 200px ВВЕРХ */
 .hero-subtitle-top {
     position: absolute;
-    bottom: calc(50% + 80px);
-    right: 100px;
+    bottom: calc(50% + 200px);
+    right: 400px;
     font-family: 'Geist', sans-serif;
     font-size: 1.8rem;
     font-weight: 500;
@@ -3038,8 +3038,8 @@ main {
     .hero-subtitle-top {
         font-size: 1.4rem;
         letter-spacing: 6px;
-        right: 50px;
-        bottom: calc(50% + 60px);
+        right: 200px;
+        bottom: calc(50% + 160px);
     }
     
     .hero-subtitle-bottom {
