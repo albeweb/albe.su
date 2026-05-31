@@ -1,1101 +1,3416 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>ALBE DIGITAL | Разработка дизайна и сайтов под ключ — премиум, SEO, AI</title>
-<meta name="description" content="ALBE digital — разработка дизайна и сайтов под ключ. Премиум дизайн, SEO-продвижение, AI-решения, мобильные приложения. Калькулятор стоимости, поддержка 24/7.">
-<meta name="keywords" content="разработка сайтов под ключ, премиум дизайн, seo продвижение, albe digital, создание сайтов, разработка дизайна">
-<meta name="author" content="Albe Digital">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://albe.su/">
-<link rel="alternate" href="https://albe.su/" hreflang="ru-ru">
-<link rel="sitemap" type="application/xml" href="sitemap.xml">
-<meta property="og:title" content="ALBE DIGITAL — разработка дизайна и сайтов под ключ">
-<meta property="og:description" content="Разработка дизайна и сайтов, SEO, AI, мобильные приложения. Калькулятор стоимости, прозрачные цены.">
-<meta property="og:image" content="images/bank.avif">
-<meta property="og:url" content="https://albe.su/">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#0D1117">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%23D62976'/%3E%3Ctext x='20' y='28' font-size='22' text-anchor='middle' fill='white' font-family='Zen Dots, monospace' font-weight='400'%3Ea%3C/text%3E%3C/svg%3E">
+/* ============================================ */
+/* 1. ЛОКАЛЬНОЕ ПОДКЛЮЧЕНИЕ ШРИФТОВ */
+/* ============================================ */
 
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
-
-    ym(109373410, 'init', {
-        clickmap:true,
-        trackLinks:true,
-        accurateTrackBounce:true,
-        webvisor:true,
-        ecommerce:"dataLayer"
-    });
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/109373410" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-
-<!-- Основные стили -->
-<link rel="stylesheet" href="style.css">
-
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@graph": [
-        {
-            "@type": "Organization",
-            "@id": "https://albe.su/#organization",
-            "name": "ALBE digital",
-            "url": "https://albe.su/",
-            "logo": "https://albe.su/favicon.ico",
-            "description": "Разработка дизайна и сайтов под ключ, премиум дизайн, SEO-продвижение, AI-решения, мобильные приложения.",
-            "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Москва",
-                "addressRegion": "Москва",
-                "postalCode": "127051",
-                "streetAddress": "Цветной бульвар",
-                "addressCountry": "RU"
-            },
-            "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "+79959870353",
-                "contactType": "sales",
-                "availableLanguage": "Russian",
-                "email": "albe.web@yandex.ru"
-            },
-            "sameAs": ["https://t.me/albe_web"],
-            "priceRange": "от 120 000 ₽"
-        },
-        {
-            "@type": "WebSite",
-            "@id": "https://albe.su/#website",
-            "url": "https://albe.su/",
-            "name": "ALBE DIGITAL",
-            "description": "Разработка дизайна и сайтов под ключ — премиум дизайн, SEO, продвижение",
-            "publisher": {"@id": "https://albe.su/#organization"},
-            "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://albe.su/search?q={search_term_string}",
-                "query-input": "required name=search_term_string"
-            }
-        },
-        {
-            "@type": "LocalBusiness",
-            "@id": "https://albe.su/#localbusiness",
-            "name": "ALBE digital",
-            "image": "https://albe.su/images/bank.avif",
-            "description": "Разработка дизайна и сайтов под ключ, премиум дизайн, SEO-продвижение, AI-решения, мобильные приложения.",
-            "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Москва",
-                "addressRegion": "Москва",
-                "postalCode": "127051",
-                "streetAddress": "Цветной бульвар",
-                "addressCountry": "RU"
-            },
-            "telephone": "+79959870353",
-            "email": "albe.web@yandex.ru",
-            "openingHours": "Mo-Fr 10:00-19:00",
-            "priceRange": "от 120 000 ₽",
-            "sameAs": ["https://t.me/albe_web"]
-        }
-    ]
+/* Geist Regular (400) - для основного текста */
+@font-face {
+    font-family: 'Geist';
+    src: url('Geist-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
-</script>
-</head>
-<body>
 
-<div id="header-placeholder"></div>
+/* Geist Medium (500) - для подзаголовков и H3 */
+@font-face {
+    font-family: 'Geist';
+    src: url('Geist-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
 
-<main>
-<!-- Hero баннер -->
-<section class="hero">
-    <div class="code-rain" aria-hidden="true">
-        <div class="code-line" style="left:5%;animation-duration:12s;animation-delay:0s">&lt;div class="digital"&gt;&lt;/div&gt;</div>
-        <div class="code-line" style="left:15%;animation-duration:10s;animation-delay:2s">const future = await ai();</div>
-        <div class="code-line" style="left:25%;animation-duration:14s;animation-delay:1s">import { design } from 'agency';</div>
-        <div class="code-line" style="left:35%;animation-duration:9s;animation-delay:4s">function createProduct() { return ∞; }</div>
-        <div class="code-line" style="left:45%;animation-duration:15s;animation-delay:.5s">.digital-agency { opacity: 1; }</div>
-        <div class="code-line" style="left:55%;animation-duration:11s;animation-delay:3s">npm install premium-website</div>
-        <div class="code-line" style="left:65%;animation-duration:13s;animation-delay:5s">&lt;SEO speed="fast" /&gt;</div>
-        <div class="code-line" style="left:75%;animation-duration:8s;animation-delay:2.5s">git commit -m "launch success"</div>
-        <div class="code-line" style="left:85%;animation-duration:16s;animation-delay:1.5s">const website = new ALBE();</div>
-        <div class="code-line" style="left:10%;animation-duration:11s;animation-delay:6s">&lt;React.StrictMode&gt;</div>
-        <div class="code-line" style="left:20%;animation-duration:13s;animation-delay:3.5s">function App() { return &lt;Hero /&gt;; }</div>
-        <div class="code-line" style="left:30%;animation-duration:9.5s;animation-delay:7s">.btn-gold { background: #F5B700; }</div>
-        <div class="code-line" style="left:40%;animation-duration:14.5s;animation-delay:1s">export default async function build()</div>
-        <div class="code-line" style="left:50%;animation-duration:12.5s;animation-delay:4.5s">import { SEO, Analytics } from '@/lib'</div>
-        <div class="code-line" style="left:60%;animation-duration:10.5s;animation-delay:8s">const meta = { title: "ALBE digital" }</div>
-        <div class="code-line" style="left:70%;animation-duration:15.5s;animation-delay:2s">@keyframes fadeIn { from { opacity: 0; } }</div>
-        <div class="code-line" style="left:80%;animation-duration:11.5s;animation-delay:5.5s">&lt;meta name="viewport" /&gt;</div>
-        <div class="code-line" style="left:90%;animation-duration:13.5s;animation-delay:.8s">console.log("ALBE launched")</div>
-    </div>
-    
-    <div class="container">
-        <div class="hero-wrapper">
-            <div class="hero-content">
-                <div class="hero-top">
-                    <div class="hero-tag">DIGITAL AGENCY</div>
-                    
-                    <h1 class="hero-title">
-                        <span class="hero-title-line1">разработка</span>
-                        <span class="hero-title-line2">
-                            <span class="word-teal">дизайна</span>
-                            <span class="word-white">и</span>
-                            <span class="word-gold">сайтов</span>
-                            <span class="word-white phrase-underkey"> под ключ</span>
-                        </span>
-                    </h1>
+/* Zen Dots - для логотипа и всех цифр */
+@font-face {
+    font-family: 'Zen Dots';
+    src: url('zen-dots.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
 
-                    <div class="hero-stats">
-                        <div class="stat-item"><div class="stat-number">7+</div><div class="stat-label">лет опыта</div></div>
-                        <div class="stat-item"><div class="stat-number">150+</div><div class="stat-label">проектов</div></div>
-                        <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">поддержка</div></div>
-                        <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">результат</div></div>
-                    </div>
+/* ============================================ */
+/* 2. CSS-ПЕРЕМЕННЫЕ */
+/* ============================================ */
 
-                    <div class="services-badges">
-                        <span class="service-badge">Премиум дизайн</span>
-                        <span class="service-badge">Мобильные приложения</span>
-                        <span class="service-badge">AI решения</span>
-                        <span class="service-badge">UI/UX проектирование</span>
-                        <span class="service-badge">SEO стратегия</span>
-                        <span class="service-badge">Веб-разработка</span>
-                        <span class="service-badge">E-commerce</span>
-                        <span class="service-badge">CRM интеграция</span>
-                    </div>
-                </div>
+:root {
+    --color-yellow: #F5B700;
+    --color-green: #10B981;
+    --color-cyan: #06B6D4;
+    --color-purple: #4C1D95;
+    --white: #F5F5F5;
+    --gray: #B0B3B8;
+    --bg-dark: #0A0E17;
+    --card-bg: rgba(18, 18, 26, 0.85);
+    --gradient: linear-gradient(135deg, var(--color-yellow), var(--color-green), var(--color-cyan), var(--color-purple));
+    --gradient-yellow-green: linear-gradient(135deg, var(--color-yellow), var(--color-green));
+    --gradient-cyan-purple: linear-gradient(135deg, var(--color-cyan), var(--color-purple));
+}
 
-                <div class="hero-bottom">
-                    <div class="hero-quote">
-                        <span class="quote-text">В ALBE МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ — МЫ СОЗДАЕМ БИЗНЕС</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+/* ============================================ */
+/* 3. БАЗОВЫЕ СТИЛИ И СБРОС */
+/* ============================================ */
 
-<!-- КЕЙСЫ / ПОРТФОЛИО - АККОРДЕОН -->
-<section id="portfolio" class="section">
-    <div class="container">
-        <div class="section-header">
-            <h2>Кейсы / Портфолио</h2>
-            <a href="#portfolio" class="section-more-btn">Все проекты</a>
-        </div>
-        
-        <div class="portfolio-accordion">
-            <div class="accordion-panel active">
-                <div class="accordion-panel-header">
-                    <div class="panel-number">01</div>
-                    <div class="panel-title">
-                        <h3>NeoBank Platform</h3>
-                    </div>
-                    <div class="panel-stats">
-                        <span>320 ч</span>
-                        <span>640 000 ₽</span>
-                    </div>
-                </div>
-                <div class="accordion-panel-content">
-                    <div class="panel-image">
-                        <picture><source srcset="images/bank.avif" type="image/avif"><img src="images/bank.avif" alt="Neo Bank Platform"></picture>
-                    </div>
-                    <div class="panel-description">
-                        <p>Современная онлайн-банк платформа с персонализированными дашбордами, аналитикой расходов и интеграцией с платежными системами. Рост активных клиентов +210%.</p>
-                    </div>
-                    <div class="panel-bottom">
-                        <div class="panel-tech">
-                            <h4>Технологии</h4>
-                            <div class="tech-items">
-                                <span>React 18</span><span>Next.js 14</span><span>TypeScript</span><span>Node.js</span><span>PostgreSQL</span><span>Docker</span>
-                            </div>
-                        </div>
-                        <div class="panel-metrics">
-                            <div><span>Длительность</span><span>8 недель</span></div>
-                            <div><span>Команда</span><span>3 разработчика + дизайнер</span></div>
-                            <div><span>Результат</span><span>+210% клиентов</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="accordion-panel">
-                <div class="accordion-panel-header">
-                    <div class="panel-number">02</div>
-                    <div class="panel-title">
-                        <h3>AI система</h3>
-                    </div>
-                    <div class="panel-stats">
-                        <span>480 ч</span>
-                        <span>960 000 ₽</span>
-                    </div>
-                </div>
-                <div class="accordion-panel-content">
-                    <div class="panel-image">
-                        <picture><source srcset="images/ai.avif" type="image/avif"><img src="images/ai.avif" alt="AI рекомендательная система"></picture>
-                    </div>
-                    <div class="panel-description">
-                        <p>Нейросетевая рекомендательная система для крупного интернет-магазина. Персонализация предложений увеличила конверсию на 34%.</p>
-                    </div>
-                    <div class="panel-bottom">
-                        <div class="panel-tech">
-                            <h4>Технологии</h4>
-                            <div class="tech-items">
-                                <span>Python</span><span>Django</span><span>TensorFlow</span><span>PyTorch</span><span>Redis</span><span>React</span>
-                            </div>
-                        </div>
-                        <div class="panel-metrics">
-                            <div><span>Длительность</span><span>12 недель</span></div>
-                            <div><span>Команда</span><span>2 ML инженера + 2 разработчика</span></div>
-                            <div><span>Результат</span><span>+34% конверсии</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="accordion-panel">
-                <div class="accordion-panel-header">
-                    <div class="panel-number">03</div>
-                    <div class="panel-title">
-                        <h3>FitTrack приложение</h3>
-                    </div>
-                    <div class="panel-stats">
-                        <span>600 ч</span>
-                        <span>1 200 000 ₽</span>
-                    </div>
-                </div>
-                <div class="accordion-panel-content">
-                    <div class="panel-image">
-                        <picture><source srcset="images/app.avif" type="image/avif"><img src="images/app.avif" alt="FitTrack приложение"></picture>
-                    </div>
-                    <div class="panel-description">
-                        <p>Мобильное приложение для отслеживания тренировок и питания с интеграцией фитнес-браслетов и AI-тренером. Более 50 000 установок.</p>
-                    </div>
-                    <div class="panel-bottom">
-                        <div class="panel-tech">
-                            <h4>Технологии</h4>
-                            <div class="tech-items">
-                                <span>React Native</span><span>TypeScript</span><span>Redux Toolkit</span><span>Node.js</span><span>MongoDB</span><span>Firebase</span>
-                            </div>
-                        </div>
-                        <div class="panel-metrics">
-                            <div><span>Длительность</span><span>14 недель</span></div>
-                            <div><span>Команда</span><span>2 мобильных разработчика + бэкенд</span></div>
-                            <div><span>Результат</span><span>50 000+ установок</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="accordion-panel">
-                <div class="accordion-panel-header">
-                    <div class="panel-number">04</div>
-                    <div class="panel-title">
-                        <h3>Luxury Estate Portal</h3>
-                    </div>
-                    <div class="panel-stats">
-                        <span>720 ч</span>
-                        <span>1 440 000 ₽</span>
-                    </div>
-                </div>
-                <div class="accordion-panel-content">
-                    <div class="panel-image">
-                        <picture><source srcset="images/bank.avif" type="image/avif"><img src="images/bank.avif" alt="Luxury Estate Portal"></picture>
-                    </div>
-                    <div class="panel-description">
-                        <p>Премиум портал для продажи элитной недвижимости с 3D-турами, интеграцией с CRM и автоматическим расчетом ипотеки. +40% среднего чека.</p>
-                    </div>
-                    <div class="panel-bottom">
-                        <div class="panel-tech">
-                            <h4>Технологии</h4>
-                            <div class="tech-items">
-                                <span>Vue 3</span><span>Nuxt 3</span><span>Laravel</span><span>MySQL</span><span>Three.js</span><span>Docker</span>
-                            </div>
-                        </div>
-                        <div class="panel-metrics">
-                            <div><span>Длительность</span><span>16 недель</span></div>
-                            <div><span>Команда</span><span>3 разработчика + дизайнер</span></div>
-                            <div><span>Результат</span><span>+40% среднего чека</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="accordion-panel">
-                <div class="accordion-panel-header">
-                    <div class="panel-number">05</div>
-                    <div class="panel-title">
-                        <h3>LogiSmart Platform</h3>
-                    </div>
-                    <div class="panel-stats">
-                        <span>840 ч</span>
-                        <span>1 680 000 ₽</span>
-                    </div>
-                </div>
-                <div class="accordion-panel-content">
-                    <div class="panel-image">
-                        <picture><source srcset="images/ai.avif" type="image/avif"><img src="images/ai.avif" alt="LogiSmart Platform"></picture>
-                    </div>
-                    <div class="panel-description">
-                        <p>Система управления логистикой с IoT-трекингом, оптимизацией маршрутов на основе AI. Снижение затрат на доставку на 25%.</p>
-                    </div>
-                    <div class="panel-bottom">
-                        <div class="panel-tech">
-                            <h4>Технологии</h4>
-                            <div class="tech-items">
-                                <span>Go</span><span>React</span><span>WebSocket</span><span>TimescaleDB</span><span>Kafka</span><span>Kubernetes</span>
-                            </div>
-                        </div>
-                        <div class="panel-metrics">
-                            <div><span>Длительность</span><span>20 недель</span></div>
-                            <div><span>Команда</span><span>4 разработчика + аналитик</span></div>
-                            <div><span>Результат</span><span>-25% затрат на доставку</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-<!-- ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ -->
-<section id="services" class="section" itemscope itemtype="https://schema.org/ItemList">
-    <div class="container">
-        <div class="section-header">
-            <h2 itemprop="name">Эксклюзивные решения</h2>
-            <a href="#services" class="section-more-btn">Все услуги</a>
-        </div>
-        <div class="services-grid">
-            <div class="service-card" itemscope itemtype="https://schema.org/Service">
-                <div class="segment seg-1"></div>
-                <div class="segment seg-2"></div>
-                <div class="segment seg-3"></div>
-                <div class="segment seg-4"></div>
-                <div class="corner-tl"></div>
-                <div class="corner-tr"></div>
-                <div class="corner-bl"></div>
-                <div class="corner-br"></div>
-                <div class="card-content">
-                    <div>
-                        <div class="color-strip">
-                            <div class="color-dot dot-pink"></div>
-                            <div class="color-dot dot-teal"></div>
-                            <div class="color-dot dot-mint"></div>
-                            <div class="color-dot dot-purple"></div>
-                        </div>
-                        <h3 itemprop="name">Веб-разработка</h3>
-                        <p itemprop="description">Современный стек: React, Vue, Node.js, Laravel. Высокая производительность и масштабируемость.</p>
-                    </div>
-                    <button class="card-btn">ПОДРОБНЕЕ</button>
-                </div>
-            </div>
-            <div class="service-card" itemscope itemtype="https://schema.org/Service">
-                <div class="segment seg-1"></div>
-                <div class="segment seg-2"></div>
-                <div class="segment seg-3"></div>
-                <div class="segment seg-4"></div>
-                <div class="corner-tl"></div>
-                <div class="corner-tr"></div>
-                <div class="corner-bl"></div>
-                <div class="corner-br"></div>
-                <div class="card-content">
-                    <div>
-                        <div class="color-strip">
-                            <div class="color-dot dot-pink"></div>
-                            <div class="color-dot dot-teal"></div>
-                            <div class="color-dot dot-mint"></div>
-                            <div class="color-dot dot-purple"></div>
-                        </div>
-                        <h3 itemprop="name">Иммерсивный дизайн</h3>
-                        <p itemprop="description">Микровзаимодействия, 3D-сцены, анимация. Визуальный язык, который запоминается.</p>
-                    </div>
-                    <button class="card-btn">ПОДРОБНЕЕ</button>
-                </div>
-            </div>
-            <div class="service-card" itemscope itemtype="https://schema.org/Service">
-                <div class="segment seg-1"></div>
-                <div class="segment seg-2"></div>
-                <div class="segment seg-3"></div>
-                <div class="segment seg-4"></div>
-                <div class="corner-tl"></div>
-                <div class="corner-tr"></div>
-                <div class="corner-bl"></div>
-                <div class="corner-br"></div>
-                <div class="card-content">
-                    <div>
-                        <div class="color-strip">
-                            <div class="color-dot dot-pink"></div>
-                            <div class="color-dot dot-teal"></div>
-                            <div class="color-dot dot-mint"></div>
-                            <div class="color-dot dot-purple"></div>
-                        </div>
-                        <h3 itemprop="name">E-commerce платформы</h3>
-                        <p itemprop="description">Интернет-магазины с конверсией 15%+, интеграция с 1С, CRM и маркетплейсами.</p>
-                    </div>
-                    <button class="card-btn">ПОДРОБНЕЕ</button>
-                </div>
-            </div>
-            <div class="service-card" itemscope itemtype="https://schema.org/Service">
-                <div class="segment seg-1"></div>
-                <div class="segment seg-2"></div>
-                <div class="segment seg-3"></div>
-                <div class="segment seg-4"></div>
-                <div class="corner-tl"></div>
-                <div class="corner-tr"></div>
-                <div class="corner-bl"></div>
-                <div class="corner-br"></div>
-                <div class="card-content">
-                    <div>
-                        <div class="color-strip">
-                            <div class="color-dot dot-pink"></div>
-                            <div class="color-dot dot-teal"></div>
-                            <div class="color-dot dot-mint"></div>
-                            <div class="color-dot dot-purple"></div>
-                        </div>
-                        <h3 itemprop="name">SEO и аналитика</h3>
-                        <p itemprop="description">Полная оптимизация: от семантики до лидерских позиций в Яндексе и Google.</p>
-                    </div>
-                    <button class="card-btn">ПОДРОБНЕЕ</button>
-                </div>
-            </div>
-            <div class="service-card" itemscope itemtype="https://schema.org/Service">
-                <div class="segment seg-1"></div>
-                <div class="segment seg-2"></div>
-                <div class="segment seg-3"></div>
-                <div class="segment seg-4"></div>
-                <div class="corner-tl"></div>
-                <div class="corner-tr"></div>
-                <div class="corner-bl"></div>
-                <div class="corner-br"></div>
-                <div class="card-content">
-                    <div>
-                        <div class="color-strip">
-                            <div class="color-dot dot-pink"></div>
-                            <div class="color-dot dot-teal"></div>
-                            <div class="color-dot dot-mint"></div>
-                            <div class="color-dot dot-purple"></div>
-                        </div>
-                        <h3 itemprop="name">AI и Machine Learning</h3>
-                        <p itemprop="description">Чат-боты, рекомендательные системы, аналитика данных, генеративный AI.</p>
-                    </div>
-                    <button class="card-btn">ПОДРОБНЕЕ</button>
-                </div>
-            </div>
-            <div class="service-card" itemscope itemtype="https://schema.org/Service">
-                <div class="segment seg-1"></div>
-                <div class="segment seg-2"></div>
-                <div class="segment seg-3"></div>
-                <div class="segment seg-4"></div>
-                <div class="corner-tl"></div>
-                <div class="corner-tr"></div>
-                <div class="corner-bl"></div>
-                <div class="corner-br"></div>
-                <div class="card-content">
-                    <div>
-                        <div class="color-strip">
-                            <div class="color-dot dot-pink"></div>
-                            <div class="color-dot dot-teal"></div>
-                            <div class="color-dot dot-mint"></div>
-                            <div class="color-dot dot-purple"></div>
-                        </div>
-                        <h3 itemprop="name">Мобильные приложения</h3>
-                        <p itemprop="description">iOS, Android, React Native, Flutter. Полный цикл от идеи до публикации.</p>
-                    </div>
-                    <button class="card-btn">ПОДРОБНЕЕ</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+html, body {
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+    position: relative;
+    width: 100%;
+}
 
-<!-- AI РЕКЛАМА -->
-<section id="ai-reklama" class="section ai-reklama-section">
-    <div class="container">
-        <div class="section-header">
-            <h2>AI реклама</h2>
-            <a href="#services" class="section-more-btn">Все услуги</a>
-        </div>
-        <div class="ai-design-grid">
-            <div class="ai-cards-column">
-                <div class="ai-card">
-                    <div class="corner corner-tl"></div>
-                    <div class="corner corner-tr"></div>
-                    <div class="corner corner-bl"></div>
-                    <div class="corner corner-br"></div>
-                    <div class="lines">
-                        <div class="line line-1"></div>
-                        <div class="line line-2"></div>
-                        <div class="line line-3"></div>
-                    </div>
-                    <div class="particle" style="top:20%;left:10%"></div>
-                    <div class="particle" style="top:70%;left:85%"></div>
-                    <div class="particle" style="top:45%;left:30%"></div>
-                    <div class="particle" style="top:80%;left:20%"></div>
-                    <div class="particle" style="top:15%;left:70%"></div>
-                    <div>
-                        <h3>нейросети в рекламе</h3>
-                        <p>Создаём продающие видео-ролики премиум класса.</p>
-                        <div class="price-tag">от 20 000 ₽ / 30 сек</div>
-                    </div>
-                </div>
-                <div class="ai-card">
-                    <div class="corner corner-tl"></div>
-                    <div class="corner corner-tr"></div>
-                    <div class="corner corner-bl"></div>
-                    <div class="corner corner-br"></div>
-                    <div class="lines">
-                        <div class="line line-1"></div>
-                        <div class="line line-2"></div>
-                        <div class="line line-3"></div>
-                    </div>
-                    <div class="particle" style="top:20%;left:10%"></div>
-                    <div class="particle" style="top:70%;left:85%"></div>
-                    <div class="particle" style="top:45%;left:30%"></div>
-                    <div class="particle" style="top:80%;left:20%"></div>
-                    <div class="particle" style="top:15%;left:70%"></div>
-                    <div>
-                        <h3>скорость и качество</h3>
-                        <p>Ролик под ключ за 3 дня. Без потери качества. Правки, субтитры, адаптация под соцсети — включены в стоимость.</p>
-                        <div class="price-tag">срок от 3 дней</div>
-                    </div>
-                </div>
-                <div class="ai-card">
-                    <div class="corner corner-tl"></div>
-                    <div class="corner corner-tr"></div>
-                    <div class="corner corner-bl"></div>
-                    <div class="corner corner-br"></div>
-                    <div class="lines">
-                        <div class="line line-1"></div>
-                        <div class="line line-2"></div>
-                        <div class="line line-3"></div>
-                    </div>
-                    <div class="particle" style="top:20%;left:10%"></div>
-                    <div class="particle" style="top:70%;left:85%"></div>
-                    <div class="particle" style="top:45%;left:30%"></div>
-                    <div class="particle" style="top:80%;left:20%"></div>
-                    <div class="particle" style="top:15%;left:70%"></div>
-                    <div>
-                        <h3>премиум результат</h3>
-                        <p>Уникальный визуальный стиль, AI аватар, профессиональная озвучка и вовлекающий сценарий.</p>
-                        <div class="price-tag">окупаемость до 30 дней</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="ai-videos-wrapper">
-                <div class="ai-video-container">
-                    <div class="ai-video-item">
-                        <div class="video-placeholder" data-video-id="tyTxHyuEgCojbTw7uPFQxm">
-                            <div class="video-frame">
-                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='711' viewBox='0 0 400 711'%3E%3Crect width='400' height='711' fill='%23833AB4'/%3E%3Ctext x='200' y='355' text-anchor='middle' fill='white' font-size='18' font-family='Geist'%3EAI РОЛИК 1%3C/text%3E%3C/svg%3E" alt="Превью видео 1" loading="lazy">
-                                <div class="play-overlay">
-                                    <svg class="play-icon" viewBox="0 0 24 24" width="64" height="64" fill="white">
-                                        <path d="M8 5v14l11-7z"/>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ai-video-item">
-                        <div class="video-placeholder" data-video-id="wzToMP6ZpNgEfgDNY7ecHM">
-                            <div class="video-frame">
-                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='711' viewBox='0 0 400 711'%3E%3Crect width='400' height='711' fill='%23D62976'/%3E%3Ctext x='200' y='355' text-anchor='middle' fill='white' font-size='18' font-family='Geist'%3EAI РОЛИК 2%3C/text%3E%3C/svg%3E" alt="Превью видео 2" loading="lazy">
-                                <div class="play-overlay">
-                                    <svg class="play-icon" viewBox="0 0 24 24" width="64" height="64" fill="white">
-                                        <path d="M8 5v14l11-7z"/>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ai-video-item">
-                        <div class="video-placeholder" data-video-id="it8tEfjsnaLMaCU712FV2S">
-                            <div class="video-frame">
-                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='729' viewBox='0 0 400 729'%3E%3Crect width='400' height='729' fill='%23F56040'/%3E%3Ctext x='200' y='364' text-anchor='middle' fill='white' font-size='18' font-family='Geist'%3EAI РОЛИК 3%3C/text%3E%3C/svg%3E" alt="Превью видео 3" loading="lazy">
-                                <div class="play-overlay">
-                                    <svg class="play-icon" viewBox="0 0 24 24" width="64" height="64" fill="white">
-                                        <path d="M8 5v14l11-7z"/>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+body {
+    font-family: 'Geist', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--white);
+    line-height: 1.5;
+    font-weight: 400;
+    scroll-behavior: smooth;
+    overflow-x: hidden !important;
+    max-width: 100vw;
+    position: relative;
+}
 
-<!-- КАК МЫ СОЗДАЁМ ЛИДЕРОВ РЫНКА -->
-<section id="process" class="section" itemscope itemtype="https://schema.org/HowTo">
-    <div class="container">
-        <div class="section-header">
-            <h2 itemprop="name">Как мы создаём лидеров рынка</h2>
-            <a href="#services" class="section-more-btn">Подробнее</a>
-        </div>
-        <div class="steps-container">
-            <div class="step-card" itemprop="step" itemscope itemtype="https://schema.org/HowToStep"><div class="step-num" itemprop="position">01</div><h3 itemprop="name">Аналитика</h3><p itemprop="description">Изучаем нишу, конкурентов, ЦА. Формируем KPI.</p></div>
-            <div class="step-card" itemprop="step" itemscope itemtype="https://schema.org/HowToStep"><div class="step-num" itemprop="position">02</div><h3 itemprop="name">Прототипирование</h3><p itemprop="description">Интерактивные прототипы, тестирование гипотез.</p></div>
-            <div class="step-card" itemprop="step" itemscope itemtype="https://schema.org/HowToStep"><div class="step-num" itemprop="position">03</div><h3 itemprop="name">Дизайн и код</h3><p itemprop="description">Пиксель-перфект, чистый код, ежедневные билды.</p></div>
-            <div class="step-card" itemprop="step" itemscope itemtype="https://schema.org/HowToStep"><div class="step-num" itemprop="position">04</div><h3 itemprop="name">SEO и запуск</h3><p itemprop="description">Техническая SEO-оптимизация, деплой, мониторинг.</p></div>
-        </div>
-    </div>
-</section>
+/* Эффект шума */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    pointer-events: none;
+    z-index: 1;
+}
 
-<!-- НАШИ КОМПЕТЕНЦИИ -->
-<section id="competences" class="section">
-    <div class="container">
-        <div class="section-header">
-            <h2>Наши компетенции</h2>
-            <a href="#services" class="section-more-btn">Подробнее</a>
-        </div>
-        <div class="competences-grid">
-            <div class="competence-card">
-                <h3>Frontend</h3>
-                <p>Современные интерфейсы</p>
-                <div class="competence-tech-list">
-                    <div class="tech-item" data-tech="react">React / Next.js</div>
-                    <div class="tech-item" data-tech="ts">TypeScript</div>
-                    <div class="tech-item" data-tech="redux">Redux / RTK</div>
-                    <div class="tech-item" data-tech="ssr">SSR / SSG</div>
-                    <div class="tech-item" data-tech="css">CSS3 / SASS / Tailwind</div>
-                </div>
-            </div>
-            <div class="competence-card">
-                <h3>Backend</h3>
-                <p>Надёжная архитектура</p>
-                <div class="competence-tech-list">
-                    <div class="tech-item" data-tech="node">Node.js / Nest.js</div>
-                    <div class="tech-item" data-tech="python">Python / Django</div>
-                    <div class="tech-item" data-tech="cpp">C++</div>
-                    <div class="tech-item" data-tech="postgres">PostgreSQL / MS SQL</div>
-                    <div class="tech-item" data-tech="redis">Redis / Elasticsearch</div>
-                    <div class="tech-item" data-tech="rabbitmq">RabbitMQ / Kafka</div>
-                </div>
-            </div>
-            <div class="competence-card">
-                <h3>DevOps и Cloud</h3>
-                <p>Масштабирование и инфраструктура</p>
-                <div class="competence-tech-list">
-                    <div class="tech-item" data-tech="kubernetes">Kubernetes</div>
-                    <div class="tech-item" data-tech="docker">Docker</div>
-                    <div class="tech-item" data-tech="yandex">Yandex Cloud / Selectel</div>
-                    <div class="tech-item" data-tech="gitlab">GitLab CI/CD</div>
-                    <div class="tech-item" data-tech="terraform">Terraform / Ansible</div>
-                    <div class="tech-item" data-tech="jenkins">Jenkins / ArgoCD</div>
-                </div>
-            </div>
-            <div class="competence-card">
-                <h3>Mobile Development</h3>
-                <p>Кроссплатформенные приложения</p>
-                <div class="competence-tech-list">
-                    <div class="tech-item" data-tech="reactnative">React Native / Expo</div>
-                    <div class="tech-item" data-tech="swift">Swift / Objective C</div>
-                    <div class="tech-item" data-tech="kotlin">Kotlin / Java</div>
-                    <div class="tech-item" data-tech="flutter">Flutter</div>
-                </div>
-            </div>
-            <div class="competence-card">
-                <h3>AI и Machine Learning</h3>
-                <p>Нейросети и анализ данных</p>
-                <div class="competence-tech-list">
-                    <div class="tech-item" data-tech="ml">ML / DL / NLP</div>
-                    <div class="tech-item" data-tech="python_ml">Python / Pandas / Sklearn</div>
-                    <div class="tech-item" data-tech="catboost">CatBoost / OpenVINO</div>
-                    <div class="tech-item" data-tech="airflow">Airflow / sqlalchemy</div>
-                    <div class="tech-item" data-tech="vision">Computer Vision</div>
-                    <div class="tech-item" data-tech="voice">Voice technologies ASR/TTS</div>
-                </div>
-            </div>
-            <div class="competence-card">
-                <h3>Testing и QA</h3>
-                <p>Качество и надежность</p>
-                <div class="competence-tech-list">
-                    <div class="tech-item" data-tech="postman">Postman / Swagger</div>
-                    <div class="tech-item" data-tech="jmeter">JMeter</div>
-                    <div class="tech-item" data-tech="testrail">TestRail</div>
-                    <div class="tech-item" data-tech="charles">Charles / Fiddler</div>
-                </div>
-            </div>
-            <div class="competence-card">
-                <h3>Architecture и Design</h3>
-                <p>Проектирование систем</p>
-                <div class="competence-tech-list">
-                    <div class="tech-item" data-tech="uml">UML 2.x / BPMN 2.0</div>
-                    <div class="tech-item" data-tech="figma">Figma</div>
-                    <div class="tech-item" data-tech="enterprise">Sparx Enterprise Architect</div>
-                    <div class="tech-item" data-tech="iso">ISO/IEC 12207 / 15288</div>
-                    <div class="tech-item" data-tech="scrum">SCRUM / Agile</div>
-                </div>
-            </div>
-            <div class="competence-card">
-                <h3>Data Analytics</h3>
-                <p>Аналитика больших данных</p>
-                <div class="competence-tech-list">
-                    <div class="tech-item" data-tech="bigdata">Big Data аналитика</div>
-                    <div class="tech-item" data-tech="trading">Trading аналитика</div>
-                    <div class="tech-item" data-tech="blockchain">Blockchain аналитика</div>
-                    <div class="tech-item" data-tech="graph">Graph analytics</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 80px;
+    position: relative;
+    z-index: 2;
+    overflow-x: hidden !important;
+}
 
-<!-- Калькулятор -->
-<section id="calculator" class="section">
-    <div class="container">
-        <div class="section-header">
-            <h2>Калькулятор стоимости</h2>
-            <a href="#services" class="section-more-btn">Все услуги</a>
-        </div>
-        <div class="price-table" id="staticPriceTable">
-            <h3>Примеры стоимости разработки</h3>
-            <div class="price-grid">
-                <div class="price-card"><h4>Лендинг / Старт</h4><div class="price">от 120 000 ₽</div><ul><li>Дизайн (UI/UX)</li><li>Frontend разработка</li><li>Базовая SEO оптимизация</li><li>Адаптивная вёрстка</li><li>Срок: 2-3 недели</li></ul></div>
-                <div class="price-card"><h4>Бизнес / Сайт услуг</h4><div class="price">от 250 000 ₽</div><ul><li>Дизайн (UI/UX)</li><li>Frontend + Backend</li><li>CMS (админ-панель)</li><li>SEO оптимизация</li><li>CRM интеграция</li><li>Срок: 4-6 недель</li></ul></div>
-                <div class="price-card"><h4>Премиум / Интернет-магазин</h4><div class="price">от 450 000 ₽</div><ul><li>Дизайн (UI/UX)</li><li>Frontend + Backend</li><li>CMS + CRM интеграция</li><li>Полная SEO оптимизация</li><li>Платёжные системы</li><li>1С интеграция</li><li>Срок: 6-8 недель</li></ul></div>
-                <div class="price-card"><h4>Enterprise / Портал</h4><div class="price">от 1 200 000 ₽</div><ul><li>Полный цикл разработки</li><li>AI / ML решения</li><li>Мобильное приложение</li><li>Техподдержка 24/7</li><li>Микросервисная архитектура</li><li>Срок: от 10 недель</li></ul></div>
-            </div>
-            <p class="price-note">Точная стоимость рассчитывается индивидуально в калькуляторе ниже</p>
-        </div>
-        <div class="calculator-card interactive-calculator" id="interactiveCalculator">
-            <div class="calculator-two-columns">
-                <div class="calculator-left">
-                    <div class="calc-group"><div class="calc-label">Услуги:</div><div class="calc-options" id="calcServices"><div data-service="design" class="calc-option">Дизайн (UI/UX)</div><div data-service="front" class="calc-option">Frontend</div><div data-service="back" class="calc-option">Backend</div><div data-service="seo" class="calc-option">SEO</div><div data-service="cms" class="calc-option">CMS</div><div data-service="crm" class="calc-option">CRM / ERP</div><div data-service="ai" class="calc-option">AI / ML</div><div data-service="mobile" class="calc-option">Мобильное приложение</div><div data-service="support" class="calc-option">Техподдержка</div></div></div>
-                    <div class="calc-group"><div class="calc-label">Сложность:</div><div class="calc-options" id="calcComplexity"><div data-complex="simple" class="calc-option">Старт (Лендинг)</div><div data-complex="medium" class="calc-option">Бизнес (Сайт услуг)</div><div data-complex="high" class="calc-option">Премиум (Магазин)</div><div data-complex="enterprise" class="calc-option">Enterprise (Портал)</div></div></div>
-                    <div class="calc-total-block"><div class="calc-price" id="calcPrice">0 ₽</div><div id="calcHoursInfo" style="font-size:.85rem;color:#B0C4DE"></div></div>
-                </div>
-                <div class="calculator-right stack-explanation" id="stackExplanation"><h4>Рекомендуемый стек</h4><p>Выберите услуги для расчёта</p></div>
-            </div>
-        </div>
-    </div>
-</section>
+/* ============================================ */
+/* 4. НАЗНАЧЕНИЕ ШРИФТОВ */
+/* ============================================ */
 
-<!-- Почему выбирают нас -->
-<section id="mission" class="section">
-    <div class="container">
-        <div class="section-header">
-            <h2>Почему выбирают нас</h2>
-            <a href="#contact" class="section-more-btn">О компании</a>
-        </div>
-        <div class="mission-grid-wrapper">
-            <div class="mission-text">
-                <p><strong>ALBE digital</strong> — это стратегический партнёр, а не просто подрядчик. Мы разрабатываем продукты, которые масштабируют бизнес и увеличивают прибыль. Каждый проект сопровождается глубокой <strong>SEO-проработкой</strong> и техническим аудитом, что гарантирует высокие позиции в поисковых системах с первых недель после запуска.</p>
-                <p>Наши клиенты из ритейла, финтеха и образования получают прирост органического трафика до 300% за 6 месяцев. Мы внедряем <strong>AI-решения</strong> для автоматизации маркетинга и продаж, а также разрабатываем мобильные приложения, повышающие лояльность аудитории. Работаем с брендами по всей России.</p>
-            </div>
-            <div class="mission-grid">
-                <picture><source srcset="images/bank.avif" type="image/avif"><img class="mission-grid-card" src="images/bank.avif" alt="Наша команда" loading="lazy"></picture>
-                <picture><source srcset="images/ai.avif" type="image/avif"><img class="mission-grid-card" src="images/ai.avif" alt="Процесс разработки" loading="lazy"></picture>
-                <picture><source srcset="images/app.avif" type="image/avif"><img class="mission-grid-card" src="images/app.avif" alt="Результаты работы" loading="lazy"></picture>
-                <picture><source srcset="images/office.avif" type="image/avif"><img class="mission-grid-card" src="images/office.avif" alt="Клиенты" loading="lazy"></picture>
-            </div>
-        </div>
-    </div>
-</section>
+h1, h2,
+.section-header h2,
+.contact-card h2,
+.price-table h3,
+.nav-link {
+    font-family: 'Geist', sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+}
 
-<!-- FAQ -->
-<section id="faq" class="section" itemscope itemtype="https://schema.org/FAQPage">
-    <div class="container">
-        <div class="section-header">
-            <h2>Часто задаваемые вопросы</h2>
-            <a href="#services" class="section-more-btn">Подробнее</a>
-        </div>
-        <div class="cases-accordion" id="faqAccordion">
-            <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <button class="case-lid">
-                    <div class="lid-left">
-                        <span class="case-number">КЕЙС 01</span>
-                        <span class="case-title" itemprop="name">Сколько стоит разработка сайта под ключ?</span>
-                    </div>
-                    <div class="case-handle"><div class="handle-bar"></div></div>
-                </button>
-                <div class="case-inside">
-                    <div class="case-content">
-                        <div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-                            <div itemprop="text">Стоимость разработки сайта рассчитывается индивидуально в нашем калькуляторе. Лендинг от 120 000 ₽, корпоративный сайт от 250 000 ₽, интернет-магазин от 450 000 ₽.</div>
-                            <div class="project-meta"><span class="meta-tag">индивидуальный расчёт</span><span class="meta-tag">прозрачные цены</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <button class="case-lid">
-                    <div class="lid-left">
-                        <span class="case-number">КЕЙС 02</span>
-                        <span class="case-title" itemprop="name">Какие сроки разработки сайта?</span>
-                    </div>
-                    <div class="case-handle"><div class="handle-bar"></div></div>
-                </button>
-                <div class="case-inside">
-                    <div class="case-content">
-                        <div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-                            <div itemprop="text">Сроки разработки сайта под ключ составляют от 3 до 12 недель в зависимости от сложности проекта.</div>
-                            <div class="project-meta"><span class="meta-tag">3–12 недель</span><span class="meta-tag">под ключ</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <button class="case-lid">
-                    <div class="lid-left">
-                        <span class="case-number">КЕЙС 03</span>
-                        <span class="case-title" itemprop="name">Даёте гарантию на SEO продвижение?</span>
-                    </div>
-                    <div class="case-handle"><div class="handle-bar"></div></div>
-                </button>
-                <div class="case-inside">
-                    <div class="case-content">
-                        <div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-                            <div itemprop="text">Да, мы гарантируем выполнение KPI по SEO продвижению. Заключаем договор с чёткими показателями.</div>
-                            <div class="project-meta"><span class="meta-tag">гарантия KPI</span><span class="meta-tag">договор</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <button class="case-lid">
-                    <div class="lid-left">
-                        <span class="case-number">КЕЙС 04</span>
-                        <span class="case-title" itemprop="name">Разрабатываете мобильные приложения?</span>
-                    </div>
-                    <div class="case-handle"><div class="handle-bar"></div></div>
-                </button>
-                <div class="case-inside">
-                    <div class="case-content">
-                        <div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-                            <div itemprop="text">Да, мы разрабатываем мобильные приложения под iOS, Android и кроссплатформенные решения.</div>
-                            <div class="project-meta"><span class="meta-tag">iOS / Android</span><span class="meta-tag">React Native</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <button class="case-lid">
-                    <div class="lid-left">
-                        <span class="case-number">КЕЙС 05</span>
-                        <span class="case-title" itemprop="name">Как происходит SEO оптимизация сайта?</span>
-                    </div>
-                    <div class="case-handle"><div class="handle-bar"></div></div>
-                </button>
-                <div class="case-inside">
-                    <div class="case-content">
-                        <div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-                            <div itemprop="text">SEO оптимизация включает технический аудит, сбор семантического ядра, оптимизацию метатегов и контента.</div>
-                            <div class="project-meta"><span class="meta-tag">технический аудит</span><span class="meta-tag">семантическое ядро</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <button class="case-lid">
-                    <div class="lid-left">
-                        <span class="case-number">КЕЙС 06</span>
-                        <span class="case-title" itemprop="name">Используете ли вы AI и нейросети?</span>
-                    </div>
-                    <div class="case-handle"><div class="handle-bar"></div></div>
-                </button>
-                <div class="case-inside">
-                    <div class="case-content">
-                        <div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-                            <div itemprop="text">Да, мы активно внедряем AI решения: чат-боты, рекомендательные системы, генеративный AI.</div>
-                            <div class="project-meta"><span class="meta-tag">чат-боты</span><span class="meta-tag">генеративный AI</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <button class="case-lid">
-                    <div class="lid-left">
-                        <span class="case-number">КЕЙС 07</span>
-                        <span class="case-title" itemprop="name">Предоставляете техническую поддержку?</span>
-                    </div>
-                    <div class="case-handle"><div class="handle-bar"></div></div>
-                </button>
-                <div class="case-inside">
-                    <div class="case-content">
-                        <div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-                            <div itemprop="text">Да, у нас есть круглосуточная техническая поддержка 24/7.</div>
-                            <div class="project-meta"><span class="meta-tag">24/7</span><span class="meta-tag">круглосуточно</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="case-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <button class="case-lid">
-                    <div class="lid-left">
-                        <span class="case-number">КЕЙС 08</span>
-                        <span class="case-title" itemprop="name">Как начать проект с ALBE digital?</span>
-                    </div>
-                    <div class="case-handle"><div class="handle-bar"></div></div>
-                </button>
-                <div class="case-inside">
-                    <div class="case-content">
-                        <div class="case-text" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-                            <div itemprop="text">Оставьте заявку на сайте или напишите в Telegram. Проведём бесплатную консультацию.</div>
-                            <div class="project-meta"><span class="meta-tag">бесплатная консультация</span><span class="meta-tag">telegram</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+h3, h4, h5, h6,
+.service-card h3, .portfolio-info h3, .step-card h3, .competence-card h3,
+.faq-question, .price-card h4, .price-card .price,
+.service-badge, .calc-label, .stack-explanation h4, .footer-logo, .footer h4,
+.step-num {
+    font-family: 'Geist', sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+}
 
-<!-- Контакты -->
-<section id="contact" class="contact-section" itemscope itemtype="https://schema.org/ContactPage">
-    <div class="container">
-        <div class="contact-card">
-            <div class="section-header">
-                <h2>Начнём проект?</h2>
-            </div>
-            <p class="contact-desc">Оставьте заявку — Мы свяжемся с вами в течение 3 часов</p>
-            <form id="mainForm" class="contact-form" action="#" method="post">
-                <div class="form-row">
-                    <input type="text" id="userName" placeholder="Имя *" required>
-                    <input type="tel" id="userPhone" placeholder="Телефон *" required>
-                </div>
-                <div class="form-row">
-                    <input type="email" id="userEmail" placeholder="Email *" required>
-                    <input type="text" id="userTelegram" placeholder="Telegram (username)">
-                </div>
-                <textarea rows="4" id="userMsg" placeholder="Опишите задачу"></textarea>
-                <textarea rows="3" id="userComment" placeholder="Комментарий (дополнительные пожелания)"></textarea>
-                <button type="submit" class="btn-primary">Отправить заявку</button>
-                <div id="formStatus" class="form-status"></div>
-            </form>
-        </div>
-    </div>
-</section>
-</main>
+.logo, 
+.stat-number,
+.accordion-panel .panel-number,
+.price-card .price,
+.calc-price,
+.step-num,
+.footer-hours span:last-child,
+.footer-price span:last-child,
+.panel-metrics span:last-child {
+    font-family: 'Zen Dots', monospace;
+}
 
-<div class="totop" id="toTopBtn">↑</div>
-<div id="footer-placeholder"></div>
+p, .service-card p, .portfolio-info p, .step-card p, .competence-card p,
+.mission-text p, .faq-answer, .footer p, .footer a, .tech-item, .calc-option,
+.time-breakdown-item, .stack-explanation p, input, textarea,
+.price-card li, .price-note, .panel-description p, .contact-desc {
+    font-family: 'Geist', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--gray);
+}
 
-<!-- Модальное окно -->
-<div id="serviceModal" class="service-modal">
-    <div class="modal-content">
-        <span class="modal-close">×</span>
-        <div class="modal-body">
-            <h3 id="modalTitle"></h3>
-            <div class="modal-description">
-                <p id="modalDescription"></p>
-            </div>
-            <div class="modal-stack">
-                <h4>Почему мы используем этот стек</h4>
-                <ul id="modalStackList"></ul>
-            </div>
-            <div class="modal-advantages">
-                <h4>Ключевые преимущества</h4>
-                <ul id="modalAdvantages"></ul>
-            </div>
-            <button class="modal-btn" id="modalContactBtn">Обсудить проект</button>
-        </div>
-    </div>
-</div>
+.service-badge, .quote-text { font-weight: 400; }
 
-<script src="common.js" defer></script>
+.quote-text {
+    font-size: 0.9rem;
+    color: var(--gray);
+    letter-spacing: 3px;
+    display: inline-block;
+}
 
-<script>
-// Кнопка наверх
-(function initToTop() {
-    const toTopBtn = document.getElementById('toTopBtn');
-    if (!toTopBtn) return;
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) toTopBtn.classList.add('visible');
-        else toTopBtn.classList.remove('visible');
-    });
-    toTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-})();
+/* ============================================ */
+/* 5. СТИЛИ ДЛЯ ЗАГОЛОВКОВ */
+/* ============================================ */
 
-// Отложенная загрузка видео
-(function initLazyKinescope() {
-    document.querySelectorAll('.video-placeholder').forEach(placeholder => {
-        const videoId = placeholder.getAttribute('data-video-id');
-        if (!videoId) return;
-        placeholder.addEventListener('click', () => {
-            if (placeholder.querySelector('iframe')) return;
-            const iframe = document.createElement('iframe');
-            iframe.src = `https://kinescope.io/embed/${videoId}?autoplay=1&controls=1&loop=1&show_logo=0&playsinline=1`;
-            iframe.allow = "autoplay; fullscreen; picture-in-picture; encrypted-media";
-            iframe.style.position = "absolute";
-            iframe.style.top = "0";
-            iframe.style.left = "0";
-            iframe.style.width = "100%";
-            iframe.style.height = "100%";
-            iframe.style.border = "none";
-            const videoFrame = placeholder.querySelector('.video-frame');
-            if (videoFrame) {
-                videoFrame.innerHTML = '';
-                videoFrame.appendChild(iframe);
-            }
-            placeholder.classList.add('loaded');
-        });
-    });
-})();
+h1 {
+    font-size: clamp(3rem, 8vw, 9rem);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--white);
+}
 
-// Данные для модального окна
-const serviceDetails = {
-    "Веб-разработка": {
-        description: "Мы создаём высокопроизводительные веб-приложения, которые выдерживают высокие нагрузки и обеспечивают мгновенный отклик. Наши решения масштабируются от стартапов до enterprise-уровня.",
-        stack: ["React / Next.js — для создания быстрых SPA и SSR-приложений с отличной SEO","TypeScript — типобезопасный код, который легче поддерживать и рефакторить","Node.js / Nest.js — высокопроизводительный бэкенд с модульной архитектурой","PostgreSQL / MongoDB — выбор БД под задачи проекта","Docker / Kubernetes — контейнеризация и оркестрация для лёгкого масштабирования"],
-        advantages: ["Скорость загрузки страниц до 0.3 секунды","Высокая безопасность благодаря TypeScript и аудиту кода","SEO-оптимизация из коробки с Next.js","Легкое масштабирование от 100 до 100 000+ пользователей","CI/CD пайплайны для быстрых и безопасных деплоев"]
-    },
-    "Иммерсивный дизайн": {
-        description: "Мы создаём дизайн, который не просто красив — он вовлекает пользователя в взаимодействие, запоминается и повышает конверсию. Микроанимации, 3D-сцены и плавные переходы делают ваш продукт уникальным.",
-        stack: ["Figma / Adobe XD — профессиональное прототипирование","Three.js — 3D-графика и анимация в браузере","GSAP / Framer Motion — плавные микроанимации","Lottie — легковесные JSON-анимации","WebGL — аппаратно-ускоренная графика"],
-        advantages: ["Увеличение вовлеченности пользователей на 40-60%","Повышение конверсии за счет понятной навигации","Премиум восприятие бренда","Адаптивный дизайн под все устройства","Оптимизированная производительность без лагов"]
-    },
-    "E-commerce платформы": {
-        description: "Разрабатываем интернет-магазины с нуля, которые конвертируют до 15% посетителей в покупателей. Полная интеграция с 1С, CRM, платежными системами и маркетплейсами.",
-        stack: ["Next.js / Nuxt.js — быстрый frontend с SSR","Node.js / Laravel — надёжный бэкенд","PostgreSQL — основная БД","Redis — кэширование и сессии","Elasticsearch — быстрый поиск по товарам","RabbitMQ — обработка заказов в очередях"],
-        advantages: ["Конверсия до 15%+","Интеграция с Wildberries, Ozon, Яндекс.Маркет","50+ платежных систем","Встроенная аналитика продаж","Автоматическая синхронизация с 1С"]
-    },
-    "SEO и аналитика": {
-        description: "Выводим сайты в топ-10 Яндекса и Google. Полный цикл: от сбора семантики до технической оптимизации и наращивания ссылочной массы.",
-        stack: ["Яндекс.Вебмастер / Google Search Console — мониторинг позиций","KeyCollector / Semrush — сбор семантического ядра","Screaming Frog — технический аудит","Яндекс.Метрика / GA4 — аналитика поведения","Ahrefs / Serpstat — анализ конкурентов"],
-        advantages: ["Рост трафика до 300% за 6 месяцев","Попадание в топ-10 по 70+ запросам","Техническая оптимизация под Core Web Vitals","Ежемесячная детальная отчетность","Гарантия KPI в договоре"]
-    },
-    "AI и Machine Learning": {
-        description: "Внедряем нейросети в ваш бизнес: от чат-ботов до рекомендательных систем и генеративного AI. Автоматизируем процессы и увеличиваем прибыль.",
-        stack: ["Python / FastAPI — основной язык для ML","TensorFlow / PyTorch — фреймворки глубокого обучения","CatBoost / LightGBM — градиентный бустинг","OpenAI / YandexGPT — генеративные модели","Airflow — оркестрация пайплайнов","PostgreSQL / ClickHouse — хранение данных"],
-        advantages: ["Автоматизация до 80% рутинных задач","Рост конверсии от персонализации на 25-40%","Чат-боты, отвечающие как люди","Точность прогнозов до 95%","Обработка терабайт данных в реальном времени"]
-    },
-    "Мобильные приложения": {
-        description: "Разрабатываем нативные и кроссплатформенные приложения под iOS и Android. Полный цикл: от идеи до публикации в App Store и Google Play.",
-        stack: ["React Native / Expo — быстрая кроссплатформа","Swift / Kotlin — нативная разработка","Flutter — единый код для iOS/Android","Firebase — аналитика и push-уведомления","GraphQL / REST API — связь с бэкендом","Realm / SQLite — локальное хранение"],
-        advantages: ["Публикация в App Store и Google Play","Оффлайн-режим и push-уведомления","Биометрическая авторизация","60 FPS производительность","Горячие обновления без стора"]
+h2 {
+    font-size: clamp(1.8rem, 5vw, 3.8rem);
+    margin-bottom: 2rem;
+    font-weight: 400;
+    position: relative;
+    display: inline-block;
+    color: var(--white);
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+    width: 70px;
+    height: 2px;
+    background: var(--gradient-yellow-green);
+}
+
+h3 {
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--white);
+}
+
+h4 {
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--white);
+}
+
+/* ============================================ */
+/* ЦВЕТНЫЕ ЗАГОЛОВКИ В КАРТОЧКАХ */
+/* ============================================ */
+
+.service-card h3 {
+    background: var(--gradient-yellow-green);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.portfolio-info h3 {
+    background: var(--gradient-cyan-purple);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.step-card h3 {
+    background: linear-gradient(135deg, var(--color-green), var(--color-cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.ai-card h3 {
+    background: linear-gradient(135deg, var(--color-yellow), var(--color-cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.section { padding: 100px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+
+/* ============================================ */
+/* 6. КАРТОЧКИ И ОБЩИЕ БЛОКИ */
+/* ============================================ */
+
+.portfolio-card, .step-card,
+.mission-photo, .faq-item, .cover-content, .calculator-card, .calc-option, 
+.contact-card, .price-table {
+    background: var(--card-bg);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    border-radius: 16px;
+}
+
+.service-card, .portfolio-card, .step-card, .mission-photo, .faq-item, .contact-card {
+    padding: 32px;
+}
+
+.contact-card:hover {
+    border-color: var(--color-yellow);
+    box-shadow: 0 20px 30px -12px rgba(245, 183, 0, 0.2);
+    backdrop-filter: blur(12px);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.section-header h2 { margin-bottom: 0; }
+
+.portfolio-card .portfolio-image {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #1A1A2A, #0B0B15);
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 36px;
+    margin-top: 48px;
+}
+
+.mission-grid .mission-grid-card {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    border-radius: 16px;
+}
+
+.mission-grid-wrapper {
+    display: flex;
+    gap: 50px;
+    align-items: stretch;
+}
+
+.mission-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mission-text p { margin-bottom: 1rem; }
+
+.mission-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.faq-item {
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.faq-question {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 22px 28px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-cyan);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    background: var(--card-bg);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    border-radius: 16px;
+}
+
+.faq-question:hover {
+    border-color: var(--color-cyan);
+    transform: translateY(-2px);
+    background: rgba(6, 182, 212, 0.1);
+    backdrop-filter: blur(8px);
+}
+
+.faq-answer {
+    padding: 0 28px 28px 28px;
+    color: var(--gray);
+    display: none;
+    background: var(--card-bg);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: none;
+    border-radius: 0 0 16px 16px;
+    margin-top: -2px;
+}
+
+.faq-answer.active { display: block; }
+.faq-question::after { content: '+'; font-size: 1.5rem; font-weight: 300; }
+.faq-question.active::after { content: '−'; }
+
+/* ============================================ */
+/* 7. КОНТАКТЫ */
+/* ============================================ */
+
+.contact-section {
+    padding: 100px 0;
+    background: #080A0F;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.contact-card {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-card h2 {
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-card h2::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 2px;
+    background: var(--gradient-yellow-green);
+}
+
+.contact-desc {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.contact-form input, .contact-form textarea,
+.calculator-card input, .calculator-card textarea {
+    width: 100%;
+    padding: 14px 18px;
+    background: #0F1117;
+    border: 1px solid #2A2E38;
+    color: var(--white);
+    margin-bottom: 22px;
+    transition: 0.2s;
+    border-radius: 12px;
+    font-size: 0.95rem;
+}
+
+.contact-form input:focus, .contact-form textarea:focus,
+.calculator-card input:focus, .calculator-card textarea:focus {
+    outline: none;
+    border-color: var(--color-cyan);
+    box-shadow: 0 0 10px rgba(6, 182, 212, 0.2);
+}
+
+.contact-form textarea { resize: vertical; min-height: 100px; }
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-status {
+    margin-top: 16px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* ============================================ */
+/* 8. HEADER */
+/* ============================================ */
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 20px 0;
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.header.scrolled {
+    background: rgba(10, 14, 23, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 12px 0;
+}
+
+.header:not(.scrolled) {
+    background: transparent;
+    backdrop-filter: none;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 80px;
+}
+
+.logo {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    text-decoration: none;
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    color: var(--white);
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+}
+
+.logo-letter {
+    position: relative;
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.logo:hover .logo-letter {
+    transform: translateY(-2px);
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 0.3px;
+    padding: 8px 0;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: var(--gradient-yellow-green);
+    transition: width 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    backdrop-filter: blur(2px);
+}
+
+.burger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    z-index: 1002;
+    position: relative;
+}
+
+.burger span {
+    width: 28px;
+    height: 2px;
+    background: var(--color-yellow);
+    transition: all 0.3s ease;
+}
+
+.burger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.burger.active span:nth-child(2) {
+    opacity: 0;
+}
+.burger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* ============================================ */
+/* 9. КАЛЬКУЛЯТОР */
+/* ============================================ */
+
+.calculator-card { padding: 40px; margin: 40px 0; }
+.calculator-two-columns { display: flex; gap: 40px; flex-wrap: wrap; }
+.calculator-left { flex: 1; min-width: 280px; }
+.calculator-right {
+    flex: 1;
+    min-width: 280px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 28px;
+    border-left: 3px solid var(--color-green);
+}
+
+.calc-group { margin-bottom: 30px; }
+.calc-label {
+    display: block;
+    margin-bottom: 12px;
+    font-weight: 500;
+    color: var(--color-cyan);
+    font-size: 0.9rem;
+}
+
+.calc-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.calc-option {
+    background: #11181F;
+    padding: 8px 18px;
+    cursor: pointer;
+    font-weight: 400;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--white);
+}
+
+.calc-option.selected {
+    background: var(--gradient);
+    color: var(--white);
+    border-color: transparent;
+}
+
+.calc-option:hover {
+    transform: translateY(-2px);
+    backdrop-filter: blur(4px);
+}
+
+.calc-total-block {
+    margin-top: 24px;
+    padding: 20px;
+    background: #0A0F14;
+    border-left: 3px solid var(--color-green);
+}
+
+.calc-price {
+    font-size: 1.6rem;
+    font-weight: 600;
+    background: var(--gradient-yellow-green);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    word-break: break-word;
+}
+
+.stack-explanation {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--gray);
+}
+
+.stack-explanation h4 {
+    color: var(--color-purple);
+    margin: 0 0 12px;
+    font-size: 1rem;
+}
+
+.time-breakdown {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.time-breakdown-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    font-size: 0.8rem;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.time-breakdown-item span:first-child { color: var(--color-green); }
+
+/* ============================================ */
+/* 10. КОМПЕТЕНЦИИ И ТЕХНОЛОГИИ */
+/* ============================================ */
+
+.steps-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    margin-top: 40px;
+}
+
+.step-card { flex: 1 1 200px; background: var(--card-bg); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px; padding: 28px; transition: all 0.35s ease; }
+.step-card:hover { transform: translateY(-5px); border-color: var(--color-cyan); }
+.step-num {
+    font-size: 2.2rem;
+    font-weight: 500;
+    background: var(--gradient-yellow-green);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.competences-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.competence-card {
+    position: relative;
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    padding: 28px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    cursor: default;
+    overflow: hidden;
+    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.3);
+}
+
+.competence-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+.competence-card:hover::before {
+    opacity: 1;
+}
+
+.competence-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--color-purple);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+    background: rgba(25, 25, 32, 0.98);
+}
+
+.competence-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--white), #C8D0E0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.02em;
+}
+
+.competence-card > p {
+    font-size: 0.8rem;
+    color: var(--gray);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    letter-spacing: 0.5px;
+}
+
+.competence-tech-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.tech-item {
+    position: relative;
+    display: inline-block;
+    background: rgba(17, 20, 28, 0.9);
+    padding: 8px 14px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 40px;
+    cursor: help;
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    width: fit-content;
+    color: var(--white);
+    letter-spacing: 0.3px;
+    backdrop-filter: blur(4px);
+}
+
+.tech-item:hover {
+    border-color: var(--color-cyan);
+    background: rgba(6, 182, 212, 0.15);
+    transform: translateX(6px) translateY(-2px);
+    box-shadow: 0 5px 15px rgba(6, 182, 212, 0.2);
+    color: var(--white);
+}
+
+.competence-card {
+    opacity: 0;
+    animation: fadeInUp 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+}
+
+.competence-card:nth-child(1) { animation-delay: 0.05s; }
+.competence-card:nth-child(2) { animation-delay: 0.1s; }
+.competence-card:nth-child(3) { animation-delay: 0.15s; }
+.competence-card:nth-child(4) { animation-delay: 0.2s; }
+.competence-card:nth-child(5) { animation-delay: 0.25s; }
+.competence-card:nth-child(6) { animation-delay: 0.3s; }
+.competence-card:nth-child(7) { animation-delay: 0.35s; }
+.competence-card:nth-child(8) { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
     }
-};
-
-function openServiceModal(serviceName) {
-    const details = serviceDetails[serviceName];
-    if (!details) return;
-    document.getElementById('modalTitle').textContent = serviceName;
-    document.getElementById('modalDescription').textContent = details.description;
-    document.getElementById('modalStackList').innerHTML = details.stack.map(item => `<li>${item}</li>`).join('');
-    document.getElementById('modalAdvantages').innerHTML = details.advantages.map(item => `<li>${item}</li>`).join('');
-    document.getElementById('serviceModal').classList.add('active');
-    document.body.style.overflow = 'hidden';
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-function closeModal() {
-    document.getElementById('serviceModal').classList.remove('active');
-    document.body.style.overflow = '';
+/* ============================================ */
+/* 11. ТАБЛИЦА ЦЕН */
+/* ============================================ */
+
+.price-table {
+    padding: 40px 48px;
+    margin: 40px 0;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.service-card').forEach(card => {
-        const btn = card.querySelector('.card-btn');
-        const title = card.querySelector('h3')?.textContent.trim();
-        if (btn && title) btn.addEventListener('click', (e) => { e.stopPropagation(); openServiceModal(title); });
-    });
-    document.querySelector('.modal-close')?.addEventListener('click', closeModal);
-    document.getElementById('serviceModal')?.addEventListener('click', (e) => { if (e.target === e.currentTarget) closeModal(); });
-    document.getElementById('modalContactBtn')?.addEventListener('click', () => { closeModal(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
-});
-</script>
-</body>
-</html>
+.price-table h3 {
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.price-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.price-card {
+    background: rgba(10, 14, 19, 0.7);
+    padding: 20px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.price-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-purple);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+}
+
+.price-card h4 {
+    font-size: 1.2rem;
+    color: var(--color-purple);
+    margin-bottom: 12px;
+}
+
+.price-card .price {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.price-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.price-card li {
+    font-size: 0.8rem;
+    padding: 6px 0;
+    padding-left: 20px;
+    position: relative;
+    color: var(--gray);
+}
+
+.price-card li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--color-green);
+}
+
+.price-note {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--gray);
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ============================================ */
+/* 12. FOOTER */
+/* ============================================ */
+
+.footer {
+    background: #05070A;
+    padding: 56px 0 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-logo {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.footer a {
+    color: var(--gray);
+    text-decoration: none;
+    transition: 0.2s;
+    font-size: 0.9rem;
+}
+
+.footer a:hover { color: var(--color-cyan); }
+
+.footer p {
+    font-size: 0.85rem;
+}
+
+/* ============================================ */
+/* 13. ТУЛТИПЫ ДЛЯ ТЕХНОЛОГИЙ */
+/* ============================================ */
+
+.tech-tooltip {
+    position: fixed;
+    background: #0F1419;
+    border: 1px solid var(--color-cyan);
+    padding: 16px 20px;
+    max-width: 360px;
+    width: max-content;
+    z-index: 2000;
+    border-radius: 16px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(12px);
+    font-weight: 400;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--white);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.tech-tooltip strong {
+    color: var(--color-cyan);
+    font-weight: 500;
+}
+
+/* ============================================ */
+/* 14. ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ — КВАНТОВЫЙ СТИЛЬ */
+/* ============================================ */
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 36px;
+    margin-top: 48px;
+    margin-bottom: 0px;
+    overflow-x: hidden;
+}
+
+.services-grid .service-card {
+    position: relative;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(12px);
+    border-radius: 28px;
+    overflow: hidden;
+    cursor: default;
+    aspect-ratio: 1.47 / 1;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 15px 35px -15px rgba(0, 0, 0, 0.3);
+    contain: paint;
+}
+
+.services-grid .service-card .segment {
+    position: absolute;
+    background: rgba(10, 10, 10, 0.9);
+    backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    transform-style: preserve-3d;
+    overflow: hidden;
+    top: 0;
+    bottom: 0;
+    transform: translateZ(-5px);
+    max-width: 100%;
+}
+
+.services-grid .service-card .seg-1 { 
+    left: 0%; 
+    width: 22%; 
+    height: 100%; 
+    border-radius: 28px 0 0 28px; 
+    border-right: none; 
+}
+.services-grid .service-card .seg-2 { 
+    left: 22%; 
+    width: 28%; 
+    height: 100%; 
+    border-left: none; 
+    border-right: none; 
+}
+.services-grid .service-card .seg-3 { 
+    left: 50%; 
+    width: 28%; 
+    height: 100%; 
+    border-left: none; 
+    border-right: none; 
+}
+.services-grid .service-card .seg-4 { 
+    left: 78%; 
+    width: 22%; 
+    height: 100%; 
+    border-radius: 0 28px 28px 0; 
+    border-left: none; 
+}
+
+.services-grid .service-card .segment::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 2px, transparent 2px, transparent 12px);
+    pointer-events: none;
+}
+
+.services-grid .service-card .segment::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,0.08), transparent 80%);
+    opacity: 0;
+    transition: opacity 0.15s;
+    pointer-events: none;
+}
+
+.services-grid .service-card:hover .segment::after {
+    opacity: 1;
+}
+
+.services-grid .service-card .corner-tl,
+.services-grid .service-card .corner-tr,
+.services-grid .service-card .corner-bl,
+.services-grid .service-card .corner-br {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-color: rgba(255, 255, 255, 0.3);
+    border-style: solid;
+    z-index: 20;
+    transition: all 0.2s;
+    pointer-events: none;
+}
+.services-grid .service-card .corner-tl { top: 16px; left: 16px; border-width: 2px 0 0 2px; }
+.services-grid .service-card .corner-tr { top: 16px; right: 16px; border-width: 2px 2px 0 0; }
+.services-grid .service-card .corner-bl { bottom: 16px; left: 16px; border-width: 0 0 2px 2px; }
+.services-grid .service-card .corner-br { bottom: 16px; right: 16px; border-width: 0 2px 2px 0; }
+
+.services-grid .service-card:hover .corner-tl { border-color: var(--color-yellow); filter: drop-shadow(0 0 6px var(--color-yellow)); }
+.services-grid .service-card:hover .corner-tr { border-color: var(--color-green); filter: drop-shadow(0 0 6px var(--color-green)); }
+.services-grid .service-card:hover .corner-bl { border-color: var(--color-cyan); filter: drop-shadow(0 0 6px var(--color-cyan)); }
+.services-grid .service-card:hover .corner-br { border-color: var(--color-purple); filter: drop-shadow(0 0 6px var(--color-purple)); }
+
+.services-grid .service-card .card-content {
+    position: relative;
+    z-index: 15;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px;
+    transform-style: preserve-3d;
+    transform: translateZ(25px);
+    pointer-events: none;
+}
+
+.services-grid .service-card .card-btn {
+    pointer-events: auto;
+    background: transparent;
+    border: 1.5px solid var(--color-yellow);
+    padding: 10px 20px;
+    width: 100%;
+    font-weight: 600;
+    color: var(--color-yellow);
+    cursor: pointer;
+    border-radius: 60px;
+    transition: all 0.2s;
+    backdrop-filter: blur(4px);
+    font-family: 'Geist', sans-serif;
+    margin-top: 16px;
+    font-size: 0.85rem;
+}
+
+.services-grid .service-card .card-btn:hover {
+    background: var(--gradient);
+    color: var(--white);
+    box-shadow: 0 0 20px var(--color-yellow);
+}
+
+.services-grid .service-card h3 {
+    font-family: 'Geist', sans-serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+    margin: 0 0 0.5rem 0;
+    background: var(--gradient-yellow-green);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.services-grid .service-card p {
+    font-family: 'Geist', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.4;
+    margin: 0;
+    color: var(--gray);
+}
+
+.services-grid .service-card .color-strip {
+    display: flex;
+    gap: 0.5rem;
+    margin: 0 0 0.75rem 0;
+}
+
+.services-grid .service-card .color-dot {
+    width: 18px;
+    height: 3px;
+    border-radius: 3px;
+}
+
+.services-grid .service-card .dot-pink { background: var(--color-yellow); }
+.services-grid .service-card .dot-teal { background: var(--color-green); }
+.services-grid .service-card .dot-mint { background: var(--color-cyan); }
+.services-grid .service-card .dot-purple { background: var(--color-purple); }
+
+/* ============================================ */
+/* 15. КИНЕТИЧЕСКИЕ КНОПКИ (3 СЕГМЕНТА) */
+/* ============================================ */
+
+.kinetic-wrapper {
+    display: inline-block;
+}
+
+.kinetic-btn {
+    position: relative;
+    width: auto;
+    min-width: 260px;
+    height: 56px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out;
+    display: inline-flex;
+}
+
+.kinetic-btn.header-telegram-btn {
+    min-width: 130px !important;
+    height: 42px !important;
+}
+
+.kinetic-btn.header-telegram-btn .segment-left {
+    border-radius: 40px 0 0 40px !important;
+}
+
+.kinetic-btn.header-telegram-btn .segment-right {
+    border-radius: 0 40px 40px 0 !important;
+}
+
+.kinetic-btn.header-telegram-btn .btn-text {
+    font-size: 0.75rem !important;
+    letter-spacing: 1.5px !important;
+}
+
+.kinetic-btn.small {
+    min-width: 200px;
+    height: 48px;
+}
+
+.kinetic-btn.large {
+    min-width: 360px;
+    height: 64px;
+}
+
+.kinetic-btn .segment {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background: #0A0A0C;
+    backdrop-filter: blur(4px);
+    transition: transform 0.18s cubic-bezier(0.2, 0.9, 0.4, 1.2), border-color 0.2s ease;
+    transform-style: preserve-3d;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.kinetic-btn .segment-left {
+    left: 0;
+    width: 33.333%;
+    border-top-left-radius: 60px;
+    border-bottom-left-radius: 60px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-right: none;
+    clip-path: polygon(0% 0%, 92% 0%, 86% 100%, 0% 100%);
+}
+
+.kinetic-btn .segment-center {
+    left: 33.333%;
+    width: 33.334%;
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    border-left: none;
+    border-right: none;
+    background: linear-gradient(135deg, #101012, #08080A);
+}
+
+.kinetic-btn .segment-right {
+    right: 0;
+    left: auto;
+    width: 33.333%;
+    border-top-right-radius: 60px;
+    border-bottom-right-radius: 60px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-left: none;
+    clip-path: polygon(14% 0%, 100% 0%, 100% 100%, 8% 100%);
+}
+
+.kinetic-btn:hover .segment-left {
+    border-color: var(--color-yellow);
+}
+
+.kinetic-btn:hover .segment-center {
+    border-top-color: var(--color-green);
+    border-bottom-color: var(--color-green);
+}
+
+.kinetic-btn:hover .segment-right {
+    border-color: var(--color-purple);
+}
+
+.kinetic-btn .segment::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(55deg, 
+        rgba(245, 183, 0, 0.06) 0px, 
+        rgba(245, 183, 0, 0.06) 2px, 
+        transparent 2px, 
+        transparent 10px,
+        rgba(16, 185, 129, 0.04) 10px,
+        rgba(16, 185, 129, 0.04) 12px,
+        transparent 12px,
+        transparent 22px,
+        rgba(6, 182, 212, 0.04) 22px,
+        rgba(6, 182, 212, 0.04) 24px,
+        transparent 24px,
+        transparent 32px
+    );
+    pointer-events: none;
+    opacity: 0.35;
+}
+
+.kinetic-btn .btn-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateZ(30px);
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 4px;
+    background: linear-gradient(135deg, #F5F5F5, #E0E0E0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    white-space: nowrap;
+    z-index: 20;
+    pointer-events: none;
+    transition: letter-spacing 0.2s ease, transform 0.2s ease;
+    font-family: 'Geist', sans-serif;
+}
+
+.kinetic-btn.small .btn-text {
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+}
+
+.kinetic-btn.large .btn-text {
+    font-size: 1rem;
+    letter-spacing: 5px;
+}
+
+.kinetic-btn:hover .btn-text {
+    letter-spacing: 6px;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    transform: translate(-50%, -50%) translateZ(35px);
+}
+
+.kinetic-btn.small:hover .btn-text {
+    letter-spacing: 5px;
+}
+
+.kinetic-btn.large:hover .btn-text {
+    letter-spacing: 8px;
+}
+
+.kinetic-btn .spark {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--color-yellow);
+    border-radius: 50%;
+    filter: blur(1px);
+    pointer-events: none;
+    z-index: 25;
+    opacity: 0;
+}
+
+@keyframes sparkFloat {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--dx), var(--dy)) scale(0);
+    }
+}
+
+.kinetic-btn:active {
+    transform: scale(0.97) !important;
+}
+
+.kinetic-btn:active .segment-left {
+    transform: translateX(-6px) rotateY(-4deg) !important;
+}
+
+.kinetic-btn:active .segment-right {
+    transform: translateX(6px) rotateY(4deg) !important;
+}
+
+.kinetic-btn:active .segment-center {
+    transform: scale(0.98) translateZ(5px) !important;
+}
+
+.kinetic-btn:active .btn-text {
+    letter-spacing: 2px;
+    transform: translate(-50%, -50%) translateZ(35px) scale(0.98);
+}
+
+/* ============================================ */
+/* 16. КИНЕТИЧЕСКАЯ КНОПКА НАВЕРХ — ПЛАВАЮЩАЯ */
+/* ============================================ */
+
+.kinetic-btn.totop-btn {
+    position: fixed !important;
+    bottom: 100px !important;
+    right: 100px !important;
+    min-width: 60px !important;
+    width: 60px !important;
+    height: 60px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    transform: none !important;
+    z-index: 9999 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: opacity 0.3s ease, visibility 0.3s ease !important;
+}
+
+.kinetic-btn.totop-btn.visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.kinetic-btn.totop-btn .segment-left,
+.kinetic-btn.totop-btn .segment-right {
+    display: block !important;
+    background: #0A0A0C !important;
+    backdrop-filter: blur(4px) !important;
+}
+
+.kinetic-btn.totop-btn .segment-left {
+    width: 50% !important;
+    left: 0 !important;
+    border-radius: 60px 0 0 60px !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    border-right: none !important;
+    clip-path: polygon(0% 0%, 100% 0%, 85% 100%, 0% 100%) !important;
+}
+
+.kinetic-btn.totop-btn .segment-right {
+    width: 50% !important;
+    right: 0 !important;
+    left: auto !important;
+    border-radius: 0 60px 60px 0 !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    border-left: none !important;
+    clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%) !important;
+}
+
+.kinetic-btn.totop-btn .segment-center {
+    display: none !important;
+}
+
+.kinetic-btn.totop-btn .btn-text {
+    font-size: 1.8rem !important;
+    letter-spacing: 0 !important;
+    background: var(--gradient) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    transform: translate(-50%, -50%) translateZ(30px) !important;
+}
+
+.kinetic-btn.totop-btn:hover .segment-left {
+    border-color: var(--color-yellow) !important;
+    transform: translateX(-3px) rotateY(-2deg) !important;
+}
+
+.kinetic-btn.totop-btn:hover .segment-right {
+    border-color: var(--color-purple) !important;
+    transform: translateX(3px) rotateY(2deg) !important;
+}
+
+.kinetic-btn.totop-btn:hover .btn-text {
+    letter-spacing: 2px !important;
+    transform: translate(-50%, -50%) translateZ(35px) !important;
+}
+
+/* ============================================ */
+/* 17. АККОРДЕОН FAQ В СТИЛЕ «КЕЙС» */
+/* ============================================ */
+
+.cases-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.case-item {
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+    perspective: 800px;
+}
+
+.case-item:hover {
+    border-color: var(--color-purple);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.case-lid {
+    position: relative;
+    padding: 0.8rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transform-origin: top center;
+    transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+    transform-style: preserve-3d;
+    z-index: 2;
+    background: transparent;
+    border: none;
+    width: 100%;
+    font-family: inherit;
+    text-align: left;
+}
+
+.case-item.active .case-lid {
+    transform: rotateX(-10deg) translateY(-8px);
+    border-bottom: 1px solid var(--color-cyan);
+}
+
+.lid-left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.case-number {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--color-purple);
+    background: rgba(76, 29, 149, 0.15);
+    padding: 0.15rem 0.7rem;
+    border-radius: 30px;
+    letter-spacing: 1px;
+    transition: all 0.2s;
+}
+
+.case-item.active .case-number {
+    background: var(--gradient);
+    color: var(--white);
+    box-shadow: 0 0 12px var(--color-cyan);
+}
+
+.case-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--white);
+    letter-spacing: -0.2px;
+}
+
+.case-handle {
+    width: 32px;
+    height: 32px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.handle-bar {
+    width: 20px;
+    height: 2px;
+    background: var(--gray);
+    border-radius: 4px;
+    transition: all 0.4s cubic-bezier(0.34, 1.2, 0.64, 1);
+    position: relative;
+}
+
+.handle-bar::before,
+.handle-bar::after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 2px;
+    background: var(--gray);
+    border-radius: 2px;
+    transition: all 0.4s;
+}
+
+.handle-bar::before {
+    left: -7px;
+    top: 0;
+}
+
+.handle-bar::after {
+    right: -7px;
+    top: 0;
+}
+
+.case-item.active .handle-bar {
+    background: var(--color-yellow);
+    box-shadow: 0 0 8px var(--color-yellow);
+    transform: rotate(180deg);
+}
+
+.case-item.active .handle-bar::before,
+.case-item.active .handle-bar::after {
+    background: var(--color-yellow);
+    box-shadow: 0 0 4px var(--color-yellow);
+}
+
+.case-inside {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.case-item.active .case-inside {
+    max-height: 280px;
+}
+
+.case-content {
+    padding: 0.2rem 1.5rem 1.2rem 1.5rem;
+    transform: translateZ(8px);
+}
+
+.case-text {
+    color: var(--gray);
+    line-height: 1.5;
+    font-size: 0.85rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 0.8rem;
+}
+
+.project-meta {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.meta-tag {
+    font-size: 0.65rem;
+    font-family: monospace;
+    color: var(--color-cyan);
+    background: rgba(6, 182, 212, 0.08);
+    padding: 0.15rem 0.6rem;
+    border-radius: 20px;
+    border-left: 1px solid var(--color-cyan);
+}
+
+.spark {
+    position: fixed;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    filter: blur(1px);
+    pointer-events: none;
+    z-index: 10000;
+    opacity: 0;
+}
+
+@keyframes sparkOpen {
+    0% { opacity: 1; transform: translate(0,0) scale(1); }
+    100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0); }
+}
+
+/* ============================================ */
+/* 18. AI РЕКЛАМА */
+/* ============================================ */
+
+.ai-reklama-section {
+    min-height: auto;
+    overflow: visible;
+}
+
+.ai-design-grid {
+    display: flex;
+    gap: 48px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.ai-cards-column {
+    flex: 3;
+    min-width: 260px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.ai-card {
+    position: relative;
+    background: var(--card-bg);
+    backdrop-filter: blur(14px);
+    border-radius: 32px;
+    padding: 1.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    flex: 1;
+    transform-style: preserve-3d;
+    cursor: default;
+    transition: box-shadow 0.3s ease;
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+.ai-card::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: var(--gradient);
+    border-radius: 34px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+.ai-card:hover::before { opacity: 0.7; }
+
+.ai-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255, 255, 255, 0.12), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+    border-radius: 32px;
+}
+.ai-card:hover::after { opacity: 1; }
+
+.ai-card .corner {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-color: rgba(255, 255, 255, 0.3);
+    border-style: solid;
+    transition: all 0.25s ease;
+    z-index: 5;
+    pointer-events: none;
+}
+.ai-card .corner-tl { top: 16px; left: 16px; border-width: 2px 0 0 2px; }
+.ai-card .corner-tr { top: 16px; right: 16px; border-width: 2px 2px 0 0; }
+.ai-card .corner-bl { bottom: 16px; left: 16px; border-width: 0 0 2px 2px; }
+.ai-card .corner-br { bottom: 16px; right: 16px; border-width: 0 2px 2px 0; }
+
+.ai-card:hover .corner-tl { border-color: var(--color-yellow); filter: drop-shadow(0 0 6px var(--color-yellow)); }
+.ai-card:hover .corner-tr { border-color: var(--color-green); filter: drop-shadow(0 0 6px var(--color-green)); }
+.ai-card:hover .corner-bl { border-color: var(--color-cyan); filter: drop-shadow(0 0 6px var(--color-cyan)); }
+.ai-card:hover .corner-br { border-color: var(--color-purple); filter: drop-shadow(0 0 6px var(--color-purple)); }
+
+.ai-card .lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+    overflow: hidden;
+    border-radius: 32px;
+}
+
+.ai-card .line {
+    position: absolute;
+    background: linear-gradient(90deg, transparent, var(--color-yellow), var(--color-green), var(--color-cyan), var(--color-purple), transparent);
+    height: 2px;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.ai-card:hover .line { opacity: 0.3; }
+
+.ai-card .line-1 { top: 15%; left: -100%; animation: slideLine 8s linear infinite; }
+.ai-card .line-2 { top: 50%; left: -100%; animation: slideLine 12s linear infinite reverse; }
+.ai-card .line-3 { top: 85%; left: -100%; animation: slideLine 6s linear infinite; }
+
+@keyframes slideLine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.ai-card .particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--gray);
+    border-radius: 1px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+}
+.ai-card:hover .particle { opacity: 0.6; }
+
+.ai-card h3 {
+    font-size: 1.6rem;
+    font-weight: 400;
+    background: linear-gradient(135deg, var(--color-yellow), var(--color-cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 1rem;
+    transition: transform 0.1s ease;
+}
+
+.ai-card p {
+    color: var(--gray);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    transition: transform 0.1s ease;
+}
+
+.ai-card .price-tag {
+    display: inline-block;
+    background: var(--gradient);
+    padding: 8px 16px;
+    border-radius: 30px;
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white);
+}
+
+.ai-videos-wrapper {
+    flex: 7;
+    min-width: 0;
+    overflow: visible;
+}
+
+.ai-video-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    overflow: visible;
+}
+
+.ai-video-item {
+    position: relative;
+    border-radius: 28px;
+    overflow: hidden;
+    border: 2px solid rgba(245, 183, 0, 0.5);
+    transition: all 0.3s ease;
+    background: #000;
+}
+.ai-video-item:hover {
+    border-color: var(--color-yellow);
+}
+
+.video-frame {
+    position: relative;
+    width: 100%;
+    padding-top: 177.78%;
+    background: #000;
+}
+.video-frame iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* ============================================ */
+/* 19. ПЛЕЙСХОЛДЕРЫ ДЛЯ ВИДЕО */
+/* ============================================ */
+
+.video-placeholder {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 28px;
+    overflow: hidden;
+}
+
+.video-placeholder .video-frame {
+    position: relative;
+    width: 100%;
+    padding-top: 177.78%;
+    background: #1A1A2E;
+    overflow: hidden;
+}
+
+.video-placeholder .video-frame img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.video-placeholder:hover .video-frame img {
+    transform: scale(1.05);
+}
+
+.play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease;
+    pointer-events: none;
+}
+
+.video-placeholder:hover .play-overlay {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================ */
+/* 20. УНИКАЛЬНЫЙ СКРОЛЛБАР В СТИЛЕ ГРАДИЕНТА */
+/* ============================================ */
+
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(18, 18, 26, 0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gradient);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--color-yellow), var(--color-green), var(--color-cyan), var(--color-purple));
+    opacity: 0.8;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-cyan) rgba(18, 18, 26, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    transition: background 0.3s ease;
+}
+
+.modal-content::-webkit-scrollbar {
+    width: 3px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: var(--gradient);
+    border-radius: 3px;
+}
+
+/* ============================================ */
+/* 21. СКРЫВАЕМ КИНЕТИЧЕСКИЕ КНОПКИ ВО ВСЕХ БЛОКАХ, КРОМЕ ХЕДЕРА И КОНТАКТОВ */
+/* ============================================ */
+
+.section .kinetic-btn,
+.section .kinetic-wrapper {
+    display: none !important;
+}
+
+.contact-section .kinetic-btn,
+.contact-section .kinetic-wrapper,
+.header .kinetic-btn,
+.header .kinetic-wrapper {
+    display: inline-flex !important;
+}
+
+/* ============================================ */
+/* 22. HERO БАННЕР (НА ВСЮ ВЫСОТУ) */
+/* ============================================ */
+
+/* Шапка — фиксированная поверх всего */
+.header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: transparent;
+}
+
+.header.scrolled {
+    background: rgba(10, 14, 23, 0.95);
+    backdrop-filter: blur(12px);
+}
+
+/* Плейсхолдер шапки */
+#header-placeholder {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    pointer-events: none;
+}
+
+#header-placeholder .header {
+    pointer-events: auto;
+}
+
+/* Hero — на всю высоту экрана */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    min-height: 100vh;
+    max-height: 100vh;
+    background: #05070A;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Компенсация для контента под hero */
+main {
+    padding-top: 0;
+}
+
+/* Первая секция после hero */
+#services {
+    margin-top: 0;
+    position: relative;
+    z-index: 2;
+    background: #05070A;
+}
+
+/* ============================================ */
+/* 23. HERO БАННЕР (ДОПОЛНИТЕЛЬНЫЕ СТИЛИ) */
+/* ============================================ */
+.hero-canvas-bottom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.masked-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+    pointer-events: none;
+}
+
+.masked-container svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-text {
+    position: absolute;
+    z-index: 30;
+    font-family: 'Geist', sans-serif;
+    color: white;
+    text-shadow: 0 0 5px currentColor;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.hero-text.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.albe-letters {
+    position: absolute;
+    top: calc(50% - 100px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 3vw;
+    z-index: 30;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.albe-letter {
+    font-family: 'Zen Dots', monospace;
+    font-size: 14vw;
+    font-weight: 400;
+    color: white;
+    text-shadow: 0 0 10px rgba(245,183,0,0.5);
+    opacity: 0;
+    display: inline-block;
+    animation: flyFromTopLeft 0.7s ease-out forwards;
+}
+
+.albe-a {
+    color: #F5B700 !important;
+    text-shadow: 0 0 15px rgba(245,183,0,0.8);
+}
+
+@keyframes flyFromTopLeft {
+    0% { opacity: 0; transform: translate(-100px, -100px) scale(0.6); }
+    100% { opacity: 1; transform: translate(0, 0) scale(1); }
+}
+
+.left-phrase {
+    top: calc(50% + 30px);
+    left: 100px;
+    font-family: 'Geist', sans-serif;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 600;
+    color: #FFFFFF;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+    white-space: nowrap;
+    letter-spacing: 2px;
+}
+
+.agency-tag {
+    top: calc(6% + 100px);
+    left: 100px;
+    font-family: 'Geist', monospace;
+    font-size: 1.8rem;
+    letter-spacing: 8px;
+    color: #FFFFFF;
+    text-shadow: 0 0 6px rgba(255,255,255,0.3);
+    white-space: nowrap;
+}
+
+.hero-stats {
+    position: absolute;
+    bottom: 100px;
+    left: 100px;
+    display: flex;
+    gap: 3rem;
+    z-index: 30;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.hero-stats.visible { opacity: 1; }
+
+.hero-stats .stat-item {
+    font-family: 'Geist', monospace;
+    font-size: 2.8rem;
+    text-align: center;
+    color: white;
+}
+
+.hero-stats .stat-item .stat-label {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    font-family: 'Geist', monospace;
+    color: #B0B3B8;
+    margin-top: 5px;
+}
+
+.hero-stats .stat-item:nth-child(1) .stat-number { color: #10B981; }
+.hero-stats .stat-item:nth-child(2) .stat-number { color: #06B6D4; }
+.hero-stats .stat-item:nth-child(3) .stat-number { color: #4C1D95; }
+.hero-stats .stat-item:nth-child(4) .stat-number { color: #F5B700; }
+.hero-stats .stat-number { font-size: 2.8rem; font-weight: 400; }
+
+.hero-badges {
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    max-width: 50%;
+    justify-content: flex-end;
+    z-index: 30;
+}
+
+.hero-badges .badge {
+    font-family: 'Geist', sans-serif;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(4px);
+    padding: 0.6rem 1.4rem;
+    border-radius: 60px;
+    font-size: 0.85rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #FFFFFF;
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+.static-prefix {
+    position: absolute;
+    right: 300px;
+    bottom: calc(28% + 50px);
+    font-family: 'Geist', sans-serif;
+    font-size: 4rem;
+    font-weight: 900;
+    color: #FFFFFF;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    letter-spacing: 2px;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 30;
+    text-align: right;
+    opacity: 0;
+}
+
+.dynamic-word-container {
+    position: absolute;
+    right: 100px;
+    bottom: calc(18% + 50px);
+    font-family: 'Geist', sans-serif;
+    font-size: 4rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 30;
+    text-align: right;
+    opacity: 0;
+}
+
+.dynamic-word-yellow {
+    color: #F5B700 !important;
+    text-shadow: 0 0 10px rgba(245,183,0,0.8);
+}
+
+.cursor {
+    display: inline-block;
+    width: 4px;
+    height: 3.73rem;
+    background-color: #F5B700;
+    vertical-align: middle;
+    margin-left: 8px;
+    animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* ============================================ */
+/* 24. МОДАЛЬНОЕ ОКНО ДЛЯ УСЛУГ */
+/* ============================================ */
+
+.service-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(12px);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.service-modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--color-yellow);
+    border-radius: 28px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    animation: modalSlideUp 0.3s ease;
+}
+
+@keyframes modalSlideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    font-size: 32px;
+    color: var(--gray);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.modal-close:hover {
+    color: var(--color-yellow);
+    transform: rotate(90deg);
+}
+
+.modal-body {
+    padding: 40px 32px;
+}
+
+.modal-body h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.modal-description p {
+    color: var(--gray);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.modal-stack h4,
+.modal-advantages h4 {
+    color: var(--color-yellow);
+    font-size: 1.1rem;
+    margin: 20px 0 12px 0;
+    letter-spacing: 1px;
+}
+
+.modal-stack ul,
+.modal-advantages ul {
+    list-style: none;
+    padding: 0;
+}
+
+.modal-stack li,
+.modal-advantages li {
+    color: var(--gray);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding: 8px 0 8px 24px;
+    position: relative;
+}
+
+.modal-stack li::before,
+.modal-advantages li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: var(--color-yellow);
+}
+
+.modal-btn {
+    background: transparent;
+    border: 2px solid var(--color-yellow);
+    color: var(--color-yellow);
+    padding: 14px 32px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 60px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 28px;
+    width: 100%;
+    font-family: 'Geist', sans-serif;
+}
+
+.modal-btn:hover {
+    background: var(--gradient);
+    color: var(--white);
+    border-color: transparent;
+    transform: translateY(-2px);
+}
+
+/* ============================================ */
+/* 25. ПОЛНАЯ МОБИЛЬНАЯ АДАПТАЦИЯ */
+/* ============================================ */
+
+/* Планшеты и маленькие десктопы */
+@media (max-width: 1200px) {
+    .container {
+        padding: 0 40px !important;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 30px !important;
+    }
+    
+    .competences-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 24px !important;
+    }
+    
+    .price-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px !important;
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 30px !important;
+    }
+    
+    .hero-stats {
+        gap: 2rem !important;
+        left: 80px !important;
+        bottom: 80px !important;
+    }
+    
+    .hero-stats .stat-item {
+        font-size: 2rem !important;
+    }
+    
+    .hero-stats .stat-number {
+        font-size: 2rem !important;
+    }
+    
+    .static-prefix {
+        font-size: 2.5rem !important;
+        right: 100px !important;
+    }
+    
+    .dynamic-word-container {
+        font-size: 2.5rem !important;
+        right: 50px !important;
+    }
+    
+    .cursor {
+        height: 2.5rem !important;
+    }
+    
+    .agency-tag {
+        font-size: 1.4rem !important;
+        left: 80px !important;
+    }
+    
+    .left-phrase {
+        font-size: clamp(1.3rem, 3.5vw, 2rem) !important;
+        left: 80px !important;
+    }
+    
+    .albe-letter {
+        font-size: 12vw !important;
+    }
+    
+    .albe-letters {
+        gap: 2.5vw !important;
+        top: calc(50% - 80px) !important;
+    }
+}
+
+/* Мобильные устройства до 768px */
+@media (max-width: 768px) {
+    /* Общие */
+    .container {
+        padding: 0 20px !important;
+    }
+    
+    .section {
+        padding: 60px 0 !important;
+    }
+    
+    .section-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 12px !important;
+        margin-bottom: 32px !important;
+    }
+    
+    .section-header h2 {
+        font-size: 1.8rem !important;
+        margin-bottom: 0 !important;
+    }
+    
+    /* Сетки */
+    .services-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+    
+    .services-grid .service-card {
+        aspect-ratio: auto !important;
+        min-height: 260px !important;
+    }
+    
+    .competences-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .price-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .steps-container {
+        flex-direction: column !important;
+    }
+    
+    .step-card {
+        width: 100% !important;
+    }
+    
+    .mission-grid-wrapper {
+        flex-direction: column !important;
+        gap: 30px !important;
+    }
+    
+    /* Hero блок — меняем с absolute на relative */
+    .hero-section {
+        height: auto !important;
+        min-height: 100vh !important;
+        max-height: none !important;
+        padding: 100px 0 80px !important;
+        overflow-x: hidden !important;
+    }
+    
+    .albe-letters {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        justify-content: center !important;
+        padding: 60px 0 20px 0 !important;
+        gap: 8vw !important;
+    }
+    
+    .albe-letter {
+        font-size: 15vw !important;
+    }
+    
+    .agency-tag {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        text-align: center !important;
+        margin: 20px auto 15px !important;
+        font-size: 0.9rem !important;
+        letter-spacing: 6px !important;
+        white-space: normal !important;
+        width: 100% !important;
+    }
+    
+    .left-phrase {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        text-align: center !important;
+        margin: 0 auto 20px !important;
+        font-size: 1rem !important;
+        white-space: normal !important;
+        max-width: 90% !important;
+    }
+    
+    .static-prefix {
+        position: relative !important;
+        right: auto !important;
+        bottom: auto !important;
+        text-align: center !important;
+        font-size: 1.3rem !important;
+        margin: 30px auto 10px !important;
+        white-space: normal !important;
+        max-width: 90% !important;
+    }
+    
+    .dynamic-word-container {
+        position: relative !important;
+        right: auto !important;
+        bottom: auto !important;
+        text-align: center !important;
+        font-size: 1.3rem !important;
+        margin: 0 auto 30px !important;
+        white-space: normal !important;
+        max-width: 90% !important;
+        line-height: 1.4 !important;
+    }
+    
+    .cursor {
+        height: 1.3rem !important;
+    }
+    
+    .hero-badges {
+        position: relative !important;
+        bottom: auto !important;
+        right: auto !important;
+        max-width: 100% !important;
+        justify-content: center !important;
+        margin: 30px 0 25px !important;
+        gap: 8px !important;
+    }
+    
+    .hero-badges .badge {
+        font-size: 0.65rem !important;
+        padding: 0.35rem 0.9rem !important;
+        white-space: nowrap !important;
+    }
+    
+    .hero-stats {
+        position: relative !important;
+        bottom: auto !important;
+        left: auto !important;
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+        gap: 20px !important;
+        margin: 20px 0 0 !important;
+    }
+    
+    .hero-stats .stat-item {
+        flex: 0 0 auto !important;
+        min-width: 70px !important;
+        font-size: 1.2rem !important;
+    }
+    
+    .hero-stats .stat-number {
+        font-size: 1.3rem !important;
+    }
+    
+    .hero-stats .stat-label {
+        font-size: 0.55rem !important;
+    }
+    
+    /* Отключаем тяжелые эффекты на мобильных */
+    .hero-canvas-bottom {
+        display: none !important;
+    }
+    
+    .masked-container {
+        display: none !important;
+    }
+    
+    /* Карточки услуг на мобильных */
+    .services-grid .service-card .card-content {
+        padding: 20px !important;
+    }
+    
+    .services-grid .service-card h3 {
+        font-size: 1.2rem !important;
+    }
+    
+    .services-grid .service-card p {
+        font-size: 0.85rem !important;
+    }
+    
+    .services-grid .service-card .corner-tl,
+    .services-grid .service-card .corner-tr,
+    .services-grid .service-card .corner-bl,
+    .services-grid .service-card .corner-br {
+        width: 20px !important;
+        height: 20px !important;
+    }
+    
+    .services-grid .service-card .corner-tl { top: 12px !important; left: 12px !important; }
+    .services-grid .service-card .corner-tr { top: 12px !important; right: 12px !important; }
+    .services-grid .service-card .corner-bl { bottom: 12px !important; left: 12px !important; }
+    .services-grid .service-card .corner-br { bottom: 12px !important; right: 12px !important; }
+    
+    /* Калькулятор */
+    .calculator-card {
+        padding: 24px !important;
+    }
+    
+    .calculator-two-columns {
+        flex-direction: column !important;
+        gap: 24px !important;
+    }
+    
+    .calculator-left,
+    .calculator-right {
+        min-width: auto !important;
+    }
+    
+    .calc-options {
+        gap: 8px !important;
+    }
+    
+    .calc-option {
+        padding: 6px 14px !important;
+        font-size: 0.75rem !important;
+    }
+    
+    .calc-price {
+        font-size: 1.3rem !important;
+    }
+    
+    .price-table {
+        padding: 24px !important;
+    }
+    
+    .price-table h3 {
+        font-size: 1.3rem !important;
+    }
+    
+    /* AI реклама */
+    .ai-design-grid {
+        flex-direction: column !important;
+        gap: 24px !important;
+    }
+    
+    .ai-cards-column {
+        order: 1 !important;
+    }
+    
+    .ai-videos-wrapper {
+        order: 2 !important;
+    }
+    
+    .ai-video-container {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+    
+    .ai-card {
+        padding: 20px !important;
+    }
+    
+    .ai-card h3 {
+        font-size: 1.3rem !important;
+    }
+    
+    .ai-card p {
+        font-size: 0.85rem !important;
+    }
+    
+    /* Форма */
+    .form-row {
+        grid-template-columns: 1fr !important;
+        gap: 0 !important;
+    }
+    
+    .contact-card {
+        padding: 24px !important;
+    }
+    
+    .contact-card h2 {
+        font-size: 1.8rem !important;
+    }
+    
+    .contact-form input,
+    .contact-form textarea {
+        padding: 12px 16px !important;
+        font-size: 0.9rem !important;
+    }
+    
+    /* FAQ */
+    .case-lid {
+        padding: 12px !important;
+    }
+    
+    .lid-left {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 6px !important;
+    }
+    
+    .case-title {
+        font-size: 0.85rem !important;
+        line-height: 1.3 !important;
+    }
+    
+    .case-number {
+        font-size: 0.6rem !important;
+    }
+    
+    .case-text {
+        font-size: 0.8rem !important;
+    }
+    
+    .meta-tag {
+        font-size: 0.6rem !important;
+    }
+    
+    /* Header и бургер-меню */
+    .header .container {
+        padding: 0 20px !important;
+    }
+    
+    .burger {
+        display: flex !important;
+    }
+    
+    .nav-menu {
+        position: fixed !important;
+        top: 0 !important;
+        right: -100% !important;
+        width: 80% !important;
+        max-width: 320px !important;
+        height: 100vh !important;
+        background: rgba(10, 14, 23, 0.98) !important;
+        backdrop-filter: blur(16px) !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        gap: 32px !important;
+        transition: right 0.3s ease !important;
+        z-index: 1001 !important;
+        padding: 40px !important;
+        border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+    
+    .nav-menu.active {
+        right: 0 !important;
+    }
+    
+    .nav-link {
+        font-size: 1.1rem !important;
+        padding: 12px 0 !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+    
+    .kinetic-btn.header-telegram-btn {
+        margin-top: 20px !important;
+    }
+    
+    /* Модальное окно */
+    .modal-body {
+        padding: 30px 20px !important;
+    }
+    
+    .modal-body h3 {
+        font-size: 1.4rem !important;
+    }
+    
+    .modal-description p,
+    .modal-stack li,
+    .modal-advantages li {
+        font-size: 0.85rem !important;
+    }
+    
+    .modal-btn {
+        padding: 12px 20px !important;
+        font-size: 0.9rem !important;
+    }
+    
+    /* Кинетические кнопки на мобильных */
+    .kinetic-btn {
+        min-width: 200px !important;
+        height: 48px !important;
+    }
+    
+    .kinetic-btn.large {
+        min-width: 260px !important;
+        height: 54px !important;
+    }
+    
+    .kinetic-btn .btn-text {
+        font-size: 0.75rem !important;
+        letter-spacing: 2px !important;
+    }
+    
+    .kinetic-btn.header-telegram-btn {
+        min-width: 110px !important;
+        height: 36px !important;
+    }
+    
+    .kinetic-btn.header-telegram-btn .btn-text {
+        font-size: 0.65rem !important;
+        letter-spacing: 1px !important;
+    }
+    
+    .kinetic-btn.totop-btn {
+        bottom: 20px !important;
+        right: 20px !important;
+        min-width: 50px !important;
+        width: 50px !important;
+        height: 50px !important;
+    }
+    
+    .kinetic-btn.totop-btn .btn-text {
+        font-size: 1.4rem !important;
+    }
+    
+    /* Футер */
+    .footer-grid {
+        flex-direction: column !important;
+        gap: 30px !important;
+        text-align: center !important;
+    }
+    
+    .footer-logo {
+        font-size: 1.2rem !important;
+    }
+    
+    .footer p,
+    .footer a {
+        font-size: 0.8rem !important;
+    }
+}
+
+/* Маленькие мобильные до 480px */
+@media (max-width: 480px) {
+    .agency-tag {
+        font-size: 0.75rem !important;
+        letter-spacing: 4px !important;
+    }
+    
+    .left-phrase {
+        font-size: 0.85rem !important;
+    }
+    
+    .static-prefix,
+    .dynamic-word-container {
+        font-size: 1.1rem !important;
+    }
+    
+    .hero-badges .badge {
+        font-size: 0.55rem !important;
+        padding: 0.25rem 0.7rem !important;
+    }
+    
+    .albe-letter {
+        font-size: 13vw !important;
+    }
+    
+    .albe-letters {
+        gap: 5vw !important;
+        padding: 40px 0 10px 0 !important;
+    }
+    
+    .price-card {
+        padding: 16px !important;
+    }
+    
+    .price-card h4 {
+        font-size: 1rem !important;
+    }
+    
+    .price-card .price {
+        font-size: 1.2rem !important;
+    }
+    
+    .price-card li {
+        font-size: 0.7rem !important;
+    }
+    
+    .competence-card {
+        padding: 20px !important;
+    }
+    
+    .competence-card h3 {
+        font-size: 1.2rem !important;
+    }
+    
+    .tech-item {
+        font-size: 0.7rem !important;
+        padding: 6px 12px !important;
+    }
+}
+
+/* Планшеты (между 768 и 1024) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    
+    .competences-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    
+    .price-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    
+    .ai-video-container {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+    
+    .kinetic-btn.totop-btn {
+        bottom: 50px !important;
+        right: 50px !important;
+    }
+}
+
+/* Для экранов с reduced motion — отключаем анимации */
+@media (prefers-reduced-motion: reduce) {
+    .services-grid .service-card,
+    .services-grid .service-card .segment,
+    .albe-letter,
+    .cursor,
+    .modal-content,
+    .kinetic-btn .segment,
+    .kinetic-btn .btn-text {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+    }
+    
+    .hero-canvas-bottom {
+        display: none !important;
+    }
+}
+
+/* Безопасные отступы для безопасной зоны на iPhone */
+@supports (padding: max(0px)) {
+    .container {
+        padding-left: max(20px, env(safe-area-inset-left)) !important;
+        padding-right: max(20px, env(safe-area-inset-right)) !important;
+    }
+    
+    @media (max-width: 768px) {
+        .hero-section {
+            padding-left: env(safe-area-inset-left) !important;
+            padding-right: env(safe-area-inset-right) !important;
+        }
+        
+        .nav-menu {
+            padding-top: max(40px, env(safe-area-inset-top)) !important;
+            padding-bottom: max(40px, env(safe-area-inset-bottom)) !important;
+        }
+    }
+}
+
+/* ============================================ */
+/* 26. ДОПОЛНИТЕЛЬНЫЕ ФРАЗЫ В HERO */
+/* ============================================ */
+
+/* ФРАЗА 1: РАЗРАБОТКА ПОД КЛЮЧ */
+.hero-subtitle-top {
+    position: absolute;
+    top: 200px;
+    right: 400px;
+    font-family: 'Geist', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 500;
+    letter-spacing: 8px;
+    color: #F5B700;
+    white-space: nowrap;
+    z-index: 30;
+    pointer-events: none;
+    text-shadow: 0 0 10px rgba(245, 183, 0, 0.5);
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out 0.3s forwards;
+}
+
+/* ФРАЗА 2: МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ - ПОДНЯТА НА 200px ВЫШЕ */
+.hero-subtitle-bottom {
+    position: absolute;
+    top: 480px;  /* было 650px, подняли на 200px */
+    left: 390px;
+    font-family: 'Geist', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    letter-spacing: 3px;
+    background: linear-gradient(135deg, #F5B700, #FFD54F);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    white-space: nowrap;
+    z-index: 30;
+    pointer-events: none;
+    text-shadow: 0 0 8px rgba(245, 183, 0, 0.3);
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out 0.5s forwards;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 1200px) {
+    .hero-subtitle-top {
+        font-size: 1.4rem;
+        letter-spacing: 6px;
+        right: 200px;
+        top: 160px;
+    }
+    
+    .hero-subtitle-bottom {
+        font-size: 1.6rem;
+        left: 200px;
+        top: 550px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-subtitle-top {
+        position: relative !important;
+        top: auto !important;
+        right: auto !important;
+        text-align: center !important;
+        margin: 80px auto 10px auto !important;
+        font-size: 0.9rem !important;
+        letter-spacing: 4px !important;
+        white-space: normal !important;
+        max-width: 90% !important;
+    }
+    
+    .hero-subtitle-bottom {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        text-align: center !important;
+        margin: 0 auto 20px auto !important;
+        font-size: 1rem !important;
+        letter-spacing: 1.5px !important;
+        white-space: normal !important;
+        max-width: 90% !important;
+    }
+}
+/* ============================================ */
+/* ПОВЫШЕНИЕ КОНТРАСТНОСТИ — ТОЧЕЧНЫЕ ИСПРАВЛЕНИЯ */
+/* ============================================ */
+
+/* 1. Текст "рекомендуемый стек" в калькуляторе */
+.stack-explanation h4 {
+    color: #06B6D4 !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+}
+
+/* 2. Текст внутри stack-explanation (выберите услуги для расчёта) */
+.stack-explanation p {
+    color: #E5E7EB !important;
+    font-size: 0.95rem !important;
+}
+
+/* 3. Цифры КЕЙС 01, 02 и т.д. в FAQ */
+.case-number {
+    color: #F5B700 !important;
+    background: rgba(245, 183, 0, 0.15) !important;
+    font-weight: 700 !important;
+}
+
+/* 4. Текст вопросов в FAQ */
+.case-title {
+    color: #FFFFFF !important;
+    font-weight: 500 !important;
+}
+
+/* 5. Текст ответов в FAQ */
+.case-text {
+    color: #D1D5DB !important;
+    line-height: 1.5 !important;
+}
+
+/* 6. Цены в карточках калькулятора */
+.price-card .price {
+    color: #F5B700 !important;
+    font-weight: 700 !important;
+}
+
+/* 7. Заголовки карточек цен */
+.price-card h4 {
+    color: #06B6D4 !important;
+    font-weight: 600 !important;
+}
+
+/* 8. Текст в калькуляторе (услуги) */
+.calc-option {
+    color: #D1D5DB !important;
+}
+
+.calc-option.selected {
+    color: #FFFFFF !important;
+}
+
+/* 9. Подписи в калькуляторе */
+.calc-label {
+    color: #F5B700 !important;
+    font-weight: 600 !important;
+}
+
+/* 10. Итоговая цена */
+.calc-price {
+    font-size: 1.8rem !important;
+    font-weight: 700 !important;
+}
+
+/* 11. Текст в модальном окне */
+.modal-description p,
+.modal-stack li,
+.modal-advantages li {
+    color: #D1D5DB !important;
+}
+
+/* 12. Текст "Все услуги" и "Подробнее" */
+.section-more-btn {
+    color: #06B6D4 !important;
+    font-weight: 500 !important;
+}
+
+/* 13. Текст в компетенциях */
+.competence-card > p,
+.tech-item {
+    color: #D1D5DB !important;
+}
+
+/* 14. Текст в миссии */
+.mission-text p {
+    color: #D1D5DB !important;
+}
+
+/* 15. Цена в AI карточках */
+.ai-card .price-tag {
+    background: linear-gradient(135deg, #F5B700, #10B981) !important;
+    color: #000000 !important;
+    font-weight: 700 !important;
+}
+
+/* ============================================ */
+/* УВЕЛИЧЕНИЕ ОБЛАСТЕЙ ПРИКОСНОВЕНИЯ */
+/* ============================================ */
+
+/* 1. Все ссылки в навигации — увеличенная область нажатия */
+.nav-link {
+    display: inline-block !important;
+    padding: 12px 16px !important;
+    margin: -8px -8px !important;
+    min-height: 48px !important;
+    min-width: 48px !important;
+    position: relative !important;
+}
+
+/* 2. Кнопки "Все услуги", "Подробнее" и т.д. */
+.section-more-btn,
+.card-btn,
+.modal-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 48px !important;
+    min-width: 48px !important;
+    padding: 12px 24px !important;
+    cursor: pointer !important;
+}
+
+/* 3. Карточки услуг — вся карточка кликабельна */
+.service-card {
+    cursor: pointer !important;
+}
+
+/* 4. Кнопки в калькуляторе (услуги, сложность) */
+.calc-option {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 44px !important;
+    padding: 8px 18px !important;
+    margin: 4px !important;
+    cursor: pointer !important;
+}
+
+/* 5. Элементы технологий в компетенциях */
+.tech-item {
+    display: inline-flex !important;
+    align-items: center !important;
+    min-height: 40px !important;
+    padding: 8px 16px !important;
+    margin: 4px !important;
+    cursor: pointer !important;
+}
+
+/* 6. Кнопки аккордеона FAQ */
+.case-lid {
+    padding: 16px 20px !important;
+    min-height: 60px !important;
+    cursor: pointer !important;
+}
+
+/* 7. Поля ввода в форме */
+.contact-form input,
+.contact-form textarea,
+.calculator-card input,
+.calculator-card textarea {
+    min-height: 48px !important;
+    padding: 12px 16px !important;
+}
+
+/* 8. Кнопка отправки формы */
+.btn-primary {
+    min-height: 52px !important;
+    padding: 14px 28px !important;
+    cursor: pointer !important;
+}
+
+/* 9. Ссылки в футере */
+.footer a {
+    display: inline-block !important;
+    padding: 8px 0 !important;
+    min-height: 40px !important;
+}
+
+/* 10. Бейджи в hero-секции */
+.hero-badges .badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    min-height: 44px !important;
+    padding: 8px 20px !important;
+    margin: 4px !important;
+}
+
+/* 11. Кнопка бургер-меню на мобильных */
+.burger {
+    min-width: 48px !important;
+    min-height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+}
+
+.burger span {
+    width: 28px !important;
+    height: 3px !important;
+}
+
+/* 12. Кнопка закрытия модалки */
+.modal-close {
+    min-width: 48px !important;
+    min-height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+}
+
+/* 13. Статистика в hero */
+.stat-item {
+    min-width: 80px !important;
+    min-height: 80px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: default !important;
+}
+
+/* 14. Видео-плейсхолдеры */
+.video-placeholder {
+    cursor: pointer !important;
+    min-height: 200px !important;
+}
+
+.play-overlay {
+    min-width: 64px !important;
+    min-height: 64px !important;
+}
+
+/* 15. Кнопка наверх (если есть) */
+.totop-btn {
+    min-width: 56px !important;
+    min-height: 56px !important;
+    cursor: pointer !important;
+}
+
+/* ============================================ */
+/* РАССТОЯНИЕ МЕЖДУ ЭЛЕМЕНТАМИ */
+/* ============================================ */
+
+/* Расстояние между ссылками в навигации */
+.nav-menu {
+    gap: 8px !important;
+}
+
+/* Расстояние между бейджами */
+.hero-badges {
+    gap: 12px !important;
+}
+
+/* Расстояние между опциями калькулятора */
+.calc-options {
+    gap: 12px !important;
+}
+
+/* Расстояние между технологиями */
+.competence-tech-list {
+    gap: 12px !important;
+}
+
+/* Расстояние между элементами аккордеона */
+.cases-accordion {
+    gap: 16px !important;
+}
+
+/* Расстояние между полями формы */
+.form-row {
+    gap: 20px !important;
+}
+
+.contact-form input,
+.contact-form textarea {
+    margin-bottom: 20px !important;
+}
+
+/* Расстояние между кнопками в футере */
+.footer-col ul li {
+    margin-bottom: 8px !important;
+}
+
+/* ============================================ */
+/* МОБИЛЬНАЯ АДАПТАЦИЯ (ещё больше отступы) */
+/* ============================================ */
+
+@media (max-width: 768px) {
+    .nav-menu {
+        gap: 16px !important;
+    }
+    
+    .nav-link {
+        padding: 14px 20px !important;
+        margin: 0 !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+    
+    .hero-badges {
+        gap: 10px !important;
+    }
+    
+    .hero-badges .badge {
+        min-height: 40px !important;
+        padding: 6px 14px !important;
+    }
+    
+    .calc-options {
+        gap: 10px !important;
+    }
+    
+    .calc-option {
+        min-height: 40px !important;
+        padding: 6px 14px !important;
+    }
+    
+    .case-lid {
+        padding: 14px 16px !important;
+    }
+    
+    .form-row {
+        gap: 16px !important;
+    }
+    
+    .contact-form input,
+    .contact-form textarea {
+        margin-bottom: 16px !important;
+    }
+    
+    .btn-primary {
+        min-height: 48px !important;
+    }
+}
