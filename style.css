@@ -3770,3 +3770,245 @@ main {
         font-size: 1.5rem;
     }
 }
+
+/* ============================================ */
+/* 28. АККОРДЕОН ПОРТФОЛИО / КЕЙСЫ */
+/* ============================================ */
+
+.portfolio-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+.accordion-panel {
+    background: rgba(18, 18, 26, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.accordion-panel:hover {
+    border-color: var(--color-purple);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.accordion-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 28px;
+    cursor: pointer;
+    background: rgba(10, 10, 10, 0.4);
+    transition: background 0.3s ease;
+}
+
+.accordion-panel-header:hover {
+    background: rgba(20, 20, 28, 0.6);
+}
+
+.accordion-panel.active .accordion-panel-header {
+    border-bottom: 1px solid rgba(6, 182, 212, 0.3);
+    background: rgba(10, 10, 10, 0.6);
+}
+
+.panel-number {
+    font-family: 'Zen Dots', monospace;
+    font-size: 1.4rem;
+    font-weight: 500;
+    background: var(--gradient-yellow-green);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    min-width: 70px;
+}
+
+.panel-title h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--white);
+}
+
+.panel-stats {
+    display: flex;
+    gap: 24px;
+    color: var(--gray);
+    font-size: 0.85rem;
+    font-family: 'Zen Dots', monospace;
+}
+
+.panel-stats span:first-child {
+    color: var(--color-cyan);
+}
+
+.panel-stats span:last-child {
+    color: var(--color-yellow);
+}
+
+.accordion-panel-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.accordion-panel.active .accordion-panel-content {
+    max-height: 600px;
+    padding: 24px 28px 28px 28px;
+}
+
+.panel-image {
+    margin-bottom: 24px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.panel-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 20px;
+    transition: transform 0.3s ease;
+}
+
+.panel-image:hover img {
+    transform: scale(1.02);
+}
+
+.panel-description p {
+    color: var(--gray);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.panel-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 24px;
+}
+
+.panel-tech {
+    flex: 2;
+    min-width: 200px;
+}
+
+.panel-tech h4 {
+    color: var(--color-cyan);
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+.tech-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tech-items span {
+    background: rgba(6, 182, 212, 0.1);
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    color: var(--white);
+    border: 1px solid rgba(6, 182, 212, 0.2);
+    transition: all 0.2s;
+}
+
+.tech-items span:hover {
+    background: rgba(6, 182, 212, 0.2);
+    border-color: var(--color-cyan);
+}
+
+.panel-metrics {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.panel-metrics div {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.panel-metrics div span:first-child {
+    color: var(--color-green);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.panel-metrics div span:last-child {
+    font-family: 'Zen Dots', monospace;
+    font-size: 0.85rem;
+    color: var(--white);
+}
+
+/* Иконка раскрытия */
+.accordion-panel-header {
+    position: relative;
+}
+
+.accordion-panel-header::after {
+    content: '+';
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--color-cyan);
+    transition: transform 0.3s ease;
+    margin-left: 16px;
+}
+
+.accordion-panel.active .accordion-panel-header::after {
+    content: '−';
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+    .accordion-panel-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 16px 20px;
+    }
+    
+    .accordion-panel-header::after {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-left: 0;
+    }
+    
+    .accordion-panel.active .accordion-panel-header::after {
+        transform: translateY(-50%);
+    }
+    
+    .panel-stats {
+        gap: 16px;
+    }
+    
+    .accordion-panel.active .accordion-panel-content {
+        padding: 20px;
+    }
+    
+    .panel-bottom {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .panel-tech, .panel-metrics {
+        min-width: auto;
+    }
+}
