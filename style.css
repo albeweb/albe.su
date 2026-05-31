@@ -3917,12 +3917,11 @@ main {
 .portfolio-accordion {
     display: flex;
     flex-direction: row;
-    gap: 0;
+    gap: 8px;
     width: 100%;
-    min-height: 800px;
+    min-height: 650px;
     background: transparent;
     border-radius: 28px;
-    overflow: hidden;
 }
 
 .accordion-panel {
@@ -3942,21 +3941,22 @@ main {
 .accordion-panel:last-child { margin-right: 0; }
 
 .accordion-panel.active {
-    flex: 4;
+    flex: 5;
 }
 
+/* ЗАКРЫТАЯ ПАНЕЛЬ — ТОЛЬКО НАЗВАНИЕ ВЕРТИКАЛЬНО */
 .accordion-panel-header {
     position: absolute;
     left: 0;
     top: 0;
-    width: 60px;
+    width: 70px;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 20px;
-    background: rgba(10, 10, 10, 0.6);
+    background: rgba(10, 10, 10, 0.7);
     backdrop-filter: blur(8px);
     z-index: 10;
     border-right: 1px solid rgba(255, 255, 255, 0.08);
@@ -3966,9 +3966,11 @@ main {
     background: rgba(20, 20, 28, 0.8);
 }
 
+/* НОМЕР — КРУПНЕЕ */
 .panel-number {
     font-family: 'Zen Dots', monospace;
-    font-size: 1.2rem;
+    font-size: 1.8rem;
+    font-weight: 700;
     writing-mode: vertical-rl;
     transform: rotate(180deg);
     background: linear-gradient(135deg, #F5B700, #10B981);
@@ -3977,6 +3979,7 @@ main {
     color: transparent;
 }
 
+/* НАЗВАНИЕ — КРУПНЕЕ, ЖИРНЕЕ */
 .panel-title {
     writing-mode: vertical-rl;
     transform: rotate(180deg);
@@ -3984,37 +3987,32 @@ main {
 }
 
 .panel-title h3 {
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 1.3rem;
+    font-weight: 700;
     margin: 0;
-    color: var(--white);
-    letter-spacing: 2px;
+    color: #ffffff;
+    letter-spacing: 3px;
+    text-transform: uppercase;
 }
 
+/* СТАТИСТИКА НА ЗАКРЫТОЙ ПАНЕЛИ — СКРЫТА, ПОКАЗЫВАЕМ ТОЛЬКО В ОТКРЫТОЙ */
 .panel-stats {
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    font-family: 'Zen Dots', monospace;
-    font-size: 0.7rem;
+    display: none;
 }
 
-.panel-stats span:first-child { color: #06B6D4; }
-.panel-stats span:last-child { color: #F5B700; }
-
+/* КОНТЕНТ ОТКРЫТОЙ ПАНЕЛИ */
 .accordion-panel-content {
     position: absolute;
-    left: 60px;
+    left: 70px;
     top: 0;
-    width: calc(100% - 60px);
+    width: calc(100% - 70px);
     height: 100%;
-    padding: 28px;
+    padding: 30px;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease 0.2s, visibility 0.3s ease 0.2s;
     overflow-y: auto;
+    background: rgba(10, 10, 10, 0.4);
 }
 
 .accordion-panel.active .accordion-panel-content {
@@ -4022,129 +4020,208 @@ main {
     visibility: visible;
 }
 
+/* ФОТО — В 2 РАЗА ВЫШЕ (было ~200px, стало ~400px) */
 .panel-image {
-    max-height: 200px;
+    max-height: 400px;
     overflow: hidden;
-    border-radius: 20px;
-    margin-bottom: 20px;
+    border-radius: 24px;
+    margin-bottom: 28px;
 }
 
 .panel-image img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    max-height: 400px;
     object-fit: cover;
-    border-radius: 20px;
+    border-radius: 24px;
+    transition: transform 0.3s ease;
 }
 
+.panel-image:hover img {
+    transform: scale(1.02);
+}
+
+/* ОПИСАНИЕ — КРУПНЕЕ */
 .panel-description p {
-    color: var(--gray);
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin-bottom: 20px;
+    color: #D1D5DB;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 28px;
 }
 
+/* БЛОК ТЕХНОЛОГИЙ И МЕТРИК */
 .panel-bottom {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 32px;
     justify-content: space-between;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 28px;
 }
 
-.panel-tech h4, .panel-metrics h4 {
+.panel-tech {
+    flex: 2;
+    min-width: 220px;
+}
+
+.panel-tech h4 {
     color: #06B6D4;
-    font-size: 0.8rem;
-    margin-bottom: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .tech-items {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 12px;
 }
 
 .tech-items span {
-    background: rgba(6, 182, 212, 0.1);
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.7rem;
-    color: var(--white);
+    background: rgba(6, 182, 212, 0.12);
+    padding: 8px 18px;
+    border-radius: 40px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #ffffff;
+    border: 1px solid rgba(6, 182, 212, 0.3);
+    transition: all 0.2s;
 }
 
+.tech-items span:hover {
+    background: rgba(6, 182, 212, 0.25);
+    border-color: #06B6D4;
+}
+
+/* МЕТРИКИ — КРУПНЕЕ */
 .panel-metrics {
+    flex: 1;
+    min-width: 220px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 16px;
+}
+
+.panel-metrics h4 {
+    color: #06B6D4;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .panel-metrics div {
     display: flex;
     justify-content: space-between;
+    align-items: baseline;
     gap: 20px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .panel-metrics div span:first-child {
     color: #10B981;
-    font-size: 0.7rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .panel-metrics div span:last-child {
     font-family: 'Zen Dots', monospace;
-    font-size: 0.8rem;
-    color: var(--white);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #F5B700;
 }
 
-/* Иконка закрытия/открытия */
+/* СТРЕЛКА ОТКРЫТИЯ/ЗАКРЫТИЯ */
 .accordion-panel-header::after {
     content: '←';
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+    font-weight: 300;
     color: #06B6D4;
     writing-mode: horizontal-tb;
     transform: none;
-    margin-top: 20px;
+    margin-top: 30px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.accordion-panel-header:hover::after {
+    opacity: 1;
 }
 
 .accordion-panel.active .accordion-panel-header::after {
     content: '→';
 }
 
-/* Мобильная адаптация - на мобилках переключаемся на вертикальный режим */
+/* СКРОЛЛБАР ДЛЯ КОНТЕНТА */
+.accordion-panel-content::-webkit-scrollbar {
+    width: 4px;
+}
+
+.accordion-panel-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.accordion-panel-content::-webkit-scrollbar-thumb {
+    background: #06B6D4;
+    border-radius: 4px;
+}
+
+/* МОБИЛЬНАЯ АДАПТАЦИЯ */
 @media (max-width: 768px) {
     .portfolio-accordion {
         flex-direction: column;
         min-height: auto;
+        gap: 12px;
     }
     
     .accordion-panel {
-        flex: none;
-        min-height: 80px;
+        min-height: 70px;
+        margin: 0;
     }
     
     .accordion-panel.active {
-        min-height: 500px;
+        min-height: 550px;
+        flex: none;
     }
     
     .accordion-panel-header {
         position: relative;
         width: 100%;
-        height: 80px;
+        height: 70px;
         flex-direction: row;
         justify-content: space-between;
         padding: 0 20px;
     }
     
-    .panel-number, .panel-title, .panel-stats {
+    .panel-number, .panel-title {
         writing-mode: horizontal-tb;
         transform: none;
         display: flex;
         flex-direction: row;
         align-items: center;
-        gap: 10px;
+    }
+    
+    .panel-number {
+        font-size: 1.2rem;
+    }
+    
+    .panel-title h3 {
+        font-size: 1rem;
+        letter-spacing: 1px;
     }
     
     .panel-stats {
+        display: flex;
         flex-direction: row;
+        gap: 12px;
+        font-size: 0.7rem;
     }
     
     .accordion-panel-content {
@@ -4152,10 +4229,29 @@ main {
         left: 0;
         width: 100%;
         height: auto;
+        padding: 20px;
     }
     
     .accordion-panel-header::after {
         writing-mode: horizontal-tb;
         transform: none;
+        margin-top: 0;
+    }
+    
+    .panel-image {
+        max-height: 250px;
+    }
+    
+    .panel-description p {
+        font-size: 0.95rem;
+    }
+    
+    .tech-items span {
+        font-size: 0.75rem;
+        padding: 5px 12px;
+    }
+    
+    .panel-metrics div span:last-child {
+        font-size: 0.9rem;
     }
 }
