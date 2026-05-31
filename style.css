@@ -3911,7 +3911,7 @@ main {
     }
 }
 /* ============================================ */
-/* ГОРИЗОНТАЛЬНЫЙ АККОРДЕОН ПОРТФОЛИО */
+/* ОБНОВЛЕННЫЙ АККОРДЕОН ПОРТФОЛИО С ПОДСВЕТКОЙ */
 /* ============================================ */
 
 .portfolio-accordion {
@@ -3929,19 +3929,54 @@ main {
     position: relative;
     background: rgba(18, 18, 26, 0.6);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1.5px solid rgba(255, 255, 255, 0.06);
     border-radius: 28px;
-    transition: flex 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: flex 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
     cursor: pointer;
     overflow: hidden;
     margin: 0 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .accordion-panel:first-child { margin-left: 0; }
 .accordion-panel:last-child { margin-right: 0; }
 
+/* ПОДСВЕТКА ЗАКРЫТОЙ КАРТОЧКИ ПРИ НАВЕДЕНИИ */
+.accordion-panel:not(.active):hover {
+    border-color: rgba(6, 182, 212, 0.7);
+    box-shadow: 0 8px 25px rgba(6, 182, 212, 0.3), 
+                0 0 0 1px rgba(6, 182, 212, 0.4) inset;
+    background: rgba(18, 18, 26, 0.8);
+    transform: translateY(-2px);
+}
+
+/* ОТКРЫТАЯ КАРТОЧКА — ЯРКАЯ ОБВОДКА */
 .accordion-panel.active {
     flex: 5;
+    border: 1.5px solid transparent;
+    background: linear-gradient(var(--bg-dark), var(--bg-dark)) padding-box,
+                linear-gradient(135deg, #F5B700, #10B981, #06B6D4, #4C1D95) border-box;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4),
+                0 0 0 2px rgba(6, 182, 212, 0.2);
+}
+
+/* ДОПОЛНИТЕЛЬНЫЙ ЭФФЕКТ ДЛЯ ОТКРЫТОЙ — ПУЛЬСАЦИЯ ОБВОДКИ (опционально) */
+@keyframes activeGlow {
+    0% {
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(6, 182, 212, 0.2);
+    }
+    50% {
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4), 0 0 0 4px rgba(245, 183, 0, 0.3);
+    }
+    100% {
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(6, 182, 212, 0.2);
+    }
+}
+
+.accordion-panel.active {
+    animation: activeGlow 2s ease-in-out infinite;
 }
 
 /* ЗАКРЫТАЯ ПАНЕЛЬ — ТОЛЬКО НАЗВАНИЕ ВЕРТИКАЛЬНО */
@@ -3960,10 +3995,18 @@ main {
     backdrop-filter: blur(8px);
     z-index: 10;
     border-right: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+}
+
+/* Подсветка заголовка при наведении на закрытую карточку */
+.accordion-panel:not(.active):hover .accordion-panel-header {
+    background: rgba(6, 182, 212, 0.15);
+    border-right-color: rgba(6, 182, 212, 0.5);
 }
 
 .accordion-panel.active .accordion-panel-header {
-    background: rgba(20, 20, 28, 0.8);
+    background: rgba(20, 20, 28, 0.9);
+    border-right-color: rgba(6, 182, 212, 0.6);
 }
 
 .panel-number {
@@ -3976,6 +4019,15 @@ main {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    transition: all 0.3s ease;
+}
+
+/* Подсветка номера при наведении */
+.accordion-panel:not(.active):hover .panel-number {
+    background: linear-gradient(135deg, #F5B700, #06B6D4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    transform: rotate(180deg) scale(1.05);
 }
 
 .panel-title {
@@ -3991,10 +4043,42 @@ main {
     color: #ffffff;
     letter-spacing: 3px;
     text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+/* Подсветка заголовка при наведении */
+.accordion-panel:not(.active):hover .panel-title h3 {
+    color: #06B6D4;
+    text-shadow: 0 0 8px rgba(6, 182, 212, 0.5);
+    letter-spacing: 4px;
 }
 
 .panel-stats {
     display: none;
+}
+
+/* СТРЕЛКА */
+.accordion-panel-header::after {
+    content: '←';
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: #06B6D4;
+    writing-mode: horizontal-tb;
+    transform: none;
+    margin-top: 30px;
+    opacity: 0.6;
+    transition: all 0.2s ease;
+}
+
+.accordion-panel:not(.active):hover .accordion-panel-header::after {
+    opacity: 1;
+    transform: translateX(-3px);
+    color: #F5B700;
+}
+
+.accordion-panel.active .accordion-panel-header::after {
+    content: '→';
+    opacity: 1;
 }
 
 /* КОНТЕНТ ОТКРЫТОЙ ПАНЕЛИ */
@@ -4019,7 +4103,7 @@ main {
     visibility: visible;
 }
 
-/* 1. ФОТО */
+/* ОСТАЛЬНЫЕ СТИЛИ (ФОТО, ОПИСАНИЕ, ТЕХНОЛОГИИ) */
 .panel-image {
     max-height: 350px;
     overflow: hidden;
@@ -4040,7 +4124,6 @@ main {
     transform: scale(1.02);
 }
 
-/* 2. ОПИСАНИЕ */
 .panel-description p {
     color: #D1D5DB;
     font-size: 1rem;
@@ -4048,7 +4131,6 @@ main {
     margin-bottom: 24px;
 }
 
-/* 3. ТЕХНОЛОГИИ */
 .panel-tech {
     margin-bottom: 24px;
 }
@@ -4084,7 +4166,6 @@ main {
     border-color: #06B6D4;
 }
 
-/* 4. СТРОКА: Длительность | Команда | Результат */
 .metrics-row {
     display: flex;
     flex-wrap: wrap;
@@ -4116,7 +4197,6 @@ main {
     color: #ffffff;
 }
 
-/* 5. ВНИЗУ: Часы и Стоимость */
 .metrics-bottom {
     display: flex;
     gap: 24px;
@@ -4152,27 +4232,6 @@ main {
     color: #F5B700;
 }
 
-/* СТРЕЛКА */
-.accordion-panel-header::after {
-    content: '←';
-    font-size: 1.4rem;
-    font-weight: 300;
-    color: #06B6D4;
-    writing-mode: horizontal-tb;
-    transform: none;
-    margin-top: 30px;
-    opacity: 0.7;
-    transition: opacity 0.2s;
-}
-
-.accordion-panel-header:hover::after {
-    opacity: 1;
-}
-
-.accordion-panel.active .accordion-panel-header::after {
-    content: '→';
-}
-
 /* СКРОЛЛБАР */
 .accordion-panel-content::-webkit-scrollbar {
     width: 4px;
@@ -4204,6 +4263,7 @@ main {
     .accordion-panel.active {
         min-height: auto;
         flex: none;
+        animation: none; /* Убираем пульсацию на мобильных */
     }
     
     .accordion-panel-header {
@@ -4246,6 +4306,10 @@ main {
         margin-top: 0;
     }
     
+    .accordion-panel:not(.active):hover {
+        transform: translateY(-2px);
+    }
+    
     .panel-image {
         max-height: 200px;
     }
@@ -4271,5 +4335,16 @@ main {
     
     .metric-hours, .metric-price {
         min-width: auto;
+    }
+}
+
+/* Для пользователей с reduced motion — отключаем анимацию пульсации */
+@media (prefers-reduced-motion: reduce) {
+    .accordion-panel.active {
+        animation: none;
+    }
+    
+    .accordion-panel:not(.active):hover {
+        transform: none;
     }
 }
