@@ -3966,7 +3966,6 @@ main {
     background: rgba(20, 20, 28, 0.8);
 }
 
-/* НОМЕР */
 .panel-number {
     font-family: 'Zen Dots', monospace;
     font-size: 1.8rem;
@@ -3979,7 +3978,6 @@ main {
     color: transparent;
 }
 
-/* НАЗВАНИЕ */
 .panel-title {
     writing-mode: vertical-rl;
     transform: rotate(180deg);
@@ -3995,7 +3993,6 @@ main {
     text-transform: uppercase;
 }
 
-/* СТАТИСТИКА (ЦЕНА И ВРЕМЯ) НА ЗАКРЫТОЙ ПАНЕЛИ — СКРЫТА */
 .panel-stats {
     display: none;
 }
@@ -4013,6 +4010,8 @@ main {
     transition: opacity 0.3s ease 0.2s, visibility 0.3s ease 0.2s;
     overflow-y: auto;
     background: rgba(10, 10, 10, 0.4);
+    display: flex;
+    flex-direction: column;
 }
 
 .accordion-panel.active .accordion-panel-content {
@@ -4020,7 +4019,7 @@ main {
     visibility: visible;
 }
 
-/* ФОТО */
+/* 1. ФОТО */
 .panel-image {
     max-height: 350px;
     overflow: hidden;
@@ -4041,7 +4040,7 @@ main {
     transform: scale(1.02);
 }
 
-/* ОПИСАНИЕ */
+/* 2. ОПИСАНИЕ */
 .panel-description p {
     color: #D1D5DB;
     font-size: 1rem;
@@ -4049,20 +4048,9 @@ main {
     margin-bottom: 24px;
 }
 
-/* БЛОК ТЕХНОЛОГИЙ И СТАТИСТИКИ */
-.panel-bottom {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 32px;
-    justify-content: space-between;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 24px;
-}
-
-/* ТЕХНОЛОГИИ */
+/* 3. ТЕХНОЛОГИИ */
 .panel-tech {
-    flex: 2;
-    min-width: 200px;
+    margin-bottom: 24px;
 }
 
 .panel-tech h4 {
@@ -4096,31 +4084,57 @@ main {
     border-color: #06B6D4;
 }
 
-/* СТАТИСТИКА (ЦЕНА И ВРЕМЯ ВВЕРХУ, КОМАНДА И РЕЗУЛЬТАТ ВНИЗУ) */
-.panel-metrics {
-    flex: 1;
-    min-width: 200px;
+/* 4. СТРОКА: Длительность | Команда | Результат */
+.metrics-row {
     display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-/* Верхний блок: цена и часы */
-.metrics-top {
-    display: flex;
-    gap: 20px;
-    justify-content: space-between;
-    padding-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-bottom: 24px;
+    padding: 16px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.metric-price, .metric-hours {
-    text-align: center;
+.metric-item {
     flex: 1;
+    min-width: 100px;
 }
 
-.metric-price .metric-label,
-.metric-hours .metric-label {
+.metric-item .metric-label {
+    color: #06B6D4;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.metric-item .metric-value {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+/* 5. ВНИЗУ: Часы и Стоимость */
+.metrics-bottom {
+    display: flex;
+    gap: 24px;
+    justify-content: flex-start;
+    margin-top: auto;
+    padding-top: 16px;
+}
+
+.metric-hours, .metric-price {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 12px 24px;
+    text-align: center;
+    min-width: 140px;
+}
+
+.metric-hours .metric-label,
+.metric-price .metric-label {
     color: #10B981;
     font-size: 0.7rem;
     font-weight: 600;
@@ -4130,43 +4144,12 @@ main {
     margin-bottom: 6px;
 }
 
-.metric-price .metric-value,
-.metric-hours .metric-value {
+.metric-hours .metric-value,
+.metric-price .metric-value {
     font-family: 'Zen Dots', monospace;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 700;
     color: #F5B700;
-}
-
-/* Нижний блок: длительность, команда, результат */
-.metrics-bottom {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.metric-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.metric-item .metric-label {
-    color: #06B6D4;
-    font-size: 0.75rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.metric-item .metric-value {
-    font-family: 'Zen Dots', monospace;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #ffffff;
-    text-align: right;
 }
 
 /* СТРЕЛКА */
@@ -4276,17 +4259,17 @@ main {
         padding: 4px 10px;
     }
     
-    .metrics-top {
+    .metrics-row {
         flex-direction: column;
         gap: 12px;
     }
     
-    .metric-item {
-        flex-wrap: wrap;
-        gap: 8px;
+    .metrics-bottom {
+        flex-direction: column;
+        gap: 12px;
     }
     
-    .metric-item .metric-value {
-        text-align: left;
+    .metric-hours, .metric-price {
+        min-width: auto;
     }
 }
