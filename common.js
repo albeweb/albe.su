@@ -751,6 +751,30 @@
     }
 
     // ============================================
+    // АККОРДЕОН ПОРТФОЛИО
+    // ============================================
+    function initPortfolioAccordion() {
+        const panels = document.querySelectorAll('.accordion-panel');
+        if (panels.length === 0) return;
+        
+        panels.forEach(panel => {
+            const header = panel.querySelector('.accordion-panel-header');
+            if (!header) return;
+            
+            header.addEventListener('click', () => {
+                // Закрываем все другие панели
+                panels.forEach(p => {
+                    if (p !== panel && p.classList.contains('active')) {
+                        p.classList.remove('active');
+                    }
+                });
+                // Переключаем текущую панель
+                panel.classList.toggle('active');
+            });
+        });
+    }
+
+    // ============================================
     // ЗАГРУЗКА КОМПОНЕНТОВ (HEADER, FOOTER)
     // ============================================
     function loadComponent(elementId, filePath, callback) {
@@ -1153,6 +1177,7 @@
         initLazyKinescope();
         initKineticToTop();
         initServiceModal();
+        initPortfolioAccordion();  // ← ДОБАВЛЕНА ИНИЦИАЛИЗАЦИЯ АККОРДЕОНА ПОРТФОЛИО
         
         // Загрузка компонентов header и footer
         loadComponent('header-placeholder', 'header.html', function() {
