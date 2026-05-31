@@ -3919,7 +3919,7 @@ main {
     flex-direction: row;
     gap: 8px;
     width: 100%;
-    min-height: 700px;
+    min-height: 650px;
     background: transparent;
     border-radius: 28px;
 }
@@ -3995,7 +3995,7 @@ main {
     text-transform: uppercase;
 }
 
-/* СТАТИСТИКА НА ЗАКРЫТОЙ ПАНЕЛИ — СКРЫТА */
+/* СТАТИСТИКА (ЦЕНА И ВРЕМЯ) НА ЗАКРЫТОЙ ПАНЕЛИ — СКРЫТА */
 .panel-stats {
     display: none;
 }
@@ -4022,16 +4022,16 @@ main {
 
 /* ФОТО */
 .panel-image {
-    max-height: 400px;
+    max-height: 350px;
     overflow: hidden;
     border-radius: 24px;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
 }
 
 .panel-image img {
     width: 100%;
     height: 100%;
-    max-height: 400px;
+    max-height: 350px;
     object-fit: cover;
     border-radius: 24px;
     transition: transform 0.3s ease;
@@ -4044,32 +4044,32 @@ main {
 /* ОПИСАНИЕ */
 .panel-description p {
     color: #D1D5DB;
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1.6;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
 }
 
-/* БЛОК ТЕХНОЛОГИЙ И СТАТИСТИКИ — В ДВЕ КОЛОНКИ */
+/* БЛОК ТЕХНОЛОГИЙ И СТАТИСТИКИ */
 .panel-bottom {
     display: flex;
     flex-wrap: wrap;
     gap: 32px;
     justify-content: space-between;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 28px;
+    padding-top: 24px;
 }
 
-/* ТЕХНОЛОГИИ — ЛЕВАЯ КОЛОНКА */
+/* ТЕХНОЛОГИИ */
 .panel-tech {
     flex: 2;
-    min-width: 220px;
+    min-width: 200px;
 }
 
 .panel-tech h4 {
     color: #06B6D4;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 600;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
@@ -4077,14 +4077,14 @@ main {
 .tech-items {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 10px;
 }
 
 .tech-items span {
     background: rgba(6, 182, 212, 0.12);
-    padding: 8px 18px;
-    border-radius: 40px;
-    font-size: 0.9rem;
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-size: 0.85rem;
     font-weight: 500;
     color: #ffffff;
     border: 1px solid rgba(6, 182, 212, 0.3);
@@ -4096,51 +4096,80 @@ main {
     border-color: #06B6D4;
 }
 
-/* СТАТИСТИКА (Длительность, Команда, Результат) — ПОД ТЕХНОЛОГИЯМИ */
+/* СТАТИСТИКА (ЦЕНА И ВРЕМЯ ВВЕРХУ, КОМАНДА И РЕЗУЛЬТАТ ВНИЗУ) */
 .panel-metrics {
-    flex: 2;
-    min-width: 280px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 24px;
-    justify-content: flex-start;
-}
-
-.panel-metrics .metric-item {
     flex: 1;
-    min-width: 120px;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 16px;
-    padding: 12px 16px;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Верхний блок: цена и часы */
+.metrics-top {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.metric-price, .metric-hours {
     text-align: center;
-    transition: all 0.2s;
+    flex: 1;
 }
 
-.panel-metrics .metric-item:hover {
-    background: rgba(6, 182, 212, 0.1);
-    transform: translateY(-3px);
-}
-
-.panel-metrics .metric-label {
+.metric-price .metric-label,
+.metric-hours .metric-label {
     color: #10B981;
     font-size: 0.7rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
-.panel-metrics .metric-value {
+.metric-price .metric-value,
+.metric-hours .metric-value {
     font-family: 'Zen Dots', monospace;
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.1rem;
+    font-weight: 700;
     color: #F5B700;
-    display: block;
 }
 
-/* СТРЕЛКА ОТКРЫТИЯ/ЗАКРЫТИЯ */
+/* Нижний блок: длительность, команда, результат */
+.metrics-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.metric-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.metric-item .metric-label {
+    color: #06B6D4;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.metric-item .metric-value {
+    font-family: 'Zen Dots', monospace;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #ffffff;
+    text-align: right;
+}
+
+/* СТРЕЛКА */
 .accordion-panel-header::after {
     content: '←';
     font-size: 1.4rem;
@@ -4235,35 +4264,29 @@ main {
     }
     
     .panel-image {
-        max-height: 250px;
+        max-height: 200px;
     }
     
     .panel-description p {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
     }
     
     .tech-items span {
-        font-size: 0.75rem;
-        padding: 5px 12px;
+        font-size: 0.7rem;
+        padding: 4px 10px;
     }
     
-    .panel-metrics {
+    .metrics-top {
         flex-direction: column;
         gap: 12px;
     }
     
-    .panel-metrics .metric-item {
+    .metric-item {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .metric-item .metric-value {
         text-align: left;
-        padding: 10px 16px;
-    }
-    
-    .panel-metrics .metric-label {
-        display: inline-block;
-        margin-right: 12px;
-        margin-bottom: 0;
-    }
-    
-    .panel-metrics .metric-value {
-        display: inline-block;
     }
 }
