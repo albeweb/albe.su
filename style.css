@@ -3422,10 +3422,18 @@ main {
 /* ============================================ */
 
 .contacts-new-section {
-    max-width: 1360px;
-    margin: 0 auto;
-    padding: 100px 28px 120px 28px;
+    width: 100%;
+    padding: 100px 0;
     position: relative;
+    background: transparent;
+}
+
+.contacts-new-section .container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 80px;
+    position: relative;
+    z-index: 2;
 }
 
 .contacts-new-section .section-header {
@@ -3435,7 +3443,6 @@ main {
     z-index: 2;
 }
 
-/* ЗАГОЛОВОК ПРИВЕДЁН К СТАНДАРТНОМУ СТИЛЮ САЙТА */
 .contacts-new-section .section-header h2 {
     font-size: clamp(1.8rem, 5vw, 3.8rem);
     font-weight: 400;
@@ -3723,6 +3730,12 @@ main {
     color: #f5b700;
 }
 
+@media (max-width: 1200px) {
+    .contacts-new-section .container {
+        padding: 0 40px;
+    }
+}
+
 @media (max-width: 950px) {
     .contacts-new-grid {
         gap: 32px;
@@ -3738,12 +3751,16 @@ main {
     }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 768px) {
+    .contacts-new-section {
+        padding: 60px 0;
+    }
+    .contacts-new-section .container {
+        padding: 0 20px;
+    }
     .contacts-new-grid {
         grid-template-columns: 1fr;
-    }
-    .contacts-new-section {
-        padding: 60px 20px;
+        gap: 32px;
     }
     .contact-new-details .value {
         font-size: 1.1rem;
