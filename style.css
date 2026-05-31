@@ -3435,11 +3435,15 @@ main {
     z-index: 2;
 }
 
+/* ЗАГОЛОВОК ПРИВЕДЁН К СТАНДАРТНОМУ СТИЛЮ САЙТА */
 .contacts-new-section .section-header h2 {
-    font-size: 3.5rem;
-    font-weight: 800;
+    font-size: clamp(1.8rem, 5vw, 3.8rem);
+    font-weight: 400;
     letter-spacing: -0.02em;
     color: #ffffff;
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
 }
 
 .contacts-new-section .section-header h2 span {
@@ -3447,7 +3451,14 @@ main {
 }
 
 .contacts-new-section .section-header h2::after {
-    display: none;
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 2px;
+    background: linear-gradient(135deg, #F5B700, #10B981);
 }
 
 .contacts-new-section .section-desc {
