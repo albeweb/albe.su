@@ -3919,7 +3919,7 @@ main {
     flex-direction: row;
     gap: 8px;
     width: 100%;
-    min-height: 650px;
+    min-height: 700px;
     background: transparent;
     border-radius: 28px;
 }
