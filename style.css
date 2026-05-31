@@ -3966,7 +3966,7 @@ main {
     background: rgba(20, 20, 28, 0.8);
 }
 
-/* НОМЕР — КРУПНЕЕ */
+/* НОМЕР */
 .panel-number {
     font-family: 'Zen Dots', monospace;
     font-size: 1.8rem;
@@ -3979,7 +3979,7 @@ main {
     color: transparent;
 }
 
-/* НАЗВАНИЕ — КРУПНЕЕ, ЖИРНЕЕ */
+/* НАЗВАНИЕ */
 .panel-title {
     writing-mode: vertical-rl;
     transform: rotate(180deg);
@@ -3995,7 +3995,7 @@ main {
     text-transform: uppercase;
 }
 
-/* СТАТИСТИКА НА ЗАКРЫТОЙ ПАНЕЛИ — СКРЫТА, ПОКАЗЫВАЕМ ТОЛЬКО В ОТКРЫТОЙ */
+/* СТАТИСТИКА НА ЗАКРЫТОЙ ПАНЕЛИ — СКРЫТА */
 .panel-stats {
     display: none;
 }
@@ -4020,7 +4020,7 @@ main {
     visibility: visible;
 }
 
-/* ФОТО — В 2 РАЗА ВЫШЕ (было ~200px, стало ~400px) */
+/* ФОТО */
 .panel-image {
     max-height: 400px;
     overflow: hidden;
@@ -4041,7 +4041,7 @@ main {
     transform: scale(1.02);
 }
 
-/* ОПИСАНИЕ — КРУПНЕЕ */
+/* ОПИСАНИЕ */
 .panel-description p {
     color: #D1D5DB;
     font-size: 1.1rem;
@@ -4049,7 +4049,7 @@ main {
     margin-bottom: 28px;
 }
 
-/* БЛОК ТЕХНОЛОГИЙ И МЕТРИК */
+/* БЛОК ТЕХНОЛОГИЙ И СТАТИСТИКИ — В ДВЕ КОЛОНКИ */
 .panel-bottom {
     display: flex;
     flex-wrap: wrap;
@@ -4059,6 +4059,7 @@ main {
     padding-top: 28px;
 }
 
+/* ТЕХНОЛОГИИ — ЛЕВАЯ КОЛОНКА */
 .panel-tech {
     flex: 2;
     min-width: 220px;
@@ -4095,46 +4096,48 @@ main {
     border-color: #06B6D4;
 }
 
-/* МЕТРИКИ — КРУПНЕЕ */
+/* СТАТИСТИКА (Длительность, Команда, Результат) — ПОД ТЕХНОЛОГИЯМИ */
 .panel-metrics {
-    flex: 1;
-    min-width: 220px;
+    flex: 2;
+    min-width: 280px;
     display: flex;
-    flex-direction: column;
-    gap: 16px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: flex-start;
 }
 
-.panel-metrics h4 {
-    color: #06B6D4;
+.panel-metrics .metric-item {
+    flex: 1;
+    min-width: 120px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    padding: 12px 16px;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.panel-metrics .metric-item:hover {
+    background: rgba(6, 182, 212, 0.1);
+    transform: translateY(-3px);
+}
+
+.panel-metrics .metric-label {
+    color: #10B981;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.panel-metrics .metric-value {
+    font-family: 'Zen Dots', monospace;
     font-size: 1rem;
     font-weight: 600;
-    margin-bottom: 8px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-.panel-metrics div {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 20px;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.panel-metrics div span:first-child {
-    color: #10B981;
-    font-size: 0.85rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.panel-metrics div span:last-child {
-    font-family: 'Zen Dots', monospace;
-    font-size: 1.1rem;
-    font-weight: 600;
     color: #F5B700;
+    display: block;
 }
 
 /* СТРЕЛКА ОТКРЫТИЯ/ЗАКРЫТИЯ */
@@ -4158,7 +4161,7 @@ main {
     content: '→';
 }
 
-/* СКРОЛЛБАР ДЛЯ КОНТЕНТА */
+/* СКРОЛЛБАР */
 .accordion-panel-content::-webkit-scrollbar {
     width: 4px;
 }
@@ -4187,7 +4190,7 @@ main {
     }
     
     .accordion-panel.active {
-        min-height: 550px;
+        min-height: auto;
         flex: none;
     }
     
@@ -4217,13 +4220,6 @@ main {
         letter-spacing: 1px;
     }
     
-    .panel-stats {
-        display: flex;
-        flex-direction: row;
-        gap: 12px;
-        font-size: 0.7rem;
-    }
-    
     .accordion-panel-content {
         position: relative;
         left: 0;
@@ -4251,7 +4247,23 @@ main {
         padding: 5px 12px;
     }
     
-    .panel-metrics div span:last-child {
-        font-size: 0.9rem;
+    .panel-metrics {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .panel-metrics .metric-item {
+        text-align: left;
+        padding: 10px 16px;
+    }
+    
+    .panel-metrics .metric-label {
+        display: inline-block;
+        margin-right: 12px;
+        margin-bottom: 0;
+    }
+    
+    .panel-metrics .metric-value {
+        display: inline-block;
     }
 }
