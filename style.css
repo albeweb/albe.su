@@ -3779,7 +3779,7 @@ main {
     flex: 1;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 24px;
+    gap: 36px;
 }
 
 .mission-card {
@@ -3788,10 +3788,13 @@ main {
     backdrop-filter: blur(12px);
     border-radius: 28px;
     overflow: hidden;
+    cursor: default;
+    aspect-ratio: 1.47 / 1;
     transform-style: preserve-3d;
     perspective: 1000px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 15px 35px -15px rgba(0, 0, 0, 0.3);
+    contain: paint;
 }
 
 .mission-card .segment {
@@ -3883,7 +3886,7 @@ main {
     font-family: 'Geist', sans-serif;
     font-weight: 400;
     font-size: 0.9rem;
-    line-height: 1.5;
+    line-height: 1.4;
     margin: 0;
     color: var(--gray);
 }
@@ -3909,5 +3912,9 @@ main {
     .mission-cards-grid {
         grid-template-columns: 1fr;
         gap: 20px;
+    }
+    .mission-card {
+        aspect-ratio: auto;
+        min-height: 280px;
     }
 }
