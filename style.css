@@ -3426,12 +3426,13 @@ main {
     padding: 100px 0;
     position: relative;
     background: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .contacts-new-section .container {
     max-width: 100%;
     margin: 0 auto;
-    padding: 0 80px;
+    padding: 0 80px;           /* ← отступы 80px от краёв, как у всех секций */
     position: relative;
     z-index: 2;
 }
