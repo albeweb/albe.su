@@ -3770,7 +3770,146 @@ main {
         font-size: 1.5rem;
     }
 }
+/* ============================================ */
+/* КАРТОЧКИ В БЛОКЕ "ПОЧЕМУ ВЫБИРАЮТ НАС" */
+/* ============================================ */
 
+.mission-cards-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.mission-card {
+    position: relative;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(12px);
+    border-radius: 28px;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 15px 35px -15px rgba(0, 0, 0, 0.3);
+}
+
+.mission-card .segment {
+    position: absolute;
+    background: rgba(10, 10, 10, 0.9);
+    backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    transform-style: preserve-3d;
+    overflow: hidden;
+    top: 0;
+    bottom: 0;
+    transform: translateZ(-5px);
+    max-width: 100%;
+}
+
+.mission-card .seg-1 { left: 0%; width: 22%; height: 100%; border-radius: 28px 0 0 28px; border-right: none; }
+.mission-card .seg-2 { left: 22%; width: 28%; height: 100%; border-left: none; border-right: none; }
+.mission-card .seg-3 { left: 50%; width: 28%; height: 100%; border-left: none; border-right: none; }
+.mission-card .seg-4 { left: 78%; width: 22%; height: 100%; border-radius: 0 28px 28px 0; border-left: none; }
+
+.mission-card .segment::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 2px, transparent 2px, transparent 12px);
+    pointer-events: none;
+}
+
+.mission-card .segment::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,0.08), transparent 80%);
+    opacity: 0;
+    transition: opacity 0.15s;
+    pointer-events: none;
+}
+
+.mission-card:hover .segment::after { opacity: 1; }
+
+.mission-card .corner-tl,
+.mission-card .corner-tr,
+.mission-card .corner-bl,
+.mission-card .corner-br {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-color: rgba(255, 255, 255, 0.3);
+    border-style: solid;
+    z-index: 20;
+    transition: all 0.2s;
+    pointer-events: none;
+}
+.mission-card .corner-tl { top: 16px; left: 16px; border-width: 2px 0 0 2px; }
+.mission-card .corner-tr { top: 16px; right: 16px; border-width: 2px 2px 0 0; }
+.mission-card .corner-bl { bottom: 16px; left: 16px; border-width: 0 0 2px 2px; }
+.mission-card .corner-br { bottom: 16px; right: 16px; border-width: 0 2px 2px 0; }
+
+.mission-card:hover .corner-tl { border-color: var(--color-yellow); filter: drop-shadow(0 0 6px var(--color-yellow)); }
+.mission-card:hover .corner-tr { border-color: var(--color-green); filter: drop-shadow(0 0 6px var(--color-green)); }
+.mission-card:hover .corner-bl { border-color: var(--color-cyan); filter: drop-shadow(0 0 6px var(--color-cyan)); }
+.mission-card:hover .corner-br { border-color: var(--color-purple); filter: drop-shadow(0 0 6px var(--color-purple)); }
+
+.mission-card .card-content {
+    position: relative;
+    z-index: 15;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px;
+    transform-style: preserve-3d;
+    transform: translateZ(25px);
+    pointer-events: none;
+}
+
+.mission-card h3 {
+    font-family: 'Geist', sans-serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+    margin: 0 0 0.5rem 0;
+    background: var(--gradient-yellow-green);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.mission-card p {
+    font-family: 'Geist', sans-serif;
+    font-weight: 400;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+    color: var(--gray);
+}
+
+.mission-card .color-strip {
+    display: flex;
+    gap: 0.5rem;
+    margin: 0 0 0.75rem 0;
+}
+
+.mission-card .color-dot {
+    width: 18px;
+    height: 3px;
+    border-radius: 3px;
+}
+
+.mission-card .dot-pink { background: var(--color-yellow); }
+.mission-card .dot-teal { background: var(--color-green); }
+.mission-card .dot-mint { background: var(--color-cyan); }
+.mission-card .dot-purple { background: var(--color-purple); }
+
+@media (max-width: 768px) {
+    .mission-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
 /* ============================================ */
 /* 28. АККОРДЕОН ПОРТФОЛИО / КЕЙСЫ */
 /* ============================================ */
