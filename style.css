@@ -3911,143 +3911,120 @@ main {
     }
 }
 /* ============================================ */
-/* 28. ТАБЫ / ВКЛАДКИ ДЛЯ ПОРТФОЛИО */
+/* АККОРДЕОН ПОРТФОЛИО / КЕЙСЫ */
 /* ============================================ */
 
-.portfolio-tabs {
+.portfolio-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     margin-top: 32px;
 }
 
-/* Заголовки табов (горизонтальные кнопки) */
-.tabs-headers {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    margin-bottom: 32px;
-    padding-bottom: 0;
-}
-
-.tab-header {
-    background: transparent;
-    border: none;
-    padding: 16px 28px;
-    font-family: 'Geist', sans-serif;
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--gray);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    border-radius: 12px 12px 0 0;
-}
-
-.tab-header:hover {
-    color: var(--white);
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.tab-header.active {
-    color: var(--color-yellow);
-    background: rgba(245, 183, 0, 0.1);
-}
-
-.tab-header.active::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--gradient-yellow-green);
-}
-
-/* Контент табов */
-.tab-content {
-    display: none;
-    animation: fadeIn 0.3s ease;
-}
-
-.tab-content.active {
-    display: block;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Карточка кейса внутри таба */
-.case-card {
+.accordion-panel {
     background: rgba(18, 18, 26, 0.6);
     backdrop-filter: blur(10px);
-    border-radius: 28px;
+    border-radius: 24px;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    overflow: hidden;
     transition: all 0.3s ease;
+    overflow: hidden;
 }
 
-.case-card:hover {
+.accordion-panel:hover {
     border-color: var(--color-purple);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
-.case-card .panel-image {
-    width: 100%;
-    overflow: hidden;
+.accordion-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 28px;
+    cursor: pointer;
+    background: rgba(10, 10, 10, 0.4);
+    transition: background 0.3s ease;
 }
 
-.case-card .panel-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.3s ease;
+.accordion-panel-header:hover {
+    background: rgba(20, 20, 28, 0.6);
 }
 
-.case-card:hover .panel-image img {
-    transform: scale(1.02);
+.accordion-panel.active .accordion-panel-header {
+    border-bottom: 1px solid rgba(6, 182, 212, 0.3);
+    background: rgba(10, 10, 10, 0.6);
 }
 
-.case-card .case-info {
-    padding: 28px;
-}
-
-.case-card .panel-title h3 {
+.panel-number {
+    font-family: 'Zen Dots', monospace;
     font-size: 1.4rem;
+    font-weight: 500;
+    background: var(--gradient-yellow-green);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    min-width: 70px;
+}
+
+.panel-title h3 {
+    font-size: 1.2rem;
     font-weight: 600;
-    margin-bottom: 8px;
+    margin: 0;
     color: var(--white);
 }
 
-.case-card .panel-stats {
+.panel-stats {
     display: flex;
-    gap: 20px;
-    margin-bottom: 20px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.case-card .panel-stats span {
+    gap: 24px;
+    color: var(--gray);
+    font-size: 0.85rem;
     font-family: 'Zen Dots', monospace;
-    font-size: 0.9rem;
 }
 
-.case-card .panel-stats span:first-child {
+.panel-stats span:first-child {
     color: var(--color-cyan);
 }
 
-.case-card .panel-stats span:last-child {
+.panel-stats span:last-child {
     color: var(--color-yellow);
 }
 
-.case-card .panel-description p {
+.accordion-panel-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.accordion-panel.active .accordion-panel-content {
+    max-height: 600px;
+    padding: 24px 28px 28px 28px;
+}
+
+.panel-image {
+    margin-bottom: 24px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.panel-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 20px;
+    transition: transform 0.3s ease;
+}
+
+.panel-image:hover img {
+    transform: scale(1.02);
+}
+
+.panel-description p {
     color: var(--gray);
     font-size: 0.95rem;
     line-height: 1.6;
     margin-bottom: 24px;
 }
 
-.case-card .panel-bottom {
+.panel-bottom {
     display: flex;
     flex-wrap: wrap;
     gap: 32px;
@@ -4056,25 +4033,25 @@ main {
     padding-top: 24px;
 }
 
-.case-card .panel-tech {
+.panel-tech {
     flex: 2;
     min-width: 200px;
 }
 
-.case-card .panel-tech h4 {
+.panel-tech h4 {
     color: var(--color-cyan);
     font-size: 0.85rem;
     margin-bottom: 12px;
     letter-spacing: 1px;
 }
 
-.case-card .tech-items {
+.tech-items {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
 }
 
-.case-card .tech-items span {
+.tech-items span {
     background: rgba(6, 182, 212, 0.1);
     padding: 6px 14px;
     border-radius: 30px;
@@ -4084,12 +4061,12 @@ main {
     transition: all 0.2s;
 }
 
-.case-card .tech-items span:hover {
+.tech-items span:hover {
     background: rgba(6, 182, 212, 0.2);
     border-color: var(--color-cyan);
 }
 
-.case-card .panel-metrics {
+.panel-metrics {
     flex: 1;
     min-width: 200px;
     display: flex;
@@ -4097,7 +4074,7 @@ main {
     gap: 12px;
 }
 
-.case-card .panel-metrics div {
+.panel-metrics div {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -4105,45 +4082,72 @@ main {
     gap: 8px;
 }
 
-.case-card .panel-metrics div span:first-child {
+.panel-metrics div span:first-child {
     color: var(--color-green);
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-.case-card .panel-metrics div span:last-child {
+.panel-metrics div span:last-child {
     font-family: 'Zen Dots', monospace;
     font-size: 0.85rem;
     color: var(--white);
 }
 
+/* Иконка + / - */
+.accordion-panel-header {
+    position: relative;
+}
+
+.accordion-panel-header::after {
+    content: '+';
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--color-cyan);
+    transition: transform 0.3s ease;
+    margin-left: 16px;
+}
+
+.accordion-panel.active .accordion-panel-header::after {
+    content: '−';
+}
+
 /* Мобильная адаптация */
 @media (max-width: 768px) {
-    .tabs-headers {
-        gap: 4px;
+    .accordion-panel-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 16px 20px;
     }
     
-    .tab-header {
-        padding: 12px 16px;
-        font-size: 0.85rem;
+    .accordion-panel-header::after {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-left: 0;
     }
     
-    .case-card .case-info {
+    .accordion-panel.active .accordion-panel-header::after {
+        transform: translateY(-50%);
+    }
+    
+    .panel-stats {
+        gap: 16px;
+    }
+    
+    .accordion-panel.active .accordion-panel-content {
         padding: 20px;
     }
     
-    .case-card .panel-title h3 {
-        font-size: 1.2rem;
-    }
-    
-    .case-card .panel-bottom {
+    .panel-bottom {
         flex-direction: column;
         gap: 20px;
     }
     
-    .case-card .panel-tech,
-    .case-card .panel-metrics {
+    .panel-tech, .panel-metrics {
         min-width: auto;
     }
 }
