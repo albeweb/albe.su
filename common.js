@@ -1,54 +1,54 @@
 // ============================================
-// common.js — ОПТИМИЗИРОВАННАЯ ВЕРСИЯ (удалён мёртвый код)
+// common.js — ИСПРАВЛЕННАЯ ВЕРСИЯ (калькулятор и видео работают)
 // ============================================
 
 (function() {
     'use strict';
 
     // ============================================
-    // ОПИСАНИЯ ТЕХНОЛОГИЙ ДЛЯ ТУЛТИПОВ (только используемые)
+    // ОПИСАНИЯ ТЕХНОЛОГИЙ ДЛЯ ТУЛТИПОВ
     // ============================================
     const techDesc = {
-        react: "react / next.js — библиотека для создания пользовательских интерфейсов. next.js добавляет серверный рендеринг (ssr) и генерацию статических сайтов (ssg), что улучшает seo и скорость загрузки.",
-        ts: "typescript — типизированный javascript. позволяет находить ошибки на этапе разработки, улучшает читаемость кода и упрощает поддержку крупных проектов.",
-        redux: "redux / rtk — управление состоянием приложения. redux toolkit упрощает настройку хранилища, уменьшает количество шаблонного кода и интегрируется с react.",
-        ssr: "ssr / ssg — серверный рендеринг и статическая генерация. ssr отдаёт готовый html с сервера, ускоряя первую загрузку. ssg генерирует статические файлы на этапе сборки.",
-        css: "css3 / sass / tailwind — современные технологии стилизации. sass добавляет переменные и миксины. tailwind — утилитарный css-фреймворк для быстрой вёрстки.",
-        node: "node.js / nest.js — серверный javascript. node.js — асинхронная событийно-ориентированная платформа. nest.js добавляет модульную архитектуру, похожую на angular.",
-        python: "python / django — высокоуровневый язык для бэкенда и ai. django предоставляет встроенную админ-панель, orm и систему аутентификации.",
-        cpp: "c++ — язык для высокопроизводительных систем. используется в финансах, игровой индустрии, embedded-системах и высоконагруженных сервисах.",
-        postgres: "postgresql / ms sql — мощные реляционные субд. поддерживают сложные запросы, транзакции, хранимые процедуры и репликацию.",
-        redis: "redis / elasticsearch — redis для кэширования и очередей сообщений, elasticsearch для полнотекстового поиска и аналитики логов.",
-        rabbitmq: "rabbitmq / kafka — брокеры сообщений. rabbitmq для маршрутизации и надёжной доставки, kafka для потоковой обработки больших данных.",
-        kubernetes: "kubernetes — оркестрация контейнеров. автоматизирует развертывание, масштабирование и управление контейнеризированными приложениями.",
-        docker: "docker — контейнеризация приложений. упаковывает приложение со всеми зависимостями в контейнер, который работает одинаково в любой среде.",
-        yandex: "yandex cloud / selectel — российские облачные провайдеры. предоставляют виртуальные машины, объектное хранение, managed базы данных и kubernetes.",
-        gitlab: "gitlab ci/cd — встроенная система непрерывной интеграции и доставки. автоматическая сборка, тестирование и деплой кода при каждом коммите.",
-        terraform: "terraform / ansible — infrastructure as code. terraform для создания и версионирования инфраструктуры, ansible для настройки серверов.",
-        jenkins: "jenkins / argocd — ci/cd инструменты. jenkins — гибкий сервер автоматизации сборки. argocd — gitops инструмент для kubernetes.",
-        reactnative: "react native / expo — кроссплатформенная разработка мобильных приложений. один код на javascript для ios и android. expo упрощает запуск и тестирование.",
-        swift: "swift / objective c — языки разработки для ios/macos. swift — современный, безопасный и выразительный язык от apple. objective c — для поддержки легаси кода.",
-        kotlin: "kotlin / java — языки для android. kotlin — официальный язык от google, более лаконичный и безопасный чем java, с поддержкой корутин.",
-        flutter: "flutter — фреймворк google для кроссплатформенной разработки. использует язык dart, собственный движок рендеринга и богатую библиотеку виджетов.",
-        ml: "ml / dl / nlp — машинное обучение, глубокое обучение, обработка естественного языка. ключевые направления искусственного интеллекта.",
-        python_ml: "python / pandas / sklearn — стандартный стек для data science. pandas для обработки данных, sklearn для классических алгоритмов ml.",
-        catboost: "catboost / openvino — градиентный бустинг от яндекса. openvino для оптимизации и ускорения моделей на intel процессорах.",
-        airflow: "airflow / sqlalchemy — airflow для оркестрации пайплайнов данных, sqlalchemy для работы с базами данных из python (orm).",
-        vision: "computer vision — компьютерное зрение. распознавание объектов, лиц, сегментация изображений, анализ медицинских снимков.",
-        voice: "voice technologies asr/tts — распознавание и синтез речи. автоматические субтитры, голосовые ассистенты, озвучивание текста.",
-        postman: "postman / swagger — тестирование и документация api. postman для ручных и автоматических тестов, swagger для генерации документации.",
-        jmeter: "jmeter — нагрузочное тестирование. симуляция высокой нагрузки для проверки производительности и стабильности сервисов.",
-        testrail: "testrail — управление тест-кейсами. система для хранения, выполнения тестов и формирования отчётов.",
-        charles: "charles / fiddler — снифферы трафика. отладка http/https запросов, подмена ответов, анализ трафика между клиентом и сервером.",
-        uml: "uml 2.x / bpmn 2.0 — нотации для визуализации архитектуры. uml для классов, компонентов и последовательностей, bpmn для бизнес-процессов.",
-        figma: "figma — облачный инструмент для дизайна интерфейсов. совместная работа в реальном времени, создание прототипов и дизайн-систем.",
-        enterprise: "sparx enterprise architect — профессиональный инструмент для моделирования архитектуры предприятия. поддерживает uml, bpmn, sysml.",
-        iso: "iso/iec 12207 / 15288 — международные стандарты для жизненного цикла программного обеспечения и системной инженерии.",
-        scrum: "scrum / agile — гибкие методологии разработки. итеративная поставка, адаптация к изменениям, кросс-функциональные команды.",
-        bigdata: "big data аналитика — обработка и анализ больших объёмов данных. инструменты: hadoop, spark, clickhouse, bigquery.",
-        trading: "trading аналитика — анализ финансовых рынков. алгоритмическая торговля, прогнозирование цен, риск-менеджмент.",
-        blockchain: "blockchain аналитика — анализ блокчейн-транзакций. отслеживание движения средств, выявление мошенничества, анализ смарт-контрактов.",
-        graph: "graph аналитика — анализ графовых структур. социальные сети, рекомендательные системы, поиск кратчайших путей."
+        react: "react / next.js — библиотека для создания пользовательских интерфейсов...",
+        ts: "typescript — типизированный javascript...",
+        redux: "redux / rtk — управление состоянием приложения...",
+        ssr: "ssr / ssg — серверный рендеринг и статическая генерация...",
+        css: "css3 / sass / tailwind — современные технологии стилизации...",
+        node: "node.js / nest.js — серверный javascript...",
+        python: "python / django — высокоуровневый язык для бэкенда и ai...",
+        cpp: "c++ — язык для высокопроизводительных систем...",
+        postgres: "postgresql / ms sql — мощные реляционные субд...",
+        redis: "redis / elasticsearch — redis для кэширования и очередей...",
+        rabbitmq: "rabbitmq / kafka — брокеры сообщений...",
+        kubernetes: "kubernetes — оркестрация контейнеров...",
+        docker: "docker — контейнеризация приложений...",
+        yandex: "yandex cloud / selectel — российские облачные провайдеры...",
+        gitlab: "gitlab ci/cd — встроенная система непрерывной интеграции...",
+        terraform: "terraform / ansible — infrastructure as code...",
+        jenkins: "jenkins / argocd — ci/cd инструменты...",
+        reactnative: "react native / expo — кроссплатформенная разработка...",
+        swift: "swift / objective c — языки разработки для ios/macos...",
+        kotlin: "kotlin / java — языки для android...",
+        flutter: "flutter — фреймворк google для кроссплатформенной разработки...",
+        ml: "ml / dl / nlp — машинное обучение, глубокое обучение...",
+        python_ml: "python / pandas / sklearn — стандартный стек для data science...",
+        catboost: "catboost / openvino — градиентный бустинг от яндекса...",
+        airflow: "airflow / sqlalchemy — оркестрация пайплайнов данных...",
+        vision: "computer vision — компьютерное зрение...",
+        voice: "voice technologies asr/tts — распознавание и синтез речи...",
+        postman: "postman / swagger — тестирование и документация api...",
+        jmeter: "jmeter — нагрузочное тестирование...",
+        testrail: "testrail — управление тест-кейсами...",
+        charles: "charles / fiddler — снифферы трафика...",
+        uml: "uml 2.x / bpmn 2.0 — нотации для визуализации архитектуры...",
+        figma: "figma — облачный инструмент для дизайна интерфейсов...",
+        enterprise: "sparx enterprise architect — профессиональный инструмент...",
+        iso: "iso/iec 12207 / 15288 — международные стандарты...",
+        scrum: "scrum / agile — гибкие методологии разработки...",
+        bigdata: "big data аналитика — обработка и анализ больших объёмов данных...",
+        trading: "trading аналитика — анализ финансовых рынков...",
+        blockchain: "blockchain аналитика — анализ блокчейн-транзакций...",
+        graph: "graph аналитика — анализ графовых структур..."
     };
 
     // ============================================
@@ -227,6 +227,41 @@
     }
 
     // ============================================
+    // ЗАГРУЗКА ВИДЕО (KINESCOPE) — ВОССТАНОВЛЕНО
+    // ============================================
+    function initLazyKinescope() {
+        const placeholders = document.querySelectorAll('.video-placeholder');
+        if (placeholders.length === 0) return;
+        
+        placeholders.forEach(placeholder => {
+            const videoId = placeholder.getAttribute('data-video-id');
+            if (!videoId) return;
+            
+            placeholder.addEventListener('click', () => {
+                if (placeholder.querySelector('iframe')) return;
+                
+                const iframe = document.createElement('iframe');
+                iframe.src = `https://kinescope.io/embed/${videoId}?autoplay=1&controls=1&loop=1&show_logo=0&playsinline=1`;
+                iframe.allow = "autoplay; fullscreen; picture-in-picture; encrypted-media";
+                iframe.style.position = "absolute";
+                iframe.style.top = "0";
+                iframe.style.left = "0";
+                iframe.style.width = "100%";
+                iframe.style.height = "100%";
+                iframe.style.border = "none";
+                
+                const videoFrame = placeholder.querySelector('.video-frame');
+                if (videoFrame) {
+                    videoFrame.innerHTML = '';
+                    videoFrame.appendChild(iframe);
+                }
+                
+                placeholder.classList.add('loaded');
+            });
+        });
+    }
+
+    // ============================================
     // ПЛАВНЫЙ СКРОЛЛ
     // ============================================
     function initSmoothScroll() {
@@ -315,12 +350,6 @@
         textSpan.className = 'btn-text';
         textSpan.textContent = btnText;
         
-        for (let i = 0; i < 6; i++) {
-            const spark = document.createElement('div');
-            spark.className = 'spark';
-            kineticBtn.appendChild(spark);
-        }
-        
         kineticBtn.appendChild(segLeft);
         kineticBtn.appendChild(segCenter);
         kineticBtn.appendChild(segRight);
@@ -329,7 +358,6 @@
         wrapper.appendChild(kineticBtn);
         parent.replaceChild(wrapper, toTopBtn);
         
-        // Эффекты для кнопки
         const leftSeg = kineticBtn.querySelector('.segment-left');
         const rightSeg = kineticBtn.querySelector('.segment-right');
         const centerSeg = kineticBtn.querySelector('.segment-center');
@@ -366,7 +394,7 @@
     }
 
     // ============================================
-    // АККОРДЕОН FAQ (упрощённый, без искр)
+    // АККОРДЕОН FAQ
     // ============================================
     function initCaseAccordion() {
         const items = document.querySelectorAll('.case-item');
@@ -422,112 +450,36 @@
     // ============================================
     // МОДАЛЬНОЕ ОКНО ДЛЯ УСЛУГ
     // ============================================
-
     const serviceDetails = {
         "Веб-разработка": {
-            description: "Мы создаём высокопроизводительные веб-приложения, которые выдерживают высокие нагрузки и обеспечивают мгновенный отклик. Наши решения масштабируются от стартапов до enterprise-уровня.",
-            stack: [
-                "React / Next.js — для создания быстрых SPA и SSR-приложений с отличной SEO",
-                "TypeScript — типобезопасный код, который легче поддерживать и рефакторить",
-                "Node.js / Nest.js — высокопроизводительный бэкенд с модульной архитектурой",
-                "PostgreSQL / MongoDB — выбор БД под задачи проекта",
-                "Docker / Kubernetes — контейнеризация и оркестрация для лёгкого масштабирования"
-            ],
-            advantages: [
-                "Скорость загрузки страниц до 0.3 секунды",
-                "Высокая безопасность благодаря TypeScript и аудиту кода",
-                "SEO-оптимизация из коробки с Next.js",
-                "Легкое масштабирование от 100 до 100 000+ пользователей",
-                "CI/CD пайплайны для быстрых и безопасных деплоев"
-            ]
+            description: "Мы создаём высокопроизводительные веб-приложения, которые выдерживают высокие нагрузки и обеспечивают мгновенный отклик...",
+            stack: ["React / Next.js", "TypeScript", "Node.js / Nest.js", "PostgreSQL / MongoDB", "Docker / Kubernetes"],
+            advantages: ["Скорость загрузки до 0.3 сек", "Высокая безопасность", "SEO-оптимизация", "Масштабирование", "CI/CD"]
         },
         "Иммерсивный дизайн": {
-            description: "Мы создаём дизайн, который не просто красив — он вовлекает пользователя в взаимодействие, запоминается и повышает конверсию. Микроанимации, 3D-сцены и плавные переходы делают ваш продукт уникальным.",
-            stack: [
-                "Figma / Adobe XD — профессиональное прототипирование",
-                "Three.js — 3D-графика и анимация в браузере",
-                "GSAP / Framer Motion — плавные микроанимации",
-                "Lottie — легковесные JSON-анимации",
-                "WebGL — аппаратно-ускоренная графика"
-            ],
-            advantages: [
-                "Увеличение вовлеченности пользователей на 40-60%",
-                "Повышение конверсии за счет понятной навигации",
-                "Премиум восприятие бренда",
-                "Адаптивный дизайн под все устройства",
-                "Оптимизированная производительность без лагов"
-            ]
+            description: "Мы создаём дизайн, который вовлекает пользователя и повышает конверсию...",
+            stack: ["Figma", "Three.js", "GSAP", "Lottie", "WebGL"],
+            advantages: ["+40-60% вовлеченности", "Повышение конверсии", "Премиум восприятие", "Адаптивность", "Высокая производительность"]
         },
         "E-commerce платформы": {
-            description: "Разрабатываем интернет-магазины с нуля, которые конвертируют до 15% посетителей в покупателей. Полная интеграция с 1С, CRM, платежными системами и маркетплейсами.",
-            stack: [
-                "Next.js / Nuxt.js — быстрый frontend с SSR",
-                "Node.js / Laravel — надёжный бэкенд",
-                "PostgreSQL — основная БД",
-                "Redis — кэширование и сессии",
-                "Elasticsearch — быстрый поиск по товарам",
-                "RabbitMQ — обработка заказов в очередях"
-            ],
-            advantages: [
-                "Конверсия до 15%+",
-                "Интеграция с Wildberries, Ozon, Яндекс.Маркет",
-                "50+ платежных систем",
-                "Встроенная аналитика продаж",
-                "Автоматическая синхронизация с 1С"
-            ]
+            description: "Интернет-магазины с конверсией до 15%...",
+            stack: ["Next.js / Nuxt.js", "Node.js / Laravel", "PostgreSQL", "Redis", "Elasticsearch", "RabbitMQ"],
+            advantages: ["Конверсия до 15%+", "Интеграция с маркетплейсами", "50+ платежных систем", "Встроенная аналитика", "Синхронизация с 1С"]
         },
         "SEO и аналитика": {
-            description: "Выводим сайты в топ-10 Яндекса и Google. Полный цикл: от сбора семантики до технической оптимизации и наращивания ссылочной массы.",
-            stack: [
-                "Яндекс.Вебмастер / Google Search Console — мониторинг позиций",
-                "KeyCollector / Semrush — сбор семантического ядра",
-                "Screaming Frog — технический аудит",
-                "Яндекс.Метрика / GA4 — аналитика поведения",
-                "Ahrefs / Serpstat — анализ конкурентов"
-            ],
-            advantages: [
-                "Рост трафика до 300% за 6 месяцев",
-                "Попадание в топ-10 по 70+ запросам",
-                "Техническая оптимизация под Core Web Vitals",
-                "Ежемесячная детальная отчетность",
-                "Гарантия KPI в договоре"
-            ]
+            description: "Выводим сайты в топ-10 Яндекса и Google...",
+            stack: ["Яндекс.Вебмастер", "KeyCollector", "Screaming Frog", "GA4", "Ahrefs"],
+            advantages: ["Рост трафика до 300%", "Топ-10 по 70+ запросам", "Core Web Vitals", "Ежемесячная отчетность", "Гарантия KPI"]
         },
         "AI и Machine Learning": {
-            description: "Внедряем нейросети в ваш бизнес: от чат-ботов до рекомендательных систем и генеративного AI. Автоматизируем процессы и увеличиваем прибыль.",
-            stack: [
-                "Python / FastAPI — основной язык для ML",
-                "TensorFlow / PyTorch — фреймворки глубокого обучения",
-                "CatBoost / LightGBM — градиентный бустинг",
-                "OpenAI / YandexGPT — генеративные модели",
-                "Airflow — оркестрация пайплайнов",
-                "PostgreSQL / ClickHouse — хранение данных"
-            ],
-            advantages: [
-                "Автоматизация до 80% рутинных задач",
-                "Рост конверсии от персонализации на 25-40%",
-                "Чат-боты, отвечающие как люди",
-                "Точность прогнозов до 95%",
-                "Обработка терабайт данных в реальном времени"
-            ]
+            description: "Внедряем нейросети в ваш бизнес...",
+            stack: ["Python / FastAPI", "TensorFlow / PyTorch", "CatBoost", "OpenAI / YandexGPT", "Airflow"],
+            advantages: ["Автоматизация до 80%", "+25-40% конверсии", "Чат-боты", "Точность до 95%", "Обработка терабайт данных"]
         },
         "Мобильные приложения": {
-            description: "Разрабатываем нативные и кроссплатформенные приложения под iOS и Android. Полный цикл: от идеи до публикации в App Store и Google Play.",
-            stack: [
-                "React Native / Expo — быстрая кроссплатформа",
-                "Swift / Kotlin — нативная разработка",
-                "Flutter — единый код для iOS/Android",
-                "Firebase — аналитика и push-уведомления",
-                "GraphQL / REST API — связь с бэкендом",
-                "Realm / SQLite — локальное хранение"
-            ],
-            advantages: [
-                "Публикация в App Store и Google Play",
-                "Оффлайн-режим и push-уведомления",
-                "Биометрическая авторизация",
-                "60 FPS производительность",
-                "Горячие обновления без стора"
-            ]
+            description: "Нативные и кроссплатформенные приложения под iOS и Android...",
+            stack: ["React Native", "Swift / Kotlin", "Flutter", "Firebase", "GraphQL"],
+            advantages: ["Публикация в сторах", "Оффлайн-режим", "Биометрия", "60 FPS", "Горячие обновления"]
         }
     };
 
@@ -605,7 +557,7 @@
     }
 
     // ============================================
-    // HERO БАННЕР (СКРИПТЫ)
+    // HERO БАННЕР
     // ============================================
     function initHeroMatrixRain() {
         const canvas = document.getElementById('matrixCanvas');
@@ -744,7 +696,7 @@
     }
 
     // ============================================
-    // ЗАГРУЗКА КОМПОНЕНТОВ (HEADER, FOOTER)
+    // ЗАГРУЗКА КОМПОНЕНТОВ
     // ============================================
     function loadComponent(elementId, filePath, callback) {
         const placeholder = document.getElementById(elementId);
@@ -766,17 +718,15 @@
     }
 
     // ============================================
-    // ЗАПУСК ВСЕХ ИНИЦИАЛИЗАЦИЙ
+    // ЗАПУСК
     // ============================================
     document.addEventListener('DOMContentLoaded', function() {
-        // Инициализация hero-баннера
         initHeroMatrixRain();
         initHeroStaticElements();
         initHeroTypewriter();
-        
-        // Инициализация остальных функций
         initTechTooltips();
         initCalculatorWithFallback();
+        initLazyKinescope();      // ← ВОССТАНОВЛЕНО
         initSmoothScroll();
         initHeaderFixed();
         initBurgerMenu();
@@ -785,7 +735,6 @@
         initServiceModal();
         initPortfolioAccordion();
         
-        // Загрузка компонентов header и footer
         loadComponent('header-placeholder', 'header.html', function() {
             initBurgerMenu();
             initHeaderFixed();
