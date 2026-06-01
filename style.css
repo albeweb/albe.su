@@ -636,7 +636,7 @@ main { padding-top: 0; }
 .calc-price { font-size: 1.8rem; font-weight: 700; background: var(--gradient-yellow-green); -webkit-background-clip: text; background-clip: text; color: transparent; word-break: break-word; }
 
 .stack-explanation { font-size: 0.9rem; line-height: 1.6; color: var(--gray); }
-.stack-explanation h4 { color: #06B6D4; font-weight: 700; font-size: 1.1rem; margin: 0 0 12px; }
+.stack-explanation h3 { color: #06B6D4; font-weight: 700; font-size: 1.1rem; margin: 0 0 12px; }
 .stack-explanation p { color: #E5E7EB; font-size: 0.95rem; }
 
 .time-breakdown { margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
