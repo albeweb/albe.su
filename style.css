@@ -102,7 +102,6 @@ body::before {
 h1, h2,
 .section-header h2,
 .contact-card h2,
-.price-table h3,
 .nav-link {
     font-family: 'Geist', sans-serif;
     font-weight: 400;
@@ -232,12 +231,10 @@ h4 {
 .section { padding: 100px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
 
 /* ============================================ */
-/* 6. КАРТОЧКИ И ОБЩИЕ БЛОКИ */
+/* 6. ОБЩИЕ БЛОКИ */
 /* ============================================ */
 
-.portfolio-card, .step-card,
-.mission-photo, .faq-item, .cover-content, .calculator-card, .calc-option, 
-.contact-card, .price-table {
+.step-card, .contact-card, .price-table {
     background: var(--card-bg);
     backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -245,7 +242,7 @@ h4 {
     border-radius: 16px;
 }
 
-.service-card, .portfolio-card, .step-card, .mission-photo, .faq-item, .contact-card {
+.service-card, .step-card, .contact-card {
     padding: 32px;
 }
 
@@ -265,108 +262,37 @@ h4 {
 
 .section-header h2 { margin-bottom: 0; }
 
-.portfolio-card .portfolio-image {
-    width: 100%;
-    height: 280px;
-    object-fit: cover;
-    display: block;
-    border-radius: 16px;
-    background: linear-gradient(145deg, #1A1A2A, #0B0B15);
+.step-card {
+    flex: 1 1 200px;
+    padding: 28px;
+    border-radius: 20px;
 }
 
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 36px;
-    margin-top: 48px;
-}
-
-.mission-grid .mission-grid-card {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    display: block;
-    border-radius: 16px;
-}
-
-.mission-grid-wrapper {
-    display: flex;
-    gap: 50px;
-    align-items: stretch;
-}
-
-.mission-text {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.mission-text p { margin-bottom: 1rem; }
-
-.mission-grid {
-    flex: 1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-}
-
-.faq-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.faq-item {
-    margin-bottom: 0;
-    display: flex;
-    flex-direction: column;
-}
-
-.faq-question {
-    width: 100%;
-    text-align: left;
-    background: none;
-    border: none;
-    padding: 22px 28px;
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--color-cyan);
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    background: var(--card-bg);
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    border-radius: 16px;
-}
-
-.faq-question:hover {
+.step-card:hover {
+    transform: translateY(-5px);
     border-color: var(--color-cyan);
-    transform: translateY(-2px);
-    background: rgba(6, 182, 212, 0.1);
-    backdrop-filter: blur(8px);
 }
 
-.faq-answer {
-    padding: 0 28px 28px 28px;
-    color: var(--gray);
-    display: none;
-    background: var(--card-bg);
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-top: none;
-    border-radius: 0 0 16px 16px;
-    margin-top: -2px;
+.step-num {
+    font-size: 2.2rem;
+    font-weight: 500;
+    background: var(--gradient-yellow-green);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 1rem;
+    opacity: 0.9;
 }
 
-.faq-answer.active { display: block; }
-.faq-question::after { content: '+'; font-size: 1.5rem; font-weight: 300; }
-.faq-question.active::after { content: '−'; }
+.steps-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    margin-top: 40px;
+}
 
 /* ============================================ */
-/* 7. КОНТАКТЫ (старый блок, оставлен для совместимости) */
+/* 7. КОНТАКТЫ */
 /* ============================================ */
 
 .contact-section {
@@ -670,26 +596,6 @@ h4 {
 /* 10. КОМПЕТЕНЦИИ И ТЕХНОЛОГИИ */
 /* ============================================ */
 
-.steps-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 32px;
-    margin-top: 40px;
-}
-
-.step-card { flex: 1 1 200px; background: var(--card-bg); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px; padding: 28px; transition: all 0.35s ease; }
-.step-card:hover { transform: translateY(-5px); border-color: var(--color-cyan); }
-.step-num {
-    font-size: 2.2rem;
-    font-weight: 500;
-    background: var(--gradient-yellow-green);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    margin-bottom: 1rem;
-    opacity: 0.9;
-}
-
 .competences-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -810,92 +716,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 11. ТАБЛИЦА ЦЕН */
-/* ============================================ */
-
-.price-table {
-    padding: 40px 48px;
-    margin: 40px 0;
-}
-
-.price-table h3 {
-    font-size: 1.6rem;
-    text-align: center;
-    margin-bottom: 2rem;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.price-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-}
-
-.price-card {
-    background: rgba(10, 14, 19, 0.7);
-    padding: 20px;
-    border-radius: 20px;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.price-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--color-purple);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(8px);
-}
-
-.price-card h4 {
-    font-size: 1.2rem;
-    color: var(--color-purple);
-    margin-bottom: 12px;
-}
-
-.price-card .price {
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--white);
-    margin-bottom: 16px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.price-card ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.price-card li {
-    font-size: 0.8rem;
-    padding: 6px 0;
-    padding-left: 20px;
-    position: relative;
-    color: var(--gray);
-}
-
-.price-card li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: var(--color-green);
-}
-
-.price-note {
-    text-align: center;
-    font-size: 0.8rem;
-    color: var(--gray);
-    margin-top: 24px;
-    padding-top: 16px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-/* ============================================ */
-/* 12. FOOTER */
+/* 11. FOOTER */
 /* ============================================ */
 
 .footer {
@@ -934,7 +755,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 13. ТУЛТИПЫ ДЛЯ ТЕХНОЛОГИЙ */
+/* 12. ТУЛТИПЫ ДЛЯ ТЕХНОЛОГИЙ */
 /* ============================================ */
 
 .tech-tooltip {
@@ -963,7 +784,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 14. ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ — КВАНТОВЫЙ СТИЛЬ */
+/* 13. ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ — КВАНТОВЫЙ СТИЛЬ */
 /* ============================================ */
 
 .services-grid {
@@ -1151,7 +972,7 @@ h4 {
 .services-grid .service-card .dot-purple { background: var(--color-purple); }
 
 /* ============================================ */
-/* 15. КИНЕТИЧЕСКИЕ КНОПКИ (3 СЕГМЕНТА) */
+/* 14. КИНЕТИЧЕСКИЕ КНОПКИ (3 СЕГМЕНТА) */
 /* ============================================ */
 
 .kinetic-wrapper {
@@ -1365,7 +1186,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 16. КИНЕТИЧЕСКАЯ КНОПКА НАВЕРХ — ПЛАВАЮЩАЯ */
+/* 15. КИНЕТИЧЕСКАЯ КНОПКА НАВЕРХ — ПЛАВАЮЩАЯ */
 /* ============================================ */
 
 .kinetic-btn.totop-btn {
@@ -1445,7 +1266,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 17. АККОРДЕОН FAQ В СТИЛЕ «КЕЙС» */
+/* 16. АККОРДЕОН FAQ В СТИЛЕ «КЕЙС» */
 /* ============================================ */
 
 .cases-accordion {
@@ -1632,7 +1453,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 18. AI РЕКЛАМА */
+/* 17. AI РЕКЛАМА */
 /* ============================================ */
 
 .ai-reklama-section {
@@ -1827,7 +1648,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 19. ПЛЕЙСХОЛДЕРЫ ДЛЯ ВИДЕО */
+/* 18. ПЛЕЙСХОЛДЕРЫ ДЛЯ ВИДЕО */
 /* ============================================ */
 
 .video-placeholder {
@@ -1876,7 +1697,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 20. УНИКАЛЬНЫЙ СКРОЛЛБАР В СТИЛЕ ГРАДИЕНТА */
+/* 19. УНИКАЛЬНЫЙ СКРОЛЛБАР В СТИЛЕ ГРАДИЕНТА */
 /* ============================================ */
 
 ::-webkit-scrollbar {
@@ -1923,7 +1744,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 21. СКРЫВАЕМ КИНЕТИЧЕСКИЕ КНОПКИ ВО ВСЕХ БЛОКАХ, КРОМЕ ХЕДЕРА И КОНТАКТОВ */
+/* 20. СКРЫВАЕМ КИНЕТИЧЕСКИЕ КНОПКИ ВО ВСЕХ БЛОКАХ, КРОМЕ ХЕДЕРА И КОНТАКТОВ */
 /* ============================================ */
 
 .section .kinetic-btn,
@@ -1939,10 +1760,9 @@ h4 {
 }
 
 /* ============================================ */
-/* 22. HERO БАННЕР (НА ВСЮ ВЫСОТУ) */
+/* 21. HERO БАННЕР (НА ВСЮ ВЫСОТУ) */
 /* ============================================ */
 
-/* Шапка — фиксированная поверх всего */
 .header {
     position: fixed !important;
     top: 0;
@@ -1957,7 +1777,6 @@ h4 {
     backdrop-filter: blur(12px);
 }
 
-/* Плейсхолдер шапки */
 #header-placeholder {
     position: fixed;
     top: 0;
@@ -1971,7 +1790,6 @@ h4 {
     pointer-events: auto;
 }
 
-/* Hero — на всю высоту экрана */
 .hero-section {
     position: relative;
     height: 100vh;
@@ -1982,12 +1800,10 @@ h4 {
     z-index: 1;
 }
 
-/* Компенсация для контента под hero */
 main {
     padding-top: 0;
 }
 
-/* Первая секция после hero */
 #services {
     margin-top: 0;
     position: relative;
@@ -1996,7 +1812,7 @@ main {
 }
 
 /* ============================================ */
-/* 23. HERO БАННЕР (ДОПОЛНИТЕЛЬНЫЕ СТИЛИ) */
+/* 22. HERO БАННЕР (ДОПОЛНИТЕЛЬНЫЕ СТИЛИ) */
 /* ============================================ */
 .hero-canvas-bottom {
     position: absolute;
@@ -2209,7 +2025,7 @@ main {
 @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
 
 /* ============================================ */
-/* 24. МОДАЛЬНОЕ ОКНО ДЛЯ УСЛУГ */
+/* 23. МОДАЛЬНОЕ ОКНО ДЛЯ УСЛУГ */
 /* ============================================ */
 
 .service-modal {
@@ -2350,10 +2166,9 @@ main {
 }
 
 /* ============================================ */
-/* 25. ПОЛНАЯ МОБИЛЬНАЯ АДАПТАЦИЯ */
+/* 24. ПОЛНАЯ МОБИЛЬНАЯ АДАПТАЦИЯ */
 /* ============================================ */
 
-/* Планшеты и маленькие десктопы */
 @media (max-width: 1200px) {
     .container {
         padding: 0 40px !important;
@@ -2367,16 +2182,6 @@ main {
     .competences-grid {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 24px !important;
-    }
-    
-    .price-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 20px !important;
-    }
-    
-    .portfolio-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 30px !important;
     }
     
     .hero-stats {
@@ -2427,9 +2232,7 @@ main {
     }
 }
 
-/* Мобильные устройства до 768px */
 @media (max-width: 768px) {
-    /* Общие */
     .container {
         padding: 0 20px !important;
     }
@@ -2450,7 +2253,6 @@ main {
         margin-bottom: 0 !important;
     }
     
-    /* Сетки */
     .services-grid {
         grid-template-columns: 1fr !important;
         gap: 20px !important;
@@ -2465,14 +2267,6 @@ main {
         grid-template-columns: 1fr !important;
     }
     
-    .price-grid {
-        grid-template-columns: 1fr !important;
-    }
-    
-    .portfolio-grid {
-        grid-template-columns: 1fr !important;
-    }
-    
     .steps-container {
         flex-direction: column !important;
     }
@@ -2481,12 +2275,6 @@ main {
         width: 100% !important;
     }
     
-    .mission-grid-wrapper {
-        flex-direction: column !important;
-        gap: 30px !important;
-    }
-    
-    /* Hero блок — меняем с absolute на relative */
     .hero-section {
         height: auto !important;
         min-height: 100vh !important;
@@ -2599,7 +2387,6 @@ main {
         font-size: 0.55rem !important;
     }
     
-    /* Отключаем тяжелые эффекты на мобильных */
     .hero-canvas-bottom {
         display: none !important;
     }
@@ -2608,7 +2395,6 @@ main {
         display: none !important;
     }
     
-    /* Карточки услуг на мобильных */
     .services-grid .service-card .card-content {
         padding: 20px !important;
     }
@@ -2634,7 +2420,6 @@ main {
     .services-grid .service-card .corner-bl { bottom: 12px !important; left: 12px !important; }
     .services-grid .service-card .corner-br { bottom: 12px !important; right: 12px !important; }
     
-    /* Калькулятор */
     .calculator-card {
         padding: 24px !important;
     }
@@ -2662,15 +2447,6 @@ main {
         font-size: 1.3rem !important;
     }
     
-    .price-table {
-        padding: 24px !important;
-    }
-    
-    .price-table h3 {
-        font-size: 1.3rem !important;
-    }
-    
-    /* AI реклама */
     .ai-design-grid {
         flex-direction: column !important;
         gap: 24px !important;
@@ -2701,7 +2477,6 @@ main {
         font-size: 0.85rem !important;
     }
     
-    /* Форма */
     .form-row {
         grid-template-columns: 1fr !important;
         gap: 0 !important;
@@ -2721,7 +2496,6 @@ main {
         font-size: 0.9rem !important;
     }
     
-    /* FAQ */
     .case-lid {
         padding: 12px !important;
     }
@@ -2749,7 +2523,6 @@ main {
         font-size: 0.6rem !important;
     }
     
-    /* Header и бургер-меню */
     .header .container {
         padding: 0 20px !important;
     }
@@ -2791,7 +2564,6 @@ main {
         margin-top: 20px !important;
     }
     
-    /* Модальное окно */
     .modal-body {
         padding: 30px 20px !important;
     }
@@ -2811,7 +2583,6 @@ main {
         font-size: 0.9rem !important;
     }
     
-    /* Кинетические кнопки на мобильных */
     .kinetic-btn {
         min-width: 200px !important;
         height: 48px !important;
@@ -2849,7 +2620,6 @@ main {
         font-size: 1.4rem !important;
     }
     
-    /* Футер */
     .footer-grid {
         flex-direction: column !important;
         gap: 30px !important;
@@ -2866,7 +2636,6 @@ main {
     }
 }
 
-/* Маленькие мобильные до 480px */
 @media (max-width: 480px) {
     .agency-tag {
         font-size: 0.75rem !important;
@@ -2896,22 +2665,6 @@ main {
         padding: 40px 0 10px 0 !important;
     }
     
-    .price-card {
-        padding: 16px !important;
-    }
-    
-    .price-card h4 {
-        font-size: 1rem !important;
-    }
-    
-    .price-card .price {
-        font-size: 1.2rem !important;
-    }
-    
-    .price-card li {
-        font-size: 0.7rem !important;
-    }
-    
     .competence-card {
         padding: 20px !important;
     }
@@ -2926,17 +2679,12 @@ main {
     }
 }
 
-/* Планшеты (между 768 и 1024) */
 @media (min-width: 769px) and (max-width: 1024px) {
     .services-grid {
         grid-template-columns: repeat(2, 1fr) !important;
     }
     
     .competences-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-    }
-    
-    .price-grid {
         grid-template-columns: repeat(2, 1fr) !important;
     }
     
@@ -2950,7 +2698,6 @@ main {
     }
 }
 
-/* Для экранов с reduced motion — отключаем анимации */
 @media (prefers-reduced-motion: reduce) {
     .services-grid .service-card,
     .services-grid .service-card .segment,
@@ -2969,7 +2716,6 @@ main {
     }
 }
 
-/* Безопасные отступы для безопасной зоны на iPhone */
 @supports (padding: max(0px)) {
     .container {
         padding-left: max(20px, env(safe-area-inset-left)) !important;
@@ -2989,11 +2735,6 @@ main {
     }
 }
 
-/* ============================================ */
-/* 26. ДОПОЛНИТЕЛЬНЫЕ ФРАЗЫ В HERO */
-/* ============================================ */
-
-/* ФРАЗА 1: РАЗРАБОТКА ПОД КЛЮЧ */
 .hero-subtitle-top {
     position: absolute;
     top: 200px;
@@ -3011,7 +2752,6 @@ main {
     animation: fadeInUp 0.6s ease-out 0.3s forwards;
 }
 
-/* ФРАЗА 2: МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ - ПОДНЯТА НА 200px ВЫШЕ */
 .hero-subtitle-bottom {
     position: absolute;
     top: 480px;
@@ -3032,7 +2772,6 @@ main {
     animation: fadeInUp 0.6s ease-out 0.5s forwards;
 }
 
-/* Мобильная адаптация */
 @media (max-width: 1200px) {
     .hero-subtitle-top {
         font-size: 1.4rem;
@@ -3075,54 +2814,36 @@ main {
 }
 
 /* ============================================ */
-/* ПОВЫШЕНИЕ КОНТРАСТНОСТИ — ТОЧЕЧНЫЕ ИСПРАВЛЕНИЯ */
+/* ПОВЫШЕНИЕ КОНТРАСТНОСТИ */
 /* ============================================ */
 
-/* 1. Текст "рекомендуемый стек" в калькуляторе */
 .stack-explanation h4 {
     color: #06B6D4 !important;
     font-weight: 700 !important;
     font-size: 1.1rem !important;
 }
 
-/* 2. Текст внутри stack-explanation (выберите услуги для расчёта) */
 .stack-explanation p {
     color: #E5E7EB !important;
     font-size: 0.95rem !important;
 }
 
-/* 3. Цифры КЕЙС 01, 02 и т.д. в FAQ */
 .case-number {
     color: #F5B700 !important;
     background: rgba(245, 183, 0, 0.15) !important;
     font-weight: 700 !important;
 }
 
-/* 4. Текст вопросов в FAQ */
 .case-title {
     color: #FFFFFF !important;
     font-weight: 500 !important;
 }
 
-/* 5. Текст ответов в FAQ */
 .case-text {
     color: #D1D5DB !important;
     line-height: 1.5 !important;
 }
 
-/* 6. Цены в карточках калькулятора */
-.price-card .price {
-    color: #F5B700 !important;
-    font-weight: 700 !important;
-}
-
-/* 7. Заголовки карточек цен */
-.price-card h4 {
-    color: #06B6D4 !important;
-    font-weight: 600 !important;
-}
-
-/* 8. Текст в калькуляторе (услуги) */
 .calc-option {
     color: #D1D5DB !important;
 }
@@ -3131,43 +2852,31 @@ main {
     color: #FFFFFF !important;
 }
 
-/* 9. Подписи в калькуляторе */
 .calc-label {
     color: #F5B700 !important;
     font-weight: 600 !important;
 }
 
-/* 10. Итоговая цена */
 .calc-price {
     font-size: 1.8rem !important;
     font-weight: 700 !important;
 }
 
-/* 11. Текст в модальном окне */
 .modal-description p,
 .modal-stack li,
 .modal-advantages li {
     color: #D1D5DB !important;
 }
 
-/* 12. Текст "Все услуги" и "Подробнее" */
-.section-more-btn {
-    color: #06B6D4 !important;
-    font-weight: 500 !important;
-}
-
-/* 13. Текст в компетенциях */
 .competence-card > p,
 .tech-item {
     color: #D1D5DB !important;
 }
 
-/* 14. Текст в миссии */
 .mission-text p {
     color: #D1D5DB !important;
 }
 
-/* 15. Цена в AI карточках */
 .ai-card .price-tag {
     background: linear-gradient(135deg, #F5B700, #10B981) !important;
     color: #000000 !important;
@@ -3178,7 +2887,6 @@ main {
 /* УВЕЛИЧЕНИЕ ОБЛАСТЕЙ ПРИКОСНОВЕНИЯ */
 /* ============================================ */
 
-/* 1. Все ссылки в навигации — увеличенная область нажатия */
 .nav-link {
     display: inline-block !important;
     padding: 12px 16px !important;
@@ -3188,7 +2896,6 @@ main {
     position: relative !important;
 }
 
-/* 2. Кнопки "Все услуги", "Подробнее" и т.д. */
 .section-more-btn,
 .card-btn,
 .modal-btn {
@@ -3201,12 +2908,10 @@ main {
     cursor: pointer !important;
 }
 
-/* 3. Карточки услуг — вся карточка кликабельна */
 .service-card {
     cursor: pointer !important;
 }
 
-/* 4. Кнопки в калькуляторе (услуги, сложность) */
 .calc-option {
     display: inline-flex !important;
     align-items: center !important;
@@ -3217,7 +2922,6 @@ main {
     cursor: pointer !important;
 }
 
-/* 5. Элементы технологий в компетенциях */
 .tech-item {
     display: inline-flex !important;
     align-items: center !important;
@@ -3227,14 +2931,12 @@ main {
     cursor: pointer !important;
 }
 
-/* 6. Кнопки аккордеона FAQ */
 .case-lid {
     padding: 16px 20px !important;
     min-height: 60px !important;
     cursor: pointer !important;
 }
 
-/* 7. Поля ввода в форме */
 .contact-form input,
 .contact-form textarea,
 .calculator-card input,
@@ -3243,21 +2945,18 @@ main {
     padding: 12px 16px !important;
 }
 
-/* 8. Кнопка отправки формы */
 .btn-primary {
     min-height: 52px !important;
     padding: 14px 28px !important;
     cursor: pointer !important;
 }
 
-/* 9. Ссылки в футере */
 .footer a {
     display: inline-block !important;
     padding: 8px 0 !important;
     min-height: 40px !important;
 }
 
-/* 10. Бейджи в hero-секции */
 .hero-badges .badge {
     display: inline-flex !important;
     align-items: center !important;
@@ -3266,7 +2965,6 @@ main {
     margin: 4px !important;
 }
 
-/* 11. Кнопка бургер-меню на мобильных */
 .burger {
     min-width: 48px !important;
     min-height: 48px !important;
@@ -3281,7 +2979,6 @@ main {
     height: 3px !important;
 }
 
-/* 12. Кнопка закрытия модалки */
 .modal-close {
     min-width: 48px !important;
     min-height: 48px !important;
@@ -3291,7 +2988,6 @@ main {
     cursor: pointer !important;
 }
 
-/* 13. Статистика в hero */
 .stat-item {
     min-width: 80px !important;
     min-height: 80px !important;
@@ -3302,7 +2998,6 @@ main {
     cursor: default !important;
 }
 
-/* 14. Видео-плейсхолдеры */
 .video-placeholder {
     cursor: pointer !important;
     min-height: 200px !important;
@@ -3313,43 +3008,32 @@ main {
     min-height: 64px !important;
 }
 
-/* 15. Кнопка наверх (если есть) */
 .totop-btn {
     min-width: 56px !important;
     min-height: 56px !important;
     cursor: pointer !important;
 }
 
-/* ============================================ */
-/* РАССТОЯНИЕ МЕЖДУ ЭЛЕМЕНТАМИ */
-/* ============================================ */
-
-/* Расстояние между ссылками в навигации */
 .nav-menu {
     gap: 8px !important;
 }
 
-/* Расстояние между бейджами */
 .hero-badges {
     gap: 12px !important;
 }
 
-/* Расстояние между опциями калькулятора */
 .calc-options {
     gap: 12px !important;
 }
 
-/* Расстояние между технологиями */
 .competence-tech-list {
     gap: 12px !important;
 }
 
-/* Расстояние между элементами аккордеона */
 .cases-accordion {
     gap: 16px !important;
 }
 
-/* Расстояние между полями формы */
 .form-row {
     gap: 20px !important;
 }
@@ -3359,14 +3043,9 @@ main {
     margin-bottom: 20px !important;
 }
 
-/* Расстояние между кнопками в футере */
 .footer-col ul li {
     margin-bottom: 8px !important;
 }
-
-/* ============================================ */
-/* МОБИЛЬНАЯ АДАПТАЦИЯ (ещё больше отступы) */
-/* ============================================ */
 
 @media (max-width: 768px) {
     .nav-menu {
@@ -3417,7 +3096,7 @@ main {
 }
 
 /* ============================================ */
-/* 27. НОВЫЙ БЛОК КОНТАКТОВ (contacts-new-section) */
+/* 25. НОВЫЙ БЛОК КОНТАКТОВ (contacts-new-section) */
 /* ============================================ */
 
 .contacts-new-section {
@@ -3431,7 +3110,7 @@ main {
 .contacts-new-section .container {
     max-width: 100%;
     margin: 0 auto;
-    padding: 0 80px;           /* ← отступы 80px от краёв, как у всех секций */
+    padding: 0 80px;
     position: relative;
     z-index: 2;
 }
@@ -3484,7 +3163,6 @@ main {
     z-index: 2;
 }
 
-/* КАРТОЧКИ */
 .contact-new-info-card, .vk-new-widget-card {
     background: #100c1c;
     border-radius: 44px;
@@ -3497,7 +3175,6 @@ main {
     overflow: hidden;
 }
 
-/* ЛЕВАЯ КАРТОЧКА */
 .contact-new-info-card {
     border: 1px solid rgba(16, 185, 129, 0.45);
     padding: 38px 34px;
@@ -3510,7 +3187,6 @@ main {
     box-shadow: 0 32px 45px -12px rgba(16, 185, 129, 0.4), 0 0 0 1px rgba(16, 185, 129, 0.3) inset;
 }
 
-/* ПРАВАЯ КАРТОЧКА */
 .vk-new-widget-card {
     border: 1px solid rgba(76, 29, 149, 0.45);
     padding: 38px 30px 40px 30px;
@@ -3522,7 +3198,6 @@ main {
     box-shadow: 0 32px 45px -12px rgba(76, 29, 149, 0.4), 0 0 0 1px rgba(76, 29, 149, 0.3) inset;
 }
 
-/* ЛЕВАЯ КАРТОЧКА — детали */
 .contact-new-info-title {
     font-size: 1.9rem;
     font-weight: 700;
@@ -3603,7 +3278,6 @@ main {
     border-bottom-color: #06b6d4;
 }
 
-/* ПРАВАЯ КАРТОЧКА — VK */
 .vk-new-header {
     display: flex;
     align-items: center;
@@ -3769,8 +3443,9 @@ main {
         font-size: 1.5rem;
     }
 }
+
 /* ============================================ */
-/* КАРТОЧКИ В БЛОКЕ "ПОЧЕМУ ВЫБИРАЮТ НАС" */
+/* 26. КАРТОЧКИ В БЛОКЕ "ПОЧЕМУ ВЫБИРАЮТ НАС" */
 /* ============================================ */
 
 .mission-cards-grid {
@@ -3909,8 +3584,9 @@ main {
         gap: 20px;
     }
 }
+
 /* ============================================ */
-/* ОБНОВЛЕННЫЙ АККОРДЕОН ПОРТФОЛИО С ПОДСВЕТКОЙ */
+/* 27. ОБНОВЛЕННЫЙ АККОРДЕОН ПОРТФОЛИО */
 /* ============================================ */
 
 .portfolio-accordion {
@@ -3942,7 +3618,6 @@ main {
 .accordion-panel:first-child { margin-left: 0; }
 .accordion-panel:last-child { margin-right: 0; }
 
-/* ПОДСВЕТКА ЗАКРЫТОЙ КАРТОЧКИ ПРИ НАВЕДЕНИИ */
 .accordion-panel:not(.active):hover {
     border-color: rgba(6, 182, 212, 0.7);
     box-shadow: 0 8px 25px rgba(6, 182, 212, 0.3), 
@@ -3951,7 +3626,6 @@ main {
     transform: translateY(-2px);
 }
 
-/* ОТКРЫТАЯ КАРТОЧКА — ЯРКАЯ ОБВОДКА */
 .accordion-panel.active {
     flex: 5;
     border: 1.5px solid transparent;
@@ -3961,7 +3635,6 @@ main {
                 0 0 0 2px rgba(6, 182, 212, 0.2);
 }
 
-/* ДОПОЛНИТЕЛЬНЫЙ ЭФФЕКТ ДЛЯ ОТКРЫТОЙ — ПУЛЬСАЦИЯ ОБВОДКИ (опционально) */
 @keyframes activeGlow {
     0% {
         box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(6, 182, 212, 0.2);
@@ -3978,7 +3651,6 @@ main {
     animation: activeGlow 2s ease-in-out infinite;
 }
 
-/* ЗАКРЫТАЯ ПАНЕЛЬ — ТОЛЬКО НАЗВАНИЕ ВЕРТИКАЛЬНО */
 .accordion-panel-header {
     position: absolute;
     left: 0;
@@ -3997,7 +3669,6 @@ main {
     transition: all 0.3s ease;
 }
 
-/* Подсветка заголовка при наведении на закрытую карточку */
 .accordion-panel:not(.active):hover .accordion-panel-header {
     background: rgba(6, 182, 212, 0.15);
     border-right-color: rgba(6, 182, 212, 0.5);
@@ -4021,7 +3692,6 @@ main {
     transition: all 0.3s ease;
 }
 
-/* Подсветка номера при наведении */
 .accordion-panel:not(.active):hover .panel-number {
     background: linear-gradient(135deg, #F5B700, #06B6D4);
     -webkit-background-clip: text;
@@ -4045,7 +3715,6 @@ main {
     transition: all 0.3s ease;
 }
 
-/* Подсветка заголовка при наведении */
 .accordion-panel:not(.active):hover .panel-title h3 {
     color: #06B6D4;
     text-shadow: 0 0 8px rgba(6, 182, 212, 0.5);
@@ -4056,7 +3725,6 @@ main {
     display: none;
 }
 
-/* СТРЕЛКА */
 .accordion-panel-header::after {
     content: '←';
     font-size: 1.4rem;
@@ -4080,7 +3748,6 @@ main {
     opacity: 1;
 }
 
-/* КОНТЕНТ ОТКРЫТОЙ ПАНЕЛИ */
 .accordion-panel-content {
     position: absolute;
     left: 70px;
@@ -4102,7 +3769,6 @@ main {
     visibility: visible;
 }
 
-/* ОСТАЛЬНЫЕ СТИЛИ (ФОТО, ОПИСАНИЕ, ТЕХНОЛОГИИ) */
 .panel-image {
     max-height: 350px;
     overflow: hidden;
@@ -4231,7 +3897,6 @@ main {
     color: #F5B700;
 }
 
-/* СКРОЛЛБАР */
 .accordion-panel-content::-webkit-scrollbar {
     width: 4px;
 }
@@ -4246,7 +3911,6 @@ main {
     border-radius: 4px;
 }
 
-/* МОБИЛЬНАЯ АДАПТАЦИЯ */
 @media (max-width: 768px) {
     .portfolio-accordion {
         flex-direction: column;
@@ -4262,7 +3926,7 @@ main {
     .accordion-panel.active {
         min-height: auto;
         flex: none;
-        animation: none; /* Убираем пульсацию на мобильных */
+        animation: none;
     }
     
     .accordion-panel-header {
@@ -4337,7 +4001,6 @@ main {
     }
 }
 
-/* Для пользователей с reduced motion — отключаем анимацию пульсации */
 @media (prefers-reduced-motion: reduce) {
     .accordion-panel.active {
         animation: none;
@@ -4347,8 +4010,9 @@ main {
         transform: none;
     }
 }
+
 /* ============================================ */
-/* БЛОК КОМАНДА — НОВЫЙ ДИЗАЙН */
+/* 28. БЛОК КОМАНДА */
 /* ============================================ */
 
 .team-section {
@@ -4395,7 +4059,6 @@ main {
     letter-spacing: 0.3px;
 }
 
-/* ДВУХКОЛОНОЧНАЯ СЕТКА */
 .team-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -4403,7 +4066,6 @@ main {
     margin-top: 48px;
 }
 
-/* ========== ЛЕВАЯ КАРТОЧКА — ОСНОВАТЕЛЬ ========== */
 .founder-card {
     position: relative;
     background: var(--card-bg);
@@ -4424,7 +4086,6 @@ main {
     background: rgba(25, 25, 32, 0.98);
 }
 
-/* Сегменты для карточки основателя */
 .founder-card .segment {
     position: absolute;
     background: rgba(10, 10, 10, 0.9);
@@ -4450,7 +4111,6 @@ main {
     pointer-events: none;
 }
 
-/* Уголки */
 .founder-card .corner {
     position: absolute;
     width: 28px;
@@ -4482,7 +4142,6 @@ main {
     height: 100%;
 }
 
-/* Аватар основателя — крупнее */
 .founder-avatar {
     width: 160px;
     height: 160px;
@@ -4605,14 +4264,12 @@ main {
     transform: translateY(-2px);
 }
 
-/* ========== ПРАВАЯ СЕТКА — СПЕЦИАЛИСТЫ 2×2 ========== */
 .specialists-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
 }
 
-/* Карточка специалиста */
 .specialist-card {
     position: relative;
     background: var(--card-bg);
@@ -4631,7 +4288,6 @@ main {
     background: rgba(25, 25, 32, 0.98);
 }
 
-/* Сегменты для карточек специалистов */
 .specialist-card .segment {
     position: absolute;
     background: rgba(10, 10, 10, 0.9);
@@ -4657,7 +4313,6 @@ main {
     pointer-events: none;
 }
 
-/* Уголки специалистов */
 .specialist-card .corner {
     position: absolute;
     width: 20px;
@@ -4784,7 +4439,6 @@ main {
     transform: translateY(-2px);
 }
 
-/* Кнопка */
 .team-more-wrapper {
     text-align: center;
     margin-top: 56px;
@@ -4887,7 +4541,6 @@ main {
     background-clip: text;
 }
 
-/* Анимации */
 .founder-card, .specialist-card {
     opacity: 0;
     animation: fadeInUp 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
@@ -4898,10 +4551,6 @@ main {
 .specialist-card:nth-child(2) { animation-delay: 0.15s; }
 .specialist-card:nth-child(3) { animation-delay: 0.2s; }
 .specialist-card:nth-child(4) { animation-delay: 0.25s; }
-
-/* ============================================ */
-/* АДАПТАЦИЯ БЛОКА КОМАНДА */
-/* ============================================ */
 
 @media (max-width: 1100px) {
     .founder-avatar { width: 130px; height: 130px; }
@@ -4987,8 +4636,9 @@ main {
     .team-header h2 { font-size: 1.8rem; }
     .team-subtitle { font-size: 0.85rem; }
 }
+
 /* ============================================ */
-/* БЛОК ОТЗЫВЫ */
+/* 29. БЛОК ОТЗЫВЫ */
 /* ============================================ */
 
 .reviews-section {
@@ -5034,7 +4684,6 @@ main {
     letter-spacing: 0.3px;
 }
 
-/* Статистика */
 .reviews-stats {
     display: flex;
     justify-content: center;
@@ -5065,7 +4714,6 @@ main {
     text-transform: uppercase;
 }
 
-/* Сетка 3×2 — 6 отзывов */
 .reviews-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -5073,7 +4721,6 @@ main {
     margin-bottom: 56px;
 }
 
-/* Карточка отзыва */
 .review-card {
     position: relative;
     background: var(--card-bg);
@@ -5095,7 +4742,6 @@ main {
     background: rgba(25, 25, 32, 0.98);
 }
 
-/* Сегменты */
 .review-card .segment {
     position: absolute;
     background: rgba(10, 10, 10, 0.9);
@@ -5121,7 +4767,6 @@ main {
     pointer-events: none;
 }
 
-/* Уголки */
 .review-card .corner {
     position: absolute;
     width: 24px;
@@ -5142,7 +4787,6 @@ main {
 .review-card:hover .corner-bl { border-color: var(--color-cyan); filter: drop-shadow(0 0 6px var(--color-cyan)); }
 .review-card:hover .corner-br { border-color: var(--color-purple); filter: drop-shadow(0 0 6px var(--color-purple)); }
 
-/* Контент */
 .review-content {
     position: relative;
     z-index: 15;
@@ -5170,7 +4814,6 @@ main {
     flex-grow: 1;
 }
 
-/* Компания / должность */
 .review-company-tag {
     display: inline-block;
     background: rgba(245, 183, 0, 0.12);
@@ -5184,7 +4827,6 @@ main {
     width: fit-content;
 }
 
-/* Информация о клиенте */
 .review-client {
     display: flex;
     align-items: center;
@@ -5240,7 +4882,6 @@ main {
     line-height: 1.3;
 }
 
-/* Кнопка */
 .reviews-more-wrapper {
     text-align: center;
     margin-top: 20px;
@@ -5343,7 +4984,6 @@ main {
     background-clip: text;
 }
 
-/* Анимации */
 .review-card {
     opacity: 0;
     animation: reviewFadeIn 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
@@ -5367,7 +5007,6 @@ main {
     }
 }
 
-/* Плавающая кнопка */
 .floating-review-btn {
     position: fixed;
     bottom: 120px;
@@ -5398,10 +5037,6 @@ main {
     transform: scale(1.1);
     box-shadow: 0 8px 25px rgba(245, 183, 0, 0.4);
 }
-
-/* ============================================ */
-/* АДАПТАЦИЯ БЛОКА ОТЗЫВЫ */
-/* ============================================ */
 
 @media (max-width: 1200px) {
     .reviews-grid { gap: 20px; }
@@ -5442,8 +5077,9 @@ main {
     .client-name { font-size: 0.9rem; }
     .client-position { font-size: 0.6rem; }
 }
+
 /* ============================================ */
-/* БЛОК "ПОЧЕМУ ВЫБИРАЮТ НАС" — НОВАЯ ВЕРСИЯ */
+/* 30. БЛОК "ПОЧЕМУ ВЫБИРАЮТ НАС" — НОВАЯ ВЕРСИЯ */
 /* ============================================ */
 
 .mission-new-section {
@@ -5454,7 +5090,6 @@ main {
     background: #0A0E17 !important;
 }
 
-/* Шум для блока */
 .mission-new-section::before {
     content: "";
     position: absolute;
@@ -5512,7 +5147,6 @@ main {
     letter-spacing: 0.3px;
 }
 
-/* Сетка 4 колонки */
 .mission-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -5520,7 +5154,6 @@ main {
     margin-bottom: 64px;
 }
 
-/* Карточка преимущества */
 .mission-advantage-card {
     position: relative;
     background: rgba(18, 18, 26, 0.85);
@@ -5540,7 +5173,6 @@ main {
     background: rgba(25, 25, 32, 0.98);
 }
 
-/* Сегменты */
 .mission-advantage-card .segment {
     position: absolute;
     background: rgba(10, 10, 10, 0.9);
@@ -5566,7 +5198,6 @@ main {
     pointer-events: none;
 }
 
-/* Уголки */
 .mission-advantage-card .corner {
     position: absolute;
     width: 24px;
@@ -5588,7 +5219,6 @@ main {
 .mission-advantage-card:hover .corner-bl { border-color: #06B6D4; filter: drop-shadow(0 0 6px #06B6D4); }
 .mission-advantage-card:hover .corner-br { border-color: #4C1D95; filter: drop-shadow(0 0 6px #4C1D95); }
 
-/* Контент карточки */
 .advantage-content {
     position: relative;
     z-index: 15;
@@ -5666,7 +5296,6 @@ main {
     border-color: #06B6D4;
 }
 
-/* Блок с цифрами */
 .mission-numbers {
     display: flex;
     justify-content: space-between;
@@ -5711,7 +5340,6 @@ main {
     background: rgba(255, 255, 255, 0.1);
 }
 
-/* Кнопка */
 .mission-more-wrapper {
     text-align: center;
 }
@@ -5813,7 +5441,6 @@ main {
     background-clip: text;
 }
 
-/* Анимации */
 .mission-advantage-card {
     opacity: 0;
     animation: missionFadeIn 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
@@ -5834,10 +5461,6 @@ main {
         transform: translateY(0);
     }
 }
-
-/* ============================================ */
-/* АДАПТАЦИЯ БЛОКА */
-/* ============================================ */
 
 @media (max-width: 1100px) {
     .mission-new-section .container { padding: 0 40px; }
