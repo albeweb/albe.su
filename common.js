@@ -775,6 +775,73 @@
     }
 
     // ============================================
+    // ЛЕНИВАЯ ЗАГРУЗКА СЕКЦИЙ (Intersection Observer)
+    // ============================================
+    function initLazySections() {
+        const lazySections = document.querySelectorAll('.lazy-section');
+        
+        if (lazySections.length === 0) return;
+        
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Можно отключить наблюдение после появления (опционально)
+                        // observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            lazySections.forEach(section => {
+                observer.observe(section);
+            });
+        } else {
+            // Fallback для старых браузеров — показываем всё сразу
+            lazySections.forEach(section => {
+                section.classList.add('visible');
+            });
+        }
+    }
+
+    // ============================================
+    // ЛЕНИВАЯ ЗАГРУЗКА ИЗОБРАЖЕНИЙ
+    // ============================================
+    function initLazyImages() {
+        const images = document.querySelectorAll('img[data-src]');
+        if (images.length === 0) return;
+        
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px 100px 0px'
+            });
+            
+            images.forEach(img => {
+                imageObserver.observe(img);
+            });
+        } else {
+            // Fallback
+            images.forEach(img => {
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+            });
+        }
+    }
+
+    // ============================================
     // ЗАГРУЗКА КОМПОНЕНТОВ (HEADER, FOOTER)
     // ============================================
     function loadComponent(elementId, filePath, callback) {
@@ -1177,7 +1244,11 @@
         initLazyKinescope();
         initKineticToTop();
         initServiceModal();
-        initPortfolioAccordion();  // ← ДОБАВЛЕНА ИНИЦИАЛИЗАЦИЯ АККОРДЕОНА ПОРТФОЛИО
+        initPortfolioAccordion();
+        
+        // ===== НОВЫЕ ФУНКЦИИ ЛЕНИВОЙ ЗАГРУЗКИ =====
+        initLazySections();   // ← анимация появления секций при скролле
+        initLazyImages();     // ← ленивая загрузка изображений
         
         // Загрузка компонентов header и footer
         loadComponent('header-placeholder', 'header.html', function() {
