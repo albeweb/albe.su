@@ -1,5 +1,5 @@
 // ============================================
-// common.js — ПОЛНАЯ ВЕРСИЯ С ЛЕНИВОЙ ЗАГРУЗКОЙ (ИСПРАВЛЕНА)
+// common.js — ПОЛНАЯ ВЕРСИЯ С ЛЕНИВОЙ ЗАГРУЗКОЙ
 // ============================================
 
 (function() {
@@ -398,46 +398,35 @@
             }
             animate();
 
-            let rafQueued = false;
-            let lastRelX = 0;
-            
             card.addEventListener('mousemove', (e) => {
-                if (rafQueued) return;
-                rafQueued = true;
-                
-                requestAnimationFrame(() => {
-                    const rect = card.getBoundingClientRect();
-                    const relX = (e.clientX - rect.left) / rect.width - 0.5;
-                    lastRelX = relX;
-                    
-                    targetRotateY = relX * 12;
-                    
-                    const px = ((e.clientX - rect.left) / rect.width) * 100;
-                    const py = ((e.clientY - rect.top) / rect.height) * 100;
-                    card.style.setProperty('--x', px + '%');
-                    card.style.setProperty('--y', py + '%');
-                    
-                    const intensity = Math.min(1, Math.abs(relX));
-                    const borderGlow = `rgba(255, 255, 255, ${0.15 + intensity * 0.4})`;
-                    segments.forEach(seg => {
-                        if (seg) seg.style.borderColor = borderGlow;
-                    });
-                    
-                    segTargets.seg1.x = limit(relX * -12, MAX_X);
-                    segTargets.seg1.ry = limit(relX * -4, MAX_RY);
-                    segTargets.seg2.x = limit(relX * -5, MAX_X);
-                    segTargets.seg3.x = limit(relX * 5, MAX_X);
-                    segTargets.seg4.x = limit(relX * 12, MAX_X);
-                    segTargets.seg4.ry = limit(relX * 4, MAX_RY);
-                    
-                    if (content) {
-                        content.style.transform = `translateZ(25px)`;
-                    }
-                    
-                    rafQueued = false;
+                const rect = card.getBoundingClientRect();
+                const relX = (e.clientX - rect.left) / rect.width - 0.5;
+
+                targetRotateY = relX * 12;
+
+                const px = ((e.clientX - rect.left) / rect.width) * 100;
+                const py = ((e.clientY - rect.top) / rect.height) * 100;
+                card.style.setProperty('--x', px + '%');
+                card.style.setProperty('--y', py + '%');
+
+                const intensity = Math.min(1, Math.abs(relX));
+                const borderGlow = `rgba(255, 255, 255, ${0.15 + intensity * 0.4})`;
+                segments.forEach(seg => {
+                    if (seg) seg.style.borderColor = borderGlow;
                 });
+
+                segTargets.seg1.x = limit(relX * -12, MAX_X);
+                segTargets.seg1.ry = limit(relX * -4, MAX_RY);
+                segTargets.seg2.x = limit(relX * -5, MAX_X);
+                segTargets.seg3.x = limit(relX * 5, MAX_X);
+                segTargets.seg4.x = limit(relX * 12, MAX_X);
+                segTargets.seg4.ry = limit(relX * 4, MAX_RY);
+
+                if (content) {
+                    content.style.transform = `translateZ(25px)`;
+                }
             });
-            
+
             card.addEventListener('mouseleave', () => {
                 targetRotateY = 0;
                 segTargets = {
@@ -761,66 +750,25 @@
     }
 
     // ============================================
-    // АККОРДЕОН ПОРТФОЛИО — ИСПРАВЛЕНАЯ ВЕРСИЯ
+    // АККОРДЕОН ПОРТФОЛИО
     // ============================================
     function initPortfolioAccordion() {
         const panels = document.querySelectorAll('.accordion-panel');
         if (panels.length === 0) return;
         
-        function isMobile() {
-            return window.innerWidth <= 768;
-        }
-        
-        function resetAccordion() {
-            if (isMobile()) {
-                panels.forEach(panel => {
-                    panel.classList.remove('active');
-                    panel.classList.remove('open');
-                });
-            } else {
-                const hasActive = Array.from(panels).some(p => p.classList.contains('active'));
-                if (!hasActive && panels.length > 0) {
-                    panels[0].classList.add('active');
-                }
-            }
-        }
-        
-        function handlePanelClick(panel) {
-            if (isMobile()) {
-                const isOpen = panel.classList.contains('open');
-                panels.forEach(p => p.classList.remove('open'));
-                if (!isOpen) {
-                    panel.classList.add('open');
-                }
-            } else {
+        panels.forEach(panel => {
+            const header = panel.querySelector('.accordion-panel-header');
+            if (!header) return;
+            
+            header.addEventListener('click', () => {
                 panels.forEach(p => {
                     if (p !== panel && p.classList.contains('active')) {
                         p.classList.remove('active');
                     }
                 });
                 panel.classList.toggle('active');
-            }
-        }
-        
-        panels.forEach(panel => {
-            const header = panel.querySelector('.accordion-panel-header');
-            if (header) {
-                header.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    handlePanelClick(panel);
-                });
-            }
+            });
         });
-        
-        let resizeTimer;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(() => {
-                resetAccordion();
-            }, 150);
-        });
-        
-        resetAccordion();
     }
 
     // ============================================
@@ -1208,6 +1156,7 @@
     // ЛЕНИВАЯ ЗАГРУЗКА БЛОКОВ С ПОМОЩЬЮ INTERSECTION OBSERVER
     // ============================================
     function initLazySections() {
+        // Находим все секции, которые нужно загружать лениво
         const sections = document.querySelectorAll(
             '#services, #portfolio, #ai-reklama, #process, .team-section, ' +
             '#competences, #calculator, .reviews-section, .mission-new-section, ' +
@@ -1216,8 +1165,10 @@
         
         if (sections.length === 0) return;
         
-        sections.forEach(section => {
+        // Добавляем класс lazy-section всем секциям
+        sections.forEach((section, index) => {
             section.classList.add('lazy-section');
+            // Добавляем разные типы анимации для разных секций
             if (section.id === 'services') {
                 section.classList.add('fade-right');
             } else if (section.id === 'portfolio') {
@@ -1233,39 +1184,48 @@
             }
         });
         
+        // Конфигурация Intersection Observer
         const observerOptions = {
             root: null,
             rootMargin: '0px 0px -50px 0px',
             threshold: 0.1
         };
         
+        // Создаем observer
         const observer = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const section = entry.target;
+                    
+                    // Добавляем класс для анимации появления
                     section.classList.add('visible');
                     
+                    // Если у секции есть изображения с data-src, загружаем их
                     const lazyImages = section.querySelectorAll('img[data-src]');
                     lazyImages.forEach(img => {
                         img.src = img.dataset.src;
                         img.removeAttribute('data-src');
                     });
                     
+                    // Если у секции есть фоны с data-bg
                     const lazyBgElements = section.querySelectorAll('[data-bg]');
                     lazyBgElements.forEach(el => {
                         el.style.backgroundImage = `url(${el.dataset.bg})`;
                         el.removeAttribute('data-bg');
                     });
                     
+                    // Останавливаем наблюдение за этим блоком
                     obs.unobserve(section);
                 }
             });
         }, observerOptions);
         
+        // Начинаем наблюдение за каждой секцией
         sections.forEach(section => {
             observer.observe(section);
         });
         
+        // Также наблюдаем за карточками внутри уже видимых секций
         const cardsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1276,6 +1236,7 @@
             });
         }, { threshold: 0.05, rootMargin: '20px' });
         
+        // Наблюдаем за отдельными карточками
         const allCards = document.querySelectorAll(
             '.service-card, .competence-card, .step-card, .review-card, .mission-advantage-card'
         );
@@ -1290,14 +1251,17 @@
     // ЛЕНИВАЯ ЗАГРУЗКА ИЗОБРАЖЕНИЙ
     // ============================================
     function initLazyImages() {
+        // Находим все изображения, которые нужно загружать лениво
         const images = document.querySelectorAll('img:not([loading="eager"])');
         
+        // Добавляем loading="lazy" для всех изображений, у которых его нет
         images.forEach(img => {
             if (!img.hasAttribute('loading') && !img.closest('.hero-section')) {
                 img.setAttribute('loading', 'lazy');
             }
         });
         
+        // Используем Intersection Observer для изображений
         const imageObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1313,6 +1277,7 @@
             });
         }, { rootMargin: '100px', threshold: 0.01 });
         
+        // Наблюдаем за изображениями с data-src
         const lazyImages = document.querySelectorAll('img[data-src]');
         lazyImages.forEach(img => imageObserver.observe(img));
     }
@@ -1321,6 +1286,7 @@
     // ПРЕДЗАГРУЗКА КРИТИЧЕСКИХ РЕСУРСОВ
     // ============================================
     function preloadCriticalResources() {
+        // Предзагружаем изображения hero-секции
         const criticalImages = document.querySelectorAll('.hero-section img');
         criticalImages.forEach(img => {
             if (img.src && !img.src.includes('data:image')) {
@@ -1337,6 +1303,7 @@
     // ОПТИМИЗАЦИЯ ПРОИЗВОДИТЕЛЬНОСТИ
     // ============================================
     function optimizePerformance() {
+        // Откладываем загрузку невидимых iframe
         const iframes = document.querySelectorAll('iframe:not([data-loaded])');
         const iframeObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1359,10 +1326,12 @@
     // ЗАПУСК ВСЕХ ИНИЦИАЛИЗАЦИЙ
     // ============================================
     document.addEventListener('DOMContentLoaded', function() {
+        // Инициализация hero-баннера
         initHeroMatrixRain();
         initHeroStaticElements();
         initHeroTypewriter();
         
+        // Инициализация остальных функций
         initTechTooltips();
         initCalculatorWithFallback();
         initSmoothScroll();
@@ -1377,11 +1346,13 @@
         initServiceModal();
         initPortfolioAccordion();
         
+        // ИНИЦИАЛИЗАЦИЯ ЛЕНИВОЙ ЗАГРУЗКИ
         initLazySections();
         initLazyImages();
         preloadCriticalResources();
         optimizePerformance();
         
+        // Загрузка компонентов header и footer
         loadComponent('header-placeholder', 'header.html', function() {
             initBurgerMenu();
             initHeaderFixed();
