@@ -1998,7 +1998,6 @@ main {
 /* ============================================ */
 /* 23. ДОПОЛНИТЕЛЬНЫЕ ФРАЗЫ В HERO */
 /* ============================================ */
-
 /* ФРАЗА 1: РАЗРАБОТКА ПОД КЛЮЧ */
 .hero-subtitle-top {
     position: absolute;
@@ -2167,187 +2166,125 @@ main {
 /* УВЕЛИЧЕНИЕ ОБЛАСТЕЙ ПРИКОСНОВЕНИЯ */
 /* ============================================ */
 
-/* 1. Все ссылки в навигации */
+/* 1. Все ссылки в навигации — увеличенная область нажатия */
 .nav-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px 20px;
-    min-height: 48px;
-    min-width: 48px;
-    border-radius: 40px;
+    display: inline-block !important;
+    padding: 12px 16px !important;
+    margin: -8px -8px !important;
+    min-height: 48px !important;
+    min-width: 48px !important;
+    position: relative !important;
 }
 
-.nav-link::after {
-    display: none;
-}
-
-.nav-menu {
-    gap: 24px;
-}
-
-/* 2. Кнопки */
+/* 2. Кнопки "Все услуги", "Подробнее" и т.д. */
 .section-more-btn,
 .card-btn,
 .modal-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 48px;
-    padding: 12px 28px;
-    border-radius: 40px;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 48px !important;
+    min-width: 48px !important;
+    padding: 12px 24px !important;
+    cursor: pointer !important;
 }
 
-/* 3. Кнопки в калькуляторе */
-.calc-options {
-    gap: 16px;
+/* 3. Карточки услуг — вся карточка кликабельна */
+.service-card {
+    cursor: pointer !important;
 }
 
+/* 4. Кнопки в калькуляторе (услуги, сложность) */
 .calc-option {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 44px;
-    padding: 10px 20px;
-    border-radius: 40px;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 44px !important;
+    padding: 8px 18px !important;
+    margin: 4px !important;
+    cursor: pointer !important;
 }
 
-/* 4. Технологии */
-.competence-tech-list {
-    gap: 12px;
-}
-
+/* 5. Элементы технологий в компетенциях */
 .tech-item {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    padding: 10px 18px;
-    border-radius: 40px;
+    display: inline-flex !important;
+    align-items: center !important;
+    min-height: 40px !important;
+    padding: 8px 16px !important;
+    margin: 4px !important;
+    cursor: pointer !important;
 }
 
-/* 5. Аккордеон FAQ */
-.cases-accordion {
-    gap: 16px;
-}
-
+/* 6. Кнопки аккордеона FAQ */
 .case-lid {
-    padding: 16px 24px;
-    min-height: 64px;
+    padding: 16px 20px !important;
+    min-height: 60px !important;
+    cursor: pointer !important;
 }
 
-/* 6. Бейджи */
-.hero-badges {
-    gap: 16px;
-}
-
+/* 7. Бейджи в hero-секции */
 .hero-badges .badge {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    padding: 8px 22px;
+    display: inline-flex !important;
+    align-items: center !important;
+    min-height: 44px !important;
+    padding: 8px 20px !important;
+    margin: 4px !important;
 }
 
-/* 7. Социальные ссылки */
-.social-link {
-    min-width: 44px;
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-}
-
-/* 8. Кнопка закрытия модалки */
-.modal-close {
-    min-width: 48px;
-    min-height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* 9. Бургер-меню */
+/* 8. Кнопка бургер-меню на мобильных */
 .burger {
-    min-width: 48px;
-    min-height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    min-width: 48px !important;
+    min-height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
 }
 
 .burger span {
-    width: 28px;
-    height: 3px;
+    width: 28px !important;
+    height: 3px !important;
 }
 
-/* 10. Статистика */
+/* 9. Кнопка закрытия модалки */
+.modal-close {
+    min-width: 48px !important;
+    min-height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+}
+
+/* 10. Статистика в hero */
 .stat-item {
-    min-width: 90px;
-    min-height: 90px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    min-width: 80px !important;
+    min-height: 80px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: default !important;
 }
 
-/* 11. Видео */
+/* 11. Видео-плейсхолдеры */
 .video-placeholder {
-    min-height: 200px;
+    cursor: pointer !important;
+    min-height: 200px !important;
 }
 
 .play-overlay {
-    min-width: 64px;
-    min-height: 64px;
+    min-width: 64px !important;
+    min-height: 64px !important;
 }
 
-/* 12. Кнопка наверх */
+/* 12. Кнопка наверх (если есть) */
 .totop-btn {
-    min-width: 56px;
-    min-height: 56px;
+    min-width: 56px !important;
+    min-height: 56px !important;
+    cursor: pointer !important;
 }
 
-/* 13. Карточки (кликабельные) */
-.service-card,
-.mission-advantage-card,
-.review-card,
-.specialist-card,
-.founder-card {
-    cursor: pointer;
-}
-
-/* Мобильная адаптация */
-@media (max-width: 768px) {
-    .nav-menu {
-        gap: 16px;
-    }
-    
-    .nav-link {
-        padding: 14px 24px;
-    }
-    
-    .hero-badges {
-        gap: 12px;
-    }
-    
-    .hero-badges .badge {
-        min-height: 40px;
-        padding: 6px 16px;
-        font-size: 0.75rem;
-    }
-    
-    .calc-options {
-        gap: 12px;
-    }
-    
-    .calc-option {
-        min-height: 40px;
-        padding: 8px 16px;
-    }
-    
-    .case-lid {
-        padding: 14px 20px;
-    }
-}
 /* ============================================ */
 /* РАССТОЯНИЕ МЕЖДУ ЭЛЕМЕНТАМИ */
 /* ============================================ */
@@ -4750,429 +4687,4 @@ main {
 @media (max-width: 480px) {
     .mission-header h2 { font-size: 1.8rem; }
     .mission-subtitle { font-size: 0.85rem; }
-}
-
-/* ============================================ */
-/* ЛЕНИВАЯ ЗАГРУЗКА БЛОКОВ — АНИМАЦИЯ ПОЯВЛЕНИЯ */
-/* ============================================ */
-
-/* Базовый класс для всех блоков с ленивой загрузкой */
-.lazy-section {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1),
-                transform 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-}
-
-/* Класс, который добавляется когда блок становится видимым */
-.lazy-section.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Разные варианты анимации для разнообразия */
-.lazy-section.fade-left {
-    transform: translateX(-30px);
-}
-
-.lazy-section.fade-left.visible {
-    transform: translateX(0);
-}
-
-.lazy-section.fade-right {
-    transform: translateX(30px);
-}
-
-.lazy-section.fade-right.visible {
-    transform: translateX(0);
-}
-
-.lazy-section.zoom-in {
-    transform: scale(0.95);
-}
-
-.lazy-section.zoom-in.visible {
-    transform: scale(1);
-}
-
-/* Карточки внутри секций — каскадное появление */
-.lazy-section .service-card,
-.lazy-section .competence-card,
-.lazy-section .step-card,
-.lazy-section .review-card,
-.lazy-section .mission-advantage-card,
-.lazy-section .accordion-panel {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.lazy-section.visible .service-card,
-.lazy-section.visible .competence-card,
-.lazy-section.visible .step-card,
-.lazy-section.visible .review-card,
-.lazy-section.visible .mission-advantage-card,
-.lazy-section.visible .accordion-panel {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Плавное появление для карточек с разной задержкой */
-.service-card, .competence-card, .step-card, .review-card, .mission-advantage-card {
-    transition-delay: 0s;
-}
-
-.service-card:nth-child(1) { transition-delay: 0.05s; }
-.service-card:nth-child(2) { transition-delay: 0.1s; }
-.service-card:nth-child(3) { transition-delay: 0.15s; }
-.service-card:nth-child(4) { transition-delay: 0.2s; }
-.service-card:nth-child(5) { transition-delay: 0.25s; }
-.service-card:nth-child(6) { transition-delay: 0.3s; }
-
-.competence-card:nth-child(1) { transition-delay: 0.03s; }
-.competence-card:nth-child(2) { transition-delay: 0.06s; }
-.competence-card:nth-child(3) { transition-delay: 0.09s; }
-.competence-card:nth-child(4) { transition-delay: 0.12s; }
-.competence-card:nth-child(5) { transition-delay: 0.15s; }
-.competence-card:nth-child(6) { transition-delay: 0.18s; }
-.competence-card:nth-child(7) { transition-delay: 0.21s; }
-.competence-card:nth-child(8) { transition-delay: 0.24s; }
-
-.step-card:nth-child(1) { transition-delay: 0.05s; }
-.step-card:nth-child(2) { transition-delay: 0.1s; }
-.step-card:nth-child(3) { transition-delay: 0.15s; }
-.step-card:nth-child(4) { transition-delay: 0.2s; }
-
-.review-card:nth-child(1) { transition-delay: 0.02s; }
-.review-card:nth-child(2) { transition-delay: 0.05s; }
-.review-card:nth-child(3) { transition-delay: 0.08s; }
-.review-card:nth-child(4) { transition-delay: 0.11s; }
-.review-card:nth-child(5) { transition-delay: 0.14s; }
-.review-card:nth-child(6) { transition-delay: 0.17s; }
-
-/* ============================================ */
-/* МОБИЛЬНАЯ АДАПТАЦИЯ — ДОБАВИТЬ В КОНЕЦ ФАЙЛА */
-/* ============================================ */
-
-/* Бургер-меню */
-.burger {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
-    width: 48px;
-    height: 48px;
-    cursor: pointer;
-    z-index: 1002;
-    position: relative;
-    background: transparent;
-    border: none;
-}
-
-.burger span {
-    display: block;
-    width: 28px;
-    height: 2px;
-    background: var(--white);
-    transition: all 0.3s ease;
-    border-radius: 2px;
-}
-
-.burger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(8px, 8px);
-}
-
-.burger.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.burger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(8px, -8px);
-}
-
-/* Планшеты (до 1024px) */
-@media (max-width: 1024px) {
-    .container {
-        padding: 0 40px;
-    }
-    
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
-    }
-    
-    .competences-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
-    }
-    
-    .reviews-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
-    }
-}
-
-/* Мобильные (до 768px) */
-@media (max-width: 768px) {
-    .container {
-        padding: 0 20px;
-    }
-    
-    .section {
-        padding: 60px 0;
-    }
-    
-    /* Бургер-меню — показываем */
-    .burger {
-        display: flex;
-    }
-    
-    .nav-menu {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 80%;
-        max-width: 320px;
-        height: 100vh;
-        background: rgba(10, 14, 23, 0.98);
-        backdrop-filter: blur(20px);
-        flex-direction: column;
-        justify-content: center;
-        padding: 80px 20px;
-        transition: right 0.3s ease;
-        z-index: 1001;
-        gap: 16px;
-    }
-    
-    .nav-menu.active {
-        right: 0;
-    }
-    
-    .nav-link {
-        width: 100%;
-        justify-content: center;
-        padding: 14px 20px;
-        font-size: 1rem;
-    }
-    
-    /* Сетки — в 1 колонку */
-    .services-grid,
-    .competences-grid,
-    .reviews-grid,
-    .specialists-grid,
-    .contacts-new-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    .team-layout {
-        grid-template-columns: 1fr;
-        gap: 32px;
-    }
-    
-    /* Hero */
-    .hero-subtitle-top {
-        position: relative;
-        top: auto;
-        right: auto;
-        text-align: center;
-        margin: 80px auto 20px;
-        font-size: 0.9rem;
-        letter-spacing: 4px;
-        white-space: normal;
-        max-width: 90%;
-    }
-    
-    .hero-subtitle-bottom {
-        position: relative;
-        top: auto;
-        left: auto;
-        text-align: center;
-        margin: 0 auto 30px;
-        font-size: 1rem;
-        white-space: normal;
-        max-width: 90%;
-    }
-    
-    .albe-letters {
-        position: relative;
-        top: auto;
-        left: auto;
-        transform: none;
-        justify-content: center;
-        margin: 40px 0;
-        gap: 5vw;
-    }
-    
-    .albe-letter {
-        font-size: 15vw;
-    }
-    
-    .static-prefix {
-        position: relative;
-        right: auto;
-        bottom: auto;
-        text-align: center;
-        font-size: 1.8rem;
-        margin: 20px 0 10px;
-    }
-    
-    .dynamic-word-container {
-        position: relative;
-        right: auto;
-        bottom: auto;
-        text-align: center;
-        font-size: 1.8rem;
-        margin: 0 0 30px;
-    }
-    
-    .cursor {
-        height: 1.8rem;
-    }
-    
-    .hero-badges {
-        position: relative;
-        bottom: auto;
-        right: auto;
-        max-width: 100%;
-        justify-content: center;
-        margin: 30px 0;
-    }
-    
-    .hero-stats {
-        position: relative;
-        bottom: auto;
-        left: auto;
-        justify-content: center;
-        gap: 24px;
-        margin: 30px 0 0;
-        flex-wrap: wrap;
-    }
-    
-    /* Калькулятор */
-    .calculator-two-columns {
-        flex-direction: column;
-        gap: 24px;
-    }
-    
-    /* Портфолио аккордеон — вертикальный */
-    .portfolio-accordion {
-        flex-direction: column;
-        min-height: auto;
-        gap: 12px;
-    }
-    
-    .accordion-panel {
-        min-height: 70px;
-    }
-    
-    .accordion-panel.active {
-        min-height: auto;
-    }
-    
-    .accordion-panel-header {
-        position: relative;
-        width: 100%;
-        height: 70px;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 0 20px;
-    }
-    
-    .panel-number, .panel-title {
-        writing-mode: horizontal-tb;
-        transform: none;
-    }
-    
-    .panel-number {
-        font-size: 1rem;
-    }
-    
-    .panel-title h3 {
-        font-size: 0.9rem;
-        letter-spacing: 1px;
-    }
-    
-    .accordion-panel-content {
-        position: relative;
-        left: 0;
-        width: 100%;
-        height: auto;
-        padding: 20px;
-    }
-    
-    .accordion-panel-header::after {
-        display: none;
-    }
-    
-    .panel-image {
-        max-height: 200px;
-    }
-    
-    /* Модальное окно */
-    .modal-content {
-        width: 95%;
-        margin: 20px;
-    }
-    
-    .modal-body {
-        padding: 24px 20px;
-    }
-    
-    .modal-body h3 {
-        font-size: 1.4rem;
-    }
-}
-
-/* Очень маленькие экраны (до 480px) */
-@media (max-width: 480px) {
-    .container {
-        padding: 0 16px;
-    }
-    
-    h2 {
-        font-size: 1.5rem;
-    }
-    
-    .hero-stats {
-        gap: 16px;
-    }
-    
-    .hero-stats .stat-item {
-        min-width: 60px;
-    }
-    
-    .hero-stats .stat-number {
-        font-size: 1.4rem;
-    }
-    
-    .hero-stats .stat-label {
-        font-size: 0.6rem;
-    }
-    
-    .founder-card {
-        padding: 20px;
-    }
-    
-    .founder-name {
-        font-size: 1.4rem;
-    }
-    
-    .case-lid {
-        padding: 12px 16px;
-    }
-    
-    .lid-left {
-        gap: 8px;
-    }
-    
-    .case-number {
-        font-size: 0.6rem;
-        padding: 2px 8px;
-    }
-    
-    .case-title {
-        font-size: 0.8rem;
-    }
 }
