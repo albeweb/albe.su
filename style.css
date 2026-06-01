@@ -100,19 +100,15 @@ body::before {
 /* ============================================ */
 
 h1, h2,
-.section-header h2,
-.contact-card h2,
-.price-table h3,
-.nav-link {
+.section-header h2 {
     font-family: 'Geist', sans-serif;
     font-weight: 400;
     letter-spacing: -0.02em;
 }
 
 h3, h4, h5, h6,
-.service-card h3, .portfolio-info h3, .step-card h3, .competence-card h3,
-.faq-question, .price-card h4, .price-card .price,
-.service-badge, .calc-label, .stack-explanation h4, .footer-logo, .footer h4,
+.service-card h3, .step-card h3, .competence-card h3,
+.faq-question, .calc-label, .stack-explanation h4, .footer-logo, .footer h4,
 .step-num {
     font-family: 'Geist', sans-serif;
     font-weight: 500;
@@ -122,33 +118,22 @@ h3, h4, h5, h6,
 .logo, 
 .stat-number,
 .accordion-panel .panel-number,
-.price-card .price,
 .calc-price,
 .step-num,
 .footer-hours span:last-child,
-.footer-price span:last-child,
-.panel-metrics span:last-child {
+.footer-price span:last-child {
     font-family: 'Zen Dots', monospace;
 }
 
-p, .service-card p, .portfolio-info p, .step-card p, .competence-card p,
+p, .service-card p, .step-card p, .competence-card p,
 .mission-text p, .faq-answer, .footer p, .footer a, .tech-item, .calc-option,
-.time-breakdown-item, .stack-explanation p, input, textarea,
-.price-card li, .price-note, .panel-description p, .contact-desc {
+.stack-explanation p, input, textarea,
+.panel-description p, .contact-desc {
     font-family: 'Geist', sans-serif;
     font-weight: 400;
     font-size: 1rem;
     line-height: 1.6;
     color: var(--gray);
-}
-
-.service-badge, .quote-text { font-weight: 400; }
-
-.quote-text {
-    font-size: 0.9rem;
-    color: var(--gray);
-    letter-spacing: 3px;
-    display: inline-block;
 }
 
 /* ============================================ */
@@ -208,13 +193,6 @@ h4 {
     color: transparent;
 }
 
-.portfolio-info h3 {
-    background: var(--gradient-cyan-purple);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
 .step-card h3 {
     background: linear-gradient(135deg, var(--color-green), var(--color-cyan));
     -webkit-background-clip: text;
@@ -235,9 +213,8 @@ h4 {
 /* 6. КАРТОЧКИ И ОБЩИЕ БЛОКИ */
 /* ============================================ */
 
-.portfolio-card, .step-card,
-.mission-photo, .faq-item, .cover-content, .calculator-card, .calc-option, 
-.contact-card, .price-table {
+.step-card,
+.calculator-card, .calc-option {
     background: var(--card-bg);
     backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -245,14 +222,8 @@ h4 {
     border-radius: 16px;
 }
 
-.service-card, .portfolio-card, .step-card, .mission-photo, .faq-item, .contact-card {
+.service-card, .step-card {
     padding: 32px;
-}
-
-.contact-card:hover {
-    border-color: var(--color-yellow);
-    box-shadow: 0 20px 30px -12px rgba(245, 183, 0, 0.2);
-    backdrop-filter: blur(12px);
 }
 
 .section-header {
@@ -265,192 +236,8 @@ h4 {
 
 .section-header h2 { margin-bottom: 0; }
 
-.portfolio-card .portfolio-image {
-    width: 100%;
-    height: 280px;
-    object-fit: cover;
-    display: block;
-    border-radius: 16px;
-    background: linear-gradient(145deg, #1A1A2A, #0B0B15);
-}
-
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 36px;
-    margin-top: 48px;
-}
-
-.mission-grid .mission-grid-card {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    display: block;
-    border-radius: 16px;
-}
-
-.mission-grid-wrapper {
-    display: flex;
-    gap: 50px;
-    align-items: stretch;
-}
-
-.mission-text {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.mission-text p { margin-bottom: 1rem; }
-
-.mission-grid {
-    flex: 1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-}
-
-.faq-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.faq-item {
-    margin-bottom: 0;
-    display: flex;
-    flex-direction: column;
-}
-
-.faq-question {
-    width: 100%;
-    text-align: left;
-    background: none;
-    border: none;
-    padding: 22px 28px;
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--color-cyan);
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    background: var(--card-bg);
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    border-radius: 16px;
-}
-
-.faq-question:hover {
-    border-color: var(--color-cyan);
-    transform: translateY(-2px);
-    background: rgba(6, 182, 212, 0.1);
-    backdrop-filter: blur(8px);
-}
-
-.faq-answer {
-    padding: 0 28px 28px 28px;
-    color: var(--gray);
-    display: none;
-    background: var(--card-bg);
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-top: none;
-    border-radius: 0 0 16px 16px;
-    margin-top: -2px;
-}
-
-.faq-answer.active { display: block; }
-.faq-question::after { content: '+'; font-size: 1.5rem; font-weight: 300; }
-.faq-question.active::after { content: '−'; }
-
 /* ============================================ */
-/* 7. КОНТАКТЫ (старый блок, оставлен для совместимости) */
-/* ============================================ */
-
-.contact-section {
-    padding: 100px 0;
-    background: #080A0F;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.contact-card {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.contact-card h2 {
-    font-size: 2.4rem;
-    margin-bottom: 1rem;
-    text-align: center;
-    position: relative;
-    display: inline-block;
-    width: auto;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.contact-card h2::after {
-    content: '';
-    position: absolute;
-    bottom: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 70px;
-    height: 2px;
-    background: var(--gradient-yellow-green);
-}
-
-.contact-desc {
-    text-align: center;
-    margin-bottom: 2rem;
-    font-size: 0.95rem;
-}
-
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-}
-
-.contact-form input, .contact-form textarea,
-.calculator-card input, .calculator-card textarea {
-    width: 100%;
-    padding: 14px 18px;
-    background: #0F1117;
-    border: 1px solid #2A2E38;
-    color: var(--white);
-    margin-bottom: 22px;
-    transition: 0.2s;
-    border-radius: 12px;
-    font-size: 0.95rem;
-}
-
-.contact-form input:focus, .contact-form textarea:focus,
-.calculator-card input:focus, .calculator-card textarea:focus {
-    outline: none;
-    border-color: var(--color-cyan);
-    box-shadow: 0 0 10px rgba(6, 182, 212, 0.2);
-}
-
-.contact-form textarea { resize: vertical; min-height: 100px; }
-
-.form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.form-status {
-    margin-top: 16px;
-    text-align: center;
-    font-size: 0.9rem;
-}
-
-/* ============================================ */
-/* 8. HEADER */
+/* 7. HEADER */
 /* ============================================ */
 
 .header {
@@ -542,34 +329,8 @@ h4 {
     backdrop-filter: blur(2px);
 }
 
-.burger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 5px;
-    z-index: 1002;
-    position: relative;
-}
-
-.burger span {
-    width: 28px;
-    height: 2px;
-    background: var(--color-yellow);
-    transition: all 0.3s ease;
-}
-
-.burger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-.burger.active span:nth-child(2) {
-    opacity: 0;
-}
-.burger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -6px);
-}
-
 /* ============================================ */
-/* 9. КАЛЬКУЛЯТОР */
+/* 8. КАЛЬКУЛЯТОР */
 /* ============================================ */
 
 .calculator-card { padding: 40px; margin: 40px 0; }
@@ -649,25 +410,8 @@ h4 {
     font-size: 1rem;
 }
 
-.time-breakdown {
-    margin-top: 20px;
-    padding-top: 16px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.time-breakdown-item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 6px;
-    font-size: 0.8rem;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.time-breakdown-item span:first-child { color: var(--color-green); }
-
 /* ============================================ */
-/* 10. КОМПЕТЕНЦИИ И ТЕХНОЛОГИИ */
+/* 9. КОМПЕТЕНЦИИ И ТЕХНОЛОГИИ */
 /* ============================================ */
 
 .steps-container {
@@ -810,92 +554,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 11. ТАБЛИЦА ЦЕН */
-/* ============================================ */
-
-.price-table {
-    padding: 40px 48px;
-    margin: 40px 0;
-}
-
-.price-table h3 {
-    font-size: 1.6rem;
-    text-align: center;
-    margin-bottom: 2rem;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.price-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-}
-
-.price-card {
-    background: rgba(10, 14, 19, 0.7);
-    padding: 20px;
-    border-radius: 20px;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.price-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--color-purple);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(8px);
-}
-
-.price-card h4 {
-    font-size: 1.2rem;
-    color: var(--color-purple);
-    margin-bottom: 12px;
-}
-
-.price-card .price {
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--white);
-    margin-bottom: 16px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.price-card ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.price-card li {
-    font-size: 0.8rem;
-    padding: 6px 0;
-    padding-left: 20px;
-    position: relative;
-    color: var(--gray);
-}
-
-.price-card li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: var(--color-green);
-}
-
-.price-note {
-    text-align: center;
-    font-size: 0.8rem;
-    color: var(--gray);
-    margin-top: 24px;
-    padding-top: 16px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-/* ============================================ */
-/* 12. FOOTER */
+/* 10. FOOTER */
 /* ============================================ */
 
 .footer {
@@ -934,7 +593,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 13. ТУЛТИПЫ ДЛЯ ТЕХНОЛОГИЙ */
+/* 11. ТУЛТИПЫ ДЛЯ ТЕХНОЛОГИЙ */
 /* ============================================ */
 
 .tech-tooltip {
@@ -963,7 +622,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 14. ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ — КВАНТОВЫЙ СТИЛЬ */
+/* 12. ЭКСКЛЮЗИВНЫЕ РЕШЕНИЯ — КВАНТОВЫЙ СТИЛЬ */
 /* ============================================ */
 
 .services-grid {
@@ -1151,7 +810,7 @@ h4 {
 .services-grid .service-card .dot-purple { background: var(--color-purple); }
 
 /* ============================================ */
-/* 15. КИНЕТИЧЕСКИЕ КНОПКИ (3 СЕГМЕНТА) */
+/* 13. КИНЕТИЧЕСКИЕ КНОПКИ (3 СЕГМЕНТА) */
 /* ============================================ */
 
 .kinetic-wrapper {
@@ -1365,7 +1024,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 16. КИНЕТИЧЕСКАЯ КНОПКА НАВЕРХ — ПЛАВАЮЩАЯ */
+/* 14. КИНЕТИЧЕСКАЯ КНОПКА НАВЕРХ — ПЛАВАЮЩАЯ */
 /* ============================================ */
 
 .kinetic-btn.totop-btn {
@@ -1445,7 +1104,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 17. АККОРДЕОН FAQ В СТИЛЕ «КЕЙС» */
+/* 15. АККОРДЕОН FAQ В СТИЛЕ «КЕЙС» */
 /* ============================================ */
 
 .cases-accordion {
@@ -1632,7 +1291,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 18. AI РЕКЛАМА */
+/* 16. AI РЕКЛАМА */
 /* ============================================ */
 
 .ai-reklama-section {
@@ -1827,7 +1486,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 19. ПЛЕЙСХОЛДЕРЫ ДЛЯ ВИДЕО */
+/* 17. ПЛЕЙСХОЛДЕРЫ ДЛЯ ВИДЕО */
 /* ============================================ */
 
 .video-placeholder {
@@ -1876,7 +1535,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 20. УНИКАЛЬНЫЙ СКРОЛЛБАР В СТИЛЕ ГРАДИЕНТА */
+/* 18. УНИКАЛЬНЫЙ СКРОЛЛБАР В СТИЛЕ ГРАДИЕНТА */
 /* ============================================ */
 
 ::-webkit-scrollbar {
@@ -1923,7 +1582,7 @@ h4 {
 }
 
 /* ============================================ */
-/* 21. СКРЫВАЕМ КИНЕТИЧЕСКИЕ КНОПКИ ВО ВСЕХ БЛОКАХ, КРОМЕ ХЕДЕРА И КОНТАКТОВ */
+/* 19. СКРЫВАЕМ КИНЕТИЧЕСКИЕ КНОПКИ ВО ВСЕХ БЛОКАХ, КРОМЕ ХЕДЕРА И КОНТАКТОВ */
 /* ============================================ */
 
 .section .kinetic-btn,
@@ -1931,15 +1590,13 @@ h4 {
     display: none !important;
 }
 
-.contact-section .kinetic-btn,
-.contact-section .kinetic-wrapper,
 .header .kinetic-btn,
 .header .kinetic-wrapper {
     display: inline-flex !important;
 }
 
 /* ============================================ */
-/* 22. HERO БАННЕР (НА ВСЮ ВЫСОТУ) */
+/* 20. HERO БАННЕР (НА ВСЮ ВЫСОТУ) */
 /* ============================================ */
 
 /* Шапка — фиксированная поверх всего */
@@ -1996,7 +1653,7 @@ main {
 }
 
 /* ============================================ */
-/* 23. HERO БАННЕР (ДОПОЛНИТЕЛЬНЫЕ СТИЛИ) */
+/* 21. HERO БАННЕР (ДОПОЛНИТЕЛЬНЫЕ СТИЛИ) */
 /* ============================================ */
 .hero-canvas-bottom {
     position: absolute;
@@ -2087,17 +1744,6 @@ main {
     text-shadow: 0 0 10px rgba(0,0,0,0.5);
     white-space: nowrap;
     letter-spacing: 2px;
-}
-
-.agency-tag {
-    top: calc(6% + 100px);
-    left: 100px;
-    font-family: 'Geist', monospace;
-    font-size: 1.8rem;
-    letter-spacing: 8px;
-    color: #FFFFFF;
-    text-shadow: 0 0 6px rgba(255,255,255,0.3);
-    white-space: nowrap;
 }
 
 .hero-stats {
@@ -2209,7 +1855,7 @@ main {
 @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
 
 /* ============================================ */
-/* 24. МОДАЛЬНОЕ ОКНО ДЛЯ УСЛУГ */
+/* 22. МОДАЛЬНОЕ ОКНО ДЛЯ УСЛУГ */
 /* ============================================ */
 
 .service-modal {
@@ -2350,647 +1996,7 @@ main {
 }
 
 /* ============================================ */
-/* 25. ПОЛНАЯ МОБИЛЬНАЯ АДАПТАЦИЯ */
-/* ============================================ */
-
-/* Планшеты и маленькие десктопы */
-@media (max-width: 1200px) {
-    .container {
-        padding: 0 40px !important;
-    }
-    
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 30px !important;
-    }
-    
-    .competences-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 24px !important;
-    }
-    
-    .price-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 20px !important;
-    }
-    
-    .portfolio-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 30px !important;
-    }
-    
-    .hero-stats {
-        gap: 2rem !important;
-        left: 80px !important;
-        bottom: 80px !important;
-    }
-    
-    .hero-stats .stat-item {
-        font-size: 2rem !important;
-    }
-    
-    .hero-stats .stat-number {
-        font-size: 2rem !important;
-    }
-    
-    .static-prefix {
-        font-size: 2.5rem !important;
-        right: 100px !important;
-    }
-    
-    .dynamic-word-container {
-        font-size: 2.5rem !important;
-        right: 50px !important;
-    }
-    
-    .cursor {
-        height: 2.5rem !important;
-    }
-    
-    .agency-tag {
-        font-size: 1.4rem !important;
-        left: 80px !important;
-    }
-    
-    .left-phrase {
-        font-size: clamp(1.3rem, 3.5vw, 2rem) !important;
-        left: 80px !important;
-    }
-    
-    .albe-letter {
-        font-size: 12vw !important;
-    }
-    
-    .albe-letters {
-        gap: 2.5vw !important;
-        top: calc(50% - 80px) !important;
-    }
-}
-
-/* Мобильные устройства до 768px */
-@media (max-width: 768px) {
-    /* Общие */
-    .container {
-        padding: 0 20px !important;
-    }
-    
-    .section {
-        padding: 60px 0 !important;
-    }
-    
-    .section-header {
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        gap: 12px !important;
-        margin-bottom: 32px !important;
-    }
-    
-    .section-header h2 {
-        font-size: 1.8rem !important;
-        margin-bottom: 0 !important;
-    }
-    
-    /* Сетки */
-    .services-grid {
-        grid-template-columns: 1fr !important;
-        gap: 20px !important;
-    }
-    
-    .services-grid .service-card {
-        aspect-ratio: auto !important;
-        min-height: 260px !important;
-    }
-    
-    .competences-grid {
-        grid-template-columns: 1fr !important;
-    }
-    
-    .price-grid {
-        grid-template-columns: 1fr !important;
-    }
-    
-    .portfolio-grid {
-        grid-template-columns: 1fr !important;
-    }
-    
-    .steps-container {
-        flex-direction: column !important;
-    }
-    
-    .step-card {
-        width: 100% !important;
-    }
-    
-    .mission-grid-wrapper {
-        flex-direction: column !important;
-        gap: 30px !important;
-    }
-    
-    /* Hero блок — меняем с absolute на relative */
-    .hero-section {
-        height: auto !important;
-        min-height: 100vh !important;
-        max-height: none !important;
-        padding: 100px 0 80px !important;
-        overflow-x: hidden !important;
-    }
-    
-    .albe-letters {
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
-        transform: none !important;
-        justify-content: center !important;
-        padding: 60px 0 20px 0 !important;
-        gap: 8vw !important;
-    }
-    
-    .albe-letter {
-        font-size: 15vw !important;
-    }
-    
-    .agency-tag {
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
-        text-align: center !important;
-        margin: 20px auto 15px !important;
-        font-size: 0.9rem !important;
-        letter-spacing: 6px !important;
-        white-space: normal !important;
-        width: 100% !important;
-    }
-    
-    .left-phrase {
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
-        text-align: center !important;
-        margin: 0 auto 20px !important;
-        font-size: 1rem !important;
-        white-space: normal !important;
-        max-width: 90% !important;
-    }
-    
-    .static-prefix {
-        position: relative !important;
-        right: auto !important;
-        bottom: auto !important;
-        text-align: center !important;
-        font-size: 1.3rem !important;
-        margin: 30px auto 10px !important;
-        white-space: normal !important;
-        max-width: 90% !important;
-    }
-    
-    .dynamic-word-container {
-        position: relative !important;
-        right: auto !important;
-        bottom: auto !important;
-        text-align: center !important;
-        font-size: 1.3rem !important;
-        margin: 0 auto 30px !important;
-        white-space: normal !important;
-        max-width: 90% !important;
-        line-height: 1.4 !important;
-    }
-    
-    .cursor {
-        height: 1.3rem !important;
-    }
-    
-    .hero-badges {
-        position: relative !important;
-        bottom: auto !important;
-        right: auto !important;
-        max-width: 100% !important;
-        justify-content: center !important;
-        margin: 30px 0 25px !important;
-        gap: 8px !important;
-    }
-    
-    .hero-badges .badge {
-        font-size: 0.65rem !important;
-        padding: 0.35rem 0.9rem !important;
-        white-space: nowrap !important;
-    }
-    
-    .hero-stats {
-        position: relative !important;
-        bottom: auto !important;
-        left: auto !important;
-        justify-content: center !important;
-        flex-wrap: wrap !important;
-        gap: 20px !important;
-        margin: 20px 0 0 !important;
-    }
-    
-    .hero-stats .stat-item {
-        flex: 0 0 auto !important;
-        min-width: 70px !important;
-        font-size: 1.2rem !important;
-    }
-    
-    .hero-stats .stat-number {
-        font-size: 1.3rem !important;
-    }
-    
-    .hero-stats .stat-label {
-        font-size: 0.55rem !important;
-    }
-    
-    /* Отключаем тяжелые эффекты на мобильных */
-    .hero-canvas-bottom {
-        display: none !important;
-    }
-    
-    .masked-container {
-        display: none !important;
-    }
-    
-    /* Карточки услуг на мобильных */
-    .services-grid .service-card .card-content {
-        padding: 20px !important;
-    }
-    
-    .services-grid .service-card h3 {
-        font-size: 1.2rem !important;
-    }
-    
-    .services-grid .service-card p {
-        font-size: 0.85rem !important;
-    }
-    
-    .services-grid .service-card .corner-tl,
-    .services-grid .service-card .corner-tr,
-    .services-grid .service-card .corner-bl,
-    .services-grid .service-card .corner-br {
-        width: 20px !important;
-        height: 20px !important;
-    }
-    
-    .services-grid .service-card .corner-tl { top: 12px !important; left: 12px !important; }
-    .services-grid .service-card .corner-tr { top: 12px !important; right: 12px !important; }
-    .services-grid .service-card .corner-bl { bottom: 12px !important; left: 12px !important; }
-    .services-grid .service-card .corner-br { bottom: 12px !important; right: 12px !important; }
-    
-    /* Калькулятор */
-    .calculator-card {
-        padding: 24px !important;
-    }
-    
-    .calculator-two-columns {
-        flex-direction: column !important;
-        gap: 24px !important;
-    }
-    
-    .calculator-left,
-    .calculator-right {
-        min-width: auto !important;
-    }
-    
-    .calc-options {
-        gap: 8px !important;
-    }
-    
-    .calc-option {
-        padding: 6px 14px !important;
-        font-size: 0.75rem !important;
-    }
-    
-    .calc-price {
-        font-size: 1.3rem !important;
-    }
-    
-    .price-table {
-        padding: 24px !important;
-    }
-    
-    .price-table h3 {
-        font-size: 1.3rem !important;
-    }
-    
-    /* AI реклама */
-    .ai-design-grid {
-        flex-direction: column !important;
-        gap: 24px !important;
-    }
-    
-    .ai-cards-column {
-        order: 1 !important;
-    }
-    
-    .ai-videos-wrapper {
-        order: 2 !important;
-    }
-    
-    .ai-video-container {
-        grid-template-columns: 1fr !important;
-        gap: 20px !important;
-    }
-    
-    .ai-card {
-        padding: 20px !important;
-    }
-    
-    .ai-card h3 {
-        font-size: 1.3rem !important;
-    }
-    
-    .ai-card p {
-        font-size: 0.85rem !important;
-    }
-    
-    /* Форма */
-    .form-row {
-        grid-template-columns: 1fr !important;
-        gap: 0 !important;
-    }
-    
-    .contact-card {
-        padding: 24px !important;
-    }
-    
-    .contact-card h2 {
-        font-size: 1.8rem !important;
-    }
-    
-    .contact-form input,
-    .contact-form textarea {
-        padding: 12px 16px !important;
-        font-size: 0.9rem !important;
-    }
-    
-    /* FAQ */
-    .case-lid {
-        padding: 12px !important;
-    }
-    
-    .lid-left {
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        gap: 6px !important;
-    }
-    
-    .case-title {
-        font-size: 0.85rem !important;
-        line-height: 1.3 !important;
-    }
-    
-    .case-number {
-        font-size: 0.6rem !important;
-    }
-    
-    .case-text {
-        font-size: 0.8rem !important;
-    }
-    
-    .meta-tag {
-        font-size: 0.6rem !important;
-    }
-    
-    /* Header и бургер-меню */
-    .header .container {
-        padding: 0 20px !important;
-    }
-    
-    .burger {
-        display: flex !important;
-    }
-    
-    .nav-menu {
-        position: fixed !important;
-        top: 0 !important;
-        right: -100% !important;
-        width: 80% !important;
-        max-width: 320px !important;
-        height: 100vh !important;
-        background: rgba(10, 14, 23, 0.98) !important;
-        backdrop-filter: blur(16px) !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        gap: 32px !important;
-        transition: right 0.3s ease !important;
-        z-index: 1001 !important;
-        padding: 40px !important;
-        border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
-    }
-    
-    .nav-menu.active {
-        right: 0 !important;
-    }
-    
-    .nav-link {
-        font-size: 1.1rem !important;
-        padding: 12px 0 !important;
-        width: 100% !important;
-        text-align: center !important;
-    }
-    
-    .kinetic-btn.header-telegram-btn {
-        margin-top: 20px !important;
-    }
-    
-    /* Модальное окно */
-    .modal-body {
-        padding: 30px 20px !important;
-    }
-    
-    .modal-body h3 {
-        font-size: 1.4rem !important;
-    }
-    
-    .modal-description p,
-    .modal-stack li,
-    .modal-advantages li {
-        font-size: 0.85rem !important;
-    }
-    
-    .modal-btn {
-        padding: 12px 20px !important;
-        font-size: 0.9rem !important;
-    }
-    
-    /* Кинетические кнопки на мобильных */
-    .kinetic-btn {
-        min-width: 200px !important;
-        height: 48px !important;
-    }
-    
-    .kinetic-btn.large {
-        min-width: 260px !important;
-        height: 54px !important;
-    }
-    
-    .kinetic-btn .btn-text {
-        font-size: 0.75rem !important;
-        letter-spacing: 2px !important;
-    }
-    
-    .kinetic-btn.header-telegram-btn {
-        min-width: 110px !important;
-        height: 36px !important;
-    }
-    
-    .kinetic-btn.header-telegram-btn .btn-text {
-        font-size: 0.65rem !important;
-        letter-spacing: 1px !important;
-    }
-    
-    .kinetic-btn.totop-btn {
-        bottom: 20px !important;
-        right: 20px !important;
-        min-width: 50px !important;
-        width: 50px !important;
-        height: 50px !important;
-    }
-    
-    .kinetic-btn.totop-btn .btn-text {
-        font-size: 1.4rem !important;
-    }
-    
-    /* Футер */
-    .footer-grid {
-        flex-direction: column !important;
-        gap: 30px !important;
-        text-align: center !important;
-    }
-    
-    .footer-logo {
-        font-size: 1.2rem !important;
-    }
-    
-    .footer p,
-    .footer a {
-        font-size: 0.8rem !important;
-    }
-}
-
-/* Маленькие мобильные до 480px */
-@media (max-width: 480px) {
-    .agency-tag {
-        font-size: 0.75rem !important;
-        letter-spacing: 4px !important;
-    }
-    
-    .left-phrase {
-        font-size: 0.85rem !important;
-    }
-    
-    .static-prefix,
-    .dynamic-word-container {
-        font-size: 1.1rem !important;
-    }
-    
-    .hero-badges .badge {
-        font-size: 0.55rem !important;
-        padding: 0.25rem 0.7rem !important;
-    }
-    
-    .albe-letter {
-        font-size: 13vw !important;
-    }
-    
-    .albe-letters {
-        gap: 5vw !important;
-        padding: 40px 0 10px 0 !important;
-    }
-    
-    .price-card {
-        padding: 16px !important;
-    }
-    
-    .price-card h4 {
-        font-size: 1rem !important;
-    }
-    
-    .price-card .price {
-        font-size: 1.2rem !important;
-    }
-    
-    .price-card li {
-        font-size: 0.7rem !important;
-    }
-    
-    .competence-card {
-        padding: 20px !important;
-    }
-    
-    .competence-card h3 {
-        font-size: 1.2rem !important;
-    }
-    
-    .tech-item {
-        font-size: 0.7rem !important;
-        padding: 6px 12px !important;
-    }
-}
-
-/* Планшеты (между 768 и 1024) */
-@media (min-width: 769px) and (max-width: 1024px) {
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-    }
-    
-    .competences-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-    }
-    
-    .price-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-    }
-    
-    .ai-video-container {
-        grid-template-columns: repeat(3, 1fr) !important;
-    }
-    
-    .kinetic-btn.totop-btn {
-        bottom: 50px !important;
-        right: 50px !important;
-    }
-}
-
-/* Для экранов с reduced motion — отключаем анимации */
-@media (prefers-reduced-motion: reduce) {
-    .services-grid .service-card,
-    .services-grid .service-card .segment,
-    .albe-letter,
-    .cursor,
-    .modal-content,
-    .kinetic-btn .segment,
-    .kinetic-btn .btn-text {
-        animation: none !important;
-        transition: none !important;
-        transform: none !important;
-    }
-    
-    .hero-canvas-bottom {
-        display: none !important;
-    }
-}
-
-/* Безопасные отступы для безопасной зоны на iPhone */
-@supports (padding: max(0px)) {
-    .container {
-        padding-left: max(20px, env(safe-area-inset-left)) !important;
-        padding-right: max(20px, env(safe-area-inset-right)) !important;
-    }
-    
-    @media (max-width: 768px) {
-        .hero-section {
-            padding-left: env(safe-area-inset-left) !important;
-            padding-right: env(safe-area-inset-right) !important;
-        }
-        
-        .nav-menu {
-            padding-top: max(40px, env(safe-area-inset-top)) !important;
-            padding-bottom: max(40px, env(safe-area-inset-bottom)) !important;
-        }
-    }
-}
-
-/* ============================================ */
-/* 26. ДОПОЛНИТЕЛЬНЫЕ ФРАЗЫ В HERO */
+/* 23. ДОПОЛНИТЕЛЬНЫЕ ФРАЗЫ В HERO */
 /* ============================================ */
 
 /* ФРАЗА 1: РАЗРАБОТКА ПОД КЛЮЧ */
@@ -3110,19 +2116,7 @@ main {
     line-height: 1.5 !important;
 }
 
-/* 6. Цены в карточках калькулятора */
-.price-card .price {
-    color: #F5B700 !important;
-    font-weight: 700 !important;
-}
-
-/* 7. Заголовки карточек цен */
-.price-card h4 {
-    color: #06B6D4 !important;
-    font-weight: 600 !important;
-}
-
-/* 8. Текст в калькуляторе (услуги) */
+/* 6. Текст в калькуляторе (услуги) */
 .calc-option {
     color: #D1D5DB !important;
 }
@@ -3131,43 +2125,38 @@ main {
     color: #FFFFFF !important;
 }
 
-/* 9. Подписи в калькуляторе */
+/* 7. Подписи в калькуляторе */
 .calc-label {
     color: #F5B700 !important;
     font-weight: 600 !important;
 }
 
-/* 10. Итоговая цена */
+/* 8. Итоговая цена */
 .calc-price {
     font-size: 1.8rem !important;
     font-weight: 700 !important;
 }
 
-/* 11. Текст в модальном окне */
+/* 9. Текст в модальном окне */
 .modal-description p,
 .modal-stack li,
 .modal-advantages li {
     color: #D1D5DB !important;
 }
 
-/* 12. Текст "Все услуги" и "Подробнее" */
+/* 10. Текст "Все услуги" и "Подробнее" */
 .section-more-btn {
     color: #06B6D4 !important;
     font-weight: 500 !important;
 }
 
-/* 13. Текст в компетенциях */
+/* 11. Текст в компетенциях */
 .competence-card > p,
 .tech-item {
     color: #D1D5DB !important;
 }
 
-/* 14. Текст в миссии */
-.mission-text p {
-    color: #D1D5DB !important;
-}
-
-/* 15. Цена в AI карточках */
+/* 12. Цена в AI карточках */
 .ai-card .price-tag {
     background: linear-gradient(135deg, #F5B700, #10B981) !important;
     color: #000000 !important;
@@ -3234,30 +2223,7 @@ main {
     cursor: pointer !important;
 }
 
-/* 7. Поля ввода в форме */
-.contact-form input,
-.contact-form textarea,
-.calculator-card input,
-.calculator-card textarea {
-    min-height: 48px !important;
-    padding: 12px 16px !important;
-}
-
-/* 8. Кнопка отправки формы */
-.btn-primary {
-    min-height: 52px !important;
-    padding: 14px 28px !important;
-    cursor: pointer !important;
-}
-
-/* 9. Ссылки в футере */
-.footer a {
-    display: inline-block !important;
-    padding: 8px 0 !important;
-    min-height: 40px !important;
-}
-
-/* 10. Бейджи в hero-секции */
+/* 7. Бейджи в hero-секции */
 .hero-badges .badge {
     display: inline-flex !important;
     align-items: center !important;
@@ -3266,7 +2232,7 @@ main {
     margin: 4px !important;
 }
 
-/* 11. Кнопка бургер-меню на мобильных */
+/* 8. Кнопка бургер-меню на мобильных */
 .burger {
     min-width: 48px !important;
     min-height: 48px !important;
@@ -3281,7 +2247,7 @@ main {
     height: 3px !important;
 }
 
-/* 12. Кнопка закрытия модалки */
+/* 9. Кнопка закрытия модалки */
 .modal-close {
     min-width: 48px !important;
     min-height: 48px !important;
@@ -3291,7 +2257,7 @@ main {
     cursor: pointer !important;
 }
 
-/* 13. Статистика в hero */
+/* 10. Статистика в hero */
 .stat-item {
     min-width: 80px !important;
     min-height: 80px !important;
@@ -3302,7 +2268,7 @@ main {
     cursor: default !important;
 }
 
-/* 14. Видео-плейсхолдеры */
+/* 11. Видео-плейсхолдеры */
 .video-placeholder {
     cursor: pointer !important;
     min-height: 200px !important;
@@ -3313,7 +2279,7 @@ main {
     min-height: 64px !important;
 }
 
-/* 15. Кнопка наверх (если есть) */
+/* 12. Кнопка наверх (если есть) */
 .totop-btn {
     min-width: 56px !important;
     min-height: 56px !important;
@@ -3347,16 +2313,6 @@ main {
 /* Расстояние между элементами аккордеона */
 .cases-accordion {
     gap: 16px !important;
-}
-
-/* Расстояние между полями формы */
-.form-row {
-    gap: 20px !important;
-}
-
-.contact-form input,
-.contact-form textarea {
-    margin-bottom: 20px !important;
 }
 
 /* Расстояние между кнопками в футере */
@@ -3402,22 +2358,13 @@ main {
         padding: 14px 16px !important;
     }
     
-    .form-row {
-        gap: 16px !important;
-    }
-    
-    .contact-form input,
-    .contact-form textarea {
-        margin-bottom: 16px !important;
-    }
-    
     .btn-primary {
         min-height: 48px !important;
     }
 }
 
 /* ============================================ */
-/* 27. НОВЫЙ БЛОК КОНТАКТОВ (contacts-new-section) */
+/* 24. НОВЫЙ БЛОК КОНТАКТОВ (contacts-new-section) */
 /* ============================================ */
 
 .contacts-new-section {
@@ -3769,146 +2716,7 @@ main {
         font-size: 1.5rem;
     }
 }
-/* ============================================ */
-/* КАРТОЧКИ В БЛОКЕ "ПОЧЕМУ ВЫБИРАЮТ НАС" */
-/* ============================================ */
 
-.mission-cards-grid {
-    flex: 1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-}
-
-.mission-card {
-    position: relative;
-    background: rgba(10, 10, 10, 0.85);
-    backdrop-filter: blur(12px);
-    border-radius: 28px;
-    overflow: hidden;
-    transform-style: preserve-3d;
-    perspective: 1000px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 15px 35px -15px rgba(0, 0, 0, 0.3);
-}
-
-.mission-card .segment {
-    position: absolute;
-    background: rgba(10, 10, 10, 0.9);
-    backdrop-filter: blur(12px);
-    border: 1.5px solid rgba(255, 255, 255, 0.1);
-    transform-style: preserve-3d;
-    overflow: hidden;
-    top: 0;
-    bottom: 0;
-    transform: translateZ(-5px);
-    max-width: 100%;
-}
-
-.mission-card .seg-1 { left: 0%; width: 22%; height: 100%; border-radius: 28px 0 0 28px; border-right: none; }
-.mission-card .seg-2 { left: 22%; width: 28%; height: 100%; border-left: none; border-right: none; }
-.mission-card .seg-3 { left: 50%; width: 28%; height: 100%; border-left: none; border-right: none; }
-.mission-card .seg-4 { left: 78%; width: 22%; height: 100%; border-radius: 0 28px 28px 0; border-left: none; }
-
-.mission-card .segment::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 2px, transparent 2px, transparent 12px);
-    pointer-events: none;
-}
-
-.mission-card .segment::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,0.08), transparent 80%);
-    opacity: 0;
-    transition: opacity 0.15s;
-    pointer-events: none;
-}
-
-.mission-card:hover .segment::after { opacity: 1; }
-
-.mission-card .corner-tl,
-.mission-card .corner-tr,
-.mission-card .corner-bl,
-.mission-card .corner-br {
-    position: absolute;
-    width: 28px;
-    height: 28px;
-    border-color: rgba(255, 255, 255, 0.3);
-    border-style: solid;
-    z-index: 20;
-    transition: all 0.2s;
-    pointer-events: none;
-}
-.mission-card .corner-tl { top: 16px; left: 16px; border-width: 2px 0 0 2px; }
-.mission-card .corner-tr { top: 16px; right: 16px; border-width: 2px 2px 0 0; }
-.mission-card .corner-bl { bottom: 16px; left: 16px; border-width: 0 0 2px 2px; }
-.mission-card .corner-br { bottom: 16px; right: 16px; border-width: 0 2px 2px 0; }
-
-.mission-card:hover .corner-tl { border-color: var(--color-yellow); filter: drop-shadow(0 0 6px var(--color-yellow)); }
-.mission-card:hover .corner-tr { border-color: var(--color-green); filter: drop-shadow(0 0 6px var(--color-green)); }
-.mission-card:hover .corner-bl { border-color: var(--color-cyan); filter: drop-shadow(0 0 6px var(--color-cyan)); }
-.mission-card:hover .corner-br { border-color: var(--color-purple); filter: drop-shadow(0 0 6px var(--color-purple)); }
-
-.mission-card .card-content {
-    position: relative;
-    z-index: 15;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 24px;
-    transform-style: preserve-3d;
-    transform: translateZ(25px);
-    pointer-events: none;
-}
-
-.mission-card h3 {
-    font-family: 'Geist', sans-serif;
-    font-weight: 500;
-    font-size: 1.3rem;
-    margin: 0 0 0.5rem 0;
-    background: var(--gradient-yellow-green);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.mission-card p {
-    font-family: 'Geist', sans-serif;
-    font-weight: 400;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin: 0;
-    color: var(--gray);
-}
-
-.mission-card .color-strip {
-    display: flex;
-    gap: 0.5rem;
-    margin: 0 0 0.75rem 0;
-}
-
-.mission-card .color-dot {
-    width: 18px;
-    height: 3px;
-    border-radius: 3px;
-}
-
-.mission-card .dot-pink { background: var(--color-yellow); }
-.mission-card .dot-teal { background: var(--color-green); }
-.mission-card .dot-mint { background: var(--color-cyan); }
-.mission-card .dot-purple { background: var(--color-purple); }
-
-@media (max-width: 768px) {
-    .mission-cards-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-}
 /* ============================================ */
 /* ОБНОВЛЕННЫЙ АККОРДЕОН ПОРТФОЛИО С ПОДСВЕТКОЙ */
 /* ============================================ */
@@ -4347,6 +3155,7 @@ main {
         transform: none;
     }
 }
+
 /* ============================================ */
 /* БЛОК КОМАНДА — НОВЫЙ ДИЗАЙН */
 /* ============================================ */
@@ -4987,6 +3796,7 @@ main {
     .team-header h2 { font-size: 1.8rem; }
     .team-subtitle { font-size: 0.85rem; }
 }
+
 /* ============================================ */
 /* БЛОК ОТЗЫВЫ */
 /* ============================================ */
@@ -5442,6 +4252,7 @@ main {
     .client-name { font-size: 0.9rem; }
     .client-position { font-size: 0.6rem; }
 }
+
 /* ============================================ */
 /* БЛОК "ПОЧЕМУ ВЫБИРАЮТ НАС" — НОВАЯ ВЕРСИЯ */
 /* ============================================ */
