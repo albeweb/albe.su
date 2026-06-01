@@ -1,5 +1,5 @@
 // ============================================
-// common.js — ПОЛНАЯ ВЕРСИЯ С ЛЕНИВОЙ ЗАГРУЗКОЙ
+// common.js — ПОЛНАЯ ВЕРСИЯ С ЛЕНИВОЙ ЗАГРУЗКОЙ (ИСПРАВЛЕНА)
 // ============================================
 
 (function() {
@@ -84,7 +84,6 @@
             const desc = techDesc[tech] || "технология, которую мы используем в наших проектах для достижения максимального результата.";
             tooltip.innerHTML = '<strong>' + el.innerText + '</strong><br>' + desc;
             
-            // Читаем геометрию ОДИН РАЗ
             const rect = el.getBoundingClientRect();
             let left = rect.right + 15;
             let top = rect.top + rect.height / 2 - 50;
@@ -581,9 +580,10 @@
                 }
                 
                 spark.style.animation = 'none';
-                // Единственное необходимое принудительное обновление
-                spark.offsetHeight;
-                spark.style.animation = 'sparkFloat 0.5s ease-out forwards';
+                // ИСПРАВЛЕНО: используем setTimeout вместо offsetHeight
+                setTimeout(() => {
+                    spark.style.animation = 'sparkFloat 0.5s ease-out forwards';
+                }, 10);
             }
         }
         
@@ -692,8 +692,10 @@
                 spark.style.top = (y - 2) + 'px';
                 spark.style.background = colors[Math.floor(Math.random() * colors.length)];
                 spark.style.animation = 'none';
-                spark.offsetHeight;
-                spark.style.animation = 'sparkOpen 0.5s ease-out forwards';
+                // ИСПРАВЛЕНО: используем setTimeout вместо offsetHeight
+                setTimeout(() => {
+                    spark.style.animation = 'sparkOpen 0.5s ease-out forwards';
+                }, 10);
             }
         }
 
