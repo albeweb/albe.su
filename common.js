@@ -65,54 +65,44 @@
     };
 
     // ============================================
-    // ТУЛТИПЫ ДЛЯ ТЕХНОЛОГИЙ — БЕЗ ПРИНУДИТЕЛЬНОЙ КОМПОНОВКИ
+    // ТУЛТИПЫ ДЛЯ ТЕХНОЛОГИЙ
     // ============================================
     function initTechTooltips() {
         const tooltip = document.createElement('div');
         tooltip.className = 'tech-tooltip';
         document.body.appendChild(tooltip);
         let timeout = null;
-        let currentElement = null;
+        let rafId = null;
         
-        document.addEventListener('mouseenter', function(e) {
-            const el = e.target.closest('.tech-item');
-            if (!el) return;
-            if (currentElement === el) return;
-            currentElement = el;
+        document.querySelectorAll('.tech-item').forEach(el => {
+            el.addEventListener('mouseenter', function() {
+                if (rafId) cancelAnimationFrame(rafId);
+                
+                const tech = this.getAttribute('data-tech');
+                const desc = techDesc[tech] || "технология, которую мы используем в наших проектах для достижения максимального результата.";
+                tooltip.innerHTML = '<strong>' + this.innerText + '</strong><br>' + desc;
+                
+                rafId = requestAnimationFrame(() => {
+                    tooltip.style.opacity = '1';
+                    const rect = this.getBoundingClientRect();
+                    let left = rect.right + 15;
+                    let top = rect.top + rect.height / 2 - 50;
+                    if (left + 380 > window.innerWidth) left = rect.left - 390;
+                    if (top < 10) top = 10;
+                    if (top + 150 > window.innerHeight) top = window.innerHeight - 160;
+                    tooltip.style.left = left + 'px';
+                    tooltip.style.top = top + 'px';
+                });
+                
+                if (timeout) clearTimeout(timeout);
+            });
             
-            const tech = el.getAttribute('data-tech');
-            const desc = techDesc[tech] || "технология, которую мы используем в наших проектах для достижения максимального результата.";
-            tooltip.innerHTML = '<strong>' + el.innerText + '</strong><br>' + desc;
-            
-            const rect = el.getBoundingClientRect();
-            let left = rect.right + 15;
-            let top = rect.top + rect.height / 2 - 50;
-            
-            if (left + 380 > window.innerWidth) {
-                left = rect.left - 390;
-            }
-            if (top < 10) {
-                top = 10;
-            }
-            if (top + 150 > window.innerHeight) {
-                top = window.innerHeight - 160;
-            }
-            
-            tooltip.style.left = left + 'px';
-            tooltip.style.top = top + 'px';
-            tooltip.style.opacity = '1';
-            
-            if (timeout) clearTimeout(timeout);
-        }, true);
-        
-        document.addEventListener('mouseleave', function(e) {
-            const el = e.target.closest('.tech-item');
-            if (!el) return;
-            timeout = setTimeout(function() { 
-                tooltip.style.opacity = '0'; 
-                currentElement = null;
-            }, 150);
-        }, true);
+            el.addEventListener('mouseleave', function() {
+                timeout = setTimeout(function() { 
+                    tooltip.style.opacity = '0'; 
+                }, 150);
+            });
+        });
     }
 
     // ============================================
@@ -539,21 +529,16 @@
         });
     }
 
-    // ============================================
-    // КИНЕТИЧЕСКИЕ КНОПКИ — ЭФФЕКТЫ (БЕЗ ПРИНУДИТЕЛЬНОЙ КОМПОНОВКИ)
-    // ============================================
     function initKineticButtonEffects(btn, originalText) {
         const leftSeg = btn.querySelector('.segment-left');
         const centerSeg = btn.querySelector('.segment-center');
         const rightSeg = btn.querySelector('.segment-right');
+        const textSpan = btn.querySelector('.btn-text');
         
         if (!leftSeg || !centerSeg || !rightSeg) return;
         
         let targetRotateX = 0, targetRotateY = 0;
         let currentRotateX = 0, currentRotateY = 0;
-        let animationId = null;
-        let rafQueued = false;
-        let lastClientX = 0, lastClientY = 0;
         
         function triggerSparks(count = 3, clientX = null, clientY = null) {
             const rect = btn.getBoundingClientRect();
@@ -580,9 +565,8 @@
                 }
                 
                 spark.style.animation = 'none';
-                setTimeout(() => {
-                    spark.style.animation = 'sparkFloat 0.5s ease-out forwards';
-                }, 10);
+                spark.offsetHeight;
+                spark.style.animation = 'sparkFloat 0.5s ease-out forwards';
             }
         }
         
@@ -590,39 +574,30 @@
             currentRotateX += (targetRotateX - currentRotateX) * 0.12;
             currentRotateY += (targetRotateY - currentRotateY) * 0.12;
             btn.style.transform = `rotateX(${currentRotateX}deg) rotateY(${currentRotateY}deg)`;
-            animationId = requestAnimationFrame(animateRotation);
+            requestAnimationFrame(animateRotation);
         }
-        animationId = requestAnimationFrame(animateRotation);
+        animateRotation();
         
         btn.addEventListener('mousemove', (e) => {
-            if (rafQueued) return;
-            rafQueued = true;
-            lastClientX = e.clientX;
-            lastClientY = e.clientY;
+            const rect = btn.getBoundingClientRect();
+            const relX = (e.clientX - rect.left) / rect.width - 0.5;
+            const relY = (e.clientY - rect.top) / rect.height - 0.5;
             
-            requestAnimationFrame(() => {
-                const rect = btn.getBoundingClientRect();
-                const relX = (lastClientX - rect.left) / rect.width - 0.5;
-                const relY = (lastClientY - rect.top) / rect.height - 0.5;
-                
-                targetRotateY = relX * 10;
-                targetRotateX = -relY * 8;
-                
-                const px = ((lastClientX - rect.left) / rect.width) * 100;
-                const py = ((lastClientY - rect.top) / rect.height) * 100;
-                btn.style.setProperty('--x', px + '%');
-                btn.style.setProperty('--y', py + '%');
-                
-                leftSeg.style.transform = `translateX(${relX * -8}px) rotateY(${relX * -5}deg) translateZ(${relY * 4}px)`;
-                rightSeg.style.transform = `translateX(${relX * 8}px) rotateY(${relX * 5}deg) translateZ(${relY * 4}px)`;
-                centerSeg.style.transform = `translateY(${relY * 5}px) translateZ(${Math.abs(relX) * 8}px)`;
-                
-                if (Math.random() < 0.05) {
-                    triggerSparks(1, lastClientX, lastClientY);
-                }
-                
-                rafQueued = false;
-            });
+            targetRotateY = relX * 10;
+            targetRotateX = -relY * 8;
+            
+            const px = ((e.clientX - rect.left) / rect.width) * 100;
+            const py = ((e.clientY - rect.top) / rect.height) * 100;
+            btn.style.setProperty('--x', px + '%');
+            btn.style.setProperty('--y', py + '%');
+            
+            leftSeg.style.transform = `translateX(${relX * -8}px) rotateY(${relX * -5}deg) translateZ(${relY * 4}px)`;
+            rightSeg.style.transform = `translateX(${relX * 8}px) rotateY(${relX * 5}deg) translateZ(${relY * 4}px)`;
+            centerSeg.style.transform = `translateY(${relY * 5}px) translateZ(${Math.abs(relX) * 8}px)`;
+            
+            if (Math.random() < 0.05) {
+                triggerSparks(1, e.clientX, e.clientY);
+            }
         });
         
         btn.addEventListener('mouseenter', () => {
@@ -691,9 +666,8 @@
                 spark.style.top = (y - 2) + 'px';
                 spark.style.background = colors[Math.floor(Math.random() * colors.length)];
                 spark.style.animation = 'none';
-                setTimeout(() => {
-                    spark.style.animation = 'sparkOpen 0.5s ease-out forwards';
-                }, 10);
+                spark.offsetHeight;
+                spark.style.animation = 'sparkOpen 0.5s ease-out forwards';
             }
         }
 
@@ -799,13 +773,11 @@
         
         function resetAccordion() {
             if (isMobile()) {
-                // На мобильных: закрываем все панели
                 panels.forEach(panel => {
                     panel.classList.remove('active');
                     panel.classList.remove('open');
                 });
             } else {
-                // На десктопе: если нет активной панели, открываем первую
                 const hasActive = Array.from(panels).some(p => p.classList.contains('active'));
                 if (!hasActive && panels.length > 0) {
                     panels[0].classList.add('active');
@@ -815,14 +787,12 @@
         
         function handlePanelClick(panel) {
             if (isMobile()) {
-                // Мобильное поведение: toggle с классом open
                 const isOpen = panel.classList.contains('open');
                 panels.forEach(p => p.classList.remove('open'));
                 if (!isOpen) {
                     panel.classList.add('open');
                 }
             } else {
-                // Десктопное поведение: закрываем другие, открываем текущую
                 panels.forEach(p => {
                     if (p !== panel && p.classList.contains('active')) {
                         p.classList.remove('active');
@@ -832,7 +802,6 @@
             }
         }
         
-        // Навешиваем обработчики
         panels.forEach(panel => {
             const header = panel.querySelector('.accordion-panel-header');
             if (header) {
@@ -843,7 +812,6 @@
             }
         });
         
-        // Следим за изменением размера окна
         let resizeTimer;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimer);
@@ -852,7 +820,6 @@
             }, 150);
         });
         
-        // Инициализация
         resetAccordion();
     }
 
