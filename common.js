@@ -1,5 +1,5 @@
 // ============================================
-// common.js — ПОЛНАЯ ИСПРАВЛЕННАЯ ВЕРСИЯ
+// common.js — ПОЛНАЯ ВЕРСИЯ С ЛЕНИВОЙ ЗАГРУЗКОЙ
 // ============================================
 
 (function() {
@@ -518,7 +518,6 @@
         });
     }
 
-    // Эффекты для одной кинетической кнопки
     function initKineticButtonEffects(btn, originalText) {
         const leftSeg = btn.querySelector('.segment-left');
         const centerSeg = btn.querySelector('.segment-center');
@@ -762,13 +761,11 @@
             if (!header) return;
             
             header.addEventListener('click', () => {
-                // Закрываем все другие панели
                 panels.forEach(p => {
                     if (p !== panel && p.classList.contains('active')) {
                         p.classList.remove('active');
                     }
                 });
-                // Переключаем текущую панель
                 panel.classList.toggle('active');
             });
         });
@@ -1156,6 +1153,176 @@
     }
 
     // ============================================
+    // ЛЕНИВАЯ ЗАГРУЗКА БЛОКОВ С ПОМОЩЬЮ INTERSECTION OBSERVER
+    // ============================================
+    function initLazySections() {
+        // Находим все секции, которые нужно загружать лениво
+        const sections = document.querySelectorAll(
+            '#services, #portfolio, #ai-reklama, #process, .team-section, ' +
+            '#competences, #calculator, .reviews-section, .mission-new-section, ' +
+            '#faq, .contacts-new-section'
+        );
+        
+        if (sections.length === 0) return;
+        
+        // Добавляем класс lazy-section всем секциям
+        sections.forEach((section, index) => {
+            section.classList.add('lazy-section');
+            // Добавляем разные типы анимации для разных секций
+            if (section.id === 'services') {
+                section.classList.add('fade-right');
+            } else if (section.id === 'portfolio') {
+                section.classList.add('fade-left');
+            } else if (section.id === 'ai-reklama') {
+                section.classList.add('zoom-in');
+            } else if (section.classList.contains('reviews-section')) {
+                section.classList.add('fade-right');
+            } else if (section.classList.contains('mission-new-section')) {
+                section.classList.add('fade-left');
+            } else {
+                section.classList.add('fade-left');
+            }
+        });
+        
+        // Конфигурация Intersection Observer
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -50px 0px',
+            threshold: 0.1
+        };
+        
+        // Создаем observer
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const section = entry.target;
+                    
+                    // Добавляем класс для анимации появления
+                    section.classList.add('visible');
+                    
+                    // Если у секции есть изображения с data-src, загружаем их
+                    const lazyImages = section.querySelectorAll('img[data-src]');
+                    lazyImages.forEach(img => {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                    });
+                    
+                    // Если у секции есть фоны с data-bg
+                    const lazyBgElements = section.querySelectorAll('[data-bg]');
+                    lazyBgElements.forEach(el => {
+                        el.style.backgroundImage = `url(${el.dataset.bg})`;
+                        el.removeAttribute('data-bg');
+                    });
+                    
+                    // Останавливаем наблюдение за этим блоком
+                    obs.unobserve(section);
+                }
+            });
+        }, observerOptions);
+        
+        // Начинаем наблюдение за каждой секцией
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Также наблюдаем за карточками внутри уже видимых секций
+        const cardsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    cardsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.05, rootMargin: '20px' });
+        
+        // Наблюдаем за отдельными карточками
+        const allCards = document.querySelectorAll(
+            '.service-card, .competence-card, .step-card, .review-card, .mission-advantage-card'
+        );
+        allCards.forEach(card => {
+            if (!card.closest('.lazy-section.visible')) {
+                cardsObserver.observe(card);
+            }
+        });
+    }
+    
+    // ============================================
+    // ЛЕНИВАЯ ЗАГРУЗКА ИЗОБРАЖЕНИЙ
+    // ============================================
+    function initLazyImages() {
+        // Находим все изображения, которые нужно загружать лениво
+        const images = document.querySelectorAll('img:not([loading="eager"])');
+        
+        // Добавляем loading="lazy" для всех изображений, у которых его нет
+        images.forEach(img => {
+            if (!img.hasAttribute('loading') && !img.closest('.hero-section')) {
+                img.setAttribute('loading', 'lazy');
+            }
+        });
+        
+        // Используем Intersection Observer для изображений
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    const src = img.dataset.src;
+                    
+                    if (src && !img.src) {
+                        img.src = src;
+                    }
+                    
+                    imageObserver.unobserve(img);
+                }
+            });
+        }, { rootMargin: '100px', threshold: 0.01 });
+        
+        // Наблюдаем за изображениями с data-src
+        const lazyImages = document.querySelectorAll('img[data-src]');
+        lazyImages.forEach(img => imageObserver.observe(img));
+    }
+    
+    // ============================================
+    // ПРЕДЗАГРУЗКА КРИТИЧЕСКИХ РЕСУРСОВ
+    // ============================================
+    function preloadCriticalResources() {
+        // Предзагружаем изображения hero-секции
+        const criticalImages = document.querySelectorAll('.hero-section img');
+        criticalImages.forEach(img => {
+            if (img.src && !img.src.includes('data:image')) {
+                const link = document.createElement('link');
+                link.rel = 'preload';
+                link.as = 'image';
+                link.href = img.src;
+                document.head.appendChild(link);
+            }
+        });
+    }
+    
+    // ============================================
+    // ОПТИМИЗАЦИЯ ПРОИЗВОДИТЕЛЬНОСТИ
+    // ============================================
+    function optimizePerformance() {
+        // Откладываем загрузку невидимых iframe
+        const iframes = document.querySelectorAll('iframe:not([data-loaded])');
+        const iframeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const iframe = entry.target;
+                    const src = iframe.dataset.src || iframe.src;
+                    if (src && !iframe.dataset.loaded) {
+                        iframe.src = src;
+                        iframe.dataset.loaded = 'true';
+                    }
+                    iframeObserver.unobserve(iframe);
+                }
+            });
+        }, { rootMargin: '200px' });
+        
+        iframes.forEach(iframe => iframeObserver.observe(iframe));
+    }
+
+    // ============================================
     // ЗАПУСК ВСЕХ ИНИЦИАЛИЗАЦИЙ
     // ============================================
     document.addEventListener('DOMContentLoaded', function() {
@@ -1177,7 +1344,13 @@
         initLazyKinescope();
         initKineticToTop();
         initServiceModal();
-        initPortfolioAccordion();  // ← ДОБАВЛЕНА ИНИЦИАЛИЗАЦИЯ АККОРДЕОНА ПОРТФОЛИО
+        initPortfolioAccordion();
+        
+        // ИНИЦИАЛИЗАЦИЯ ЛЕНИВОЙ ЗАГРУЗКИ
+        initLazySections();
+        initLazyImages();
+        preloadCriticalResources();
+        optimizePerformance();
         
         // Загрузка компонентов header и footer
         loadComponent('header-placeholder', 'header.html', function() {
