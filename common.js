@@ -1,12 +1,12 @@
 // ============================================
-// common.js — ПОЛНАЯ ИСПРАВЛЕННАЯ ВЕРСИЯ
+// common.js — ОПТИМИЗИРОВАННАЯ ВЕРСИЯ (удалён мёртвый код)
 // ============================================
 
 (function() {
     'use strict';
 
     // ============================================
-    // ОПИСАНИЯ ТЕХНОЛОГИЙ ДЛЯ ТУЛТИПОВ
+    // ОПИСАНИЯ ТЕХНОЛОГИЙ ДЛЯ ТУЛТИПОВ (только используемые)
     // ============================================
     const techDesc = {
         react: "react / next.js — библиотека для создания пользовательских интерфейсов. next.js добавляет серверный рендеринг (ssr) и генерацию статических сайтов (ssg), что улучшает seo и скорость загрузки.",
@@ -48,20 +48,7 @@
         bigdata: "big data аналитика — обработка и анализ больших объёмов данных. инструменты: hadoop, spark, clickhouse, bigquery.",
         trading: "trading аналитика — анализ финансовых рынков. алгоритмическая торговля, прогнозирование цен, риск-менеджмент.",
         blockchain: "blockchain аналитика — анализ блокчейн-транзакций. отслеживание движения средств, выявление мошенничества, анализ смарт-контрактов.",
-        graph: "graph аналитика — анализ графовых структур. социальные сети, рекомендательные системы, поиск кратчайших путей.",
-        vue: "vue — прогрессивный фреймворк. лёгкий, гибкий, для малых и средних проектов.",
-        gsap: "gsap — профессиональная анимация. плавные переходы, сложные таймлайны.",
-        three: "three.js — 3d в браузере. впечатляющие сцены, анимация продуктов.",
-        laravel: "laravel — php-фреймворк. портал, интернет-магазин, crm.",
-        uiux: "ui/ux research — исследование поведения. интерфейсы, решающие бизнес-задачи.",
-        motion: "motion design — анимированные интерфейсы. вовлечённость, впечатления.",
-        "3d": "3d art — трёхмерная визуализация. презентации, дополненная реальность.",
-        adobe: "adobe suite — графика, ретушь, подготовка элементов.",
-        audit: "seo-аудит — анализ ошибок, скорости, дублей, метатегов.",
-        metrika: "метрика/ga4 — сбор данных, вебвизор, цели, e-commerce.",
-        cluster: "кластеризация — группировка запросов. оптимальная структура страниц.",
-        core: "core web vitals — lcp, cls, fid. влияют на ранжирование.",
-        semrush: "semrush / ahrefs — анализ конкурентов, ключей, ссылок."
+        graph: "graph аналитика — анализ графовых структур. социальные сети, рекомендательные системы, поиск кратчайших путей."
     };
 
     // ============================================
@@ -232,14 +219,8 @@
     }
 
     function initCalculatorWithFallback() {
-        const staticTable = document.getElementById('staticPriceTable');
         const interactiveCalc = document.getElementById('interactiveCalculator');
-        
-        if (staticTable && interactiveCalc) {
-            staticTable.style.display = 'none';
-            interactiveCalc.style.display = 'block';
-            initCalculator();
-        } else if (interactiveCalc) {
+        if (interactiveCalc) {
             interactiveCalc.style.display = 'block';
             initCalculator();
         }
@@ -260,33 +241,6 @@
                     e.preventDefault();
                     target.scrollIntoView({ behavior: 'smooth' });
                 }
-            });
-        }
-    }
-
-    // ============================================
-    // ФОРМА
-    // ============================================
-    function initForm() {
-        var form = document.getElementById('mainForm');
-        var stat = document.getElementById('formStatus');
-        if (form) {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                var name = document.getElementById('userName') ? document.getElementById('userName').value.trim() : '';
-                var phone = document.getElementById('userPhone') ? document.getElementById('userPhone').value.trim() : '';
-                var email = document.getElementById('userEmail') ? document.getElementById('userEmail').value.trim() : '';
-                
-                if (!name || !phone || !email) {
-                    if (stat) stat.innerHTML = '<div style="background:#990000; padding:12px; border-radius:8px;">❌ заполните все обязательные поля (имя, телефон, email)</div>';
-                    setTimeout(function() { if (stat) stat.innerHTML = ''; }, 4000);
-                    return;
-                }
-                
-                console.log('заявка:', { name, phone, email });
-                if (stat) stat.innerHTML = '<div style="background:#F5B700; color:#0D1117; padding:12px; border-radius:8px;">✅ спасибо! менеджер свяжется с вами в ближайшее время.</div>';
-                form.reset();
-                setTimeout(function() { if (stat) stat.innerHTML = ''; }, 5000);
             });
         }
     }
@@ -334,364 +288,6 @@
     }
 
     // ============================================
-    // 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК
-    // ============================================
-    function initQuantumCards() {
-        const cards = document.querySelectorAll('.services-grid .service-card');
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (prefersReducedMotion || cards.length === 0) return;
-
-        cards.forEach(card => {
-            const seg1 = card.querySelector('.seg-1');
-            const seg2 = card.querySelector('.seg-2');
-            const seg3 = card.querySelector('.seg-3');
-            const seg4 = card.querySelector('.seg-4');
-            const segments = [seg1, seg2, seg3, seg4];
-            const content = card.querySelector('.card-content');
-
-            if (!seg1 || !seg2 || !seg3 || !seg4) return;
-
-            let targetRotateY = 0;
-            let currentRotateY = 0;
-
-            let segTargets = {
-                seg1: { x: 0, ry: 0 },
-                seg2: { x: 0 },
-                seg3: { x: 0 },
-                seg4: { x: 0, ry: 0 }
-            };
-            let segCurrent = {
-                seg1: { x: 0, ry: 0 },
-                seg2: { x: 0 },
-                seg3: { x: 0 },
-                seg4: { x: 0, ry: 0 }
-            };
-
-            const MAX_X = 12;
-            const MAX_RY = 4;
-
-            function limit(value, max) {
-                return Math.min(max, Math.max(-max, value));
-            }
-
-            function updateSegments() {
-                segCurrent.seg1.x += (segTargets.seg1.x - segCurrent.seg1.x) * 0.2;
-                segCurrent.seg1.ry += (segTargets.seg1.ry - segCurrent.seg1.ry) * 0.2;
-                seg1.style.transform = `translateX(${segCurrent.seg1.x}px) rotateY(${segCurrent.seg1.ry}deg) translateZ(-5px)`;
-                
-                segCurrent.seg2.x += (segTargets.seg2.x - segCurrent.seg2.x) * 0.2;
-                seg2.style.transform = `translateX(${segCurrent.seg2.x}px) translateZ(-5px)`;
-                
-                segCurrent.seg3.x += (segTargets.seg3.x - segCurrent.seg3.x) * 0.2;
-                seg3.style.transform = `translateX(${segCurrent.seg3.x}px) translateZ(-5px)`;
-                
-                segCurrent.seg4.x += (segTargets.seg4.x - segCurrent.seg4.x) * 0.2;
-                segCurrent.seg4.ry += (segTargets.seg4.ry - segCurrent.seg4.ry) * 0.2;
-                seg4.style.transform = `translateX(${segCurrent.seg4.x}px) rotateY(${segCurrent.seg4.ry}deg) translateZ(-5px)`;
-            }
-
-            function animate() {
-                currentRotateY += (targetRotateY - currentRotateY) * 0.12;
-                card.style.transform = `rotateY(${currentRotateY}deg)`;
-                updateSegments();
-                requestAnimationFrame(animate);
-            }
-            animate();
-
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const relX = (e.clientX - rect.left) / rect.width - 0.5;
-
-                targetRotateY = relX * 12;
-
-                const px = ((e.clientX - rect.left) / rect.width) * 100;
-                const py = ((e.clientY - rect.top) / rect.height) * 100;
-                card.style.setProperty('--x', px + '%');
-                card.style.setProperty('--y', py + '%');
-
-                const intensity = Math.min(1, Math.abs(relX));
-                const borderGlow = `rgba(255, 255, 255, ${0.15 + intensity * 0.4})`;
-                segments.forEach(seg => {
-                    if (seg) seg.style.borderColor = borderGlow;
-                });
-
-                segTargets.seg1.x = limit(relX * -12, MAX_X);
-                segTargets.seg1.ry = limit(relX * -4, MAX_RY);
-                segTargets.seg2.x = limit(relX * -5, MAX_X);
-                segTargets.seg3.x = limit(relX * 5, MAX_X);
-                segTargets.seg4.x = limit(relX * 12, MAX_X);
-                segTargets.seg4.ry = limit(relX * 4, MAX_RY);
-
-                if (content) {
-                    content.style.transform = `translateZ(25px)`;
-                }
-            });
-
-            card.addEventListener('mouseleave', () => {
-                targetRotateY = 0;
-                segTargets = {
-                    seg1: { x: 0, ry: 0 },
-                    seg2: { x: 0 },
-                    seg3: { x: 0 },
-                    seg4: { x: 0, ry: 0 }
-                };
-                segments.forEach(seg => {
-                    if (seg) seg.style.borderColor = '';
-                });
-                if (content) {
-                    content.style.transform = 'translateZ(25px)';
-                }
-            });
-        });
-    }
-
-    // ============================================
-    // КИНЕТИЧЕСКИЕ КНОПКИ (3 СЕГМЕНТА)
-    // ============================================
-    function initKineticButtons() {
-        const buttonsToConvert = document.querySelectorAll(
-            '.btn-primary, .btn-outline, .hero-btn-primary, .hero-btn-outline, ' +
-            '.section-more-btn, button[type="submit"], .header-telegram'
-        );
-        
-        if (buttonsToConvert.length === 0) return;
-        
-        buttonsToConvert.forEach(oldBtn => {
-            const btnText = oldBtn.textContent.trim();
-            const btnId = oldBtn.id;
-            const btnClass = oldBtn.className;
-            const parent = oldBtn.parentNode;
-            let telegramLink = null;
-            
-            if (oldBtn.classList.contains('header-telegram')) {
-                telegramLink = oldBtn.getAttribute('href');
-            }
-            
-            const wrapper = document.createElement('div');
-            wrapper.className = 'kinetic-wrapper';
-            if (btnId) wrapper.id = btnId;
-            
-            let sizeClass = '';
-            if (btnClass.includes('section-more-btn')) sizeClass = 'small';
-            if (btnClass.includes('hero-btn') || (btnClass.includes('btn-primary') && btnText.length > 15)) sizeClass = 'large';
-            if (btnClass.includes('header-telegram')) sizeClass = 'header-telegram-btn';
-            
-            const kineticBtn = document.createElement('div');
-            kineticBtn.className = `kinetic-btn ${sizeClass}`;
-            if (telegramLink) {
-                kineticBtn.setAttribute('data-telegram-link', telegramLink);
-            }
-            
-            const segLeft = document.createElement('div');
-            segLeft.className = 'segment segment-left';
-            const segCenter = document.createElement('div');
-            segCenter.className = 'segment segment-center';
-            const segRight = document.createElement('div');
-            segRight.className = 'segment segment-right';
-            
-            const textSpan = document.createElement('div');
-            textSpan.className = 'btn-text';
-            textSpan.textContent = btnText;
-            
-            for (let i = 0; i < 6; i++) {
-                const spark = document.createElement('div');
-                spark.className = 'spark';
-                kineticBtn.appendChild(spark);
-            }
-            
-            kineticBtn.appendChild(segLeft);
-            kineticBtn.appendChild(segCenter);
-            kineticBtn.appendChild(segRight);
-            kineticBtn.appendChild(textSpan);
-            
-            wrapper.appendChild(kineticBtn);
-            parent.replaceChild(wrapper, oldBtn);
-            
-            initKineticButtonEffects(kineticBtn, btnText);
-            
-            if (telegramLink) {
-                kineticBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    window.open(telegramLink, '_blank');
-                });
-            }
-        });
-    }
-
-    // Эффекты для одной кинетической кнопки
-    function initKineticButtonEffects(btn, originalText) {
-        const leftSeg = btn.querySelector('.segment-left');
-        const centerSeg = btn.querySelector('.segment-center');
-        const rightSeg = btn.querySelector('.segment-right');
-        const textSpan = btn.querySelector('.btn-text');
-        
-        if (!leftSeg || !centerSeg || !rightSeg) return;
-        
-        let targetRotateX = 0, targetRotateY = 0;
-        let currentRotateX = 0, currentRotateY = 0;
-        
-        function triggerSparks(count = 3, clientX = null, clientY = null) {
-            const rect = btn.getBoundingClientRect();
-            const sparksList = btn.querySelectorAll('.spark');
-            
-            for (let i = 0; i < Math.min(count, sparksList.length); i++) {
-                const spark = sparksList[i];
-                const angle = Math.random() * Math.PI * 2;
-                const radius = 25 + Math.random() * 35;
-                const dx = Math.cos(angle) * radius * (Math.random() > 0.5 ? 1 : -1);
-                const dy = Math.sin(angle) * radius * 0.5 - 8;
-                
-                spark.style.setProperty('--dx', dx + 'px');
-                spark.style.setProperty('--dy', dy + 'px');
-                
-                if (clientX && clientY) {
-                    const localX = ((clientX - rect.left) / rect.width) * 100;
-                    const localY = ((clientY - rect.top) / rect.height) * 100;
-                    spark.style.left = localX + '%';
-                    spark.style.top = localY + '%';
-                } else {
-                    spark.style.left = (Math.random() * 80 + 10) + '%';
-                    spark.style.top = (Math.random() * 70 + 15) + '%';
-                }
-                
-                spark.style.animation = 'none';
-                spark.offsetHeight;
-                spark.style.animation = 'sparkFloat 0.5s ease-out forwards';
-            }
-        }
-        
-        function animateRotation() {
-            currentRotateX += (targetRotateX - currentRotateX) * 0.12;
-            currentRotateY += (targetRotateY - currentRotateY) * 0.12;
-            btn.style.transform = `rotateX(${currentRotateX}deg) rotateY(${currentRotateY}deg)`;
-            requestAnimationFrame(animateRotation);
-        }
-        animateRotation();
-        
-        btn.addEventListener('mousemove', (e) => {
-            const rect = btn.getBoundingClientRect();
-            const relX = (e.clientX - rect.left) / rect.width - 0.5;
-            const relY = (e.clientY - rect.top) / rect.height - 0.5;
-            
-            targetRotateY = relX * 10;
-            targetRotateX = -relY * 8;
-            
-            const px = ((e.clientX - rect.left) / rect.width) * 100;
-            const py = ((e.clientY - rect.top) / rect.height) * 100;
-            btn.style.setProperty('--x', px + '%');
-            btn.style.setProperty('--y', py + '%');
-            
-            leftSeg.style.transform = `translateX(${relX * -8}px) rotateY(${relX * -5}deg) translateZ(${relY * 4}px)`;
-            rightSeg.style.transform = `translateX(${relX * 8}px) rotateY(${relX * 5}deg) translateZ(${relY * 4}px)`;
-            centerSeg.style.transform = `translateY(${relY * 5}px) translateZ(${Math.abs(relX) * 8}px)`;
-            
-            if (Math.random() < 0.05) {
-                triggerSparks(1, e.clientX, e.clientY);
-            }
-        });
-        
-        btn.addEventListener('mouseenter', () => {
-            triggerSparks(3);
-        });
-        
-        btn.addEventListener('mouseleave', () => {
-            leftSeg.style.transform = '';
-            rightSeg.style.transform = '';
-            centerSeg.style.transform = '';
-            targetRotateX = 0;
-            targetRotateY = 0;
-        });
-        
-        btn.addEventListener('click', (e) => {
-            triggerSparks(8, e.clientX, e.clientY);
-            btn.style.transform = `scale(0.97)`;
-            setTimeout(() => {
-                btn.style.transform = '';
-            }, 120);
-        });
-    }
-
-    // ============================================
-    // АККОРДЕОН FAQ В СТИЛЕ «КЕЙС»
-    // ============================================
-    function initCaseAccordion() {
-        const items = document.querySelectorAll('.case-item');
-        if (items.length === 0) return;
-
-        let sparkContainer = document.querySelector('.spark-container');
-        if (!sparkContainer) {
-            sparkContainer = document.createElement('div');
-            sparkContainer.className = 'spark-container';
-            sparkContainer.style.position = 'fixed';
-            sparkContainer.style.top = '0';
-            sparkContainer.style.left = '0';
-            sparkContainer.style.width = '100%';
-            sparkContainer.style.height = '100%';
-            sparkContainer.style.pointerEvents = 'none';
-            sparkContainer.style.zIndex = '9999';
-            document.body.appendChild(sparkContainer);
-        }
-
-        const sparks = [];
-        const SPARKS_COUNT = 30;
-        for (let i = 0; i < SPARKS_COUNT; i++) {
-            const s = document.createElement('div');
-            s.className = 'spark';
-            sparkContainer.appendChild(s);
-            sparks.push(s);
-        }
-
-        function burstSparks(x, y) {
-            const colors = ['rgba(255, 255, 255, 0.9)', 'rgba(255, 255, 255, 0.7)', '#D62976', '#F56040'];
-            const count = 12 + Math.floor(Math.random() * 12);
-            for (let i = 0; i < count; i++) {
-                const spark = sparks[i % sparks.length];
-                const angle = Math.random() * Math.PI * 2;
-                const radius = 35 + Math.random() * 65;
-                const dx = Math.cos(angle) * radius;
-                const dy = Math.sin(angle) * radius;
-                spark.style.setProperty('--dx', dx + 'px');
-                spark.style.setProperty('--dy', dy + 'px');
-                spark.style.left = (x - 2) + 'px';
-                spark.style.top = (y - 2) + 'px';
-                spark.style.background = colors[Math.floor(Math.random() * colors.length)];
-                spark.style.animation = 'none';
-                spark.offsetHeight;
-                spark.style.animation = 'sparkOpen 0.5s ease-out forwards';
-            }
-        }
-
-        function openCase(selectedItem) {
-            const isActive = selectedItem.classList.contains('active');
-            items.forEach(item => {
-                if (item !== selectedItem && item.classList.contains('active')) {
-                    item.classList.remove('active');
-                }
-            });
-            if (!isActive) {
-                selectedItem.classList.add('active');
-                const handle = selectedItem.querySelector('.case-handle');
-                if (handle) {
-                    const rect = handle.getBoundingClientRect();
-                    burstSparks(rect.left + rect.width / 2, rect.top + rect.height / 2);
-                }
-            } else {
-                selectedItem.classList.remove('active');
-            }
-        }
-
-        items.forEach(item => {
-            const lid = item.querySelector('.case-lid');
-            if (lid) {
-                lid.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    openCase(item);
-                });
-            }
-        });
-    }
-
-    // ============================================
     // КИНЕТИЧЕСКАЯ КНОПКА НАВЕРХ
     // ============================================
     function initKineticToTop() {
@@ -733,7 +329,26 @@
         wrapper.appendChild(kineticBtn);
         parent.replaceChild(wrapper, toTopBtn);
         
-        initKineticButtonEffects(kineticBtn, btnText);
+        // Эффекты для кнопки
+        const leftSeg = kineticBtn.querySelector('.segment-left');
+        const rightSeg = kineticBtn.querySelector('.segment-right');
+        const centerSeg = kineticBtn.querySelector('.segment-center');
+        
+        kineticBtn.addEventListener('mousemove', (e) => {
+            const rect = kineticBtn.getBoundingClientRect();
+            const relX = (e.clientX - rect.left) / rect.width - 0.5;
+            const relY = (e.clientY - rect.top) / rect.height - 0.5;
+            
+            if (leftSeg) leftSeg.style.transform = `translateX(${relX * -8}px) rotateY(${relX * -5}deg)`;
+            if (rightSeg) rightSeg.style.transform = `translateX(${relX * 8}px) rotateY(${relX * 5}deg)`;
+            if (centerSeg) centerSeg.style.transform = `translateY(${relY * 5}px)`;
+        });
+        
+        kineticBtn.addEventListener('mouseleave', () => {
+            if (leftSeg) leftSeg.style.transform = '';
+            if (rightSeg) rightSeg.style.transform = '';
+            if (centerSeg) centerSeg.style.transform = '';
+        });
         
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
@@ -751,6 +366,38 @@
     }
 
     // ============================================
+    // АККОРДЕОН FAQ (упрощённый, без искр)
+    // ============================================
+    function initCaseAccordion() {
+        const items = document.querySelectorAll('.case-item');
+        if (items.length === 0) return;
+
+        function openCase(selectedItem) {
+            const isActive = selectedItem.classList.contains('active');
+            items.forEach(item => {
+                if (item !== selectedItem && item.classList.contains('active')) {
+                    item.classList.remove('active');
+                }
+            });
+            if (!isActive) {
+                selectedItem.classList.add('active');
+            } else {
+                selectedItem.classList.remove('active');
+            }
+        }
+
+        items.forEach(item => {
+            const lid = item.querySelector('.case-lid');
+            if (lid) {
+                lid.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openCase(item);
+                });
+            }
+        });
+    }
+
+    // ============================================
     // АККОРДЕОН ПОРТФОЛИО
     // ============================================
     function initPortfolioAccordion() {
@@ -762,210 +409,12 @@
             if (!header) return;
             
             header.addEventListener('click', () => {
-                // Закрываем все другие панели
                 panels.forEach(p => {
                     if (p !== panel && p.classList.contains('active')) {
                         p.classList.remove('active');
                     }
                 });
-                // Переключаем текущую панель
                 panel.classList.toggle('active');
-            });
-        });
-    }
-
-    // ============================================
-    // ЗАГРУЗКА КОМПОНЕНТОВ (HEADER, FOOTER)
-    // ============================================
-    function loadComponent(elementId, filePath, callback) {
-        const placeholder = document.getElementById(elementId);
-        if (!placeholder) return;
-        
-        fetch(filePath)
-            .then(response => {
-                if (!response.ok) throw new Error('failed to load ' + filePath);
-                return response.text();
-            })
-            .then(data => {
-                placeholder.innerHTML = data;
-                if (callback) callback();
-            })
-            .catch(error => {
-                console.error('ошибка загрузки компонента:', error);
-                placeholder.innerHTML = '<div style="padding:20px;text-align:center;">ошибка загрузки</div>';
-            });
-    }
-
-    // ============================================
-    // HERO БАННЕР (СКРИПТЫ)
-    // ============================================
-    function initHeroMatrixRain() {
-        const canvas = document.getElementById('matrixCanvas');
-        if (!canvas) return;
-        
-        const ctx = canvas.getContext('2d');
-        let w = window.innerWidth;
-        let h = window.innerHeight;
-        
-        canvas.width = w;
-        canvas.height = h;
-        
-        const chars = "01<>/{}[]=+-*&%$#@!~ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        const wordsArr = ['DESIGN', 'CODE', 'AI', 'ALBE', 'DIGITAL'];
-        const colors = ['#F5B700', '#10B981', '#06B6D4', '#4C1D95'];
-        const fontSize = 14;
-        let cols = Math.floor(w / fontSize);
-        let drops = [];
-        
-        for (let i = 0; i < cols; i++) {
-            drops[i] = Math.random() * -h;
-        }
-        
-        let lastFrameTime = 0;
-        const targetFPS = 30;
-        const frameInterval = 1000 / targetFPS;
-        
-        function getRandomItem() {
-            return (Math.random() < 0.04) ? wordsArr[Math.floor(Math.random() * wordsArr.length)] : chars[Math.floor(Math.random() * chars.length)];
-        }
-        
-        function drawMatrix(now) {
-            requestAnimationFrame(drawMatrix);
-            if (now - lastFrameTime < frameInterval) return;
-            lastFrameTime = now;
-            
-            ctx.fillStyle = 'rgba(5,7,10,0.03)';
-            ctx.fillRect(0, 0, w, h);
-            ctx.textAlign = 'center';
-            
-            for (let i = 0; i < drops.length; i++) {
-                const item = getRandomItem();
-                const x = i * fontSize + fontSize/2;
-                const y = drops[i] * fontSize;
-                let color, fontStyle;
-                
-                if (item.length > 1) {
-                    color = '#F5B700';
-                    fontStyle = `bold ${fontSize}px "Monaco", monospace`;
-                } else {
-                    color = colors[Math.floor(Math.random() * colors.length)];
-                    fontStyle = `${fontSize}px "Monaco", monospace`;
-                }
-                ctx.font = fontStyle;
-                ctx.fillStyle = color;
-                ctx.fillText(item, x, y);
-                
-                if (y > h && Math.random() > 0.99) {
-                    drops[i] = 0;
-                }
-                drops[i] += 0.6;
-            }
-        }
-        
-        drawMatrix();
-        
-        window.addEventListener('resize', () => {
-            w = window.innerWidth;
-            h = window.innerHeight;
-            canvas.width = w;
-            canvas.height = h;
-            cols = Math.floor(w / fontSize);
-            drops = [];
-            for (let i = 0; i < cols; i++) {
-                drops[i] = Math.random() * -h;
-            }
-        });
-    }
-
-    function initHeroStaticElements() {
-        const elements = ['agencyTag', 'leftPhrase', 'badgesGrid', 'staticPrefix', 'dynamicWordContainer'];
-        elements.forEach((id, idx) => {
-            const el = document.getElementById(id);
-            if (el) setTimeout(() => el.style.opacity = "1", 1300 + idx * 100);
-        });
-        const statsRow = document.getElementById('statsRow');
-        if (statsRow) setTimeout(() => statsRow.classList.add('visible'), 2000);
-    }
-
-    function initHeroTypewriter() {
-        const words = ["ДИЗАЙН", "ПРИЛОЖЕНИЯ", "SEO СТРАТЕГИЮ", "САЙТЫ ПОД КЛЮЧ", "E-COMMERCE", "AI РЕКЛАМУ"];
-        let wordIndex = 0;
-        let isDeleting = false;
-        let text = "";
-        let typingSpeed = 100;
-        const pauseTime = 1500;
-        const el = document.getElementById('dynamicWordContainer');
-        
-        function type() {
-            if (!el) return;
-            const fullWord = words[wordIndex];
-            
-            if (isDeleting) {
-                text = fullWord.substring(0, text.length - 1);
-                typingSpeed = 50;
-            } else {
-                text = fullWord.substring(0, text.length + 1);
-                typingSpeed = 100;
-            }
-            
-            el.innerHTML = '<span class="dynamic-word-yellow">' + text + '</span><span class="cursor"></span>';
-            
-            if (!isDeleting && text === fullWord) {
-                isDeleting = true;
-                setTimeout(type, pauseTime);
-                return;
-            } else if (isDeleting && text === "") {
-                isDeleting = false;
-                wordIndex = (wordIndex + 1) % words.length;
-                setTimeout(type, 200);
-                return;
-            }
-            
-            setTimeout(type, typingSpeed);
-        }
-        
-        setTimeout(() => {
-            if (el) {
-                el.style.opacity = "1";
-                el.innerHTML = '<span class="cursor"></span>';
-                setTimeout(() => {
-                    type();
-                }, 300);
-            }
-        }, 2800);
-    }
-
-    // ============================================
-    // ОТЛОЖЕННАЯ ЗАГРУЗКА ВИДЕО
-    // ============================================
-    function initLazyKinescope() {
-        const placeholders = document.querySelectorAll('.video-placeholder');
-        if (placeholders.length === 0) return;
-        
-        placeholders.forEach(placeholder => {
-            const videoId = placeholder.getAttribute('data-video-id');
-            if (!videoId) return;
-            
-            placeholder.addEventListener('click', () => {
-                if (placeholder.querySelector('iframe')) return;
-                
-                const iframe = document.createElement('iframe');
-                iframe.src = `https://kinescope.io/embed/${videoId}?autoplay=1&controls=1&loop=1&show_logo=0&playsinline=1`;
-                iframe.allow = "autoplay; fullscreen; picture-in-picture; encrypted-media";
-                iframe.style.position = "absolute";
-                iframe.style.top = "0";
-                iframe.style.left = "0";
-                iframe.style.width = "100%";
-                iframe.style.height = "100%";
-                iframe.style.border = "none";
-                
-                const videoFrame = placeholder.querySelector('.video-frame');
-                if (videoFrame) {
-                    videoFrame.innerHTML = '';
-                    videoFrame.appendChild(iframe);
-                }
-                
-                placeholder.classList.add('loaded');
             });
         });
     }
@@ -1156,6 +605,167 @@
     }
 
     // ============================================
+    // HERO БАННЕР (СКРИПТЫ)
+    // ============================================
+    function initHeroMatrixRain() {
+        const canvas = document.getElementById('matrixCanvas');
+        if (!canvas) return;
+        
+        const ctx = canvas.getContext('2d');
+        let w = window.innerWidth;
+        let h = window.innerHeight;
+        
+        canvas.width = w;
+        canvas.height = h;
+        
+        const chars = "01<>/{}[]=+-*&%$#@!~ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        const wordsArr = ['DESIGN', 'CODE', 'AI', 'ALBE', 'DIGITAL'];
+        const colors = ['#F5B700', '#10B981', '#06B6D4', '#4C1D95'];
+        const fontSize = 14;
+        let cols = Math.floor(w / fontSize);
+        let drops = [];
+        
+        for (let i = 0; i < cols; i++) {
+            drops[i] = Math.random() * -h;
+        }
+        
+        let lastFrameTime = 0;
+        const targetFPS = 30;
+        const frameInterval = 1000 / targetFPS;
+        
+        function getRandomItem() {
+            return (Math.random() < 0.04) ? wordsArr[Math.floor(Math.random() * wordsArr.length)] : chars[Math.floor(Math.random() * chars.length)];
+        }
+        
+        function drawMatrix(now) {
+            requestAnimationFrame(drawMatrix);
+            if (now - lastFrameTime < frameInterval) return;
+            lastFrameTime = now;
+            
+            ctx.fillStyle = 'rgba(5,7,10,0.03)';
+            ctx.fillRect(0, 0, w, h);
+            ctx.textAlign = 'center';
+            
+            for (let i = 0; i < drops.length; i++) {
+                const item = getRandomItem();
+                const x = i * fontSize + fontSize/2;
+                const y = drops[i] * fontSize;
+                let color, fontStyle;
+                
+                if (item.length > 1) {
+                    color = '#F5B700';
+                    fontStyle = `bold ${fontSize}px "Monaco", monospace`;
+                } else {
+                    color = colors[Math.floor(Math.random() * colors.length)];
+                    fontStyle = `${fontSize}px "Monaco", monospace`;
+                }
+                ctx.font = fontStyle;
+                ctx.fillStyle = color;
+                ctx.fillText(item, x, y);
+                
+                if (y > h && Math.random() > 0.99) {
+                    drops[i] = 0;
+                }
+                drops[i] += 0.6;
+            }
+        }
+        
+        drawMatrix();
+        
+        window.addEventListener('resize', () => {
+            w = window.innerWidth;
+            h = window.innerHeight;
+            canvas.width = w;
+            canvas.height = h;
+            cols = Math.floor(w / fontSize);
+            drops = [];
+            for (let i = 0; i < cols; i++) {
+                drops[i] = Math.random() * -h;
+            }
+        });
+    }
+
+    function initHeroStaticElements() {
+        const elements = ['agencyTag', 'leftPhrase', 'badgesGrid', 'staticPrefix', 'dynamicWordContainer'];
+        elements.forEach((id, idx) => {
+            const el = document.getElementById(id);
+            if (el) setTimeout(() => el.style.opacity = "1", 1300 + idx * 100);
+        });
+        const statsRow = document.getElementById('statsRow');
+        if (statsRow) setTimeout(() => statsRow.classList.add('visible'), 2000);
+    }
+
+    function initHeroTypewriter() {
+        const words = ["ДИЗАЙН", "ПРИЛОЖЕНИЯ", "SEO СТРАТЕГИЮ", "САЙТЫ ПОД КЛЮЧ", "E-COMMERCE", "AI РЕКЛАМУ"];
+        let wordIndex = 0;
+        let isDeleting = false;
+        let text = "";
+        let typingSpeed = 100;
+        const pauseTime = 1500;
+        const el = document.getElementById('dynamicWordContainer');
+        
+        function type() {
+            if (!el) return;
+            const fullWord = words[wordIndex];
+            
+            if (isDeleting) {
+                text = fullWord.substring(0, text.length - 1);
+                typingSpeed = 50;
+            } else {
+                text = fullWord.substring(0, text.length + 1);
+                typingSpeed = 100;
+            }
+            
+            el.innerHTML = '<span class="dynamic-word-yellow">' + text + '</span><span class="cursor"></span>';
+            
+            if (!isDeleting && text === fullWord) {
+                isDeleting = true;
+                setTimeout(type, pauseTime);
+                return;
+            } else if (isDeleting && text === "") {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                setTimeout(type, 200);
+                return;
+            }
+            
+            setTimeout(type, typingSpeed);
+        }
+        
+        setTimeout(() => {
+            if (el) {
+                el.style.opacity = "1";
+                el.innerHTML = '<span class="cursor"></span>';
+                setTimeout(() => {
+                    type();
+                }, 300);
+            }
+        }, 2800);
+    }
+
+    // ============================================
+    // ЗАГРУЗКА КОМПОНЕНТОВ (HEADER, FOOTER)
+    // ============================================
+    function loadComponent(elementId, filePath, callback) {
+        const placeholder = document.getElementById(elementId);
+        if (!placeholder) return;
+        
+        fetch(filePath)
+            .then(response => {
+                if (!response.ok) throw new Error('failed to load ' + filePath);
+                return response.text();
+            })
+            .then(data => {
+                placeholder.innerHTML = data;
+                if (callback) callback();
+            })
+            .catch(error => {
+                console.error('ошибка загрузки компонента:', error);
+                placeholder.innerHTML = '<div style="padding:20px;text-align:center;">ошибка загрузки</div>';
+            });
+    }
+
+    // ============================================
     // ЗАПУСК ВСЕХ ИНИЦИАЛИЗАЦИЙ
     // ============================================
     document.addEventListener('DOMContentLoaded', function() {
@@ -1168,30 +778,19 @@
         initTechTooltips();
         initCalculatorWithFallback();
         initSmoothScroll();
-        initForm();
         initHeaderFixed();
         initBurgerMenu();
-        initQuantumCards();
-        initKineticButtons();
         initCaseAccordion();
-        initLazyKinescope();
         initKineticToTop();
         initServiceModal();
-        initPortfolioAccordion();  // ← ДОБАВЛЕНА ИНИЦИАЛИЗАЦИЯ АККОРДЕОНА ПОРТФОЛИО
+        initPortfolioAccordion();
         
         // Загрузка компонентов header и footer
         loadComponent('header-placeholder', 'header.html', function() {
             initBurgerMenu();
             initHeaderFixed();
-            setTimeout(() => {
-                initKineticButtons();
-            }, 100);
         });
-        loadComponent('footer-placeholder', 'footer.html', function() {
-            setTimeout(() => {
-                initKineticButtons();
-            }, 100);
-        });
+        loadComponent('footer-placeholder', 'footer.html');
     });
 
 })();
