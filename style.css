@@ -4348,3 +4348,643 @@ main {
         transform: none;
     }
 }
+/* ============================================ */
+/* БЛОК КОМАНДА — НОВЫЙ ДИЗАЙН */
+/* ============================================ */
+
+.team-section {
+    padding: 100px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.team-header {
+    text-align: center;
+    margin-bottom: 64px;
+}
+
+.team-header h2 {
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    display: inline-block;
+    position: relative;
+}
+
+.team-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 2px;
+    background: var(--gradient-yellow-green);
+}
+
+.team-subtitle {
+    font-family: 'Geist', sans-serif;
+    font-size: 1rem;
+    color: var(--gray);
+    max-width: 600px;
+    margin: 24px auto 0;
+    text-align: center;
+    letter-spacing: 0.3px;
+}
+
+/* ДВУХКОЛОНОЧНАЯ СЕТКА */
+.team-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 48px;
+}
+
+/* ========== ЛЕВАЯ КАРТОЧКА — ОСНОВАТЕЛЬ ========== */
+.founder-card {
+    position: relative;
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    border-radius: 32px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.founder-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--color-purple);
+    box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.5);
+    background: rgba(25, 25, 32, 0.98);
+}
+
+/* Сегменты для карточки основателя */
+.founder-card .segment {
+    position: absolute;
+    background: rgba(10, 10, 10, 0.9);
+    backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    transform-style: preserve-3d;
+    overflow: hidden;
+    top: 0;
+    bottom: 0;
+    transform: translateZ(-5px);
+}
+
+.founder-card .seg-1 { left: 0%; width: 22%; height: 100%; border-radius: 32px 0 0 32px; border-right: none; }
+.founder-card .seg-2 { left: 22%; width: 28%; height: 100%; border-left: none; border-right: none; }
+.founder-card .seg-3 { left: 50%; width: 28%; height: 100%; border-left: none; border-right: none; }
+.founder-card .seg-4 { left: 78%; width: 22%; height: 100%; border-radius: 0 32px 32px 0; border-left: none; }
+
+.founder-card .segment::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 2px, transparent 2px, transparent 12px);
+    pointer-events: none;
+}
+
+/* Уголки */
+.founder-card .corner {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-color: rgba(255, 255, 255, 0.3);
+    border-style: solid;
+    z-index: 20;
+    transition: all 0.2s;
+    pointer-events: none;
+}
+.founder-card .corner-tl { top: 20px; left: 20px; border-width: 2px 0 0 2px; }
+.founder-card .corner-tr { top: 20px; right: 20px; border-width: 2px 2px 0 0; }
+.founder-card .corner-bl { bottom: 20px; left: 20px; border-width: 0 0 2px 2px; }
+.founder-card .corner-br { bottom: 20px; right: 20px; border-width: 0 2px 2px 0; }
+
+.founder-card:hover .corner-tl { border-color: var(--color-yellow); filter: drop-shadow(0 0 6px var(--color-yellow)); }
+.founder-card:hover .corner-tr { border-color: var(--color-green); filter: drop-shadow(0 0 6px var(--color-green)); }
+.founder-card:hover .corner-bl { border-color: var(--color-cyan); filter: drop-shadow(0 0 6px var(--color-cyan)); }
+.founder-card:hover .corner-br { border-color: var(--color-purple); filter: drop-shadow(0 0 6px var(--color-purple)); }
+
+.founder-content {
+    position: relative;
+    z-index: 15;
+    padding: 40px 32px;
+    transform-style: preserve-3d;
+    transform: translateZ(25px);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Аватар основателя — крупнее */
+.founder-avatar {
+    width: 160px;
+    height: 160px;
+    margin: 0 0 24px 0;
+    border-radius: 50%;
+    background: var(--gradient);
+    padding: 3px;
+    position: relative;
+}
+
+.founder-avatar-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--bg-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.founder-avatar-icon {
+    font-size: 72px;
+    color: var(--white);
+    opacity: 0.7;
+}
+
+.founder-name {
+    font-family: 'Geist', sans-serif;
+    font-weight: 500;
+    font-size: 2rem;
+    background: var(--gradient-yellow-green);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.founder-role {
+    font-family: 'Geist', sans-serif;
+    font-size: 0.85rem;
+    color: var(--color-cyan);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.founder-bio {
+    font-family: 'Geist', sans-serif;
+    font-size: 1rem;
+    color: var(--gray);
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.founder-quote {
+    background: rgba(6, 182, 212, 0.08);
+    border-left: 3px solid var(--color-yellow);
+    padding: 20px 24px;
+    border-radius: 16px;
+    margin: 16px 0 24px;
+}
+
+.founder-quote p {
+    font-style: italic;
+    color: var(--white);
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+}
+
+.founder-quote span {
+    font-size: 0.75rem;
+    color: var(--color-yellow);
+    letter-spacing: 1px;
+}
+
+.founder-stats {
+    display: flex;
+    gap: 32px;
+    margin-top: auto;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.founder-stat {
+    text-align: center;
+}
+
+.founder-stat .stat-number {
+    font-family: 'Zen Dots', monospace;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-yellow);
+    display: block;
+}
+
+.founder-stat .stat-label {
+    font-size: 0.7rem;
+    color: var(--gray);
+    letter-spacing: 1px;
+}
+
+.founder-socials {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.founder-socials .social-link {
+    color: var(--gray);
+    font-size: 1.2rem;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.founder-socials .social-link:hover {
+    color: var(--color-yellow);
+    transform: translateY(-2px);
+}
+
+/* ========== ПРАВАЯ СЕТКА — СПЕЦИАЛИСТЫ 2×2 ========== */
+.specialists-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+/* Карточка специалиста */
+.specialist-card {
+    position: relative;
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    border-radius: 28px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    cursor: pointer;
+}
+
+.specialist-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--color-cyan);
+    box-shadow: 0 15px 25px -12px rgba(0, 0, 0, 0.4);
+    background: rgba(25, 25, 32, 0.98);
+}
+
+/* Сегменты для карточек специалистов */
+.specialist-card .segment {
+    position: absolute;
+    background: rgba(10, 10, 10, 0.9);
+    backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    transform-style: preserve-3d;
+    overflow: hidden;
+    top: 0;
+    bottom: 0;
+    transform: translateZ(-5px);
+}
+
+.specialist-card .seg-1 { left: 0%; width: 22%; height: 100%; border-radius: 28px 0 0 28px; border-right: none; }
+.specialist-card .seg-2 { left: 22%; width: 28%; height: 100%; border-left: none; border-right: none; }
+.specialist-card .seg-3 { left: 50%; width: 28%; height: 100%; border-left: none; border-right: none; }
+.specialist-card .seg-4 { left: 78%; width: 22%; height: 100%; border-radius: 0 28px 28px 0; border-left: none; }
+
+.specialist-card .segment::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 2px, transparent 2px, transparent 12px);
+    pointer-events: none;
+}
+
+/* Уголки специалистов */
+.specialist-card .corner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-color: rgba(255, 255, 255, 0.25);
+    border-style: solid;
+    z-index: 20;
+    transition: all 0.2s;
+    pointer-events: none;
+}
+.specialist-card .corner-tl { top: 12px; left: 12px; border-width: 2px 0 0 2px; }
+.specialist-card .corner-tr { top: 12px; right: 12px; border-width: 2px 2px 0 0; }
+.specialist-card .corner-bl { bottom: 12px; left: 12px; border-width: 0 0 2px 2px; }
+.specialist-card .corner-br { bottom: 12px; right: 12px; border-width: 0 2px 2px 0; }
+
+.specialist-card:hover .corner-tl { border-color: var(--color-yellow); filter: drop-shadow(0 0 4px var(--color-yellow)); }
+.specialist-card:hover .corner-tr { border-color: var(--color-green); filter: drop-shadow(0 0 4px var(--color-green)); }
+.specialist-card:hover .corner-bl { border-color: var(--color-cyan); filter: drop-shadow(0 0 4px var(--color-cyan)); }
+.specialist-card:hover .corner-br { border-color: var(--color-purple); filter: drop-shadow(0 0 4px var(--color-purple)); }
+
+.specialist-content {
+    position: relative;
+    z-index: 15;
+    padding: 24px 20px;
+    text-align: center;
+    transform-style: preserve-3d;
+    transform: translateZ(20px);
+    pointer-events: none;
+}
+
+.specialist-avatar {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    background: var(--gradient);
+    padding: 2px;
+}
+
+.specialist-avatar-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--bg-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.specialist-avatar-icon {
+    font-size: 36px;
+    color: var(--white);
+    opacity: 0.6;
+}
+
+.specialist-name {
+    font-family: 'Geist', sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    background: var(--gradient-yellow-green);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 4px;
+}
+
+.specialist-role {
+    font-family: 'Geist', sans-serif;
+    font-size: 0.65rem;
+    color: var(--color-cyan);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.specialist-bio {
+    font-family: 'Geist', sans-serif;
+    font-size: 0.75rem;
+    color: var(--gray);
+    line-height: 1.4;
+    margin-bottom: 16px;
+}
+
+.specialist-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.specialist-stack-tag {
+    background: rgba(6, 182, 212, 0.12);
+    border: 1px solid rgba(6, 182, 212, 0.2);
+    padding: 3px 10px;
+    border-radius: 30px;
+    font-size: 0.6rem;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.specialist-card:hover .specialist-stack-tag {
+    background: rgba(6, 182, 212, 0.25);
+    border-color: var(--color-cyan);
+}
+
+.specialist-socials {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.specialist-socials .social-link {
+    color: var(--gray);
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    pointer-events: auto;
+}
+
+.specialist-socials .social-link:hover {
+    color: var(--color-yellow);
+    transform: translateY(-2px);
+}
+
+/* Кнопка */
+.team-more-wrapper {
+    text-align: center;
+    margin-top: 56px;
+}
+
+.kinetic-team-btn {
+    position: relative;
+    width: auto;
+    min-width: 260px;
+    height: 56px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    display: inline-flex;
+}
+
+.kinetic-team-btn .segment-left,
+.kinetic-team-btn .segment-center,
+.kinetic-team-btn .segment-right {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background: #0A0A0C;
+    backdrop-filter: blur(4px);
+    transition: transform 0.18s cubic-bezier(0.2, 0.9, 0.4, 1.2), border-color 0.2s ease;
+    transform-style: preserve-3d;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.kinetic-team-btn .segment-left {
+    left: 0;
+    width: 33.333%;
+    border-top-left-radius: 60px;
+    border-bottom-left-radius: 60px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-right: none;
+    clip-path: polygon(0% 0%, 92% 0%, 86% 100%, 0% 100%);
+}
+
+.kinetic-team-btn .segment-center {
+    left: 33.333%;
+    width: 33.334%;
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    border-left: none;
+    border-right: none;
+    background: linear-gradient(135deg, #101012, #08080A);
+}
+
+.kinetic-team-btn .segment-right {
+    right: 0;
+    left: auto;
+    width: 33.333%;
+    border-top-right-radius: 60px;
+    border-bottom-right-radius: 60px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-left: none;
+    clip-path: polygon(14% 0%, 100% 0%, 100% 100%, 8% 100%);
+}
+
+.kinetic-team-btn:hover .segment-left {
+    border-color: var(--color-yellow);
+    transform: translateX(-4px) rotateY(-3deg);
+}
+
+.kinetic-team-btn:hover .segment-center {
+    border-top-color: var(--color-green);
+    border-bottom-color: var(--color-green);
+    transform: scale(0.98) translateZ(5px);
+}
+
+.kinetic-team-btn:hover .segment-right {
+    border-color: var(--color-purple);
+    transform: translateX(4px) rotateY(3deg);
+}
+
+.kinetic-team-btn .btn-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateZ(30px);
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 4px;
+    background: linear-gradient(135deg, #F5F5F5, #E0E0E0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    white-space: nowrap;
+    z-index: 20;
+    pointer-events: none;
+    transition: letter-spacing 0.2s ease;
+    font-family: 'Geist', sans-serif;
+}
+
+.kinetic-team-btn:hover .btn-text {
+    letter-spacing: 6px;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+/* Анимации */
+.founder-card, .specialist-card {
+    opacity: 0;
+    animation: fadeInUp 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+}
+
+.founder-card { animation-delay: 0.05s; }
+.specialist-card:nth-child(1) { animation-delay: 0.1s; }
+.specialist-card:nth-child(2) { animation-delay: 0.15s; }
+.specialist-card:nth-child(3) { animation-delay: 0.2s; }
+.specialist-card:nth-child(4) { animation-delay: 0.25s; }
+
+/* ============================================ */
+/* АДАПТАЦИЯ БЛОКА КОМАНДА */
+/* ============================================ */
+
+@media (max-width: 1100px) {
+    .founder-avatar { width: 130px; height: 130px; }
+    .founder-name { font-size: 1.6rem; }
+    .founder-stats { gap: 20px; }
+}
+
+@media (max-width: 900px) {
+    .team-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .founder-card {
+        max-width: 500px;
+        margin: 0 auto;
+        width: 100%;
+    }
+    
+    .founder-content {
+        padding: 32px 28px;
+    }
+    
+    .founder-avatar {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .specialists-grid {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .team-section { padding: 60px 0; }
+    
+    .founder-content { padding: 28px 24px; }
+    .founder-avatar { width: 120px; height: 120px; }
+    .founder-avatar-icon { font-size: 56px; }
+    .founder-name { font-size: 1.4rem; }
+    .founder-bio { font-size: 0.9rem; }
+    .founder-stats { gap: 24px; flex-wrap: wrap; }
+    
+    .specialists-grid { gap: 20px; }
+    .specialist-avatar { width: 80px; height: 80px; }
+    .specialist-name { font-size: 1rem; }
+    .specialist-bio { font-size: 0.7rem; }
+    
+    .kinetic-team-btn { min-width: 220px; height: 48px; }
+    .kinetic-team-btn .btn-text { font-size: 0.75rem; letter-spacing: 3px; }
+    
+    .founder-card .corner { width: 20px; height: 20px; }
+    .founder-card .corner-tl { top: 12px; left: 12px; }
+    .founder-card .corner-tr { top: 12px; right: 12px; }
+    .founder-card .corner-bl { bottom: 12px; left: 12px; }
+    .founder-card .corner-br { bottom: 12px; right: 12px; }
+}
+
+@media (max-width: 550px) {
+    .specialists-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .founder-stats {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+    }
+    
+    .founder-stat {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        gap: 16px;
+    }
+    
+    .founder-stat .stat-number { font-size: 1.2rem; }
+}
+
+@media (max-width: 480px) {
+    .team-header h2 { font-size: 1.8rem; }
+    .team-subtitle { font-size: 0.85rem; }
+}
