@@ -4689,3 +4689,101 @@ main {
     .mission-header h2 { font-size: 1.8rem; }
     .mission-subtitle { font-size: 0.85rem; }
 }
+
+/* ============================================ */
+/* ЛЕНИВАЯ ЗАГРУЗКА БЛОКОВ — АНИМАЦИЯ ПОЯВЛЕНИЯ */
+/* ============================================ */
+
+/* Базовый класс для всех блоков с ленивой загрузкой */
+.lazy-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1),
+                transform 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+/* Класс, который добавляется когда блок становится видимым */
+.lazy-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Разные варианты анимации для разнообразия */
+.lazy-section.fade-left {
+    transform: translateX(-30px);
+}
+
+.lazy-section.fade-left.visible {
+    transform: translateX(0);
+}
+
+.lazy-section.fade-right {
+    transform: translateX(30px);
+}
+
+.lazy-section.fade-right.visible {
+    transform: translateX(0);
+}
+
+.lazy-section.zoom-in {
+    transform: scale(0.95);
+}
+
+.lazy-section.zoom-in.visible {
+    transform: scale(1);
+}
+
+/* Карточки внутри секций — каскадное появление */
+.lazy-section .service-card,
+.lazy-section .competence-card,
+.lazy-section .step-card,
+.lazy-section .review-card,
+.lazy-section .mission-advantage-card,
+.lazy-section .accordion-panel {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.lazy-section.visible .service-card,
+.lazy-section.visible .competence-card,
+.lazy-section.visible .step-card,
+.lazy-section.visible .review-card,
+.lazy-section.visible .mission-advantage-card,
+.lazy-section.visible .accordion-panel {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Плавное появление для карточек с разной задержкой */
+.service-card, .competence-card, .step-card, .review-card, .mission-advantage-card {
+    transition-delay: 0s;
+}
+
+.service-card:nth-child(1) { transition-delay: 0.05s; }
+.service-card:nth-child(2) { transition-delay: 0.1s; }
+.service-card:nth-child(3) { transition-delay: 0.15s; }
+.service-card:nth-child(4) { transition-delay: 0.2s; }
+.service-card:nth-child(5) { transition-delay: 0.25s; }
+.service-card:nth-child(6) { transition-delay: 0.3s; }
+
+.competence-card:nth-child(1) { transition-delay: 0.03s; }
+.competence-card:nth-child(2) { transition-delay: 0.06s; }
+.competence-card:nth-child(3) { transition-delay: 0.09s; }
+.competence-card:nth-child(4) { transition-delay: 0.12s; }
+.competence-card:nth-child(5) { transition-delay: 0.15s; }
+.competence-card:nth-child(6) { transition-delay: 0.18s; }
+.competence-card:nth-child(7) { transition-delay: 0.21s; }
+.competence-card:nth-child(8) { transition-delay: 0.24s; }
+
+.step-card:nth-child(1) { transition-delay: 0.05s; }
+.step-card:nth-child(2) { transition-delay: 0.1s; }
+.step-card:nth-child(3) { transition-delay: 0.15s; }
+.step-card:nth-child(4) { transition-delay: 0.2s; }
+
+.review-card:nth-child(1) { transition-delay: 0.02s; }
+.review-card:nth-child(2) { transition-delay: 0.05s; }
+.review-card:nth-child(3) { transition-delay: 0.08s; }
+.review-card:nth-child(4) { transition-delay: 0.11s; }
+.review-card:nth-child(5) { transition-delay: 0.14s; }
+.review-card:nth-child(6) { transition-delay: 0.17s; }
