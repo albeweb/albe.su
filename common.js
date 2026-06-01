@@ -580,7 +580,6 @@
                 }
                 
                 spark.style.animation = 'none';
-                // ИСПРАВЛЕНО: используем setTimeout вместо offsetHeight
                 setTimeout(() => {
                     spark.style.animation = 'sparkFloat 0.5s ease-out forwards';
                 }, 10);
@@ -692,7 +691,6 @@
                 spark.style.top = (y - 2) + 'px';
                 spark.style.background = colors[Math.floor(Math.random() * colors.length)];
                 spark.style.animation = 'none';
-                // ИСПРАВЛЕНО: используем setTimeout вместо offsetHeight
                 setTimeout(() => {
                     spark.style.animation = 'sparkOpen 0.5s ease-out forwards';
                 }, 10);
@@ -789,25 +787,73 @@
     }
 
     // ============================================
-    // АККОРДЕОН ПОРТФОЛИО
+    // АККОРДЕОН ПОРТФОЛИО — ИСПРАВЛЕНАЯ ВЕРСИЯ
     // ============================================
     function initPortfolioAccordion() {
         const panels = document.querySelectorAll('.accordion-panel');
         if (panels.length === 0) return;
         
-        panels.forEach(panel => {
-            const header = panel.querySelector('.accordion-panel-header');
-            if (!header) return;
-            
-            header.addEventListener('click', () => {
+        function isMobile() {
+            return window.innerWidth <= 768;
+        }
+        
+        function resetAccordion() {
+            if (isMobile()) {
+                // На мобильных: закрываем все панели
+                panels.forEach(panel => {
+                    panel.classList.remove('active');
+                    panel.classList.remove('open');
+                });
+            } else {
+                // На десктопе: если нет активной панели, открываем первую
+                const hasActive = Array.from(panels).some(p => p.classList.contains('active'));
+                if (!hasActive && panels.length > 0) {
+                    panels[0].classList.add('active');
+                }
+            }
+        }
+        
+        function handlePanelClick(panel) {
+            if (isMobile()) {
+                // Мобильное поведение: toggle с классом open
+                const isOpen = panel.classList.contains('open');
+                panels.forEach(p => p.classList.remove('open'));
+                if (!isOpen) {
+                    panel.classList.add('open');
+                }
+            } else {
+                // Десктопное поведение: закрываем другие, открываем текущую
                 panels.forEach(p => {
                     if (p !== panel && p.classList.contains('active')) {
                         p.classList.remove('active');
                     }
                 });
                 panel.classList.toggle('active');
-            });
+            }
+        }
+        
+        // Навешиваем обработчики
+        panels.forEach(panel => {
+            const header = panel.querySelector('.accordion-panel-header');
+            if (header) {
+                header.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    handlePanelClick(panel);
+                });
+            }
         });
+        
+        // Следим за изменением размера окна
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                resetAccordion();
+            }, 150);
+        });
+        
+        // Инициализация
+        resetAccordion();
     }
 
     // ============================================
