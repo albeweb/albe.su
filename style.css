@@ -105,24 +105,23 @@ h1, h2, .section-header h2, .contact-card h2, .nav-link {
 }
 
 h3, h4, h5, h6, .service-card h3, .step-card h3, .competence-card h3,
-.faq-question, .price-card h4, .price-card .price, .service-badge, .calc-label,
-.stack-explanation h4, .footer-logo, .footer h4, .step-num {
+.service-badge, .calc-label, .stack-explanation h4, .footer-logo, .footer h4, .step-num {
     font-family: 'Geist', sans-serif;
     font-weight: 500;
     letter-spacing: -0.02em;
 }
 
-.logo, .stat-number, .accordion-panel .panel-number, .price-card .price,
-.calc-price, .step-num, .footer-hours span:last-child, .footer-price span:last-child,
-.panel-metrics span:last-child, .case-number, .reviews-stat-number, .number-value,
-.metric-hours .metric-value, .metric-price .metric-value, .founder-stat .stat-number {
+.logo, .stat-number, .accordion-panel .panel-number, .calc-price, .step-num,
+.footer-hours span:last-child, .footer-price span:last-child, .case-number,
+.reviews-stat-number, .number-value, .metric-hours .metric-value,
+.metric-price .metric-value, .founder-stat .stat-number {
     font-family: 'Zen Dots', monospace;
 }
 
 p, .service-card p, .step-card p, .competence-card p, .faq-answer, .footer p,
 .footer a, .tech-item, .calc-option, .time-breakdown-item, .stack-explanation p,
-input, textarea, .price-card li, .price-note, .panel-description p, .contact-desc,
-.case-text, .advantage-text, .review-text, .specialist-bio, .founder-bio {
+input, textarea, .panel-description p, .contact-desc, .case-text, .advantage-text,
+.review-text, .specialist-bio, .founder-bio {
     font-family: 'Geist', sans-serif;
     font-weight: 400;
     font-size: 1rem;
@@ -172,27 +171,6 @@ h4 {
     color: var(--white);
 }
 
-.gradient-text {
-    background: var(--gradient-yellow-green);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.gradient-text-cyan {
-    background: linear-gradient(135deg, var(--color-green), var(--color-cyan));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.gradient-text-yellow-cyan {
-    background: linear-gradient(135deg, var(--color-yellow), var(--color-cyan));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
 .section-header {
     display: flex;
     justify-content: space-between;
@@ -204,10 +182,9 @@ h4 {
 .section-header h2 { margin-bottom: 0; }
 
 /* ============================================ */
-/* 5. УНИВЕРСАЛЬНЫЕ КОМПОНЕНТЫ */
+/* 5. УНИВЕРСАЛЬНАЯ КВАНТОВАЯ КАРТОЧКА */
 /* ============================================ */
 
-/* 5.1 Квантовая карточка (сегменты + уголки + 3D) */
 .quantum-card {
     position: relative;
     background: rgba(10, 10, 10, 0.85);
@@ -226,6 +203,7 @@ h4 {
     background: rgba(25, 25, 32, 0.98);
 }
 
+/* Сегменты */
 .quantum-card .segment {
     position: absolute;
     background: rgba(10, 10, 10, 0.9);
@@ -263,6 +241,7 @@ h4 {
 
 .quantum-card:hover .segment::after { opacity: 1; }
 
+/* Уголки */
 .quantum-card .corner {
     position: absolute;
     width: 28px;
@@ -284,6 +263,7 @@ h4 {
 .quantum-card:hover .corner-bl { border-color: var(--color-cyan); filter: drop-shadow(0 0 6px var(--color-cyan)); }
 .quantum-card:hover .corner-br { border-color: var(--color-purple); filter: drop-shadow(0 0 6px var(--color-purple)); }
 
+/* Контент карточки */
 .quantum-card .card-content {
     position: relative;
     z-index: 15;
@@ -295,18 +275,10 @@ h4 {
     pointer-events: none;
 }
 
-/* Модификаторы для квантовых карточек */
-.quantum-card--small .corner { width: 20px; height: 20px; }
-.quantum-card--small .corner-tl { top: 12px; left: 12px; }
-.quantum-card--small .corner-tr { top: 12px; right: 12px; }
-.quantum-card--small .corner-bl { bottom: 12px; left: 12px; }
-.quantum-card--small .corner-br { bottom: 12px; right: 12px; }
+/* ============================================ */
+/* 6. КИНЕТИЧЕСКИЕ КНОПКИ */
+/* ============================================ */
 
-.quantum-card--rounded { border-radius: 32px; }
-.quantum-card--rounded .segment-1 { border-radius: 32px 0 0 32px; }
-.quantum-card--rounded .segment-4 { border-radius: 0 32px 32px 0; }
-
-/* 5.2 Кинетическая кнопка */
 .kinetic-wrapper { display: inline-block; }
 
 .kinetic-btn {
@@ -320,7 +292,9 @@ h4 {
     display: inline-flex;
 }
 
-.kinetic-btn .segment {
+.kinetic-btn .segment-left,
+.kinetic-btn .segment-center,
+.kinetic-btn .segment-right {
     position: absolute;
     top: 0;
     height: 100%;
@@ -425,7 +399,7 @@ h4 {
 .kinetic-btn:active .segment-center { transform: scale(0.98) translateZ(5px) !important; }
 .kinetic-btn:active .btn-text { letter-spacing: 2px; transform: translate(-50%, -50%) translateZ(35px) scale(0.98); }
 
-/* Модификаторы кинетических кнопок */
+/* Модификаторы кнопок */
 .kinetic-btn.small { min-width: 200px; height: 48px; }
 .kinetic-btn.small .btn-text { font-size: 0.8rem; letter-spacing: 3px; }
 .kinetic-btn.large { min-width: 360px; height: 64px; }
@@ -435,7 +409,7 @@ h4 {
 .kinetic-btn.header-telegram-btn .segment-right { border-radius: 0 40px 40px 0 !important; }
 .kinetic-btn.header-telegram-btn .btn-text { font-size: 0.75rem !important; letter-spacing: 1.5px !important; }
 
-/* 5.3 Кнопка наверх */
+/* Кнопка наверх */
 .kinetic-btn.totop-btn {
     position: fixed !important;
     bottom: 100px !important;
@@ -457,83 +431,8 @@ h4 {
 .kinetic-btn.totop-btn .segment-center { display: none !important; }
 .kinetic-btn.totop-btn .btn-text { font-size: 1.8rem !important; letter-spacing: 0 !important; background: var(--gradient) !important; -webkit-background-clip: text !important; background-clip: text !important; }
 
-/* 5.4 Аккордеон-кейс */
-.cases-accordion { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
-
-.case-item {
-    background: rgba(10, 10, 10, 0.6);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    transition: all 0.3s ease;
-    transform-style: preserve-3d;
-    perspective: 800px;
-}
-
-.case-item:hover { border-color: var(--color-purple); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
-
-.case-lid {
-    position: relative;
-    padding: 0.8rem 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    transform-origin: top center;
-    transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.2);
-    transform-style: preserve-3d;
-    z-index: 2;
-    background: transparent;
-    border: none;
-    width: 100%;
-    font-family: inherit;
-    text-align: left;
-}
-
-.case-item.active .case-lid { transform: rotateX(-10deg) translateY(-8px); border-bottom: 1px solid var(--color-cyan); }
-
-.lid-left { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
-
-.case-number {
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: #F5B700;
-    background: rgba(245, 183, 0, 0.15);
-    padding: 0.15rem 0.7rem;
-    border-radius: 30px;
-    letter-spacing: 1px;
-    transition: all 0.2s;
-}
-
-.case-item.active .case-number { background: var(--gradient); color: var(--white); box-shadow: 0 0 12px var(--color-cyan); }
-
-.case-title { font-size: 0.95rem; font-weight: 500; color: #FFFFFF; letter-spacing: -0.2px; }
-
-.case-handle { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; }
-.handle-bar { width: 20px; height: 2px; background: var(--gray); border-radius: 4px; transition: all 0.4s cubic-bezier(0.34, 1.2, 0.64, 1); position: relative; }
-.handle-bar::before, .handle-bar::after { content: ''; position: absolute; width: 5px; height: 2px; background: var(--gray); border-radius: 2px; transition: all 0.4s; }
-.handle-bar::before { left: -7px; top: 0; }
-.handle-bar::after { right: -7px; top: 0; }
-.case-item.active .handle-bar { background: var(--color-yellow); box-shadow: 0 0 8px var(--color-yellow); transform: rotate(180deg); }
-
-.case-inside { max-height: 0; overflow: hidden; transition: max-height 0.6s cubic-bezier(0.33, 1, 0.68, 1); }
-.case-item.active .case-inside { max-height: 280px; }
-.case-content { padding: 0.2rem 1.5rem 1.2rem 1.5rem; transform: translateZ(8px); }
-.case-text { color: #D1D5DB; line-height: 1.5; font-size: 0.85rem; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 0.8rem; }
-
-.project-meta { display: flex; gap: 0.8rem; margin-top: 0.8rem; flex-wrap: wrap; }
-.meta-tag { font-size: 0.65rem; font-family: monospace; color: var(--color-cyan); background: rgba(6, 182, 212, 0.08); padding: 0.15rem 0.6rem; border-radius: 20px; border-left: 1px solid var(--color-cyan); }
-
-/* 5.5 Цветные полоски */
-.color-strip { display: flex; gap: 0.5rem; margin: 0 0 0.75rem 0; }
-.color-dot { width: 18px; height: 3px; border-radius: 3px; }
-.dot-pink { background: var(--color-yellow); }
-.dot-teal { background: var(--color-green); }
-.dot-mint { background: var(--color-cyan); }
-.dot-purple { background: var(--color-purple); }
-
 /* ============================================ */
-/* 6. HEADER */
+/* 7. HEADER */
 /* ============================================ */
 
 .header {
@@ -602,7 +501,7 @@ h4 {
 #header-placeholder .header { pointer-events: auto; }
 
 /* ============================================ */
-/* 7. HERO БАННЕР */
+/* 8. HERO БАННЕР */
 /* ============================================ */
 
 .hero-section {
@@ -670,7 +569,7 @@ main { padding-top: 0; }
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
 /* ============================================ */
-/* 8. УСЛУГИ (SERVICES GRID) */
+/* 9. УСЛУГИ (SERVICES GRID) */
 /* ============================================ */
 
 .services-grid {
@@ -681,23 +580,12 @@ main { padding-top: 0; }
     overflow-x: hidden;
 }
 
-.services-grid .service-card {
-    aspect-ratio: 1.47 / 1;
-    cursor: default;
-    contain: paint;
-}
+.service-card { aspect-ratio: 1.47 / 1; cursor: default; contain: paint; }
+.service-card .card-content { justify-content: space-between; padding: 24px; }
+.service-card h3 { font-size: 1.3rem; margin: 0 0 0.5rem 0; background: var(--gradient-yellow-green); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.service-card p { font-size: 1rem; line-height: 1.4; margin: 0; }
 
-.services-grid .service-card .segment-1,
-.services-grid .service-card .segment-2,
-.services-grid .service-card .segment-3,
-.services-grid .service-card .segment-4 { position: absolute; }
-
-.services-grid .service-card .card-content { justify-content: space-between; padding: 24px; }
-
-.services-grid .service-card h3 { font-size: 1.3rem; margin: 0 0 0.5rem 0; background: var(--gradient-yellow-green); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.services-grid .service-card p { font-size: 1rem; line-height: 1.4; margin: 0; }
-
-.services-grid .service-card .card-btn {
+.card-btn {
     pointer-events: auto;
     background: transparent;
     border: 1.5px solid var(--color-yellow);
@@ -714,10 +602,17 @@ main { padding-top: 0; }
     font-size: 0.85rem;
 }
 
-.services-grid .service-card .card-btn:hover { background: var(--gradient); color: var(--white); box-shadow: 0 0 20px var(--color-yellow); }
+.card-btn:hover { background: var(--gradient); color: var(--white); box-shadow: 0 0 20px var(--color-yellow); }
+
+.color-strip { display: flex; gap: 0.5rem; margin: 0 0 0.75rem 0; }
+.color-dot { width: 18px; height: 3px; border-radius: 3px; }
+.dot-pink { background: var(--color-yellow); }
+.dot-teal { background: var(--color-green); }
+.dot-mint { background: var(--color-cyan); }
+.dot-purple { background: var(--color-purple); }
 
 /* ============================================ */
-/* 9. КАЛЬКУЛЯТОР */
+/* 10. КАЛЬКУЛЯТОР */
 /* ============================================ */
 
 .calculator-card { background: var(--card-bg); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 40px; margin: 40px 0; transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1); }
@@ -753,7 +648,7 @@ main { padding-top: 0; }
 .time-breakdown-item span:first-child { color: var(--color-green); }
 
 /* ============================================ */
-/* 10. КОМПЕТЕНЦИИ */
+/* 11. КОМПЕТЕНЦИИ */
 /* ============================================ */
 
 .competences-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin: 40px 0; }
@@ -816,7 +711,7 @@ main { padding-top: 0; }
 @keyframes fadeInUpComp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
 /* ============================================ */
-/* 11. ШАГИ ПРОЦЕССА */
+/* 12. ШАГИ ПРОЦЕССА */
 /* ============================================ */
 
 .steps-container { display: flex; flex-wrap: wrap; gap: 32px; margin-top: 40px; }
@@ -834,7 +729,7 @@ main { padding-top: 0; }
 .step-card h3 { background: linear-gradient(135deg, var(--color-green), var(--color-cyan)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
 /* ============================================ */
-/* 12. AI РЕКЛАМА */
+/* 13. AI РЕКЛАМА */
 /* ============================================ */
 
 .ai-reklama-section { min-height: auto; overflow: visible; }
@@ -896,7 +791,7 @@ main { padding-top: 0; }
 .video-placeholder:hover .play-overlay { background: rgba(0, 0, 0, 0.1); }
 
 /* ============================================ */
-/* 13. ПОРТФОЛИО АККОРДЕОН */
+/* 14. ПОРТФОЛИО АККОРДЕОН */
 /* ============================================ */
 
 .portfolio-accordion { display: flex; flex-direction: row; gap: 8px; width: 100%; min-height: 750px; background: transparent; border-radius: 28px; }
@@ -972,7 +867,7 @@ main { padding-top: 0; }
 .accordion-panel-content::-webkit-scrollbar-thumb { background: #06B6D4; border-radius: 4px; }
 
 /* ============================================ */
-/* 14. БЛОК КОМАНДА */
+/* 15. БЛОК КОМАНДА */
 /* ============================================ */
 
 .team-section { padding: 100px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
@@ -983,7 +878,6 @@ main { padding-top: 0; }
 
 .team-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; }
 
-/* Карточка основателя */
 .founder-card { background: var(--card-bg); backdrop-filter: blur(12px); border-radius: 32px; border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1); height: 100%; display: flex; flex-direction: column; }
 .founder-card:hover { transform: translateY(-8px); border-color: var(--color-purple); box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.5); background: rgba(25, 25, 32, 0.98); }
 .founder-content { position: relative; z-index: 15; padding: 40px 32px; transform-style: preserve-3d; transform: translateZ(25px); display: flex; flex-direction: column; height: 100%; }
@@ -1003,7 +897,6 @@ main { padding-top: 0; }
 .founder-socials .social-link { color: var(--gray); font-size: 1.2rem; transition: all 0.2s ease; text-decoration: none; }
 .founder-socials .social-link:hover { color: var(--color-yellow); transform: translateY(-2px); }
 
-/* Сетка специалистов */
 .specialists-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
 .specialist-card { background: var(--card-bg); backdrop-filter: blur(12px); border-radius: 28px; border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1); cursor: pointer; }
 .specialist-card:hover { transform: translateY(-6px); border-color: var(--color-cyan); box-shadow: 0 15px 25px -12px rgba(0, 0, 0, 0.4); background: rgba(25, 25, 32, 0.98); }
@@ -1030,7 +923,7 @@ main { padding-top: 0; }
 .specialist-card:nth-child(4) { animation-delay: 0.25s; }
 
 /* ============================================ */
-/* 15. БЛОК ОТЗЫВЫ */
+/* 16. БЛОК ОТЗЫВЫ */
 /* ============================================ */
 
 .reviews-section { padding: 100px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
@@ -1070,7 +963,7 @@ main { padding-top: 0; }
 .reviews-more-wrapper { text-align: center; margin-top: 20px; }
 
 /* ============================================ */
-/* 16. БЛОК "ПОЧЕМУ ВЫБИРАЮТ НАС" */
+/* 17. БЛОК "ПОЧЕМУ ВЫБИРАЮТ НАС" */
 /* ============================================ */
 
 .mission-new-section { padding: 100px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); position: relative; overflow: hidden; background: #0A0E17 !important; }
@@ -1083,25 +976,8 @@ main { padding-top: 0; }
 
 .mission-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin-bottom: 64px; }
 
-.mission-advantage-card { position: relative; background: rgba(18, 18, 26, 0.85); backdrop-filter: blur(12px); border-radius: 28px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1); cursor: pointer; height: 100%; opacity: 0; animation: missionFadeIn 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards; }
+.mission-advantage-card { background: rgba(18, 18, 26, 0.85); backdrop-filter: blur(12px); border-radius: 28px; border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1); cursor: pointer; height: 100%; opacity: 0; animation: missionFadeIn 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards; }
 .mission-advantage-card:hover { transform: translateY(-8px); border-color: #4C1D95; box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.5); background: rgba(25, 25, 32, 0.98); }
-
-.mission-advantage-card .segment { position: absolute; background: rgba(10, 10, 10, 0.9); backdrop-filter: blur(12px); border: 1.5px solid rgba(255, 255, 255, 0.1); transform-style: preserve-3d; overflow: hidden; top: 0; bottom: 0; transform: translateZ(-5px); }
-.mission-advantage-card .seg-1 { left: 0%; width: 22%; height: 100%; border-radius: 28px 0 0 28px; border-right: none; }
-.mission-advantage-card .seg-2 { left: 22%; width: 28%; height: 100%; border-left: none; border-right: none; }
-.mission-advantage-card .seg-3 { left: 50%; width: 28%; height: 100%; border-left: none; border-right: none; }
-.mission-advantage-card .seg-4 { left: 78%; width: 22%; height: 100%; border-radius: 0 28px 28px 0; border-left: none; }
-.mission-advantage-card .segment::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 2px, transparent 2px, transparent 12px); pointer-events: none; }
-
-.mission-advantage-card .corner { position: absolute; width: 24px; height: 24px; border-color: rgba(255, 255, 255, 0.25); border-style: solid; z-index: 20; transition: all 0.2s; pointer-events: none; }
-.mission-advantage-card .corner-tl { top: 16px; left: 16px; border-width: 2px 0 0 2px; }
-.mission-advantage-card .corner-tr { top: 16px; right: 16px; border-width: 2px 2px 0 0; }
-.mission-advantage-card .corner-bl { bottom: 16px; left: 16px; border-width: 0 0 2px 2px; }
-.mission-advantage-card .corner-br { bottom: 16px; right: 16px; border-width: 0 2px 2px 0; }
-.mission-advantage-card:hover .corner-tl { border-color: #F5B700; filter: drop-shadow(0 0 6px #F5B700); }
-.mission-advantage-card:hover .corner-tr { border-color: #10B981; filter: drop-shadow(0 0 6px #10B981); }
-.mission-advantage-card:hover .corner-bl { border-color: #06B6D4; filter: drop-shadow(0 0 6px #06B6D4); }
-.mission-advantage-card:hover .corner-br { border-color: #4C1D95; filter: drop-shadow(0 0 6px #4C1D95); }
 
 .advantage-content { position: relative; z-index: 15; padding: 32px 24px; transform-style: preserve-3d; transform: translateZ(20px); text-align: center; display: flex; flex-direction: column; height: 100%; }
 .advantage-icon { font-size: 2.5rem; color: #06B6D4; margin-bottom: 20px; transition: all 0.3s ease; }
@@ -1129,7 +1005,7 @@ main { padding-top: 0; }
 .mission-more-wrapper { text-align: center; }
 
 /* ============================================ */
-/* 17. КОНТАКТЫ (НОВЫЙ БЛОК) */
+/* 18. КОНТАКТЫ */
 /* ============================================ */
 
 .contacts-new-section { width: 100%; padding: 100px 0; background: transparent; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
@@ -1171,7 +1047,7 @@ main { padding-top: 0; }
 .join-button:hover { background: rgba(76, 29, 149, 0.35); border-color: #4c1d95; transform: scale(1.05) translateY(-3px); box-shadow: 0 12px 22px -8px rgba(76, 29, 149, 0.4); }
 
 /* ============================================ */
-/* 18. FOOTER И КОНТАКТЫ (СТАРЫЙ БЛОК ДЛЯ СОВМЕСТИМОСТИ) */
+/* 19. FOOTER */
 /* ============================================ */
 
 .footer { background: #05070A; padding: 56px 0 32px; border-top: 1px solid rgba(255, 255, 255, 0.05); }
@@ -1181,26 +1057,15 @@ main { padding-top: 0; }
 .footer a:hover { color: var(--color-cyan); }
 .footer p { font-size: 0.85rem; }
 
-.contact-section { padding: 100px 0; background: #080A0F; border-top: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-.contact-card { max-width: 800px; margin: 0 auto; background: var(--card-bg); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 32px; transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1); }
-.contact-card h2 { font-size: 2.4rem; margin-bottom: 1rem; text-align: center; position: relative; display: inline-block; width: auto; margin-left: auto; margin-right: auto; }
-.contact-card h2::after { content: ''; position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%); width: 70px; height: 2px; background: var(--gradient-yellow-green); }
-.contact-form { display: flex; flex-direction: column; }
-.contact-form input, .contact-form textarea { width: 100%; padding: 14px 18px; background: #0F1117; border: 1px solid #2A2E38; color: var(--white); margin-bottom: 22px; transition: 0.2s; border-radius: 12px; font-size: 0.95rem; min-height: 48px; }
-.contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--color-cyan); box-shadow: 0 0 10px rgba(6, 182, 212, 0.2); }
-.contact-form textarea { resize: vertical; min-height: 100px; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.form-status { margin-top: 16px; text-align: center; font-size: 0.9rem; }
-
 /* ============================================ */
-/* 19. ТУЛТИПЫ */
+/* 20. ТУЛТИПЫ */
 /* ============================================ */
 
 .tech-tooltip { position: fixed; background: #0F1419; border: 1px solid var(--color-cyan); padding: 16px 20px; max-width: 360px; width: max-content; z-index: 2000; border-radius: 16px; box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5); backdrop-filter: blur(12px); font-weight: 400; font-size: 0.85rem; line-height: 1.5; color: var(--white); pointer-events: none; opacity: 0; transition: opacity 0.2s; }
 .tech-tooltip strong { color: var(--color-cyan); font-weight: 500; }
 
 /* ============================================ */
-/* 20. МОДАЛЬНОЕ ОКНО */
+/* 21. МОДАЛЬНОЕ ОКНО */
 /* ============================================ */
 
 .service-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(12px); z-index: 2000; justify-content: center; align-items: center; }
@@ -1220,7 +1085,7 @@ main { padding-top: 0; }
 .modal-btn:hover { background: var(--gradient); color: var(--white); border-color: transparent; transform: translateY(-2px); }
 
 /* ============================================ */
-/* 21. СКРОЛЛБАР */
+/* 22. СКРОЛЛБАР */
 /* ============================================ */
 
 ::-webkit-scrollbar { width: 4px; height: 4px; }
@@ -1233,19 +1098,19 @@ main { padding-top: 0; }
 .modal-content::-webkit-scrollbar-thumb { background: var(--gradient); border-radius: 3px; }
 
 /* ============================================ */
-/* 22. СКРЫВАЕМ КИНЕТИЧЕСКИЕ КНОПКИ В НЕПОДХОДЯЩИХ БЛОКАХ */
+/* 23. СКРЫВАЕМ КИНЕТИЧЕСКИЕ КНОПКИ В НЕПОДХОДЯЩИХ БЛОКАХ */
 /* ============================================ */
 
 .section .kinetic-btn, .section .kinetic-wrapper { display: none !important; }
 .contact-section .kinetic-btn, .contact-section .kinetic-wrapper, .header .kinetic-btn, .header .kinetic-wrapper { display: inline-flex !important; }
 
 /* ============================================ */
-/* 23. УВЕЛИЧЕНИЕ ОБЛАСТЕЙ ПРИКОСНОВЕНИЯ */
+/* 24. УВЕЛИЧЕНИЕ ОБЛАСТЕЙ ПРИКОСНОВЕНИЯ */
 /* ============================================ */
 
 .nav-link { display: inline-block !important; padding: 12px 16px !important; margin: -8px -8px !important; min-height: 48px !important; min-width: 48px !important; }
-.section-more-btn, .card-btn, .modal-btn { display: inline-flex !important; align-items: center !important; justify-content: center !important; min-height: 48px !important; min-width: 48px !important; padding: 12px 24px !important; cursor: pointer !important; }
-.service-card { cursor: pointer !important; }
+.card-btn, .modal-btn { display: inline-flex !important; align-items: center !important; justify-content: center !important; min-height: 48px !important; min-width: 48px !important; padding: 12px 24px !important; cursor: pointer !important; }
+.service-card, .review-card, .specialist-card, .mission-advantage-card { cursor: pointer !important; }
 .calc-option { display: inline-flex !important; align-items: center !important; justify-content: center !important; min-height: 44px !important; padding: 8px 18px !important; margin: 4px !important; cursor: pointer !important; }
 .tech-item { display: inline-flex !important; align-items: center !important; min-height: 40px !important; padding: 8px 16px !important; margin: 4px !important; cursor: pointer !important; }
 .case-lid { padding: 16px 20px !important; min-height: 60px !important; cursor: pointer !important; }
@@ -1260,7 +1125,85 @@ main { padding-top: 0; }
 .totop-btn { min-width: 56px !important; min-height: 56px !important; cursor: pointer !important; }
 
 /* ============================================ */
-/* 24. МОБИЛЬНАЯ АДАПТАЦИЯ */
+/* 25. АККОРДЕОН FAQ */
+/* ============================================ */
+
+.cases-accordion { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+
+.case-item {
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+    perspective: 800px;
+}
+
+.case-item:hover { border-color: var(--color-purple); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
+
+.case-lid {
+    position: relative;
+    padding: 0.8rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transform-origin: top center;
+    transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+    transform-style: preserve-3d;
+    z-index: 2;
+    background: transparent;
+    border: none;
+    width: 100%;
+    font-family: inherit;
+    text-align: left;
+}
+
+.case-item.active .case-lid { transform: rotateX(-10deg) translateY(-8px); border-bottom: 1px solid var(--color-cyan); }
+
+.lid-left { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+
+.case-number {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #F5B700;
+    background: rgba(245, 183, 0, 0.15);
+    padding: 0.15rem 0.7rem;
+    border-radius: 30px;
+    letter-spacing: 1px;
+    transition: all 0.2s;
+}
+
+.case-item.active .case-number { background: var(--gradient); color: var(--white); box-shadow: 0 0 12px var(--color-cyan); }
+
+.case-title { font-size: 0.95rem; font-weight: 500; color: #FFFFFF; letter-spacing: -0.2px; }
+
+.case-handle { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; }
+.handle-bar { width: 20px; height: 2px; background: var(--gray); border-radius: 4px; transition: all 0.4s cubic-bezier(0.34, 1.2, 0.64, 1); position: relative; }
+.handle-bar::before, .handle-bar::after { content: ''; position: absolute; width: 5px; height: 2px; background: var(--gray); border-radius: 2px; transition: all 0.4s; }
+.handle-bar::before { left: -7px; top: 0; }
+.handle-bar::after { right: -7px; top: 0; }
+.case-item.active .handle-bar { background: var(--color-yellow); box-shadow: 0 0 8px var(--color-yellow); transform: rotate(180deg); }
+
+.case-inside { max-height: 0; overflow: hidden; transition: max-height 0.6s cubic-bezier(0.33, 1, 0.68, 1); }
+.case-item.active .case-inside { max-height: 280px; }
+.case-content { padding: 0.2rem 1.5rem 1.2rem 1.5rem; transform: translateZ(8px); }
+.case-text { color: #D1D5DB; line-height: 1.5; font-size: 0.85rem; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 0.8rem; }
+
+.project-meta { display: flex; gap: 0.8rem; margin-top: 0.8rem; flex-wrap: wrap; }
+.meta-tag { font-size: 0.65rem; font-family: monospace; color: var(--color-cyan); background: rgba(6, 182, 212, 0.08); padding: 0.15rem 0.6rem; border-radius: 20px; border-left: 1px solid var(--color-cyan); }
+
+.spark { position: fixed; width: 5px; height: 5px; border-radius: 50%; filter: blur(1px); pointer-events: none; z-index: 10000; opacity: 0; }
+@keyframes sparkOpen { 0% { opacity: 1; transform: translate(0,0) scale(1); } 100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0); } }
+
+.floating-review-btn { position: fixed; bottom: 120px; right: 100px; z-index: 100; }
+.floating-review { width: 56px; height: 56px; border-radius: 50%; background: var(--gradient); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); text-decoration: none; }
+.floating-review i { font-size: 1.5rem; color: var(--white); }
+.floating-review:hover { transform: scale(1.1); box-shadow: 0 8px 25px rgba(245, 183, 0, 0.4); }
+
+/* ============================================ */
+/* 26. МОБИЛЬНАЯ АДАПТАЦИЯ */
 /* ============================================ */
 
 @media (max-width: 1200px) {
@@ -1305,15 +1248,15 @@ main { padding-top: 0; }
     .section-header h2 { font-size: 1.8rem !important; margin-bottom: 0 !important; }
     
     .services-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
-    .services-grid .service-card { aspect-ratio: auto !important; min-height: 260px !important; }
-    .services-grid .service-card .card-content { padding: 20px !important; }
-    .services-grid .service-card h3 { font-size: 1.2rem !important; }
-    .services-grid .service-card p { font-size: 0.85rem !important; }
-    .services-grid .service-card .corner { width: 20px !important; height: 20px !important; }
-    .services-grid .service-card .corner-tl { top: 12px !important; left: 12px !important; }
-    .services-grid .service-card .corner-tr { top: 12px !important; right: 12px !important; }
-    .services-grid .service-card .corner-bl { bottom: 12px !important; left: 12px !important; }
-    .services-grid .service-card .corner-br { bottom: 12px !important; right: 12px !important; }
+    .service-card { aspect-ratio: auto !important; min-height: 260px !important; }
+    .service-card .card-content { padding: 20px !important; }
+    .service-card h3 { font-size: 1.2rem !important; }
+    .service-card p { font-size: 0.85rem !important; }
+    .quantum-card .corner { width: 20px !important; height: 20px !important; }
+    .quantum-card .corner-tl { top: 12px !important; left: 12px !important; }
+    .quantum-card .corner-tr { top: 12px !important; right: 12px !important; }
+    .quantum-card .corner-bl { bottom: 12px !important; left: 12px !important; }
+    .quantum-card .corner-br { bottom: 12px !important; right: 12px !important; }
     
     .competences-grid { grid-template-columns: 1fr !important; }
     .steps-container { flex-direction: column !important; }
@@ -1379,11 +1322,6 @@ main { padding-top: 0; }
     .nav-menu.active { right: 0 !important; }
     .nav-link { font-size: 1.1rem !important; padding: 12px 0 !important; width: 100% !important; text-align: center !important; }
     .kinetic-btn.header-telegram-btn { margin-top: 20px !important; }
-    
-    .form-row { grid-template-columns: 1fr !important; gap: 0 !important; }
-    .contact-card { padding: 24px !important; }
-    .contact-card h2 { font-size: 1.8rem !important; }
-    .contact-form input, .contact-form textarea { padding: 12px 16px !important; font-size: 0.9rem !important; }
     
     .modal-body { padding: 30px 20px !important; }
     .modal-body h3 { font-size: 1.4rem !important; }
@@ -1480,18 +1418,4 @@ main { padding-top: 0; }
         .hero-section { padding-left: env(safe-area-inset-left) !important; padding-right: env(safe-area-inset-right) !important; }
         .nav-menu { padding-top: max(40px, env(safe-area-inset-top)) !important; padding-bottom: max(40px, env(safe-area-inset-bottom)) !important; }
     }
-}
-
-.spark { position: fixed; width: 5px; height: 5px; border-radius: 50%; filter: blur(1px); pointer-events: none; z-index: 10000; opacity: 0; }
-@keyframes sparkOpen { 0% { opacity: 1; transform: translate(0,0) scale(1); } 100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0); } }
-
-.floating-review-btn { position: fixed; bottom: 120px; right: 100px; z-index: 100; }
-.floating-review { width: 56px; height: 56px; border-radius: 50%; background: var(--gradient); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); text-decoration: none; }
-.floating-review i { font-size: 1.5rem; color: var(--white); }
-.floating-review:hover { transform: scale(1.1); box-shadow: 0 8px 25px rgba(245, 183, 0, 0.4); }
-
-@media (max-width: 768px) {
-    .floating-review-btn { right: 20px; bottom: 80px; }
-    .floating-review { width: 48px; height: 48px; }
-    .floating-review i { font-size: 1.2rem; }
 }
