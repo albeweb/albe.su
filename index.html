@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -42,6 +43,9 @@
 
 <!-- CSS - все стили в отдельном файле -->
 <link rel="stylesheet" href="style.css">
+
+<!-- Font Awesome для иконок -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <script type="application/ld+json">
 {
@@ -783,7 +787,9 @@
                 <div class="corner corner-br"></div>
                 <div class="founder-content">
                     <div class="founder-avatar">
-                        <div class="founder-avatar-inner"></div>
+                        <div class="founder-avatar-inner">
+                            <i class="fas fa-crown founder-avatar-icon"></i>
+                        </div>
                     </div>
                     <div class="founder-name">Алексей Белов</div>
                     <div class="founder-role">Основатель / CEO</div>
@@ -809,9 +815,9 @@
                         </div>
                     </div>
                     <div class="founder-socials">
-                        <a href="#" class="social-link" aria-label="Telegram">TG</a>
-                        <a href="#" class="social-link" aria-label="LinkedIn">IN</a>
-                        <a href="#" class="social-link" aria-label="GitHub">GH</a>
+                        <a href="#" class="social-link" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
             </div>
@@ -830,7 +836,9 @@
                     <div class="corner corner-br"></div>
                     <div class="specialist-content">
                         <div class="specialist-avatar">
-                            <div class="specialist-avatar-inner"></div>
+                            <div class="specialist-avatar-inner">
+                                <i class="fas fa-code specialist-avatar-icon"></i>
+                            </div>
                         </div>
                         <div class="specialist-name">Артём Белов</div>
                         <div class="specialist-role">Tech Lead / Fullstack</div>
@@ -841,8 +849,8 @@
                             <span class="specialist-stack-tag">TypeScript</span>
                         </div>
                         <div class="specialist-socials">
-                            <a href="#" class="social-link">TG</a>
-                            <a href="#" class="social-link">GH</a>
+                            <a href="#" class="social-link"><i class="fab fa-telegram-plane"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                 </div>
@@ -859,7 +867,9 @@
                     <div class="corner corner-br"></div>
                     <div class="specialist-content">
                         <div class="specialist-avatar">
-                            <div class="specialist-avatar-inner"></div>
+                            <div class="specialist-avatar-inner">
+                                <i class="fas fa-brain specialist-avatar-icon"></i>
+                            </div>
                         </div>
                         <div class="specialist-name">Екатерина Воронова</div>
                         <div class="specialist-role">AI / ML инженер</div>
@@ -870,8 +880,8 @@
                             <span class="specialist-stack-tag">PyTorch</span>
                         </div>
                         <div class="specialist-socials">
-                            <a href="#" class="social-link">TG</a>
-                            <a href="#" class="social-link">KG</a>
+                            <a href="#" class="social-link"><i class="fab fa-telegram-plane"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-kaggle"></i></a>
                         </div>
                     </div>
                 </div>
@@ -888,7 +898,9 @@
                     <div class="corner corner-br"></div>
                     <div class="specialist-content">
                         <div class="specialist-avatar">
-                            <div class="specialist-avatar-inner"></div>
+                            <div class="specialist-avatar-inner">
+                                <i class="fas fa-palette specialist-avatar-icon"></i>
+                            </div>
                         </div>
                         <div class="specialist-name">Марк Штерн</div>
                         <div class="specialist-role">Creative Director / UI/UX</div>
@@ -899,8 +911,8 @@
                             <span class="specialist-stack-tag">Spline</span>
                         </div>
                         <div class="specialist-socials">
-                            <a href="#" class="social-link">TG</a>
-                            <a href="#" class="social-link">BH</a>
+                            <a href="#" class="social-link"><i class="fab fa-telegram-plane"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-behance"></i></a>
                         </div>
                     </div>
                 </div>
@@ -917,7 +929,9 @@
                     <div class="corner corner-br"></div>
                     <div class="specialist-content">
                         <div class="specialist-avatar">
-                            <div class="specialist-avatar-inner"></div>
+                            <div class="specialist-avatar-inner">
+                                <i class="fas fa-chart-line specialist-avatar-icon"></i>
+                            </div>
                         </div>
                         <div class="specialist-name">Ольга Дымова</div>
                         <div class="specialist-role">SEO-стратег / Head of Marketing</div>
@@ -928,8 +942,8 @@
                             <span class="specialist-stack-tag">GA4</span>
                         </div>
                         <div class="specialist-socials">
-                            <a href="#" class="social-link">TG</a>
-                            <a href="#" class="social-link">IN</a>
+                            <a href="#" class="social-link"><i class="fab fa-telegram-plane"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1096,7 +1110,7 @@
         <!-- Сетка отзывов 3×2 -->
         <div class="reviews-grid">
             
-            <!-- Отзыв 1 -->
+            <!-- Отзыв 1 — СБЕР CRM -->
             <div class="review-card">
                 <div class="segment seg-1"></div>
                 <div class="segment seg-2"></div>
@@ -1107,14 +1121,20 @@
                 <div class="corner corner-bl"></div>
                 <div class="corner corner-br"></div>
                 <div class="review-content">
-                    <div class="review-quote-icon"></div>
-                    <div class="review-company-tag">CRM-система</div>
+                    <div class="review-quote-icon">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="review-company-tag">
+                        <i class="fas fa-building" style="margin-right: 6px;"></i> CRM-система
+                    </div>
                     <div class="review-text">
-                        Выражаем искреннюю благодарность Студии Разработки Albe за проделанную работу при создании и внедрении CRM-системы... проект был успешно реализован в кратчайшие сроки на самом высоком уровне.
+                        Выражаем искреннюю благодарность Студии Разработки Albe за проделанную работу при создании и внедрении CRM-системы, которая стала важным шагом на пути к повышению эффективности наших бизнес-процессов и улучшению взаимодействия с клиентами. Благодаря высокому профессионализму вашей команды, глубокому пониманию наших потребностей и индивидуальному подходу, проект был успешно реализован в кратчайшие сроки на самом высоком уровне.
                     </div>
                     <div class="review-client">
                         <div class="client-avatar">
-                            <div class="client-avatar-inner"></div>
+                            <div class="client-avatar-inner">
+                                <i class="fas fa-university client-avatar-icon"></i>
+                            </div>
                         </div>
                         <div class="client-info">
                             <div class="client-name">Елена Верник</div>
@@ -1124,7 +1144,7 @@
                 </div>
             </div>
 
-            <!-- Отзыв 2 -->
+            <!-- Отзыв 2 — СБЕР Онлайн -->
             <div class="review-card">
                 <div class="segment seg-1"></div>
                 <div class="segment seg-2"></div>
@@ -1135,14 +1155,20 @@
                 <div class="corner corner-bl"></div>
                 <div class="corner corner-br"></div>
                 <div class="review-content">
-                    <div class="review-quote-icon"></div>
-                    <div class="review-company-tag">Сбербанк Онлайн</div>
+                    <div class="review-quote-icon">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="review-company-tag">
+                        <i class="fas fa-mobile-alt" style="margin-right: 6px;"></i> Сбербанк Онлайн
+                    </div>
                     <div class="review-text">
-                        ПАО СБЕРБАНК выражает признательность команде Albe за значительный вклад в разработку приложения «Сбербанк Онлайн». С уверенностью можем рекомендовать компанию Albe как надёжного партнёра.
+                        ПАО СБЕРБАНК выражает признательность команде Albe за значительный вклад в разработку приложения «Сбербанк Онлайн». Особое внимание хотелось бы уделить вашему специалисту, который взял на себя нелёгкую задачу занять должность Team Lead в отделе разработки Frontend. С уверенностью можем рекомендовать компанию Albe как надёжного партнёра.
                     </div>
                     <div class="review-client">
                         <div class="client-avatar">
-                            <div class="client-avatar-inner"></div>
+                            <div class="client-avatar-inner">
+                                <i class="fas fa-user-tie client-avatar-icon"></i>
+                            </div>
                         </div>
                         <div class="client-info">
                             <div class="client-name">Николай Юрьевич Беляков</div>
@@ -1152,7 +1178,7 @@
                 </div>
             </div>
 
-            <!-- Отзыв 3 -->
+            <!-- Отзыв 3 — T-Bank Голосовой ассистент -->
             <div class="review-card">
                 <div class="segment seg-1"></div>
                 <div class="segment seg-2"></div>
@@ -1163,14 +1189,20 @@
                 <div class="corner corner-bl"></div>
                 <div class="corner corner-br"></div>
                 <div class="review-content">
-                    <div class="review-quote-icon"></div>
-                    <div class="review-company-tag">Голосовой ассистент</div>
+                    <div class="review-quote-icon">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="review-company-tag">
+                        <i class="fas fa-microphone" style="margin-right: 6px;"></i> Голосовой ассистент
+                    </div>
                     <div class="review-text">
-                        От лица T-Bank выражаем огромную благодарность студии за участие в разработке голосового ассистента T-Банк... Команда Albe профессионально подошла к задаче.
+                        От лица T-Bank выражаем огромную благодарность студии за участие в разработке голосового ассистента T-Банк нашего проекта на базе искусственного интеллекта. Команда Albe профессионально подошла к задаче, на каждом этапе демонстрируя высокий уровень экспертизы и креативный подход.
                     </div>
                     <div class="review-client">
                         <div class="client-avatar">
-                            <div class="client-avatar-inner"></div>
+                            <div class="client-avatar-inner">
+                                <i class="fas fa-chart-line client-avatar-icon"></i>
+                            </div>
                         </div>
                         <div class="client-info">
                             <div class="client-name">Валерий Акимов</div>
@@ -1180,7 +1212,7 @@
                 </div>
             </div>
 
-            <!-- Отзыв 4 -->
+            <!-- Отзыв 4 — Отель Аквамарин -->
             <div class="review-card">
                 <div class="segment seg-1"></div>
                 <div class="segment seg-2"></div>
@@ -1191,14 +1223,20 @@
                 <div class="corner corner-bl"></div>
                 <div class="corner corner-br"></div>
                 <div class="review-content">
-                    <div class="review-quote-icon"></div>
-                    <div class="review-company-tag">Отель Аквамарин</div>
+                    <div class="review-quote-icon">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="review-company-tag">
+                        <i class="fas fa-hotel" style="margin-right: 6px;"></i> Отель Аквамарин
+                    </div>
                     <div class="review-text">
                         Спасибо, Albe, за великолепный опыт сотрудничества! Каждый этап разработки сайта проходил гладко, и мы получили именно то, что хотели. Успехов вам!
                     </div>
                     <div class="review-client">
                         <div class="client-avatar">
-                            <div class="client-avatar-inner"></div>
+                            <div class="client-avatar-inner">
+                                <i class="fas fa-umbrella-beach client-avatar-icon"></i>
+                            </div>
                         </div>
                         <div class="client-info">
                             <div class="client-name">Александра Кулик</div>
@@ -1208,7 +1246,7 @@
                 </div>
             </div>
 
-            <!-- Отзыв 5 -->
+            <!-- Отзыв 5 — Интернет-магазин офисной мебели -->
             <div class="review-card">
                 <div class="segment seg-1"></div>
                 <div class="segment seg-2"></div>
@@ -1219,14 +1257,20 @@
                 <div class="corner corner-bl"></div>
                 <div class="corner corner-br"></div>
                 <div class="review-content">
-                    <div class="review-quote-icon"></div>
-                    <div class="review-company-tag">Интернет-магазин мебели</div>
+                    <div class="review-quote-icon">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="review-company-tag">
+                        <i class="fas fa-chair" style="margin-right: 6px;"></i> Интернет-магазин мебели
+                    </div>
                     <div class="review-text">
                         Отличная работа команды Albe! Всё выполнено чётко, быстро и профессионально. Дизайн превзошёл все ожидания. Большое спасибо!
                     </div>
                     <div class="review-client">
                         <div class="client-avatar">
-                            <div class="client-avatar-inner"></div>
+                            <div class="client-avatar-inner">
+                                <i class="fas fa-store client-avatar-icon"></i>
+                            </div>
                         </div>
                         <div class="client-info">
                             <div class="client-name">Евгений Михайличенко</div>
@@ -1236,7 +1280,7 @@
                 </div>
             </div>
 
-            <!-- Отзыв 6 -->
+            <!-- Отзыв 6 — Компьютерное зрение -->
             <div class="review-card">
                 <div class="segment seg-1"></div>
                 <div class="segment seg-2"></div>
@@ -1247,14 +1291,20 @@
                 <div class="corner corner-bl"></div>
                 <div class="corner corner-br"></div>
                 <div class="review-content">
-                    <div class="review-quote-icon"></div>
-                    <div class="review-company-tag">Компьютерное зрение</div>
+                    <div class="review-quote-icon">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="review-company-tag">
+                        <i class="fas fa-eye" style="margin-right: 6px;"></i> Компьютерное зрение
+                    </div>
                     <div class="review-text">
-                        Благодарность за разработку технологии компьютерного зрения для службы безопасности. Проект стал для нас настоящим прорывом в повышении уровня контроля.
+                        Благодарность за разработку технологии компьютерного зрения для службы безопасности. Проект стал для нас настоящим прорывом в повышении уровня контроля, безопасности и эффективности работы. Высокий профессионализм команды, индивидуальный подход и стремление предоставить оптимальное решение.
                     </div>
                     <div class="review-client">
                         <div class="client-avatar">
-                            <div class="client-avatar-inner"></div>
+                            <div class="client-avatar-inner">
+                                <i class="fas fa-shield-alt client-avatar-icon"></i>
+                            </div>
                         </div>
                         <div class="client-info">
                             <div class="client-name">Евгений Алексеевич Корбут</div>
@@ -1278,7 +1328,7 @@
 </section>
 
 <!-- ============================================ -->
-<!-- БЛОК "ПОЧЕМУ ВЫБИРАЮТ НАС" -->
+<!-- БЛОК "ПОЧЕМУ ВЫБИРАЮТ НАС" — НОВЫЙ -->
 <!-- ============================================ -->
 <section class="mission-new-section">
     <div class="container">
@@ -1301,6 +1351,7 @@
                 <div class="corner corner-bl"></div>
                 <div class="corner corner-br"></div>
                 <div class="advantage-content">
+                    <div class="advantage-icon"><i class="fas fa-chart-line"></i></div>
                     <div class="advantage-number">01</div>
                     <h3 class="advantage-title">Опыт и компетентность</h3>
                     <p class="advantage-text">Много лет успешного опыта разработки сложных продуктов и веб-сервисов с использованием искусственного интеллекта. Наши разработчики имеют высокий уровень профессионализма – от Middle до Team Lead.</p>
@@ -1319,6 +1370,7 @@
                 <div class="corner corner-bl"></div>
                 <div class="corner corner-br"></div>
                 <div class="advantage-content">
+                    <div class="advantage-icon"><i class="fas fa-building"></i></div>
                     <div class="advantage-number">02</div>
                     <h3 class="advantage-title">Доверие крупных брендов</h3>
                     <p class="advantage-text">Реализовали успешные проекты для таких компаний, как Сбер, Яндекс, ВКонтакте, Телеграм, крупных автодилеров, а также ресторанных сетей по всей России.</p>
@@ -1337,6 +1389,7 @@
                 <div class="corner corner-bl"></div>
                 <div class="corner corner-br"></div>
                 <div class="advantage-content">
+                    <div class="advantage-icon"><i class="fas fa-rocket"></i></div>
                     <div class="advantage-number">03</div>
                     <h3 class="advantage-title">Качество и скорость</h3>
                     <p class="advantage-text">Мы гарантируем безупречное качество выполнения проектов и быструю реализацию благодаря опытной команде, эффективным процессам и современным технологиям.</p>
@@ -1355,6 +1408,7 @@
                 <div class="corner corner-bl"></div>
                 <div class="corner corner-br"></div>
                 <div class="advantage-content">
+                    <div class="advantage-icon"><i class="fas fa-ruble-sign"></i></div>
                     <div class="advantage-number">04</div>
                     <h3 class="advantage-title">Стоимость разработки</h3>
                     <p class="advantage-text">Сочетание доступных цен с высоким уровнем качества позволяет нашим клиентам эффективно использовать свой бюджет для достижения превосходных результатов.</p>
@@ -1439,18 +1493,18 @@
         <div class="contacts-new-grid">
             <div class="contact-new-info-card">
                 <div>
-                    <div class="contact-new-info-title"><span>свяжитесь с нами</span></div>
-                    <div class="contact-new-item"><div class="contact-new-details"><div class="label">telegram</div><div class="value"><a href="https://t.me/albe_web" target="_blank">@albe_web</a></div></div></div>
-                    <div class="contact-new-item"><div class="contact-new-details"><div class="label">e-mail</div><div class="value"><a href="mailto:albe.web@yandex.ru">albe.web@yandex.ru</a></div></div></div>
-                    <div class="contact-new-item"><div class="contact-new-details"><div class="label">режим работы</div><div class="value">24/7 — всегда на связи</div></div></div>
-                    <div class="contact-new-item" style="margin-bottom:0;"><div class="contact-new-details"><div class="label">AI & автоматизация</div><div class="value" style="font-size:1rem;">индивидуальные IT-решения</div></div></div>
+                    <div class="contact-new-info-title"><i class="fas fa-comment-dots"></i><span>свяжитесь с нами</span></div>
+                    <div class="contact-new-item"><div class="contact-new-icon"><i class="fab fa-telegram-plane"></i></div><div class="contact-new-details"><div class="label">telegram</div><div class="value"><a href="https://t.me/albe_web" target="_blank">@albe_web</a></div></div></div>
+                    <div class="contact-new-item"><div class="contact-new-icon"><i class="fas fa-envelope"></i></div><div class="contact-new-details"><div class="label">e-mail</div><div class="value"><a href="mailto:albe.web@yandex.ru">albe.web@yandex.ru</a></div></div></div>
+                    <div class="contact-new-item"><div class="contact-new-icon"><i class="fas fa-clock"></i></div><div class="contact-new-details"><div class="label">режим работы</div><div class="value">24/7 — всегда на связи</div></div></div>
+                    <div class="contact-new-item" style="margin-bottom:0;"><div class="contact-new-icon"><i class="fas fa-microchip"></i></div><div class="contact-new-details"><div class="label">AI & автоматизация</div><div class="value" style="font-size:1rem;">индивидуальные IT-решения</div></div></div>
                 </div>
             </div>
             <div class="vk-new-widget-card">
-                <div class="vk-new-header"><div><h3>Мы в Вконтакте</h3><p>albe digital · сообщество IT-решений</p></div></div>
+                <div class="vk-new-header"><i class="fab fa-vk"></i><div><h3>Мы в Вконтакте</h3><p>albe digital · сообщество IT-решений</p></div></div>
                 <div class="vk-group-widget" id="vk_widget_container"></div>
                 <div class="subscribers-simple"><span>3K</span> подписчиков</div>
-                <div class="vk-button-wrapper"><a href="https://vk.com/albeweb" target="_blank" class="join-button"><span>перейти в сообщество →</span></a></div>
+                <div class="vk-button-wrapper"><a href="https://vk.com/albeweb" target="_blank" class="join-button"><i class="fab fa-vk"></i><span>перейти в сообщество →</span></a></div>
             </div>
         </div>
     </div>
@@ -1498,7 +1552,7 @@
     }
     function fallbackVkLink() {
         const container = document.getElementById('vk_widget_container');
-        if (container) { container.innerHTML = '<div style="background:#0f0a1a; border-radius:32px; padding:32px 20px; text-align:center;"><h4 style="font-size:1.5rem; color:#fff;">albe digital</h4><p style="color:#fff;">разработка IT-решений, AI, автоматизация бизнеса</p><a href="https://vk.com/albeweb" target="_blank" style="background:#4c1d95; padding:12px 32px; border-radius:60px; display:inline-block; margin-top:20px; color:white; text-decoration:none;">открыть сообщество →</a></div>'; }
+        if (container) { container.innerHTML = '<div style="background:#0f0a1a; border-radius:32px; padding:32px 20px; text-align:center;"><i class="fab fa-vk" style="font-size:56px; color:#f5b700;"></i><h4 style="font-size:1.5rem; color:#fff;">albe digital</h4><p style="color:#fff;">разработка IT-решений, AI, автоматизация бизнеса</p><a href="https://vk.com/albeweb" target="_blank" style="background:#4c1d95; padding:12px 32px; border-radius:60px; display:inline-block; margin-top:20px; color:white; text-decoration:none;">открыть сообщество →</a></div>'; }
     }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initVkWidget);
     else initVkWidget();
