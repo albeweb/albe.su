@@ -1726,7 +1726,7 @@ main { padding-top: 0; }
         max-height: 0;
         opacity: 0;
         overflow: hidden;
-        transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+        transition: max-height 0.4s ease-out, opacity 0.3s ease;
         margin: 0 !important;
         padding: 0 !important;
     }
@@ -1735,7 +1735,7 @@ main { padding-top: 0; }
     .accordion-content.open {
         max-height: 5000px;
         opacity: 1;
-        margin-top: 30px !important;
+        margin-top: 24px !important;
         margin-bottom: 0 !important;
     }
     
@@ -1758,5 +1758,15 @@ main { padding-top: 0; }
     /* Отступы для секций, чтобы не было скачков */
     .accordion-section {
         margin-bottom: 20px;
+    }
+    
+    /* Дополнительно — скрываем всё, что внутри контента, до открытия */
+    .accordion-content * {
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+    
+    .accordion-content.open * {
+        opacity: 1;
     }
 }
