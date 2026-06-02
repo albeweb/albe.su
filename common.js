@@ -775,7 +775,8 @@
     // МОБИЛЬНЫЙ АККОРДЕОН ДЛЯ СЕКЦИЙ
     // ============================================
     function initMobileAccordion() {
-        const sections = document.querySelectorAll('.lazy-section');
+        // ИЗМЕНЕНО: добавлен .contacts-new-section
+        const sections = document.querySelectorAll('.lazy-section, .contacts-new-section');
         
         function isMobile() {
             return window.innerWidth <= 768;
@@ -800,6 +801,7 @@
                 else if (section.id === 'calculator') content = section.querySelector('.calculator-two-columns');
                 else if (section.id === 'faq') content = section.querySelector('.cases-accordion');
                 else if (section.id === 'portfolio') content = section.querySelector('.portfolio-accordion');
+                else if (section.classList.contains('contacts-new-section')) content = section.querySelector('.contacts-new-grid');
                 
                 if (!content) return;
                 
