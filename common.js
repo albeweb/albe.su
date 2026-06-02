@@ -1,5 +1,5 @@
 // ============================================
-// common.js — ПОЛНАЯ ИСПРАВЛЕННАЯ ВЕРСИЯ
+// common.js — ОПТИМИЗИРОВАННАЯ ВЕРСИЯ (без принудительной компоновки)
 // ============================================
 
 (function() {
@@ -65,7 +65,7 @@
     };
 
     // ============================================
-    // ТУЛТИПЫ ДЛЯ ТЕХНОЛОГИЙ
+    // ТУЛТИПЫ ДЛЯ ТЕХНОЛОГИЙ (оптимизировано)
     // ============================================
     function initTechTooltips() {
         const tooltip = document.createElement('div');
@@ -75,21 +75,25 @@
         let rafId = null;
         
         document.querySelectorAll('.tech-item').forEach(el => {
-            el.addEventListener('mouseenter', function() {
+            el.addEventListener('mouseenter', function(e) {
                 if (rafId) cancelAnimationFrame(rafId);
                 
                 const tech = this.getAttribute('data-tech');
                 const desc = techDesc[tech] || "технология, которую мы используем в наших проектах для достижения максимального результата.";
                 tooltip.innerHTML = '<strong>' + this.innerText + '</strong><br>' + desc;
                 
+                // Оптимизация: используем requestAnimationFrame с чтением позиции
                 rafId = requestAnimationFrame(() => {
-                    tooltip.style.opacity = '1';
                     const rect = this.getBoundingClientRect();
+                    tooltip.style.opacity = '1';
+                    
                     let left = rect.right + 15;
                     let top = rect.top + rect.height / 2 - 50;
+                    
                     if (left + 380 > window.innerWidth) left = rect.left - 390;
                     if (top < 10) top = 10;
                     if (top + 150 > window.innerHeight) top = window.innerHeight - 160;
+                    
                     tooltip.style.left = left + 'px';
                     tooltip.style.top = top + 'px';
                 });
@@ -98,7 +102,7 @@
             });
             
             el.addEventListener('mouseleave', function() {
-                timeout = setTimeout(function() { 
+                timeout = setTimeout(() => { 
                     tooltip.style.opacity = '0'; 
                 }, 150);
             });
@@ -133,24 +137,32 @@
         return { rec: rec.join(". "), exp: exp + compText };
     }
 
+    // Оптимизировано: кэширование DOM-элементов
+    let cachedPriceEl = null;
+    let cachedHoursEl = null;
+    let cachedStackEl = null;
+
     function updateCalculator() {
         let h = 0;
         for (let s of selected) h += sh[s];
         let fin = Math.round(h * cm[complexity]);
         let cost = fin * rate;
-        let servList = Array.from(selected).map(function(s) {
-            var names = { design: "дизайн", front: "frontend", back: "backend", seo: "seo", cms: "cms", crm: "crm", ai: "ai", mobile: "мобильное", support: "поддержка" };
+        let servList = Array.from(selected).map(s => {
+            const names = { design: "дизайн", front: "frontend", back: "backend", seo: "seo", cms: "cms", crm: "crm", ai: "ai", mobile: "мобильное", support: "поддержка" };
             return names[s];
         }).join(", ");
         if (servList === "") servList = "—";
         
-        var priceEl = document.getElementById('calcPrice');
-        var hoursEl = document.getElementById('calcHoursInfo');
-        if (priceEl) priceEl.innerHTML = cost.toLocaleString() + ' ₽';
-        if (hoursEl) hoursEl.innerHTML = '✔ услуги: ' + servList + '<br>✔ сложность: ' + (complexity === 'simple' ? 'старт' : complexity === 'medium' ? 'бизнес' : complexity === 'high' ? 'премиум' : 'enterprise') + '<br>✔ часы: ' + h + ' ч × ' + cm[complexity] + ' = ' + fin + ' ч.';
+        // Кэшируем элементы
+        if (!cachedPriceEl) cachedPriceEl = document.getElementById('calcPrice');
+        if (!cachedHoursEl) cachedHoursEl = document.getElementById('calcHoursInfo');
         
-        var rec = getRec(selected);
-        var phases = [
+        if (cachedPriceEl) cachedPriceEl.innerHTML = cost.toLocaleString() + ' ₽';
+        if (cachedHoursEl) cachedHoursEl.innerHTML = '✔ услуги: ' + servList + '<br>✔ сложность: ' + (complexity === 'simple' ? 'старт' : complexity === 'medium' ? 'бизнес' : complexity === 'high' ? 'премиум' : 'enterprise') + '<br>✔ часы: ' + h + ' ч × ' + cm[complexity] + ' = ' + fin + ' ч.';
+        
+        const rec = getRec(selected);
+        
+        const phases = [
             { n: "аналитика и прототип", b: 10, m: 1.2 },
             { n: "дизайн", b: selected.has('design') ? 20 : 0, m: 1 },
             { n: "frontend", b: selected.has('front') ? 30 : 0, m: 1 },
@@ -164,69 +176,67 @@
             { n: "тестирование", b: 15, m: 1.3 },
             { n: "деплой", b: 8, m: 1.1 }
         ];
-        var br = [], tot = 0;
-        for (var i = 0; i < phases.length; i++) {
-            var p = phases[i];
+        
+        let br = [], tot = 0;
+        for (let i = 0; i < phases.length; i++) {
+            const p = phases[i];
             if (p.b > 0) {
-                var hh = Math.round(p.b * p.m * cm[complexity]);
+                const hh = Math.round(p.b * p.m * cm[complexity]);
                 br.push({ name: p.n, h: hh });
                 tot += hh;
             }
         }
+        
         if (tot < fin && fin - tot > 5) br.push({ name: "управление проектом", h: fin - tot });
         else if (tot > fin && br.length) {
             br[0].h -= tot - fin;
             if (br[0].h < 0) br[0].h = 0;
         }
-        br = br.filter(function(b) { return b.h > 0; });
-        var timeHtml = '<div class="time-breakdown"><h4>распределение ' + fin + ' часов:</h4>';
-        for (var i = 0; i < br.length; i++) {
+        br = br.filter(b => b.h > 0);
+        
+        let timeHtml = '<div class="time-breakdown"><h4>распределение ' + fin + ' часов:</h4>';
+        for (let i = 0; i < br.length; i++) {
             timeHtml += '<div class="time-breakdown-item"><span>' + br[i].name + '</span><span>' + br[i].h + ' ч</span></div>';
         }
         timeHtml += '</div>';
         
-        var stackEl = document.getElementById('stackExplanation');
-        if (stackEl) {
+        if (!cachedStackEl) cachedStackEl = document.getElementById('stackExplanation');
+        if (cachedStackEl) {
             if (h === 0) {
-                stackEl.innerHTML = '<h4>рекомендуемый стек</h4><p>выберите услуги для расчёта</p>';
+                cachedStackEl.innerHTML = '<h3>Рекомендуемый стек</h3><p>выберите услуги для расчёта</p>';
             } else {
-                stackEl.innerHTML = '<h4>рекомендуемый стек</h4><p><strong>' + rec.rec + '</strong></p><h4>преимущества</h4><p>' + rec.exp + '</p>' + timeHtml + '<p style="margin-top:12px; font-size:0.85rem;">выбор технологий основан на потребностях вашего проекта.</p>';
+                cachedStackEl.innerHTML = '<h3>Рекомендуемый стек</h3><p><strong>' + rec.rec + '</strong></p><h4>преимущества</h4><p>' + rec.exp + '</p>' + timeHtml + '<p style="margin-top:12px; font-size:0.85rem;">выбор технологий основан на потребностях вашего проекта.</p>';
             }
         }
     }
 
     function initCalculator() {
-        var serviceOptions = document.querySelectorAll('#calcServices .calc-option');
-        for (var i = 0; i < serviceOptions.length; i++) {
-            var o = serviceOptions[i];
-            o.addEventListener('click', function() {
-                var s = this.getAttribute('data-service');
+        const serviceOptions = document.querySelectorAll('#calcServices .calc-option');
+        serviceOptions.forEach(o => {
+            o.addEventListener('click', () => {
+                const s = o.getAttribute('data-service');
                 if (selected.has(s)) {
                     selected.delete(s);
-                    this.classList.remove('selected');
+                    o.classList.remove('selected');
                 } else {
                     selected.add(s);
-                    this.classList.add('selected');
+                    o.classList.add('selected');
                 }
                 updateCalculator();
             });
-        }
+        });
         
-        var complexityOptions = document.querySelectorAll('#calcComplexity .calc-option');
-        for (var i = 0; i < complexityOptions.length; i++) {
-            var o = complexityOptions[i];
-            o.addEventListener('click', function() {
-                complexity = this.getAttribute('data-complex');
-                var allOptions = document.querySelectorAll('#calcComplexity .calc-option');
-                for (var j = 0; j < allOptions.length; j++) {
-                    allOptions[j].classList.remove('selected');
-                }
-                this.classList.add('selected');
+        const complexityOptions = document.querySelectorAll('#calcComplexity .calc-option');
+        complexityOptions.forEach(o => {
+            o.addEventListener('click', () => {
+                complexity = o.getAttribute('data-complex');
+                document.querySelectorAll('#calcComplexity .calc-option').forEach(opt => opt.classList.remove('selected'));
+                o.classList.add('selected');
                 updateCalculator();
             });
-        }
+        });
         
-        var defaultComplexity = document.querySelector('#calcComplexity .calc-option[data-complex="simple"]');
+        const defaultComplexity = document.querySelector('#calcComplexity .calc-option[data-complex="simple"]');
         if (defaultComplexity) defaultComplexity.classList.add('selected');
         updateCalculator();
     }
@@ -249,60 +259,65 @@
     // ПЛАВНЫЙ СКРОЛЛ
     // ============================================
     function initSmoothScroll() {
-        var links = document.querySelectorAll('a[href^="#"]');
-        for (var i = 0; i < links.length; i++) {
-            var a = links[i];
-            a.addEventListener('click', function(e) {
-                var href = this.getAttribute('href');
-                if (href === "#" || href === "") return;
-                var target = document.querySelector(href);
-                if (target) {
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            const href = a.getAttribute('href');
+            if (href === "#" || href === "") return;
+            const target = document.querySelector(href);
+            if (target) {
+                a.addEventListener('click', e => {
                     e.preventDefault();
                     target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        }
+                });
+            }
+        });
     }
 
     // ============================================
     // ФОРМА
     // ============================================
     function initForm() {
-        var form = document.getElementById('mainForm');
-        var stat = document.getElementById('formStatus');
+        const form = document.getElementById('mainForm');
+        const stat = document.getElementById('formStatus');
         if (form) {
-            form.addEventListener('submit', function(e) {
+            form.addEventListener('submit', e => {
                 e.preventDefault();
-                var name = document.getElementById('userName') ? document.getElementById('userName').value.trim() : '';
-                var phone = document.getElementById('userPhone') ? document.getElementById('userPhone').value.trim() : '';
-                var email = document.getElementById('userEmail') ? document.getElementById('userEmail').value.trim() : '';
+                const name = document.getElementById('userName')?.value.trim() || '';
+                const phone = document.getElementById('userPhone')?.value.trim() || '';
+                const email = document.getElementById('userEmail')?.value.trim() || '';
                 
                 if (!name || !phone || !email) {
                     if (stat) stat.innerHTML = '<div style="background:#990000; padding:12px; border-radius:8px;">❌ заполните все обязательные поля (имя, телефон, email)</div>';
-                    setTimeout(function() { if (stat) stat.innerHTML = ''; }, 4000);
+                    setTimeout(() => { if (stat) stat.innerHTML = ''; }, 4000);
                     return;
                 }
                 
                 console.log('заявка:', { name, phone, email });
                 if (stat) stat.innerHTML = '<div style="background:#F5B700; color:#0D1117; padding:12px; border-radius:8px;">✅ спасибо! менеджер свяжется с вами в ближайшее время.</div>';
                 form.reset();
-                setTimeout(function() { if (stat) stat.innerHTML = ''; }, 5000);
+                setTimeout(() => { if (stat) stat.innerHTML = ''; }, 5000);
             });
         }
     }
 
     // ============================================
-    // ФИКСАЦИЯ ШАПКИ
+    // ФИКСАЦИЯ ШАПКИ (оптимизировано с throttling)
     // ============================================
     function initHeaderFixed() {
-        var header = document.getElementById('mainHeader');
+        const header = document.getElementById('mainHeader');
         if (!header) return;
         
+        let ticking = false;
         function handleHeaderScroll() {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    if (window.scrollY > 50) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                    ticking = false;
+                });
+                ticking = true;
             }
         }
         window.addEventListener('scroll', handleHeaderScroll);
@@ -317,7 +332,7 @@
         const navMenu = document.getElementById('navMenu');
         
         if (burgerBtn && navMenu) {
-            burgerBtn.addEventListener('click', function() {
+            burgerBtn.addEventListener('click', () => {
                 burgerBtn.classList.toggle('active');
                 navMenu.classList.toggle('active');
                 document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
@@ -334,7 +349,7 @@
     }
 
     // ============================================
-    // 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК
+    // 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК (оптимизировано)
     // ============================================
     function initQuantumCards() {
         const cards = document.querySelectorAll('.services-grid .service-card');
@@ -342,10 +357,10 @@
         if (prefersReducedMotion || cards.length === 0) return;
 
         cards.forEach(card => {
-            const seg1 = card.querySelector('.seg-1');
-            const seg2 = card.querySelector('.seg-2');
-            const seg3 = card.querySelector('.seg-3');
-            const seg4 = card.querySelector('.seg-4');
+            const seg1 = card.querySelector('.segment-1');
+            const seg2 = card.querySelector('.segment-2');
+            const seg3 = card.querySelector('.segment-3');
+            const seg4 = card.querySelector('.segment-4');
             const segments = [seg1, seg2, seg3, seg4];
             const content = card.querySelector('.card-content');
 
@@ -353,6 +368,7 @@
 
             let targetRotateY = 0;
             let currentRotateY = 0;
+            let animationFrame = null;
 
             let segTargets = {
                 seg1: { x: 0, ry: 0 },
@@ -370,31 +386,29 @@
             const MAX_X = 12;
             const MAX_RY = 4;
 
-            function limit(value, max) {
-                return Math.min(max, Math.max(-max, value));
-            }
+            const limit = (value, max) => Math.min(max, Math.max(-max, value));
 
             function updateSegments() {
                 segCurrent.seg1.x += (segTargets.seg1.x - segCurrent.seg1.x) * 0.2;
                 segCurrent.seg1.ry += (segTargets.seg1.ry - segCurrent.seg1.ry) * 0.2;
-                seg1.style.transform = `translateX(${segCurrent.seg1.x}px) rotateY(${segCurrent.seg1.ry}deg) translateZ(-5px)`;
+                if (seg1) seg1.style.transform = `translateX(${segCurrent.seg1.x}px) rotateY(${segCurrent.seg1.ry}deg) translateZ(-5px)`;
                 
                 segCurrent.seg2.x += (segTargets.seg2.x - segCurrent.seg2.x) * 0.2;
-                seg2.style.transform = `translateX(${segCurrent.seg2.x}px) translateZ(-5px)`;
+                if (seg2) seg2.style.transform = `translateX(${segCurrent.seg2.x}px) translateZ(-5px)`;
                 
                 segCurrent.seg3.x += (segTargets.seg3.x - segCurrent.seg3.x) * 0.2;
-                seg3.style.transform = `translateX(${segCurrent.seg3.x}px) translateZ(-5px)`;
+                if (seg3) seg3.style.transform = `translateX(${segCurrent.seg3.x}px) translateZ(-5px)`;
                 
                 segCurrent.seg4.x += (segTargets.seg4.x - segCurrent.seg4.x) * 0.2;
                 segCurrent.seg4.ry += (segTargets.seg4.ry - segCurrent.seg4.ry) * 0.2;
-                seg4.style.transform = `translateX(${segCurrent.seg4.x}px) rotateY(${segCurrent.seg4.ry}deg) translateZ(-5px)`;
+                if (seg4) seg4.style.transform = `translateX(${segCurrent.seg4.x}px) rotateY(${segCurrent.seg4.ry}deg) translateZ(-5px)`;
             }
 
             function animate() {
                 currentRotateY += (targetRotateY - currentRotateY) * 0.12;
                 card.style.transform = `rotateY(${currentRotateY}deg)`;
                 updateSegments();
-                requestAnimationFrame(animate);
+                animationFrame = requestAnimationFrame(animate);
             }
             animate();
 
@@ -422,9 +436,7 @@
                 segTargets.seg4.x = limit(relX * 12, MAX_X);
                 segTargets.seg4.ry = limit(relX * 4, MAX_RY);
 
-                if (content) {
-                    content.style.transform = `translateZ(25px)`;
-                }
+                if (content) content.style.transform = `translateZ(25px)`;
             });
 
             card.addEventListener('mouseleave', () => {
@@ -438,9 +450,7 @@
                 segments.forEach(seg => {
                     if (seg) seg.style.borderColor = '';
                 });
-                if (content) {
-                    content.style.transform = 'translateZ(25px)';
-                }
+                if (content) content.style.transform = 'translateZ(25px)';
             });
         });
     }
@@ -478,9 +488,7 @@
             
             const kineticBtn = document.createElement('div');
             kineticBtn.className = `kinetic-btn ${sizeClass}`;
-            if (telegramLink) {
-                kineticBtn.setAttribute('data-telegram-link', telegramLink);
-            }
+            if (telegramLink) kineticBtn.setAttribute('data-telegram-link', telegramLink);
             
             const segLeft = document.createElement('div');
             segLeft.className = 'segment segment-left';
@@ -510,7 +518,7 @@
             initKineticButtonEffects(kineticBtn, btnText);
             
             if (telegramLink) {
-                kineticBtn.addEventListener('click', function(e) {
+                kineticBtn.addEventListener('click', e => {
                     e.stopPropagation();
                     window.open(telegramLink, '_blank');
                 });
@@ -518,7 +526,6 @@
         });
     }
 
-    // Эффекты для одной кинетической кнопки
     function initKineticButtonEffects(btn, originalText) {
         const leftSeg = btn.querySelector('.segment-left');
         const centerSeg = btn.querySelector('.segment-center');
@@ -529,6 +536,7 @@
         
         let targetRotateX = 0, targetRotateY = 0;
         let currentRotateX = 0, currentRotateY = 0;
+        let animationFrame = null;
         
         function triggerSparks(count = 3, clientX = null, clientY = null) {
             const rect = btn.getBoundingClientRect();
@@ -555,7 +563,7 @@
                 }
                 
                 spark.style.animation = 'none';
-                spark.offsetHeight;
+                spark.offsetHeight; // Требуется для перезапуска анимации, но это только при клике
                 spark.style.animation = 'sparkFloat 0.5s ease-out forwards';
             }
         }
@@ -564,11 +572,11 @@
             currentRotateX += (targetRotateX - currentRotateX) * 0.12;
             currentRotateY += (targetRotateY - currentRotateY) * 0.12;
             btn.style.transform = `rotateX(${currentRotateX}deg) rotateY(${currentRotateY}deg)`;
-            requestAnimationFrame(animateRotation);
+            animationFrame = requestAnimationFrame(animateRotation);
         }
         animateRotation();
         
-        btn.addEventListener('mousemove', (e) => {
+        btn.addEventListener('mousemove', e => {
             const rect = btn.getBoundingClientRect();
             const relX = (e.clientX - rect.left) / rect.width - 0.5;
             const relY = (e.clientY - rect.top) / rect.height - 0.5;
@@ -590,9 +598,7 @@
             }
         });
         
-        btn.addEventListener('mouseenter', () => {
-            triggerSparks(3);
-        });
+        btn.addEventListener('mouseenter', () => triggerSparks(3));
         
         btn.addEventListener('mouseleave', () => {
             leftSeg.style.transform = '';
@@ -602,7 +608,7 @@
             targetRotateY = 0;
         });
         
-        btn.addEventListener('click', (e) => {
+        btn.addEventListener('click', e => {
             triggerSparks(8, e.clientX, e.clientY);
             btn.style.transform = `scale(0.97)`;
             setTimeout(() => {
@@ -683,7 +689,7 @@
         items.forEach(item => {
             const lid = item.querySelector('.case-lid');
             if (lid) {
-                lid.addEventListener('click', (e) => {
+                lid.addEventListener('click', e => {
                     e.preventDefault();
                     openCase(item);
                 });
@@ -735,13 +741,20 @@
         
         initKineticButtonEffects(kineticBtn, btnText);
         
+        let ticking = false;
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                wrapper.classList.add('visible');
-                kineticBtn.classList.add('visible');
-            } else {
-                wrapper.classList.remove('visible');
-                kineticBtn.classList.remove('visible');
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    if (window.scrollY > 300) {
+                        wrapper.classList.add('visible');
+                        kineticBtn.classList.add('visible');
+                    } else {
+                        wrapper.classList.remove('visible');
+                        kineticBtn.classList.remove('visible');
+                    }
+                    ticking = false;
+                });
+                ticking = true;
             }
         });
         
@@ -762,13 +775,11 @@
             if (!header) return;
             
             header.addEventListener('click', () => {
-                // Закрываем все другие панели
                 panels.forEach(p => {
                     if (p !== panel && p.classList.contains('active')) {
                         p.classList.remove('active');
                     }
                 });
-                // Переключаем текущую панель
                 panel.classList.toggle('active');
             });
         });
@@ -1092,6 +1103,8 @@
         const stackList = document.getElementById('modalStackList');
         const advantagesList = document.getElementById('modalAdvantages');
         
+        if (!modal || !title || !description || !stackList || !advantagesList) return;
+        
         title.textContent = serviceName;
         description.textContent = details.description;
         
@@ -1131,7 +1144,7 @@
             
             if (btn && titleElement) {
                 const serviceName = titleElement.textContent.trim();
-                btn.addEventListener('click', (e) => {
+                btn.addEventListener('click', e => {
                     e.stopPropagation();
                     openServiceModal(serviceName);
                 });
@@ -1139,7 +1152,7 @@
         });
         
         if (closeBtn) closeBtn.addEventListener('click', closeModal);
-        if (modal) modal.addEventListener('click', (e) => {
+        if (modal) modal.addEventListener('click', e => {
             if (e.target === modal) closeModal();
         });
         if (contactBtn) contactBtn.addEventListener('click', () => {
@@ -1147,7 +1160,7 @@
             const contactSection = document.getElementById('contact');
             if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
         });
-        document.addEventListener('keydown', (e) => {
+        document.addEventListener('keydown', e => {
             if (e.key === 'Escape') {
                 const modalEl = document.getElementById('serviceModal');
                 if (modalEl && modalEl.classList.contains('active')) closeModal();
@@ -1159,12 +1172,10 @@
     // ЗАПУСК ВСЕХ ИНИЦИАЛИЗАЦИЙ
     // ============================================
     document.addEventListener('DOMContentLoaded', function() {
-        // Инициализация hero-баннера
         initHeroMatrixRain();
         initHeroStaticElements();
         initHeroTypewriter();
         
-        // Инициализация остальных функций
         initTechTooltips();
         initCalculatorWithFallback();
         initSmoothScroll();
@@ -1177,9 +1188,8 @@
         initLazyKinescope();
         initKineticToTop();
         initServiceModal();
-        initPortfolioAccordion();  // ← ДОБАВЛЕНА ИНИЦИАЛИЗАЦИЯ АККОРДЕОНА ПОРТФОЛИО
+        initPortfolioAccordion();
         
-        // Загрузка компонентов header и footer
         loadComponent('header-placeholder', 'header.html', function() {
             initBurgerMenu();
             initHeaderFixed();
