@@ -1,5 +1,5 @@
 // ============================================
-// common.js — ПОЛНАЯ ОПТИМИЗИРОВАННАЯ ВЕРСИЯ
+// common.js — ПОЛНАЯ ИСПРАВЛЕННАЯ ВЕРСИЯ
 // ============================================
 
 (function() {
@@ -188,9 +188,9 @@
         var stackEl = document.getElementById('stackExplanation');
         if (stackEl) {
             if (h === 0) {
-                stackEl.innerHTML = '<h3>Рекомендуемый стек</h3><p>выберите услуги для расчёта</p>';
+                stackEl.innerHTML = '<h4>рекомендуемый стек</h4><p>выберите услуги для расчёта</p>';
             } else {
-                stackEl.innerHTML = '<h3>Рекомендуемый стек</h3><p><strong>' + rec.rec + '</strong></p><h4>преимущества</h4><p>' + rec.exp + '</p>' + timeHtml + '<p style="margin-top:12px; font-size:0.85rem;">выбор технологий основан на потребностях вашего проекта.</p>';
+                stackEl.innerHTML = '<h4>рекомендуемый стек</h4><p><strong>' + rec.rec + '</strong></p><h4>преимущества</h4><p>' + rec.exp + '</p>' + timeHtml + '<p style="margin-top:12px; font-size:0.85rem;">выбор технологий основан на потребностях вашего проекта.</p>';
             }
         }
     }
@@ -342,10 +342,10 @@
         if (prefersReducedMotion || cards.length === 0) return;
 
         cards.forEach(card => {
-            const seg1 = card.querySelector('.segment-1');
-            const seg2 = card.querySelector('.segment-2');
-            const seg3 = card.querySelector('.segment-3');
-            const seg4 = card.querySelector('.segment-4');
+            const seg1 = card.querySelector('.seg-1');
+            const seg2 = card.querySelector('.seg-2');
+            const seg3 = card.querySelector('.seg-3');
+            const seg4 = card.querySelector('.seg-4');
             const segments = [seg1, seg2, seg3, seg4];
             const content = card.querySelector('.card-content');
 
@@ -446,12 +446,12 @@
     }
 
     // ============================================
-    // КИНЕТИЧЕСКИЕ КНОПКИ — БЕЗ section-more-btn
+    // КИНЕТИЧЕСКИЕ КНОПКИ (3 СЕГМЕНТА)
     // ============================================
     function initKineticButtons() {
         const buttonsToConvert = document.querySelectorAll(
             '.btn-primary, .btn-outline, .hero-btn-primary, .hero-btn-outline, ' +
-            'button[type="submit"], .header-telegram'
+            '.section-more-btn, button[type="submit"], .header-telegram'
         );
         
         if (buttonsToConvert.length === 0) return;
@@ -472,6 +472,7 @@
             if (btnId) wrapper.id = btnId;
             
             let sizeClass = '';
+            if (btnClass.includes('section-more-btn')) sizeClass = 'small';
             if (btnClass.includes('hero-btn') || (btnClass.includes('btn-primary') && btnText.length > 15)) sizeClass = 'large';
             if (btnClass.includes('header-telegram')) sizeClass = 'header-telegram-btn';
             
@@ -761,115 +762,16 @@
             if (!header) return;
             
             header.addEventListener('click', () => {
+                // Закрываем все другие панели
                 panels.forEach(p => {
                     if (p !== panel && p.classList.contains('active')) {
                         p.classList.remove('active');
                     }
                 });
+                // Переключаем текущую панель
                 panel.classList.toggle('active');
             });
         });
-    }
-
-    // ============================================
-    // МОБИЛЬНЫЙ АККОРДЕОН ДЛЯ СЕКЦИЙ
-    // ============================================
-    function initMobileAccordion() {
-        // ИЗМЕНЕНО: добавлен .contacts-new-section
-        const sections = document.querySelectorAll('.lazy-section, .contacts-new-section');
-        
-        function isMobile() {
-            return window.innerWidth <= 768;
-        }
-        
-        function setupAccordion() {
-            sections.forEach(section => {
-                let header = section.querySelector('.section-header');
-                if (!header) {
-                    header = section.querySelector('.team-header');
-                }
-                if (!header) return;
-                
-                let content = null;
-                if (section.id === 'services') content = section.querySelector('.services-grid');
-                else if (section.id === 'ai-reklama') content = section.querySelector('.ai-design-grid');
-                else if (section.id === 'competences') content = section.querySelector('.competences-grid');
-                else if (section.classList.contains('team-section')) content = section.querySelector('.team-layout');
-                else if (section.classList.contains('reviews-section')) content = section.querySelector('.reviews-grid');
-                else if (section.classList.contains('mission-new-section')) content = section.querySelector('.mission-grid');
-                else if (section.id === 'process') content = section.querySelector('.steps-container');
-                else if (section.id === 'calculator') content = section.querySelector('.calculator-two-columns');
-                else if (section.id === 'faq') content = section.querySelector('.cases-accordion');
-                else if (section.id === 'portfolio') content = section.querySelector('.portfolio-accordion');
-                else if (section.classList.contains('contacts-new-section')) content = section.querySelector('.contacts-new-grid');
-                
-                if (!content) return;
-                
-                if (isMobile()) {
-                    if (!section.classList.contains('accordion-section')) {
-                        section.classList.add('accordion-section');
-                        content.classList.add('accordion-content');
-                        header.classList.add('accordion-trigger');
-                        
-                        if (!header.querySelector('.accordion-icon')) {
-                            const icon = document.createElement('span');
-                            icon.className = 'accordion-icon';
-                            icon.innerHTML = '▼';
-                            header.appendChild(icon);
-                        }
-                        
-                        const oldHandler = section._accordionHandler;
-                        if (oldHandler) {
-                            header.removeEventListener('click', oldHandler);
-                        }
-                        
-                        const handler = () => {
-                            const isOpen = content.classList.contains('open');
-                            if (isOpen) {
-                                content.classList.remove('open');
-                                section.classList.remove('open');
-                                const icon = header.querySelector('.accordion-icon');
-                                if (icon) icon.style.transform = 'rotate(0deg)';
-                            } else {
-                                content.classList.add('open');
-                                section.classList.add('open');
-                                const icon = header.querySelector('.accordion-icon');
-                                if (icon) icon.style.transform = 'rotate(180deg)';
-                            }
-                        };
-                        section._accordionHandler = handler;
-                        header.addEventListener('click', handler);
-                        
-                        content.classList.remove('open');
-                        section.classList.remove('open');
-                        const icon = header.querySelector('.accordion-icon');
-                        if (icon) icon.style.transform = 'rotate(0deg)';
-                    }
-                } else {
-                    if (section.classList.contains('accordion-section')) {
-                        section.classList.remove('accordion-section');
-                        content.classList.remove('accordion-content', 'open');
-                        header.classList.remove('accordion-trigger');
-                        
-                        const icon = header.querySelector('.accordion-icon');
-                        if (icon) icon.remove();
-                        
-                        const handler = section._accordionHandler;
-                        if (handler) {
-                            header.removeEventListener('click', handler);
-                            delete section._accordionHandler;
-                        }
-                        
-                        content.style.maxHeight = '';
-                        content.style.opacity = '1';
-                        content.style.overflow = '';
-                    }
-                }
-            });
-        }
-        
-        setupAccordion();
-        window.addEventListener('resize', setupAccordion);
     }
 
     // ============================================
@@ -1190,8 +1092,6 @@
         const stackList = document.getElementById('modalStackList');
         const advantagesList = document.getElementById('modalAdvantages');
         
-        if (!modal || !title || !description || !stackList || !advantagesList) return;
-        
         title.textContent = serviceName;
         description.textContent = details.description;
         
@@ -1259,32 +1159,39 @@
     // ЗАПУСК ВСЕХ ИНИЦИАЛИЗАЦИЙ
     // ============================================
     document.addEventListener('DOMContentLoaded', function() {
+        // Инициализация hero-баннера
         initHeroMatrixRain();
         initHeroStaticElements();
         initHeroTypewriter();
-        initHeaderFixed();
-        initBurgerMenu();
-        initSmoothScroll();
-        initForm();
-        initKineticToTop();
         
+        // Инициализация остальных функций
         initTechTooltips();
         initCalculatorWithFallback();
+        initSmoothScroll();
+        initForm();
+        initHeaderFixed();
+        initBurgerMenu();
         initQuantumCards();
         initKineticButtons();
         initCaseAccordion();
         initLazyKinescope();
+        initKineticToTop();
         initServiceModal();
-        initPortfolioAccordion();
+        initPortfolioAccordion();  // ← ДОБАВЛЕНА ИНИЦИАЛИЗАЦИЯ АККОРДЕОНА ПОРТФОЛИО
         
-        initMobileAccordion();
-        
+        // Загрузка компонентов header и footer
         loadComponent('header-placeholder', 'header.html', function() {
             initBurgerMenu();
             initHeaderFixed();
-            initKineticButtons();
+            setTimeout(() => {
+                initKineticButtons();
+            }, 100);
         });
-        loadComponent('footer-placeholder', 'footer.html', function() {});
+        loadComponent('footer-placeholder', 'footer.html', function() {
+            setTimeout(() => {
+                initKineticButtons();
+            }, 100);
+        });
     });
 
 })();
