@@ -1760,7 +1760,7 @@ main { padding-top: 0; }
         margin-bottom: 20px;
     }
     
-    /* Дополнительно — скрываем всё, что внутри контента, до открытия */
+    /* Скрываем внутренние элементы до открытия */
     .accordion-content * {
         opacity: 0;
         transition: opacity 0.2s ease;
@@ -1768,5 +1768,19 @@ main { padding-top: 0; }
     
     .accordion-content.open * {
         opacity: 1;
+    }
+    
+    /* Стили для заголовков секций (единообразие) */
+    .team-section .section-header,
+    .reviews-section .section-header,
+    .mission-new-section .section-header {
+        margin-bottom: 0;
+    }
+    
+    .team-subtitle,
+    .reviews-subtitle,
+    .mission-subtitle {
+        margin-top: 16px;
+        margin-bottom: 0;
     }
 }
