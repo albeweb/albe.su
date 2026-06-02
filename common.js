@@ -1,5 +1,5 @@
 // ============================================
-// common.js — ПОЛНАЯ ИСПРАВЛЕННАЯ ВЕРСИЯ
+// common.js — ПОЛНАЯ ВЕРСИЯ
 // ============================================
 
 (function() {
@@ -188,9 +188,9 @@
         var stackEl = document.getElementById('stackExplanation');
         if (stackEl) {
             if (h === 0) {
-                stackEl.innerHTML = '<h4>рекомендуемый стек</h4><p>выберите услуги для расчёта</p>';
+                stackEl.innerHTML = '<h3>Рекомендуемый стек</h3><p>выберите услуги для расчёта</p>';
             } else {
-                stackEl.innerHTML = '<h4>рекомендуемый стек</h4><p><strong>' + rec.rec + '</strong></p><h4>преимущества</h4><p>' + rec.exp + '</p>' + timeHtml + '<p style="margin-top:12px; font-size:0.85rem;">выбор технологий основан на потребностях вашего проекта.</p>';
+                stackEl.innerHTML = '<h3>Рекомендуемый стек</h3><p><strong>' + rec.rec + '</strong></p><h4>преимущества</h4><p>' + rec.exp + '</p>' + timeHtml + '<p style="margin-top:12px; font-size:0.85rem;">выбор технологий основан на потребностях вашего проекта.</p>';
             }
         }
     }
@@ -342,10 +342,10 @@
         if (prefersReducedMotion || cards.length === 0) return;
 
         cards.forEach(card => {
-            const seg1 = card.querySelector('.seg-1');
-            const seg2 = card.querySelector('.seg-2');
-            const seg3 = card.querySelector('.seg-3');
-            const seg4 = card.querySelector('.seg-4');
+            const seg1 = card.querySelector('.segment-1');
+            const seg2 = card.querySelector('.segment-2');
+            const seg3 = card.querySelector('.segment-3');
+            const seg4 = card.querySelector('.segment-4');
             const segments = [seg1, seg2, seg3, seg4];
             const content = card.querySelector('.card-content');
 
@@ -762,16 +762,96 @@
             if (!header) return;
             
             header.addEventListener('click', () => {
-                // Закрываем все другие панели
                 panels.forEach(p => {
                     if (p !== panel && p.classList.contains('active')) {
                         p.classList.remove('active');
                     }
                 });
-                // Переключаем текущую панель
                 panel.classList.toggle('active');
             });
         });
+    }
+
+    // ============================================
+    // МОБИЛЬНЫЙ АККОРДЕОН ДЛЯ СЕКЦИЙ
+    // ============================================
+    function initMobileAccordion() {
+        // Секции, которые будут сворачиваться на мобильных
+        const sections = [
+            { id: 'services', selector: '.services-grid' },
+            { id: 'ai-reklama', selector: '.ai-design-grid' },
+            { id: 'competences', selector: '.competences-grid' },
+            { id: 'team-section', selector: '.team-layout' },
+            { id: 'reviews-section', selector: '.reviews-grid' },
+            { id: 'mission-new-section', selector: '.mission-grid' }
+        ];
+        
+        function checkWidthAndSetup() {
+            const isMobile = window.innerWidth <= 768;
+            
+            sections.forEach(section => {
+                const sectionEl = document.querySelector('#' + section.id) || document.querySelector('.' + section.id);
+                if (!sectionEl) return;
+                
+                const contentEl = sectionEl.querySelector(section.selector);
+                const headerEl = sectionEl.querySelector('.section-header');
+                
+                if (!contentEl || !headerEl) return;
+                
+                if (isMobile) {
+                    // На мобильных — добавляем классы и обработчики
+                    if (!sectionEl.classList.contains('accordion-section')) {
+                        sectionEl.classList.add('accordion-section');
+                        contentEl.classList.add('accordion-content');
+                        headerEl.classList.add('accordion-trigger');
+                        
+                        // Добавляем иконку к заголовку
+                        if (!headerEl.querySelector('.accordion-icon')) {
+                            const icon = document.createElement('span');
+                            icon.className = 'accordion-icon';
+                            icon.innerHTML = '▼';
+                            icon.style.marginLeft = '12px';
+                            icon.style.fontSize = '0.8rem';
+                            icon.style.color = '#F5B700';
+                            icon.style.transition = 'transform 0.2s';
+                            headerEl.appendChild(icon);
+                        }
+                        
+                        // Обработчик клика
+                        const handler = () => {
+                            const isOpen = contentEl.classList.contains('open');
+                            if (isOpen) {
+                                contentEl.classList.remove('open');
+                                sectionEl.classList.remove('open');
+                                const icon = headerEl.querySelector('.accordion-icon');
+                                if (icon) icon.style.transform = 'rotate(0deg)';
+                            } else {
+                                contentEl.classList.add('open');
+                                sectionEl.classList.add('open');
+                                const icon = headerEl.querySelector('.accordion-icon');
+                                if (icon) icon.style.transform = 'rotate(180deg)';
+                            }
+                        };
+                        headerEl.removeEventListener('click', handler);
+                        headerEl.addEventListener('click', handler);
+                    }
+                } else {
+                    // На десктопе — убираем аккордеон
+                    if (sectionEl.classList.contains('accordion-section')) {
+                        sectionEl.classList.remove('accordion-section');
+                        contentEl.classList.remove('accordion-content', 'open');
+                        headerEl.classList.remove('accordion-trigger');
+                        
+                        const icon = headerEl.querySelector('.accordion-icon');
+                        if (icon) icon.remove();
+                    }
+                }
+            });
+        }
+        
+        // Запускаем при загрузке и при изменении размера окна
+        checkWidthAndSetup();
+        window.addEventListener('resize', checkWidthAndSetup);
     }
 
     // ============================================
@@ -1092,6 +1172,8 @@
         const stackList = document.getElementById('modalStackList');
         const advantagesList = document.getElementById('modalAdvantages');
         
+        if (!modal || !title || !description || !stackList || !advantagesList) return;
+        
         title.textContent = serviceName;
         description.textContent = details.description;
         
@@ -1177,7 +1259,8 @@
         initLazyKinescope();
         initKineticToTop();
         initServiceModal();
-        initPortfolioAccordion();  // ← ДОБАВЛЕНА ИНИЦИАЛИЗАЦИЯ АККОРДЕОНА ПОРТФОЛИО
+        initPortfolioAccordion();
+        initMobileAccordion();  // ← НОВЫЙ АККОРДЕОН ДЛЯ МОБИЛЬНЫХ
         
         // Загрузка компонентов header и footer
         loadComponent('header-placeholder', 'header.html', function() {
