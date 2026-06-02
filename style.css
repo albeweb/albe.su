@@ -1755,12 +1755,12 @@ main { padding-top: 0; }
         color: var(--color-yellow);
     }
     
-    /* Отступы для секций, чтобы не было скачков */
+    /* Отступы для секций */
     .accordion-section {
         margin-bottom: 20px;
     }
     
-    /* Скрываем внутренние элементы до открытия */
+    /* Скрываем внутренности до открытия */
     .accordion-content * {
         opacity: 0;
         transition: opacity 0.2s ease;
@@ -1768,19 +1768,5 @@ main { padding-top: 0; }
     
     .accordion-content.open * {
         opacity: 1;
-    }
-    
-    /* Стили для заголовков секций (единообразие) */
-    .team-section .section-header,
-    .reviews-section .section-header,
-    .mission-new-section .section-header {
-        margin-bottom: 0;
-    }
-    
-    .team-subtitle,
-    .reviews-subtitle,
-    .mission-subtitle {
-        margin-top: 16px;
-        margin-bottom: 0;
     }
 }
