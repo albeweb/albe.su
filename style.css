@@ -1859,3 +1859,60 @@ main { padding-top: 0; }
     .contacts-new-section.open .contacts-new-grid * {
         opacity: 1;
     }
+/* ============================================ */
+/* АККОРДЕОН ДЛЯ СЕКЦИИ КОНТАКТОВ (МОБИЛЬНАЯ ВЕРСИЯ) */
+/* ============================================ */
+
+@media (max-width: 768px) {
+    .contacts-new-section {
+        margin-bottom: 0;
+    }
+    
+    .contacts-new-section .section-header {
+        cursor: pointer;
+        user-select: none;
+        position: relative;
+        margin-bottom: 0;
+        padding-right: 30px;
+    }
+    
+    .contacts-new-section .section-header::after {
+        content: '▼';
+        position: absolute;
+        right: 0;
+        top: 0;
+        font-size: 1.2rem;
+        color: var(--color-yellow);
+        transition: transform 0.3s ease;
+    }
+    
+    .contacts-new-section.open .section-header::after {
+        transform: rotate(180deg);
+    }
+    
+    .contacts-new-section .contacts-new-grid {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out, opacity 0.3s ease;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        padding: 0 !important;
+    }
+    
+    .contacts-new-section.open .contacts-new-grid {
+        max-height: 2000px;
+        opacity: 1;
+        margin-top: 32px !important;
+        margin-bottom: 0 !important;
+    }
+    
+    .contacts-new-section .contacts-new-grid * {
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+    
+    .contacts-new-section.open .contacts-new-grid * {
+        opacity: 1;
+    }
+}
