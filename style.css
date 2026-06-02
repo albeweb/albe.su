@@ -863,6 +863,118 @@ main { padding-top: 0; }
 .accordion-panel-content::-webkit-scrollbar-thumb { background: #06B6D4; border-radius: 4px; }
 
 /* ============================================ */
+/* МОБИЛЬНАЯ ВЕРСИЯ ПОРТФОЛИО */
+/* ============================================ */
+
+@media (max-width: 768px) {
+    .portfolio-accordion {
+        flex-direction: column;
+        min-height: auto;
+        gap: 12px;
+    }
+    
+    /* Все панели — по умолчанию закрыты, компактные */
+    .accordion-panel {
+        min-height: 70px;
+        height: 70px;
+        margin: 0;
+        flex: none;
+        transition: height 0.3s ease;
+    }
+    
+    /* Открытая панель — растягивается */
+    .accordion-panel.active {
+        min-height: auto;
+        height: auto;
+        flex: none;
+        animation: none;
+    }
+    
+    /* Заголовок панели — горизонтальный */
+    .accordion-panel-header {
+        position: relative;
+        width: 100%;
+        height: 70px;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 20px;
+        background: rgba(10, 10, 10, 0.9);
+    }
+    
+    .panel-number, .panel-title {
+        writing-mode: horizontal-tb;
+        transform: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .panel-number {
+        font-size: 1.2rem;
+        background: linear-gradient(135deg, #F5B700, #10B981);
+        -webkit-background-clip: text;
+        background-clip: text;
+    }
+    
+    .panel-title h3 {
+        font-size: 1rem;
+        letter-spacing: 1px;
+        margin-left: 12px;
+    }
+    
+    .accordion-panel-header::after {
+        writing-mode: horizontal-tb;
+        transform: none;
+        margin-top: 0;
+        font-size: 1.2rem;
+    }
+    
+    /* Контент — скрыт у закрытых панелей */
+    .accordion-panel:not(.active) .accordion-panel-content {
+        display: none;
+    }
+    
+    /* Контент — показывается только у открытой панели */
+    .accordion-panel.active .accordion-panel-content {
+        display: flex;
+        position: relative;
+        left: 0;
+        width: 100%;
+        height: auto;
+        padding: 20px;
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .panel-image {
+        max-height: 200px;
+    }
+    
+    .panel-description p {
+        font-size: 0.9rem;
+    }
+    
+    .tech-items span {
+        font-size: 0.7rem;
+        padding: 4px 10px;
+    }
+    
+    .metrics-row {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .metrics-bottom {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .metric-hours, .metric-price {
+        min-width: auto;
+    }
+}
+
+/* ============================================ */
 /* 15. БЛОК КОМАНДА */
 /* ============================================ */
 
