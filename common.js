@@ -446,12 +446,12 @@
     }
 
     // ============================================
-    // КИНЕТИЧЕСКИЕ КНОПКИ (3 СЕГМЕНТА)
+    // КИНЕТИЧЕСКИЕ КНОПКИ — БЕЗ section-more-btn
     // ============================================
     function initKineticButtons() {
         const buttonsToConvert = document.querySelectorAll(
             '.btn-primary, .btn-outline, .hero-btn-primary, .hero-btn-outline, ' +
-            '.section-more-btn, button[type="submit"], .header-telegram'
+            'button[type="submit"], .header-telegram'
         );
         
         if (buttonsToConvert.length === 0) return;
@@ -472,7 +472,6 @@
             if (btnId) wrapper.id = btnId;
             
             let sizeClass = '';
-            if (btnClass.includes('section-more-btn')) sizeClass = 'small';
             if (btnClass.includes('hero-btn') || (btnClass.includes('btn-primary') && btnText.length > 15)) sizeClass = 'large';
             if (btnClass.includes('header-telegram')) sizeClass = 'header-telegram-btn';
             
@@ -776,7 +775,6 @@
     // МОБИЛЬНЫЙ АККОРДЕОН ДЛЯ СЕКЦИЙ
     // ============================================
     function initMobileAccordion() {
-        // Секции с классом lazy-section
         const sections = document.querySelectorAll('.lazy-section');
         
         function isMobile() {
@@ -785,14 +783,12 @@
         
         function setupAccordion() {
             sections.forEach(section => {
-                // Находим заголовок секции
                 let header = section.querySelector('.section-header');
                 if (!header) {
                     header = section.querySelector('.team-header');
                 }
                 if (!header) return;
                 
-                // Находим контент секции
                 let content = null;
                 if (section.id === 'services') content = section.querySelector('.services-grid');
                 else if (section.id === 'ai-reklama') content = section.querySelector('.ai-design-grid');
@@ -808,13 +804,11 @@
                 if (!content) return;
                 
                 if (isMobile()) {
-                    // Добавляем классы для аккордеона
                     if (!section.classList.contains('accordion-section')) {
                         section.classList.add('accordion-section');
                         content.classList.add('accordion-content');
                         header.classList.add('accordion-trigger');
                         
-                        // Добавляем иконку
                         if (!header.querySelector('.accordion-icon')) {
                             const icon = document.createElement('span');
                             icon.className = 'accordion-icon';
@@ -822,13 +816,11 @@
                             header.appendChild(icon);
                         }
                         
-                        // Удаляем старый обработчик
                         const oldHandler = section._accordionHandler;
                         if (oldHandler) {
                             header.removeEventListener('click', oldHandler);
                         }
                         
-                        // Создаём новый обработчик
                         const handler = () => {
                             const isOpen = content.classList.contains('open');
                             if (isOpen) {
@@ -846,14 +838,12 @@
                         section._accordionHandler = handler;
                         header.addEventListener('click', handler);
                         
-                        // По умолчанию все блоки свернуты
                         content.classList.remove('open');
                         section.classList.remove('open');
                         const icon = header.querySelector('.accordion-icon');
                         if (icon) icon.style.transform = 'rotate(0deg)';
                     }
                 } else {
-                    // На десктопе — убираем аккордеон
                     if (section.classList.contains('accordion-section')) {
                         section.classList.remove('accordion-section');
                         content.classList.remove('accordion-content', 'open');
@@ -868,7 +858,6 @@
                             delete section._accordionHandler;
                         }
                         
-                        // На десктопе показываем контент сразу
                         content.style.maxHeight = '';
                         content.style.opacity = '1';
                         content.style.overflow = '';
@@ -1268,7 +1257,6 @@
     // ЗАПУСК ВСЕХ ИНИЦИАЛИЗАЦИЙ
     // ============================================
     document.addEventListener('DOMContentLoaded', function() {
-        // Критические инициализации (всегда)
         initHeroMatrixRain();
         initHeroStaticElements();
         initHeroTypewriter();
@@ -1278,7 +1266,6 @@
         initForm();
         initKineticToTop();
         
-        // Инициализации для всех устройств
         initTechTooltips();
         initCalculatorWithFallback();
         initQuantumCards();
@@ -1288,10 +1275,8 @@
         initServiceModal();
         initPortfolioAccordion();
         
-        // Мобильный аккордеон
         initMobileAccordion();
         
-        // Загрузка компонентов header и footer
         loadComponent('header-placeholder', 'header.html', function() {
             initBurgerMenu();
             initHeaderFixed();
