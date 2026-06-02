@@ -1715,3 +1715,48 @@ main { padding-top: 0; }
         .nav-menu { padding-top: max(40px, env(safe-area-inset-top)); padding-bottom: max(40px, env(safe-area-inset-bottom)); }
     }
 }
+
+/* ============================================ */
+/* МОБИЛЬНЫЙ АККОРДЕОН ДЛЯ СЕКЦИЙ */
+/* ============================================ */
+
+@media (max-width: 768px) {
+    /* Скрываем контент секций */
+    .accordion-content {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    /* Открытый контент */
+    .accordion-content.open {
+        max-height: 5000px;
+        opacity: 1;
+        margin-top: 30px !important;
+        margin-bottom: 0 !important;
+    }
+    
+    /* Заголовок-триггер */
+    .accordion-trigger {
+        cursor: pointer;
+        user-select: none;
+        margin-bottom: 0 !important;
+    }
+    
+    /* Иконка стрелки */
+    .accordion-icon {
+        display: inline-block;
+        transition: transform 0.2s ease;
+        font-size: 0.8rem;
+        margin-left: 12px;
+        color: var(--color-yellow);
+    }
+    
+    /* Отступы для секций, чтобы не было скачков */
+    .accordion-section {
+        margin-bottom: 20px;
+    }
+}
