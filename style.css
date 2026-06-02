@@ -863,116 +863,100 @@ main { padding-top: 0; }
 .accordion-panel-content::-webkit-scrollbar-thumb { background: #06B6D4; border-radius: 4px; }
 
 /* ============================================ */
-/* МОБИЛЬНАЯ ВЕРСИЯ ПОРТФОЛИО */
+/* 15. БЛОК КОМАНДА */
 /* ============================================ */
 
-@media (max-width: 768px) {
-    .portfolio-accordion {
-        flex-direction: column;
-        min-height: auto;
-        gap: 12px;
-    }
-    
-    /* Все панели — по умолчанию закрыты, компактные */
-    .accordion-panel {
-        min-height: 70px;
-        height: 70px;
-        margin: 0;
-        flex: none;
-        transition: height 0.3s ease;
-    }
-    
-    /* Открытая панель — растягивается */
-    .accordion-panel.active {
-        min-height: auto;
-        height: auto;
-        flex: none;
-        animation: none;
-    }
-    
-    /* Заголовок панели — горизонтальный */
-    .accordion-panel-header {
-        position: relative;
-        width: 100%;
-        height: 70px;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 0 20px;
-        background: rgba(10, 10, 10, 0.9);
-    }
-    
-    .panel-number, .panel-title {
-        writing-mode: horizontal-tb;
-        transform: none;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
-    
-    .panel-number {
-        font-size: 1.2rem;
-        background: linear-gradient(135deg, #F5B700, #10B981);
-        -webkit-background-clip: text;
-        background-clip: text;
-    }
-    
-    .panel-title h3 {
-        font-size: 1rem;
-        letter-spacing: 1px;
-        margin-left: 12px;
-    }
-    
-    .accordion-panel-header::after {
-        writing-mode: horizontal-tb;
-        transform: none;
-        margin-top: 0;
-        font-size: 1.2rem;
-    }
-    
-    /* Контент — скрыт у закрытых панелей */
-    .accordion-panel:not(.active) .accordion-panel-content {
-        display: none;
-    }
-    
-    /* Контент — показывается только у открытой панели */
-    .accordion-panel.active .accordion-panel-content {
-        display: flex;
-        position: relative;
-        left: 0;
-        width: 100%;
-        height: auto;
-        padding: 20px;
-        opacity: 1;
-        visibility: visible;
-    }
-    
-    .panel-image {
-        max-height: 200px;
-    }
-    
-    .panel-description p {
-        font-size: 0.9rem;
-    }
-    
-    .tech-items span {
-        font-size: 0.7rem;
-        padding: 4px 10px;
-    }
-    
-    .metrics-row {
-        flex-direction: column;
-        gap: 12px;
-    }
-    
-    .metrics-bottom {
-        flex-direction: column;
-        gap: 12px;
-    }
-    
-    .metric-hours, .metric-price {
-        min-width: auto;
-    }
-}
+.team-section { padding: 100px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+.team-header { text-align: center; margin-bottom: 64px; }
+.team-header h2 { font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 400; letter-spacing: -0.02em; color: #ffffff; margin-bottom: 1rem; display: inline-block; position: relative; }
+.team-header h2::after { content: ''; position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%); width: 70px; height: 2px; background: var(--gradient-yellow-green); }
+.team-subtitle { font-family: 'Geist', sans-serif; font-size: 1rem; color: var(--gray); max-width: 600px; margin: 24px auto 0; text-align: center; letter-spacing: 0.3px; }
+
+.team-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; }
+
+.founder-card { background: var(--card-bg); backdrop-filter: blur(12px); border-radius: 32px; border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1); height: 100%; display: flex; flex-direction: column; }
+.founder-card:hover { transform: translateY(-8px); border-color: var(--color-purple); box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.5); background: rgba(25, 25, 32, 0.98); }
+.founder-content { position: relative; z-index: 15; padding: 40px 32px; transform-style: preserve-3d; transform: translateZ(25px); display: flex; flex-direction: column; height: 100%; }
+.founder-avatar { width: 160px; height: 160px; margin: 0 0 24px 0; border-radius: 50%; background: var(--gradient); padding: 3px; }
+.founder-avatar-inner { width: 100%; height: 100%; border-radius: 50%; background: var(--bg-dark); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.founder-name { font-size: 2rem; background: var(--gradient-yellow-green); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 8px; letter-spacing: -0.5px; }
+.founder-role { font-size: 0.85rem; color: var(--color-cyan); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; font-weight: 500; }
+.founder-bio { font-size: 1rem; line-height: 1.6; margin-bottom: 24px; }
+.founder-quote { background: rgba(6, 182, 212, 0.08); border-left: 3px solid var(--color-yellow); padding: 20px 24px; border-radius: 16px; margin: 16px 0 24px; }
+.founder-quote p { font-style: italic; color: var(--white); font-size: 0.95rem; margin-bottom: 8px; }
+.founder-quote span { font-size: 0.75rem; color: var(--color-yellow); letter-spacing: 1px; }
+.founder-stats { display: flex; gap: 32px; margin-top: auto; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+.founder-stat { text-align: center; }
+.founder-stat .stat-number { font-size: 1.5rem; font-weight: 600; color: var(--color-yellow); display: block; }
+.founder-stat .stat-label { font-size: 0.7rem; color: var(--gray); letter-spacing: 1px; }
+.founder-socials { display: flex; gap: 16px; margin-top: 24px; }
+.founder-socials .social-link { color: var(--gray); font-size: 1.2rem; transition: all 0.2s ease; text-decoration: none; }
+.founder-socials .social-link:hover { color: var(--color-yellow); transform: translateY(-2px); }
+
+.specialists-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.specialist-card { background: var(--card-bg); backdrop-filter: blur(12px); border-radius: 28px; border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1); cursor: pointer; }
+.specialist-card:hover { transform: translateY(-6px); border-color: var(--color-cyan); box-shadow: 0 15px 25px -12px rgba(0, 0, 0, 0.4); background: rgba(25, 25, 32, 0.98); }
+.specialist-content { position: relative; z-index: 15; padding: 24px 20px; text-align: center; transform-style: preserve-3d; transform: translateZ(20px); pointer-events: none; }
+.specialist-avatar { width: 90px; height: 90px; margin: 0 auto 16px; border-radius: 50%; background: var(--gradient); padding: 2px; }
+.specialist-avatar-inner { width: 100%; height: 100%; border-radius: 50%; background: var(--bg-dark); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.specialist-name { font-size: 1.2rem; background: var(--gradient-yellow-green); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 4px; }
+.specialist-role { font-size: 0.65rem; color: var(--color-cyan); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; }
+.specialist-bio { font-size: 0.75rem; line-height: 1.4; margin-bottom: 16px; }
+.specialist-stack { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 16px; }
+.specialist-stack-tag { background: rgba(6, 182, 212, 0.12); border: 1px solid rgba(6, 182, 212, 0.2); padding: 3px 10px; border-radius: 30px; font-size: 0.6rem; font-weight: 500; color: #ffffff; }
+.specialist-card:hover .specialist-stack-tag { background: rgba(6, 182, 212, 0.25); border-color: var(--color-cyan); }
+.specialist-socials { display: flex; justify-content: center; gap: 12px; }
+.specialist-socials .social-link { color: var(--gray); font-size: 0.9rem; transition: all 0.2s ease; text-decoration: none; pointer-events: auto; }
+.specialist-socials .social-link:hover { color: var(--color-yellow); transform: translateY(-2px); }
+
+.team-more-wrapper { text-align: center; margin-top: 56px; }
+
+.founder-card, .specialist-card { opacity: 0; animation: fadeInUpComp 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards; }
+.founder-card { animation-delay: 0.05s; }
+.specialist-card:nth-child(1) { animation-delay: 0.1s; }
+.specialist-card:nth-child(2) { animation-delay: 0.15s; }
+.specialist-card:nth-child(3) { animation-delay: 0.2s; }
+.specialist-card:nth-child(4) { animation-delay: 0.25s; }
+
+/* ============================================ */
+/* 16. БЛОК ОТЗЫВЫ */
+/* ============================================ */
+
+.reviews-section { padding: 100px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+.reviews-header { text-align: center; margin-bottom: 64px; }
+.reviews-header h2 { font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 400; letter-spacing: -0.02em; color: #ffffff; margin-bottom: 1rem; display: inline-block; position: relative; }
+.reviews-header h2::after { content: ''; position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%); width: 70px; height: 2px; background: var(--gradient-yellow-green); }
+.reviews-subtitle { font-family: 'Geist', sans-serif; font-size: 1rem; color: var(--gray); max-width: 600px; margin: 24px auto 0; text-align: center; letter-spacing: 0.3px; }
+
+.reviews-stats { display: flex; justify-content: center; gap: 48px; margin-bottom: 56px; flex-wrap: wrap; }
+.reviews-stat-item { text-align: center; }
+.reviews-stat-number { font-size: 2.5rem; font-weight: 600; background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; display: block; }
+.reviews-stat-label { font-size: 0.75rem; color: var(--gray); letter-spacing: 1.5px; text-transform: uppercase; }
+
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-bottom: 56px; }
+
+.review-card { background: var(--card-bg); backdrop-filter: blur(12px); border-radius: 28px; border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1); cursor: pointer; height: 100%; display: flex; flex-direction: column; opacity: 0; animation: reviewFadeIn 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards; }
+.review-card:hover { transform: translateY(-8px); border-color: var(--color-cyan); box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.5); background: rgba(25, 25, 32, 0.98); }
+.review-content { position: relative; z-index: 15; padding: 28px 24px; transform-style: preserve-3d; transform: translateZ(20px); display: flex; flex-direction: column; height: 100%; }
+.review-quote-icon { font-size: 2rem; color: rgba(6, 182, 212, 0.25); margin-bottom: 16px; line-height: 1; }
+.review-text { font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; }
+.review-company-tag { display: inline-block; background: rgba(245, 183, 0, 0.12); border: 1px solid rgba(245, 183, 0, 0.2); padding: 4px 12px; border-radius: 30px; font-size: 0.65rem; font-weight: 500; color: var(--color-yellow); margin-bottom: 16px; width: fit-content; }
+.review-client { display: flex; align-items: center; gap: 14px; margin-top: auto; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+.client-avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--gradient); padding: 2px; flex-shrink: 0; }
+.client-avatar-inner { width: 100%; height: 100%; border-radius: 50%; background: var(--bg-dark); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.client-name { font-weight: 500; font-size: 1rem; color: var(--white); margin-bottom: 4px; }
+.client-position { font-size: 0.65rem; color: var(--color-cyan); letter-spacing: 0.5px; line-height: 1.3; }
+
+.review-card:nth-child(1) { animation-delay: 0.02s; }
+.review-card:nth-child(2) { animation-delay: 0.05s; }
+.review-card:nth-child(3) { animation-delay: 0.08s; }
+.review-card:nth-child(4) { animation-delay: 0.11s; }
+.review-card:nth-child(5) { animation-delay: 0.14s; }
+.review-card:nth-child(6) { animation-delay: 0.17s; }
+
+@keyframes reviewFadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+.reviews-more-wrapper { text-align: center; margin-top: 20px; }
 
 /* ============================================ */
 /* 17. БЛОК "ПОЧЕМУ ВЫБИРАЮТ НАС" */
