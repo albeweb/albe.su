@@ -1717,7 +1717,7 @@ main { padding-top: 0; }
 }
 
 /* ============================================ */
-/* МОБИЛЬНЫЙ АККОРДЕОН ДЛЯ СЕКЦИЙ */
+/* МОБИЛЬНАЯ ВЕРСИЯ — СКРЫВАЕМ КНОПКИ И СТАТИСТИКУ */
 /* ============================================ */
 
 @media (max-width: 768px) {
@@ -1758,6 +1758,33 @@ main { padding-top: 0; }
     /* Отступы для секций */
     .accordion-section {
         margin-bottom: 20px;
+    }
+    
+    /* Скрываем кнопки "Все услуги", "Подробнее", "Вся команда", "Все отзывы", "О компании" */
+    .section-more-btn,
+    .team-more-wrapper,
+    .reviews-more-wrapper,
+    .mission-more-wrapper {
+        display: none !important;
+    }
+    
+    /* Статистика внутри скрываемого контента */
+    .accordion-content .reviews-stats,
+    .accordion-content .mission-numbers {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out, opacity 0.3s ease;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    .accordion-content.open .reviews-stats,
+    .accordion-content.open .mission-numbers {
+        max-height: 500px;
+        opacity: 1;
+        margin-top: 24px !important;
+        margin-bottom: 24px !important;
     }
     
     /* Скрываем внутренности до открытия */
