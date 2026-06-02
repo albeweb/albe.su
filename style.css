@@ -1215,6 +1215,56 @@ main { padding-top: 0; }
 .floating-review:hover { transform: scale(1.1); box-shadow: 0 8px 25px rgba(245, 183, 0, 0.4); }
 
 /* ============================================ */
+/* КОНТЕНТ КАРТОЧЕК ПОВЕРХ СЕГМЕНТОВ */
+/* ============================================ */
+
+/* Базовые стили для всех контентных блоков */
+.founder-content.card-content,
+.specialist-content.card-content,
+.review-content.card-content,
+.advantage-content.card-content {
+    position: relative;
+    z-index: 30;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transform-style: preserve-3d;
+    transform: translateZ(30px);
+}
+
+/* Карточка основателя */
+.founder-content.card-content {
+    padding: 40px 32px;
+}
+
+/* Карточки специалистов */
+.specialist-content.card-content {
+    padding: 24px 20px;
+    text-align: center;
+}
+
+/* Карточки отзывов */
+.review-content.card-content {
+    padding: 28px 24px;
+}
+
+/* Карточки преимуществ */
+.advantage-content.card-content {
+    text-align: center;
+    padding: 32px 24px;
+}
+
+/* Карточки услуг (оставляем как есть) */
+.service-card .card-content {
+    position: relative;
+    z-index: 15;
+    justify-content: space-between;
+    padding: 24px;
+    transform: translateZ(25px);
+}
+
+/* ============================================ */
 /* 26. МОБИЛЬНАЯ АДАПТАЦИЯ */
 /* ============================================ */
 
