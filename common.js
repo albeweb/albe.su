@@ -1,6 +1,5 @@
 // ============================================
-// common.js — ПОЛНАЯ ИСПРАВЛЕННАЯ ВЕРСИЯ
-// С ПОДДЕРЖКОЙ ПЛАВНОЙ МОБИЛЬНОЙ АДАПТАЦИИ
+// common.js — ИСПРАВЛЕННАЯ ВЕРСИЯ (БЕЗ FORCED REFLOW)
 // ============================================
 
 (function() {
@@ -49,48 +48,58 @@
         bigdata: "big data аналитика — обработка и анализ больших объёмов данных. инструменты: hadoop, spark, clickhouse, bigquery.",
         trading: "trading аналитика — анализ финансовых рынков. алгоритмическая торговля, прогнозирование цен, риск-менеджмент.",
         blockchain: "blockchain аналитика — анализ блокчейн-транзакций. отслеживание движения средств, выявление мошенничества, анализ смарт-контрактов.",
-        graph: "graph аналитика — анализ графовых структур. социальные сети, рекомендательные системы, поиск кратчайших путей.",
-        vue: "vue — прогрессивный фреймворк. лёгкий, гибкий, для малых и средних проектов.",
-        gsap: "gsap — профессиональная анимация. плавные переходы, сложные таймлайны.",
-        three: "three.js — 3d в браузере. впечатляющие сцены, анимация продуктов.",
-        laravel: "laravel — php-фреймворк. портал, интернет-магазин, crm.",
-        uiux: "ui/ux research — исследование поведения. интерфейсы, решающие бизнес-задачи.",
-        motion: "motion design — анимированные интерфейсы. вовлечённость, впечатления.",
-        "3d": "3d art — трёхмерная визуализация. презентации, дополненная реальность.",
-        adobe: "adobe suite — графика, ретушь, подготовка элементов.",
-        audit: "seo-аудит — анализ ошибок, скорости, дублей, метатегов.",
-        metrika: "метрика/ga4 — сбор данных, вебвизор, цели, e-commerce.",
-        cluster: "кластеризация — группировка запросов. оптимальная структура страниц.",
-        core: "core web vitals — lcp, cls, fid. влияют на ранжирование.",
-        semrush: "semrush / ahrefs — анализ конкурентов, ключей, ссылок."
+        graph: "graph аналитика — анализ графовых структур. социальные сети, рекомендательные системы, поиск кратчайших путей."
     };
 
     // ============================================
-    // ТУЛТИПЫ ДЛЯ ТЕХНОЛОГИЙ
+    // ТУЛТИПЫ — ИСПРАВЛЕНЫ (УСТРАНЁН FORCED REFLOW)
     // ============================================
     function initTechTooltips() {
+        // Проверяем, не на мобильном ли устройстве (на мобильных тултипы не нужны)
+        if (window.innerWidth <= 768) return;
+        
         const tooltip = document.createElement('div');
         tooltip.className = 'tech-tooltip';
         document.body.appendChild(tooltip);
         let timeout = null;
         let rafId = null;
         
+        // Кеш для позиций, чтобы не вызывать getBoundingClientRect при каждом движении мыши
+        const positionCache = new Map();
+        
         document.querySelectorAll('.tech-item').forEach(el => {
-            el.addEventListener('mouseenter', function() {
+            el.addEventListener('mouseenter', function(e) {
                 if (rafId) cancelAnimationFrame(rafId);
                 
                 const tech = this.getAttribute('data-tech');
                 const desc = techDesc[tech] || "технология, которую мы используем в наших проектах для достижения максимального результата.";
                 tooltip.innerHTML = '<strong>' + this.innerText + '</strong><br>' + desc;
                 
+                // Используем requestAnimationFrame для синхронизации с отрисовкой
                 rafId = requestAnimationFrame(() => {
                     tooltip.style.opacity = '1';
+                    
+                    // Получаем позицию элемента только один раз при входе
                     const rect = this.getBoundingClientRect();
+                    positionCache.set(this, {
+                        right: rect.right,
+                        left: rect.left,
+                        top: rect.top,
+                        bottom: rect.bottom,
+                        height: rect.height
+                    });
+                    
                     let left = rect.right + 15;
                     let top = rect.top + rect.height / 2 - 50;
-                    if (left + 380 > window.innerWidth) left = rect.left - 390;
+                    
+                    if (left + 380 > window.innerWidth) {
+                        left = rect.left - 390;
+                    }
                     if (top < 10) top = 10;
-                    if (top + 150 > window.innerHeight) top = window.innerHeight - 160;
+                    if (top + 150 > window.innerHeight) {
+                        top = window.innerHeight - 160;
+                    }
+                    
                     tooltip.style.left = left + 'px';
                     tooltip.style.top = top + 'px';
                 });
@@ -100,14 +109,22 @@
             
             el.addEventListener('mouseleave', function() {
                 timeout = setTimeout(function() { 
-                    tooltip.style.opacity = '0'; 
+                    tooltip.style.opacity = '0';
+                    positionCache.delete(el);
                 }, 150);
             });
         });
+        
+        // При скролле скрываем тултип
+        window.addEventListener('scroll', function() {
+            if (tooltip.style.opacity === '1') {
+                tooltip.style.opacity = '0';
+            }
+        }, { passive: true });
     }
 
     // ============================================
-    // КАЛЬКУЛЯТОР СТОИМОСТИ
+    // КАЛЬКУЛЯТОР СТОИМОСТИ (БЕЗ ИЗМЕНЕНИЙ)
     // ============================================
     const rate = 2000;
     const sh = { design: 20, front: 30, back: 40, seo: 15, cms: 25, crm: 60, ai: 90, mobile: 120, support: 8 };
@@ -233,21 +250,15 @@
     }
 
     function initCalculatorWithFallback() {
-        const staticTable = document.getElementById('staticPriceTable');
         const interactiveCalc = document.getElementById('interactiveCalculator');
-        
-        if (staticTable && interactiveCalc) {
-            staticTable.style.display = 'none';
-            interactiveCalc.style.display = 'block';
-            initCalculator();
-        } else if (interactiveCalc) {
+        if (interactiveCalc) {
             interactiveCalc.style.display = 'block';
             initCalculator();
         }
     }
 
     // ============================================
-    // ПЛАВНЫЙ СКРОЛЛ С ПРЕДОТВРАЩЕНИЕМ ДЁРГАНИЙ
+    // ПЛАВНЫЙ СКРОЛЛ
     // ============================================
     function initSmoothScroll() {
         var links = document.querySelectorAll('a[href^="#"]');
@@ -259,7 +270,6 @@
                 var target = document.querySelector(href);
                 if (target) {
                     e.preventDefault();
-                    // Используем поведение браузера, но с резервированием места под хедер
                     const headerOffset = 80;
                     const elementPosition = target.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -314,7 +324,7 @@
                 header.classList.remove('scrolled');
             }
         }
-        window.addEventListener('scroll', handleHeaderScroll);
+        window.addEventListener('scroll', handleHeaderScroll, { passive: true });
         handleHeaderScroll();
     }
 
@@ -343,9 +353,12 @@
     }
 
     // ============================================
-    // 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК
+    // 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК — ИСПРАВЛЕН (УСТРАНЁН FORCED REFLOW)
     // ============================================
     function initQuantumCards() {
+        // На мобильных отключаем 3D-эффекты
+        if (window.innerWidth <= 768) return;
+        
         const cards = document.querySelectorAll('.services-grid .service-card');
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (prefersReducedMotion || cards.length === 0) return;
@@ -362,7 +375,16 @@
 
             let targetRotateY = 0;
             let currentRotateY = 0;
-
+            
+            // Кешируем границы карточки
+            let cardRect = card.getBoundingClientRect();
+            
+            // Обновляем кеш при ресайзе
+            const updateCardRect = () => {
+                cardRect = card.getBoundingClientRect();
+            };
+            window.addEventListener('resize', updateCardRect, { passive: true });
+            
             let segTargets = {
                 seg1: { x: 0, ry: 0 },
                 seg2: { x: 0 },
@@ -408,13 +430,13 @@
             animate();
 
             card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const relX = (e.clientX - rect.left) / rect.width - 0.5;
+                // Используем кешированный rect вместо вызова getBoundingClientRect при каждом движении
+                const relX = (e.clientX - cardRect.left) / cardRect.width - 0.5;
 
                 targetRotateY = relX * 12;
 
-                const px = ((e.clientX - rect.left) / rect.width) * 100;
-                const py = ((e.clientY - rect.top) / rect.height) * 100;
+                const px = ((e.clientX - cardRect.left) / cardRect.width) * 100;
+                const py = ((e.clientY - cardRect.top) / cardRect.height) * 100;
                 card.style.setProperty('--x', px + '%');
                 card.style.setProperty('--y', py + '%');
 
@@ -455,9 +477,12 @@
     }
 
     // ============================================
-    // КИНЕТИЧЕСКИЕ КНОПКИ (3 СЕГМЕНТА)
+    // КИНЕТИЧЕСКИЕ КНОПКИ — ИСПРАВЛЕНЫ (УСТРАНЁН FORCED REFLOW)
     // ============================================
     function initKineticButtons() {
+        // На мобильных упрощаем эффекты
+        const isMobile = window.innerWidth <= 768;
+        
         const buttonsToConvert = document.querySelectorAll(
             '.btn-primary, .btn-outline, .hero-btn-primary, .hero-btn-outline, ' +
             '.section-more-btn, button[type="submit"], .header-telegram'
@@ -502,10 +527,13 @@
             textSpan.className = 'btn-text';
             textSpan.textContent = btnText;
             
-            for (let i = 0; i < 6; i++) {
-                const spark = document.createElement('div');
-                spark.className = 'spark';
-                kineticBtn.appendChild(spark);
+            // На мобильных не добавляем искры для производительности
+            if (!isMobile) {
+                for (let i = 0; i < 6; i++) {
+                    const spark = document.createElement('div');
+                    spark.className = 'spark';
+                    kineticBtn.appendChild(spark);
+                }
             }
             
             kineticBtn.appendChild(segLeft);
@@ -516,32 +544,53 @@
             wrapper.appendChild(kineticBtn);
             parent.replaceChild(wrapper, oldBtn);
             
-            initKineticButtonEffects(kineticBtn, btnText);
-            
-            if (telegramLink) {
-                kineticBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    window.open(telegramLink, '_blank');
-                });
+            // На мобильных применяем упрощённые эффекты
+            if (isMobile) {
+                initSimplifiedKineticButton(kineticBtn, btnText, telegramLink);
+            } else {
+                initKineticButtonEffects(kineticBtn, btnText, telegramLink);
             }
         });
     }
 
-    // Эффекты для одной кинетической кнопки
-    function initKineticButtonEffects(btn, originalText) {
+    // Упрощённая версия для мобильных (без сложных вычислений)
+    function initSimplifiedKineticButton(btn, originalText, telegramLink) {
+        if (telegramLink) {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                window.open(telegramLink, '_blank');
+            });
+        }
+        
+        btn.addEventListener('click', (e) => {
+            btn.style.transform = `scale(0.97)`;
+            setTimeout(() => {
+                btn.style.transform = '';
+            }, 120);
+        });
+    }
+
+    // Полная версия для десктопа с оптимизацией (кеширование позиций)
+    function initKineticButtonEffects(btn, originalText, telegramLink) {
         const leftSeg = btn.querySelector('.segment-left');
         const centerSeg = btn.querySelector('.segment-center');
         const rightSeg = btn.querySelector('.segment-right');
-        const textSpan = btn.querySelector('.btn-text');
         
         if (!leftSeg || !centerSeg || !rightSeg) return;
         
         let targetRotateX = 0, targetRotateY = 0;
         let currentRotateX = 0, currentRotateY = 0;
         
+        // Кешируем позицию кнопки
+        let btnRect = btn.getBoundingClientRect();
+        const updateBtnRect = () => {
+            btnRect = btn.getBoundingClientRect();
+        };
+        window.addEventListener('resize', updateBtnRect, { passive: true });
+        
         function triggerSparks(count = 3, clientX = null, clientY = null) {
-            const rect = btn.getBoundingClientRect();
             const sparksList = btn.querySelectorAll('.spark');
+            if (sparksList.length === 0) return;
             
             for (let i = 0; i < Math.min(count, sparksList.length); i++) {
                 const spark = sparksList[i];
@@ -554,8 +603,8 @@
                 spark.style.setProperty('--dy', dy + 'px');
                 
                 if (clientX && clientY) {
-                    const localX = ((clientX - rect.left) / rect.width) * 100;
-                    const localY = ((clientY - rect.top) / rect.height) * 100;
+                    const localX = ((clientX - btnRect.left) / btnRect.width) * 100;
+                    const localY = ((clientY - btnRect.top) / btnRect.height) * 100;
                     spark.style.left = localX + '%';
                     spark.style.top = localY + '%';
                 } else {
@@ -564,7 +613,7 @@
                 }
                 
                 spark.style.animation = 'none';
-                spark.offsetHeight;
+                spark.offsetHeight; // Необходимо для перезапуска анимации
                 spark.style.animation = 'sparkFloat 0.5s ease-out forwards';
             }
         }
@@ -578,15 +627,14 @@
         animateRotation();
         
         btn.addEventListener('mousemove', (e) => {
-            const rect = btn.getBoundingClientRect();
-            const relX = (e.clientX - rect.left) / rect.width - 0.5;
-            const relY = (e.clientY - rect.top) / rect.height - 0.5;
+            const relX = (e.clientX - btnRect.left) / btnRect.width - 0.5;
+            const relY = (e.clientY - btnRect.top) / btnRect.height - 0.5;
             
             targetRotateY = relX * 10;
             targetRotateX = -relY * 8;
             
-            const px = ((e.clientX - rect.left) / rect.width) * 100;
-            const py = ((e.clientY - rect.top) / rect.height) * 100;
+            const px = ((e.clientX - btnRect.left) / btnRect.width) * 100;
+            const py = ((e.clientY - btnRect.top) / btnRect.height) * 100;
             btn.style.setProperty('--x', px + '%');
             btn.style.setProperty('--y', py + '%');
             
@@ -617,58 +665,19 @@
             setTimeout(() => {
                 btn.style.transform = '';
             }, 120);
+            
+            if (telegramLink) {
+                window.open(telegramLink, '_blank');
+            }
         });
     }
 
     // ============================================
-    // АККОРДЕОН FAQ В СТИЛЕ «КЕЙС» — ИСПОЛЬЗУЕТ GRID ДЛЯ ПЛАВНОСТИ
+    // АККОРДЕОН FAQ
     // ============================================
     function initCaseAccordion() {
         const items = document.querySelectorAll('.case-item');
         if (items.length === 0) return;
-
-        let sparkContainer = document.querySelector('.spark-container');
-        if (!sparkContainer) {
-            sparkContainer = document.createElement('div');
-            sparkContainer.className = 'spark-container';
-            sparkContainer.style.position = 'fixed';
-            sparkContainer.style.top = '0';
-            sparkContainer.style.left = '0';
-            sparkContainer.style.width = '100%';
-            sparkContainer.style.height = '100%';
-            sparkContainer.style.pointerEvents = 'none';
-            sparkContainer.style.zIndex = '9999';
-            document.body.appendChild(sparkContainer);
-        }
-
-        const sparks = [];
-        const SPARKS_COUNT = 30;
-        for (let i = 0; i < SPARKS_COUNT; i++) {
-            const s = document.createElement('div');
-            s.className = 'spark';
-            sparkContainer.appendChild(s);
-            sparks.push(s);
-        }
-
-        function burstSparks(x, y) {
-            const colors = ['rgba(255, 255, 255, 0.9)', 'rgba(255, 255, 255, 0.7)', '#D62976', '#F56040'];
-            const count = 12 + Math.floor(Math.random() * 12);
-            for (let i = 0; i < count; i++) {
-                const spark = sparks[i % sparks.length];
-                const angle = Math.random() * Math.PI * 2;
-                const radius = 35 + Math.random() * 65;
-                const dx = Math.cos(angle) * radius;
-                const dy = Math.sin(angle) * radius;
-                spark.style.setProperty('--dx', dx + 'px');
-                spark.style.setProperty('--dy', dy + 'px');
-                spark.style.left = (x - 2) + 'px';
-                spark.style.top = (y - 2) + 'px';
-                spark.style.background = colors[Math.floor(Math.random() * colors.length)];
-                spark.style.animation = 'none';
-                spark.offsetHeight;
-                spark.style.animation = 'sparkOpen 0.5s ease-out forwards';
-            }
-        }
 
         function openCase(selectedItem) {
             const isActive = selectedItem.classList.contains('active');
@@ -679,11 +688,6 @@
             });
             if (!isActive) {
                 selectedItem.classList.add('active');
-                const handle = selectedItem.querySelector('.case-handle');
-                if (handle) {
-                    const rect = handle.getBoundingClientRect();
-                    burstSparks(rect.left + rect.width / 2, rect.top + rect.height / 2);
-                }
             } else {
                 selectedItem.classList.remove('active');
             }
@@ -728,12 +732,6 @@
         textSpan.className = 'btn-text';
         textSpan.textContent = btnText;
         
-        for (let i = 0; i < 6; i++) {
-            const spark = document.createElement('div');
-            spark.className = 'spark';
-            kineticBtn.appendChild(spark);
-        }
-        
         kineticBtn.appendChild(segLeft);
         kineticBtn.appendChild(segCenter);
         kineticBtn.appendChild(segRight);
@@ -742,7 +740,14 @@
         wrapper.appendChild(kineticBtn);
         parent.replaceChild(wrapper, toTopBtn);
         
-        initKineticButtonEffects(kineticBtn, btnText);
+        // Упрощаем эффекты для мобильных
+        if (window.innerWidth <= 768) {
+            kineticBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        } else {
+            initKineticButtonEffects(kineticBtn, btnText, null);
+        }
         
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
@@ -752,7 +757,7 @@
                 wrapper.classList.remove('visible');
                 kineticBtn.classList.remove('visible');
             }
-        });
+        }, { passive: true });
         
         kineticBtn.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -760,7 +765,7 @@
     }
 
     // ============================================
-    // АККОРДЕОН ПОРТФОЛИО — ПЛАВНЫЙ
+    // АККОРДЕОН ПОРТФОЛИО
     // ============================================
     function initPortfolioAccordion() {
         const panels = document.querySelectorAll('.accordion-panel');
@@ -771,177 +776,14 @@
             if (!header) return;
             
             header.addEventListener('click', () => {
-                // Закрываем все другие панели
                 panels.forEach(p => {
                     if (p !== panel && p.classList.contains('active')) {
                         p.classList.remove('active');
                     }
                 });
-                // Переключаем текущую панель
                 panel.classList.toggle('active');
             });
         });
-    }
-
-    // ============================================
-    // ЗАГРУЗКА КОМПОНЕНТОВ (HEADER, FOOTER)
-    // ============================================
-    function loadComponent(elementId, filePath, callback) {
-        const placeholder = document.getElementById(elementId);
-        if (!placeholder) return;
-        
-        fetch(filePath)
-            .then(response => {
-                if (!response.ok) throw new Error('failed to load ' + filePath);
-                return response.text();
-            })
-            .then(data => {
-                placeholder.innerHTML = data;
-                if (callback) callback();
-            })
-            .catch(error => {
-                console.error('ошибка загрузки компонента:', error);
-                placeholder.innerHTML = '<div style="padding:20px;text-align:center;">ошибка загрузки</div>';
-            });
-    }
-
-    // ============================================
-    // HERO БАННЕР (СКРИПТЫ) — ОПТИМИЗИРОВАН
-    // ============================================
-    function initHeroMatrixRain() {
-        const canvas = document.getElementById('matrixCanvas');
-        if (!canvas) return;
-        
-        const ctx = canvas.getContext('2d');
-        let w = window.innerWidth;
-        let h = window.innerHeight;
-        
-        canvas.width = w;
-        canvas.height = h;
-        
-        const chars = "01<>/{}[]=+-*&%$#@!~ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        const wordsArr = ['DESIGN', 'CODE', 'AI', 'ALBE', 'DIGITAL'];
-        const colors = ['#F5B700', '#10B981', '#06B6D4', '#4C1D95'];
-        const fontSize = 14;
-        let cols = Math.floor(w / fontSize);
-        let drops = [];
-        
-        for (let i = 0; i < cols; i++) {
-            drops[i] = Math.random() * -h;
-        }
-        
-        let lastFrameTime = 0;
-        const targetFPS = 30;
-        const frameInterval = 1000 / targetFPS;
-        
-        function getRandomItem() {
-            return (Math.random() < 0.04) ? wordsArr[Math.floor(Math.random() * wordsArr.length)] : chars[Math.floor(Math.random() * chars.length)];
-        }
-        
-        function drawMatrix(now) {
-            requestAnimationFrame(drawMatrix);
-            if (now - lastFrameTime < frameInterval) return;
-            lastFrameTime = now;
-            
-            ctx.fillStyle = 'rgba(5,7,10,0.03)';
-            ctx.fillRect(0, 0, w, h);
-            ctx.textAlign = 'center';
-            
-            for (let i = 0; i < drops.length; i++) {
-                const item = getRandomItem();
-                const x = i * fontSize + fontSize/2;
-                const y = drops[i] * fontSize;
-                let color, fontStyle;
-                
-                if (item.length > 1) {
-                    color = '#F5B700';
-                    fontStyle = `bold ${fontSize}px "Monaco", monospace`;
-                } else {
-                    color = colors[Math.floor(Math.random() * colors.length)];
-                    fontStyle = `${fontSize}px "Monaco", monospace`;
-                }
-                ctx.font = fontStyle;
-                ctx.fillStyle = color;
-                ctx.fillText(item, x, y);
-                
-                if (y > h && Math.random() > 0.99) {
-                    drops[i] = 0;
-                }
-                drops[i] += 0.6;
-            }
-        }
-        
-        drawMatrix();
-        
-        window.addEventListener('resize', () => {
-            w = window.innerWidth;
-            h = window.innerHeight;
-            canvas.width = w;
-            canvas.height = h;
-            cols = Math.floor(w / fontSize);
-            drops = [];
-            for (let i = 0; i < cols; i++) {
-                drops[i] = Math.random() * -h;
-            }
-        });
-    }
-
-    function initHeroStaticElements() {
-        const elements = ['agencyTag', 'leftPhrase', 'badgesGrid', 'staticPrefix', 'dynamicWordContainer'];
-        elements.forEach((id, idx) => {
-            const el = document.getElementById(id);
-            if (el) setTimeout(() => el.style.opacity = "1", 1300 + idx * 100);
-        });
-        const statsRow = document.getElementById('statsRow');
-        if (statsRow) setTimeout(() => statsRow.classList.add('visible'), 2000);
-    }
-
-    function initHeroTypewriter() {
-        const words = ["ДИЗАЙН", "ПРИЛОЖЕНИЯ", "SEO СТРАТЕГИЮ", "САЙТЫ ПОД КЛЮЧ", "E-COMMERCE", "AI РЕКЛАМУ"];
-        let wordIndex = 0;
-        let isDeleting = false;
-        let text = "";
-        let typingSpeed = 100;
-        const pauseTime = 1500;
-        const el = document.getElementById('dynamicWordContainer');
-        
-        function type() {
-            if (!el) return;
-            const fullWord = words[wordIndex];
-            
-            if (isDeleting) {
-                text = fullWord.substring(0, text.length - 1);
-                typingSpeed = 50;
-            } else {
-                text = fullWord.substring(0, text.length + 1);
-                typingSpeed = 100;
-            }
-            
-            el.innerHTML = '<span class="dynamic-word-yellow">' + text + '</span><span class="cursor"></span>';
-            
-            if (!isDeleting && text === fullWord) {
-                isDeleting = true;
-                setTimeout(type, pauseTime);
-                return;
-            } else if (isDeleting && text === "") {
-                isDeleting = false;
-                wordIndex = (wordIndex + 1) % words.length;
-                setTimeout(type, 200);
-                return;
-            }
-            
-            setTimeout(type, typingSpeed);
-        }
-        
-        setTimeout(() => {
-            if (el) {
-                el.style.opacity = "1";
-                el.innerHTML = '<span class="cursor"></span>';
-                setTimeout(() => {
-                    type();
-                }, 300);
-            }
-        }, 2800);
     }
 
     // ============================================
@@ -982,7 +824,6 @@
     // ============================================
     // МОДАЛЬНОЕ ОКНО ДЛЯ УСЛУГ
     // ============================================
-
     const serviceDetails = {
         "Веб-разработка": {
             description: "Мы создаём высокопроизводительные веб-приложения, которые выдерживают высокие нагрузки и обеспечивают мгновенный отклик. Наши решения масштабируются от стартапов до enterprise-уровня.",
@@ -1165,41 +1006,206 @@
     }
 
     // ============================================
+    // HERO БАННЕР
+    // ============================================
+    function initHeroMatrixRain() {
+        const canvas = document.getElementById('matrixCanvas');
+        if (!canvas) return;
+        
+        const ctx = canvas.getContext('2d');
+        let w = window.innerWidth;
+        let h = window.innerHeight;
+        
+        canvas.width = w;
+        canvas.height = h;
+        
+        const chars = "01<>/{}[]=+-*&%$#@!~ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        const wordsArr = ['DESIGN', 'CODE', 'AI', 'ALBE', 'DIGITAL'];
+        const colors = ['#F5B700', '#10B981', '#06B6D4', '#4C1D95'];
+        const fontSize = 14;
+        let cols = Math.floor(w / fontSize);
+        let drops = [];
+        
+        for (let i = 0; i < cols; i++) {
+            drops[i] = Math.random() * -h;
+        }
+        
+        let lastFrameTime = 0;
+        const targetFPS = 30;
+        const frameInterval = 1000 / targetFPS;
+        
+        function getRandomItem() {
+            return (Math.random() < 0.04) ? wordsArr[Math.floor(Math.random() * wordsArr.length)] : chars[Math.floor(Math.random() * chars.length)];
+        }
+        
+        function drawMatrix(now) {
+            requestAnimationFrame(drawMatrix);
+            if (now - lastFrameTime < frameInterval) return;
+            lastFrameTime = now;
+            
+            ctx.fillStyle = 'rgba(5,7,10,0.03)';
+            ctx.fillRect(0, 0, w, h);
+            ctx.textAlign = 'center';
+            
+            for (let i = 0; i < drops.length; i++) {
+                const item = getRandomItem();
+                const x = i * fontSize + fontSize/2;
+                const y = drops[i] * fontSize;
+                let color, fontStyle;
+                
+                if (item.length > 1) {
+                    color = '#F5B700';
+                    fontStyle = `bold ${fontSize}px "Monaco", monospace`;
+                } else {
+                    color = colors[Math.floor(Math.random() * colors.length)];
+                    fontStyle = `${fontSize}px "Monaco", monospace`;
+                }
+                ctx.font = fontStyle;
+                ctx.fillStyle = color;
+                ctx.fillText(item, x, y);
+                
+                if (y > h && Math.random() > 0.99) {
+                    drops[i] = 0;
+                }
+                drops[i] += 0.6;
+            }
+        }
+        
+        drawMatrix();
+        
+        window.addEventListener('resize', () => {
+            w = window.innerWidth;
+            h = window.innerHeight;
+            canvas.width = w;
+            canvas.height = h;
+            cols = Math.floor(w / fontSize);
+            drops = [];
+            for (let i = 0; i < cols; i++) {
+                drops[i] = Math.random() * -h;
+            }
+        }, { passive: true });
+    }
+
+    function initHeroStaticElements() {
+        const elements = ['agencyTag', 'leftPhrase', 'badgesGrid', 'staticPrefix', 'dynamicWordContainer'];
+        elements.forEach((id, idx) => {
+            const el = document.getElementById(id);
+            if (el) setTimeout(() => el.style.opacity = "1", 1300 + idx * 100);
+        });
+        const statsRow = document.getElementById('statsRow');
+        if (statsRow) setTimeout(() => statsRow.classList.add('visible'), 2000);
+    }
+
+    function initHeroTypewriter() {
+        const words = ["ДИЗАЙН", "ПРИЛОЖЕНИЯ", "SEO СТРАТЕГИЮ", "САЙТЫ ПОД КЛЮЧ", "E-COMMERCE", "AI РЕКЛАМУ"];
+        let wordIndex = 0;
+        let isDeleting = false;
+        let text = "";
+        let typingSpeed = 100;
+        const pauseTime = 1500;
+        const el = document.getElementById('dynamicWordContainer');
+        
+        function type() {
+            if (!el) return;
+            const fullWord = words[wordIndex];
+            
+            if (isDeleting) {
+                text = fullWord.substring(0, text.length - 1);
+                typingSpeed = 50;
+            } else {
+                text = fullWord.substring(0, text.length + 1);
+                typingSpeed = 100;
+            }
+            
+            el.innerHTML = '<span class="dynamic-word-yellow">' + text + '</span><span class="cursor"></span>';
+            
+            if (!isDeleting && text === fullWord) {
+                isDeleting = true;
+                setTimeout(type, pauseTime);
+                return;
+            } else if (isDeleting && text === "") {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                setTimeout(type, 200);
+                return;
+            }
+            
+            setTimeout(type, typingSpeed);
+        }
+        
+        setTimeout(() => {
+            if (el) {
+                el.style.opacity = "1";
+                el.innerHTML = '<span class="cursor"></span>';
+                setTimeout(() => {
+                    type();
+                }, 300);
+            }
+        }, 2800);
+    }
+
+    // ============================================
+    // ЗАГРУЗКА КОМПОНЕНТОВ
+    // ============================================
+    function loadComponent(elementId, filePath, callback) {
+        const placeholder = document.getElementById(elementId);
+        if (!placeholder) return;
+        
+        fetch(filePath)
+            .then(response => {
+                if (!response.ok) throw new Error('failed to load ' + filePath);
+                return response.text();
+            })
+            .then(data => {
+                placeholder.innerHTML = data;
+                if (callback) callback();
+            })
+            .catch(error => {
+                console.error('ошибка загрузки компонента:', error);
+                placeholder.innerHTML = '<div style="padding:20px;text-align:center;">ошибка загрузки</div>';
+            });
+    }
+
+    // ============================================
     // ЗАПУСК ВСЕХ ИНИЦИАЛИЗАЦИЙ
     // ============================================
     document.addEventListener('DOMContentLoaded', function() {
-        // Инициализация hero-баннера
+        // Инициализация hero-баннера (критично)
         initHeroMatrixRain();
         initHeroStaticElements();
         initHeroTypewriter();
         
-        // Инициализация остальных функций
-        initTechTooltips();
+        // Критические функции
         initCalculatorWithFallback();
         initSmoothScroll();
         initForm();
         initHeaderFixed();
         initBurgerMenu();
-        initQuantumCards();
-        initKineticButtons();
-        initCaseAccordion();
-        initLazyKinescope();
-        initKineticToTop();
-        initServiceModal();
         initPortfolioAccordion();
         
-        // Загрузка компонентов header и footer
+        // Отложенные функции (не блокируют рендеринг)
+        setTimeout(() => {
+            initTechTooltips();
+            initQuantumCards();
+            initKineticButtons();
+            initCaseAccordion();
+            initLazyKinescope();
+            initServiceModal();
+            initKineticToTop();
+        }, 50);
+        
+        // Загрузка компонентов
         loadComponent('header-placeholder', 'header.html', function() {
             initBurgerMenu();
             initHeaderFixed();
             setTimeout(() => {
                 initKineticButtons();
-            }, 100);
+            }, 50);
         });
         loadComponent('footer-placeholder', 'footer.html', function() {
             setTimeout(() => {
                 initKineticButtons();
-            }, 100);
+            }, 50);
         });
     });
 
