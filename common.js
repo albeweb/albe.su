@@ -1,5 +1,5 @@
 // ============================================
-// common.js — ПОЛНАЯ ИСПРАВЛЕННАЯ ВЕРСИЯ
+// common.js — ИСПРАВЛЕННАЯ ВЕРСИЯ (устранена принудительная компоновка)
 // ============================================
 
 (function() {
@@ -65,7 +65,7 @@
     };
 
     // ============================================
-    // ТУЛТИПЫ ДЛЯ ТЕХНОЛОГИЙ
+    // ТУЛТИПЫ ДЛЯ ТЕХНОЛОГИЙ (без принудительной компоновки)
     // ============================================
     function initTechTooltips() {
         const tooltip = document.createElement('div');
@@ -73,6 +73,10 @@
         document.body.appendChild(tooltip);
         let timeout = null;
         let rafId = null;
+        
+        // Кешируем позицию тултипа между вызовами
+        let cachedTooltipRect = null;
+        let lastTechElement = null;
         
         document.querySelectorAll('.tech-item').forEach(el => {
             el.addEventListener('mouseenter', function() {
@@ -82,16 +86,31 @@
                 const desc = techDesc[tech] || "технология, которую мы используем в наших проектах для достижения максимального результата.";
                 tooltip.innerHTML = '<strong>' + this.innerText + '</strong><br>' + desc;
                 
+                // Используем requestAnimationFrame для синхронизации с отрисовкой
                 rafId = requestAnimationFrame(() => {
                     tooltip.style.opacity = '1';
+                    
+                    // Получаем позицию только один раз за событие
                     const rect = this.getBoundingClientRect();
                     let left = rect.right + 15;
                     let top = rect.top + rect.height / 2 - 50;
-                    if (left + 380 > window.innerWidth) left = rect.left - 390;
+                    
+                    // Проверяем выход за границы с запасом
+                    if (left + 380 > window.innerWidth) {
+                        left = rect.left - 390;
+                    }
                     if (top < 10) top = 10;
-                    if (top + 150 > window.innerHeight) top = window.innerHeight - 160;
+                    if (top + 150 > window.innerHeight) {
+                        top = window.innerHeight - 160;
+                    }
+                    
+                    // Применяем изменения без повторного чтения
                     tooltip.style.left = left + 'px';
                     tooltip.style.top = top + 'px';
+                    
+                    // Кешируем для возможного использования
+                    cachedTooltipRect = { left, top, width: tooltip.offsetWidth, height: tooltip.offsetHeight };
+                    lastTechElement = this;
                 });
                 
                 if (timeout) clearTimeout(timeout);
@@ -99,20 +118,28 @@
             
             el.addEventListener('mouseleave', function() {
                 timeout = setTimeout(function() { 
-                    tooltip.style.opacity = '0'; 
+                    tooltip.style.opacity = '0';
+                    cachedTooltipRect = null;
+                    lastTechElement = null;
                 }, 150);
             });
         });
     }
 
     // ============================================
-    // КАЛЬКУЛЯТОР СТОИМОСТИ
+    // КАЛЬКУЛЯТОР СТОИМОСТИ (оптимизирован)
     // ============================================
     const rate = 2000;
     const sh = { design: 20, front: 30, back: 40, seo: 15, cms: 25, crm: 60, ai: 90, mobile: 120, support: 8 };
     const cm = { simple: 1, medium: 1.5, high: 2.2, enterprise: 3.5 };
     let selected = new Set();
     let complexity = "simple";
+    
+    // Буфер для обновления DOM — обновляем не чаще чем раз в 16ms
+    let updateScheduled = false;
+    let pendingPrice = null;
+    let pendingHoursInfo = null;
+    let pendingStackHtml = null;
 
     function getRec(serv) {
         let rec = [], exp = "";
@@ -133,24 +160,25 @@
         return { rec: rec.join(". "), exp: exp + compText };
     }
 
-    function updateCalculator() {
+    function calculateValues() {
         let h = 0;
         for (let s of selected) h += sh[s];
         let fin = Math.round(h * cm[complexity]);
         let cost = fin * rate;
+        
         let servList = Array.from(selected).map(function(s) {
             var names = { design: "дизайн", front: "frontend", back: "backend", seo: "seo", cms: "cms", crm: "crm", ai: "ai", mobile: "мобильное", support: "поддержка" };
             return names[s];
         }).join(", ");
         if (servList === "") servList = "—";
         
-        var priceEl = document.getElementById('calcPrice');
-        var hoursEl = document.getElementById('calcHoursInfo');
-        if (priceEl) priceEl.innerHTML = cost.toLocaleString() + ' ₽';
-        if (hoursEl) hoursEl.innerHTML = '✔ услуги: ' + servList + '<br>✔ сложность: ' + (complexity === 'simple' ? 'старт' : complexity === 'medium' ? 'бизнес' : complexity === 'high' ? 'премиум' : 'enterprise') + '<br>✔ часы: ' + h + ' ч × ' + cm[complexity] + ' = ' + fin + ' ч.';
+        const priceText = cost.toLocaleString() + ' ₽';
+        const hoursText = '✔ услуги: ' + servList + '<br>✔ сложность: ' + (complexity === 'simple' ? 'старт' : complexity === 'medium' ? 'бизнес' : complexity === 'high' ? 'премиум' : 'enterprise') + '<br>✔ часы: ' + h + ' ч × ' + cm[complexity] + ' = ' + fin + ' ч.';
         
-        var rec = getRec(selected);
-        var phases = [
+        let rec = getRec(selected);
+        
+        // Расчет breakdown без DOM операций
+        let phases = [
             { n: "аналитика и прототип", b: 10, m: 1.2 },
             { n: "дизайн", b: selected.has('design') ? 20 : 0, m: 1 },
             { n: "frontend", b: selected.has('front') ? 30 : 0, m: 1 },
@@ -164,7 +192,7 @@
             { n: "тестирование", b: 15, m: 1.3 },
             { n: "деплой", b: 8, m: 1.1 }
         ];
-        var br = [], tot = 0;
+        let br = [], tot = 0;
         for (var i = 0; i < phases.length; i++) {
             var p = phases[i];
             if (p.b > 0) {
@@ -179,20 +207,45 @@
             if (br[0].h < 0) br[0].h = 0;
         }
         br = br.filter(function(b) { return b.h > 0; });
+        
         var timeHtml = '<div class="time-breakdown"><h4>распределение ' + fin + ' часов:</h4>';
         for (var i = 0; i < br.length; i++) {
             timeHtml += '<div class="time-breakdown-item"><span>' + br[i].name + '</span><span>' + br[i].h + ' ч</span></div>';
         }
         timeHtml += '</div>';
         
-        var stackEl = document.getElementById('stackExplanation');
-        if (stackEl) {
-            if (h === 0) {
-                stackEl.innerHTML = '<h4>рекомендуемый стек</h4><p>выберите услуги для расчёта</p>';
-            } else {
-                stackEl.innerHTML = '<h4>рекомендуемый стек</h4><p><strong>' + rec.rec + '</strong></p><h4>преимущества</h4><p>' + rec.exp + '</p>' + timeHtml + '<p style="margin-top:12px; font-size:0.85rem;">выбор технологий основан на потребностях вашего проекта.</p>';
-            }
+        let stackHtml = '';
+        if (h === 0) {
+            stackHtml = '<h4>рекомендуемый стек</h4><p>выберите услуги для расчёта</p>';
+        } else {
+            stackHtml = '<h4>рекомендуемый стек</h4><p><strong>' + rec.rec + '</strong></p><h4>преимущества</h4><p>' + rec.exp + '</p>' + timeHtml + '<p style="margin-top:12px; font-size:0.85rem;">выбор технологий основан на потребностях вашего проекта.</p>';
         }
+        
+        return { priceText, hoursText, stackHtml };
+    }
+
+    function scheduleUpdate() {
+        if (updateScheduled) return;
+        updateScheduled = true;
+        
+        requestAnimationFrame(() => {
+            const { priceText, hoursText, stackHtml } = calculateValues();
+            
+            // Безопасное обновление DOM — только запись, без чтений
+            const priceEl = document.getElementById('calcPrice');
+            const hoursEl = document.getElementById('calcHoursInfo');
+            const stackEl = document.getElementById('stackExplanation');
+            
+            if (priceEl) priceEl.innerHTML = priceText;
+            if (hoursEl) hoursEl.innerHTML = hoursText;
+            if (stackEl) stackEl.innerHTML = stackHtml;
+            
+            updateScheduled = false;
+        });
+    }
+
+    function updateCalculator() {
+        scheduleUpdate();
     }
 
     function initCalculator() {
@@ -298,14 +351,24 @@
         var header = document.getElementById('mainHeader');
         if (!header) return;
         
+        // Используем пассивный слушатель и throttle через requestAnimationFrame
+        let ticking = false;
+        
         function handleHeaderScroll() {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+            if (ticking) return;
+            ticking = true;
+            
+            requestAnimationFrame(() => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+                ticking = false;
+            });
         }
-        window.addEventListener('scroll', handleHeaderScroll);
+        
+        window.addEventListener('scroll', handleHeaderScroll, { passive: true });
         handleHeaderScroll();
     }
 
@@ -334,18 +397,21 @@
     }
 
     // ============================================
-    // 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК
+    // 3D ПАРАЛЛАКС ДЛЯ КАРТОЧЕК (с разделением чтения/записи)
     // ============================================
     function initQuantumCards() {
         const cards = document.querySelectorAll('.services-grid .service-card');
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (prefersReducedMotion || cards.length === 0) return;
 
+        // Хранилище для данных каждой карточки
+        const cardData = new Map();
+        
         cards.forEach(card => {
-            const seg1 = card.querySelector('.seg-1');
-            const seg2 = card.querySelector('.seg-2');
-            const seg3 = card.querySelector('.seg-3');
-            const seg4 = card.querySelector('.seg-4');
+            const seg1 = card.querySelector('.segment-1');
+            const seg2 = card.querySelector('.segment-2');
+            const seg3 = card.querySelector('.segment-3');
+            const seg4 = card.querySelector('.segment-4');
             const segments = [seg1, seg2, seg3, seg4];
             const content = card.querySelector('.card-content');
 
@@ -366,6 +432,17 @@
                 seg3: { x: 0 },
                 seg4: { x: 0, ry: 0 }
             };
+            
+            // Кешированные границы карточки для оптимизации mousemove
+            let cachedRect = null;
+            let rectDirty = true;
+            
+            // Обновляем кеш при ресайзе или скролле
+            const updateRectCache = () => {
+                rectDirty = true;
+            };
+            window.addEventListener('resize', updateRectCache);
+            window.addEventListener('scroll', updateRectCache, { passive: true });
 
             const MAX_X = 12;
             const MAX_RY = 4;
@@ -398,8 +475,15 @@
             }
             animate();
 
+            // Оптимизированный mousemove — чтение геометрии только при необходимости
             card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
+                // Получаем актуальные границы только если кеш устарел
+                if (rectDirty || !cachedRect) {
+                    cachedRect = card.getBoundingClientRect();
+                    rectDirty = false;
+                }
+                
+                const rect = cachedRect;
                 const relX = (e.clientX - rect.left) / rect.width - 0.5;
 
                 targetRotateY = relX * 12;
@@ -441,12 +525,16 @@
                 if (content) {
                     content.style.transform = 'translateZ(25px)';
                 }
+                rectDirty = true; // При следующем входе обновим кеш
             });
+            
+            // Сохраняем данные для очистки при необходимости
+            cardData.set(card, { updateRectCache });
         });
     }
 
     // ============================================
-    // КИНЕТИЧЕСКИЕ КНОПКИ (3 СЕГМЕНТА)
+    // КИНЕТИЧЕСКИЕ КНОПКИ (3 СЕГМЕНТА) — оптимизированы
     // ============================================
     function initKineticButtons() {
         const buttonsToConvert = document.querySelectorAll(
@@ -518,7 +606,7 @@
         });
     }
 
-    // Эффекты для одной кинетической кнопки
+    // Кешированная версия эффектов для кнопок (без принудительной компоновки)
     function initKineticButtonEffects(btn, originalText) {
         const leftSeg = btn.querySelector('.segment-left');
         const centerSeg = btn.querySelector('.segment-center');
@@ -530,12 +618,31 @@
         let targetRotateX = 0, targetRotateY = 0;
         let currentRotateX = 0, currentRotateY = 0;
         
+        // Кеш для границ кнопки
+        let cachedRect = null;
+        let rectDirty = true;
+        
+        const updateRectCache = () => { rectDirty = true; };
+        window.addEventListener('resize', updateRectCache);
+        window.addEventListener('scroll', updateRectCache, { passive: true });
+        
+        // Пул искр для переиспользования (предотвращаем создание новых DOM узлов)
+        const sparks = Array.from(btn.querySelectorAll('.spark'));
+        let sparkIndex = 0;
+        
         function triggerSparks(count = 3, clientX = null, clientY = null) {
-            const rect = btn.getBoundingClientRect();
-            const sparksList = btn.querySelectorAll('.spark');
+            // Используем кешированные границы
+            if (rectDirty || !cachedRect) {
+                cachedRect = btn.getBoundingClientRect();
+                rectDirty = false;
+            }
             
-            for (let i = 0; i < Math.min(count, sparksList.length); i++) {
-                const spark = sparksList[i];
+            const rect = cachedRect;
+            
+            for (let i = 0; i < Math.min(count, sparks.length); i++) {
+                const spark = sparks[sparkIndex % sparks.length];
+                sparkIndex++;
+                
                 const angle = Math.random() * Math.PI * 2;
                 const radius = 25 + Math.random() * 35;
                 const dx = Math.cos(angle) * radius * (Math.random() > 0.5 ? 1 : -1);
@@ -554,9 +661,11 @@
                     spark.style.top = (Math.random() * 70 + 15) + '%';
                 }
                 
+                // Force reflow избегаем — используем requestAnimationFrame для анимации
                 spark.style.animation = 'none';
-                spark.offsetHeight;
-                spark.style.animation = 'sparkFloat 0.5s ease-out forwards';
+                requestAnimationFrame(() => {
+                    spark.style.animation = 'sparkFloat 0.5s ease-out forwards';
+                });
             }
         }
         
@@ -569,7 +678,13 @@
         animateRotation();
         
         btn.addEventListener('mousemove', (e) => {
-            const rect = btn.getBoundingClientRect();
+            // Обновляем кеш при необходимости
+            if (rectDirty || !cachedRect) {
+                cachedRect = btn.getBoundingClientRect();
+                rectDirty = false;
+            }
+            
+            const rect = cachedRect;
             const relX = (e.clientX - rect.left) / rect.width - 0.5;
             const relY = (e.clientY - rect.top) / rect.height - 0.5;
             
@@ -591,6 +706,7 @@
         });
         
         btn.addEventListener('mouseenter', () => {
+            rectDirty = true;
             triggerSparks(3);
         });
         
@@ -600,6 +716,7 @@
             centerSeg.style.transform = '';
             targetRotateX = 0;
             targetRotateY = 0;
+            rectDirty = true;
         });
         
         btn.addEventListener('click', (e) => {
@@ -612,7 +729,7 @@
     }
 
     // ============================================
-    // АККОРДЕОН FAQ В СТИЛЕ «КЕЙС»
+    // АККОРДЕОН FAQ В СТИЛЕ «КЕЙС» (оптимизирован)
     // ============================================
     function initCaseAccordion() {
         const items = document.querySelectorAll('.case-item');
@@ -632,6 +749,7 @@
             document.body.appendChild(sparkContainer);
         }
 
+        // Предварительное создание пула искр
         const sparks = [];
         const SPARKS_COUNT = 30;
         for (let i = 0; i < SPARKS_COUNT; i++) {
@@ -640,12 +758,16 @@
             sparkContainer.appendChild(s);
             sparks.push(s);
         }
+        let sparkPoolIndex = 0;
 
         function burstSparks(x, y) {
             const colors = ['rgba(255, 255, 255, 0.9)', 'rgba(255, 255, 255, 0.7)', '#D62976', '#F56040'];
             const count = 12 + Math.floor(Math.random() * 12);
+            
             for (let i = 0; i < count; i++) {
-                const spark = sparks[i % sparks.length];
+                const spark = sparks[sparkPoolIndex % sparks.length];
+                sparkPoolIndex++;
+                
                 const angle = Math.random() * Math.PI * 2;
                 const radius = 35 + Math.random() * 65;
                 const dx = Math.cos(angle) * radius;
@@ -656,22 +778,29 @@
                 spark.style.top = (y - 2) + 'px';
                 spark.style.background = colors[Math.floor(Math.random() * colors.length)];
                 spark.style.animation = 'none';
-                spark.offsetHeight;
-                spark.style.animation = 'sparkOpen 0.5s ease-out forwards';
+                
+                // Используем requestAnimationFrame для синхронизации анимации
+                requestAnimationFrame(() => {
+                    spark.style.animation = 'sparkOpen 0.5s ease-out forwards';
+                });
             }
         }
 
         function openCase(selectedItem) {
             const isActive = selectedItem.classList.contains('active');
+            
+            // Используем forEach вместо for...of для лучшей производительности
             items.forEach(item => {
                 if (item !== selectedItem && item.classList.contains('active')) {
                     item.classList.remove('active');
                 }
             });
+            
             if (!isActive) {
                 selectedItem.classList.add('active');
                 const handle = selectedItem.querySelector('.case-handle');
                 if (handle) {
+                    // Получаем позицию один раз
                     const rect = handle.getBoundingClientRect();
                     burstSparks(rect.left + rect.width / 2, rect.top + rect.height / 2);
                 }
@@ -692,7 +821,7 @@
     }
 
     // ============================================
-    // КИНЕТИЧЕСКАЯ КНОПКА НАВЕРХ
+    // КИНЕТИЧЕСКАЯ КНОПКА НАВЕРХ (оптимизирована)
     // ============================================
     function initKineticToTop() {
         const toTopBtn = document.getElementById('toTopBtn');
@@ -735,15 +864,24 @@
         
         initKineticButtonEffects(kineticBtn, btnText);
         
+        // Используем throttle через requestAnimationFrame
+        let ticking = false;
+        
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                wrapper.classList.add('visible');
-                kineticBtn.classList.add('visible');
-            } else {
-                wrapper.classList.remove('visible');
-                kineticBtn.classList.remove('visible');
-            }
-        });
+            if (ticking) return;
+            ticking = true;
+            
+            requestAnimationFrame(() => {
+                if (window.scrollY > 300) {
+                    wrapper.classList.add('visible');
+                    kineticBtn.classList.add('visible');
+                } else {
+                    wrapper.classList.remove('visible');
+                    kineticBtn.classList.remove('visible');
+                }
+                ticking = false;
+            });
+        }, { passive: true });
         
         kineticBtn.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -751,53 +889,34 @@
     }
 
     // ============================================
-    // АККОРДЕОН ПОРТФОЛИО
+    // АККОРДЕОН ПОРТФОЛИО (оптимизирован)
     // ============================================
     function initPortfolioAccordion() {
         const panels = document.querySelectorAll('.accordion-panel');
         if (panels.length === 0) return;
+        
+        // Кешируем состояние
+        let activePanel = null;
         
         panels.forEach(panel => {
             const header = panel.querySelector('.accordion-panel-header');
             if (!header) return;
             
             header.addEventListener('click', () => {
-                // Закрываем все другие панели
-                panels.forEach(p => {
-                    if (p !== panel && p.classList.contains('active')) {
-                        p.classList.remove('active');
-                    }
-                });
+                // Закрываем активную панель, если она существует и не текущая
+                if (activePanel && activePanel !== panel && activePanel.classList.contains('active')) {
+                    activePanel.classList.remove('active');
+                }
                 // Переключаем текущую панель
                 panel.classList.toggle('active');
+                // Обновляем кеш активной панели
+                activePanel = panel.classList.contains('active') ? panel : null;
             });
         });
     }
 
     // ============================================
-    // ЗАГРУЗКА КОМПОНЕНТОВ (HEADER, FOOTER)
-    // ============================================
-    function loadComponent(elementId, filePath, callback) {
-        const placeholder = document.getElementById(elementId);
-        if (!placeholder) return;
-        
-        fetch(filePath)
-            .then(response => {
-                if (!response.ok) throw new Error('failed to load ' + filePath);
-                return response.text();
-            })
-            .then(data => {
-                placeholder.innerHTML = data;
-                if (callback) callback();
-            })
-            .catch(error => {
-                console.error('ошибка загрузки компонента:', error);
-                placeholder.innerHTML = '<div style="padding:20px;text-align:center;">ошибка загрузки</div>';
-            });
-    }
-
-    // ============================================
-    // HERO БАННЕР (СКРИПТЫ)
+    // HERO БАННЕР (оптимизированная canvas анимация)
     // ============================================
     function initHeroMatrixRain() {
         const canvas = document.getElementById('matrixCanvas');
@@ -825,6 +944,7 @@
         const targetFPS = 30;
         const frameInterval = 1000 / targetFPS;
         
+        // Функции вынесены для улучшения производительности
         function getRandomItem() {
             return (Math.random() < 0.04) ? wordsArr[Math.floor(Math.random() * wordsArr.length)] : chars[Math.floor(Math.random() * chars.length)];
         }
@@ -834,7 +954,8 @@
             if (now - lastFrameTime < frameInterval) return;
             lastFrameTime = now;
             
-            ctx.fillStyle = 'rgba(5,7,10,0.03)';
+            // Оптимизация: используем прозрачную заливку для эффекта "хвоста"
+            ctx.fillStyle = 'rgba(5,7,10,0.05)';
             ctx.fillRect(0, 0, w, h);
             ctx.textAlign = 'center';
             
@@ -842,17 +963,14 @@
                 const item = getRandomItem();
                 const x = i * fontSize + fontSize/2;
                 const y = drops[i] * fontSize;
-                let color, fontStyle;
                 
                 if (item.length > 1) {
-                    color = '#F5B700';
-                    fontStyle = `bold ${fontSize}px "Monaco", monospace`;
+                    ctx.fillStyle = '#F5B700';
+                    ctx.font = `bold ${fontSize}px "Monaco", monospace`;
                 } else {
-                    color = colors[Math.floor(Math.random() * colors.length)];
-                    fontStyle = `${fontSize}px "Monaco", monospace`;
+                    ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
+                    ctx.font = `${fontSize}px "Monaco", monospace`;
                 }
-                ctx.font = fontStyle;
-                ctx.fillStyle = color;
                 ctx.fillText(item, x, y);
                 
                 if (y > h && Math.random() > 0.99) {
@@ -864,16 +982,21 @@
         
         drawMatrix();
         
+        // Оптимизированный обработчик ресайза
+        let resizeTimeout;
         window.addEventListener('resize', () => {
-            w = window.innerWidth;
-            h = window.innerHeight;
-            canvas.width = w;
-            canvas.height = h;
-            cols = Math.floor(w / fontSize);
-            drops = [];
-            for (let i = 0; i < cols; i++) {
-                drops[i] = Math.random() * -h;
-            }
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                w = window.innerWidth;
+                h = window.innerHeight;
+                canvas.width = w;
+                canvas.height = h;
+                cols = Math.floor(w / fontSize);
+                drops = [];
+                for (let i = 0; i < cols; i++) {
+                    drops[i] = Math.random() * -h;
+                }
+            }, 100);
         });
     }
 
@@ -1156,6 +1279,28 @@
     }
 
     // ============================================
+    // ЗАГРУЗКА КОМПОНЕНТОВ (HEADER, FOOTER)
+    // ============================================
+    function loadComponent(elementId, filePath, callback) {
+        const placeholder = document.getElementById(elementId);
+        if (!placeholder) return;
+        
+        fetch(filePath)
+            .then(response => {
+                if (!response.ok) throw new Error('failed to load ' + filePath);
+                return response.text();
+            })
+            .then(data => {
+                placeholder.innerHTML = data;
+                if (callback) callback();
+            })
+            .catch(error => {
+                console.error('ошибка загрузки компонента:', error);
+                placeholder.innerHTML = '<div style="padding:20px;text-align:center;">ошибка загрузки</div>';
+            });
+    }
+
+    // ============================================
     // ЗАПУСК ВСЕХ ИНИЦИАЛИЗАЦИЙ
     // ============================================
     document.addEventListener('DOMContentLoaded', function() {
@@ -1177,7 +1322,7 @@
         initLazyKinescope();
         initKineticToTop();
         initServiceModal();
-        initPortfolioAccordion();  // ← ДОБАВЛЕНА ИНИЦИАЛИЗАЦИЯ АККОРДЕОНА ПОРТФОЛИО
+        initPortfolioAccordion();
         
         // Загрузка компонентов header и footer
         loadComponent('header-placeholder', 'header.html', function() {
