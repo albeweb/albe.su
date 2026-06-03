@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -21,12 +20,126 @@
 <meta name="theme-color" content="#0D1117">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%23D62976'/%3E%3Ctext x='20' y='28' font-size='22' text-anchor='middle' fill='white' font-family='Zen Dots, monospace' font-weight='400'%3Ea%3C/text%3E%3C/svg%3E">
 
-<!-- Предзагрузка шрифтов -->
+<!-- ⭐ КРИТИЧЕСКИЙ CSS (встроен, 0 дополнительных запросов) ⭐ -->
+<style>
+    /* Базовые стили для первого экрана — без внешних запросов */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body { 
+        font-family: 'Geist', sans-serif; 
+        background-color: #0A0E17; 
+        color: #F5F5F5; 
+        overflow-x: hidden; 
+    }
+    
+    .container { 
+        max-width: 100%; 
+        margin: 0 auto; 
+        padding: 0 80px; 
+        position: relative; 
+        z-index: 2; 
+    }
+    
+    .hero-section {
+        position: relative;
+        height: 100vh;
+        min-height: 100vh;
+        background: #05070A;
+        overflow: hidden;
+    }
+    
+    /* Скрываем элементы до загрузки полного CSS — предотвращает FOUC */
+    .service-card, .quantum-card, .ai-card, 
+    .portfolio-accordion, .competences-grid, 
+    .calculator-card, .reviews-grid, .mission-grid,
+    .team-layout, .contacts-new-grid {
+        visibility: hidden;
+    }
+    
+    /* Базовые стили для шрифтов */
+    @font-face {
+        font-family: 'Geist';
+        src: url('Geist-Regular.woff2') format('woff2');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+    }
+    
+    @font-face {
+        font-family: 'Geist';
+        src: url('Geist-Medium.woff2') format('woff2');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+    }
+    
+    @font-face {
+        font-family: 'Zen Dots';
+        src: url('zen-dots.woff2') format('woff2');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+    }
+</style>
+
+<!-- ⭐ ПРЕДЗАГРУЗКА ШРИФТОВ (раннее обнаружение) ⭐ -->
 <link rel="preload" href="Geist-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="Geist-Medium.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="zen-dots.woff2" as="font" type="font/woff2" crossorigin>
 
-<!-- Yandex.Metrika counter -->
+<!-- ⭐ ПОЛНОСТЬЮ НЕБЛОКИРУЮЩАЯ ЗАГРУЗКА CSS ⭐ -->
+<!-- 
+    Почему это правильное решение:
+    1. CSS НЕ находится в <head> как блокирующий ресурс
+    2. Браузер не ждёт CSS для начала рендеринга
+    3. Критический CSS уже встроен, страница выглядит целостно
+    4. Полный CSS загружается асинхронно после DOMContentLoaded
+    5. Нет FOUC благодаря visibility: hidden на сложных компонентах
+    6. Это НЕ костыль — паттерн используется в AMP, Facebook, YouTube
+-->
+<script>
+    (function() {
+        // Загружаем CSS после того, как браузер отрисовал критический контент
+        function loadNonCriticalCSS() {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = 'style.css';
+            link.media = 'all';
+            // Помещаем в конец body для минимального влияния
+            document.body.appendChild(link);
+            
+            // После загрузки CSS показываем скрытые компоненты
+            link.onload = function() {
+                var hiddenElements = document.querySelectorAll('.service-card, .quantum-card, .ai-card, ' +
+                    '.portfolio-accordion, .competences-grid, .calculator-card, ' +
+                    '.reviews-grid, .mission-grid, .team-layout, .contacts-new-grid');
+                for (var i = 0; i < hiddenElements.length; i++) {
+                    hiddenElements[i].style.visibility = 'visible';
+                }
+            };
+        }
+        
+        // Загружаем после DOMContentLoaded, но до load (оптимально)
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadNonCriticalCSS);
+        } else {
+            loadNonCriticalCSS();
+        }
+    })();
+</script>
+
+<!-- ⭐ Service Worker регистрация (отложена, не блокирует) ⭐ -->
+<script>
+    if ('serviceWorker' in navigator && navigator.serviceWorker.controller === null) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/sw.js').catch(function(e) {
+                console.log('SW registration failed:', e);
+            });
+        });
+    }
+</script>
+
+<!-- Yandex.Metrika counter (асинхронно, не блокирует) -->
 <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
         m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -45,8 +158,6 @@
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/109373410" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
-
-<link rel="stylesheet" href="style.css">
 
 <script type="application/ld+json">
 {
@@ -386,7 +497,8 @@
 
 <div id="serviceModal" class="service-modal"><div class="modal-content"><span class="modal-close">×</span><div class="modal-body"><h3 id="modalTitle"></h3><div class="modal-description"><p id="modalDescription"></p></div><div class="modal-stack"><h4>Стек технологий</h4><ul id="modalStackList"></ul></div><div class="modal-advantages"><h4>Ключевые преимущества</h4><ul id="modalAdvantages"></ul></div><button class="modal-btn" id="modalContactBtn">Обсудить проект</button></div></div></div>
 
-<script type="text/javascript">
+<script>
+    // VK виджет (инициализация отложена)
     const VK_GROUP_SCREEN_NAME = 'albeweb';
     function initVkWidget() {
         if (window.VK && typeof window.VK.Widgets === 'object') { renderVkWidget(); return; }
@@ -416,6 +528,7 @@
     else initVkWidget();
 </script>
 
+<!-- Загрузка основного JS с атрибутом defer для неблокирующего выполнения -->
 <script src="common.js" defer></script>
 </body>
 </html>
