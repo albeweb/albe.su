@@ -1,5 +1,6 @@
 // ============================================
 // common.js — ПОЛНАЯ ИСПРАВЛЕННАЯ ВЕРСИЯ
+// С ПОДДЕРЖКОЙ ПЛАВНОЙ МОБИЛЬНОЙ АДАПТАЦИИ
 // ============================================
 
 (function() {
@@ -246,7 +247,7 @@
     }
 
     // ============================================
-    // ПЛАВНЫЙ СКРОЛЛ
+    // ПЛАВНЫЙ СКРОЛЛ С ПРЕДОТВРАЩЕНИЕМ ДЁРГАНИЙ
     // ============================================
     function initSmoothScroll() {
         var links = document.querySelectorAll('a[href^="#"]');
@@ -258,7 +259,15 @@
                 var target = document.querySelector(href);
                 if (target) {
                     e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth' });
+                    // Используем поведение браузера, но с резервированием места под хедер
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
                 }
             });
         }
@@ -342,10 +351,10 @@
         if (prefersReducedMotion || cards.length === 0) return;
 
         cards.forEach(card => {
-            const seg1 = card.querySelector('.seg-1');
-            const seg2 = card.querySelector('.seg-2');
-            const seg3 = card.querySelector('.seg-3');
-            const seg4 = card.querySelector('.seg-4');
+            const seg1 = card.querySelector('.segment-1');
+            const seg2 = card.querySelector('.segment-2');
+            const seg3 = card.querySelector('.segment-3');
+            const seg4 = card.querySelector('.segment-4');
             const segments = [seg1, seg2, seg3, seg4];
             const content = card.querySelector('.card-content');
 
@@ -612,7 +621,7 @@
     }
 
     // ============================================
-    // АККОРДЕОН FAQ В СТИЛЕ «КЕЙС»
+    // АККОРДЕОН FAQ В СТИЛЕ «КЕЙС» — ИСПОЛЬЗУЕТ GRID ДЛЯ ПЛАВНОСТИ
     // ============================================
     function initCaseAccordion() {
         const items = document.querySelectorAll('.case-item');
@@ -751,7 +760,7 @@
     }
 
     // ============================================
-    // АККОРДЕОН ПОРТФОЛИО
+    // АККОРДЕОН ПОРТФОЛИО — ПЛАВНЫЙ
     // ============================================
     function initPortfolioAccordion() {
         const panels = document.querySelectorAll('.accordion-panel');
@@ -797,7 +806,7 @@
     }
 
     // ============================================
-    // HERO БАННЕР (СКРИПТЫ)
+    // HERO БАННЕР (СКРИПТЫ) — ОПТИМИЗИРОВАН
     // ============================================
     function initHeroMatrixRain() {
         const canvas = document.getElementById('matrixCanvas');
@@ -1177,7 +1186,7 @@
         initLazyKinescope();
         initKineticToTop();
         initServiceModal();
-        initPortfolioAccordion();  // ← ДОБАВЛЕНА ИНИЦИАЛИЗАЦИЯ АККОРДЕОНА ПОРТФОЛИО
+        initPortfolioAccordion();
         
         // Загрузка компонентов header и footer
         loadComponent('header-placeholder', 'header.html', function() {
