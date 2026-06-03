@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -26,7 +25,158 @@
 <link rel="preload" href="Geist-Medium.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="zen-dots.woff2" as="font" type="font/woff2" crossorigin>
 
-<!-- Yandex.Metrika counter -->
+<!-- ============================================ -->
+<!-- КРИТИЧЕСКИЙ CSS (встроен для быстрой отрисовки, не блокирует загрузку) -->
+<!-- ============================================ -->
+<style>
+    /* Базовый сброс и критические стили для первого экрана */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+        --color-yellow: #F5B700;
+        --color-green: #10B981;
+        --color-cyan: #06B6D4;
+        --color-purple: #4C1D95;
+        --white: #F5F5F5;
+        --gray: #B0B3B8;
+        --bg-dark: #0A0E17;
+        --card-bg: rgba(18, 18, 26, 0.85);
+        --gradient: linear-gradient(135deg, #F5B700, #10B981, #06B6D4, #4C1D95);
+        --gradient-yellow-green: linear-gradient(135deg, #F5B700, #10B981);
+    }
+    
+    html, body {
+        overflow-x: hidden;
+        max-width: 100%;
+        background-color: var(--bg-dark);
+    }
+    
+    body {
+        font-family: 'Geist', sans-serif;
+        color: var(--white);
+        line-height: 1.5;
+        font-weight: 400;
+        scroll-behavior: smooth;
+    }
+    
+    .container {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0 80px;
+        position: relative;
+        z-index: 2;
+    }
+    
+    /* Критические стили для hero-секции */
+    .hero-section {
+        position: relative;
+        height: 100vh;
+        min-height: 100vh;
+        background: #05070A;
+        overflow: hidden;
+    }
+    
+    .hero-subtitle-top {
+        position: absolute;
+        top: 200px;
+        right: 400px;
+        font-size: 1.8rem;
+        font-weight: 500;
+        letter-spacing: 8px;
+        color: #F5B700;
+        white-space: nowrap;
+        z-index: 30;
+    }
+    
+    .hero-subtitle-bottom {
+        position: absolute;
+        top: 480px;
+        left: 390px;
+        font-size: 1.6rem;
+        font-weight: 500;
+        letter-spacing: 3px;
+        background: linear-gradient(135deg, #F5B700, #FFD54F);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        white-space: nowrap;
+        z-index: 30;
+    }
+    
+    .albe-letters {
+        position: absolute;
+        top: calc(50% - 100px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        gap: 3vw;
+        z-index: 30;
+        pointer-events: none;
+    }
+    
+    .albe-letter {
+        font-family: 'Zen Dots', monospace;
+        font-size: 14vw;
+        font-weight: 400;
+        color: white;
+        text-shadow: 0 0 10px rgba(245,183,0,0.5);
+        opacity: 0;
+        animation: fadeInLetters 0.7s ease-out forwards;
+    }
+    
+    @keyframes fadeInLetters {
+        0% { opacity: 0; transform: translate(-30px, -30px) scale(0.8); }
+        100% { opacity: 1; transform: translate(0, 0) scale(1); }
+    }
+    
+    .albe-a { color: #F5B700; }
+    
+    /* Мобильная адаптация hero (критическая) */
+    @media (max-width: 768px) {
+        .container { padding: 0 20px; }
+        .hero-section {
+            height: auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 100px 0 60px;
+        }
+        .hero-subtitle-top,
+        .hero-subtitle-bottom {
+            position: relative;
+            top: auto;
+            right: auto;
+            left: auto;
+            text-align: center;
+            white-space: normal;
+            margin: 10px auto;
+        }
+        .hero-subtitle-top { font-size: 0.9rem; letter-spacing: 4px; }
+        .hero-subtitle-bottom { font-size: 1rem; letter-spacing: 1.5px; }
+        .albe-letters {
+            position: relative;
+            top: auto;
+            left: auto;
+            transform: none;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .albe-letter { font-size: 15vw; }
+        .hero-canvas-bottom,
+        .masked-container {
+            display: none;
+        }
+    }
+</style>
+
+<!-- ============================================ -->
+<!-- АСИНХРОННАЯ ЗАГРУЗКА ОСНОВНОГО CSS (НЕ БЛОКИРУЕТ ОТРИСОВКУ) -->
+<!-- ============================================ -->
+<link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="style.css"></noscript>
+
+<!-- Yandex.Metrika counter (загружается асинхронно, не блокирует) -->
 <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
         m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -45,8 +195,6 @@
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/109373410" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
-
-<link rel="stylesheet" href="style.css">
 
 <script type="application/ld+json">
 {
