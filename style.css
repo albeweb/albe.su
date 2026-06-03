@@ -2148,3 +2148,123 @@ main { padding-top: 0; }
         }
     }
 }
+
+/* ============================================ */
+/* МОБИЛЬНАЯ ВЕРСИЯ — ОТКЛЮЧЕНИЕ КВАНТОВЫХ ЭФФЕКТОВ */
+/* ============================================ */
+
+@media (max-width: 768px) {
+    /* Отключаем все 3D-эффекты квантовых карточек */
+    .quantum-card {
+        background: var(--card-bg);
+        backdrop-filter: blur(8px);
+        transform: none !important;
+        perspective: none;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        min-height: auto;
+    }
+    
+    /* Убираем сегменты (они не видны на мобильных, но занимают место) */
+    .quantum-card .segment,
+    .quantum-card .segment-1,
+    .quantum-card .segment-2,
+    .quantum-card .segment-3,
+    .quantum-card .segment-4 {
+        display: none !important;
+    }
+    
+    /* Упрощаем угловые элементы */
+    .quantum-card .corner,
+    .ai-card .corner,
+    .review-card .corner,
+    .mission-advantage-card .corner {
+        display: none !important;
+    }
+    
+    /* Убираем 3D-трансформации содержимого */
+    .quantum-card .card-content,
+    .founder-content,
+    .specialist-content,
+    .review-content,
+    .advantage-content {
+        transform: none !important;
+        pointer-events: auto;
+        padding: 20px;
+    }
+    
+    /* Упрощаем фон карточек */
+    .quantum-card,
+    .ai-card,
+    .review-card,
+    .mission-advantage-card,
+    .founder-card,
+    .specialist-card {
+        backdrop-filter: blur(4px);
+        background: rgba(18, 18, 26, 0.9);
+    }
+    
+    /* Убираем сложные градиентные рамки при ховере */
+    .quantum-card:hover,
+    .ai-card:hover,
+    .review-card:hover,
+    .mission-advantage-card:hover {
+        transform: translateY(-4px) !important;
+        box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.4);
+    }
+    
+    /* Убираем анимацию линий у AI-карточек */
+    .ai-card .lines,
+    .ai-card .line {
+        display: none !important;
+    }
+    
+    /* Убираем :before/:after псевдоэлементы с градиентами */
+    .quantum-card::before,
+    .quantum-card::after,
+    .ai-card::before,
+    .ai-card::after,
+    .review-card::before,
+    .review-card::after {
+        display: none !important;
+    }
+    
+    /* Убираем сегменты у всех квантовых карточек в любых блоках */
+    .services-grid .quantum-card .segment,
+    .founder-card .segment,
+    .specialist-card .segment,
+    .review-card .segment,
+    .mission-advantage-card .segment {
+        display: none !important;
+    }
+    
+    /* Упрощаем service-card */
+    .service-card {
+        aspect-ratio: auto;
+        min-height: auto;
+    }
+    
+    .service-card .card-content {
+        padding: 20px;
+    }
+    
+    /* Убираем сложные эффекты у кнопок внутри карточек */
+    .service-card .card-btn,
+    .modal-btn {
+        backdrop-filter: none;
+        min-height: 44px;
+    }
+    
+    /* Убираем blur у всех карточек для экономии ресурсов */
+    .quantum-card,
+    .ai-card,
+    .review-card,
+    .mission-advantage-card,
+    .founder-card,
+    .specialist-card,
+    .calculator-card,
+    .step-card,
+    .competence-card {
+        backdrop-filter: none;
+        background: rgba(18, 18, 26, 0.95);
+    }
+}
