@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -13,7 +14,7 @@
 <link rel="sitemap" type="application/xml" href="sitemap.xml">
 <meta property="og:title" content="ALBE DIGITAL — разработка сайтов под ключ">
 <meta property="og:description" content="Разработка сайтов под ключ. Премиум дизайн, SEO, AI, мобильные приложения. Калькулятор стоимости, прозрачные цены.">
-<meta property="og:image" content="images/AD1.webp">
+<meta property="og:image" content="images/bank.avif">
 <meta property="og:url" content="https://albe.su/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -88,7 +89,7 @@
             "@type": "LocalBusiness",
             "@id": "https://albe.su/#localbusiness",
             "name": "ALBE digital",
-            "image": "https://albe.su/images/AD1.webp",
+            "image": "https://albe.su/images/bank.avif",
             "description": "Разработка сайтов под ключ, премиум дизайн, SEO-продвижение с гарантией, AI-решения, мобильные приложения.",
             "address": {
                 "@type": "PostalAddress",
@@ -178,76 +179,69 @@
             <a href="#portfolio" class="section-more-btn">Все проекты</a>
         </div>
         <div class="portfolio-accordion">
-            <!-- КЕЙС 1: Albe Digital -->
             <div class="accordion-panel">
                 <div class="accordion-panel-header">
                     <div class="panel-number">01</div>
-                    <div class="panel-title"><h3>Albe Digital</h3></div>
+                    <div class="panel-title"><h3>NeoBank Platform</h3></div>
                 </div>
                 <div class="accordion-panel-content">
-                    <div class="panel-image"><picture><source srcset="images/AD1.webp" type="image/webp"><img src="images/AD1.webp" alt="Albe Digital Лендинг"></picture></div>
-                    <div class="panel-description"><p>Лендинг на чистом коде. Полное SEO. Современный дизайн и высокая производительность.</p></div>
-                    <div class="panel-tech"><h4>Технологии</h4><div class="tech-items"><span>html</span><span>JS</span><span>CSS</span></div></div>
-                    <div class="metrics-row"><div class="metric-item"><span class="metric-label">Длительность</span><span class="metric-value">14 дней</span></div><div class="metric-item"><span class="metric-label">Команда</span><span class="metric-value">1 разработчик + дизайнер</span></div><div class="metric-item"><span class="metric-label">Результат</span><span class="metric-value">SEO +100% видимости</span></div></div>
-                    <div class="metrics-bottom"><div class="metric-hours"><span class="metric-label">Часы</span><span class="metric-value">112 ч</span></div><div class="metric-price"><span class="metric-label">Стоимость</span><span class="metric-value">150 000 ₽</span></div></div>
+                    <div class="panel-image"><picture><source srcset="images/bank.avif" type="image/avif"><img src="images/bank.avif" alt="Neo Bank Platform"></picture></div>
+                    <div class="panel-description"><p>Современная онлайн-банк платформа с персонализированными дашбордами, аналитикой расходов и интеграцией с платежными системами. Рост активных клиентов +210%.</p></div>
+                    <div class="panel-tech"><h4>Технологии</h4><div class="tech-items"><span>React 18</span><span>Next.js 14</span><span>TypeScript</span><span>Node.js</span><span>PostgreSQL</span><span>Docker</span></div></div>
+                    <div class="metrics-row"><div class="metric-item"><span class="metric-label">Длительность</span><span class="metric-value">8 недель</span></div><div class="metric-item"><span class="metric-label">Команда</span><span class="metric-value">3 разработчика + дизайнер</span></div><div class="metric-item"><span class="metric-label">Результат</span><span class="metric-value">+210% клиентов</span></div></div>
+                    <div class="metrics-bottom"><div class="metric-hours"><span class="metric-label">Часы</span><span class="metric-value">320 ч</span></div><div class="metric-price"><span class="metric-label">Стоимость</span><span class="metric-value">640 000 ₽</span></div></div>
                 </div>
             </div>
-            <!-- КЕЙС 2: AM -->
             <div class="accordion-panel">
                 <div class="accordion-panel-header">
                     <div class="panel-number">02</div>
-                    <div class="panel-title"><h3>AM</h3></div>
+                    <div class="panel-title"><h3>AI система</h3></div>
                 </div>
                 <div class="accordion-panel-content">
-                    <div class="panel-image">
-                        <div class="multi-image-grid">
-                            <picture><source srcset="images/AM1.webp" type="image/webp"><img src="images/AM1.webp" alt="AM проект 1"></picture>
-                            <picture><source srcset="images/AM2.webp" type="image/webp"><img src="images/AM2.webp" alt="AM проект 2"></picture>
-                            <picture><source srcset="images/AM3.webp" type="image/webp"><img src="images/AM3.webp" alt="AM проект 3"></picture>
-                        </div>
-                    </div>
-                    <div class="panel-description"><p>Интернет магазин для крупнейшего автодилера Беларуси. Полный цикл разработки, интеграция с CRM и 1С.</p></div>
-                    <div class="panel-tech"><h4>Технологии</h4><div class="tech-items"><span>html</span><span>JS</span><span>React</span><span>CSS</span><span>PHP</span><span>Laravel</span></div></div>
-                    <div class="metrics-row"><div class="metric-item"><span class="metric-label">Длительность</span><span class="metric-value">60 дней</span></div><div class="metric-item"><span class="metric-label">Команда</span><span class="metric-value">2 разработчика + аналитик</span></div><div class="metric-item"><span class="metric-label">Результат</span><span class="metric-value">+70% продаж</span></div></div>
-                    <div class="metrics-bottom"><div class="metric-hours"><span class="metric-label">Часы</span><span class="metric-value">480 ч</span></div><div class="metric-price"><span class="metric-label">Стоимость</span><span class="metric-value">600 000 ₽</span></div></div>
+                    <div class="panel-image"><picture><source srcset="images/ai.avif" type="image/avif"><img src="images/ai.avif" alt="AI рекомендательная система"></picture></div>
+                    <div class="panel-description"><p>Нейросетевая рекомендательная система для крупного интернет-магазина. Персонализация предложений увеличила конверсию на 34%.</p></div>
+                    <div class="panel-tech"><h4>Технологии</h4><div class="tech-items"><span>Python</span><span>Django</span><span>TensorFlow</span><span>PyTorch</span><span>Redis</span><span>React</span></div></div>
+                    <div class="metrics-row"><div class="metric-item"><span class="metric-label">Длительность</span><span class="metric-value">12 недель</span></div><div class="metric-item"><span class="metric-label">Команда</span><span class="metric-value">2 ML инженера + 2 разработчика</span></div><div class="metric-item"><span class="metric-label">Результат</span><span class="metric-value">+34% конверсии</span></div></div>
+                    <div class="metrics-bottom"><div class="metric-hours"><span class="metric-label">Часы</span><span class="metric-value">480 ч</span></div><div class="metric-price"><span class="metric-label">Стоимость</span><span class="metric-value">960 000 ₽</span></div></div>
                 </div>
             </div>
-            <!-- КЕЙС 3: EM -->
             <div class="accordion-panel">
                 <div class="accordion-panel-header">
                     <div class="panel-number">03</div>
-                    <div class="panel-title"><h3>EM</h3></div>
+                    <div class="panel-title"><h3>FitTrack приложение</h3></div>
                 </div>
                 <div class="accordion-panel-content">
-                    <div class="panel-image">
-                        <div class="multi-image-grid">
-                            <picture><source srcset="images/EM1.webp" type="image/webp"><img src="images/EM1.webp" alt="EM проект 1"></picture>
-                            <picture><source srcset="images/EM2.webp" type="image/webp"><img src="images/EM2.webp" alt="EM проект 2"></picture>
-                        </div>
-                    </div>
-                    <div class="panel-description"><p>Интернет магазин электротранспорта. Высокая конверсия, удобная админ-панель и быстрый старт продаж.</p></div>
-                    <div class="panel-tech"><h4>Технологии</h4><div class="tech-items"><span>react</span><span>PHP</span><span>Laravel</span></div></div>
-                    <div class="metrics-row"><div class="metric-item"><span class="metric-label">Длительность</span><span class="metric-value">14 дней</span></div><div class="metric-item"><span class="metric-label">Команда</span><span class="metric-value">1 разработчик + дизайнер</span></div><div class="metric-item"><span class="metric-label">Результат</span><span class="metric-value">+50% конверсии</span></div></div>
-                    <div class="metrics-bottom"><div class="metric-hours"><span class="metric-label">Часы</span><span class="metric-value">112 ч</span></div><div class="metric-price"><span class="metric-label">Стоимость</span><span class="metric-value">150 000 ₽</span></div></div>
+                    <div class="panel-image"><picture><source srcset="images/app.avif" type="image/avif"><img src="images/app.avif" alt="FitTrack приложение"></picture></div>
+                    <div class="panel-description"><p>Мобильное приложение для отслеживания тренировок и питания с интеграцией фитнес-браслетов и AI-тренером. Более 50 000 установок.</p></div>
+                    <div class="panel-tech"><h4>Технологии</h4><div class="tech-items"><span>React Native</span><span>TypeScript</span><span>Redux Toolkit</span><span>Node.js</span><span>MongoDB</span><span>Firebase</span></div></div>
+                    <div class="metrics-row"><div class="metric-item"><span class="metric-label">Длительность</span><span class="metric-value">14 недель</span></div><div class="metric-item"><span class="metric-label">Команда</span><span class="metric-value">2 мобильных разработчика + бэкенд</span></div><div class="metric-item"><span class="metric-label">Результат</span><span class="metric-value">50 000+ установок</span></div></div>
+                    <div class="metrics-bottom"><div class="metric-hours"><span class="metric-label">Часы</span><span class="metric-value">600 ч</span></div><div class="metric-price"><span class="metric-label">Стоимость</span><span class="metric-value">1 200 000 ₽</span></div></div>
                 </div>
             </div>
-            <!-- КЕЙС 4: RM -->
             <div class="accordion-panel">
                 <div class="accordion-panel-header">
                     <div class="panel-number">04</div>
-                    <div class="panel-title"><h3>RM</h3></div>
+                    <div class="panel-title"><h3>Luxury Estate Portal</h3></div>
                 </div>
                 <div class="accordion-panel-content">
-                    <div class="panel-image">
-                        <div class="multi-image-grid">
-                            <picture><source srcset="images/RM1.webp" type="image/webp"><img src="images/RM1.webp" alt="RM проект 1"></picture>
-                            <picture><source srcset="images/RM2.webp" type="image/webp"><img src="images/RM2.webp" alt="RM проект 2"></picture>
-                        </div>
-                    </div>
-                    <div class="panel-description"><p>Лендинг на чистом коде. Полное SEO. Вовлекающий дизайн и высокая скорость загрузки.</p></div>
-                    <div class="panel-tech"><h4>Технологии</h4><div class="tech-items"><span>html</span><span>JS</span><span>CSS</span></div></div>
-                    <div class="metrics-row"><div class="metric-item"><span class="metric-label">Длительность</span><span class="metric-value">14 дней</span></div><div class="metric-item"><span class="metric-label">Команда</span><span class="metric-value">1 разработчик + дизайнер</span></div><div class="metric-item"><span class="metric-label">Результат</span><span class="metric-value">SEO топ-3</span></div></div>
-                    <div class="metrics-bottom"><div class="metric-hours"><span class="metric-label">Часы</span><span class="metric-value">112 ч</span></div><div class="metric-price"><span class="metric-label">Стоимость</span><span class="metric-value">150 000 ₽</span></div></div>
+                    <div class="panel-image"><picture><source srcset="images/bank.avif" type="image/avif"><img src="images/bank.avif" alt="Luxury Estate Portal"></picture></div>
+                    <div class="panel-description"><p>Премиум портал для продажи элитной недвижимости с 3D-турами, интеграцией с CRM и автоматическим расчетом ипотеки. +40% среднего чека.</p></div>
+                    <div class="panel-tech"><h4>Технологии</h4><div class="tech-items"><span>Vue 3</span><span>Nuxt 3</span><span>Laravel</span><span>MySQL</span><span>Three.js</span><span>Docker</span></div></div>
+                    <div class="metrics-row"><div class="metric-item"><span class="metric-label">Длительность</span><span class="metric-value">16 недель</span></div><div class="metric-item"><span class="metric-label">Команда</span><span class="metric-value">3 разработчика + дизайнер</span></div><div class="metric-item"><span class="metric-label">Результат</span><span class="metric-value">+40% среднего чека</span></div></div>
+                    <div class="metrics-bottom"><div class="metric-hours"><span class="metric-label">Часы</span><span class="metric-value">720 ч</span></div><div class="metric-price"><span class="metric-label">Стоимость</span><span class="metric-value">1 440 000 ₽</span></div></div>
+                </div>
+            </div>
+            <div class="accordion-panel">
+                <div class="accordion-panel-header">
+                    <div class="panel-number">05</div>
+                    <div class="panel-title"><h3>LogiSmart Platform</h3></div>
+                </div>
+                <div class="accordion-panel-content">
+                    <div class="panel-image"><picture><source srcset="images/ai.avif" type="image/avif"><img src="images/ai.avif" alt="LogiSmart Platform"></picture></div>
+                    <div class="panel-description"><p>Система управления логистикой с IoT-трекингом, оптимизацией маршрутов на основе AI. Снижение затрат на доставку на 25%.</p></div>
+                    <div class="panel-tech"><h4>Технологии</h4><div class="tech-items"><span>Go</span><span>React</span><span>WebSocket</span><span>TimescaleDB</span><span>Kafka</span><span>Kubernetes</span></div></div>
+                    <div class="metrics-row"><div class="metric-item"><span class="metric-label">Длительность</span><span class="metric-value">20 недель</span></div><div class="metric-item"><span class="metric-label">Команда</span><span class="metric-value">4 разработчика + аналитик</span></div><div class="metric-item"><span class="metric-label">Результат</span><span class="metric-value">-25% затрат на доставку</span></div></div>
+                    <div class="metrics-bottom"><div class="metric-hours"><span class="metric-label">Часы</span><span class="metric-value">840 ч</span></div><div class="metric-price"><span class="metric-label">Стоимость</span><span class="metric-value">1 680 000 ₽</span></div></div>
                 </div>
             </div>
         </div>
@@ -357,53 +351,7 @@
                 <div class="ai-card"><div class="corner corner-tl"></div><div class="corner corner-tr"></div><div class="corner corner-bl"></div><div class="corner corner-br"></div><div class="lines"><div class="line line-1"></div><div class="line line-2"></div><div class="line line-3"></div></div><div><h3>скорость и качество</h3><p>Ролик под ключ за 3 дня. Без потери качества. Правки, субтитры, адаптация под соцсети — включены в стоимость.</p><div class="price-tag">срок от 3 дней</div></div></div>
                 <div class="ai-card"><div class="corner corner-tl"></div><div class="corner corner-tr"></div><div class="corner corner-bl"></div><div class="corner corner-br"></div><div class="lines"><div class="line line-1"></div><div class="line line-2"></div><div class="line line-3"></div></div><div><h3>премиум результат</h3><p>Уникальный визуальный стиль, AI аватар, профессиональная озвучка и вовлекающий сценарий.</p><div class="price-tag">окупаемость до 30 дней</div></div></div>
             </div>
-            <div class="ai-videos-wrapper"><div class="ai-video-container">
-                <div class="ai-video-item">
-                    <div class="video-placeholder" data-video-id="tyTxHyuEgCojbTw7uPFQxm">
-                        <div class="video-frame">
-                            <picture>
-                                <source srcset="images/ai1.webp" type="image/webp">
-                                <img src="images/ai1.webp" alt="AI рекламный ролик 1" loading="lazy" style="width:100%; height:100%; object-fit:cover;">
-                            </picture>
-                            <div class="play-overlay">
-                                <svg class="play-icon" viewBox="0 0 24 24" width="64" height="64" fill="white">
-                                    <path d="M8 5v14l11-7z"/>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="ai-video-item">
-                    <div class="video-placeholder" data-video-id="wzToMP6ZpNgEfgDNY7ecHM">
-                        <div class="video-frame">
-                            <picture>
-                                <source srcset="images/ai2.webp" type="image/webp">
-                                <img src="images/ai2.webp" alt="AI рекламный ролик 2" loading="lazy" style="width:100%; height:100%; object-fit:cover;">
-                            </picture>
-                            <div class="play-overlay">
-                                <svg class="play-icon" viewBox="0 0 24 24" width="64" height="64" fill="white">
-                                    <path d="M8 5v14l11-7z"/>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="ai-video-item">
-                    <div class="video-placeholder" data-video-id="it8tEfjsnaLMaCU712FV2S">
-                        <div class="video-frame">
-                            <picture>
-                                <source srcset="images/ai3.webp" type="image/webp">
-                                <img src="images/ai3.webp" alt="AI рекламный ролик 3" loading="lazy" style="width:100%; height:100%; object-fit:cover;">
-                            </picture>
-                            <div class="play-overlay">
-                                <svg class="play-icon" viewBox="0 0 24 24" width="64" height="64" fill="white">
-                                    <path d="M8 5v14l11-7z"/>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div></div>
+            <div class="ai-videos-wrapper"><div class="ai-video-container"><div class="ai-video-item"><div class="video-placeholder" data-video-id="tyTxHyuEgCojbTw7uPFQxm"><div class="video-frame"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='711' viewBox='0 0 400 711'%3E%3Crect width='400' height='711' fill='%23833AB4'/%3E%3Ctext x='200' y='355' text-anchor='middle' fill='white' font-size='18'%3EAI РОЛИК 1%3C/text%3E%3C/svg%3E" alt="Превью AI видео рекламы 1" loading="lazy"><div class="play-overlay"><svg class="play-icon" viewBox="0 0 24 24" width="64" height="64" fill="white"><path d="M8 5v14l11-7z"/></svg></div></div></div></div><div class="ai-video-item"><div class="video-placeholder" data-video-id="wzToMP6ZpNgEfgDNY7ecHM"><div class="video-frame"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='711' viewBox='0 0 400 711'%3E%3Crect width='400' height='711' fill='%23D62976'/%3E%3Ctext x='200' y='355' text-anchor='middle' fill='white' font-size='18'%3EAI РОЛИК 2%3C/text%3E%3C/svg%3E" alt="Превью AI видео рекламы 2" loading="lazy"><div class="play-overlay"><svg class="play-icon" viewBox="0 0 24 24" width="64" height="64" fill="white"><path d="M8 5v14l11-7z"/></svg></div></div></div></div><div class="ai-video-item"><div class="video-placeholder" data-video-id="it8tEfjsnaLMaCU712FV2S"><div class="video-frame"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='729' viewBox='0 0 400 729'%3E%3Crect width='400' height='729' fill='%23F56040'/%3E%3Ctext x='200' y='364' text-anchor='middle' fill='white' font-size='18'%3EAI РОЛИК 3%3C/text%3E%3C/svg%3E" alt="Превью AI видео рекламы 3" loading="lazy"><div class="play-overlay"><svg class="play-icon" viewBox="0 0 24 24" width="64" height="64" fill="white"><path d="M8 5v14l11-7z"/></svg></div></div></div></div></div></div>
         </div>
     </div>
 </section>
@@ -437,6 +385,36 @@
 <div id="footer-placeholder"></div>
 
 <div id="serviceModal" class="service-modal"><div class="modal-content"><span class="modal-close">×</span><div class="modal-body"><h3 id="modalTitle"></h3><div class="modal-description"><p id="modalDescription"></p></div><div class="modal-stack"><h4>Стек технологий</h4><ul id="modalStackList"></ul></div><div class="modal-advantages"><h4>Ключевые преимущества</h4><ul id="modalAdvantages"></ul></div><button class="modal-btn" id="modalContactBtn">Обсудить проект</button></div></div></div>
+
+<script type="text/javascript">
+    const VK_GROUP_SCREEN_NAME = 'albeweb';
+    function initVkWidget() {
+        if (window.VK && typeof window.VK.Widgets === 'object') { renderVkWidget(); return; }
+        var vkScript = document.createElement('script');
+        vkScript.src = 'https://vk.com/js/api/openapi.js?169';
+        vkScript.async = true;
+        vkScript.onload = function() { renderVkWidget(); };
+        vkScript.onerror = function() { fallbackVkLink(); };
+        document.head.appendChild(vkScript);
+    }
+    function renderVkWidget() {
+        const container = document.getElementById('vk_widget_container');
+        if (!container) return;
+        container.innerHTML = '';
+        if (window.VK && window.VK.Widgets) {
+            try {
+                window.VK.Widgets.Group("vk_widget_container", { mode: 3, wide: 1, width: "auto", height: 450, color1: '150E22', color2: 'F5E6FF', color3: 'F5B700' }, VK_GROUP_SCREEN_NAME);
+                setTimeout(() => { const iframe = container.querySelector('iframe'); if (iframe) { iframe.style.borderRadius = '28px'; iframe.style.backgroundColor = '#1b122a'; } }, 100);
+            } catch(e) { fallbackVkLink(); }
+        } else { fallbackVkLink(); }
+    }
+    function fallbackVkLink() {
+        const container = document.getElementById('vk_widget_container');
+        if (container) { container.innerHTML = '<div style="background:#0f0a1a; border-radius:32px; padding:32px 20px; text-align:center;"><svg width="56" height="56" viewBox="0 0 24 24" fill="#f5b700"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg><h4 style="color:#fff;">albe digital</h4><p style="color:#fff;">разработка IT-решений, AI, автоматизация бизнеса</p><a href="https://vk.com/albeweb" target="_blank" style="background:#4c1d95; padding:12px 32px; border-radius:60px; display:inline-block; margin-top:20px; color:white; text-decoration:none;">открыть сообщество →</a></div>'; }
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initVkWidget);
+    else initVkWidget();
+</script>
 
 <script src="common.js" defer></script>
 </body>
