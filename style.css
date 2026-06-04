@@ -43,27 +43,13 @@
     --gradient: linear-gradient(135deg, var(--color-yellow), var(--color-green), var(--color-cyan), var(--color-purple));
     --gradient-yellow-green: linear-gradient(135deg, var(--color-yellow), var(--color-green));
     --gradient-cyan-purple: linear-gradient(135deg, var(--color-cyan), var(--color-purple));
-    
-    /* ===== МОБИЛЬНЫЕ ПЕРЕМЕННЫЕ ДЛЯ ПЛАВНОСТИ ===== */
-    --mobile-padding: 20px;
-    --transition-fast: 0.2s ease;
-    --transition-smooth: 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
 }
 
 /* ============================================ */
 /* 3. БАЗОВЫЕ СТИЛИ И СБРОС */
 /* ============================================ */
 
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box;
-}
-
-/* Предотвращаем моргание при загрузке шрифтов */
-html {
-    font-display: swap;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 html, body {
     overflow-x: hidden;
@@ -82,8 +68,6 @@ body {
     overflow-x: hidden;
     max-width: 100vw;
     position: relative;
-    /* Резервируем место под скроллбар, чтобы контент не дёргался */
-    scrollbar-gutter: stable;
 }
 
 body::before {
@@ -108,12 +92,7 @@ body::before {
     overflow-x: hidden;
 }
 
-.section { 
-    padding: 100px 0; 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    /* Резервируем место под анимации */
-    contain: layout style;
-}
+.section { padding: 100px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
 
 /* ============================================ */
 /* 4. ТИПОГРАФИКА */
@@ -217,9 +196,6 @@ h4 {
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 15px 35px -15px rgba(0, 0, 0, 0.3);
     transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    /* Резервируем место под hover-эффекты */
-    min-height: 200px;
-    contain: paint;
 }
 
 .quantum-card:hover {
@@ -521,7 +497,7 @@ h4 {
 #header-placeholder .header { pointer-events: auto; }
 
 /* ============================================ */
-/* 8. HERO БАННЕР — УЛУЧШЕННАЯ МОБИЛЬНАЯ ВЕРСИЯ */
+/* 8. HERO БАННЕР */
 /* ============================================ */
 
 .hero-section {
@@ -811,18 +787,10 @@ main { padding-top: 0; }
 .video-placeholder:hover .play-overlay { background: rgba(0, 0, 0, 0.1); }
 
 /* ============================================ */
-/* 14. ПОРТФОЛИО АККОРДЕОН — УЛУЧШЕННАЯ ВЕРСИЯ */
+/* 14. ПОРТФОЛИО АККОРДЕОН */
 /* ============================================ */
 
-.portfolio-accordion { 
-    display: flex; 
-    flex-direction: row; 
-    gap: 8px; 
-    width: 100%; 
-    min-height: 750px; 
-    background: transparent; 
-    border-radius: 28px;
-}
+.portfolio-accordion { display: flex; flex-direction: row; gap: 8px; width: 100%; min-height: 750px; background: transparent; border-radius: 28px; }
 
 .accordion-panel {
     flex: 1;
@@ -836,8 +804,6 @@ main { padding-top: 0; }
     overflow: hidden;
     margin: 0 4px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    /* Резервируем место под контент при открытии */
-    transition-behavior: allow-discrete;
 }
 
 .accordion-panel:first-child { margin-left: 0; }
@@ -868,23 +834,7 @@ main { padding-top: 0; }
 .accordion-panel:not(.active):hover .accordion-panel-header::after { opacity: 1; transform: translateX(-3px); color: #F5B700; }
 .accordion-panel.active .accordion-panel-header::after { content: '→'; opacity: 1; }
 
-.accordion-panel-content { 
-    position: absolute; 
-    left: 70px; 
-    top: 0; 
-    width: calc(100% - 70px); 
-    height: 100%; 
-    padding: 30px; 
-    opacity: 0; 
-    visibility: hidden; 
-    transition: opacity 0.3s ease 0.2s, visibility 0.3s ease 0.2s; 
-    overflow-y: auto; 
-    background: rgba(10, 10, 10, 0.4); 
-    display: flex; 
-    flex-direction: column;
-    /* Резервируем место под скролл */
-    scrollbar-gutter: stable;
-}
+.accordion-panel-content { position: absolute; left: 70px; top: 0; width: calc(100% - 70px); height: 100%; padding: 30px; opacity: 0; visibility: hidden; transition: opacity 0.3s ease 0.2s, visibility 0.3s ease 0.2s; overflow-y: auto; background: rgba(10, 10, 10, 0.4); display: flex; flex-direction: column; }
 .accordion-panel.active .accordion-panel-content { opacity: 1; visibility: visible; }
 
 .panel-image { max-height: 350px; overflow: hidden; border-radius: 24px; margin-bottom: 24px; }
@@ -913,7 +863,7 @@ main { padding-top: 0; }
 .accordion-panel-content::-webkit-scrollbar-thumb { background: #06B6D4; border-radius: 4px; }
 
 /* ============================================ */
-/* МОБИЛЬНАЯ ВЕРСИЯ ПОРТФОЛИО — ПЛАВНЫЙ АККОРДЕОН */
+/* МОБИЛЬНАЯ ВЕРСИЯ ПОРТФОЛИО */
 /* ============================================ */
 
 @media (max-width: 768px) {
@@ -923,14 +873,16 @@ main { padding-top: 0; }
         gap: 12px;
     }
     
+    /* Все панели — по умолчанию закрыты, компактные */
     .accordion-panel {
         min-height: 70px;
         height: 70px;
         margin: 0;
         flex: none;
-        transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: height 0.3s ease;
     }
     
+    /* Открытая панель — растягивается */
     .accordion-panel.active {
         min-height: auto;
         height: auto;
@@ -938,6 +890,7 @@ main { padding-top: 0; }
         animation: none;
     }
     
+    /* Заголовок панели — горизонтальный */
     .accordion-panel-header {
         position: relative;
         width: 100%;
@@ -976,10 +929,12 @@ main { padding-top: 0; }
         font-size: 1.2rem;
     }
     
+    /* Контент — скрыт у закрытых панелей */
     .accordion-panel:not(.active) .accordion-panel-content {
         display: none;
     }
     
+    /* Контент — показывается только у открытой панели */
     .accordion-panel.active .accordion-panel-content {
         display: flex;
         position: relative;
@@ -1214,27 +1169,7 @@ main { padding-top: 0; }
 /* 20. ТУЛТИПЫ */
 /* ============================================ */
 
-.tech-tooltip { 
-    position: fixed; 
-    background: #0F1419; 
-    border: 1px solid var(--color-cyan); 
-    padding: 16px 20px; 
-    max-width: 360px; 
-    width: max-content; 
-    z-index: 2000; 
-    border-radius: 16px; 
-    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5); 
-    backdrop-filter: blur(12px); 
-    font-weight: 400; 
-    font-size: 0.85rem; 
-    line-height: 1.5; 
-    color: var(--white); 
-    pointer-events: none; 
-    opacity: 0; 
-    transition: opacity 0.2s;
-    /* Резервируем место для анимации */
-    will-change: opacity, left, top;
-}
+.tech-tooltip { position: fixed; background: #0F1419; border: 1px solid var(--color-cyan); padding: 16px 20px; max-width: 360px; width: max-content; z-index: 2000; border-radius: 16px; box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5); backdrop-filter: blur(12px); font-weight: 400; font-size: 0.85rem; line-height: 1.5; color: var(--white); pointer-events: none; opacity: 0; transition: opacity 0.2s; }
 .tech-tooltip strong { color: var(--color-cyan); font-weight: 500; }
 
 /* ============================================ */
@@ -1298,7 +1233,7 @@ main { padding-top: 0; }
 .totop-btn { min-width: 56px; min-height: 56px; cursor: pointer; }
 
 /* ============================================ */
-/* 25. АККОРДЕОН FAQ — УЛУЧШЕННЫЙ */
+/* 25. АККОРДЕОН FAQ */
 /* ============================================ */
 
 .cases-accordion { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
@@ -1359,34 +1294,10 @@ main { padding-top: 0; }
 .handle-bar::after { right: -7px; top: 0; }
 .case-item.active .handle-bar { background: var(--color-yellow); box-shadow: 0 0 8px var(--color-yellow); transform: rotate(180deg); }
 
-/* Используем grid для плавного открытия без перерисовки содержимого */
-.case-inside {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows 0.5s cubic-bezier(0.33, 1, 0.68, 1);
-}
-
-.case-item.active .case-inside {
-    grid-template-rows: 1fr;
-}
-
-.case-content {
-    overflow: hidden;
-    padding: 0 1.5rem;
-}
-
-.case-item.active .case-content {
-    padding: 0.2rem 1.5rem 1.2rem 1.5rem;
-}
-
-.case-text { 
-    color: #D1D5DB; 
-    line-height: 1.5; 
-    font-size: 0.85rem; 
-    border-top: 1px solid rgba(255, 255, 255, 0.08); 
-    padding-top: 0.8rem;
-    transform: translateZ(8px); 
-}
+.case-inside { max-height: 0; overflow: hidden; transition: max-height 0.6s cubic-bezier(0.33, 1, 0.68, 1); }
+.case-item.active .case-inside { max-height: 280px; }
+.case-content { padding: 0.2rem 1.5rem 1.2rem 1.5rem; transform: translateZ(8px); }
+.case-text { color: #D1D5DB; line-height: 1.5; font-size: 0.85rem; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 0.8rem; }
 
 .project-meta { display: flex; gap: 0.8rem; margin-top: 0.8rem; flex-wrap: wrap; }
 .meta-tag { font-size: 0.65rem; font-family: monospace; color: var(--color-cyan); background: rgba(6, 182, 212, 0.08); padding: 0.15rem 0.6rem; border-radius: 20px; border-left: 1px solid var(--color-cyan); }
@@ -1400,7 +1311,7 @@ main { padding-top: 0; }
 .floating-review:hover { transform: scale(1.1); box-shadow: 0 8px 25px rgba(245, 183, 0, 0.4); }
 
 /* ============================================ */
-/* 26. МОБИЛЬНАЯ АДАПТАЦИЯ — ПОЛНОСТЬЮ ПЕРЕРАБОТАНА */
+/* 26. МОБИЛЬНАЯ АДАПТАЦИЯ */
 /* ============================================ */
 
 /* Планшеты до 1024px */
@@ -1442,104 +1353,39 @@ main { padding-top: 0; }
     .number-value { font-size: 1.8rem; }
 }
 
-/* Мобильные устройства до 768px — ПОЛНАЯ ПЕРЕРАБОТКА */
+/* Мобильные устройства до 768px */
 @media (max-width: 768px) {
-    /* Глобальные оптимизации для мобильных */
-    body {
-        scrollbar-gutter: auto;
-    }
-    
     /* Отступы */
-    .container { 
-        padding: 0 var(--mobile-padding); 
-    }
-    .section { 
-        padding: 60px 0; 
-    }
+    .container { padding: 0 20px; }
+    .section { padding: 60px 0; }
     
     /* Заголовки */
-    .section-header { 
-        flex-direction: column; 
-        align-items: flex-start; 
-        gap: 12px; 
-        margin-bottom: 32px; 
-    }
-    .section-header h2 { 
-        font-size: 1.8rem; 
-        margin-bottom: 0; 
-    }
+    .section-header { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 32px; }
+    .section-header h2 { font-size: 1.8rem; margin-bottom: 0; }
     
-    /* Сетки с резервированием места */
-    .services-grid { 
-        grid-template-columns: 1fr; 
-        gap: 20px; 
-    }
-    .service-card { 
-        aspect-ratio: auto; 
-        min-height: 260px;
-        /* Резервируем место под динамический контент */
-        contain: content;
-    }
-    .service-card .card-content { 
-        padding: 20px; 
-    }
-    .service-card h3 { 
-        font-size: 1.2rem; 
-    }
-    .service-card p { 
-        font-size: 0.85rem; 
-    }
-    
-    .competences-grid { 
-        grid-template-columns: 1fr; 
-        gap: 20px; 
-    }
-    .steps-container { 
-        flex-direction: column; 
-    }
-    .step-card { 
-        width: 100%; 
-    }
+    /* Сетки */
+    .services-grid { grid-template-columns: 1fr; gap: 20px; }
+    .service-card { aspect-ratio: auto; min-height: 260px; }
+    .service-card .card-content { padding: 20px; }
+    .service-card h3 { font-size: 1.2rem; }
+    .service-card p { font-size: 0.85rem; }
+    .competences-grid { grid-template-columns: 1fr; gap: 20px; }
+    .steps-container { flex-direction: column; }
+    .step-card { width: 100%; }
     
     /* Квантовые уголки на мобильных */
-    .quantum-card .corner { 
-        width: 20px; 
-        height: 20px; 
-    }
-    .quantum-card .corner-tl { 
-        top: 12px; 
-        left: 12px; 
-    }
-    .quantum-card .corner-tr { 
-        top: 12px; 
-        right: 12px; 
-    }
-    .quantum-card .corner-bl { 
-        bottom: 12px; 
-        left: 12px; 
-    }
-    .quantum-card .corner-br { 
-        bottom: 12px; 
-        right: 12px; 
-    }
+    .quantum-card .corner { width: 20px; height: 20px; }
+    .quantum-card .corner-tl { top: 12px; left: 12px; }
+    .quantum-card .corner-tr { top: 12px; right: 12px; }
+    .quantum-card .corner-bl { bottom: 12px; left: 12px; }
+    .quantum-card .corner-br { bottom: 12px; right: 12px; }
     
-    /* Hero секция — полное переопределение на grid */
+    /* Hero секция — полное переопределение position */
     .hero-section {
         height: auto;
-        min-height: 100vh;
+        min-height: auto;
         max-height: none;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 100px 0 60px;
-        /* Резервируем место под все элементы */
-        container-type: inline-size;
-    }
-    
-    /* Отключаем тяжёлую графику на мобильных для производительности */
-    .hero-canvas-bottom,
-    .masked-container {
-        display: none;
+        padding: 120px 0 60px;
     }
     
     .albe-letters {
@@ -1550,7 +1396,6 @@ main { padding-top: 0; }
         justify-content: center;
         padding: 0 0 20px;
         gap: 8vw;
-        margin-top: 20px;
     }
     
     .albe-letter {
@@ -1602,8 +1447,6 @@ main { padding-top: 0; }
         white-space: normal;
         max-width: 90%;
         line-height: 1.4;
-        /* Резервируем минимальную высоту под динамический контент */
-        min-height: 3.5rem;
     }
     
     .cursor {
@@ -1671,83 +1514,56 @@ main { padding-top: 0; }
         max-width: 90%;
     }
     
-    /* Калькулятор с резервированием места */
-    .calculator-card { 
-        padding: 24px; 
+    /* Отключаем тяжёлую графику на мобильных */
+    .hero-canvas-bottom,
+    .masked-container {
+        display: none;
     }
-    .calculator-two-columns { 
-        flex-direction: column; 
-        gap: 24px; 
-    }
-    .calc-options { 
-        gap: 8px; 
-    }
-    .calc-option { 
-        padding: 6px 14px; 
-        font-size: 0.75rem; 
-    }
-    .calc-price { 
-        font-size: 1.3rem; 
-    }
-    .calc-total-block {
-        min-height: 100px;
-    }
+    
+    /* Калькулятор */
+    .calculator-card { padding: 24px; }
+    .calculator-two-columns { flex-direction: column; gap: 24px; }
+    .calc-options { gap: 8px; }
+    .calc-option { padding: 6px 14px; font-size: 0.75rem; }
+    .calc-price { font-size: 1.3rem; }
     
     /* AI реклама */
-    .ai-design-grid { 
-        flex-direction: column; 
-        gap: 24px; 
-    }
-    .ai-cards-column { 
-        order: 1; 
-    }
-    .ai-videos-wrapper { 
-        order: 2; 
-    }
-    .ai-video-container { 
-        grid-template-columns: 1fr; 
-        gap: 20px; 
-    }
-    .ai-card { 
-        padding: 20px; 
-    }
-    .ai-card h3 { 
-        font-size: 1.3rem; 
-    }
-    .ai-card p { 
-        font-size: 0.85rem; 
-    }
+    .ai-design-grid { flex-direction: column; gap: 24px; }
+    .ai-cards-column { order: 1; }
+    .ai-videos-wrapper { order: 2; }
+    .ai-video-container { grid-template-columns: 1fr; gap: 20px; }
+    .ai-card { padding: 20px; }
+    .ai-card h3 { font-size: 1.3rem; }
+    .ai-card p { font-size: 0.85rem; }
     
-    /* FAQ аккордеон — уже улучшен с grid-template-rows */
-    .case-lid { 
-        padding: 12px; 
-    }
-    .lid-left { 
-        flex-direction: column; 
-        align-items: flex-start; 
-        gap: 6px; 
-    }
-    .case-title { 
-        font-size: 0.85rem; 
-        line-height: 1.3; 
-    }
-    .case-number { 
-        font-size: 0.6rem; 
-    }
-    .case-text { 
-        font-size: 0.8rem; 
-    }
-    .meta-tag { 
-        font-size: 0.6rem; 
-    }
+    /* Портфолио аккордеон */
+    .portfolio-accordion { flex-direction: column; min-height: auto; gap: 12px; }
+    .accordion-panel { min-height: 70px; margin: 0; }
+    .accordion-panel.active { min-height: auto; flex: none; animation: none; }
+    .accordion-panel-header { position: relative; width: 100%; height: 70px; flex-direction: row; justify-content: space-between; padding: 0 20px; }
+    .panel-number, .panel-title { writing-mode: horizontal-tb; transform: none; display: flex; flex-direction: row; align-items: center; }
+    .panel-number { font-size: 1.2rem; }
+    .panel-title h3 { font-size: 1rem; letter-spacing: 1px; }
+    .accordion-panel-content { position: relative; left: 0; width: 100%; height: auto; padding: 20px; }
+    .accordion-panel-header::after { writing-mode: horizontal-tb; transform: none; margin-top: 0; }
+    .panel-image { max-height: 200px; }
+    .panel-description p { font-size: 0.9rem; }
+    .tech-items span { font-size: 0.7rem; padding: 4px 10px; }
+    .metrics-row { flex-direction: column; gap: 12px; }
+    .metrics-bottom { flex-direction: column; gap: 12px; }
+    .metric-hours, .metric-price { min-width: auto; }
+    
+    /* FAQ аккордеон */
+    .case-lid { padding: 12px; }
+    .lid-left { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .case-title { font-size: 0.85rem; line-height: 1.3; }
+    .case-number { font-size: 0.6rem; }
+    .case-text { font-size: 0.8rem; }
+    .meta-tag { font-size: 0.6rem; }
     
     /* Header и бургер-меню */
-    .header .container { 
-        padding: 0 var(--mobile-padding); 
-    }
-    .burger { 
-        display: flex; 
-    }
+    .header .container { padding: 0 20px; }
+    .burger { display: flex; }
     .nav-menu {
         position: fixed;
         top: 0;
@@ -1765,356 +1581,119 @@ main { padding-top: 0; }
         padding: 40px;
         border-left: 1px solid rgba(255, 255, 255, 0.1);
     }
-    .nav-menu.active { 
-        right: 0; 
-    }
-    .nav-link { 
-        font-size: 1.1rem; 
-        padding: 12px 0; 
-        width: 100%; 
-        text-align: center; 
-    }
-    .kinetic-btn.header-telegram-btn { 
-        margin-top: 20px; 
-    }
+    .nav-menu.active { right: 0; }
+    .nav-link { font-size: 1.1rem; padding: 12px 0; width: 100%; text-align: center; }
+    .kinetic-btn.header-telegram-btn { margin-top: 20px; }
     
     /* Модальное окно */
-    .modal-body { 
-        padding: 30px 20px; 
-    }
-    .modal-body h3 { 
-        font-size: 1.4rem; 
-    }
-    .modal-description p, .modal-stack li, .modal-advantages li { 
-        font-size: 0.85rem; 
-    }
-    .modal-btn { 
-        padding: 12px 20px; 
-        font-size: 0.9rem; 
-    }
+    .modal-body { padding: 30px 20px; }
+    .modal-body h3 { font-size: 1.4rem; }
+    .modal-description p, .modal-stack li, .modal-advantages li { font-size: 0.85rem; }
+    .modal-btn { padding: 12px 20px; font-size: 0.9rem; }
     
     /* Кинетические кнопки */
-    .kinetic-btn { 
-        min-width: 200px; 
-        height: 48px; 
-    }
-    .kinetic-btn.large { 
-        min-width: 260px; 
-        height: 54px; 
-    }
-    .kinetic-btn .btn-text { 
-        font-size: 0.75rem; 
-        letter-spacing: 2px; 
-    }
-    .kinetic-btn.header-telegram-btn { 
-        min-width: 110px; 
-        height: 36px; 
-    }
-    .kinetic-btn.header-telegram-btn .btn-text { 
-        font-size: 0.65rem; 
-        letter-spacing: 1px; 
-    }
-    .kinetic-btn.totop-btn { 
-        bottom: 20px; 
-        right: 20px; 
-        min-width: 50px; 
-        width: 50px; 
-        height: 50px; 
-    }
-    .kinetic-btn.totop-btn .btn-text { 
-        font-size: 1.4rem; 
-    }
+    .kinetic-btn { min-width: 200px; height: 48px; }
+    .kinetic-btn.large { min-width: 260px; height: 54px; }
+    .kinetic-btn .btn-text { font-size: 0.75rem; letter-spacing: 2px; }
+    .kinetic-btn.header-telegram-btn { min-width: 110px; height: 36px; }
+    .kinetic-btn.header-telegram-btn .btn-text { font-size: 0.65rem; letter-spacing: 1px; }
+    .kinetic-btn.totop-btn { bottom: 20px; right: 20px; min-width: 50px; width: 50px; height: 50px; }
+    .kinetic-btn.totop-btn .btn-text { font-size: 1.4rem; }
     
     /* Команда */
-    .team-section { 
-        padding: 60px 0; 
-    }
-    .founder-content { 
-        padding: 28px 24px; 
-    }
-    .founder-avatar { 
-        width: 120px; 
-        height: 120px; 
-    }
-    .founder-name { 
-        font-size: 1.4rem; 
-    }
-    .founder-bio { 
-        font-size: 0.9rem; 
-    }
-    .specialist-avatar { 
-        width: 80px; 
-        height: 80px; 
-    }
-    .specialist-name { 
-        font-size: 1rem; 
-    }
-    .specialist-bio { 
-        font-size: 0.7rem; 
-    }
-    .kinetic-team-btn { 
-        min-width: 220px; 
-        height: 48px; 
-    }
-    .kinetic-team-btn .btn-text { 
-        font-size: 0.75rem; 
-        letter-spacing: 3px; 
-    }
+    .team-section { padding: 60px 0; }
+    .founder-content { padding: 28px 24px; }
+    .founder-avatar { width: 120px; height: 120px; }
+    .founder-name { font-size: 1.4rem; }
+    .founder-bio { font-size: 0.9rem; }
+    .specialist-avatar { width: 80px; height: 80px; }
+    .specialist-name { font-size: 1rem; }
+    .specialist-bio { font-size: 0.7rem; }
+    .kinetic-team-btn { min-width: 220px; height: 48px; }
+    .kinetic-team-btn .btn-text { font-size: 0.75rem; letter-spacing: 3px; }
     
     /* Отзывы */
-    .reviews-section { 
-        padding: 60px 0; 
-    }
-    .reviews-stats { 
-        gap: 24px; 
-    }
-    .reviews-stat-number { 
-        font-size: 1.8rem; 
-    }
-    .reviews-grid { 
-        grid-template-columns: 1fr; 
-        max-width: 500px; 
-        margin: 0 auto; 
-    }
-    .review-content { 
-        padding: 24px 20px; 
-    }
-    .kinetic-reviews-btn { 
-        min-width: 220px; 
-        height: 48px; 
-    }
-    .kinetic-reviews-btn .btn-text { 
-        font-size: 0.75rem; 
-        letter-spacing: 3px; 
-    }
-    .review-card .corner { 
-        width: 18px; 
-        height: 18px; 
-    }
-    .review-card .corner-tl { 
-        top: 12px; 
-        left: 12px; 
-    }
-    .review-card .corner-tr { 
-        top: 12px; 
-        right: 12px; 
-    }
-    .review-card .corner-bl { 
-        bottom: 12px; 
-        left: 12px; 
-    }
-    .review-card .corner-br { 
-        bottom: 12px; 
-        right: 12px; 
-    }
+    .reviews-section { padding: 60px 0; }
+    .reviews-stats { gap: 24px; }
+    .reviews-stat-number { font-size: 1.8rem; }
+    .reviews-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+    .review-content { padding: 24px 20px; }
+    .kinetic-reviews-btn { min-width: 220px; height: 48px; }
+    .kinetic-reviews-btn .btn-text { font-size: 0.75rem; letter-spacing: 3px; }
+    .review-card .corner { width: 18px; height: 18px; }
+    .review-card .corner-tl { top: 12px; left: 12px; }
+    .review-card .corner-tr { top: 12px; right: 12px; }
+    .review-card .corner-bl { bottom: 12px; left: 12px; }
+    .review-card .corner-br { bottom: 12px; right: 12px; }
     
     /* Миссия */
-    .mission-new-section { 
-        padding: 60px 0; 
-    }
-    .mission-new-section .container { 
-        padding: 0 var(--mobile-padding); 
-    }
-    .mission-grid { 
-        grid-template-columns: 1fr; 
-        max-width: 400px; 
-        margin: 0 auto; 
-    }
-    .advantage-content { 
-        padding: 28px 20px; 
-    }
-    .advantage-icon { 
-        font-size: 2rem; 
-    }
-    .advantage-title { 
-        font-size: 1.2rem; 
-    }
-    .mission-numbers { 
-        flex-direction: column; 
-        align-items: stretch; 
-        gap: 16px; 
-        border-radius: 28px; 
-        padding: 24px; 
-    }
-    .number-item { 
-        display: flex; 
-        justify-content: space-between; 
-        align-items: center; 
-        gap: 20px; 
-    }
-    .number-value { 
-        font-size: 1.5rem; 
-        margin-bottom: 0; 
-    }
-    .kinetic-mission-btn { 
-        min-width: 220px; 
-        height: 48px; 
-    }
-    .kinetic-mission-btn .btn-text { 
-        font-size: 0.75rem; 
-        letter-spacing: 3px; 
-    }
-    .mission-advantage-card .corner { 
-        width: 18px; 
-        height: 18px; 
-    }
-    .mission-advantage-card .corner-tl { 
-        top: 12px; 
-        left: 12px; 
-    }
-    .mission-advantage-card .corner-tr { 
-        top: 12px; 
-        right: 12px; 
-    }
-    .mission-advantage-card .corner-bl { 
-        bottom: 12px; 
-        left: 12px; 
-    }
-    .mission-advantage-card .corner-br { 
-        bottom: 12px; 
-        right: 12px; 
-    }
+    .mission-new-section { padding: 60px 0; }
+    .mission-new-section .container { padding: 0 20px; }
+    .mission-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+    .advantage-content { padding: 28px 20px; }
+    .advantage-icon { font-size: 2rem; }
+    .advantage-title { font-size: 1.2rem; }
+    .mission-numbers { flex-direction: column; align-items: stretch; gap: 16px; border-radius: 28px; padding: 24px; }
+    .number-item { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+    .number-value { font-size: 1.5rem; margin-bottom: 0; }
+    .kinetic-mission-btn { min-width: 220px; height: 48px; }
+    .kinetic-mission-btn .btn-text { font-size: 0.75rem; letter-spacing: 3px; }
+    .mission-advantage-card .corner { width: 18px; height: 18px; }
+    .mission-advantage-card .corner-tl { top: 12px; left: 12px; }
+    .mission-advantage-card .corner-tr { top: 12px; right: 12px; }
+    .mission-advantage-card .corner-bl { bottom: 12px; left: 12px; }
+    .mission-advantage-card .corner-br { bottom: 12px; right: 12px; }
     
     /* Контакты */
-    .contacts-new-section { 
-        padding: 60px 0; 
-    }
-    .contacts-new-section .container { 
-        padding: 0 var(--mobile-padding); 
-    }
-    .contacts-new-grid { 
-        grid-template-columns: 1fr; 
-        gap: 32px; 
-    }
-    .contact-new-details .value { 
-        font-size: 1.1rem; 
-    }
-    .vk-new-header h3 { 
-        font-size: 1.5rem; 
-    }
-    .vk-group-widget {
-        min-height: 280px;
-    }
+    .contacts-new-section { padding: 60px 0; }
+    .contacts-new-section .container { padding: 0 20px; }
+    .contacts-new-grid { grid-template-columns: 1fr; gap: 32px; }
+    .contact-new-details .value { font-size: 1.1rem; }
+    .vk-new-header h3 { font-size: 1.5rem; }
     
     /* Форма */
-    .form-row { 
-        grid-template-columns: 1fr; 
-        gap: 0; 
-    }
-    .contact-card { 
-        padding: 24px; 
-    }
-    .contact-card h2 { 
-        font-size: 1.8rem; 
-    }
-    .contact-form input, .contact-form textarea { 
-        padding: 12px 16px; 
-        font-size: 0.9rem; 
-    }
+    .form-row { grid-template-columns: 1fr; gap: 0; }
+    .contact-card { padding: 24px; }
+    .contact-card h2 { font-size: 1.8rem; }
+    .contact-form input, .contact-form textarea { padding: 12px 16px; font-size: 0.9rem; }
     
     /* Футер */
-    .footer-grid { 
-        flex-direction: column; 
-        gap: 30px; 
-        text-align: center; 
-    }
-    .footer-logo { 
-        font-size: 1.2rem; 
-    }
-    .footer p, .footer a { 
-        font-size: 0.8rem; 
-    }
+    .footer-grid { flex-direction: column; gap: 30px; text-align: center; }
+    .footer-logo { font-size: 1.2rem; }
+    .footer p, .footer a { font-size: 0.8rem; }
     
     /* Плавающие кнопки */
-    .floating-review-btn { 
-        right: 20px; 
-        bottom: 80px; 
-    }
-    .floating-review { 
-        width: 48px; 
-        height: 48px; 
-    }
-    .floating-review i { 
-        font-size: 1.2rem; 
-    }
+    .floating-review-btn { right: 20px; bottom: 80px; }
+    .floating-review { width: 48px; height: 48px; }
+    .floating-review i { font-size: 1.2rem; }
 }
 
 /* Маленькие мобильные до 550px */
 @media (max-width: 550px) {
-    .specialists-grid { 
-        grid-template-columns: 1fr; 
-        gap: 20px; 
-    }
-    .founder-stats { 
-        flex-direction: column; 
-        gap: 12px; 
-        align-items: flex-start; 
-    }
-    .founder-stat { 
-        display: flex; 
-        justify-content: space-between; 
-        width: 100%; 
-        gap: 16px; 
-    }
-    .founder-stat .stat-number { 
-        font-size: 1.2rem; 
-    }
+    .specialists-grid { grid-template-columns: 1fr; gap: 20px; }
+    .founder-stats { flex-direction: column; gap: 12px; align-items: flex-start; }
+    .founder-stat { display: flex; justify-content: space-between; width: 100%; gap: 16px; }
+    .founder-stat .stat-number { font-size: 1.2rem; }
 }
 
 /* Маленькие мобильные до 480px */
 @media (max-width: 480px) {
-    .team-header h2, .reviews-header h2, .mission-header h2 { 
-        font-size: 1.8rem; 
-    }
-    .team-subtitle, .reviews-subtitle, .mission-subtitle { 
-        font-size: 0.85rem; 
-    }
-    .agency-tag { 
-        font-size: 0.75rem; 
-        letter-spacing: 4px; 
-    }
-    .left-phrase { 
-        font-size: 0.85rem; 
-    }
-    .static-prefix, .dynamic-word-container { 
-        font-size: 1.1rem; 
-    }
-    .hero-badges .badge { 
-        font-size: 0.55rem; 
-        padding: 0.25rem 0.7rem; 
-    }
-    .albe-letter { 
-        font-size: 13vw; 
-    }
-    .albe-letters { 
-        gap: 5vw; 
-        padding: 40px 0 10px; 
-    }
-    .competence-card { 
-        padding: 20px; 
-    }
-    .competence-card h3 { 
-        font-size: 1.2rem; 
-    }
-    .tech-item { 
-        font-size: 0.7rem; 
-        padding: 6px 12px; 
-    }
-    .reviews-stat-number { 
-        font-size: 1.4rem; 
-    }
-    .reviews-stat-label { 
-        font-size: 0.6rem; 
-    }
-    .review-text { 
-        font-size: 0.8rem; 
-    }
-    .client-name { 
-        font-size: 0.9rem; 
-    }
-    .client-position { 
-        font-size: 0.6rem; 
-    }
+    .team-header h2, .reviews-header h2, .mission-header h2 { font-size: 1.8rem; }
+    .team-subtitle, .reviews-subtitle, .mission-subtitle { font-size: 0.85rem; }
+    .agency-tag { font-size: 0.75rem; letter-spacing: 4px; }
+    .left-phrase { font-size: 0.85rem; }
+    .static-prefix, .dynamic-word-container { font-size: 1.1rem; }
+    .hero-badges .badge { font-size: 0.55rem; padding: 0.25rem 0.7rem; }
+    .albe-letter { font-size: 13vw; }
+    .albe-letters { gap: 5vw; padding: 40px 0 10px; }
+    .competence-card { padding: 20px; }
+    .competence-card h3 { font-size: 1.2rem; }
+    .tech-item { font-size: 0.7rem; padding: 6px 12px; }
+    .reviews-stat-number { font-size: 1.4rem; }
+    .reviews-stat-label { font-size: 0.6rem; }
+    .review-text { font-size: 0.8rem; }
+    .client-name { font-size: 0.9rem; }
+    .client-position { font-size: 0.6rem; }
 }
 
 /* Отключаем анимации для пользователей с reduced motion */
@@ -2126,145 +1705,13 @@ main { padding-top: 0; }
         transform: none;
     }
     .hero-canvas-bottom { display: none; }
-    .case-inside {
-        transition: none;
-    }
 }
 
 /* Безопасные отступы для iPhone */
 @supports (padding: max(0px)) {
-    .container { 
-        padding-left: max(var(--mobile-padding), env(safe-area-inset-left)); 
-        padding-right: max(var(--mobile-padding), env(safe-area-inset-right)); 
-    }
+    .container { padding-left: max(20px, env(safe-area-inset-left)); padding-right: max(20px, env(safe-area-inset-right)); }
     @media (max-width: 768px) {
-        .hero-section { 
-            padding-left: env(safe-area-inset-left); 
-            padding-right: env(safe-area-inset-right); 
-        }
-        .nav-menu { 
-            padding-top: max(40px, env(safe-area-inset-top)); 
-            padding-bottom: max(40px, env(safe-area-inset-bottom)); 
-        }
-    }
-}
-
-/* ============================================ */
-/* МОБИЛЬНАЯ ВЕРСИЯ — ОТКЛЮЧЕНИЕ КВАНТОВЫХ ЭФФЕКТОВ */
-/* ============================================ */
-
-@media (max-width: 768px) {
-    /* Отключаем все 3D-эффекты квантовых карточек */
-    .quantum-card {
-        background: var(--card-bg);
-        backdrop-filter: blur(8px);
-        transform: none !important;
-        perspective: none;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-        min-height: auto;
-    }
-    
-    /* Убираем сегменты (они не видны на мобильных, но занимают место) */
-    .quantum-card .segment,
-    .quantum-card .segment-1,
-    .quantum-card .segment-2,
-    .quantum-card .segment-3,
-    .quantum-card .segment-4 {
-        display: none !important;
-    }
-    
-    /* Упрощаем угловые элементы */
-    .quantum-card .corner,
-    .ai-card .corner,
-    .review-card .corner,
-    .mission-advantage-card .corner {
-        display: none !important;
-    }
-    
-    /* Убираем 3D-трансформации содержимого */
-    .quantum-card .card-content,
-    .founder-content,
-    .specialist-content,
-    .review-content,
-    .advantage-content {
-        transform: none !important;
-        pointer-events: auto;
-        padding: 20px;
-    }
-    
-    /* Упрощаем фон карточек */
-    .quantum-card,
-    .ai-card,
-    .review-card,
-    .mission-advantage-card,
-    .founder-card,
-    .specialist-card {
-        backdrop-filter: blur(4px);
-        background: rgba(18, 18, 26, 0.9);
-    }
-    
-    /* Убираем сложные градиентные рамки при ховере */
-    .quantum-card:hover,
-    .ai-card:hover,
-    .review-card:hover,
-    .mission-advantage-card:hover {
-        transform: translateY(-4px) !important;
-        box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.4);
-    }
-    
-    /* Убираем анимацию линий у AI-карточек */
-    .ai-card .lines,
-    .ai-card .line {
-        display: none !important;
-    }
-    
-    /* Убираем :before/:after псевдоэлементы с градиентами */
-    .quantum-card::before,
-    .quantum-card::after,
-    .ai-card::before,
-    .ai-card::after,
-    .review-card::before,
-    .review-card::after {
-        display: none !important;
-    }
-    
-    /* Убираем сегменты у всех квантовых карточек в любых блоках */
-    .services-grid .quantum-card .segment,
-    .founder-card .segment,
-    .specialist-card .segment,
-    .review-card .segment,
-    .mission-advantage-card .segment {
-        display: none !important;
-    }
-    
-    /* Упрощаем service-card */
-    .service-card {
-        aspect-ratio: auto;
-        min-height: auto;
-    }
-    
-    .service-card .card-content {
-        padding: 20px;
-    }
-    
-    /* Убираем сложные эффекты у кнопок внутри карточек */
-    .service-card .card-btn,
-    .modal-btn {
-        backdrop-filter: none;
-        min-height: 44px;
-    }
-    
-    /* Убираем blur у всех карточек для экономии ресурсов */
-    .quantum-card,
-    .ai-card,
-    .review-card,
-    .mission-advantage-card,
-    .founder-card,
-    .specialist-card,
-    .calculator-card,
-    .step-card,
-    .competence-card {
-        backdrop-filter: none;
-        background: rgba(18, 18, 26, 0.95);
+        .hero-section { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
+        .nav-menu { padding-top: max(40px, env(safe-area-inset-top)); padding-bottom: max(40px, env(safe-area-inset-bottom)); }
     }
 }
