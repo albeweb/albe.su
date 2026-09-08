@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0D1117">
 
-<!-- Favicon (заменён) -->
+<!-- Favicon -->
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -139,6 +139,39 @@
 }
 .founder-info-item div {
     text-align: left;
+}
+/* Новая структура основателя: информация слева, фото справа */
+.founder-card .founder-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+}
+.founder-card .founder-info {
+    flex: 2;
+}
+.founder-card .founder-avatar-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.founder-card .founder-avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #F5B700;
+    flex-shrink: 0;
+}
+@media (max-width: 768px) {
+    .founder-card .founder-content {
+        flex-direction: column;
+    }
+    .founder-card .founder-avatar {
+        width: 150px;
+        height: 150px;
+    }
 }
 </style>
 </head>
@@ -445,15 +478,63 @@
 <!-- ПРОЦЕСС -->
 <section id="process" class="section"><div class="container"><div class="section-header"><h2>Как мы создаём лидеров рынка</h2><a href="/process/" class="section-more-btn">Подробнее</a></div><div class="steps-container"><div class="step-card"><div class="step-num">01</div><h3>Аналитика</h3><p>Изучаем нишу, конкурентов, ЦА. Формируем KPI.</p></div><div class="step-card"><div class="step-num">02</div><h3>Прототипирование</h3><p>Интерактивные прототипы, тестирование гипотез.</p></div><div class="step-card"><div class="step-num">03</div><h3>Дизайн и код</h3><p>Пиксель-перфект, чистый код, ежедневные билды.</p></div><div class="step-card"><div class="step-num">04</div><h3>SEO и запуск</h3><p>Техническая SEO-оптимизация, деплой, мониторинг.</p></div></div></div></section>
 
-<!-- КОМАНДА -->
-<section class="team-section"><div class="container"><div class="team-header"><h2>Наша команда</h2><div class="team-subtitle">Единомышленники, объединённые целью создавать цифровые продукты мирового уровня</div></div><div class="team-layout"><div class="founder-card quantum-card"><div class="segment segment-1"></div><div class="segment segment-2"></div><div class="segment segment-3"></div><div class="segment segment-4"></div><div class="corner corner-tl"></div><div class="corner corner-tr"></div><div class="corner corner-bl"></div><div class="corner corner-br"></div><div class="founder-content"><div class="founder-avatar"><div class="founder-avatar-inner"><picture><source srcset="images/Albe1.webp" type="image/webp"><img src="images/Albe1.webp" alt="Алексей Беляев" style="width:100%; height:100%; object-fit:cover; border-radius:50%;"></picture></div></div><div class="founder-name">Алексей Беляев</div><div class="founder-role">Основатель Albe Digital, Vixi AI, агрегатора загородной недвижимости «Воздух»</div><div class="founder-bio">Более 7 лет в IT-индустрии, эксперт в области цифровой трансформации и AI-технологий.</div><div class="founder-quote"><p>«Мы создаём не просто сайты — мы создаём бизнес»</p><span>— Алексей Беляев</span></div><div class="founder-info-grid"><div class="founder-info-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5B700" stroke-width="1.5"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg><div><strong>Образование:</strong> Высшее экономическое, Сколково Tech</div></div><div class="founder-info-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5B700" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><div><strong>Публикации:</strong> «Деловой Петербург», Forbes Russia</div></div><div class="founder-info-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5B700" stroke-width="1.5"><polygon points="12 2 15 8.5 22 9.5 17 14 18.5 21 12 17.5 5.5 21 7 14 2 9.5 9 8.5 12 2"/></svg><div><strong>Оценка проектов по версии Forbes:</strong> Vixi AI — 500 млн ₽, «Воздух» — 250 млн ₽</div></div></div></div></div><div class="specialists-grid">
-                <!-- ДМИТРИЙ -->
-                <div class="specialist-card quantum-card"><div class="segment segment-1"></div><div class="segment segment-2"></div><div class="segment segment-3"></div><div class="segment segment-4"></div><div class="corner corner-tl"></div><div class="corner corner-tr"></div><div class="corner corner-bl"></div><div class="corner corner-br"></div><div class="specialist-content"><div class="specialist-avatar"><div class="specialist-avatar-inner"><picture><source srcset="images/DR1.webp" type="image/webp"><img src="images/DR1.webp" alt="Дмитрий Рочев" style="width:100%; height:100%; object-fit:cover; border-radius:50%;"></picture></div></div><div class="specialist-name">Дмитрий Рочев</div><div class="specialist-role">Технический директор Albe Digital</div><div class="specialist-bio">Тимлид Сбербанк Онлайн. Senior Java • PHP • JS. Эксперт в высоконагруженных системах, архитектуре и лидерстве.</div><div class="specialist-stack"><span class="specialist-stack-tag">Java</span><span class="specialist-stack-tag">PHP</span><span class="specialist-stack-tag">JavaScript</span><span class="specialist-stack-tag">Highload</span></div></div></div>
-                <!-- АЛЕКСЕЙ -->
-                <div class="specialist-card quantum-card"><div class="segment segment-1"></div><div class="segment segment-2"></div><div class="segment segment-3"></div><div class="segment segment-4"></div><div class="corner corner-tl"></div><div class="corner corner-tr"></div><div class="corner corner-bl"></div><div class="corner corner-br"></div><div class="specialist-content"><div class="specialist-avatar"><div class="specialist-avatar-inner"><picture><source srcset="images/AV1.webp" type="image/webp"><img src="images/AV1.webp" alt="Алексей Васильев" style="width:100%; height:100%; object-fit:cover; border-radius:50%;"></picture></div></div><div class="specialist-name">Алексей Васильев</div><div class="specialist-role">Senior Python / Web3</div><div class="specialist-bio">Эксперт по распределённым системам. Web3 • Блокчейн • Микросервисы. Высоконагруженные бэкенды.</div><div class="specialist-stack"><span class="specialist-stack-tag">Python</span><span class="specialist-stack-tag">Web3</span><span class="specialist-stack-tag">Блокчейн</span><span class="specialist-stack-tag">Микросервисы</span></div></div></div>
-                <!-- АЛЕКСАНДР  -->
-                <div class="specialist-card quantum-card"><div class="segment segment-1"></div><div class="segment segment-2"></div><div class="segment segment-3"></div><div class="segment segment-4"></div><div class="corner corner-tl"></div><div class="corner corner-tr"></div><div class="corner corner-bl"></div><div class="corner corner-br"></div><div class="specialist-content"><div class="specialist-avatar"><div class="specialist-avatar-inner"><picture><source srcset="images/AA1.webp" type="image/webp"><img src="images/AA1.webp" alt="Александр Алексеев" style="width:100%; height:100%; object-fit:cover; border-radius:50%;"></picture></div></div><div class="specialist-name">Александр Алексеев</div><div class="specialist-role">Senior PHP / JavaScript</div><div class="specialist-bio">Эксперт по SEO-оптимизации. Laravel • Symfony • Vanilla JS. Core Web Vitals • Микроразметка • Скорость.</div><div class="specialist-stack"><span class="specialist-stack-tag">PHP</span><span class="specialist-stack-tag">JavaScript</span><span class="specialist-stack-tag">Laravel</span><span class="specialist-stack-tag">SEO</span></div></div></div>
-            </div></div><div class="team-more-wrapper"><div class="kinetic-team-btn"><div class="segment-left"></div><div class="segment-center"></div><div class="segment-right"></div><span class="btn-text">ВСЯ КОМАНДА</span></div></div></div></section>
+<!-- ОСНОВАТЕЛЬ (переработанный блок) -->
+<section class="team-section">
+    <div class="container">
+        <div class="team-header">
+            <h2>Основатель</h2>
+            <div class="team-subtitle">Алексей Беляев — создатель Albe Digital, Vixi AI и агрегатора загородной недвижимости «Воздух»</div>
+        </div>
+        <div class="team-layout" style="display:flex; justify-content:center;">
+            <!-- Одна карточка основателя, уменьшена через max-width -->
+            <div class="founder-card quantum-card" style="max-width:900px; width:100%;">
+                <div class="segment segment-1"></div>
+                <div class="segment segment-2"></div>
+                <div class="segment segment-3"></div>
+                <div class="segment segment-4"></div>
+                <div class="corner corner-tl"></div>
+                <div class="corner corner-tr"></div>
+                <div class="corner corner-bl"></div>
+                <div class="corner corner-br"></div>
+                <div class="founder-content">
+                    <!-- Информация слева -->
+                    <div class="founder-info">
+                        <div class="founder-name">Алексей Беляев</div>
+                        <div class="founder-role">Основатель Albe Digital, Vixi AI, агрегатора загородной недвижимости «Воздух»</div>
+                        <div class="founder-bio">Более 7 лет в IT-индустрии, эксперт в области цифровой трансформации и AI-технологий.</div>
+                        <div class="founder-quote">
+                            <p>«Мы создаём не просто сайты — мы создаём бизнес»</p>
+                            <span>— Алексей Беляев</span>
+                        </div>
+                        <div class="founder-info-grid">
+                            <div class="founder-info-item">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5B700" stroke-width="1.5"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
+                                <div><strong>Образование:</strong> Высшее экономическое, Сколково Tech</div>
+                            </div>
+                            <div class="founder-info-item">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5B700" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                <div><strong>Публикации:</strong> «Деловой Петербург», Forbes Russia</div>
+                            </div>
+                            <div class="founder-info-item">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5B700" stroke-width="1.5"><polygon points="12 2 15 8.5 22 9.5 17 14 18.5 21 12 17.5 5.5 21 7 14 2 9.5 9 8.5 12 2"/></svg>
+                                <div><strong>Оценка проектов по версии Forbes:</strong> Vixi AI — 500 млн ₽, «Воздух» — 250 млн ₽</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Фото справа -->
+                    <div class="founder-avatar-wrapper">
+                        <div class="founder-avatar">
+                            <picture>
+                                <source srcset="images/Albe1.webp" type="image/webp">
+                                <img src="images/Albe1.webp" alt="Алексей Беляев" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
+                            </picture>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- КОМПЕТЕНЦИИ -->
 <section id="competences" class="section"><div class="container"><div class="section-header"><h2>Наши компетенции</h2><a href="/competences/" class="section-more-btn">Подробнее</a></div><div class="competences-grid"><div class="competence-card"><h3>Frontend</h3><p>Современные интерфейсы</p><div class="competence-tech-list"><div class="tech-item" data-tech="react">React / Next.js</div><div class="tech-item" data-tech="ts">TypeScript</div><div class="tech-item" data-tech="redux">Redux / RTK</div><div class="tech-item" data-tech="ssr">SSR / SSG</div><div class="tech-item" data-tech="css">CSS3 / SASS / Tailwind</div></div></div><div class="competence-card"><h3>Backend</h3><p>Надёжная архитектура</p><div class="competence-tech-list"><div class="tech-item" data-tech="node">Node.js / Nest.js</div><div class="tech-item" data-tech="python">Python / Django</div><div class="tech-item" data-tech="cpp">C++</div><div class="tech-item" data-tech="postgres">PostgreSQL / MS SQL</div><div class="tech-item" data-tech="redis">Redis / Elasticsearch</div><div class="tech-item" data-tech="rabbitmq">RabbitMQ / Kafka</div></div></div><div class="competence-card"><h3>DevOps и Cloud</h3><p>Масштабирование и инфраструктура</p><div class="competence-tech-list"><div class="tech-item" data-tech="kubernetes">Kubernetes</div><div class="tech-item" data-tech="docker">Docker</div><div class="tech-item" data-tech="yandex">Yandex Cloud / Selectel</div><div class="tech-item" data-tech="gitlab">GitLab CI/CD</div><div class="tech-item" data-tech="terraform">Terraform / Ansible</div><div class="tech-item" data-tech="jenkins">Jenkins / ArgoCD</div></div></div><div class="competence-card"><h3>Mobile Development</h3><p>Кроссплатформенные приложения</p><div class="competence-tech-list"><div class="tech-item" data-tech="reactnative">React Native / Expo</div><div class="tech-item" data-tech="swift">Swift / Objective C</div><div class="tech-item" data-tech="kotlin">Kotlin / Java</div><div class="tech-item" data-tech="flutter">Flutter</div></div></div><div class="competence-card"><h3>AI и Machine Learning</h3><p>Нейросети и анализ данных</p><div class="competence-tech-list"><div class="tech-item" data-tech="ml">ML / DL / NLP</div><div class="tech-item" data-tech="python_ml">Python / Pandas / Sklearn</div><div class="tech-item" data-tech="catboost">CatBoost / OpenVINO</div><div class="tech-item" data-tech="airflow">Airflow / sqlalchemy</div><div class="tech-item" data-tech="vision">Computer Vision</div><div class="tech-item" data-tech="voice">Voice technologies ASR/TTS</div></div></div><div class="competence-card"><h3>Testing и QA</h3><p>Качество и надежность</p><div class="competence-tech-list"><div class="tech-item" data-tech="postman">Postman / Swagger</div><div class="tech-item" data-tech="jmeter">JMeter</div><div class="tech-item" data-tech="testrail">TestRail</div><div class="tech-item" data-tech="charles">Charles / Fiddler</div></div></div><div class="competence-card"><h3>Architecture и Design</h3><p>Проектирование систем</p><div class="competence-tech-list"><div class="tech-item" data-tech="uml">UML 2.x / BPMN 2.0</div><div class="tech-item" data-tech="figma">Figma</div><div class="tech-item" data-tech="enterprise">Sparx Enterprise Architect</div><div class="tech-item" data-tech="iso">ISO/IEC 12207 / 15288</div><div class="tech-item" data-tech="scrum">SCRUM / Agile</div></div></div><div class="competence-card"><h3>Data Analytics</h3><p>Аналитика больших данных</p><div class="competence-tech-list"><div class="tech-item" data-tech="bigdata">Big Data аналитика</div><div class="tech-item" data-tech="trading">Trading аналитика</div><div class="tech-item" data-tech="blockchain">Blockchain аналитика</div><div class="tech-item" data-tech="graph">Graph analytics</div></div></div></div></div></section>
