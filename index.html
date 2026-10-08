@@ -156,21 +156,30 @@
     justify-content: center;
     align-items: center;
 }
+/* Фото 9:16 — вертикальный портрет, не квадрат */
 .founder-card .founder-avatar {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
+    width: 240px !important;
+    height: auto !important;
+    aspect-ratio: 9 / 16 !important;
+    border-radius: 14px !important;
     overflow: hidden;
     border: 2px solid #F5B700;
     flex-shrink: 0;
+    box-shadow: 0 20px 60px rgba(245, 183, 0, 0.18), 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+.founder-card .founder-avatar img,
+.founder-card .founder-avatar picture {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    display: block;
 }
 @media (max-width: 768px) {
     .founder-card .founder-content {
         flex-direction: column;
     }
     .founder-card .founder-avatar {
-        width: 150px;
-        height: 150px;
+        width: 200px !important;
     }
 }
 </style>
@@ -478,15 +487,15 @@
 <!-- ПРОЦЕСС -->
 <section id="process" class="section"><div class="container"><div class="section-header"><h2>Как мы создаём лидеров рынка</h2><a href="/process/" class="section-more-btn">Подробнее</a></div><div class="steps-container"><div class="step-card"><div class="step-num">01</div><h3>Аналитика</h3><p>Изучаем нишу, конкурентов, ЦА. Формируем KPI.</p></div><div class="step-card"><div class="step-num">02</div><h3>Прототипирование</h3><p>Интерактивные прототипы, тестирование гипотез.</p></div><div class="step-card"><div class="step-num">03</div><h3>Дизайн и код</h3><p>Пиксель-перфект, чистый код, ежедневные билды.</p></div><div class="step-card"><div class="step-num">04</div><h3>SEO и запуск</h3><p>Техническая SEO-оптимизация, деплой, мониторинг.</p></div></div></div></section>
 
-<!-- ОСНОВАТЕЛЬ (переработанный блок) -->
+<!-- ГЕНЕРАЛЬНЫЙ ДИРЕКТОР -->
 <section class="team-section">
     <div class="container">
         <div class="team-header">
-            <h2>Основатель</h2>
-            <div class="team-subtitle">Алексей Беляев — создатель Albe Digital, Vixi AI и агрегатора загородной недвижимости «Воздух»</div>
+            <h2>Генеральный директор</h2>
+            <div class="team-subtitle">Иванченко Анна — бизнес-аналитик, стратег и лидер Albe Digital с 12-летним опытом в IT-индустрии</div>
         </div>
         <div class="team-layout" style="display:flex; justify-content:center;">
-            <!-- Одна карточка основателя, уменьшена через max-width -->
+            <!-- Карточка генерального директора -->
             <div class="founder-card quantum-card" style="max-width:900px; width:100%;">
                 <div class="segment segment-1"></div>
                 <div class="segment segment-2"></div>
@@ -499,34 +508,38 @@
                 <div class="founder-content">
                     <!-- Информация слева -->
                     <div class="founder-info">
-                        <div class="founder-name">Алексей Беляев</div>
-                        <div class="founder-role">Основатель Albe Digital, Vixi AI, агрегатора загородной недвижимости «Воздух»</div>
-                        <div class="founder-bio">Более 7 лет в IT-индустрии, эксперт в области цифровой трансформации и AI-технологий.</div>
+                        <div class="founder-name">Иванченко Анна</div>
+                        <div class="founder-role">Генеральный директор Albe Digital · Бизнес-аналитик · Стратег цифровой трансформации</div>
+                        <div class="founder-bio">Более 12 лет в IT-индустрии. Эксперт в области бизнес-анализа, управления продуктами и построения цифровых экосистем. Под её руководством Albe Digital реализовала более 150 проектов федерального уровня для Сбера, Т-Банка, VK и крупнейших ритейлеров.</div>
                         <div class="founder-quote">
-                            <p>«Мы создаём не просто сайты — мы создаём бизнес»</p>
-                            <span>— Алексей Беляев</span>
+                            <p>«Мы переводим амбиции бизнеса на язык технологий — точно, быстро и с измеримым результатом»</p>
+                            <span>— Иванченко Анна</span>
                         </div>
                         <div class="founder-info-grid">
                             <div class="founder-info-item">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5B700" stroke-width="1.5"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
-                                <div><strong>Образование:</strong> Высшее экономическое, Сколково Tech</div>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5B700" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                                <div><strong>Образование:</strong> Высшее / бакалавр экономических наук</div>
                             </div>
                             <div class="founder-info-item">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5B700" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                                <div><strong>Публикации:</strong> «Деловой Петербург», Forbes Russia</div>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5B700" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                <div><strong>Опыт в IT:</strong> 12+ лет · от бизнес-аналитика до генерального директора</div>
                             </div>
                             <div class="founder-info-item">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5B700" stroke-width="1.5"><polygon points="12 2 15 8.5 22 9.5 17 14 18.5 21 12 17.5 5.5 21 7 14 2 9.5 9 8.5 12 2"/></svg>
-                                <div><strong>Оценка проектов по версии Forbes:</strong> Vixi AI — 500 млн ₽, «Воздух» — 250 млн ₽</div>
+                                <div><strong>Специализация:</strong> Business Analysis · Product Management · AI-стратегия · Enterprise-архитектура</div>
+                            </div>
+                            <div class="founder-info-item">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5B700" stroke-width="1.5"><path d="M20 6L9 17l-5-5"/></svg>
+                                <div><strong>Ключевые достижения:</strong> 150+ успешных проектов, NPS 98%, рост выручки студии ×3 за 3 года</div>
                             </div>
                         </div>
                     </div>
-                    <!-- Фото справа -->
+                    <!-- Фото справа 9:16 -->
                     <div class="founder-avatar-wrapper">
                         <div class="founder-avatar">
                             <picture>
-                                <source srcset="images/Albe1.webp" type="image/webp">
-                                <img src="images/Albe1.webp" alt="Алексей Беляев" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
+                                <source srcset="images/CEOalb.webp" type="image/webp">
+                                <img src="images/CEOalb.webp" alt="Иванченко Анна — генеральный директор Albe Digital">
                             </picture>
                         </div>
                     </div>
