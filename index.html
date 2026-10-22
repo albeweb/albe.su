@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"><title>ALBE DIGITAL — Разработка сайтов под ключ в СПб | Премиум дизайн, SEO, AI</title><meta name="description" content="Разработка сайтов под ключ в Санкт-Петербурге: премиум дизайн, SEO с гарантией KPI, AI-решения, мобильные приложения, ЛНА. 150+ проектов, 7+ лет опыта."><meta name="theme-color" content="#14171C"><meta name="color-scheme" content="dark"><link rel="canonical" href="https://albe.su/"><link rel="preload" href="Geist-Regular.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="Geist-Medium.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="zen-dots.woff2" as="font" type="font/woff2" crossorigin><style>
 @font-face{font-family:'Geist';src:url('Geist-Regular.woff2') format('woff2');font-weight:400;font-display:swap}@font-face{font-family:'Geist';src:url('Geist-Medium.woff2') format('woff2');font-weight:500;font-display:swap}@font-face{font-family:'Zen Dots';src:url('zen-dots.woff2') format('woff2');font-weight:400;font-display:swap}
-:root{--bg:#191C22;--bg-2:#21252C;--bg-3:#12151A;--gold:#F5B700;--gold-2:#FFD24A;--green:#10B981;--cyan:#06B6D4;--purple:#8B5CF6;--tg:#229ED9;--tg-2:#06B6D4;--text:#fff;--muted:#C7CBD1;--dim:#83878E;--line:rgba(255,255,255,.08);--pill:999px;--pad:48px;--pad-m:22px;--sec-a:245,183,0}
+:root{--bg:#191C22;--bg-2:#21252C;--bg-3:#12151A;--gold:#F5B700;--gold-2:#FFD24A;--green:#10B981;--cyan:#06B6D4;--purple:#8B5CF6;--tg:#229ED9;--tg-2:#06B6D4;--text:#fff;--muted:#C7CBD1;--dim:#83878E;--line:rgba(255,255,255,.08);--pill:999px;--pad:48px;--sec-a:245,183,0}
 *{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16.5px;scroll-behavior:smooth;-webkit-text-size-adjust:100%;scrollbar-width:thin;scrollbar-color:rgba(245,183,0,.5) transparent}
 body{font-family:'Geist','Inter',system-ui,-apple-system,sans-serif;background:#14171C;color:var(--text);font-size:1rem;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;width:100%}
@@ -17,9 +17,8 @@ h1{font-family:'Geist',sans-serif;font-size:clamp(2rem,5.5vw,3.2rem);line-height
 h2{font-size:clamp(1.5rem,3.4vw,2.2rem);font-weight:500;color:#fff;line-height:1.15;letter-spacing:-.02em}
 h3{font-size:1.15rem;font-weight:500;line-height:1.35;color:#fff}h4{font-size:1.02rem;font-weight:500;color:#fff}
 p{line-height:1.7;color:var(--muted)}
-@media(max-width:640px){:root{--pad:var(--pad-m)}}
 
-/* ==== SECTIONS: полупрозрачные панели над канвасом ==== */
+/* ==== SECTIONS ==== */
 .section{position:relative;overflow:hidden;padding:104px 0;isolation:isolate;--sec-a:245,183,0;background:rgba(18,21,26,.7)}
 .section::before{content:attr(data-wm);position:absolute;top:-.12em;right:var(--pad);font-family:'Geist',sans-serif;font-size:clamp(7rem,16vw,16rem);font-weight:500;line-height:.8;letter-spacing:-.05em;color:rgba(var(--sec-a),.045);-webkit-text-stroke:1px rgba(var(--sec-a),.07);z-index:0;pointer-events:none;user-select:none}
 .section::after{content:'';position:absolute;top:0;left:0;right:0;height:280px;background:linear-gradient(180deg,rgba(var(--sec-a),.06) 0%,rgba(var(--sec-a),.02) 45%,transparent 100%);pointer-events:none;z-index:0}
@@ -216,8 +215,8 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 .team-photo{aspect-ratio:9/16;overflow:hidden;position:relative;background:linear-gradient(135deg,#1A1D24,#0F1115)}
 .team-photo img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
 .team-card:hover .team-photo img{transform:scale(1.05)}
-@media(max-width:900px){.team-grid{grid-template-columns:1fr}.team-card{grid-template-columns:1fr 130px;padding:24px;gap:18px}.team-name{font-size:1.15rem}}
-@media(max-width:560px){.team-card{grid-template-columns:1fr;padding:22px}.team-photo{aspect-ratio:16/9;order:-1;max-height:180px}.team-facts li{flex-direction:column;gap:2px}.team-facts li span{min-width:0}}
+@media(max-width:900px){.team-grid{grid-template-columns:1fr}.team-card{grid-template-columns:1fr 260px;padding:24px;gap:18px}.team-name{font-size:1.15rem}}
+@media(max-width:560px){.team-card{grid-template-columns:1fr;padding:16px}.team-photo{aspect-ratio:auto;height:360px;order:-1;max-height:none}.team-facts li{flex-direction:column;gap:2px}.team-facts li span{min-width:0}}
 
 /* ==== COMPETENCES ==== */
 .competences-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
@@ -366,8 +365,29 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 @media(max-width:560px){.footer-grid{grid-template-columns:1fr}.footer-bottom{flex-direction:column;align-items:center;text-align:center}.footer-tagline{text-align:center;font-size:clamp(.52rem,2.7vw,.8rem);white-space:nowrap;overflow:hidden}}
 
 /* ==== MOBILE ACCORDION ==== */
-@media(max-width:900px){.mobile-accordion{padding:0!important}.mobile-accordion>.container{padding-top:0;padding-bottom:0}.mobile-accordion>.container::before,.mobile-accordion>.container::after{display:none}.mobile-accordion .section-header,.mobile-accordion .reviews-header,.mobile-accordion .mission-header{cursor:pointer;user-select:none;position:relative;padding:22px var(--pad);padding-right:60px;margin-bottom:0!important;border-bottom:1px solid var(--line);background:linear-gradient(180deg,rgba(var(--sec-a),.03),transparent);transition:background .3s ease}.mobile-accordion.open .section-header,.mobile-accordion.open .reviews-header,.mobile-accordion.open .mission-header{background:linear-gradient(180deg,rgba(var(--sec-a),.08),transparent)}.mobile-accordion .section-header h2,.mobile-accordion .reviews-header h2,.mobile-accordion .mission-header h2{font-size:1.15rem;margin:0}.mobile-accordion .section-header h2::before{display:none}.mobile-accordion .reviews-subtitle,.mobile-accordion .mission-subtitle,.mobile-accordion .section-desc{display:none}.mobile-accordion .section-header::after,.mobile-accordion .reviews-header::after,.mobile-accordion .mission-header::after{content:'';position:absolute;right:var(--pad);top:50%;width:28px;height:28px;margin-top:-14px;border-radius:50%;background:linear-gradient(rgb(var(--sec-a)),rgb(var(--sec-a))) center/12px 2px no-repeat,linear-gradient(rgb(var(--sec-a)),rgb(var(--sec-a))) center/2px 12px no-repeat,rgba(var(--sec-a),.1);border:1px solid rgba(var(--sec-a),.35);transition:transform .35s ease}.mobile-accordion.open .section-header::after,.mobile-accordion.open .reviews-header::after,.mobile-accordion.open .mission-header::after{transform:rotate(135deg)}.mobile-accordion .section-more-btn{display:none!important}.mobile-accordion-body{overflow:hidden;max-height:0;transition:max-height .45s cubic-bezier(.4,0,.2,1)}.mobile-accordion-body>*:first-child{margin-top:22px}.mobile-accordion-body>*:last-child{margin-bottom:26px}.section::before{font-size:clamp(5rem,18vw,9rem);opacity:.7}}
+@media(max-width:900px){.mobile-accordion{padding:0!important}.mobile-accordion>.container{padding-top:0;padding-bottom:0}.mobile-accordion>.container::before,.mobile-accordion>.container::after{display:none}.mobile-accordion .section-header,.mobile-accordion .reviews-header,.mobile-accordion .mission-header{cursor:pointer;user-select:none;position:relative;padding:22px var(--pad);padding-right:52px;margin-bottom:0!important;border-bottom:1px solid var(--line);background:linear-gradient(180deg,rgba(var(--sec-a),.03),transparent);transition:background .3s ease}.mobile-accordion.open .section-header,.mobile-accordion.open .reviews-header,.mobile-accordion.open .mission-header{background:linear-gradient(180deg,rgba(var(--sec-a),.08),transparent)}.mobile-accordion .section-header h2,.mobile-accordion .reviews-header h2,.mobile-accordion .mission-header h2{font-size:1.15rem;margin:0}.mobile-accordion .section-header h2::before{display:none}.mobile-accordion .reviews-subtitle,.mobile-accordion .mission-subtitle,.mobile-accordion .section-desc{display:none}.mobile-accordion .section-header::after,.mobile-accordion .reviews-header::after,.mobile-accordion .mission-header::after{content:'';position:absolute;right:var(--pad);top:50%;width:28px;height:28px;margin-top:-14px;border-radius:50%;background:linear-gradient(rgb(var(--sec-a)),rgb(var(--sec-a))) center/12px 2px no-repeat,linear-gradient(rgb(var(--sec-a)),rgb(var(--sec-a))) center/2px 12px no-repeat,rgba(var(--sec-a),.1);border:1px solid rgba(var(--sec-a),.35);transition:transform .35s ease}.mobile-accordion.open .section-header::after,.mobile-accordion.open .reviews-header::after,.mobile-accordion.open .mission-header::after{transform:rotate(135deg)}.mobile-accordion .section-more-btn{display:none!important}.mobile-accordion-body{overflow:hidden;max-height:0;transition:max-height .45s cubic-bezier(.4,0,.2,1)}.mobile-accordion-body>*:first-child{margin-top:22px}.mobile-accordion-body>*:last-child{margin-bottom:26px}.section::before{font-size:clamp(5rem,18vw,9rem);opacity:.7}}
 @media(min-width:901px){.mobile-accordion-body{overflow:visible;max-height:none!important;transition:none}.mobile-accordion{padding:104px 0!important}}
+
+/* ==== ПЛАНШЕТ: --pad 18px ==== */
+@media(max-width:900px){:root{--pad:18px}}
+
+/* ==== ТЕЛЕФОН: --pad 12px + подтягиваем внутренние отступы ==== */
+@media(max-width:640px){
+  :root{--pad:12px}
+  .case-body,.review-card,.mission-advantage-card,.lna-card,.competence-card,.contact-info-card,.contact-side-card,.stack-explanation{padding:18px}
+  .team-card{padding:16px}
+  .lna-gost{padding:20px 16px}
+  .lna-cta{padding:18px}
+  .faq-lid{padding:18px 0}
+  .faq-content{padding:0 0 20px}
+  .calc-total-block{gap:12px}
+  .calculator-card{padding:20px}
+  .calculator-card::after{top:10px;right:10px;bottom:10px;left:10px}
+  .calc-price{padding:10px 14px;font-size:1.6rem}
+  .section-header{margin-bottom:28px}
+  .case-title-row h3{font-size:1.1rem}
+  .tabs-bar{margin-bottom:24px}
+}
 
 /* ==== REVEAL ==== */
 @media(min-width:901px){body.reveal-init .reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.22,.7,.3,1),transform .9s cubic-bezier(.22,.7,.3,1);transition-delay:var(--reveal-delay,0s);will-change:opacity,transform}body.reveal-init .reveal.reveal--visible{opacity:1;transform:translateY(0)}}
@@ -417,49 +437,7 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 <footer class="site-footer"><div class="footer-grid"><div class="footer-brand"><a href="#top" class="logo" aria-label="ALBE DIGITAL">ALBE<span class="accent">DIGITAL</span></a><p>Разработка сайтов под ключ, премиум дизайн, SEO-продвижение с гарантией, AI-решения, мобильные приложения и разработка ЛНА.</p><div class="footer-requisites"><span>ООО "АЛЬБЕ-ДИДЖИТАЛ".</span><span>ИНН 7811818720, ОГРН 1267800072000</span></div></div><div class="footer-col"><h4>Услуги</h4><ul><li><a href="#services">Веб-разработка</a></li><li><a href="#services">Дизайн</a></li><li><a href="#services">E-commerce</a></li><li><a href="#services">SEO и аналитика</a></li><li><a href="#services">AI и ML</a></li><li><a href="#services">Мобильные приложения</a></li></ul></div><div class="footer-col"><h4>Компания</h4><ul><li><a href="#cases">Кейсы</a></li><li><a href="#lna">ЛНА</a></li><li><a href="#process">Процесс</a></li><li><a href="#calculator">Калькулятор</a></li><li><a href="#faq">FAQ</a></li></ul></div><div class="footer-col"><h4>Документы</h4><ul><li><a href="https://albe.su/privacy">Политика конфиденциальности</a></li><li><a href="https://albe.su/privacy">Пользовательское соглашение</a></li></ul></div><div class="footer-col"><h4>Контакты</h4><ul><li><a href="https://t.me/albe_web" target="_blank" rel="noopener">Telegram @albe_web</a></li><li><a href="mailto:digitalalbe@gmail.com">digitalalbe@gmail.com</a></li><li>Санкт-Петербург</li></ul></div></div><div class="footer-bottom"><div>© <span id="year"></span> ALBE DIGITAL. Все права защищены.</div><div class="footer-tagline">МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ — МЫ СОЗДАЕМ БИЗНЕС</div></div></footer>
 
 <script>
-/* ==== ОДИН СКРИПТ НА ВЕСЬ ФОН-КОД ==== */
-(function(){
-  var c=document.getElementById('siteCanvas');
-  if(!c)return;
-  var ctx=c.getContext('2d',{alpha:true}),
-      words=['REACT','NEXT.JS','TYPESCRIPT','REDUX','TAILWIND','CSS3','SASS','VUE','SSR','SSG','NODE.JS','NEST.JS','PYTHON','DJANGO','POSTGRESQL','REDIS','KAFKA','RABBITMQ','ELASTICSEARCH','C++','DEVOPS','DOCKER','KUBERNETES','TERRAFORM','ANSIBLE','JENKINS','GITLAB','CI/CD','ARGO','YANDEX CLOUD','MOBILE','REACT NATIVE','FLUTTER','SWIFT','KOTLIN','EXPO','IOS','ANDROID','AI','ML','DL','NLP','OPENAI','PYTORCH','COMPUTER VISION','ASR','TTS','CATBOOST','FIGMA','UI/UX','DESIGN','UX','UI','PROTOTYPE','MOTION','WEBGL','THREE.JS','GSAP','SEO','PPC','SMM','EMAIL','ANALYTICS','SEMANTICS','CONTENT','ROI','LTV','LANDING','E-COMMERCE','CRM','ERP','1С','BITRIX','AMOCRM','MARKETPLACE','ARCHITECTURE','UML','BPMN','SCRUM','AGILE','QA','JMETER','POSTMAN','TESTRAIL','ISO 12207','ЛНА','ОХРАНА ТРУДА','ПДН','152-ФЗ','61-ФЗ','ТК РФ','ГОСТ','СУОТ','ПВТР','РКН','КАДРЫ','ВОИНСКИЙ УЧЁТ','</>','{','}','()','=>','<>','/*','*/','//','const','let','fn','API','SDK','JSON','HTML','SQL','JS','TS','DB','001','100','010'],
-      W=0,H=0,fs=15,cols=0,dr=[],sp=[],cw=[],
-      hc=['rgba(255,255,255,0.85)','rgba(245,183,0,0.85)','rgba(255,224,122,0.85)','rgba(16,185,129,0.75)','rgba(6,182,212,0.75)','rgba(209,212,218,0.7)'],
-      gc=['rgba(255,255,255,0.4)','rgba(245,183,0,0.5)','rgba(255,224,122,0.4)','rgba(16,185,129,0.4)','rgba(6,182,212,0.4)','rgba(209,212,218,0.3)'];
-  function pw(){return words[(Math.random()*words.length)|0]}
-  function rs(){
-    var r=c.getBoundingClientRect(),d=Math.min(window.devicePixelRatio||1,2);
-    W=Math.max(1,Math.floor(r.width));H=Math.max(1,Math.floor(r.height));
-    c.width=Math.floor(W*d);c.height=Math.floor(H*d);
-    ctx.setTransform(d,0,0,d,0,0);
-    fs=W<640?12:W<1024?14:15;
-    cols=Math.floor(W/(fs*1.6));
-    dr=new Array(cols);sp=new Array(cols);cw=new Array(cols);
-    for(var i=0;i<cols;i++){dr[i]=Math.random()*(H/fs);sp[i]=.3+Math.random()*.4;cw[i]=pw()}
-    ctx.fillStyle='#14171C';ctx.fillRect(0,0,W,H);
-  }
-  function drw(){
-    ctx.fillStyle='rgba(20,23,28,0.06)';
-    ctx.fillRect(0,0,W,H);
-    ctx.font=fs+'px "Courier New", monospace';
-    ctx.textBaseline='top';ctx.textAlign='left';
-    for(var i=0;i<cols;i++){
-      var wd=cw[i],x=i*fs*1.6,row=Math.floor(dr[i]),ch=wd.charAt(row%wd.length),ci=i%hc.length;
-      ctx.fillStyle=hc[ci];ctx.shadowColor=gc[ci];ctx.shadowBlur=5;
-      ctx.fillText(ch,x,row*fs);
-      ctx.shadowBlur=0;
-      dr[i]+=sp[i];
-      if(row*fs>H&&Math.random()>.985){dr[i]=0;sp[i]=.3+Math.random()*.4;cw[i]=pw()}
-    }
-  }
-  rs();
-  var rt;
-  window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(rs,200)});
-  if(window.ResizeObserver)new ResizeObserver(rs).observe(c);
-  setInterval(drw,80);
-})();
-
-/* Tabs, FAQ, calc, burger, dynamic-word — без изменений */
+(function(){var c=document.getElementById('siteCanvas');if(!c)return;var ctx=c.getContext('2d',{alpha:true}),words=['REACT','NEXT.JS','TYPESCRIPT','REDUX','TAILWIND','CSS3','SASS','VUE','SSR','SSG','NODE.JS','NEST.JS','PYTHON','DJANGO','POSTGRESQL','REDIS','KAFKA','RABBITMQ','ELASTICSEARCH','C++','DEVOPS','DOCKER','KUBERNETES','TERRAFORM','ANSIBLE','JENKINS','GITLAB','CI/CD','ARGO','YANDEX CLOUD','MOBILE','REACT NATIVE','FLUTTER','SWIFT','KOTLIN','EXPO','IOS','ANDROID','AI','ML','DL','NLP','OPENAI','PYTORCH','COMPUTER VISION','ASR','TTS','CATBOOST','FIGMA','UI/UX','DESIGN','UX','UI','PROTOTYPE','MOTION','WEBGL','THREE.JS','GSAP','SEO','PPC','SMM','EMAIL','ANALYTICS','SEMANTICS','CONTENT','ROI','LTV','LANDING','E-COMMERCE','CRM','ERP','1С','BITRIX','AMOCRM','MARKETPLACE','ARCHITECTURE','UML','BPMN','SCRUM','AGILE','QA','JMETER','POSTMAN','TESTRAIL','ISO 12207','ЛНА','ОХРАНА ТРУДА','ПДН','152-ФЗ','61-ФЗ','ТК РФ','ГОСТ','СУОТ','ПВТР','РКН','КАДРЫ','ВОИНСКИЙ УЧЁТ','</>','{','}','()','=>','<>','/*','*/','//','const','let','fn','API','SDK','JSON','HTML','SQL','JS','TS','DB','001','100','010'],W=0,H=0,fs=15,cols=0,dr=[],sp=[],cw=[],hc=['rgba(255,255,255,0.85)','rgba(245,183,0,0.85)','rgba(255,224,122,0.85)','rgba(16,185,129,0.75)','rgba(6,182,212,0.75)','rgba(209,212,218,0.7)'],gc=['rgba(255,255,255,0.4)','rgba(245,183,0,0.5)','rgba(255,224,122,0.4)','rgba(16,185,129,0.4)','rgba(6,182,212,0.4)','rgba(209,212,218,0.3)'];function pw(){return words[(Math.random()*words.length)|0]}function rs(){var r=c.getBoundingClientRect(),d=Math.min(window.devicePixelRatio||1,2);W=Math.max(1,Math.floor(r.width));H=Math.max(1,Math.floor(r.height));c.width=Math.floor(W*d);c.height=Math.floor(H*d);ctx.setTransform(d,0,0,d,0,0);fs=W<640?12:W<1024?14:15;cols=Math.floor(W/(fs*1.6));dr=new Array(cols);sp=new Array(cols);cw=new Array(cols);for(var i=0;i<cols;i++){dr[i]=Math.random()*(H/fs);sp[i]=.3+Math.random()*.4;cw[i]=pw()}ctx.fillStyle='#14171C';ctx.fillRect(0,0,W,H)}function drw(){ctx.fillStyle='rgba(20,23,28,0.06)';ctx.fillRect(0,0,W,H);ctx.font=fs+'px "Courier New", monospace';ctx.textBaseline='top';ctx.textAlign='left';for(var i=0;i<cols;i++){var wd=cw[i],x=i*fs*1.6,row=Math.floor(dr[i]),ch=wd.charAt(row%wd.length),ci=i%hc.length;ctx.fillStyle=hc[ci];ctx.shadowColor=gc[ci];ctx.shadowBlur=5;ctx.fillText(ch,x,row*fs);ctx.shadowBlur=0;dr[i]+=sp[i];if(row*fs>H&&Math.random()>.985){dr[i]=0;sp[i]=.3+Math.random()*.4;cw[i]=pw()}}}rs();var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(rs,200)});if(window.ResizeObserver)new ResizeObserver(rs).observe(c);setInterval(drw,80)})();
 (function(){var t=document.getElementById('casesTabs');if(!t)return;t.addEventListener('click',function(e){var b=e.target.closest('.tab-btn');if(!b)return;var k=b.dataset.tab;t.querySelectorAll('.tab-btn').forEach(function(x){x.classList.remove('active')});b.classList.add('active');document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.toggle('active',p.dataset.panel===k)})})})();
 (function(){document.querySelectorAll('.faq-item').forEach(function(it){var l=it.querySelector('.faq-lid'),i=it.querySelector('.faq-inside');l.addEventListener('click',function(){var o=it.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(function(x){x.classList.remove('open');x.querySelector('.faq-inside').style.maxHeight='0px';var h=x.querySelector('.faq-lid');if(h)h.setAttribute('aria-expanded','false')});if(!o){it.classList.add('open');i.style.maxHeight=i.scrollHeight+'px';l.setAttribute('aria-expanded','true')}else{l.setAttribute('aria-expanded','false')}})})})();
 (function(){var s=document.querySelectorAll('#calcServices .calc-option'),c=document.querySelectorAll('#calcComplexity .calc-option'),p=document.getElementById('calcPrice'),h=document.getElementById('calcHoursInfo'),st=document.getElementById('stackExplanation'),m={design:['Figma','Design System','Prototyping'],front:['React','Next.js','TypeScript','Tailwind'],back:['Node.js','Nest.js','PostgreSQL','Redis'],seo:['Яндекс.Метрика','GA4','SEMrush','Screaming Frog'],cms:['WordPress','Strapi','Directus'],crm:['Bitrix24','amoCRM','Интеграции API'],ai:['Python','PyTorch','OpenAI','LangChain'],mobile:['React Native','Expo','Swift','Kotlin'],support:['DevOps','Мониторинг 24/7','SLA']};function calc(){var b=0,sel=[];s.forEach(function(x){if(x.classList.contains('active')){b+=parseInt(x.dataset.price,10);sel.push(x.dataset.service)}});var mu=1;c.forEach(function(x){if(x.classList.contains('active'))mu=parseFloat(x.dataset.mult)});var tot=Math.round(b*mu);p.textContent=tot.toLocaleString('ru-RU')+' ₽';h.textContent=sel.length?('≈ '+Math.round(tot/1500)+' часов работы'):'Выберите услуги для расчёта';var stack=[];sel.forEach(function(k){if(m[k])stack=stack.concat(m[k])});stack=stack.filter(function(v,i,a){return a.indexOf(v)===i});if(stack.length){st.innerHTML='<h3>Рекомендуемый стек</h3><ul>'+stack.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>'}else{st.innerHTML='<h3>Рекомендуемый стек</h3><p>Выберите услуги для расчёта — мы покажем стек и сроки.</p>'}}s.forEach(function(x){x.addEventListener('click',function(){x.classList.toggle('active');calc()})});c.forEach(function(x){x.addEventListener('click',function(){c.forEach(function(y){y.classList.remove('active')});x.classList.add('active');calc()})})})();
