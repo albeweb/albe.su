@@ -158,6 +158,22 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 .case-media .multi-image-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;width:100%;height:100%}
 .case-media .multi-image-grid img{width:100%;height:100%;object-fit:cover}
 .case-media.placeholder-media{color:var(--dim);font-family:'Geist',sans-serif;font-weight:500;font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;flex-direction:column;gap:8px}
+/* ===== IFRAME CASES ===== */
+.case-media--iframe{padding:0;overflow:hidden;background:#0F1115;display:block;aspect-ratio:16/9}
+.case-card:nth-child(4n+1) .case-media--iframe,.case-card:nth-child(4n+4) .case-media--iframe{aspect-ratio:16/8}
+.case-media--iframe iframe{width:100%;height:100%;border:0;display:block;background:#0F1115;pointer-events:none;user-select:none;-webkit-user-select:none}
+.case-link{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;font-size:.82rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgb(var(--sec-a));padding:10px 0 6px;border-bottom:1px solid rgba(var(--sec-a),.35);transition:all var(--tr-fast);text-decoration:none;margin-top:auto}
+.case-link:hover{color:#fff;border-color:#fff;gap:12px}
+.case-link svg{flex-shrink:0;transition:transform var(--tr-fast)}
+.case-link:hover svg{transform:translate(1px,-1px)}
+.cases-more-wrap{display:flex;justify-content:center;margin-top:40px}
+.cases-more-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;background:transparent;border:1px solid rgba(var(--sec-a),.4);color:rgb(var(--sec-a));font-family:inherit;font-size:.88rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all var(--tr-mid)}
+.cases-more-btn:hover{background:rgba(var(--sec-a),.1);border-color:rgb(var(--sec-a));color:#fff;transform:translateY(-2px);box-shadow:0 10px 30px rgba(var(--sec-a),.25)}
+.cases-more-btn svg{transition:transform var(--tr-mid)}
+.cases-more-btn[aria-expanded="true"] svg{transform:rotate(180deg)}
+.cases-more-count{display:inline-block;padding:2px 8px;background:rgba(var(--sec-a),.15);border:1px solid rgba(var(--sec-a),.3);border-radius:2px;font-size:.72rem;letter-spacing:.06em;font-weight:600}
+.cases-grid .case-card.is-hidden{display:none}
+/* ===== END IFRAME CASES ===== */
 .case-body{padding:26px;display:flex;flex-direction:column;gap:16px;flex:1;position:relative;z-index:1}
 .case-num{display:inline-block;align-self:flex-start;font-family:'Geist',sans-serif;font-weight:500;font-size:.68rem;letter-spacing:.22em;color:rgb(var(--sec-a));padding:2px 0}
 .case-title-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
@@ -539,7 +555,106 @@ body.service-modal-open .site-header{right:var(--sbw,0px)}
 <button type="button" class="badge" data-service="marketing">Цифровой маркетинг</button>
 </div></div></section>
 
-<section id="cases" class="section" data-wm="01"><div class="container"><div class="section-header"><h2 data-num="01 — КЕЙСЫ">Кейсы</h2><button type="button" class="section-more-btn" data-open-modal>Обсудить проект</button></div><div class="tabs-bar" id="casesTabs" role="tablist"><button class="tab-btn active" data-tab="dev" role="tab">Разработка</button><button class="tab-btn" data-tab="marketing" role="tab">Цифровой маркетинг</button><button class="tab-btn" data-tab="design" role="tab">Дизайн</button><button class="tab-btn" data-tab="lna" role="tab">ЛНА</button><button class="tab-btn" data-tab="aiads" role="tab">AI реклама</button></div><div class="tab-panel active" data-panel="dev"><div class="cases-grid"><article class="case-card"><div class="case-media"><img src="images/AD1.webp" alt="Лендинг Albe Digital" loading="lazy" width="640" height="360"></div><div class="case-body"><div class="case-num">01 / ЛЕНДИНГ</div><div class="case-title-row"><h3>Albe Digital</h3><span class="case-tag">Web</span></div><p class="case-desc">Лендинг на чистом коде. Полное SEO. Современный дизайн и высокая производительность.</p><div class="case-tech"><span>HTML</span><span>JS</span><span>CSS</span></div><div class="case-metrics"><div class="case-metric"><span class="label">Длительность</span><span class="value">14 дней</span></div><div class="case-metric"><span class="label">Команда</span><span class="value">1 + дизайнер</span></div><div class="case-metric"><span class="label">Результат</span><span class="value">SEO +100%</span></div></div></div></article><article class="case-card"><div class="case-media"><div class="multi-image-grid"><img src="images/AM1.webp" alt="Магазин автодилера" loading="lazy"><img src="images/AM2.webp" alt="Каталог" loading="lazy"><img src="images/AM3.webp" alt="Карточка" loading="lazy"><img src="images/AM1.webp" alt="Заказ" loading="lazy"></div></div><div class="case-body"><div class="case-num">02 / E-COMMERCE</div><div class="case-title-row"><h3>AM — автодилер</h3><span class="case-tag">E-com</span></div><p class="case-desc">Интернет-магазин для крупнейшего автодилера Беларуси. Интеграция с CRM и 1С.</p><div class="case-tech"><span>React</span><span>PHP</span><span>Laravel</span></div><div class="case-metrics"><div class="case-metric"><span class="label">Длительность</span><span class="value">60 дней</span></div><div class="case-metric"><span class="label">Команда</span><span class="value">2 + аналитик</span></div><div class="case-metric"><span class="label">Результат</span><span class="value">+70% продаж</span></div></div></div></article><article class="case-card"><div class="case-media"><div class="multi-image-grid"><img src="images/EM1.webp" alt="Магазин электротранспорта" loading="lazy"><img src="images/EM2.webp" alt="Каталог" loading="lazy"></div></div><div class="case-body"><div class="case-num">03 / E-COMMERCE</div><div class="case-title-row"><h3>EM — электротранспорт</h3><span class="case-tag">E-com</span></div><p class="case-desc">Интернет-магазин электротранспорта. Высокая конверсия, удобная админ-панель.</p><div class="case-tech"><span>React</span><span>PHP</span><span>Laravel</span></div><div class="case-metrics"><div class="case-metric"><span class="label">Длительность</span><span class="value">14 дней</span></div><div class="case-metric"><span class="label">Команда</span><span class="value">1 + дизайнер</span></div><div class="case-metric"><span class="label">Результат</span><span class="value">+50% конверсии</span></div></div></div></article><article class="case-card"><div class="case-media"><div class="multi-image-grid"><img src="images/RM1.webp" alt="Лендинг SEO" loading="lazy"><img src="images/RM2.webp" alt="Лендинг вариант 2" loading="lazy"></div></div><div class="case-body"><div class="case-num">04 / ЛЕНДИНГ</div><div class="case-title-row"><h3>RM — продвижение</h3><span class="case-tag">SEO</span></div><p class="case-desc">Лендинг на чистом коде. Полное SEO. Вовлекающий дизайн, высокая скорость.</p><div class="case-tech"><span>HTML</span><span>JS</span><span>CSS</span></div><div class="case-metrics"><div class="case-metric"><span class="label">Длительность</span><span class="value">14 дней</span></div><div class="case-metric"><span class="label">Команда</span><span class="value">1 + дизайнер</span></div><div class="case-metric"><span class="label">Результат</span><span class="value">SEO топ-3</span></div></div></div></article></div></div>
+<section id="cases" class="section" data-wm="01"><div class="container"><div class="section-header"><h2 data-num="01 — КЕЙСЫ">Кейсы</h2><button type="button" class="section-more-btn" data-open-modal>Обсудить проект</button></div><div class="tabs-bar" id="casesTabs" role="tablist"><button class="tab-btn active" data-tab="dev" role="tab">Разработка</button><button class="tab-btn" data-tab="marketing" role="tab">Цифровой маркетинг</button><button class="tab-btn" data-tab="design" role="tab">Дизайн</button><button class="tab-btn" data-tab="lna" role="tab">ЛНА</button><button class="tab-btn" data-tab="aiads" role="tab">AI реклама</button></div>
+<div class="tab-panel active" data-panel="dev">
+  <div class="cases-grid" id="devCasesGrid">
+    <article class="case-card">
+      <div class="case-media case-media--iframe">
+        <iframe src="https://albe.su/" loading="lazy" title="Превью сайта Albe Digital" referrerpolicy="no-referrer" scrolling="no" tabindex="-1" sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-popups-to-escape-sandbox"></iframe>
+      </div>
+      <div class="case-body">
+        <div class="case-num">01 / ЛЕНДИНГ</div>
+        <div class="case-title-row"><h3>Albe Digital</h3><span class="case-tag">Web</span></div>
+        <p class="case-desc">Лендинг на чистом коде. Полное SEO. Современный дизайн и высокая производительность.</p>
+        <a class="case-link" href="https://albe.su/" target="_blank" rel="noopener noreferrer nofollow" aria-label="Открыть сайт Albe Digital в новой вкладке">Открыть сайт <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+      </div>
+    </article>
+    <article class="case-card">
+      <div class="case-media case-media--iframe">
+        <iframe src="https://anatomiaspb.ru/" loading="lazy" title="Превью сайта Anatomia СПб" referrerpolicy="no-referrer" scrolling="no" tabindex="-1" sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-popups-to-escape-sandbox"></iframe>
+      </div>
+      <div class="case-body">
+        <div class="case-num">02 / МЕДИЦИНА</div>
+        <div class="case-title-row"><h3>Anatomia СПб</h3><span class="case-tag">Med</span></div>
+        <p class="case-desc">Сайт медицинского центра в Санкт-Петербурге. Современный дизайн и онлайн-запись.</p>
+        <a class="case-link" href="https://anatomiaspb.ru/" target="_blank" rel="noopener noreferrer nofollow" aria-label="Открыть сайт Anatomia СПб в новой вкладке">Открыть сайт <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+      </div>
+    </article>
+    <article class="case-card">
+      <div class="case-media case-media--iframe">
+        <iframe src="https://sculptorspb.ru/" loading="lazy" title="Превью сайта Sculptor СПб — студия красоты в Рыбацком" referrerpolicy="no-referrer" scrolling="no" tabindex="-1" sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-popups-to-escape-sandbox"></iframe>
+      </div>
+      <div class="case-body">
+        <div class="case-num">03 / BEAUTY</div>
+        <div class="case-title-row"><h3>Sculptor СПб</h3><span class="case-tag">Beauty</span></div>
+        <p class="case-desc">Студия красоты в Рыбацком (Санкт-Петербург). Премиальный дизайн и онлайн-запись.</p>
+        <a class="case-link" href="https://sculptorspb.ru/" target="_blank" rel="noopener noreferrer nofollow" aria-label="Открыть сайт Sculptor СПб в новой вкладке">Открыть сайт <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+      </div>
+    </article>
+    <article class="case-card">
+      <div class="case-media case-media--iframe">
+        <iframe src="https://balm-music.ru/" loading="lazy" title="Превью сайта Balm Music" referrerpolicy="no-referrer" scrolling="no" tabindex="-1" sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-popups-to-escape-sandbox"></iframe>
+      </div>
+      <div class="case-body">
+        <div class="case-num">04 / MUSIC</div>
+        <div class="case-title-row"><h3>Balm Music</h3><span class="case-tag">Music</span></div>
+        <p class="case-desc">Сайт музыкального проекта. Премиальный дизайн и адаптивная вёрстка.</p>
+        <a class="case-link" href="https://balm-music.ru/" target="_blank" rel="noopener noreferrer nofollow" aria-label="Открыть сайт Balm Music в новой вкладке">Открыть сайт <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+      </div>
+    </article>
+    <article class="case-card is-extra is-hidden">
+      <div class="case-media case-media--iframe">
+        <iframe data-src="https://avmmotors.by/" loading="lazy" title="Превью сайта AVM Motors" referrerpolicy="no-referrer" scrolling="no" tabindex="-1" sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-popups-to-escape-sandbox"></iframe>
+      </div>
+      <div class="case-body">
+        <div class="case-num">05 / E-COMMERCE</div>
+        <div class="case-title-row"><h3>AVM Motors</h3><span class="case-tag">E-com</span></div>
+        <p class="case-desc">Интернет-магазин автодилера в Беларуси. Каталог, интеграции с CRM и 1С.</p>
+        <a class="case-link" href="https://avmmotors.by/" target="_blank" rel="noopener noreferrer nofollow" aria-label="Открыть сайт AVM Motors в новой вкладке">Открыть сайт <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+      </div>
+    </article>
+    <article class="case-card is-extra is-hidden">
+      <div class="case-media case-media--iframe">
+        <iframe data-src="https://avtovelomoto.by/" loading="lazy" title="Превью сайта Автовеломото" referrerpolicy="no-referrer" scrolling="no" tabindex="-1" sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-popups-to-escape-sandbox"></iframe>
+      </div>
+      <div class="case-body">
+        <div class="case-num">06 / E-COMMERCE</div>
+        <div class="case-title-row"><h3>Автовеломото</h3><span class="case-tag">E-com</span></div>
+        <p class="case-desc">E-commerce платформа для авто, вело и мото техники. Удобный каталог и быстрый заказ.</p>
+        <a class="case-link" href="https://avtovelomoto.by/" target="_blank" rel="noopener noreferrer nofollow" aria-label="Открыть сайт Автовеломото в новой вкладке">Открыть сайт <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+      </div>
+    </article>
+    <article class="case-card is-extra is-hidden">
+      <div class="case-media case-media--iframe">
+        <iframe data-src="https://dmitrievuro.ru/" loading="lazy" title="Превью сайта Dmitriev Uro" referrerpolicy="no-referrer" scrolling="no" tabindex="-1" sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-popups-to-escape-sandbox"></iframe>
+      </div>
+      <div class="case-body">
+        <div class="case-num">07 / МЕДИЦИНА</div>
+        <div class="case-title-row"><h3>Dmitriev Uro</h3><span class="case-tag">Med</span></div>
+        <p class="case-desc">Сайт медицинского центра. Премиальный дизайн и фокус на конверсию.</p>
+        <a class="case-link" href="https://dmitrievuro.ru/" target="_blank" rel="noopener noreferrer nofollow" aria-label="Открыть сайт Dmitriev Uro в новой вкладке">Открыть сайт <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+      </div>
+    </article>
+    <article class="case-card is-extra is-hidden">
+      <div class="case-media case-media--iframe">
+        <iframe data-src="https://sculptorspb.ru/" loading="lazy" title="Превью сайта Sculptor СПб — студия красоты в Рыбацком" referrerpolicy="no-referrer" scrolling="no" tabindex="-1" sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-popups-to-escape-sandbox"></iframe>
+      </div>
+      <div class="case-body">
+        <div class="case-num">08 / BEAUTY</div>
+        <div class="case-title-row"><h3>Sculptor СПб</h3><span class="case-tag">Beauty</span></div>
+        <p class="case-desc">Студия красоты в Рыбацком (Санкт-Петербург). Премиальный дизайн и онлайн-запись.</p>
+        <a class="case-link" href="https://sculptorspb.ru/" target="_blank" rel="noopener noreferrer nofollow" aria-label="Открыть сайт Sculptor СПб в новой вкладке">Открыть сайт <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+      </div>
+    </article>
+  </div>
+  <div class="cases-more-wrap">
+    <button type="button" class="cases-more-btn" id="casesMoreBtn" aria-expanded="false" aria-controls="devCasesGrid">
+      <span class="cases-more-label">Показать ещё</span>
+      <span class="cases-more-count" aria-hidden="true">4</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+  </div>
+</div>
 <div class="tab-panel" data-panel="marketing"><div class="cases-grid"><article class="case-card"><div class="case-media placeholder-media">Аналитика роста</div><div class="case-body"><div class="case-num">01 / SEO</div><div class="case-title-row"><h3>Комплексное SEO-продвижение</h3><span class="case-tag">SEO</span></div><p class="case-desc">Технический аудит, семантическое ядро, контент-стратегия и лидерские позиции в Яндексе и Google.</p><div class="case-tech"><span>SEO</span><span>Analytics</span><span>Content</span></div><div class="case-metrics"><div class="case-metric"><span class="label">Срок</span><span class="value">6 месяцев</span></div><div class="case-metric"><span class="label">Каналы</span><span class="value">SEO + контент</span></div><div class="case-metric"><span class="label">Результат</span><span class="value">ТОП-3</span></div></div></div></article><article class="case-card"><div class="case-media placeholder-media">Digital-стратегия</div><div class="case-body"><div class="case-num">02 / PERFORMANCE</div><div class="case-title-row"><h3>Performance-маркетинг</h3><span class="case-tag">PPC</span></div><p class="case-desc">Настройка рекламных кампаний в Яндекс.Директ и соцсетях с окупаемостью в первый месяц.</p><div class="case-tech"><span>Яндекс.Директ</span><span>VK Ads</span><span>Telegram Ads</span></div><div class="case-metrics"><div class="case-metric"><span class="label">Срок</span><span class="value">30 дней</span></div><div class="case-metric"><span class="label">Каналы</span><span class="value">PPC + SMM</span></div><div class="case-metric"><span class="label">Результат</span><span class="value">ROI 320%</span></div></div></div></article><article class="case-card"><div class="case-media placeholder-media">Email-маркетинг</div><div class="case-body"><div class="case-num">03 / EMAIL</div><div class="case-title-row"><h3>Email-воронки</h3><span class="case-tag">Email</span></div><p class="case-desc">Сегментация базы, цепочки прогрева, триггерные письма и рост LTV клиента.</p><div class="case-tech"><span>SendPulse</span><span>Unisender</span><span>CRM</span></div><div class="case-metrics"><div class="case-metric"><span class="label">Срок</span><span class="value">45 дней</span></div><div class="case-metric"><span class="label">Каналы</span><span class="value">Email</span></div><div class="case-metric"><span class="label">Результат</span><span class="value">Open Rate 42%</span></div></div></div></article></div></div>
 <div class="tab-panel" data-panel="design"><div class="cases-grid"><article class="case-card"><div class="case-media placeholder-media">UI Kit</div><div class="case-body"><div class="case-num">01 / UI/UX</div><div class="case-title-row"><h3>Дизайн-система для SaaS</h3><span class="case-tag">UI Kit</span></div><p class="case-desc">Единая дизайн-система с компонентами, токенами и документацией.</p><div class="case-tech"><span>Figma</span><span>Design Tokens</span><span>Storybook</span></div><div class="case-metrics"><div class="case-metric"><span class="label">Срок</span><span class="value">21 день</span></div><div class="case-metric"><span class="label">Компоненты</span><span class="value">120+</span></div><div class="case-metric"><span class="label">Результат</span><span class="value">-40% времени</span></div></div></div></article><article class="case-card"><div class="case-media placeholder-media">Иммерсивный дизайн</div><div class="case-body"><div class="case-num">02 / IMMERSIVE</div><div class="case-title-row"><h3>Иммерсивный лендинг</h3><span class="case-tag">Motion</span></div><p class="case-desc">Микровзаимодействия, 3D-сцены и анимация. Визуальный язык, который запоминается.</p><div class="case-tech"><span>WebGL</span><span>GSAP</span><span>Three.js</span></div><div class="case-metrics"><div class="case-metric"><span class="label">Срок</span><span class="value">28 дней</span></div><div class="case-metric"><span class="label">Сцены</span><span class="value">7</span></div><div class="case-metric"><span class="label">Результат</span><span class="value">+62% времени</span></div></div></div></article><article class="case-card"><div class="case-media placeholder-media">Mobile UI</div><div class="case-body"><div class="case-num">03 / MOBILE</div><div class="case-title-row"><h3>Мобильный банкинг</h3><span class="case-tag">Mobile</span></div><p class="case-desc">Концепт мобильного приложения с фокусом на скорость и понятность сценариев.</p><div class="case-tech"><span>Figma</span><span>Prototyping</span><span>UX</span></div><div class="case-metrics"><div class="case-metric"><span class="label">Срок</span><span class="value">35 дней</span></div><div class="case-metric"><span class="label">Экраны</span><span class="value">48</span></div><div class="case-metric"><span class="label">Результат</span><span class="value">NPS 94%</span></div></div></div></article></div></div>
 <div class="tab-panel" data-panel="lna"><div class="cases-grid"><article class="case-card"><div class="case-media placeholder-media">Кадровый пакет</div><div class="case-body"><div class="case-num">01 / HR</div><div class="case-title-row"><h3>Кадровый пакет ЛНА</h3><span class="case-tag">HR</span></div><p class="case-desc">ПВТР, положение об оплате труда, штатное расписание, график отпусков — по ГОСТ.</p><div class="case-tech"><span>ТК РФ</span><span>ГОСТ</span></div><div class="case-metrics"><div class="case-metric"><span class="label">Срок</span><span class="value">14 дней</span></div><div class="case-metric"><span class="label">Документов</span><span class="value">12</span></div><div class="case-metric"><span class="label">Результат</span><span class="value">Проверка пройдена</span></div></div></div></article><article class="case-card"><div class="case-media placeholder-media">Охрана труда</div><div class="case-body"><div class="case-num">02 / ОТ</div><div class="case-title-row"><h3>Пакет по охране труда</h3><span class="case-tag">ОТ</span></div><p class="case-desc">СУОТ, инструкции по должностям и видам работ, программа вводного инструктажа, СИЗ.</p><div class="case-tech"><span>ст. 209, 212</span><span>ТК РФ</span></div><div class="case-metrics"><div class="case-metric"><span class="label">Срок</span><span class="value">21 день</span></div><div class="case-metric"><span class="label">Документов</span><span class="value">18</span></div><div class="case-metric"><span class="label">Результат</span><span class="value">Аудит пройден</span></div></div></div></article><article class="case-card"><div class="case-media placeholder-media">Персональные данные</div><div class="case-body"><div class="case-num">03 / 152-ФЗ</div><div class="case-title-row"><h3>Пакет по персональным данным</h3><span class="case-tag">152-ФЗ</span></div><p class="case-desc">Политика обработки ПДн, положение о защите, приказ о назначении ответственного.</p><div class="case-tech"><span>152-ФЗ</span><span>РКН</span></div><div class="case-metrics"><div class="case-metric"><span class="label">Срок</span><span class="value">10 дней</span></div><div class="case-metric"><span class="label">Документов</span><span class="value">8</span></div><div class="case-metric"><span class="label">Результат</span><span class="value">Уведомление подано</span></div></div></div></article></div></div>
@@ -685,6 +800,30 @@ body.service-modal-open .site-header{right:var(--sbw,0px)}
 <script>
 (function(){var c=document.getElementById('siteCanvas');if(!c)return;var ctx=c.getContext('2d',{alpha:true}),words=['REACT','NEXT.JS','TYPESCRIPT','REDUX','TAILWIND','CSS3','SASS','VUE','SSR','SSG','NODE.JS','NEST.JS','PYTHON','DJANGO','POSTGRESQL','REDIS','KAFKA','RABBITMQ','ELASTICSEARCH','C++','DEVOPS','DOCKER','KUBERNETES','TERRAFORM','ANSIBLE','JENKINS','GITLAB','CI/CD','ARGO','YANDEX CLOUD','MOBILE','REACT NATIVE','FLUTTER','SWIFT','KOTLIN','EXPO','IOS','ANDROID','AI','ML','DL','NLP','OPENAI','PYTORCH','COMPUTER VISION','ASR','TTS','CATBOOST','FIGMA','UI/UX','DESIGN','UX','UI','PROTOTYPE','MOTION','WEBGL','THREE.JS','GSAP','SEO','PPC','SMM','EMAIL','ANALYTICS','SEMANTICS','CONTENT','ROI','LTV','LANDING','E-COMMERCE','CRM','ERP','1С','BITRIX','AMOCRM','MARKETPLACE','ARCHITECTURE','UML','BPMN','SCRUM','AGILE','QA','JMETER','POSTMAN','TESTRAIL','ISO 12207','ЛНА','ОХРАНА ТРУДА','ПДН','152-ФЗ','61-ФЗ','ТК РФ','ГОСТ','СУОТ','ПВТР','РКН','КАДРЫ','ВОИНСКИЙ УЧЁТ','</>','{','}','()','=>','<>','/*','*/','//','const','let','fn','API','SDK','JSON','HTML','SQL','JS','TS','DB','001','100','010'],W=0,H=0,fs=15,cols=0,dr=[],sp=[],cw=[],hc=['rgba(255,255,255,0.85)','rgba(245,183,0,0.85)','rgba(255,224,122,0.85)','rgba(16,185,129,0.75)','rgba(6,182,212,0.75)','rgba(209,212,218,0.7)'],gc=['rgba(255,255,255,0.4)','rgba(245,183,0,0.5)','rgba(255,224,122,0.4)','rgba(16,185,129,0.4)','rgba(6,182,212,0.4)','rgba(209,212,218,0.3)'];function pw(){return words[(Math.random()*words.length)|0]}function rs(){var r=c.getBoundingClientRect(),d=Math.min(window.devicePixelRatio||1,2);W=Math.max(1,Math.floor(r.width));H=Math.max(1,Math.floor(r.height));c.width=Math.floor(W*d);c.height=Math.floor(H*d);ctx.setTransform(d,0,0,d,0,0);fs=W<640?12:W<1024?14:15;cols=Math.floor(W/(fs*1.6));dr=new Array(cols);sp=new Array(cols);cw=new Array(cols);for(var i=0;i<cols;i++){dr[i]=Math.random()*(H/fs);sp[i]=.3+Math.random()*.4;cw[i]=pw()}ctx.fillStyle='#14171C';ctx.fillRect(0,0,W,H)}function drw(){ctx.fillStyle='rgba(20,23,28,0.06)';ctx.fillRect(0,0,W,H);ctx.font=fs+'px "Courier New", monospace';ctx.textBaseline='top';ctx.textAlign='left';for(var i=0;i<cols;i++){var wd=cw[i],x=i*fs*1.6,row=Math.floor(dr[i]),ch=wd.charAt(row%wd.length),ci=i%hc.length;ctx.fillStyle=hc[ci];ctx.shadowColor=gc[ci];ctx.shadowBlur=5;ctx.fillText(ch,x,row*fs);ctx.shadowBlur=0;dr[i]+=sp[i];if(row*fs>H&&Math.random()>.985){dr[i]=0;sp[i]=.3+Math.random()*.4;cw[i]=pw()}}}rs();var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(rs,200)});if(window.ResizeObserver)new ResizeObserver(rs).observe(c);setInterval(drw,80)})();
 (function(){var t=document.getElementById('casesTabs');if(!t)return;t.addEventListener('click',function(e){var b=e.target.closest('.tab-btn');if(!b)return;var k=b.dataset.tab;t.querySelectorAll('.tab-btn').forEach(function(x){x.classList.remove('active')});b.classList.add('active');document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.toggle('active',p.dataset.panel===k)})})})();
+/* ==== SHOW MORE (DEV CASES) ==== */
+(function(){
+  var grid = document.getElementById('devCasesGrid');
+  var btn = document.getElementById('casesMoreBtn');
+  if(!grid || !btn) return;
+  var label = btn.querySelector('.cases-more-label');
+  var extras = grid.querySelectorAll('.case-card.is-extra');
+  btn.addEventListener('click', function(){
+    var willExpand = extras.length > 0 && extras[0].classList.contains('is-hidden');
+    extras.forEach(function(c){
+      c.classList.toggle('is-hidden', !willExpand);
+      if(willExpand){
+        var f = c.querySelector('iframe[data-src]');
+        if(f){ f.src = f.getAttribute('data-src'); f.removeAttribute('data-src'); }
+      }
+    });
+    btn.setAttribute('aria-expanded', willExpand ? 'true' : 'false');
+    if(label) label.textContent = willExpand ? 'Свернуть' : 'Показать ещё';
+    if(!willExpand){
+      var y = grid.getBoundingClientRect().top + window.pageYOffset - 100;
+      window.scrollTo({top:y, behavior:'smooth'});
+    }
+  });
+})();
 (function(){document.querySelectorAll('.faq-item').forEach(function(it){var l=it.querySelector('.faq-lid'),i=it.querySelector('.faq-inside');l.addEventListener('click',function(){var o=it.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(function(x){x.classList.remove('open');x.querySelector('.faq-inside').style.maxHeight='0px';var h=x.querySelector('.faq-lid');if(h)h.setAttribute('aria-expanded','false')});if(!o){it.classList.add('open');i.style.maxHeight=i.scrollHeight+'px';l.setAttribute('aria-expanded','true')}else{l.setAttribute('aria-expanded','false')}})})})();
 (function(){var s=document.querySelectorAll('#calcServices .calc-option'),c=document.querySelectorAll('#calcComplexity .calc-option'),p=document.getElementById('calcPrice'),h=document.getElementById('calcHoursInfo'),st=document.getElementById('stackExplanation'),m={design:['Figma','Design System','Prototyping'],front:['React','Next.js','TypeScript','Tailwind'],back:['Node.js','Nest.js','PostgreSQL','Redis'],seo:['Яндекс.Метрика','GA4','SEMrush','Screaming Frog'],cms:['WordPress','Strapi','Directus'],crm:['Bitrix24','amoCRM','Интеграции API'],ai:['Python','PyTorch','OpenAI','LangChain'],mobile:['React Native','Expo','Swift','Kotlin'],support:['DevOps','Мониторинг 24/7','SLA']};function calc(){var b=0,sel=[];s.forEach(function(x){if(x.classList.contains('active')){b+=parseInt(x.dataset.price,10);sel.push(x.dataset.service)}});var mu=1;c.forEach(function(x){if(x.classList.contains('active'))mu=parseFloat(x.dataset.mult)});var tot=Math.round(b*mu);p.textContent=tot.toLocaleString('ru-RU')+' ₽';h.textContent=sel.length?('≈ '+Math.round(tot/1500)+' часов работы'):'Выберите услуги для расчёта';var stack=[];sel.forEach(function(k){if(m[k])stack=stack.concat(m[k])});stack=stack.filter(function(v,i,a){return a.indexOf(v)===i});if(stack.length){st.innerHTML='<h3>Рекомендуемый стек</h3><ul>'+stack.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>'}else{st.innerHTML='<h3>Рекомендуемый стек</h3><p>Выберите услуги для расчёта — мы покажем стек и сроки.</p>'}}s.forEach(function(x){x.addEventListener('click',function(){x.classList.toggle('active');calc()})});c.forEach(function(x){x.addEventListener('click',function(){c.forEach(function(y){y.classList.remove('active')});x.classList.add('active');calc()})})})();
 (function(){var b=document.getElementById('burgerBtn'),n=document.getElementById('mobileNav');if(!b||!n)return;function setState(o){n.classList.toggle('open',o);document.body.classList.toggle('menu-open',o);b.setAttribute('aria-expanded',o?'true':'false')}b.addEventListener('click',function(){setState(!n.classList.contains('open'))});n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setState(false)})});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&n.classList.contains('open'))setState(false)})})();
