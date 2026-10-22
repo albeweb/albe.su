@@ -345,10 +345,9 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 .form-status.show{display:block}
 .form-status.success{background:rgba(16,185,129,.1);border-color:var(--green);color:#a7f3d0}
 .form-status.error{background:rgba(239,68,68,.1);border-color:#ef4444;color:#fecaca}
-.modal-backdrop{position:fixed;inset:0;background:rgba(10,12,15,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);z-index:300;display:flex;align-items:flex-start;justify-content:center;padding:80px 16px 40px;overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease}
-.modal-backdrop.open{opacity:1;visibility:visible}
-.modal-dialog{width:100%;max-width:640px;background:rgba(25,28,34,.98);border:1px solid var(--line);position:relative;transform:translateY(24px) scale(.98);opacity:0;transition:transform .35s cubic-bezier(.2,.9,.3,1.2),opacity .35s ease;box-shadow:0 40px 100px rgba(0,0,0,.65),0 0 0 1px rgba(245,183,0,.1);margin:auto 0}
-.modal-backdrop.open .modal-dialog{transform:translateY(0) scale(1);opacity:1}
+.modal-backdrop{position:fixed;inset:0;background:rgba(10,12,15,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);z-index:300;display:none;align-items:flex-start;justify-content:center;padding:80px 16px 40px;overflow-y:auto}
+.modal-backdrop.open{display:flex}
+.modal-dialog{width:100%;max-width:640px;background:rgba(25,28,34,.98);border:1px solid var(--line);position:relative;box-shadow:0 40px 100px rgba(0,0,0,.65),0 0 0 1px rgba(245,183,0,.1);margin:auto 0}
 .modal-dialog::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
 .modal-header{padding:28px 32px 20px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line)}
 .modal-header h2{font-size:1.4rem;margin:0;font-weight:500;letter-spacing:-.01em}
@@ -406,6 +405,88 @@ body.modal-open .site-header{right:var(--sbw,0px)}
   .contacts-cta-btn{width:100%;text-align:center}
 }
 @media(min-width:901px){body.reveal-init .reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.22,.7,.3,1),transform .9s cubic-bezier(.22,.7,.3,1);transition-delay:var(--reveal-delay,0s);will-change:opacity,transform}body.reveal-init .reveal.reveal--visible{opacity:1;transform:translateY(0)}}
+
+/* ===== PROMO CARD (акция 2 года) — по центру вертикали справа ===== */
+.promo-card{
+  position:fixed !important;
+  right:24px !important;
+  top:50% !important;
+  bottom:auto !important;
+  left:auto !important;
+  z-index:9999;
+  width:360px;
+  max-width:calc(100vw - 32px);
+  max-height:calc(100vh - 48px);
+  overflow-y:auto;
+  overflow-x:hidden;
+  background:linear-gradient(180deg,rgba(33,37,44,.98) 0%,rgba(20,23,28,.98) 100%);
+  border:1px solid var(--line);
+  border-top:2px solid var(--gold);
+  padding:24px 22px 20px;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(-50%) scale(.96);
+  transition:opacity .15s ease, transform .15s ease, visibility .15s ease;
+  box-shadow:0 24px 60px rgba(0,0,0,.65),0 0 0 1px rgba(245,183,0,.15);
+  scrollbar-width:thin;
+  scrollbar-color:rgba(245,183,0,.5) transparent;
+  word-break:break-word;
+  box-sizing:border-box;
+}
+.promo-card.open{opacity:1;visibility:visible;transform:translateY(-50%) scale(1)}
+.promo-card *{box-sizing:border-box;max-width:100%}
+.promo-card-close{
+  position:absolute;
+  top:10px;
+  right:10px;
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  color:var(--gold);
+  background:rgba(20,23,28,.9);
+  cursor:pointer;
+  display:grid;
+  place-items:center;
+  transition:all .25s ease;
+  z-index:3;
+}
+.promo-card-close:hover{background:rgba(245,183,0,.15);border-color:rgba(245,183,0,.5);color:#fff}
+.promo-card-close::before,.promo-card-close::after{content:'';position:absolute;width:12px;height:2px;background:currentColor;border-radius:1px}
+.promo-card-close::before{transform:rotate(45deg)}
+.promo-card-close::after{transform:rotate(-45deg)}
+.promo-badge{display:inline-block;font-family:'Geist',sans-serif;font-size:.6rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);padding:5px 12px;border:1px solid rgba(245,183,0,.35);background:rgba(245,183,0,.08);margin-bottom:12px}
+.promo-card h3{font-size:1.15rem;margin:0 0 6px;font-weight:500;letter-spacing:-.01em;line-height:1.2;padding-right:36px}
+.promo-years{font-family:'Zen Dots',sans-serif;font-size:1em;color:var(--gold);letter-spacing:.02em;text-shadow:0 0 20px rgba(245,183,0,.35)}
+.promo-sub{font-size:.84rem;color:var(--muted);margin:0 0 14px;line-height:1.5}
+.promo-sub strong{color:var(--gold);font-weight:500}
+.promo-price{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);flex-wrap:wrap;min-width:0}
+.promo-price-old{font-family:'Geist',sans-serif;font-size:1.1rem;font-weight:500;color:var(--dim);text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:rgba(239,68,68,.65)}
+.promo-price-new{font-family:'Geist',sans-serif;font-size:1.7rem;font-weight:500;color:var(--gold);text-shadow:0 0 20px rgba(245,183,0,.35);line-height:1;letter-spacing:-.01em}
+.promo-includes{margin-bottom:14px}
+.promo-includes-title{font-size:.64rem;color:var(--dim);letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px;font-weight:500}
+.promo-list{display:flex;flex-wrap:wrap;gap:5px;list-style:none;padding:0;margin:0}
+.promo-list li{font-size:.74rem;color:var(--text);padding:5px 10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);line-height:1.3;white-space:nowrap}
+.promo-code-row{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding:10px 14px;background:rgba(245,183,0,.06);border:1px dashed rgba(245,183,0,.4);flex-wrap:wrap;min-width:0}
+.promo-code-label{font-size:.7rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.promo-code{font-family:'Courier New',monospace;font-size:1.05rem;font-weight:700;color:var(--gold);letter-spacing:.15em}
+.promo-cta{width:100%;padding:12px 20px;background:var(--gold);color:#12151A;font-family:inherit;font-weight:500;font-size:.84rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .25s ease;border:none;text-align:center}
+.promo-cta:hover{background:var(--gold-2);transform:translateY(-2px);box-shadow:0 10px 24px rgba(245,183,0,.4);color:#12151A}
+@media(max-width:767px){
+  .promo-card{
+    right:10px !important;
+    top:50% !important;
+    bottom:auto !important;
+    left:auto !important;
+    width:min(320px, calc(100vw - 20px));
+    max-height:calc(100vh - 40px);
+    padding:16px 14px 12px;
+  }
+  .promo-card h3{font-size:1rem}
+  .promo-price-new{font-size:1.4rem}
+  .promo-list li{font-size:.66rem;padding:4px 8px}
+}
+
 @media(prefers-reduced-motion:reduce){body.reveal-init .reveal{opacity:1!important;transform:none!important;transition:none!important}.site-canvas{display:none}}
 </style></head><body>
 <canvas id="siteCanvas" class="site-canvas" aria-hidden="true"></canvas>
@@ -468,6 +549,7 @@ body.modal-open .site-header{right:var(--sbw,0px)}
         <div class="form-group"><span class="form-label">Как с вами связаться?</span><div class="contact-type-tabs" role="tablist"><button type="button" class="contact-type-btn active" data-type="phone">Телефон</button><button type="button" class="contact-type-btn" data-type="whatsapp">WhatsApp</button><button type="button" class="contact-type-btn" data-type="max">MAX</button><button type="button" class="contact-type-btn" data-type="telegram">Telegram</button></div></div>
         <div class="form-group"><label class="form-label" for="contactInput">Контакт</label><input class="form-input" type="text" id="contactInput" name="contact" inputmode="tel" autocomplete="tel" required><small class="form-hint" id="contactHint"></small></div>
         <div class="form-group"><label class="form-label" for="serviceSelect">Какая услуга интересует?</label><select class="form-select" id="serviceSelect" name="service" required><option value="">Выберите из списка</option><option value="Разработка">Разработка</option><option value="Цифровой маркетинг">Цифровой маркетинг</option><option value="SEO оптимизация">SEO оптимизация</option><option value="Дизайн">Дизайн</option><option value="Локально-нормативные акты">Локально-нормативные акты</option><option value="AI реклама">AI реклама</option><option value="Пока не знаю">Пока не знаю</option></select></div>
+        <div class="form-group"><label class="form-label" for="promoInput">Промокод <span class="form-optional">(если есть)</span></label><input class="form-input" type="text" id="promoInput" name="promo" placeholder="Например, ALBE" autocomplete="off"></div>
         <div class="form-group"><label class="form-label" for="commentInput">Комментарий <span class="form-optional">(необязательно)</span></label><textarea class="form-input form-textarea" id="commentInput" name="comment" rows="3" placeholder="Кратко о задаче, сроках, бюджете"></textarea></div>
         <button type="submit" class="form-submit">Отправить заявку</button>
         <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
@@ -475,6 +557,34 @@ body.modal-open .site-header{right:var(--sbw,0px)}
     </div>
   </div>
 </div>
+
+<aside class="promo-card" id="promoCard" role="dialog" aria-labelledby="promoTitle" aria-hidden="true">
+  <button type="button" class="promo-card-close" data-close-promo aria-label="Закрыть акцию"></button>
+  <span class="promo-badge">Акция · 2 года</span>
+  <h3 id="promoTitle">ALBE DIGITAL <span class="promo-years">2 года</span></h3>
+  <p class="promo-sub">Скидка <strong>50%</strong> на любой лендинг под ключ</p>
+  <div class="promo-price">
+    <span class="promo-price-old">150 000 ₽</span>
+    <span class="promo-price-new">75 000 ₽</span>
+  </div>
+  <div class="promo-includes">
+    <div class="promo-includes-title">В стоимость включено:</div>
+    <ul class="promo-list">
+      <li>Дизайн</li>
+      <li>Вёрстка</li>
+      <li>SEO</li>
+      <li>GEO</li>
+      <li>Agent-оптимизация</li>
+      <li>Размещение на сервере</li>
+      <li>Поддержка 1 мес.</li>
+    </ul>
+  </div>
+  <div class="promo-code-row">
+    <span class="promo-code-label">Промокод:</span>
+    <span class="promo-code">ALBE</span>
+  </div>
+  <button type="button" class="promo-cta" data-open-modal-promo>Подать заявку</button>
+</aside>
 
 <script>
 (function(){var c=document.getElementById('siteCanvas');if(!c)return;var ctx=c.getContext('2d',{alpha:true}),words=['REACT','NEXT.JS','TYPESCRIPT','REDUX','TAILWIND','CSS3','SASS','VUE','SSR','SSG','NODE.JS','NEST.JS','PYTHON','DJANGO','POSTGRESQL','REDIS','KAFKA','RABBITMQ','ELASTICSEARCH','C++','DEVOPS','DOCKER','KUBERNETES','TERRAFORM','ANSIBLE','JENKINS','GITLAB','CI/CD','ARGO','YANDEX CLOUD','MOBILE','REACT NATIVE','FLUTTER','SWIFT','KOTLIN','EXPO','IOS','ANDROID','AI','ML','DL','NLP','OPENAI','PYTORCH','COMPUTER VISION','ASR','TTS','CATBOOST','FIGMA','UI/UX','DESIGN','UX','UI','PROTOTYPE','MOTION','WEBGL','THREE.JS','GSAP','SEO','PPC','SMM','EMAIL','ANALYTICS','SEMANTICS','CONTENT','ROI','LTV','LANDING','E-COMMERCE','CRM','ERP','1С','BITRIX','AMOCRM','MARKETPLACE','ARCHITECTURE','UML','BPMN','SCRUM','AGILE','QA','JMETER','POSTMAN','TESTRAIL','ISO 12207','ЛНА','ОХРАНА ТРУДА','ПДН','152-ФЗ','61-ФЗ','ТК РФ','ГОСТ','СУОТ','ПВТР','РКН','КАДРЫ','ВОИНСКИЙ УЧЁТ','</>','{','}','()','=>','<>','/*','*/','//','const','let','fn','API','SDK','JSON','HTML','SQL','JS','TS','DB','001','100','010'],W=0,H=0,fs=15,cols=0,dr=[],sp=[],cw=[],hc=['rgba(255,255,255,0.85)','rgba(245,183,0,0.85)','rgba(255,224,122,0.85)','rgba(16,185,129,0.75)','rgba(6,182,212,0.75)','rgba(209,212,218,0.7)'],gc=['rgba(255,255,255,0.4)','rgba(245,183,0,0.5)','rgba(255,224,122,0.4)','rgba(16,185,129,0.4)','rgba(6,182,212,0.4)','rgba(209,212,218,0.3)'];function pw(){return words[(Math.random()*words.length)|0]}function rs(){var r=c.getBoundingClientRect(),d=Math.min(window.devicePixelRatio||1,2);W=Math.max(1,Math.floor(r.width));H=Math.max(1,Math.floor(r.height));c.width=Math.floor(W*d);c.height=Math.floor(H*d);ctx.setTransform(d,0,0,d,0,0);fs=W<640?12:W<1024?14:15;cols=Math.floor(W/(fs*1.6));dr=new Array(cols);sp=new Array(cols);cw=new Array(cols);for(var i=0;i<cols;i++){dr[i]=Math.random()*(H/fs);sp[i]=.3+Math.random()*.4;cw[i]=pw()}ctx.fillStyle='#14171C';ctx.fillRect(0,0,W,H)}function drw(){ctx.fillStyle='rgba(20,23,28,0.06)';ctx.fillRect(0,0,W,H);ctx.font=fs+'px "Courier New", monospace';ctx.textBaseline='top';ctx.textAlign='left';for(var i=0;i<cols;i++){var wd=cw[i],x=i*fs*1.6,row=Math.floor(dr[i]),ch=wd.charAt(row%wd.length),ci=i%hc.length;ctx.fillStyle=hc[ci];ctx.shadowColor=gc[ci];ctx.shadowBlur=5;ctx.fillText(ch,x,row*fs);ctx.shadowBlur=0;dr[i]+=sp[i];if(row*fs>H&&Math.random()>.985){dr[i]=0;sp[i]=.3+Math.random()*.4;cw[i]=pw()}}}rs();var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(rs,200)});if(window.ResizeObserver)new ResizeObserver(rs).observe(c);setInterval(drw,80)})();
@@ -488,26 +598,32 @@ body.modal-open .site-header{right:var(--sbw,0px)}
 document.getElementById('year').textContent=new Date().getFullYear();
 (function(){if(!window.matchMedia||!('IntersectionObserver' in window))return;if(!window.matchMedia('(min-width:901px)').matches)return;var sel=['.section-header','.reviews-header','.mission-header','.case-card','.service-item','.lna-card','.lna-gost','.lna-cta','.step-card','.team-card','.competence-card','.review-card','.mission-advantage-card','.mission-numbers','.faq-item','.contact-info-card','.contacts-cta'];var els=Array.prototype.slice.call(document.querySelectorAll(sel.join(',')));if(!els.length)return;document.body.classList.add('reveal-init');var groups=new Map();els.forEach(function(el){el.classList.add('reveal');var p=el.parentElement||document.body;if(!groups.has(p))groups.set(p,[]);groups.get(p).push(el)});groups.forEach(function(list){list.forEach(function(el,i){el.style.setProperty('--reveal-delay',(Math.min(i,6)*0.07)+'s')})});var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(!e.isIntersecting)return;var el=e.target;io.unobserve(el);el.classList.add('reveal--visible');var d=parseFloat(getComputedStyle(el).getPropertyValue('--reveal-delay'))||0;setTimeout(function(){el.classList.remove('reveal','reveal--visible');el.style.removeProperty('--reveal-delay')},900+d*1000+100)})},{threshold:0.1,rootMargin:'0px 0px -60px 0px'});els.forEach(function(el){io.observe(el)})})();
 
-/* ==== MODAL (заявка) — с компенсацией скроллбара и очисткой статуса при открытии ==== */
+/* ==== MODAL ЗАЯВКИ — открывается мгновенно ==== */
 (function(){
   var modal = document.getElementById('leadModal');
   if(!modal) return;
+  var promoInput = document.getElementById('promoInput');
   var lastFocus = null;
 
-  function openModal(){
+  function openModal(prefillPromo){
+    var promoCard = document.getElementById('promoCard');
+    if(promoCard && promoCard.classList.contains('open')){
+      promoCard.classList.remove('open');
+      promoCard.setAttribute('aria-hidden','true');
+    }
     lastFocus = document.activeElement;
     var sbw = window.innerWidth - document.documentElement.clientWidth;
     document.documentElement.style.setProperty('--sbw', sbw + 'px');
     modal.classList.add('open');
     modal.setAttribute('aria-hidden','false');
     document.body.classList.add('modal-open');
-    /* Очистка «зависшего» статуса от прошлой попытки */
     var statusEl = document.getElementById('formStatus');
     if(statusEl){ statusEl.className = 'form-status'; statusEl.textContent = ''; }
-    setTimeout(function(){
+    if(prefillPromo && promoInput){ promoInput.value = prefillPromo; }
+    requestAnimationFrame(function(){
       var firstInput = modal.querySelector('input, select, textarea, button');
       if(firstInput) firstInput.focus({preventScroll:true});
-    }, 120);
+    });
   }
   function closeModal(){
     modal.classList.remove('open');
@@ -516,6 +632,8 @@ document.getElementById('year').textContent=new Date().getFullYear();
     document.documentElement.style.removeProperty('--sbw');
     if(lastFocus && lastFocus.focus) lastFocus.focus({preventScroll:true});
   }
+
+  window.__openLeadModal = openModal;
 
   document.querySelectorAll('[data-open-modal]').forEach(function(el){
     el.addEventListener('click', function(e){
@@ -542,6 +660,73 @@ document.getElementById('year').textContent=new Date().getFullYear();
   });
 })();
 
+/* ==== PROMO CARD (акция 2 года) — показывается при каждой загрузке, по центру справа ==== */
+(function(){
+  var promoCard = document.getElementById('promoCard');
+  if(!promoCard){ console.error('[PROMO] #promoCard не найден в DOM'); return; }
+
+  var PROMO_CODE = 'ALBE';
+  var PROMO_DELAY = 200;
+
+  /* Показывать всегда — без запоминания в localStorage */
+  function openPromo(){
+    promoCard.classList.add('open');
+    promoCard.setAttribute('aria-hidden','false');
+    var r = promoCard.getBoundingClientRect();
+    console.log('[PROMO] Показан. Позиция:', {
+      right: Math.round(window.innerWidth - r.right),
+      top: Math.round(r.top),
+      bottom: Math.round(window.innerHeight - r.bottom),
+      width: Math.round(r.width),
+      height: Math.round(r.height),
+      zIndex: getComputedStyle(promoCard).zIndex
+    });
+  }
+  function closePromo(){
+    promoCard.classList.remove('open');
+    promoCard.setAttribute('aria-hidden','true');
+    console.log('[PROMO] Закрыт (появится снова при следующей загрузке)');
+  }
+
+  setTimeout(function(){
+    var leadModal = document.getElementById('leadModal');
+    if(leadModal && leadModal.classList.contains('open')){
+      var tryShow = function(attempt){
+        var lm = document.getElementById('leadModal');
+        if(lm && lm.classList.contains('open')){
+          if(attempt < 3) setTimeout(function(){ tryShow(attempt + 1); }, 3000);
+          return;
+        }
+        openPromo();
+      };
+      setTimeout(function(){ tryShow(1); }, 3000);
+      return;
+    }
+    openPromo();
+  }, PROMO_DELAY);
+
+  promoCard.querySelectorAll('[data-close-promo]').forEach(function(el){
+    el.addEventListener('click', closePromo);
+  });
+
+  var ctaBtn = promoCard.querySelector('[data-open-modal-promo]');
+  if(ctaBtn){
+    ctaBtn.addEventListener('click', function(){
+      closePromo();
+      if(typeof window.__openLeadModal === 'function'){
+        window.__openLeadModal(PROMO_CODE);
+      }
+    });
+  }
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && promoCard.classList.contains('open')) closePromo();
+  });
+
+  window.__showPromo = openPromo;
+  window.__hidePromo = closePromo;
+})();
+
 /* ==== LEAD FORM → Telegram via Cloudflare Worker ==== */
 (function(){
   var WORKER_URL = 'https://albe.faralenatmir.workers.dev';
@@ -550,6 +735,7 @@ document.getElementById('year').textContent=new Date().getFullYear();
   var nameInput = document.getElementById('nameInput');
   var contactInput = document.getElementById('contactInput');
   var serviceSelect = document.getElementById('serviceSelect');
+  var promoInput = document.getElementById('promoInput');
   var commentInput = document.getElementById('commentInput');
   var hintEl = document.getElementById('contactHint');
   var statusEl = document.getElementById('formStatus');
@@ -611,6 +797,7 @@ document.getElementById('year').textContent=new Date().getFullYear();
     var name = nameInput.value.trim();
     var contact = contactInput.value.trim();
     var service = serviceSelect.value;
+    var promo = promoInput ? promoInput.value.trim() : '';
     var comment = commentInput ? commentInput.value.trim() : '';
 
     if(name.length < 2){ showError('Укажите имя (минимум 2 символа)'); nameInput.focus(); return; }
@@ -624,7 +811,7 @@ document.getElementById('year').textContent=new Date().getFullYear();
     }
     if(!service){ showError('Выберите услугу из списка'); serviceSelect.focus(); return; }
 
-    console.log('[FORM] Отправка:', { name: name, contactType: currentType, contact: contact, service: service, comment: comment });
+    console.log('[FORM] Отправка:', { name: name, contactType: currentType, contact: contact, service: service, promo: promo, comment: comment });
 
     submitBtn.disabled = true;
     var originalText = submitBtn.textContent;
@@ -634,7 +821,7 @@ document.getElementById('year').textContent=new Date().getFullYear();
       var resp = await fetch(WORKER_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: name, contactType: currentType, contact: contact, service: service, comment: comment })
+        body: JSON.stringify({ name: name, contactType: currentType, contact: contact, service: service, promo: promo, comment: comment })
       });
       var rawText = await resp.text();
       var data = null;
