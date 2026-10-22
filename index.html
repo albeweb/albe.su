@@ -1,6 +1,15 @@
 <!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"><title>ALBE DIGITAL — Разработка сайтов под ключ в СПб | Премиум дизайн, SEO, AI</title><meta name="description" content="Разработка сайтов под ключ в Санкт-Петербурге: премиум дизайн, SEO с гарантией KPI, AI-решения, мобильные приложения, ЛНА. 150+ проектов, 7+ лет опыта."><meta name="theme-color" content="#14171C"><meta name="color-scheme" content="dark"><link rel="canonical" href="https://albe.su/"><link rel="preload" href="Geist-Regular.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="Geist-Medium.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="zen-dots.woff2" as="font" type="font/woff2" crossorigin><style>
 @font-face{font-family:'Geist';src:url('Geist-Regular.woff2') format('woff2');font-weight:400;font-display:swap}@font-face{font-family:'Geist';src:url('Geist-Medium.woff2') format('woff2');font-weight:500;font-display:swap}@font-face{font-family:'Zen Dots';src:url('zen-dots.woff2') format('woff2');font-weight:400;font-display:swap}
-:root{--bg:#191C22;--bg-2:#21252C;--bg-3:#12151A;--gold:#F5B700;--gold-2:#FFD24A;--green:#10B981;--cyan:#06B6D4;--purple:#8B5CF6;--tg:#229ED9;--tg-2:#06B6D4;--text:#fff;--muted:#C7CBD1;--dim:#83878E;--line:rgba(255,255,255,.08);--pill:999px;--pad:48px;--sec-a:245,183,0}
+:root{
+  --bg:#191C22;--bg-2:#21252C;--bg-3:#12151A;
+  --gold:#F5B700;--gold-2:#FFD24A;--green:#10B981;--cyan:#06B6D4;--purple:#8B5CF6;
+  --tg:#229ED9;--tg-2:#06B6D4;
+  --text:#fff;--muted:#C7CBD1;--dim:#83878E;--line:rgba(255,255,255,.08);
+  --pill:999px;--pad:48px;--sec-a:245,183,0;
+  --card-bg:rgba(33,37,44,.92);
+  --input-bg:rgba(18,21,26,.6);
+  --input-bg-focus:rgba(18,21,26,.9);
+}
 *{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16.5px;scroll-behavior:smooth;-webkit-text-size-adjust:100%;scrollbar-width:thin;scrollbar-color:rgba(245,183,0,.5) transparent}
 body{font-family:'Geist','Inter',system-ui,-apple-system,sans-serif;background:#14171C;color:var(--text);font-size:1rem;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;width:100%}
@@ -25,7 +34,7 @@ p{line-height:1.7;color:var(--muted)}
 .section-header h2{position:relative;display:flex;align-items:baseline;gap:18px}
 .section-header h2::before{content:attr(data-num);font-family:'Geist',sans-serif;font-size:.7rem;font-weight:500;letter-spacing:.28em;color:rgb(var(--sec-a));opacity:.85;align-self:flex-start;margin-top:.6em}
 .section-header h2::after{content:'';position:absolute;left:0;right:0;bottom:-16px;height:1px;background:linear-gradient(90deg,rgb(var(--sec-a)) 0%,rgba(var(--sec-a),.3) 40%,transparent 100%);box-shadow:0 0 14px rgba(var(--sec-a),.35)}
-.section-more-btn{font-size:.86rem;letter-spacing:.1em;color:var(--muted);border-bottom:1px solid rgba(var(--sec-a),.35);padding-bottom:2px;white-space:nowrap;transition:all .25s ease;font-weight:500;text-transform:uppercase}
+.section-more-btn{font-size:.86rem;letter-spacing:.1em;color:var(--muted);border-bottom:1px solid rgba(var(--sec-a),.35);padding-bottom:2px;white-space:nowrap;transition:all .25s ease;font-weight:500;text-transform:uppercase;background:none;font-family:inherit;cursor:pointer}
 .section-more-btn:hover{color:rgb(var(--sec-a));border-color:rgb(var(--sec-a))}
 .site-header{position:fixed;top:0;left:0;right:0;z-index:200;background:transparent;border-bottom:1px solid transparent;transition:background .35s ease,backdrop-filter .35s ease,border-color .35s ease}
 .site-header.scrolled,body.menu-open .site-header{background:rgba(20,23,28,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
@@ -51,7 +60,7 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 .mobile-nav.open{display:flex}
 .mobile-nav a{font-size:1.05rem;color:var(--muted);padding:16px 0;border-bottom:1px solid var(--line);transition:color .25s ease,padding-left .25s ease}
 .mobile-nav a:hover{color:var(--gold);padding-left:6px}
-.mobile-nav-cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;margin-top:24px;padding:16px 28px;border-radius:var(--pill);background:var(--gold);color:#12151A!important;font-family:inherit;font-weight:500;font-size:1rem;text-align:center;border:none;cursor:pointer;box-shadow:0 8px 24px rgba(245,183,0,.4);transition:all .25s ease}
+.mobile-nav-cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;margin-top:24px;padding:16px 28px;border-radius:0;background:var(--gold);color:#12151A!important;font-family:inherit;font-weight:500;font-size:1rem;text-align:center;border:none;cursor:pointer;box-shadow:0 8px 24px rgba(245,183,0,.4);transition:all .25s ease}
 .mobile-nav-cta:hover{background:var(--gold-2);transform:translateY(-2px);box-shadow:0 12px 32px rgba(245,183,0,.55)}
 .hero-section{position:relative;width:100%;min-height:100vh;display:flex;flex-direction:column;align-items:stretch;padding:130px var(--pad) 40px;overflow:hidden;text-align:center;isolation:isolate;background:radial-gradient(ellipse at 50% 40%,rgba(18,21,26,.6) 0%,rgba(18,21,26,.25) 50%,transparent 82%)}
 .hero-section::before{content:'';position:absolute;bottom:0;left:0;right:0;height:180px;background:linear-gradient(0deg,rgba(18,21,26,.85) 0%,rgba(18,21,26,.4) 45%,transparent 100%);pointer-events:none;z-index:2}
@@ -94,7 +103,7 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 .tab-panel.active{display:block}
 @keyframes fadeTab{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .cases-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
-.case-card{position:relative;display:flex;flex-direction:column;background:rgba(33,37,44,.92);border:1px solid var(--line);overflow:hidden;transition:border-color .35s ease,transform .35s ease,box-shadow .35s ease}
+.case-card{position:relative;display:flex;flex-direction:column;background:var(--card-bg);border:1px solid var(--line);overflow:hidden;transition:border-color .35s ease,transform .35s ease,box-shadow .35s ease}
 .case-card:nth-child(4n+1){grid-column:span 7}.case-card:nth-child(4n+2){grid-column:span 5}.case-card:nth-child(4n+3){grid-column:span 5}.case-card:nth-child(4n+4){grid-column:span 7}
 .case-card:hover{border-color:rgba(var(--sec-a),.55);transform:translateY(-6px);box-shadow:0 30px 70px rgba(0,0,0,.55),0 0 0 1px rgba(var(--sec-a),.2),0 8px 24px rgba(var(--sec-a),.14)}
 .case-card::before{content:'';position:absolute;top:0;left:22px;right:22px;height:2px;background:linear-gradient(90deg,transparent,rgb(var(--sec-a)) 50%,transparent);opacity:.5;transition:opacity .35s ease,left .35s ease,right .35s ease;z-index:3;border-radius:0 0 2px 2px}
@@ -139,7 +148,7 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 @media(max-width:768px){.service-item{grid-template-columns:50px 1fr;gap:18px;padding:24px 0}.service-item:hover{padding-left:12px}.service-num{font-size:1.8rem}.service-arrow{display:none}.service-body h3{font-size:1.12rem}}
 .lna-intro{max-width:820px;margin:0 0 40px;font-size:.98rem;line-height:1.75;color:var(--muted)}
 .lna-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-bottom:28px}
-.lna-card{padding:28px;display:flex;flex-direction:column;background:rgba(33,37,44,.92);border:1px solid var(--line);position:relative;overflow:hidden;transition:border-color .35s ease,transform .35s ease}
+.lna-card{padding:28px;display:flex;flex-direction:column;background:var(--card-bg);border:1px solid var(--line);position:relative;overflow:hidden;transition:border-color .35s ease,transform .35s ease}
 .lna-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:rgb(var(--sec-a));opacity:.4;transition:opacity .3s ease,width .3s ease}
 .lna-card::after{content:'';position:absolute;top:12px;right:12px;width:22px;height:22px;border-top:1px solid rgba(var(--sec-a),.35);border-right:1px solid rgba(var(--sec-a),.35);transition:all .35s ease;pointer-events:none}
 .lna-card:hover{border-color:rgba(var(--sec-a),.4);transform:translateY(-4px)}
@@ -153,7 +162,7 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 .lna-list li::before{content:'';position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:50%;background:rgb(var(--sec-a));box-shadow:0 0 10px rgba(var(--sec-a),.6)}
 .lna-footer{margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}
 .lna-badge{display:inline-block;color:rgb(var(--sec-a));font-weight:500;background:rgba(var(--sec-a),.08);border:1px solid rgba(var(--sec-a),.25);padding:6px 14px;border-radius:2px;font-size:.78rem;letter-spacing:.03em}
-.lna-gost{background:rgba(33,37,44,.92);border:1px solid var(--line);padding:36px 40px;position:relative;overflow:hidden;margin-bottom:24px}
+.lna-gost{background:var(--card-bg);border:1px solid var(--line);padding:36px 40px;position:relative;overflow:hidden;margin-bottom:24px}
 .lna-gost::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--green),var(--cyan),var(--purple));opacity:.9}
 .lna-gost h3{font-size:1.22rem;margin:0 0 12px}
 .lna-gost p{font-size:.98rem;line-height:1.75;color:var(--muted);margin:0 0 24px;max-width:860px}
@@ -163,7 +172,7 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 .lna-gost-item:hover{background:rgba(var(--sec-a),.04)}
 .lna-gost-item strong{display:block;color:rgb(var(--sec-a));font-size:.9rem;font-weight:500;margin-bottom:6px}
 .lna-gost-item span{font-size:.86rem;color:var(--muted);line-height:1.6}
-.lna-cta{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:32px 36px;background:rgba(33,37,44,.92);border:1px solid rgba(var(--sec-a),.22);border-left:3px solid rgb(var(--sec-a))}
+.lna-cta{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:32px 36px;background:var(--card-bg);border:1px solid rgba(var(--sec-a),.22);border-left:3px solid rgb(var(--sec-a))}
 .lna-cta-text h4{margin:0 0 6px;font-size:1.12rem}
 .lna-cta-text p{margin:0;font-size:.94rem;color:var(--muted)}
 .lna-cta-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:rgb(var(--sec-a));color:#12151A;font-weight:500;font-size:.9rem;transition:all .3s ease;white-space:nowrap;text-transform:uppercase;letter-spacing:.06em;border:none;cursor:pointer;font-family:inherit}
@@ -178,7 +187,7 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 .step-card p{font-size:.88rem;color:var(--muted);line-height:1.6;max-width:200px;margin:0 auto}
 @media(max-width:900px){.steps-container{grid-template-columns:1fr;gap:28px}.steps-container::before{display:none}.step-card{text-align:left;padding:0 0 0 90px;display:flex;flex-direction:column}.step-num{position:absolute;left:0;top:0;width:64px;height:64px;margin-bottom:0;font-size:1rem}.step-card p{max-width:none;margin:0}}
 .team-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.team-card{display:grid;grid-template-columns:1fr 180px;gap:28px;padding:32px;align-items:start;background:rgba(33,37,44,.92);border:1px solid var(--line);border-left:2px solid rgb(var(--sec-a));position:relative;transition:border-color .35s ease,transform .35s ease}
+.team-card{display:grid;grid-template-columns:1fr 180px;gap:28px;padding:32px;align-items:start;background:var(--card-bg);border:1px solid var(--line);border-left:2px solid rgb(var(--sec-a));position:relative;transition:border-color .35s ease,transform .35s ease}
 .team-card:hover{transform:translateY(-4px);border-color:rgba(var(--sec-a),.35);border-left-color:rgb(var(--sec-a))}
 .team-body{display:flex;flex-direction:column;gap:12px;min-width:0}
 .team-tag{display:inline-block;align-self:flex-start;font-size:.66rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgb(var(--sec-a))}
@@ -198,7 +207,7 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 @media(max-width:900px){.team-grid{grid-template-columns:1fr}.team-card{grid-template-columns:1fr 260px;padding:24px;gap:18px}.team-name{font-size:1.15rem}}
 @media(max-width:560px){.team-card{grid-template-columns:1fr;padding:16px}.team-photo{aspect-ratio:auto;height:360px;order:-1;max-height:none}.team-facts li{flex-direction:column;gap:2px}.team-facts li span{min-width:0}}
 .competences-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
-.competence-card{padding:26px;background:rgba(33,37,44,.92);border:1px solid var(--line);transition:border-color .35s ease,transform .35s ease}
+.competence-card{padding:26px;background:var(--card-bg);border:1px solid var(--line);transition:border-color .35s ease,transform .35s ease}
 .competence-card:nth-child(1),.competence-card:nth-child(2){grid-column:span 3}
 .competence-card:nth-child(3),.competence-card:nth-child(4),.competence-card:nth-child(5){grid-column:span 2}
 .competence-card:nth-child(6),.competence-card:nth-child(7){grid-column:span 3}
@@ -211,7 +220,7 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 .tech-item:hover{border-color:rgba(var(--sec-a),.4);color:rgb(var(--sec-a));background:rgba(var(--sec-a),.08)}
 @media(max-width:900px){.competences-grid{grid-template-columns:1fr 1fr}.competence-card:nth-child(n){grid-column:span 1}}
 @media(max-width:560px){.competences-grid{grid-template-columns:1fr}}
-.calculator-card{background:rgba(33,37,44,.92);border:1px solid var(--line);padding:44px 40px;position:relative}
+.calculator-card{background:var(--card-bg);border:1px solid var(--line);padding:44px 40px;position:relative}
 .calculator-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgb(var(--sec-a)),transparent)}
 .calculator-card::after{content:'';position:absolute;top:16px;right:16px;bottom:16px;left:16px;border:1px dashed rgba(var(--sec-a),.14);pointer-events:none}
 .calculator-two-columns{display:grid;grid-template-columns:1.3fr 1fr;gap:44px;position:relative;z-index:1}
@@ -238,7 +247,7 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 .reviews-stat-number{font-family:'Geist',sans-serif;font-weight:500;font-size:2rem;color:rgb(var(--sec-a));line-height:1;text-shadow:0 0 24px rgba(var(--sec-a),.5)}
 .reviews-stat-label{font-size:.82rem;color:var(--muted)}
 .reviews-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
-.review-card{grid-column:span 4;padding:28px;display:flex;flex-direction:column;background:rgba(33,37,44,.92);border:1px solid var(--line);transition:border-color .35s ease,transform .35s ease;position:relative;overflow:hidden}
+.review-card{grid-column:span 4;padding:28px;display:flex;flex-direction:column;background:var(--card-bg);border:1px solid var(--line);transition:border-color .35s ease,transform .35s ease;position:relative;overflow:hidden}
 .review-card:nth-child(1),.review-card:nth-child(6){grid-column:span 6}
 .review-card:hover{border-color:rgba(var(--sec-a),.35);transform:translateY(-3px)}
 .review-quote-icon{position:absolute;top:14px;right:22px;font-family:Georgia,serif;font-size:6.5rem;line-height:.75;font-weight:500;color:rgba(var(--sec-a),.08);z-index:0;pointer-events:none}
@@ -255,7 +264,7 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 .mission-header h2{margin-bottom:8px;font-size:clamp(1.5rem,3.4vw,2.2rem);font-weight:500}
 .mission-subtitle{font-size:.96rem;color:var(--muted);max-width:820px}
 .mission-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin-bottom:24px}
-.mission-advantage-card{grid-column:span 3;padding:28px;background:rgba(33,37,44,.92);border:1px solid var(--line);transition:border-color .35s ease,transform .35s ease}
+.mission-advantage-card{grid-column:span 3;padding:28px;background:var(--card-bg);border:1px solid var(--line);transition:border-color .35s ease,transform .35s ease}
 .mission-advantage-card:hover{border-color:rgba(var(--sec-a),.35);transform:translateY(-3px)}
 .advantage-icon{width:52px;height:52px;border-radius:10px;background:rgba(var(--sec-a),.08);border:1px solid rgba(var(--sec-a),.28);display:flex;align-items:center;justify-content:center;color:rgb(var(--sec-a));margin-bottom:18px;transition:all .35s ease}
 .mission-advantage-card:hover .advantage-icon{background:rgba(var(--sec-a),.15);color:#fff;box-shadow:0 0 30px rgba(var(--sec-a),.4)}
@@ -265,7 +274,7 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 .advantage-stats{display:flex;flex-wrap:wrap;gap:6px}
 .advantage-stats .stat{font-size:.74rem;color:rgb(var(--sec-a));font-weight:500;padding:4px 12px;border-radius:2px;background:rgba(var(--sec-a),.08);border:1px solid rgba(var(--sec-a),.25)}
 .mission-numbers{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
-.number-item{background:rgba(33,37,44,.92);padding:32px 16px;text-align:center;transition:background .3s ease}
+.number-item{background:var(--card-bg);padding:32px 16px;text-align:center;transition:background .3s ease}
 .number-item:hover{background:rgba(var(--sec-a),.05)}
 .number-value{font-family:'Geist',sans-serif;font-weight:500;font-size:1.9rem;color:rgb(var(--sec-a));margin-bottom:6px;line-height:1;text-shadow:0 0 20px rgba(var(--sec-a),.5)}
 .number-label{font-size:.82rem;color:var(--muted)}
@@ -299,10 +308,8 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 .faq-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
 .faq-tag{font-size:.74rem;color:rgb(var(--sec-a));font-weight:500;padding:4px 12px;border-radius:2px;background:rgba(var(--sec-a),.08);border:1px solid rgba(var(--sec-a),.22)}
 @media(max-width:900px){.faq-layout{grid-template-columns:1fr;gap:24px}.faq-aside{position:static}}
-
-/* ==== CONTACTS ==== */
 .contacts-grid{display:grid;grid-template-columns:1fr;gap:18px;align-items:start;max-width:720px;margin:0 auto}
-.contact-info-card{background:rgba(33,37,44,.92);border:1px solid var(--line);padding:36px;position:relative;border-top:2px solid rgb(var(--sec-a))}
+.contact-info-card{background:var(--card-bg);border:1px solid var(--line);padding:36px;position:relative;border-top:2px solid rgb(var(--sec-a))}
 .contact-info-card::after{content:'';position:absolute;bottom:16px;right:16px;width:20px;height:20px;border-bottom:1px solid rgba(var(--sec-a),.3);border-right:1px solid rgba(var(--sec-a),.3);pointer-events:none}
 .contact-info-title{display:flex;align-items:center;gap:10px;color:rgb(var(--sec-a));font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:26px;font-weight:500}
 .contact-item{display:flex;align-items:center;gap:16px;padding:20px 0;border-bottom:1px solid var(--line)}
@@ -315,15 +322,13 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 .contacts-cta p{margin:0;color:var(--muted);font-size:.94rem;flex:1;min-width:200px;line-height:1.6}
 .contacts-cta-btn{padding:14px 28px;background:var(--gold);color:#12151A;font-weight:500;font-size:.9rem;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:all .3s ease;white-space:nowrap;border:none;font-family:inherit}
 .contacts-cta-btn:hover{background:var(--gold-2);transform:translateY(-2px);box-shadow:0 10px 30px rgba(245,183,0,.4);color:#12151A}
-
-/* ==== LEAD FORM (используется внутри модального окна) ==== */
 .lead-form{display:flex;flex-direction:column;gap:18px;position:relative;z-index:1}
 .form-group{display:flex;flex-direction:column;gap:8px}
 .form-label{font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);font-weight:500}
 .form-optional{color:var(--dim);font-weight:400;text-transform:none;letter-spacing:0;font-size:.92em;opacity:.7;margin-left:4px}
-.form-input,.form-select{background:rgba(18,21,26,.6);border:1px solid var(--line);padding:12px 16px;color:#fff;font-family:inherit;font-size:.94rem;transition:all .25s ease;border-radius:0;width:100%}
+.form-input,.form-select{background:var(--input-bg);border:1px solid var(--line);padding:12px 16px;color:#fff;font-family:inherit;font-size:.94rem;transition:all .25s ease;border-radius:0;width:100%}
 .form-input:hover,.form-select:hover{border-color:rgba(var(--sec-a),.35)}
-.form-input:focus,.form-select:focus{outline:none;border-color:rgb(var(--sec-a));background:rgba(18,21,26,.9);box-shadow:0 0 0 3px rgba(var(--sec-a),.1)}
+.form-input:focus,.form-select:focus{outline:none;border-color:rgb(var(--sec-a));background:var(--input-bg-focus);box-shadow:0 0 0 3px rgba(var(--sec-a),.1)}
 .form-input::placeholder{color:var(--dim)}
 .form-textarea{resize:vertical;min-height:88px;font-family:inherit;line-height:1.5;padding-top:12px}
 .form-select{cursor:pointer;appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,rgb(var(--sec-a)) 50%),linear-gradient(135deg,rgb(var(--sec-a)) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 15px) 50%;background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:44px}
@@ -341,8 +346,6 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 .form-status.show{display:block}
 .form-status.success{background:rgba(16,185,129,.1);border-color:var(--green);color:#a7f3d0}
 .form-status.error{background:rgba(239,68,68,.1);border-color:#ef4444;color:#fecaca}
-
-/* ==== MODAL ==== */
 .modal-backdrop{position:fixed;inset:0;background:rgba(10,12,15,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);z-index:300;display:flex;align-items:flex-start;justify-content:center;padding:80px 16px 40px;overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease}
 .modal-backdrop.open{opacity:1;visibility:visible}
 .modal-dialog{width:100%;max-width:640px;background:rgba(25,28,34,.98);border:1px solid var(--line);position:relative;transform:translateY(24px) scale(.98);opacity:0;transition:transform .35s cubic-bezier(.2,.9,.3,1.2),opacity .35s ease;box-shadow:0 40px 100px rgba(0,0,0,.65),0 0 0 1px rgba(245,183,0,.1);margin:auto 0}
@@ -353,11 +356,12 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 .modal-header .modal-sub{font-size:.86rem;color:var(--muted);margin-top:6px;line-height:1.5}
 .modal-close{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--gold);background:rgba(255,255,255,.02);flex-shrink:0;transition:all .25s ease;position:relative;cursor:pointer}
 .modal-close:hover{background:rgba(245,183,0,.1);border-color:rgba(245,183,0,.4);color:#fff}
-.modal-close::before,.modal-close::after{content:'';position:absolute;width:14px;height:2px;background:currentColor;border-radius:1px;transition:background .25s ease}
+.modal-close::before,.modal-close::after{content:'';position:absolute;width:14px;height:2px;background:currentColor;border-radius:1px}
 .modal-close::before{transform:rotate(45deg)}
 .modal-close::after{transform:rotate(-45deg)}
 .modal-body{padding:24px 32px 32px}
-body.modal-open{overflow:hidden}
+body.modal-open{overflow:hidden;padding-right:var(--sbw,0px)}
+body.modal-open .site-header{right:var(--sbw,0px)}
 @media(max-width:640px){
   .modal-backdrop{padding:16px 8px 24px}
   .modal-dialog{max-width:100%}
@@ -367,8 +371,6 @@ body.modal-open{overflow:hidden}
   .contact-type-tabs{grid-template-columns:repeat(2,1fr)}
   .lead-form{gap:16px}
 }
-
-/* ==== FOOTER ==== */
 .site-footer{border-top:1px solid var(--line);background:rgba(18,21,26,.92);padding:64px 0 24px;position:relative;overflow:hidden;z-index:1}
 .footer-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:44px;margin-bottom:44px;padding-left:var(--pad);padding-right:var(--pad)}
 .footer-brand .logo{margin-bottom:16px;font-size:1.3rem}
@@ -452,7 +454,6 @@ body.modal-open{overflow:hidden}
 
 <footer class="site-footer"><div class="footer-grid"><div class="footer-brand"><a href="#top" class="logo" aria-label="ALBE DIGITAL">ALBE<span class="accent">DIGITAL</span></a><p>Разработка сайтов под ключ, премиум дизайн, SEO-продвижение с гарантией, AI-решения, мобильные приложения и разработка ЛНА.</p><div class="footer-requisites"><span>ООО "АЛЬБЕ-ДИДЖИТАЛ".</span><span>ИНН 7811818720, ОГРН 1267800072000</span></div></div><div class="footer-col"><h4>Услуги</h4><ul><li><a href="#services">Веб-разработка</a></li><li><a href="#services">Дизайн</a></li><li><a href="#services">E-commerce</a></li><li><a href="#services">SEO и аналитика</a></li><li><a href="#services">AI и ML</a></li><li><a href="#services">Мобильные приложения</a></li></ul></div><div class="footer-col"><h4>Компания</h4><ul><li><a href="#cases">Кейсы</a></li><li><a href="#lna">ЛНА</a></li><li><a href="#process">Процесс</a></li><li><a href="#calculator">Калькулятор</a></li><li><a href="#faq">FAQ</a></li></ul></div><div class="footer-col"><h4>Документы</h4><ul><li><a href="https://albe.su/privacy">Политика конфиденциальности</a></li><li><a href="https://albe.su/privacy">Пользовательское соглашение</a></li></ul></div><div class="footer-col"><h4>Контакты</h4><ul><li><a href="https://t.me/albe_web" target="_blank" rel="noopener">Telegram @albe_web</a></li><li><a href="mailto:digitalalbe@gmail.com">digitalalbe@gmail.com</a></li><li>Санкт-Петербург</li></ul></div></div><div class="footer-bottom"><div>© <span id="year"></span> ALBE DIGITAL. Все права защищены.</div><div class="footer-tagline">МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ — МЫ СОЗДАЕМ БИЗНЕС</div></div></footer>
 
-<!-- Модальное окно с формой заявки -->
 <div class="modal-backdrop" id="leadModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="leadModalTitle">
   <div class="modal-dialog">
     <div class="modal-header">
@@ -488,7 +489,7 @@ body.modal-open{overflow:hidden}
 document.getElementById('year').textContent=new Date().getFullYear();
 (function(){if(!window.matchMedia||!('IntersectionObserver' in window))return;if(!window.matchMedia('(min-width:901px)').matches)return;var sel=['.section-header','.reviews-header','.mission-header','.case-card','.service-item','.lna-card','.lna-gost','.lna-cta','.step-card','.team-card','.competence-card','.review-card','.mission-advantage-card','.mission-numbers','.faq-item','.contact-info-card','.contacts-cta'];var els=Array.prototype.slice.call(document.querySelectorAll(sel.join(',')));if(!els.length)return;document.body.classList.add('reveal-init');var groups=new Map();els.forEach(function(el){el.classList.add('reveal');var p=el.parentElement||document.body;if(!groups.has(p))groups.set(p,[]);groups.get(p).push(el)});groups.forEach(function(list){list.forEach(function(el,i){el.style.setProperty('--reveal-delay',(Math.min(i,6)*0.07)+'s')})});var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(!e.isIntersecting)return;var el=e.target;io.unobserve(el);el.classList.add('reveal--visible');var d=parseFloat(getComputedStyle(el).getPropertyValue('--reveal-delay'))||0;setTimeout(function(){el.classList.remove('reveal','reveal--visible');el.style.removeProperty('--reveal-delay')},900+d*1000+100)})},{threshold:0.1,rootMargin:'0px 0px -60px 0px'});els.forEach(function(el){io.observe(el)})})();
 
-/* ==== MODAL (заявка) ==== */
+/* ==== MODAL (заявка) — с компенсацией скроллбара, чтобы не было смещения ==== */
 (function(){
   var modal = document.getElementById('leadModal');
   if(!modal) return;
@@ -496,6 +497,8 @@ document.getElementById('year').textContent=new Date().getFullYear();
 
   function openModal(){
     lastFocus = document.activeElement;
+    var sbw = window.innerWidth - document.documentElement.clientWidth;
+    document.documentElement.style.setProperty('--sbw', sbw + 'px');
     modal.classList.add('open');
     modal.setAttribute('aria-hidden','false');
     document.body.classList.add('modal-open');
@@ -508,6 +511,7 @@ document.getElementById('year').textContent=new Date().getFullYear();
     modal.classList.remove('open');
     modal.setAttribute('aria-hidden','true');
     document.body.classList.remove('modal-open');
+    document.documentElement.style.removeProperty('--sbw');
     if(lastFocus && lastFocus.focus) lastFocus.focus({preventScroll:true});
   }
 
@@ -534,8 +538,6 @@ document.getElementById('year').textContent=new Date().getFullYear();
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape' && modal.classList.contains('open')) closeModal();
   });
-
-  window.__leadModal = { open: openModal, close: closeModal };
 })();
 
 /* ==== LEAD FORM → Telegram via Cloudflare Worker ==== */
@@ -571,31 +573,59 @@ document.getElementById('year').textContent=new Date().getFullYear();
     return res;
   }
   function formatTelegram(value){ return '@' + value.replace(/[^a-zA-Z0-9_]/g, ''); }
+  function emptyContactValue(){ return (currentType === 'telegram') ? '@' : '+7 ('; }
+  function showError(msg){
+    statusEl.className = 'form-status error show';
+    statusEl.textContent = msg;
+  }
+  function showSuccess(msg){
+    statusEl.className = 'form-status success show';
+    statusEl.textContent = msg;
+  }
+  function clearStatus(){
+    statusEl.className = 'form-status';
+    statusEl.textContent = '';
+  }
   function applyType(type){
     currentType = type;
     typeBtns.forEach(function(b){ b.classList.toggle('active', b.dataset.type === type); });
     var cfg = typeConfig[type];
     contactInput.placeholder = cfg.placeholder;
     hintEl.innerHTML = cfg.hint;
-    contactInput.value = (type === 'telegram') ? '@' : '+7 (';
+    contactInput.value = emptyContactValue();
   }
   typeBtns.forEach(function(b){ b.addEventListener('click', function(){ applyType(b.dataset.type); contactInput.focus(); }); });
-  contactInput.addEventListener('input', function(e){ e.target.value = (currentType === 'telegram') ? formatTelegram(e.target.value) : formatPhone(e.target.value); });
-  contactInput.addEventListener('focus', function(){ if(!contactInput.value) contactInput.value = (currentType === 'telegram') ? '@' : '+7 ('; });
+  contactInput.addEventListener('input', function(e){
+    e.target.value = (currentType === 'telegram') ? formatTelegram(e.target.value) : formatPhone(e.target.value);
+  });
+  contactInput.addEventListener('focus', function(){
+    if(!contactInput.value) contactInput.value = emptyContactValue();
+  });
   applyType('phone');
+
   form.addEventListener('submit', async function(e){
     e.preventDefault();
-    statusEl.className = 'form-status'; statusEl.textContent = '';
+    clearStatus();
     var name = nameInput.value.trim();
     var contact = contactInput.value.trim();
     var service = serviceSelect.value;
     var comment = commentInput ? commentInput.value.trim() : '';
-    if(name.length < 2){ statusEl.className = 'form-status error show'; statusEl.textContent = 'Укажите имя (минимум 2 символа)'; nameInput.focus(); return; }
+
+    if(name.length < 2){ showError('Укажите имя (минимум 2 символа)'); nameInput.focus(); return; }
     var digits = contact.replace(/\D/g, '');
-    if(currentType === 'telegram'){ if(contact.replace('@','').length < 4){ statusEl.className = 'form-status error show'; statusEl.textContent = 'Укажите Telegram-username (от 4 символов)'; contactInput.focus(); return; } }
-    else if(digits.length !== 11){ statusEl.className = 'form-status error show'; statusEl.textContent = 'Проверьте номер — должен быть 11 цифр'; contactInput.focus(); return; }
-    if(!service){ statusEl.className = 'form-status error show'; statusEl.textContent = 'Выберите услугу из списка'; serviceSelect.focus(); return; }
-    submitBtn.disabled = true; var originalText = submitBtn.textContent; submitBtn.textContent = 'Отправляем...';
+    if(currentType === 'telegram'){
+      if(contact.replace('@','').length < 4){ showError('Укажите Telegram-username (от 4 символов)'); contactInput.focus(); return; }
+    } else if(digits.length !== 11){
+      showError('Проверьте номер — должен быть 11 цифр');
+      contactInput.focus();
+      return;
+    }
+    if(!service){ showError('Выберите услугу из списка'); serviceSelect.focus(); return; }
+
+    submitBtn.disabled = true;
+    var originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Отправляем...';
+
     try {
       var resp = await fetch(WORKER_URL, {
         method: 'POST',
@@ -606,25 +636,25 @@ document.getElementById('year').textContent=new Date().getFullYear();
       var data = null;
       try { data = rawText ? JSON.parse(rawText) : null; } catch(parseErr){
         console.error('[FORM] Worker вернул не-JSON:', resp.status, rawText);
-        statusEl.className = 'form-status error show';
-        statusEl.textContent = 'Воркер вернул ошибку HTTP ' + resp.status + '.';
+        showError('Воркер вернул ошибку HTTP ' + resp.status + '.');
         return;
       }
       if(resp.ok && data && data.ok){
-        statusEl.className = 'form-status success show';
-        statusEl.textContent = '✓ Заявка отправлена! Свяжемся с вами в течение рабочего дня.';
-        form.reset(); applyType('phone');
+        showSuccess('✓ Заявка отправлена! Свяжемся с вами в течение рабочего дня.');
+        form.reset();
+        applyType('phone');
       } else {
         var reason = (data && data.error) ? data.error : ('HTTP ' + resp.status);
         console.error('[FORM] Worker отказ:', resp.status, data);
-        statusEl.className = 'form-status error show';
-        statusEl.textContent = 'Ошибка: ' + reason + '. Напишите в Telegram @albe_web.';
+        showError('Ошибка: ' + reason + '. Напишите в Telegram @albe_web.');
       }
     } catch(fetchErr){
       console.error('[FORM] Сеть/исключение:', fetchErr);
-      statusEl.className = 'form-status error show';
-      statusEl.textContent = 'Ошибка сети. Напишите в Telegram @albe_web или на digitalalbe@gmail.com';
-    } finally { submitBtn.disabled = false; submitBtn.textContent = originalText; }
+      showError('Ошибка сети. Напишите в Telegram @albe_web или на digitalalbe@gmail.com');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    }
   });
 })();
 </script></body></html>
