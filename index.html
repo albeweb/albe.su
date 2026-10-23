@@ -167,6 +167,8 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 .case-tech{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
 .case-tech span{font-size:.74rem;color:var(--text);padding:4px 11px;border-radius:var(--radius-xs);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);transition:all var(--tr-fast)}
 .case-tech span:hover{background:rgba(var(--sec-a),.1);border-color:rgba(var(--sec-a),.28);color:rgb(var(--sec-a))}
+.case-visit{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;font-size:.76rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgb(var(--sec-a));padding:8px 14px;border:1px solid rgba(var(--sec-a),.35);transition:all var(--tr-fast);margin-top:2px;background:rgba(var(--sec-a),.04)}
+.case-visit:hover{background:rgb(var(--sec-a));color:#12151A;border-color:rgb(var(--sec-a));transform:translateY(-1px);box-shadow:0 8px 20px rgba(var(--sec-a),.3)}
 .case-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding-top:16px;border-top:var(--brd);margin-top:auto}
 .case-metric{display:flex;flex-direction:column;gap:3px}
 .case-metric .label{font-size:.7rem;color:var(--dim);letter-spacing:.06em;text-transform:uppercase}
@@ -539,7 +541,168 @@ body.service-modal-open .site-header{right:var(--sbw,0px)}
 <button type="button" class="badge" data-service="marketing">Цифровой маркетинг</button>
 </div></div></section>
 
-<section id="cases" class="section" data-wm="01"><div class="container"><div class="section-header"><h2 data-num="01 — КЕЙСЫ">Кейсы</h2><button type="button" class="section-more-btn" data-open-modal>Обсудить проект</button></div><div class="tabs-bar" id="casesTabs" role="tablist"><button class="tab-btn active" data-tab="dev" role="tab">Разработка</button><button class="tab-btn" data-tab="marketing" role="tab">Цифровой маркетинг</button><button class="tab-btn" data-tab="design" role="tab">Дизайн</button><button class="tab-btn" data-tab="lna" role="tab">ЛНА</button><button class="tab-btn" data-tab="aiads" role="tab">AI реклама</button></div><div class="tab-panel active" data-panel="dev"><div class="cases-grid"><article class="case-card"><div class="case-media"><img src="images/AD1.webp" alt="Лендинг Albe Digital" loading="lazy" width="640" height="360"></div><div class="case-body"><div class="case-num">01 / ЛЕНДИНГ</div><div class="case-title-row"><h3>Albe Digital</h3><span class="case-tag">Web</span></div><p class="case-desc">Лендинг на чистом коде. Полное SEO. Современный дизайн и высокая производительность.</p><div class="case-tech"><span>HTML</span><span>JS</span><span>CSS</span></div><div class="case-metrics"><div class="case-metric"><span class="label">Длительность</span><span class="value">14 дней</span></div><div class="case-metric"><span class="label">Команда</span><span class="value">1 + дизайнер</span></div><div class="case-metric"><span class="label">Результат</span><span class="value">SEO +100%</span></div></div></div></article><article class="case-card"><div class="case-media"><div class="multi-image-grid"><img src="images/AM1.webp" alt="Магазин автодилера" loading="lazy"><img src="images/AM2.webp" alt="Каталог" loading="lazy"><img src="images/AM3.webp" alt="Карточка" loading="lazy"><img src="images/AM1.webp" alt="Заказ" loading="lazy"></div></div><div class="case-body"><div class="case-num">02 / E-COMMERCE</div><div class="case-title-row"><h3>AM — автодилер</h3><span class="case-tag">E-com</span></div><p class="case-desc">Интернет-магазин для крупнейшего автодилера Беларуси. Интеграция с CRM и 1С.</p><div class="case-tech"><span>React</span><span>PHP</span><span>Laravel</span></div><div class="case-metrics"><div class="case-metric"><span class="label">Длительность</span><span class="value">60 дней</span></div><div class="case-metric"><span class="label">Команда</span><span class="value">2 + аналитик</span></div><div class="case-metric"><span class="label">Результат</span><span class="value">+70% продаж</span></div></div></div></article><article class="case-card"><div class="case-media"><div class="multi-image-grid"><img src="images/EM1.webp" alt="Магазин электротранспорта" loading="lazy"><img src="images/EM2.webp" alt="Каталог" loading="lazy"></div></div><div class="case-body"><div class="case-num">03 / E-COMMERCE</div><div class="case-title-row"><h3>EM — электротранспорт</h3><span class="case-tag">E-com</span></div><p class="case-desc">Интернет-магазин электротранспорта. Высокая конверсия, удобная админ-панель.</p><div class="case-tech"><span>React</span><span>PHP</span><span>Laravel</span></div><div class="case-metrics"><div class="case-metric"><span class="label">Длительность</span><span class="value">14 дней</span></div><div class="case-metric"><span class="label">Команда</span><span class="value">1 + дизайнер</span></div><div class="case-metric"><span class="label">Результат</span><span class="value">+50% конверсии</span></div></div></div></article><article class="case-card"><div class="case-media"><div class="multi-image-grid"><img src="images/RM1.webp" alt="Лендинг SEO" loading="lazy"><img src="images/RM2.webp" alt="Лендинг вариант 2" loading="lazy"></div></div><div class="case-body"><div class="case-num">04 / ЛЕНДИНГ</div><div class="case-title-row"><h3>RM — продвижение</h3><span class="case-tag">SEO</span></div><p class="case-desc">Лендинг на чистом коде. Полное SEO. Вовлекающий дизайн, высокая скорость.</p><div class="case-tech"><span>HTML</span><span>JS</span><span>CSS</span></div><div class="case-metrics"><div class="case-metric"><span class="label">Длительность</span><span class="value">14 дней</span></div><div class="case-metric"><span class="label">Команда</span><span class="value">1 + дизайнер</span></div><div class="case-metric"><span class="label">Результат</span><span class="value">SEO топ-3</span></div></div></div></article></div></div>
+<section id="cases" class="section" data-wm="01"><div class="container"><div class="section-header"><h2 data-num="01 — КЕЙСЫ">Кейсы</h2><button type="button" class="section-more-btn" data-open-modal>Обсудить проект</button></div><div class="tabs-bar" id="casesTabs" role="tablist"><button class="tab-btn active" data-tab="dev" role="tab">Разработка</button><button class="tab-btn" data-tab="marketing" role="tab">Цифровой маркетинг</button><button class="tab-btn" data-tab="design" role="tab">Дизайн</button><button class="tab-btn" data-tab="lna" role="tab">ЛНА</button><button class="tab-btn" data-tab="aiads" role="tab">AI реклама</button></div>
+<div class="tab-panel active" data-panel="dev"><div class="cases-grid">
+
+  <article class="case-card">
+    <div class="case-media"><img src="images/01.webp" alt="Albe Digital — премиальный лендинг диджитал-агентства" loading="lazy" width="640" height="360"></div>
+    <div class="case-body">
+      <div class="case-num">01 / ЛЕНДИНГ</div>
+      <div class="case-title-row"><h3>Albe Digital</h3><span class="case-tag">Agency</span></div>
+      <p class="case-desc">Премиальный лендинг диджитал-агентства на чистом коде. Иммерсивные анимации, полное SEO и высокая производительность.</p>
+      <div class="case-tech"><span>HTML</span><span>JS</span><span>CSS</span></div>
+      <a href="https://albe.su/" class="case-visit" target="_blank" rel="noopener">Смотреть сайт ↗</a>
+      <div class="case-metrics">
+        <div class="case-metric"><span class="label">Стоимость</span><span class="value">200 000 ₽</span></div>
+        <div class="case-metric"><span class="label">Срок</span><span class="value">21 день</span></div>
+        <div class="case-metric"><span class="label">Результат</span><span class="value">SEO ТОП-3</span></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="case-card">
+    <div class="case-media"><img src="images/02.webp" alt="Электротранспорт BY — интернет-магазин" loading="lazy" width="640" height="360"></div>
+    <div class="case-body">
+      <div class="case-num">02 / E-COMMERCE</div>
+      <div class="case-title-row"><h3>Электротранспорт BY</h3><span class="case-tag">E-com</span></div>
+      <p class="case-desc">Интернет-магазин электротранспорта для рынка Беларуси. Каталог моделей, сравнение характеристик, онлайн-оплата и доставка по РБ.</p>
+      <div class="case-tech"><span>React</span><span>Laravel</span><span>MySQL</span></div>
+      <div class="case-metrics">
+        <div class="case-metric"><span class="label">Стоимость</span><span class="value">150 000 ₽</span></div>
+        <div class="case-metric"><span class="label">Срок</span><span class="value">30 дней</span></div>
+        <div class="case-metric"><span class="label">Результат</span><span class="value">+50% конверсии</span></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="case-card">
+    <div class="case-media"><img src="images/03.webp" alt="Pickup Center — сайт по продаже автомобилей" loading="lazy" width="640" height="360"></div>
+    <div class="case-body">
+      <div class="case-num">03 / АВТО</div>
+      <div class="case-title-row"><h3>Pickup Center</h3><span class="case-tag">Auto</span></div>
+      <p class="case-desc">Сайт по продаже автомобилей с подбором по параметрам, карточками моделей, заявкой на тест-драйв и интеграцией с CRM.</p>
+      <div class="case-tech"><span>Next.js</span><span>Node.js</span><span>PostgreSQL</span></div>
+      <a href="https://www.pickup-center.ru/" class="case-visit" target="_blank" rel="noopener">Смотреть сайт ↗</a>
+      <div class="case-metrics">
+        <div class="case-metric"><span class="label">Стоимость</span><span class="value">300 000 ₽</span></div>
+        <div class="case-metric"><span class="label">Срок</span><span class="value">45 дней</span></div>
+        <div class="case-metric"><span class="label">Результат</span><span class="value">+40% заявок</span></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="case-card">
+    <div class="case-media"><img src="images/04.webp" alt="AVM Motors — интернет-магазин китайских автомобилей" loading="lazy" width="640" height="360"></div>
+    <div class="case-body">
+      <div class="case-num">04 / E-COMMERCE</div>
+      <div class="case-title-row"><h3>AVM Motors</h3><span class="case-tag">E-com</span></div>
+      <p class="case-desc">Интернет-магазин китайских автомобилей для крупнейшего автодилера Беларуси. Мультиязычность, каталог моделей, интеграция с 1С и CRM.</p>
+      <div class="case-tech"><span>React</span><span>Laravel</span><span>1С</span></div>
+      <a href="https://avmmotors.by" class="case-visit" target="_blank" rel="noopener">Смотреть сайт ↗</a>
+      <div class="case-metrics">
+        <div class="case-metric"><span class="label">Стоимость</span><span class="value">600 000 ₽</span></div>
+        <div class="case-metric"><span class="label">Срок</span><span class="value">90 дней</span></div>
+        <div class="case-metric"><span class="label">Результат</span><span class="value">+70% продаж</span></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="case-card">
+    <div class="case-media"><img src="images/05.webp" alt="BALM — персональный сайт артиста" loading="lazy" width="640" height="360"></div>
+    <div class="case-body">
+      <div class="case-num">05 / АРТИСТ</div>
+      <div class="case-title-row"><h3>BALM</h3><span class="case-tag">Music</span></div>
+      <p class="case-desc">Персональный сайт артиста с иммерсивным дизайном, афишей концертов, аудиоплеером, галереей и магазином мерча.</p>
+      <div class="case-tech"><span>React</span><span>GSAP</span><span>Web Audio</span></div>
+      <a href="https://balm-music.ru/" class="case-visit" target="_blank" rel="noopener">Смотреть сайт ↗</a>
+      <div class="case-metrics">
+        <div class="case-metric"><span class="label">Стоимость</span><span class="value">150 000 ₽</span></div>
+        <div class="case-metric"><span class="label">Срок</span><span class="value">30 дней</span></div>
+        <div class="case-metric"><span class="label">Результат</span><span class="value">100K визитов</span></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="case-card">
+    <div class="case-media"><img src="images/06.webp" alt="Kingwoods Сочи — сайт федеральной строительной компании" loading="lazy" width="640" height="360"></div>
+    <div class="case-body">
+      <div class="case-num">06 / НЕДВИЖИМОСТЬ</div>
+      <div class="case-title-row"><h3>Kingwoods Сочи</h3><span class="case-tag">Realty</span></div>
+      <p class="case-desc">Сайт федеральной строительной компании загородной недвижимости. Каталог посёлков, 3D-туры по объектам, ипотечный калькулятор.</p>
+      <div class="case-tech"><span>Next.js</span><span>Three.js</span><span>CMS</span></div>
+      <a href="https://sochi.kingwoods.ru/" class="case-visit" target="_blank" rel="noopener">Смотреть сайт ↗</a>
+      <div class="case-metrics">
+        <div class="case-metric"><span class="label">Стоимость</span><span class="value">500 000 ₽</span></div>
+        <div class="case-metric"><span class="label">Срок</span><span class="value">75 дней</span></div>
+        <div class="case-metric"><span class="label">Результат</span><span class="value">+85% заявок</span></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="case-card">
+    <div class="case-media"><img src="images/07.webp" alt="Sculptor Beauty Studio — сайт студии красоты" loading="lazy" width="640" height="360"></div>
+    <div class="case-body">
+      <div class="case-num">07 / BEAUTY</div>
+      <div class="case-title-row"><h3>Sculptor Beauty Studio</h3><span class="case-tag">Beauty</span></div>
+      <p class="case-desc">Сайт студии красоты с онлайн-записью, портфолио мастеров, галереей работ и программой лояльности для клиентов.</p>
+      <div class="case-tech"><span>WordPress</span><span>React</span><span>API</span></div>
+      <a href="https://sculptorspb.ru/" class="case-visit" target="_blank" rel="noopener">Смотреть сайт ↗</a>
+      <div class="case-metrics">
+        <div class="case-metric"><span class="label">Стоимость</span><span class="value">150 000 ₽</span></div>
+        <div class="case-metric"><span class="label">Срок</span><span class="value">30 дней</span></div>
+        <div class="case-metric"><span class="label">Результат</span><span class="value">+60% записей</span></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="case-card">
+    <div class="case-media"><img src="images/08.webp" alt="ServiceFloor — ремонт и обслуживание поломоечных машин" loading="lazy" width="640" height="360"></div>
+    <div class="case-body">
+      <div class="case-num">08 / B2B</div>
+      <div class="case-title-row"><h3>ServiceFloor</h3><span class="case-tag">B2B</span></div>
+      <p class="case-desc">Корпоративный сайт по ремонту и обслуживанию поломоечных машин. Каталог запчастей, заявка на сервис, личный кабинет с историей обслуживания.</p>
+      <div class="case-tech"><span>Next.js</span><span>Node.js</span><span>CRM</span></div>
+      <div class="case-metrics">
+        <div class="case-metric"><span class="label">Стоимость</span><span class="value">120 000 ₽</span></div>
+        <div class="case-metric"><span class="label">Срок</span><span class="value">21 день</span></div>
+        <div class="case-metric"><span class="label">Результат</span><span class="value">+45% заявок</span></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="case-card">
+    <div class="case-media"><img src="images/09.webp" alt="AnatoMia SPA — сайт клиники красоты" loading="lazy" width="640" height="360"></div>
+    <div class="case-body">
+      <div class="case-num">09 / КЛИНИКА</div>
+      <div class="case-title-row"><h3>AnatoMia SPA</h3><span class="case-tag">Clinic</span></div>
+      <p class="case-desc">Сайт клиники красоты с каталогом услуг, командой врачей, отзывами пациентов и удобной онлайн-записью.</p>
+      <div class="case-tech"><span>React</span><span>Laravel</span><span>CMS</span></div>
+      <a href="https://anatomiaspb.ru/" class="case-visit" target="_blank" rel="noopener">Смотреть сайт ↗</a>
+      <div class="case-metrics">
+        <div class="case-metric"><span class="label">Стоимость</span><span class="value">200 000 ₽</span></div>
+        <div class="case-metric"><span class="label">Срок</span><span class="value">35 дней</span></div>
+        <div class="case-metric"><span class="label">Результат</span><span class="value">+55% записей</span></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="case-card">
+    <div class="case-media"><img src="images/11.webp" alt="Дмитрий Дмитриев — персональный сайт врача" loading="lazy" width="640" height="360"></div>
+    <div class="case-body">
+      <div class="case-num">10 / МЕДИЦИНА</div>
+      <div class="case-title-row"><h3>Дмитрий Дмитриев</h3><span class="case-tag">Medicine</span></div>
+      <p class="case-desc">Персональный сайт врача-уролога с онлайн-записью, статьями, отзывами пациентов и удобным мобильным интерфейсом.</p>
+      <div class="case-tech"><span>Next.js</span><span>CMS</span><span>API</span></div>
+      <a href="http://dmitrievuro.ru/" class="case-visit" target="_blank" rel="noopener">Смотреть сайт ↗</a>
+      <div class="case-metrics">
+        <div class="case-metric"><span class="label">Стоимость</span><span class="value">120 000 ₽</span></div>
+        <div class="case-metric"><span class="label">Срок</span><span class="value">18 дней</span></div>
+        <div class="case-metric"><span class="label">Результат</span><span class="value">+50% записей</span></div>
+      </div>
+    </div>
+  </article>
+
+</div></div>
 <div class="tab-panel" data-panel="marketing"><div class="cases-grid"><article class="case-card"><div class="case-media placeholder-media">Аналитика роста</div><div class="case-body"><div class="case-num">01 / SEO</div><div class="case-title-row"><h3>Комплексное SEO-продвижение</h3><span class="case-tag">SEO</span></div><p class="case-desc">Технический аудит, семантическое ядро, контент-стратегия и лидерские позиции в Яндексе и Google.</p><div class="case-tech"><span>SEO</span><span>Analytics</span><span>Content</span></div><div class="case-metrics"><div class="case-metric"><span class="label">Срок</span><span class="value">6 месяцев</span></div><div class="case-metric"><span class="label">Каналы</span><span class="value">SEO + контент</span></div><div class="case-metric"><span class="label">Результат</span><span class="value">ТОП-3</span></div></div></div></article><article class="case-card"><div class="case-media placeholder-media">Digital-стратегия</div><div class="case-body"><div class="case-num">02 / PERFORMANCE</div><div class="case-title-row"><h3>Performance-маркетинг</h3><span class="case-tag">PPC</span></div><p class="case-desc">Настройка рекламных кампаний в Яндекс.Директ и соцсетях с окупаемостью в первый месяц.</p><div class="case-tech"><span>Яндекс.Директ</span><span>VK Ads</span><span>Telegram Ads</span></div><div class="case-metrics"><div class="case-metric"><span class="label">Срок</span><span class="value">30 дней</span></div><div class="case-metric"><span class="label">Каналы</span><span class="value">PPC + SMM</span></div><div class="case-metric"><span class="label">Результат</span><span class="value">ROI 320%</span></div></div></div></article><article class="case-card"><div class="case-media placeholder-media">Email-маркетинг</div><div class="case-body"><div class="case-num">03 / EMAIL</div><div class="case-title-row"><h3>Email-воронки</h3><span class="case-tag">Email</span></div><p class="case-desc">Сегментация базы, цепочки прогрева, триггерные письма и рост LTV клиента.</p><div class="case-tech"><span>SendPulse</span><span>Unisender</span><span>CRM</span></div><div class="case-metrics"><div class="case-metric"><span class="label">Срок</span><span class="value">45 дней</span></div><div class="case-metric"><span class="label">Каналы</span><span class="value">Email</span></div><div class="case-metric"><span class="label">Результат</span><span class="value">Open Rate 42%</span></div></div></div></article></div></div>
 <div class="tab-panel" data-panel="design"><div class="cases-grid"><article class="case-card"><div class="case-media placeholder-media">UI Kit</div><div class="case-body"><div class="case-num">01 / UI/UX</div><div class="case-title-row"><h3>Дизайн-система для SaaS</h3><span class="case-tag">UI Kit</span></div><p class="case-desc">Единая дизайн-система с компонентами, токенами и документацией.</p><div class="case-tech"><span>Figma</span><span>Design Tokens</span><span>Storybook</span></div><div class="case-metrics"><div class="case-metric"><span class="label">Срок</span><span class="value">21 день</span></div><div class="case-metric"><span class="label">Компоненты</span><span class="value">120+</span></div><div class="case-metric"><span class="label">Результат</span><span class="value">-40% времени</span></div></div></div></article><article class="case-card"><div class="case-media placeholder-media">Иммерсивный дизайн</div><div class="case-body"><div class="case-num">02 / IMMERSIVE</div><div class="case-title-row"><h3>Иммерсивный лендинг</h3><span class="case-tag">Motion</span></div><p class="case-desc">Микровзаимодействия, 3D-сцены и анимация. Визуальный язык, который запоминается.</p><div class="case-tech"><span>WebGL</span><span>GSAP</span><span>Three.js</span></div><div class="case-metrics"><div class="case-metric"><span class="label">Срок</span><span class="value">28 дней</span></div><div class="case-metric"><span class="label">Сцены</span><span class="value">7</span></div><div class="case-metric"><span class="label">Результат</span><span class="value">+62% времени</span></div></div></div></article><article class="case-card"><div class="case-media placeholder-media">Mobile UI</div><div class="case-body"><div class="case-num">03 / MOBILE</div><div class="case-title-row"><h3>Мобильный банкинг</h3><span class="case-tag">Mobile</span></div><p class="case-desc">Концепт мобильного приложения с фокусом на скорость и понятность сценариев.</p><div class="case-tech"><span>Figma</span><span>Prototyping</span><span>UX</span></div><div class="case-metrics"><div class="case-metric"><span class="label">Срок</span><span class="value">35 дней</span></div><div class="case-metric"><span class="label">Экраны</span><span class="value">48</span></div><div class="case-metric"><span class="label">Результат</span><span class="value">NPS 94%</span></div></div></div></article></div></div>
 <div class="tab-panel" data-panel="lna"><div class="cases-grid"><article class="case-card"><div class="case-media placeholder-media">Кадровый пакет</div><div class="case-body"><div class="case-num">01 / HR</div><div class="case-title-row"><h3>Кадровый пакет ЛНА</h3><span class="case-tag">HR</span></div><p class="case-desc">ПВТР, положение об оплате труда, штатное расписание, график отпусков — по ГОСТ.</p><div class="case-tech"><span>ТК РФ</span><span>ГОСТ</span></div><div class="case-metrics"><div class="case-metric"><span class="label">Срок</span><span class="value">14 дней</span></div><div class="case-metric"><span class="label">Документов</span><span class="value">12</span></div><div class="case-metric"><span class="label">Результат</span><span class="value">Проверка пройдена</span></div></div></div></article><article class="case-card"><div class="case-media placeholder-media">Охрана труда</div><div class="case-body"><div class="case-num">02 / ОТ</div><div class="case-title-row"><h3>Пакет по охране труда</h3><span class="case-tag">ОТ</span></div><p class="case-desc">СУОТ, инструкции по должностям и видам работ, программа вводного инструктажа, СИЗ.</p><div class="case-tech"><span>ст. 209, 212</span><span>ТК РФ</span></div><div class="case-metrics"><div class="case-metric"><span class="label">Срок</span><span class="value">21 день</span></div><div class="case-metric"><span class="label">Документов</span><span class="value">18</span></div><div class="case-metric"><span class="label">Результат</span><span class="value">Аудит пройден</span></div></div></div></article><article class="case-card"><div class="case-media placeholder-media">Персональные данные</div><div class="case-body"><div class="case-num">03 / 152-ФЗ</div><div class="case-title-row"><h3>Пакет по персональным данным</h3><span class="case-tag">152-ФЗ</span></div><p class="case-desc">Политика обработки ПДн, положение о защите, приказ о назначении ответственного.</p><div class="case-tech"><span>152-ФЗ</span><span>РКН</span></div><div class="case-metrics"><div class="case-metric"><span class="label">Срок</span><span class="value">10 дней</span></div><div class="case-metric"><span class="label">Документов</span><span class="value">8</span></div><div class="case-metric"><span class="label">Результат</span><span class="value">Уведомление подано</span></div></div></div></article></div></div>
