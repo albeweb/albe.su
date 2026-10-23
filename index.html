@@ -1045,7 +1045,7 @@ document.getElementById('year').textContent=new Date().getFullYear();
   var promoCard = document.getElementById('promoCard');
   if(!promoCard) return;
   var PROMO_CODE = 'ALBE';
-  var PROMO_DELAY = 200;
+  var PROMO_DELAY = 5000;
   function openPromo(){ promoCard.classList.add('open'); promoCard.setAttribute('aria-hidden','false'); }
   function closePromo(){ promoCard.classList.remove('open'); promoCard.setAttribute('aria-hidden','true'); }
   setTimeout(function(){
