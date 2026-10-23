@@ -20,7 +20,7 @@
 <meta name="twitter:description" content="Разработка сайтов под ключ в Санкт-Петербурге: премиум дизайн, SEO с гарантией KPI, AI-решения, мобильные приложения, ЛНА. 150+ проектов, 7+ лет опыта.">
 <meta name="twitter:url" content="https://albe.su/">
 <meta name="twitter:image" content="https://albe.su/images/og-image.jpg">
-<style>@property --angle{syntax:'<angle>';initial-value:0deg;inherits:false}
+<style>@property --angle{syntax:'<angle>';initial-value:0deg;inherits:false}@property --px{syntax:'<length>';initial-value:24px;inherits:false}
 @font-face{font-family:'Geist';src:url('Geist-Regular.woff2') format('woff2');font-weight:400;font-display:swap}@font-face{font-family:'Geist';src:url('Geist-Medium.woff2') format('woff2');font-weight:500;font-display:swap}@font-face{font-family:'Zen Dots';src:url('zen-dots.woff2') format('woff2');font-weight:400;font-display:swap}
 :root{
   --bg:#191C22;--bg-2:#21252C;--bg-3:#12151A;
@@ -107,23 +107,22 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 .hero-center{flex:1 1 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px 0 4px;min-height:0}
 .hero-subtitle-top{font-family:var(--ff-geist);font-size:clamp(1rem,1.9vw,1.35rem);letter-spacing:.42em;color:#fff;font-weight:500;text-transform:uppercase;margin-bottom:22px;text-shadow:0 0 24px rgba(245,183,0,.5),0 2px 12px rgba(0,0,0,.8);opacity:0;animation:fadeUp .9s ease .1s forwards}
 .albe-letters{position:relative;display:flex;justify-content:center;gap:clamp(6px,2vw,26px);font-family:'Zen Dots',sans-serif;font-size:clamp(4.5rem,20vw,15rem);line-height:.9;letter-spacing:.02em;color:#fff;margin-bottom:12px}
+.albe-letters::after{content:'';position:absolute;left:-6%;right:-6%;top:0;height:2px;background:linear-gradient(90deg,transparent,rgba(245,183,0,.85),rgba(6,182,212,.75),transparent);filter:blur(1px);mix-blend-mode:screen;opacity:0;pointer-events:none;animation:scanSweep 1.4s cubic-bezier(.35,0,.25,1) 2.1s 1 forwards}
+@keyframes scanSweep{0%{opacity:0;transform:translateY(-4px)}6%{opacity:.9}88%{opacity:.6}100%{opacity:0;transform:translateY(clamp(4.5rem,20vw,15rem))}}
 
-/* ===== TERMINAL DECODE TITLE (вариант E) ===== */
-.albe-letter{display:inline-block;position:relative;opacity:0;color:#fff;background:none !important;-webkit-background-clip:border-box !important;background-clip:border-box !important;-webkit-text-fill-color:currentColor !important;filter:drop-shadow(0 8px 32px rgba(0,0,0,.85));animation:none !important;will-change:color,opacity,filter}
-.albe-letter.albe-a{color:var(--gold)}
-.albe-letter.decoding{opacity:1;color:rgba(6,182,212,.95) !important;-webkit-text-fill-color:rgba(6,182,212,.95) !important;text-shadow:0 0 18px rgba(6,182,212,.8)}
-.albe-letter.decoding.albe-a{color:rgba(245,183,0,.95) !important;-webkit-text-fill-color:rgba(245,183,0,.95) !important;text-shadow:0 0 18px rgba(245,183,0,.85)}
-.albe-letter.decoded{opacity:1;animation:decodeFlash .5s ease-out}
-.albe-letter.decoded.albe-a{filter:drop-shadow(0 0 60px rgba(245,183,0,.55)) drop-shadow(0 8px 32px rgba(0,0,0,.85))}
-@keyframes decodeFlash{
-  0%{filter:drop-shadow(0 0 0 rgba(6,182,212,0))}
-  40%{filter:drop-shadow(0 0 30px rgba(6,182,212,.9))}
-  100%{filter:drop-shadow(0 8px 32px rgba(0,0,0,.85))}}
-@media(prefers-reduced-motion:reduce){
-  .albe-letter{opacity:1 !important;color:#fff !important;text-shadow:none !important;filter:drop-shadow(0 8px 32px rgba(0,0,0,.85)) !important;animation:none !important}
-  .albe-letter.albe-a{color:var(--gold) !important;filter:drop-shadow(0 0 60px rgba(245,183,0,.55)) drop-shadow(0 8px 32px rgba(0,0,0,.85)) !important}
+/* ===== PIXEL DECODE TITLE ===== */
+.albe-letter{display:inline-block;position:relative;opacity:0;--px:26px;background:linear-gradient(180deg,#fff 40%,#C9CCD1 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 8px 32px rgba(0,0,0,.85));-webkit-mask-image:repeating-linear-gradient(to bottom,#000 0 calc(var(--px)*.58),transparent calc(var(--px)*.58) var(--px)),repeating-linear-gradient(to right,#000 0 calc(var(--px)*.58),transparent calc(var(--px)*.58) var(--px));-webkit-mask-composite:source-in;mask-image:repeating-linear-gradient(to bottom,#000 0 calc(var(--px)*.58),transparent calc(var(--px)*.58) var(--px)),repeating-linear-gradient(to right,#000 0 calc(var(--px)*.58),transparent calc(var(--px)*.58) var(--px));mask-composite:intersect;animation:pixelResolve 1.2s steps(20,end) forwards;will-change:opacity,transform}
+.albe-letter.albe-a{background:linear-gradient(135deg,var(--gold),#FFE07A 60%,var(--gold-2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 60px rgba(245,183,0,.55)) drop-shadow(0 8px 32px rgba(0,0,0,.85))}
+@keyframes pixelResolve{
+  0%{opacity:0;--px:30px;transform:translateY(16px) scale(1.05);text-shadow:0 0 22px rgba(6,182,212,.9),0 0 55px rgba(139,92,246,.55)}
+  10%{opacity:1}
+  18%{opacity:.45}
+  28%{opacity:1}
+  55%{--px:6px;text-shadow:0 0 14px rgba(6,182,212,.4),0 0 30px rgba(139,92,246,.18)}
+  85%{--px:2px;transform:translateY(0) scale(1);text-shadow:0 0 0 rgba(6,182,212,0)}
+  100%{opacity:1;--px:1px;transform:none;text-shadow:0 0 0 rgba(6,182,212,0);-webkit-mask-image:none;mask-image:none}
 }
-
+@media(prefers-reduced-motion:reduce){.albe-letter{animation:none;opacity:1;--px:1px;text-shadow:none;transform:none;-webkit-mask-image:none;mask-image:none}.albe-letters::after{animation:none;opacity:0}}
 @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
 .hero-subtitle-bottom{font-family:var(--ff-geist);font-size:clamp(1rem,1.7vw,1.3rem);letter-spacing:.6em;color:#fff;text-transform:uppercase;margin-bottom:36px;font-weight:500;text-shadow:0 0 24px rgba(6,182,212,.35),0 2px 12px rgba(0,0,0,.8);opacity:0;animation:fadeUp .9s ease 1.4s forwards}
 .static-prefix{font-family:var(--ff-geist);font-size:.95rem;letter-spacing:.45em;color:#fff;text-transform:uppercase;margin-bottom:12px;font-weight:500;opacity:0;animation:fadeUp .9s ease 2s forwards;text-shadow:0 2px 8px rgba(0,0,0,.8)}
@@ -554,7 +553,7 @@ body.service-modal-open .site-header{right:var(--sbw,0px)}
 <header class="site-header" id="siteHeader"><div class="header-inner"><a href="#top" class="logo" aria-label="ALBE DIGITAL — на главную">ALBE<span class="accent">DIGITAL</span></a><nav class="main-nav" aria-label="Основная навигация"><a href="#cases">Кейсы</a><a href="#services">Услуги</a><a href="#lna">ЛНА</a><a href="#process">Процесс</a><a href="#calculator">Калькулятор</a><a href="#faq">FAQ</a><a href="#contacts">Контакты</a><button type="button" class="nav-cta" data-open-modal>Оставить заявку</button></nav><button class="burger" id="burgerBtn" aria-label="Открыть меню" aria-expanded="false"><span></span></button></div></header>
 <nav class="mobile-nav" id="mobileNav" aria-label="Мобильное меню"><a href="#cases">Кейсы</a><a href="#services">Услуги</a><a href="#lna">ЛНА</a><a href="#process">Процесс</a><a href="#calculator">Калькулятор</a><a href="#faq">FAQ</a><a href="#contacts">Контакты</a><button type="button" class="nav-cta" data-open-modal>Оставить заявку</button></nav>
 <main id="top">
-<section class="hero-section"><div class="masked-container" aria-hidden="true"><svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none"><defs><radialGradient id="dynamicGrad" cx="50%" cy="50%" r="80%"><stop offset="0%" stop-color="#F5B700" stop-opacity="0.45"><animate attributeName="stop-color" values="#F5B700;#10B981;#06B6D4;#8B5CF6;#F5B700" dur="8s" repeatCount="indefinite"/></stop><stop offset="40%" stop-color="#10B981" stop-opacity="0.26"><animate attributeName="stop-color" values="#10B981;#06B6D4;#8B5CF6;#F5B700;#10B981" dur="8s" repeatCount="indefinite"/></stop><stop offset="75%" stop-color="#06B6D4" stop-opacity="0.12"><animate attributeName="stop-color" values="#06B6D4;#8B5CF6;#F5B700;#10B981;#06B6D4" dur="8s" repeatCount="indefinite"/></stop><stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.03"><animate attributeName="stop-color" values="#8B5CF6;#F5B700;#10B981;#06B6D4;#8B5CF6" dur="8s" repeatCount="indefinite"/></stop></radialGradient></defs><rect width="100%" height="100%" fill="url(#dynamicGrad)"/></svg></div><div class="hero-center"><h1 class="hero-subtitle-top">РАЗРАБОТКА САЙТОВ ПОД КЛЮЧ</h1><div class="albe-letters" aria-hidden="true"><span class="albe-letter albe-a">A</span><span class="albe-letter">L</span><span class="albe-letter">B</span><span class="albe-letter">E</span></div><div class="hero-subtitle-bottom">DIGITAL AGENCY</div><div class="static-prefix">МЫ СОЗДАЕМ</div><div class="dynamic-word-container" id="dynamicWord">ЦИФРОВЫЕ ПРОДУКТЫ</div><div class="hero-stats"><div class="stat-item"><div class="stat-number">7+</div><div class="stat-label">лет опыта</div></div><div class="stat-item"><div class="stat-number">150+</div><div class="stat-label">проектов</div></div><div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">поддержка</div></div><div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">результат</div></div></div></div><div class="hero-bottom-row"><div class="hero-badges">
+<section class="hero-section"><div class="masked-container" aria-hidden="true"><svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none"><defs><radialGradient id="dynamicGrad" cx="50%" cy="50%" r="80%"><stop offset="0%" stop-color="#F5B700" stop-opacity="0.45"><animate attributeName="stop-color" values="#F5B700;#10B981;#06B6D4;#8B5CF6;#F5B700" dur="8s" repeatCount="indefinite"/></stop><stop offset="40%" stop-color="#10B981" stop-opacity="0.26"><animate attributeName="stop-color" values="#10B981;#06B6D4;#8B5CF6;#F5B700;#10B981" dur="8s" repeatCount="indefinite"/></stop><stop offset="75%" stop-color="#06B6D4" stop-opacity="0.12"><animate attributeName="stop-color" values="#06B6D4;#8B5CF6;#F5B700;#10B981;#06B6D4" dur="8s" repeatCount="indefinite"/></stop><stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.03"><animate attributeName="stop-color" values="#8B5CF6;#F5B700;#10B981;#06B6D4;#8B5CF6" dur="8s" repeatCount="indefinite"/></stop></radialGradient></defs><rect width="100%" height="100%" fill="url(#dynamicGrad)"/></svg></div><div class="hero-center"><h1 class="hero-subtitle-top">РАЗРАБОТКА САЙТОВ ПОД КЛЮЧ</h1><div class="albe-letters" aria-hidden="true"><span class="albe-letter albe-a" style="animation-delay:.1s">A</span><span class="albe-letter" style="animation-delay:.34s">L</span><span class="albe-letter" style="animation-delay:.58s">B</span><span class="albe-letter" style="animation-delay:.82s">E</span></div><div class="hero-subtitle-bottom">DIGITAL AGENCY</div><div class="static-prefix">МЫ СОЗДАЕМ</div><div class="dynamic-word-container" id="dynamicWord">ЦИФРОВЫЕ ПРОДУКТЫ</div><div class="hero-stats"><div class="stat-item"><div class="stat-number">7+</div><div class="stat-label">лет опыта</div></div><div class="stat-item"><div class="stat-number">150+</div><div class="stat-label">проектов</div></div><div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">поддержка</div></div><div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">результат</div></div></div></div><div class="hero-bottom-row"><div class="hero-badges">
 <button type="button" class="badge" data-service="design">Премиум дизайн</button>
 <button type="button" class="badge" data-service="mobile">Мобильные приложения</button>
 <button type="button" class="badge" data-service="ai">AI решения</button>
@@ -890,36 +889,6 @@ body.service-modal-open .site-header{right:var(--sbw,0px)}
 (function(){var BP=900;function isM(){return window.matchMedia('(max-width: '+BP+'px)').matches}function wrap(sec){if(sec.dataset.accordionReady==='1')return;var cnt=sec.querySelector(':scope > .container')||sec,h=cnt.querySelector(':scope > .section-header')||cnt.querySelector(':scope > .reviews-header')||cnt.querySelector(':scope > .mission-header');if(!h)return;var k=Array.prototype.slice.call(cnt.children),idx=k.indexOf(h);if(idx<0)return;var af=k.slice(idx+1);if(!af.length)return;var b=document.createElement('div');b.className='mobile-accordion-body';af.forEach(function(e){b.appendChild(e)});cnt.appendChild(b);sec.classList.add('mobile-accordion');sec.dataset.accordionReady='1';h.addEventListener('click',function(e){if(e.target.closest('a'))return;if(e.target.closest('button, input, select, textarea, .tabs-bar, .faq-lid'))return;e.preventDefault();var o=sec.classList.toggle('open');b.style.maxHeight=o?(b.scrollHeight+'px'):'0px'});if(window.MutationObserver){var ro=new MutationObserver(function(){if(sec.classList.contains('open'))b.style.maxHeight=b.scrollHeight+'px'});ro.observe(b,{childList:true,subtree:true,characterData:true,attributes:true})}b.addEventListener('transitionend',function(){if(sec.classList.contains('open'))b.style.maxHeight=b.scrollHeight+'px'})}function collapseAll(){document.querySelectorAll('.mobile-accordion').forEach(function(s){s.classList.remove('open');var b=s.querySelector('.mobile-accordion-body');if(b)b.style.maxHeight=''})}function init(){if(!isM()){collapseAll();return}document.querySelectorAll('main > section:not(.hero-section)').forEach(wrap)}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){if(!isM())collapseAll()},200)})})();
 document.getElementById('year').textContent=new Date().getFullYear();
 (function(){if(!window.matchMedia||!('IntersectionObserver' in window))return;if(!window.matchMedia('(min-width:901px)').matches)return;var sel=['.section-header','.reviews-header','.mission-header','.case-card','.service-item','.lna-card','.lna-gost','.lna-cta','.step-card','.team-card','.competence-card','.review-card','.mission-advantage-card','.mission-numbers','.faq-item','.contact-info-card','.contacts-cta'];var els=Array.prototype.slice.call(document.querySelectorAll(sel.join(',')));if(!els.length)return;document.body.classList.add('reveal-init');var groups=new Map();els.forEach(function(el){el.classList.add('reveal');var p=el.parentElement||document.body;if(!groups.has(p))groups.set(p,[]);groups.get(p).push(el)});groups.forEach(function(list){list.forEach(function(el,i){el.style.setProperty('--reveal-delay',(Math.min(i,6)*0.07)+'s')})});var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(!e.isIntersecting)return;var el=e.target;io.unobserve(el);el.classList.add('reveal--visible');var d=parseFloat(getComputedStyle(el).getPropertyValue('--reveal-delay'))||0;setTimeout(function(){el.classList.remove('reveal','reveal--visible');el.style.removeProperty('--reveal-delay')},900+d*1000+100)})},{threshold:0.1,rootMargin:'0px 0px -60px 0px'});els.forEach(function(el){io.observe(el)})})();
-
-/* ==== TERMINAL DECODE TITLE (вариант E) ==== */
-(function(){
-  var letters = document.querySelectorAll('.albe-letter');
-  if(!letters.length) return;
-  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var pool = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789{}[]<>/\\|=+-*&%$#@!?';
-  letters.forEach(function(el, idx){
-    var target = el.textContent.trim();
-    var baseDelay = 200 + idx * 180;
-    var duration = 900;
-    el.textContent = ' ';
-    setTimeout(function(){
-      el.classList.add('decoding');
-      var start = performance.now();
-      var iv = setInterval(function(){
-        var p = Math.min((performance.now()-start)/duration, 1);
-        if(p >= 1){
-          el.textContent = target;
-          el.classList.remove('decoding');
-          el.classList.add('decoded');
-          clearInterval(iv);
-          return;
-        }
-        var resolved = p > 0.7 && Math.random() > 0.55;
-        el.textContent = resolved ? target : pool.charAt(Math.floor(Math.random()*pool.length));
-      }, 55);
-    }, baseDelay);
-  });
-})();
 
 /* ==== CASES TOGGLE (показать ещё / свернуть) ==== */
 (function(){
