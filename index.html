@@ -1,5 +1,4 @@
-
-<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"><title>ALBE DIGITAL — Разработка сайтов под ключ в СПб | Премиум дизайн, SEO, AI</title><meta name="description" content="Разработка сайтов под ключ в Санкт-Петербурге: премиум дизайн, SEO с гарантией KPI, AI-решения, мобильные приложения, ЛНА. 150+ проектов, 7+ лет опыта."><meta name="theme-color" content="#14171C"><meta name="color-scheme" content="dark"><meta name="robots" content="index, follow"><link rel="canonical" href="https://albe.su/"><link rel="preload" href="Geist-Regular.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="Geist-Medium.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="zen-dots.woff2" as="font" type="font/woff2" crossorigin>
+<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"><title>ALBE DIGITAL — Разработка сайтов под ключ в СПб | Премиум дизайн, SEO, AI</title><meta name="description" content="Разработка сайтов под ключ в Санкт-Петербурге: премиум дизайн, SEO с гарантией KPI, AI-решения, мобильные приложения, ЛНА. 150+ проектов, 7+ лет опыта."><meta name="theme-color" content="#14171C"><meta name="color-scheme" content="dark"><meta name="robots" content="index, follow"><link rel="canonical" href="https://albe.su/"><link rel="preload" href="/Geist-Regular.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/Geist-Medium.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/zen-dots.woff2" as="font" type="font/woff2" crossorigin>
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ALBE DIGITAL">
@@ -21,7 +20,7 @@
 <meta name="twitter:url" content="https://albe.su/">
 <meta name="twitter:image" content="https://albe.su/images/og-image.jpg">
 <style>@property --angle{syntax:'<angle>';initial-value:0deg;inherits:false}@property --px{syntax:'<length>';initial-value:24px;inherits:false}
-@font-face{font-family:'Geist';src:url('Geist-Regular.woff2') format('woff2');font-weight:400;font-display:swap}@font-face{font-family:'Geist';src:url('Geist-Medium.woff2') format('woff2');font-weight:500;font-display:swap}@font-face{font-family:'Zen Dots';src:url('zen-dots.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Geist';src:url('/Geist-Regular.woff2') format('woff2');font-weight:400;font-display:swap}@font-face{font-family:'Geist';src:url('/Geist-Medium.woff2') format('woff2');font-weight:500;font-display:swap}@font-face{font-family:'Zen Dots';src:url('/zen-dots.woff2') format('woff2');font-weight:400;font-display:swap}
 :root{
   --bg:#191C22;--bg-2:#21252C;--bg-3:#12151A;
   --gold:#F5B700;--gold-2:#FFD24A;--green:#10B981;--cyan:#06B6D4;--purple:#8B5CF6;
@@ -448,6 +447,15 @@ body.modal-open .site-header{right:var(--sbw,0px)}
 .footer-col ul{display:flex;flex-direction:column;gap:10px}
 .footer-col a{font-size:.9rem;color:var(--muted)}
 .footer-col a:hover{color:var(--gold)}
+/* ===== FOOTER: География городов ===== */
+.footer-cities{position:relative;z-index:1;padding:0 var(--pad);margin-bottom:36px;display:flex;align-items:baseline;gap:28px;flex-wrap:wrap;border-top:var(--brd);padding-top:32px}
+.footer-cities h3{font-size:.76rem;color:var(--gold);letter-spacing:.16em;text-transform:uppercase;font-weight:500;flex-shrink:0}
+.footer-cities ul{display:flex;flex-wrap:wrap;gap:10px 24px}
+.footer-cities a{font-size:.9rem;color:var(--muted);transition:color var(--tr-fast);position:relative}
+.footer-cities a:hover{color:var(--gold)}
+.footer-cities a.active{color:var(--gold);pointer-events:none}
+.footer-cities a.active::after{content:'·';position:absolute;right:-14px;top:50%;transform:translateY(-50%);color:var(--gold);opacity:.5}
+@media(max-width:900px){.footer-cities{flex-direction:column;gap:12px;align-items:flex-start;padding-top:24px;margin-bottom:24px}}
 .footer-bottom{position:relative;z-index:1;padding:24px var(--pad) 0;border-top:var(--brd);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.84rem;color:var(--dim)}
 .footer-tagline{font-family:var(--ff-geist);font-weight:500;letter-spacing:.04em;background:linear-gradient(90deg,var(--gold),#FFE07A,var(--green),var(--cyan));background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 6s linear infinite;text-align:right}
 @media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;gap:28px}}
@@ -571,7 +579,7 @@ body.service-modal-open .site-header{right:var(--sbw,0px)}
 <div class="cases-grid collapsed" id="devCasesGrid">
 
   <article class="case-card">
-    <div class="case-media"><img src="images/01.webp" alt="Albe Digital — премиальный лендинг диджитал-агентства" loading="lazy" width="640" height="360"></div>
+    <div class="case-media"><img src="/images/01.webp" alt="Albe Digital — премиальный лендинг диджитал-агентства" loading="lazy" width="640" height="360"></div>
     <div class="case-body">
       <div class="case-num">01 / ЛЕНДИНГ</div>
       <div class="case-title-row"><h3>Albe Digital</h3><span class="case-tag">Agency</span></div>
@@ -587,7 +595,7 @@ body.service-modal-open .site-header{right:var(--sbw,0px)}
   </article>
 
   <article class="case-card">
-    <div class="case-media"><img src="images/02.webp" alt="Электротранспорт BY — интернет-магазин" loading="lazy" width="640" height="360"></div>
+    <div class="case-media"><img src="/images/02.webp" alt="Электротранспорт BY — интернет-магазин" loading="lazy" width="640" height="360"></div>
     <div class="case-body">
       <div class="case-num">02 / E-COMMERCE</div>
       <div class="case-title-row"><h3>Электротранспорт BY</h3><span class="case-tag">E-com</span></div>
@@ -602,7 +610,7 @@ body.service-modal-open .site-header{right:var(--sbw,0px)}
   </article>
 
   <article class="case-card">
-    <div class="case-media"><img src="images/03.webp" alt="Pickup Center — сайт по продаже автомобилей" loading="lazy" width="640" height="360"></div>
+    <div class="case-media"><img src="/images/03.webp" alt="Pickup Center — сайт по продаже автомобилей" loading="lazy" width="640" height="360"></div>
     <div class="case-body">
       <div class="case-num">03 / АВТО</div>
       <div class="case-title-row"><h3>Pickup Center</h3><span class="case-tag">Auto</span></div>
@@ -618,7 +626,7 @@ body.service-modal-open .site-header{right:var(--sbw,0px)}
   </article>
 
   <article class="case-card">
-    <div class="case-media"><img src="images/04.webp" alt="AVM Motors — интернет-магазин китайских автомобилей" loading="lazy" width="640" height="360"></div>
+    <div class="case-media"><img src="/images/04.webp" alt="AVM Motors — интернет-магазин китайских автомобилей" loading="lazy" width="640" height="360"></div>
     <div class="case-body">
       <div class="case-num">04 / E-COMMERCE</div>
       <div class="case-title-row"><h3>AVM Motors</h3><span class="case-tag">E-com</span></div>
@@ -634,7 +642,7 @@ body.service-modal-open .site-header{right:var(--sbw,0px)}
   </article>
 
   <article class="case-card">
-    <div class="case-media"><img src="images/05.webp" alt="BALM — персональный сайт артиста" loading="lazy" width="640" height="360"></div>
+    <div class="case-media"><img src="/images/05.webp" alt="BALM — персональный сайт артиста" loading="lazy" width="640" height="360"></div>
     <div class="case-body">
       <div class="case-num">05 / АРТИСТ</div>
       <div class="case-title-row"><h3>BALM</h3><span class="case-tag">Music</span></div>
@@ -650,7 +658,7 @@ body.service-modal-open .site-header{right:var(--sbw,0px)}
   </article>
 
   <article class="case-card">
-    <div class="case-media"><img src="images/06.webp" alt="Kingwoods Сочи — сайт федеральной строительной компании" loading="lazy" width="640" height="360"></div>
+    <div class="case-media"><img src="/images/06.webp" alt="Kingwoods Сочи — сайт федеральной строительной компании" loading="lazy" width="640" height="360"></div>
     <div class="case-body">
       <div class="case-num">06 / НЕДВИЖИМОСТЬ</div>
       <div class="case-title-row"><h3>Kingwoods Сочи</h3><span class="case-tag">Realty</span></div>
@@ -666,7 +674,7 @@ body.service-modal-open .site-header{right:var(--sbw,0px)}
   </article>
 
   <article class="case-card">
-    <div class="case-media"><img src="images/07.webp" alt="Sculptor Beauty Studio — сайт студии красоты" loading="lazy" width="640" height="360"></div>
+    <div class="case-media"><img src="/images/07.webp" alt="Sculptor Beauty Studio — сайт студии красоты" loading="lazy" width="640" height="360"></div>
     <div class="case-body">
       <div class="case-num">07 / BEAUTY</div>
       <div class="case-title-row"><h3>Sculptor Beauty Studio</h3><span class="case-tag">Beauty</span></div>
@@ -682,7 +690,7 @@ body.service-modal-open .site-header{right:var(--sbw,0px)}
   </article>
 
   <article class="case-card">
-    <div class="case-media"><img src="images/08.webp" alt="ServiceFloor — ремонт и обслуживание поломоечных машин" loading="lazy" width="640" height="360"></div>
+    <div class="case-media"><img src="/images/08.webp" alt="ServiceFloor — ремонт и обслуживание поломоечных машин" loading="lazy" width="640" height="360"></div>
     <div class="case-body">
       <div class="case-num">08 / B2B</div>
       <div class="case-title-row"><h3>ServiceFloor</h3><span class="case-tag">B2B</span></div>
@@ -697,7 +705,7 @@ body.service-modal-open .site-header{right:var(--sbw,0px)}
   </article>
 
   <article class="case-card">
-    <div class="case-media"><img src="images/09.webp" alt="AnatoMia SPA — сайт клиники красоты" loading="lazy" width="640" height="360"></div>
+    <div class="case-media"><img src="/images/09.webp" alt="AnatoMia SPA — сайт клиники красоты" loading="lazy" width="640" height="360"></div>
     <div class="case-body">
       <div class="case-num">09 / КЛИНИКА</div>
       <div class="case-title-row"><h3>AnatoMia SPA</h3><span class="case-tag">Clinic</span></div>
@@ -713,7 +721,7 @@ body.service-modal-open .site-header{right:var(--sbw,0px)}
   </article>
 
   <article class="case-card">
-    <div class="case-media"><img src="images/11.webp" alt="Владимир Дмитриев — персональный сайт врача" loading="lazy" width="640" height="360"></div>
+    <div class="case-media"><img src="/images/11.webp" alt="Владимир Дмитриев — персональный сайт врача" loading="lazy" width="640" height="360"></div>
     <div class="case-body">
       <div class="case-num">10 / МЕДИЦИНА</div>
       <div class="case-title-row"><h3>Владимир Дмитриев</h3><span class="case-tag">Medicine</span></div>
@@ -755,7 +763,7 @@ body.service-modal-open .site-header{right:var(--sbw,0px)}
 
 <section id="process" class="section" data-wm="04"><div class="container"><div class="section-header"><h2 data-num="04 — ПРОЦЕСС">Как мы создаём лидеров рынка</h2><button type="button" class="section-more-btn" data-open-modal>Обсудить проект</button></div><div class="steps-container"><div class="step-card"><div class="step-num">01</div><div><h3>Аналитика</h3><p>Изучаем нишу, конкурентов, ЦА. Формируем KPI.</p></div></div><div class="step-card"><div class="step-num">02</div><div><h3>Прототипирование</h3><p>Интерактивные прототипы, тестирование гипотез.</p></div></div><div class="step-card"><div class="step-num">03</div><div><h3>Дизайн и код</h3><p>Пиксель-перфект, чистый код, ежедневные билды.</p></div></div><div class="step-card"><div class="step-num">04</div><div><h3>SEO и запуск</h3><p>Техническая SEO-оптимизация, деплой, мониторинг.</p></div></div></div></div></section>
 
-<section class="section team-section" data-wm="05"><div class="container"><div class="section-header"><h2 data-num="05 — РУКОВОДСТВО">Руководство</h2></div><div class="team-grid"><article class="team-card"><div class="team-body"><span class="team-tag">Основатель</span><div class="team-name">Алексей Беляев</div><div class="team-role">Основатель Albe Digital, Vixi AI, «Воздух»</div><p class="team-bio">Более 7 лет в IT-индустрии, эксперт в области цифровой трансформации и AI-технологий.</p><div class="team-quote"><p>«Мы создаём не просто сайты — мы создаём бизнес»</p><span>— Алексей Беляев</span></div><ul class="team-facts"><li><span>Образование</span>Высшее экономическое, Сколково Tech</li><li><span>Публикации</span>«Деловой Петербург», Forbes Russia</li><li><span>Оценка</span>Vixi AI — 500 млн ₽, «Воздух» — 250 млн ₽</li></ul></div><div class="team-photo"><img src="images/FounderAlex.webp" alt="Алексей Беляев — основатель" loading="lazy"></div></article><article class="team-card"><div class="team-body"><span class="team-tag team-tag-alt">Генеральный директор</span><div class="team-name">Анна Иванченко</div><div class="team-role">Генеральный директор · Бизнес-аналитик · Стратег</div><p class="team-bio">Более 12 лет в IT-индустрии. Под её руководством реализовано 150+ проектов федерального уровня для Сбера, Т-Банка, VK и крупнейших ритейлеров.</p><div class="team-quote"><p>«Мы переводим амбиции бизнеса на язык технологий — точно, быстро и с измеримым результатом»</p><span>— Анна Иванченко</span></div><ul class="team-facts"><li><span>Образование</span>Высшее / бакалавр экономических наук</li><li><span>Специализация</span>Business Analysis · Product Management · AI-стратегия</li><li><span>Достижения</span>150+ проектов, NPS 98%, рост выручки ×3</li></ul></div><div class="team-photo"><img src="images/CEOalb.webp" alt="Анна Иванченко — генеральный директор" loading="lazy"></div></article></div></div></section>
+<section class="section team-section" data-wm="05"><div class="container"><div class="section-header"><h2 data-num="05 — РУКОВОДСТВО">Руководство</h2></div><div class="team-grid"><article class="team-card"><div class="team-body"><span class="team-tag">Основатель</span><div class="team-name">Алексей Беляев</div><div class="team-role">Основатель Albe Digital, Vixi AI, «Воздух»</div><p class="team-bio">Более 7 лет в IT-индустрии, эксперт в области цифровой трансформации и AI-технологий.</p><div class="team-quote"><p>«Мы создаём не просто сайты — мы создаём бизнес»</p><span>— Алексей Беляев</span></div><ul class="team-facts"><li><span>Образование</span>Высшее экономическое, Сколково Tech</li><li><span>Публикации</span>«Деловой Петербург», Forbes Russia</li><li><span>Оценка</span>Vixi AI — 500 млн ₽, «Воздух» — 250 млн ₽</li></ul></div><div class="team-photo"><img src="/images/FounderAlex.webp" alt="Алексей Беляев — основатель" loading="lazy"></div></article><article class="team-card"><div class="team-body"><span class="team-tag team-tag-alt">Генеральный директор</span><div class="team-name">Анна Иванченко</div><div class="team-role">Генеральный директор · Бизнес-аналитик · Стратег</div><p class="team-bio">Более 12 лет в IT-индустрии. Под её руководством реализовано 150+ проектов федерального уровня для Сбера, Т-Банка, VK и крупнейших ритейлеров.</p><div class="team-quote"><p>«Мы переводим амбиции бизнеса на язык технологий — точно, быстро и с измеримым результатом»</p><span>— Анна Иванченко</span></div><ul class="team-facts"><li><span>Образование</span>Высшее / бакалавр экономических наук</li><li><span>Специализация</span>Business Analysis · Product Management · AI-стратегия</li><li><span>Достижения</span>150+ проектов, NPS 98%, рост выручки ×3</li></ul></div><div class="team-photo"><img src="/images/CEOalb.webp" alt="Анна Иванченко — генеральный директор" loading="lazy"></div></article></div></div></section>
 
 <section id="competences" class="section" data-wm="06"><div class="container"><div class="section-header"><h2 data-num="06 — СТЕК">Наши компетенции</h2><button type="button" class="section-more-btn" data-open-modal>Обсудить проект</button></div><div class="competences-grid"><div class="competence-card"><h3>Frontend</h3><p>Современные интерфейсы</p><div class="competence-tech-list"><div class="tech-item">React / Next.js</div><div class="tech-item">TypeScript</div><div class="tech-item">Redux / RTK</div><div class="tech-item">SSR / SSG</div><div class="tech-item">CSS3 / SASS / Tailwind</div></div></div><div class="competence-card"><h3>Backend</h3><p>Надёжная архитектура</p><div class="competence-tech-list"><div class="tech-item">Node.js / Nest.js</div><div class="tech-item">Python / Django</div><div class="tech-item">C++</div><div class="tech-item">PostgreSQL / MS SQL</div><div class="tech-item">Redis / Elasticsearch</div><div class="tech-item">RabbitMQ / Kafka</div></div></div><div class="competence-card"><h3>DevOps и Cloud</h3><p>Масштабирование</p><div class="competence-tech-list"><div class="tech-item">Kubernetes</div><div class="tech-item">Docker</div><div class="tech-item">Yandex Cloud</div><div class="tech-item">GitLab CI/CD</div><div class="tech-item">Terraform</div><div class="tech-item">Jenkins / ArgoCD</div></div></div><div class="competence-card"><h3>Mobile</h3><p>Кроссплатформа</p><div class="competence-tech-list"><div class="tech-item">React Native / Expo</div><div class="tech-item">Swift / Obj-C</div><div class="tech-item">Kotlin / Java</div><div class="tech-item">Flutter</div></div></div><div class="competence-card"><h3>AI & ML</h3><p>Нейросети и данные</p><div class="competence-tech-list"><div class="tech-item">ML / DL / NLP</div><div class="tech-item">Python / Pandas</div><div class="tech-item">CatBoost</div><div class="tech-item">Computer Vision</div><div class="tech-item">ASR / TTS</div></div></div><div class="competence-card"><h3>Testing & QA</h3><p>Качество и надежность</p><div class="competence-tech-list"><div class="tech-item">Postman</div><div class="tech-item">JMeter</div><div class="tech-item">TestRail</div><div class="tech-item">Charles / Fiddler</div></div></div><div class="competence-card"><h3>Architecture & Design</h3><p>Проектирование систем</p><div class="competence-tech-list"><div class="tech-item">UML / BPMN</div><div class="tech-item">Figma</div><div class="tech-item">Sparx EA</div><div class="tech-item">ISO/IEC 12207</div><div class="tech-item">SCRUM / Agile</div></div></div><div class="competence-card"><h3>Data Analytics</h3><p>Аналитика больших данных</p><div class="competence-tech-list"><div class="tech-item">Big Data</div><div class="tech-item">Trading-аналитика</div><div class="tech-item">Blockchain</div><div class="tech-item">Graph analytics</div></div></div></div></div></section>
 
@@ -772,7 +780,18 @@ body.service-modal-open .site-header{right:var(--sbw,0px)}
 </div></section>
 </main>
 
-<footer class="site-footer"><div class="footer-grid"><div class="footer-brand"><a href="#top" class="logo" aria-label="ALBE DIGITAL">ALBE<span class="accent">DIGITAL</span></a><p>Разработка сайтов под ключ, премиум дизайн, SEO-продвижение с гарантией, AI-решения, мобильные приложения и разработка ЛНА.</p><div class="footer-requisites"><span>ООО "АЛЬБЕ-ДИДЖИТАЛ".</span><span>ИНН 7811818720, ОГРН 1267800072000</span></div></div><div class="footer-col"><h3>Услуги</h3><ul><li><a href="#services">Веб-разработка</a></li><li><a href="#services">Дизайн</a></li><li><a href="#services">E-commerce</a></li><li><a href="#services">SEO и аналитика</a></li><li><a href="#services">AI и ML</a></li><li><a href="#services">Мобильные приложения</a></li></ul></div><div class="footer-col"><h3>Компания</h3><ul><li><a href="#cases">Кейсы</a></li><li><a href="#lna">ЛНА</a></li><li><a href="#process">Процесс</a></li><li><a href="#calculator">Калькулятор</a></li><li><a href="#faq">FAQ</a></li></ul></div><div class="footer-col"><h3>Документы</h3><ul><li><a href="https://albe.su/privacy">Политика конфиденциальности</a></li><li><a href="https://albe.su/privacy">Пользовательское соглашение</a></li></ul></div><div class="footer-col"><h3>Контакты</h3><ul><li><a href="https://t.me/albe_web" target="_blank" rel="noopener">Telegram @albe_web</a></li><li><a href="mailto:digitalalbe@gmail.com">digitalalbe@gmail.com</a></li><li>Санкт-Петербург</li></ul></div></div><div class="footer-bottom"><div>© <span id="year"></span> ALBE DIGITAL. Все права защищены.</div><div class="footer-tagline">МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ — МЫ СОЗДАЕМ БИЗНЕС</div></div></footer>
+<footer class="site-footer"><div class="footer-grid"><div class="footer-brand"><a href="#top" class="logo" aria-label="ALBE DIGITAL">ALBE<span class="accent">DIGITAL</span></a><p>Разработка сайтов под ключ, премиум дизайн, SEO-продвижение с гарантией, AI-решения, мобильные приложения и разработка ЛНА.</p><div class="footer-requisites"><span>ООО "АЛЬБЕ-ДИДЖИТАЛ".</span><span>ИНН 7811818720, ОГРН 1267800072000</span></div></div><div class="footer-col"><h3>Услуги</h3><ul><li><a href="#services">Веб-разработка</a></li><li><a href="#services">Дизайн</a></li><li><a href="#services">E-commerce</a></li><li><a href="#services">SEO и аналитика</a></li><li><a href="#services">AI и ML</a></li><li><a href="#services">Мобильные приложения</a></li></ul></div><div class="footer-col"><h3>Компания</h3><ul><li><a href="#cases">Кейсы</a></li><li><a href="#lna">ЛНА</a></li><li><a href="#process">Процесс</a></li><li><a href="#calculator">Калькулятор</a></li><li><a href="#faq">FAQ</a></li></ul></div><div class="footer-col"><h3>Документы</h3><ul><li><a href="https://albe.su/privacy">Политика конфиденциальности</a></li><li><a href="https://albe.su/privacy">Пользовательское соглашение</a></li></ul></div><div class="footer-col"><h3>Контакты</h3><ul><li><a href="https://t.me/albe_web" target="_blank" rel="noopener">Telegram @albe_web</a></li><li><a href="mailto:digitalalbe@gmail.com">digitalalbe@gmail.com</a></li><li>Санкт-Петербург</li></ul></div></div>
+<div class="footer-cities">
+  <h3>География</h3>
+  <ul>
+    <li><a href="/" class="active" aria-current="page">Санкт-Петербург</a></li>
+    <li><a href="/msk/">Москва</a></li>
+    <li><a href="/kazan/">Казань</a></li>
+    <li><a href="/nsk/">Новосибирск</a></li>
+    <li><a href="/ekb/">Екатеринбург</a></li>
+  </ul>
+</div>
+<div class="footer-bottom"><div>© <span id="year"></span> ALBE DIGITAL. Все права защищены.</div><div class="footer-tagline">МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ — МЫ СОЗДАЕМ БИЗНЕС</div></div></footer>
 
 <div class="modal-backdrop" id="leadModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="leadModalTitle">
   <div class="modal-dialog">
