@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<title>404 — Страница не найдена | ALBE DIGITAL</title>
+<meta name="description" content="Страница не найдена. Вернитесь на главную или выберите город: Москва, Казань, Новосибирск, Екатеринбург.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#14171C">
+<meta name="color-scheme" content="dark">
+<link rel="preload" href="/Geist-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/Geist-Medium.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/zen-dots.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@property --angle{syntax:'<angle>';initial-value:0deg;inherits:false}
+@property --px{syntax:'<length>';initial-value:24px;inherits:false}
+
+@font-face{font-family:'Geist';src:url('/Geist-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Geist';src:url('/Geist-Medium.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Zen Dots';src:url('/zen-dots.woff2') format('woff2');font-weight:400;font-display:swap}
+
+:root{
+  --bg:#191C22;--bg-2:#21252C;--bg-3:#12151A;
+  --gold:#F5B700;--gold-2:#FFD24A;--green:#10B981;--cyan:#06B6D4;--purple:#8B5CF6;
+  --text:#fff;--muted:#C7CBD1;--dim:#83878E;--line:rgba(255,255,255,.08);
+  --pad:48px;
+  --ff-geist:'Geist',sans-serif;
+  --card-bg:rgba(33,37,44,.92);
+  --brd:1px solid var(--line);
+  --tr-fast:.25s ease;
+  --tr-mid:.3s ease;
+  --tr-slow:.35s ease;
+  --blur-lg:blur(16px);
+  --radius-xs:2px;--radius-sm:6px;--radius-md:10px;--radius-round:50%;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16.5px;-webkit-text-size-adjust:100%;scrollbar-width:thin;scrollbar-color:rgba(245,183,0,.5) transparent;scrollbar-gutter:stable}
+body{font-family:'Geist','Inter',system-ui,-apple-system,sans-serif;background:#14171C;color:var(--text);font-size:1rem;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
+a{color:inherit;text-decoration:none;transition:color var(--tr-fast)}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+::selection{background:rgba(245,183,0,.35);color:#fff}
+
+.site-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.55;display:block}
+
+/* ===== HEADER ===== */
+.site-header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(20,23,28,.72);backdrop-filter:var(--blur-lg);-webkit-backdrop-filter:var(--blur-lg);border-bottom:var(--brd)}
+.header-inner{width:100%;padding:0 var(--pad);height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{display:inline-flex;align-items:center;font-family:var(--ff-geist);font-size:1.35rem;font-weight:500;letter-spacing:.06em;color:#fff;white-space:nowrap;line-height:1}
+.logo span.accent{color:var(--gold);margin-left:.35em}
+.header-cta{padding:10px 20px;background:var(--gold);color:#12151A;font-family:inherit;font-size:.82rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;transition:all var(--tr-fast);white-space:nowrap;border:none;cursor:pointer;line-height:1;border-radius:0}
+.header-cta:hover{background:var(--gold-2);transform:translateY(-1px);box-shadow:0 8px 24px rgba(245,183,0,.35);color:#12151A}
+
+/* ===== MAIN ===== */
+main{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:130px var(--pad) 60px;text-align:center;min-height:100vh}
+
+.error-hero{max-width:980px;width:100%;margin:0 auto;padding:20px 0}
+
+.error-subtitle-top{font-family:var(--ff-geist);font-size:clamp(.9rem,1.6vw,1.1rem);letter-spacing:.42em;color:#fff;font-weight:500;text-transform:uppercase;margin-bottom:18px;text-shadow:0 0 24px rgba(245,183,0,.4),0 2px 12px rgba(0,0,0,.8);opacity:0;animation:fadeUp .9s ease .1s forwards}
+
+/* ===== PIXEL DECODE 404 ===== */
+.albe-letters{position:relative;display:flex;justify-content:center;gap:clamp(4px,1.5vw,20px);font-family:'Zen Dots',sans-serif;font-size:clamp(6rem,20vw,13rem);line-height:.9;letter-spacing:.02em;color:#fff;margin-bottom:20px}
+
+.albe-letter{display:inline-block;position:relative;opacity:0;--px:26px;background:linear-gradient(180deg,#fff 40%,#C9CCD1 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 8px 32px rgba(0,0,0,.85));-webkit-mask-image:repeating-linear-gradient(to bottom,#000 0 calc(var(--px)*.58),transparent calc(var(--px)*.58) var(--px)),repeating-linear-gradient(to right,#000 0 calc(var(--px)*.58),transparent calc(var(--px)*.58) var(--px));-webkit-mask-composite:source-in;mask-image:repeating-linear-gradient(to bottom,#000 0 calc(var(--px)*.58),transparent calc(var(--px)*.58) var(--px)),repeating-linear-gradient(to right,#000 0 calc(var(--px)*.58),transparent calc(var(--px)*.58) var(--px));mask-composite:intersect;animation:pixelResolve 1.4s steps(20,end) forwards;will-change:opacity,transform}
+.albe-letter.albe-gold{background:linear-gradient(135deg,var(--gold),#FFE07A 60%,var(--gold-2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 60px rgba(245,183,0,.55)) drop-shadow(0 8px 32px rgba(0,0,0,.85))}
+
+@keyframes pixelResolve{
+  0%{opacity:0;--px:30px;transform:translateY(16px) scale(1.05);text-shadow:0 0 22px rgba(6,182,212,.9),0 0 55px rgba(139,92,246,.55)}
+  10%{opacity:1}
+  18%{opacity:.45}
+  28%{opacity:1}
+  55%{--px:6px;text-shadow:0 0 14px rgba(6,182,212,.4),0 0 30px rgba(139,92,246,.18)}
+  85%{--px:2px;transform:translateY(0) scale(1);text-shadow:0 0 0 rgba(6,182,212,0)}
+  100%{opacity:1;--px:1px;transform:none;text-shadow:0 0 0 rgba(6,182,212,0);-webkit-mask-image:none;mask-image:none}
+}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+
+.error-title{font-family:var(--ff-geist);font-size:clamp(1.5rem,3.4vw,2.2rem);font-weight:500;color:#fff;letter-spacing:.02em;margin-bottom:16px;opacity:0;animation:fadeUp .9s ease .9s forwards}
+.error-desc{font-size:clamp(.92rem,1.3vw,1.05rem);color:var(--muted);max-width:640px;margin:0 auto 44px;line-height:1.65;opacity:0;animation:fadeUp .9s ease 1.2s forwards}
+
+/* ===== CITIES GRID ===== */
+.cities-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:840px;margin:0 auto 36px;opacity:0;animation:fadeUp .9s ease 1.5s forwards}
+.city-card{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:22px 20px 42px;background:var(--card-bg);border:var(--brd);text-align:left;overflow:hidden;transition:border-color var(--tr-slow),transform var(--tr-slow),box-shadow var(--tr-slow)}
+.city-card::before{content:'';position:absolute;top:0;left:20px;right:20px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.35;transition:opacity var(--tr-slow),left var(--tr-slow),right var(--tr-slow)}
+.city-card:hover{border-color:rgba(245,183,0,.55);transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 0 1px rgba(245,183,0,.2)}
+.city-card:hover::before{opacity:1;left:0;right:0;box-shadow:0 0 20px rgba(245,183,0,.55)}
+.city-name{font-family:var(--ff-geist);font-size:1.15rem;font-weight:500;color:#fff;letter-spacing:-.01em}
+.city-sub{font-size:.78rem;color:var(--muted);line-height:1.4}
+.city-arrow{position:absolute;right:18px;bottom:16px;color:var(--gold);font-size:1.05rem;opacity:.55;transition:transform var(--tr-fast),opacity var(--tr-fast)}
+.city-card:hover .city-arrow{opacity:1;transform:translateX(4px)}
+
+/* ===== BACK HOME ===== */
+.back-home{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:transparent;border:1px solid rgba(245,183,0,.4);color:var(--gold);font-family:inherit;font-size:.86rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;transition:all var(--tr-fast);opacity:0;animation:fadeUp .9s ease 1.8s forwards;cursor:pointer}
+.back-home:hover{background:var(--gold);color:#12151A;border-color:var(--gold);transform:translateY(-2px);box-shadow:0 10px 28px rgba(245,183,0,.35)}
+
+/* ===== FOOTER ===== */
+.site-footer{position:relative;z-index:1;border-top:var(--brd);background:rgba(18,21,26,.92);padding:24px var(--pad);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:.84rem;color:var(--dim)}
+.site-footer .footer-tagline{font-family:var(--ff-geist);font-weight:500;letter-spacing:.04em;background:linear-gradient(90deg,var(--gold),#FFE07A,var(--green),var(--cyan));background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 6s linear infinite;text-align:right}
+@keyframes shimmer{0%{background-position:0% center}100%{background-position:200% center}}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  :root{--pad:18px}
+  .cities-grid{grid-template-columns:repeat(2,1fr);max-width:520px}
+  main{padding:110px var(--pad) 40px}
+  .logo{font-size:1.15rem}
+  .header-cta{font-size:.76rem;padding:9px 16px}
+  .error-hero{padding:0}
+}
+@media(max-width:560px){
+  :root{--pad:14px}
+  .header-cta{display:none}
+  .cities-grid{grid-template-columns:1fr;max-width:400px;gap:10px}
+  .city-card{padding:18px 18px 38px}
+  .city-name{font-size:1.05rem}
+  .error-desc{margin-bottom:32px}
+  .albe-letters{font-size:clamp(5rem,28vw,9rem)}
+  .site-footer{flex-direction:column;text-align:center;font-size:.76rem}
+  .site-footer .footer-tagline{text-align:center;font-size:.72rem;white-space:normal}
+}
+@media(prefers-reduced-motion:reduce){
+  .albe-letter{animation:none;opacity:1;--px:1px;text-shadow:none;transform:none;-webkit-mask-image:none;mask-image:none}
+  .error-subtitle-top,.error-title,.error-desc,.cities-grid,.back-home{opacity:1;animation:none}
+  .site-canvas{display:none}
+}
+</style>
+</head>
+<body>
+
+<canvas id="siteCanvas" class="site-canvas" aria-hidden="true"></canvas>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="logo" aria-label="ALBE DIGITAL — на главную">ALBE<span class="accent">DIGITAL</span></a>
+    <a href="/#contacts" class="header-cta">Оставить заявку</a>
+  </div>
+</header>
+
+<main>
+  <div class="error-hero">
+    <div class="error-subtitle-top">ОШИБКА 404</div>
+
+    <div class="albe-letters" aria-hidden="true">
+      <span class="albe-letter albe-gold" style="animation-delay:.1s">4</span>
+      <span class="albe-letter" style="animation-delay:.34s">0</span>
+      <span class="albe-letter albe-gold" style="animation-delay:.58s">4</span>
+    </div>
+
+    <h1 class="error-title">СТРАНИЦА НЕ НАЙДЕНА</h1>
+    <p class="error-desc">Возможно, она была перемещена или удалена. Выберите город или вернитесь на главную — там всё на месте.</p>
+
+    <div class="cities-grid">
+      <a href="/msk/" class="city-card">
+        <span class="city-name">Москва</span>
+        <span class="city-sub">Разработка сайтов под ключ</span>
+        <span class="city-arrow">→</span>
+      </a>
+      <a href="/kazan/" class="city-card">
+        <span class="city-name">Казань</span>
+        <span class="city-sub">Разработка сайтов под ключ</span>
+        <span class="city-arrow">→</span>
+      </a>
+      <a href="/nsk/" class="city-card">
+        <span class="city-name">Новосибирск</span>
+        <span class="city-sub">Разработка сайтов под ключ</span>
+        <span class="city-arrow">→</span>
+      </a>
+      <a href="/ekb/" class="city-card">
+        <span class="city-name">Екатеринбург</span>
+        <span class="city-sub">Разработка сайтов под ключ</span>
+        <span class="city-arrow">→</span>
+      </a>
+    </div>
+
+    <a href="/" class="back-home">← Вернуться на главную</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div>© <span id="year"></span> ALBE DIGITAL. Все права защищены.</div>
+  <div class="footer-tagline">МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ — МЫ СОЗДАЕМ БИЗНЕС</div>
+</footer>
+
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+
+(function(){
+  var c=document.getElementById('siteCanvas');if(!c)return;
+  var ctx=c.getContext('2d',{alpha:true}),
+  words=['REACT','NEXT.JS','TYPESCRIPT','NODE.JS','POSTGRESQL','KUBERNETES','DOCKER','SEO','AI','ML','NLP','OPENAI','FIGMA','UI/UX','DESIGN','WEBGL','GSAP','LANDING','E-COMMERCE','CRM','ЛНА','ГОСТ','152-ФЗ','404','NOT FOUND','</>','{','}','()','=>','<>','/*','*/','//','const','let','API','JSON','HTML','SQL','JS','TS','001','404','404'],
+  W=0,H=0,fs=15,cols=0,dr=[],sp=[],cw=[],
+  hc=['rgba(255,255,255,0.8)','rgba(245,183,0,0.85)','rgba(255,224,122,0.8)','rgba(16,185,129,0.7)','rgba(6,182,212,0.7)','rgba(209,212,218,0.6)'],
+  gc=['rgba(255,255,255,0.4)','rgba(245,183,0,0.5)','rgba(255,224,122,0.4)','rgba(16,185,129,0.4)','rgba(6,182,212,0.4)','rgba(209,212,218,0.3)'];
+  function pw(){return words[(Math.random()*words.length)|0]}
+  function rs(){
+    var r=c.getBoundingClientRect(),d=Math.min(window.devicePixelRatio||1,2);
+    W=Math.max(1,Math.floor(r.width));H=Math.max(1,Math.floor(r.height));
+    c.width=Math.floor(W*d);c.height=Math.floor(H*d);
+    ctx.setTransform(d,0,0,d,0,0);
+    fs=W<640?12:W<1024?14:15;
+    cols=Math.floor(W/(fs*1.6));
+    dr=new Array(cols);sp=new Array(cols);cw=new Array(cols);
+    for(var i=0;i<cols;i++){dr[i]=Math.random()*(H/fs);sp[i]=.3+Math.random()*.4;cw[i]=pw()}
+    ctx.fillStyle='#14171C';ctx.fillRect(0,0,W,H);
+  }
+  function drw(){
+    ctx.fillStyle='rgba(20,23,28,0.06)';ctx.fillRect(0,0,W,H);
+    ctx.font=fs+'px "Courier New", monospace';ctx.textBaseline='top';ctx.textAlign='left';
+    for(var i=0;i<cols;i++){
+      var wd=cw[i],x=i*fs*1.6,row=Math.floor(dr[i]),ch=wd.charAt(row%wd.length),ci=i%hc.length;
+      ctx.fillStyle=hc[ci];ctx.shadowColor=gc[ci];ctx.shadowBlur=5;
+      ctx.fillText(ch,x,row*fs);ctx.shadowBlur=0;
+      dr[i]+=sp[i];
+      if(row*fs>H&&Math.random()>.985){dr[i]=0;sp[i]=.3+Math.random()*.4;cw[i]=pw()}
+    }
+  }
+  rs();
+  var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(rs,200)});
+  if(window.ResizeObserver)new ResizeObserver(rs).observe(c);
+  setInterval(drw,80);
+})();
+</script>
+</body>
+</html>
