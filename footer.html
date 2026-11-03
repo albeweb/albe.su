@@ -1,28 +1,230 @@
-<footer class="footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div>
-                <div class="footer-logo">ALBE digital</div>
-                <p>Digital agency премиального уровня. Разработка дизайна и сайтов под ключ, AI-решения, SEO-продвижение.</p>
-            </div>
-            <div>
-                <h3 style="color: var(--ig-pink);">Контакты</h3>
-                <p><a href="mailto:hello@albe.su">hello@albe.su</a></p>
-                <p><a href="https://t.me/albe_web" target="_blank">Telegram</a></p>
-                <p>Москва, Цветной бульвар</p>
-            </div>
-            <div>
-                <h3 style="color: var(--ig-pink);">Навигация</h3>
-                <p><a href="#portfolio">Кейсы</a></p>
-                <p><a href="#services">Услуги</a></p>
-                <p><a href="#ai-innovation">AI дизайн</a></p>
-                <p><a href="#process">Процесс</a></p>
-                <p><a href="#competences">Компетенции</a></p>
-                <p><a href="#calculator">Калькулятор</a></p>
-                <p><a href="#contact">Контакты</a></p>
-            </div>
-        </div>
-        <hr style="border-color:#1E2A32; margin: 32px 0 20px;">
-        <p style="text-align: center;">© 2025 ALBE digital — разработка дизайна и сайтов под ключ. <a href="privacy.html">Политика конфиденциальности</a></p>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<title>Подвал — ALBE DIGITAL</title>
+<style>
+/* ==========================================================
+   ALBE DIGITAL — самодостаточный подвал
+   Все переменные через var(--x, fallback), чтобы:
+   — при инъекции в страницу работали переменные родителя
+   — при прямом открытии /footer.html работали fallback-значения
+   ========================================================== */
+.site-footer{
+  border-top:1px solid rgba(255,255,255,.08);
+  background:rgba(18,21,26,.92);
+  padding:64px 0 24px;
+  position:relative;
+  overflow:hidden;
+  z-index:1;
+  font-family:var(--ff-geist,'Geist','Inter',system-ui,-apple-system,sans-serif);
+  color:#fff;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+.site-footer *{box-sizing:border-box}
+.site-footer a{color:inherit;text-decoration:none;transition:color .25s ease}
+.site-footer a:hover{color:var(--gold,#F5B700)}
+.site-footer ul{list-style:none;margin:0;padding:0}
+.site-footer p{margin:0}
+
+.footer-grid{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;
+  gap:44px;
+  margin-bottom:44px;
+  padding-left:var(--pad,48px);
+  padding-right:var(--pad,48px);
+}
+.footer-brand .logo{
+  display:inline-flex;
+  align-items:center;
+  font-family:var(--ff-geist,'Geist',sans-serif);
+  font-size:1.3rem;
+  font-weight:500;
+  letter-spacing:.06em;
+  color:#fff;
+  white-space:nowrap;
+  line-height:1;
+  margin-bottom:16px;
+}
+.footer-brand .logo .accent{color:var(--gold,#F5B700);margin-left:.35em}
+.footer-brand p{
+  font-size:.9rem;
+  color:var(--muted,#C7CBD1);
+  line-height:1.75;
+  max-width:340px;
+}
+.footer-requisites{
+  margin-top:16px;
+  padding-top:14px;
+  border-top:1px solid rgba(255,255,255,.08);
+  font-size:.76rem;
+  color:var(--dim,#83878E);
+  line-height:1.6;
+  max-width:340px;
+}
+.footer-requisites span{display:block}
+
+.footer-col h3{
+  font-size:.76rem;
+  color:var(--gold,#F5B700);
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  margin:0 0 18px;
+  font-weight:500;
+}
+.footer-col ul{display:flex;flex-direction:column;gap:10px}
+.footer-col a{font-size:.9rem;color:var(--muted,#C7CBD1)}
+
+.footer-cities{
+  position:relative;
+  z-index:1;
+  padding:32px var(--pad,48px) 0;
+  margin-bottom:36px;
+  display:flex;
+  align-items:baseline;
+  gap:28px;
+  flex-wrap:wrap;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.footer-cities h3{
+  font-size:.76rem;
+  color:var(--gold,#F5B700);
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  font-weight:500;
+  flex-shrink:0;
+  margin:0;
+}
+.footer-cities ul{display:flex;flex-wrap:wrap;gap:10px 24px}
+.footer-cities a{
+  font-size:.9rem;
+  color:var(--muted,#C7CBD1);
+  transition:color .25s ease;
+  position:relative;
+}
+.footer-cities a.active{color:var(--gold,#F5B700);pointer-events:none}
+.footer-cities a.active::after{
+  content:'·';
+  position:absolute;
+  right:-14px;
+  top:50%;
+  transform:translateY(-50%);
+  color:var(--gold,#F5B700);
+  opacity:.5;
+}
+
+.footer-bottom{
+  position:relative;
+  z-index:1;
+  padding:24px var(--pad,48px) 0;
+  border-top:1px solid rgba(255,255,255,.08);
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+  font-size:.84rem;
+  color:var(--dim,#83878E);
+}
+.footer-tagline{
+  font-family:var(--ff-geist,'Geist',sans-serif);
+  font-weight:500;
+  letter-spacing:.04em;
+  background:linear-gradient(90deg,var(--gold,#F5B700),#FFE07A,var(--green,#10B981),var(--cyan,#06B6D4));
+  background-size:200% auto;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:albeFooterShimmer 6s linear infinite;
+  text-align:right;
+}
+@keyframes albeFooterShimmer{
+  0%{background-position:0% center}
+  100%{background-position:200% center}
+}
+
+@media(max-width:900px){
+  .footer-grid{grid-template-columns:1fr 1fr;gap:28px}
+  .footer-cities{flex-direction:column;gap:12px;align-items:flex-start;padding-top:24px;margin-bottom:24px}
+}
+@media(max-width:560px){
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;align-items:center;text-align:center}
+  .footer-tagline{text-align:center;font-size:clamp(.52rem,2.7vw,.8rem);white-space:nowrap;overflow:hidden}
+}
+@media(prefers-reduced-motion:reduce){
+  .footer-tagline{animation:none}
+}
+</style>
+</head>
+<body>
+<footer class="site-footer" data-nosnippet="true" role="contentinfo">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#top" class="logo" aria-label="ALBE DIGITAL — на главную">ALBE<span class="accent">DIGITAL</span></a>
+      <p>Разработка сайтов под ключ, премиум дизайн, SEO-продвижение с гарантией, AI-решения, мобильные приложения и разработка ЛНА.</p>
+      <div class="footer-requisites">
+        <span>ООО "АЛЬБЕ-ДИДЖИТАЛ".</span>
+        <span>ИНН 7811818720, ОГРН 1267800072000</span>
+      </div>
     </div>
+    <div class="footer-col">
+      <h3>Услуги</h3>
+      <ul>
+        <li><a href="#services">Веб-разработка</a></li>
+        <li><a href="#services">Дизайн</a></li>
+        <li><a href="#services">E-commerce</a></li>
+        <li><a href="#services">SEO и аналитика</a></li>
+        <li><a href="#services">AI и ML</a></li>
+        <li><a href="#services">Мобильные приложения</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>Компания</h3>
+      <ul>
+        <li><a href="#cases">Кейсы</a></li>
+        <li><a href="#lna">ЛНА</a></li>
+        <li><a href="#process">Процесс</a></li>
+        <li><a href="#calculator">Калькулятор</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>Документы</h3>
+      <ul>
+        <li><a href="https://albe.su/privacy">Политика конфиденциальности</a></li>
+        <li><a href="https://albe.su/privacy">Пользовательское соглашение</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>Контакты</h3>
+      <ul>
+        <li><a href="https://t.me/albe_web" target="_blank" rel="noopener">Telegram @albe_web</a></li>
+        <li><a href="mailto:digitalalbe@gmail.com">digitalalbe@gmail.com</a></li>
+        <li>Санкт-Петербург</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-cities">
+    <h3>География</h3>
+    <ul>
+      <li><a href="/" class="active" aria-current="page">Санкт-Петербург</a></li>
+      <li><a href="/msk/">Москва</a></li>
+      <li><a href="/kazan/">Казань</a></li>
+      <li><a href="/nsk/">Новосибирск</a></li>
+      <li><a href="/ekb/">Екатеринбург</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <div>© <span id="year"></span> ALBE DIGITAL. Все права защищены.</div>
+    <div class="footer-tagline">МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ — МЫ СОЗДАЕМ БИЗНЕС</div>
+  </div>
 </footer>
+</body>
+</html>
