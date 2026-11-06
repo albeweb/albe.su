@@ -1,39 +1,148 @@
-# Разрешаем всем роботам индексацию
+# ================================================================
+# robots.txt для https://albe.su
+# Обновлено: 5 ноября 2026
+#
+# Структура сайта:
+#   /                        — главная
+#   /about.html              — о компании
+#   /services.html           — услуги
+#   /portfolio.html          — портфолио
+#   /privacy.html            — политика конфиденциальности
+#   /blog/                   — блог
+#   /msk/  /ekb/  /kazan/  /nsk/ — региональные страницы
+#   /images/                 — изображения
+#   /js/, /header-loader.js, /footer-loader.js — служебные скрипты
+#   /header.html, /footer.html — шаблоны для JS-загрузчиков
+# ================================================================
+
+# ----------------------------------------------------------------
+# 1. Все роботы по умолчанию
+# ----------------------------------------------------------------
 User-agent: *
 Allow: /
 
-# Запрещаем индексацию служебных файлов
-Disallow: /header-loader.js
-Disallow: /common.js
-Disallow: /style.css
+# Служебное — не индексируем
+Disallow: /404.html
+Disallow: /header.html
+Disallow: /footer.html
 
-# НЕ блокируем /images/ — оставляем для SEO картинок
+# UTM-метки и клик-идентификаторы
+Disallow: /*utm_
+Disallow: /*fbclid
+Disallow: /*gclid
+Disallow: /*yclid
+Disallow: /*?from=
+Disallow: /*&from=
 
-# Указываем путь к sitemap
-Sitemap: https://albe.su/sitemap.xml
+# Yandex Clean-param: игнорировать параметры при обходе
+Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&fbclid&gclid&yclid&from
 
-# Основной хост сайта
-Host: https://albe.su
-
-# Задержка между запросами
-Crawl-delay: 1
-
-# Настройки для Яндекс
+# ----------------------------------------------------------------
+# 2. Яндекс
+# ----------------------------------------------------------------
 User-agent: Yandex
 Allow: /
-Crawl-delay: 2
-
-# Настройки для Google
-User-agent: Googlebot
-Allow: /
+Disallow: /404.html
+Disallow: /header.html
+Disallow: /footer.html
+Disallow: /*utm_
+Disallow: /*fbclid
+Disallow: /*gclid
+Disallow: /*yclid
+Disallow: /*?from=
+Disallow: /*&from=
+Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&fbclid&gclid&yclid&from
 Crawl-delay: 1
 
-# Картинки — разрешаем
+# ----------------------------------------------------------------
+# 3. Google
+# ----------------------------------------------------------------
+User-agent: Googlebot
+Allow: /
+Disallow: /404.html
+Disallow: /header.html
+Disallow: /footer.html
+Disallow: /*utm_
+Disallow: /*fbclid
+Disallow: /*gclid
+Disallow: /*yclid
+Disallow: /*?from=
+Disallow: /*&from=
+
+# ----------------------------------------------------------------
+# 4. Картинки — разрешены везде
+# ----------------------------------------------------------------
 User-agent: Googlebot-Image
 Allow: /
 
 User-agent: YandexImages
 Allow: /
 
-# Чистим кэш роботов от UTM-меток
-Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content
+# ----------------------------------------------------------------
+# 5. AI-краулеры
+#    Разрешаем — чтобы попадать в AI-ответы ChatGPT / Perplexity /
+#    Claude / Google AI Overviews. Если НЕ хотите, чтобы ваш контент
+#    использовался в обучении моделей — замените Allow на Disallow.
+# ----------------------------------------------------------------
+User-agent: GPTBot
+Allow: /
+Disallow: /404.html
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /404.html
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /404.html
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /404.html
+
+User-agent: Google-Extended
+Allow: /
+
+# ----------------------------------------------------------------
+# 6. Агрессивные SEO-краулеры — ограничиваем скорость обхода
+# ----------------------------------------------------------------
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Crawl-delay: 15
+
+User-agent: DotBot
+Crawl-delay: 15
+
+User-agent: PetalBot
+Crawl-delay: 5
+
+User-agent: DataForSeoBot
+Crawl-delay: 15
+
+User-agent: BLEXBot
+Crawl-delay: 15
+
+# ----------------------------------------------------------------
+# 7. Мусорные скраперы — блокируем полностью
+# ----------------------------------------------------------------
+User-agent: Bytespider
+Disallow: /
+
+User-agent: ImagesiftBot
+Disallow: /
+
+User-agent: ZoominfoBot
+Disallow: /
+
+# ----------------------------------------------------------------
+# 8. Sitemap
+# ----------------------------------------------------------------
+Sitemap: https://albe.su/sitemap.xml
