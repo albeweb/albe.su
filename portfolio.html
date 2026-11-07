@@ -1,70 +1,1274 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>ALBE DIGITAL | Портфолио — наши проекты и кейсы</title>
-    <meta name="description" content="Портфолио ALBE digital: разработка сайтов, мобильных приложений, AI-решений. Реальные кейсы и результаты.">
-    <meta name="keywords" content="портфолио albe digital, кейсы разработки сайтов, примеры работ">
-    <meta name="author" content="Albe Digital">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://albe.su/portfolio.html">
-    <meta property="og:title" content="ALBE DIGITAL — Портфолио проектов">
-    <meta property="og:description" content="Реальные кейсы разработки сайтов, приложений и AI-решений.">
-    <meta property="og:image" content="https://albe.su/og-image.webp">
-    <meta property="og:url" content="https://albe.su/portfolio.html">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="theme-color" content="#0D1117">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23F5B700'/%3E%3Ctext x='20' y='28' font-size='24' text-anchor='middle' fill='black' font-weight='500'%3EA%3C/text%3E%3C/svg%3E">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<title>Шаблоны сайтов — купить готовый сайт под ключ | ALBE DIGITAL</title>
+<meta name="description" content="Готовые шаблоны сайтов от ALBE DIGITAL: лендинги и визитки от 30 000 ₽, многостраничные сайты от 60 000 ₽, интернет-магазины от 150 000 ₽, мобильные приложения. Запуск за 3–7 дней. Адаптив, SEO-база, подключение домена.">
+<meta name="keywords" content="готовые шаблоны сайтов, купить сайт под ключ, шаблон лендинга, шаблон интернет-магазина, шаблон многостраничного сайта, мобильное приложение под ключ, шаблоны сайтов спб">
+<meta name="theme-color" content="#14171C">
+<meta name="color-scheme" content="dark">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://albe.su/portfolio.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ALBE DIGITAL">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Шаблоны сайтов — купить готовый сайт под ключ | ALBE DIGITAL">
+<meta property="og:description" content="Готовые шаблоны: лендинги, многостраничные сайты, интернет-магазины, мобильные приложения. Запуск за 3–7 дней. Адаптив, SEO-база, домен — включены.">
+<meta property="og:url" content="https://albe.su/portfolio.html">
+<meta property="og:image" content="https://albe.su/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@albe_web">
+<meta name="twitter:title" content="Шаблоны сайтов — купить готовый сайт под ключ | ALBE DIGITAL">
+<meta name="twitter:description" content="Лендинги от 30 000 ₽, многостраничные от 60 000 ₽, интернет-магазины от 150 000 ₽. Запуск за 3–7 дней.">
+<meta name="twitter:image" content="https://albe.su/images/og-image.jpg">
+
+<link rel="preload" href="/Geist-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/Geist-Medium.woff2" as="font" type="font/woff2" crossorigin>
+
+<style>
+@font-face{font-family:'Geist';src:url('/Geist-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Geist';src:url('/Geist-Medium.woff2') format('woff2');font-weight:500;font-display:swap}
+
+:root{
+  --bg:#191C22;--bg-2:#21252C;--bg-3:#12151A;
+  --gold:#F5B700;--gold-2:#FFD24A;--green:#10B981;--cyan:#06B6D4;--purple:#8B5CF6;
+  --text:#fff;--muted:#C7CBD1;--dim:#83878E;--line:rgba(255,255,255,.08);
+  --pad:48px;--sec-a:245,183,0;
+  --card-bg:rgba(33,37,44,.92);
+  --input-bg:rgba(18,21,26,.6);
+  --input-bg-focus:rgba(18,21,26,.9);
+  --modal-bg:rgba(25,28,34,.98);
+  --radius-xs:2px;--radius-sm:6px;--radius-md:10px;--radius-round:50%;
+  --sec-y:104px;
+  --brd:1px solid var(--line);
+  --tr-fast:.25s ease;--tr-mid:.3s ease;--tr-slow:.35s ease;
+  --ff-geist:'Geist',sans-serif;
+  --gold-35:rgba(245,183,0,.35);--gold-40:rgba(245,183,0,.4);
+  --w-02:rgba(255,255,255,.02);--w-03:rgba(255,255,255,.03);--w-07:rgba(255,255,255,.07);--w-08:rgba(255,255,255,.08);
+  --blur-sm:blur(4px);--blur-lg:blur(16px);--blur-xl:blur(20px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16.5px;scroll-behavior:smooth;-webkit-text-size-adjust:100%;scrollbar-width:thin;scrollbar-color:rgba(245,183,0,.5) transparent}
+body{font-family:'Geist','Inter',system-ui,-apple-system,sans-serif;background:#14171C;color:var(--text);font-size:1rem;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;width:100%}
+::selection{background:var(--gold-35);color:#fff}
+a{color:inherit;text-decoration:none;transition:color var(--tr-fast)}
+a:hover{color:var(--gold)}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+ul{list-style:none}
+main{position:relative;z-index:1}
+.container{width:100%;max-width:100%;padding-left:var(--pad);padding-right:var(--pad);margin:0 auto;position:relative;z-index:1}
+h1{font-family:var(--ff-geist);font-size:clamp(2rem,5.5vw,3.2rem);line-height:1.15;letter-spacing:.02em;color:#fff}
+h2{font-size:clamp(1.5rem,3.4vw,2.2rem);font-weight:500;color:#fff;line-height:1.15;letter-spacing:-.02em}
+h3{font-size:1.15rem;font-weight:500;line-height:1.35;color:#fff}
+p{line-height:1.7;color:var(--muted)}
+
+.site-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.55;display:block}
+
+/* HEADER */
+.site-header{position:fixed;top:0;left:0;right:0;z-index:200;background:transparent;border-bottom:1px solid transparent;transition:background .35s ease,backdrop-filter .35s ease,border-color .35s ease}
+.site-header.scrolled,body.menu-open .site-header{background:rgba(20,23,28,.72);backdrop-filter:var(--blur-lg);-webkit-backdrop-filter:var(--blur-lg);border-bottom:var(--brd)}
+.header-inner{width:100%;padding-left:var(--pad);padding-right:var(--pad);height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{display:inline-flex;align-items:center;font-family:var(--ff-geist);font-size:1.35rem;font-weight:500;letter-spacing:.06em;color:#fff;white-space:nowrap;line-height:1}
+.logo span.accent{color:var(--gold);margin-left:.35em}
+.main-nav{display:flex;align-items:center;gap:28px}
+.main-nav a{font-size:.9rem;color:var(--muted);font-weight:400;position:relative;padding:4px 0}
+.main-nav a:hover,.main-nav a.active{color:#fff}
+.main-nav a::after{content:'';position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--gold);transition:width .3s ease}
+.main-nav a:hover::after,.main-nav a.active::after{width:100%}
+.nav-cta{padding:10px 20px;background:var(--gold);color:#12151A;font-family:inherit;font-size:.82rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;transition:all var(--tr-fast);white-space:nowrap;border:none;cursor:pointer;line-height:1;border-radius:0}
+.nav-cta:hover{background:var(--gold-2);transform:translateY(-1px);box-shadow:0 8px 24px var(--gold-35);color:#12151A}
+.burger{display:none;width:44px;height:44px;border-radius:var(--radius-round);border:var(--brd);align-items:center;justify-content:center;color:var(--gold);background:var(--w-02);transition:all var(--tr-fast)}
+.burger span{display:block;width:18px;height:2px;background:currentColor;position:relative}
+.burger span::before,.burger span::after{content:'';position:absolute;left:0;width:18px;height:2px;background:currentColor;transition:transform .3s ease,top .3s ease}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+body.menu-open .burger span{background:transparent}
+body.menu-open .burger span::before{top:0;transform:rotate(45deg)}
+body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
+@media(max-width:900px){.main-nav{display:none}.burger{display:flex}.logo{font-size:1.15rem}}
+
+.mobile-nav{display:none;position:fixed;inset:0;background:rgba(18,21,26,.98);backdrop-filter:var(--blur-xl);z-index:190;padding:110px var(--pad) 32px;flex-direction:column;gap:6px;overflow-y:auto}
+.mobile-nav.open{display:flex}
+.mobile-nav a{font-size:1.05rem;color:var(--muted);padding:16px 0;border-bottom:var(--brd);transition:color var(--tr-fast),padding-left var(--tr-fast)}
+.mobile-nav a:hover,.mobile-nav a.active{color:var(--gold);padding-left:6px}
+.mobile-nav .nav-cta{margin-top:24px;padding:16px 24px;font-size:.9rem;text-align:center;align-self:stretch;border-bottom:none}
+
+/* BREADCRUMBS */
+.breadcrumbs{
+  padding:100px var(--pad) 0;
+  position:relative;
+  z-index:1;
+  font-size:.82rem;
+  color:var(--dim);
+  letter-spacing:.04em;
+}
+.breadcrumbs ol{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+.breadcrumbs li{display:flex;align-items:center;gap:8px;line-height:1.4}
+.breadcrumbs li:not(:last-child)::after{content:'/';color:var(--line);opacity:.6;font-weight:300}
+.breadcrumbs a{color:var(--muted);transition:color .25s}
+.breadcrumbs a:hover{color:var(--gold)}
+.breadcrumbs li[aria-current="page"]{color:var(--gold)}
+@media(max-width:640px){.breadcrumbs{padding:90px var(--pad) 0;font-size:.76rem}}
+
+/* PAGE HERO */
+.page-hero{
+  padding:48px var(--pad) 64px;
+  position:relative;
+  z-index:1;
+  border-bottom:var(--brd);
+  background:radial-gradient(ellipse at 50% 40%,rgba(18,21,26,.4) 0%,transparent 70%);
+}
+.page-hero__inner{max-width:880px}
+.page-hero__eyebrow{
+  font-family:var(--ff-geist);
+  font-size:.72rem;
+  letter-spacing:.28em;
+  color:var(--gold);
+  text-transform:uppercase;
+  margin-bottom:24px;
+  font-weight:500;
+  display:block;
+}
+.page-hero h1{
+  font-size:clamp(2rem,4.8vw,3rem);
+  font-weight:500;
+  line-height:1.12;
+  letter-spacing:-.02em;
+  margin-bottom:20px;
+}
+.page-hero h1 em{font-style:normal;color:var(--gold);font-family:'Geist',sans-serif}
+.page-hero p{
+  font-size:clamp(.95rem,1.5vw,1.05rem);
+  line-height:1.7;
+  color:var(--muted);
+  max-width:640px;
+}
+.page-hero p strong{color:var(--gold);font-weight:500}
+@media(max-width:640px){.page-hero{padding:32px var(--pad) 40px}}
+
+/* SECTION */
+.section{position:relative;padding:var(--sec-y) 0;isolation:isolate}
+.section-header{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:36px;flex-wrap:wrap;position:relative}
+.section-header h2{position:relative;display:flex;align-items:baseline;gap:18px}
+.section-header h2::before{
+  content:attr(data-num);
+  font-family:var(--ff-geist);
+  font-size:.7rem;
+  font-weight:500;
+  letter-spacing:.28em;
+  color:var(--gold);
+  opacity:.85;
+  align-self:flex-start;
+  margin-top:.6em;
+}
+.section-header h2::after{
+  content:'';
+  position:absolute;
+  left:0;right:0;bottom:-16px;
+  height:1px;
+  background:linear-gradient(90deg,var(--gold) 0%,rgba(245,183,0,.3) 40%,transparent 100%);
+  box-shadow:0 0 14px rgba(245,183,0,.35);
+}
+
+/* TABS */
+.tabs-bar{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:40px;border-bottom:var(--brd)}
+.tab-btn{
+  padding:14px 22px;
+  background:transparent;
+  border:none;
+  border-bottom:2px solid transparent;
+  color:var(--muted);
+  font-size:.9rem;
+  font-weight:500;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  transition:all var(--tr-mid);
+  white-space:nowrap;
+  margin-bottom:-1px;
+}
+.tab-btn:hover{color:#fff}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+.tab-panel{display:none;animation:fadeTab .35s ease}
+.tab-panel.active{display:block}
+@keyframes fadeTab{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* TEMPLATE GRID */
+.tpl-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+@media(max-width:1024px){.tpl-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.tpl-grid{grid-template-columns:1fr}}
+
+.tpl-card{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  background:var(--card-bg);
+  border:var(--brd);
+  overflow:hidden;
+  transition:border-color var(--tr-slow),transform var(--tr-slow),box-shadow var(--tr-slow);
+}
+.tpl-card::before{
+  content:'';
+  position:absolute;
+  top:0;left:22px;right:22px;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold) 50%,transparent);
+  opacity:.5;
+  transition:opacity var(--tr-slow),left var(--tr-slow),right var(--tr-slow);
+  z-index:3;
+  border-radius:0 0 2px 2px;
+}
+.tpl-card:hover{
+  border-color:rgba(245,183,0,.55);
+  transform:translateY(-5px);
+  box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 0 1px rgba(245,183,0,.2);
+}
+.tpl-card:hover::before{opacity:1;left:0;right:0;box-shadow:0 0 20px rgba(245,183,0,.6)}
+
+.tpl-media{
+  position:relative;
+  aspect-ratio:16/10;
+  overflow:hidden;
+  background:linear-gradient(135deg,#0F1115,#1A1D24);
+  border-bottom:var(--brd);
+}
+.tpl-media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:top center;
+  transition:transform .6s ease;
+}
+.tpl-card:hover .tpl-media img{transform:scale(1.04)}
+.tpl-media--icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:12px;
+}
+.tpl-media--icon svg{position:relative;z-index:1}
+.tpl-media--icon span{
+  position:relative;
+  z-index:1;
+  font-family:var(--ff-geist);
+  font-weight:500;
+  font-size:.72rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--dim);
+}
+.tpl-media::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 30% 30%,rgba(245,183,0,.1),transparent 60%);
+  pointer-events:none;
+}
+
+.tpl-badge{
+  position:absolute;
+  top:12px;
+  left:12px;
+  padding:5px 10px;
+  background:rgba(18,21,26,.9);
+  border:1px solid rgba(245,183,0,.35);
+  color:var(--gold);
+  font-size:.62rem;
+  font-weight:500;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  z-index:2;
+  backdrop-filter:var(--blur-sm);
+}
+.tpl-badge--green{border-color:rgba(16,185,129,.5);color:#10B981;background:rgba(16,185,129,.12)}
+.tpl-badge--cyan{border-color:rgba(6,182,212,.5);color:#06B6D4;background:rgba(6,182,212,.12)}
+.tpl-badge--purple{border-color:rgba(139,92,246,.5);color:#8B5CF6;background:rgba(139,92,246,.12)}
+
+.tpl-body{
+  padding:22px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  flex:1;
+}
+.tpl-tag{
+  display:inline-block;
+  align-self:flex-start;
+  font-size:.64rem;
+  font-weight:500;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--gold);
+  padding:4px 10px;
+  background:rgba(245,183,0,.08);
+  border:1px solid rgba(245,183,0,.28);
+}
+.tpl-body h3{
+  font-size:1.08rem;
+  font-weight:500;
+  color:#fff;
+  line-height:1.3;
+  letter-spacing:-.01em;
+}
+.tpl-body p{
+  font-size:.88rem;
+  color:var(--muted);
+  line-height:1.55;
+}
+.tpl-includes{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  margin:4px 0 8px;
+}
+.tpl-includes li{
+  font-size:.82rem;
+  color:var(--muted);
+  padding-left:18px;
+  position:relative;
+  line-height:1.45;
+}
+.tpl-includes li::before{
+  content:'';
+  position:absolute;
+  left:0;
+  top:7px;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:var(--gold);
+  box-shadow:0 0 8px rgba(245,183,0,.6);
+}
+
+.tpl-footer{
+  margin-top:auto;
+  padding-top:14px;
+  border-top:var(--brd);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.tpl-price{
+  font-family:var(--ff-geist);
+  font-weight:500;
+  font-size:1.15rem;
+  color:var(--gold);
+  letter-spacing:-.01em;
+  text-shadow:0 0 18px rgba(245,183,0,.35);
+}
+.tpl-price small{
+  font-family:'Geist',sans-serif;
+  font-size:.7rem;
+  font-weight:400;
+  color:var(--dim);
+  letter-spacing:.04em;
+  text-shadow:none;
+  margin-left:6px;
+}
+.tpl-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.tpl-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  padding:10px 14px;
+  font-size:.76rem;
+  font-weight:500;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:all var(--tr-fast);
+  border:1px solid transparent;
+  font-family:inherit;
+  text-align:center;
+  flex:1;
+  min-width:120px;
+  text-decoration:none;
+}
+.tpl-btn-view{background:transparent;color:var(--gold);border-color:rgba(245,183,0,.35)}
+.tpl-btn-view:hover{background:var(--gold);color:#12151A;border-color:var(--gold);transform:translateY(-1px);box-shadow:0 8px 20px rgba(245,183,0,.3)}
+.tpl-btn-buy{background:var(--gold);color:#12151A;border-color:var(--gold)}
+.tpl-btn-buy:hover{background:rgba(245,183,0,.85);transform:translateY(-1px);box-shadow:0 8px 20px rgba(245,183,0,.4);color:#12151A}
+@media(max-width:640px){.tpl-actions{flex-direction:column}.tpl-btn{width:100%}.tpl-body{padding:18px}}
+
+/* CTA SECTION */
+.cta-section{
+  padding:80px var(--pad);
+  position:relative;
+  z-index:1;
+}
+.cta-box{
+  max-width:1100px;
+  margin:0 auto;
+  padding:48px 40px;
+  background:linear-gradient(135deg,rgba(245,183,0,.1),rgba(245,183,0,.02));
+  border:1px solid rgba(245,183,0,.3);
+  border-left:3px solid var(--gold);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:32px;
+  flex-wrap:wrap;
+  position:relative;
+  overflow:hidden;
+}
+.cta-box::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.cta-text h3{
+  font-size:1.35rem;
+  margin-bottom:8px;
+  letter-spacing:-.01em;
+}
+.cta-text p{
+  font-size:.94rem;
+  color:var(--muted);
+  max-width:520px;
+  line-height:1.6;
+}
+.cta-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:16px 32px;
+  background:var(--gold);
+  color:#12151A;
+  font-size:.86rem;
+  font-weight:500;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  transition:all var(--tr-mid);
+  white-space:nowrap;
+  border:none;
+  cursor:pointer;
+  font-family:inherit;
+}
+.cta-btn:hover{
+  background:var(--gold-2);
+  transform:translateY(-2px);
+  box-shadow:0 12px 30px var(--gold-40);
+  color:#12151A;
+}
+@media(max-width:768px){.cta-box{padding:32px 24px;flex-direction:column;align-items:stretch;text-align:center}.cta-text{text-align:center}.cta-text p{margin:0 auto}.cta-btn{width:100%;justify-content:center}}
+
+/* MODAL (упрощённая, для заявки) */
+.modal-backdrop{position:fixed;inset:0;background:rgba(10,12,15,.6);backdrop-filter:var(--blur-sm);-webkit-backdrop-filter:var(--blur-sm);z-index:300;display:none;align-items:flex-start;justify-content:center;padding:80px 16px 40px;overflow-y:auto}
+.modal-backdrop.open{display:flex}
+.modal-dialog{width:100%;max-width:560px;background:var(--modal-bg);border:var(--brd);position:relative;box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px rgba(245,183,0,.15);margin:auto 0;border-radius:var(--radius-md);overflow:hidden}
+.modal-dialog::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.modal-header{padding:28px 32px 20px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;border-bottom:var(--brd)}
+.modal-header h2{font-size:1.4rem;margin:0;font-weight:500;letter-spacing:-.01em}
+.modal-header .modal-sub{font-size:.86rem;color:var(--muted);margin-top:6px;line-height:1.5}
+.modal-close{width:40px;height:40px;border-radius:var(--radius-round);border:var(--brd);display:grid;place-items:center;color:var(--gold);background:var(--w-02);flex-shrink:0;transition:all var(--tr-fast);position:relative;cursor:pointer}
+.modal-close:hover{background:rgba(245,183,0,.1);border-color:rgba(245,183,0,.4);color:#fff}
+.modal-close::before,.modal-close::after{content:'';position:absolute;width:14px;height:2px;background:currentColor;border-radius:1px}
+.modal-close::before{transform:rotate(45deg)}
+.modal-close::after{transform:rotate(-45deg)}
+.modal-body{padding:24px 32px 32px}
+body.modal-open{overflow:hidden}
+.lead-form{display:flex;flex-direction:column;gap:16px}
+.form-group{display:flex;flex-direction:column;gap:8px}
+.form-label{font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);font-weight:500}
+.form-input,.form-select{background:var(--input-bg);border:var(--brd);padding:12px 16px;color:#fff;font-family:inherit;font-size:.94rem;transition:all var(--tr-fast);border-radius:0;width:100%}
+.form-input:focus,.form-select:focus{outline:none;border-color:var(--gold);background:var(--input-bg-focus);box-shadow:0 0 0 3px rgba(245,183,0,.1)}
+.form-input::placeholder{color:var(--dim)}
+.form-textarea{resize:vertical;min-height:88px;font-family:inherit;line-height:1.5;padding-top:12px}
+.form-select{cursor:pointer;appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--gold) 50%),linear-gradient(135deg,var(--gold) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 15px) 50%;background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:44px}
+.form-select option{background:#191C22;color:#fff}
+.form-submit{padding:14px 28px;background:var(--gold);color:#12151A;font-weight:500;font-size:.88rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all var(--tr-mid);border:none;text-align:center;font-family:inherit}
+.form-submit:hover:not(:disabled){background:rgba(245,183,0,.88);transform:translateY(-2px);box-shadow:0 10px 30px rgba(245,183,0,.4)}
+.form-submit:disabled{opacity:.5;cursor:not-allowed}
+.form-status{padding:12px 16px;font-size:.88rem;display:none;border-left:2px solid;line-height:1.5}
+.form-status.show{display:block}
+.form-status.success{background:rgba(16,185,129,.1);border-color:var(--green);color:#a7f3d0}
+.form-status.error{background:rgba(239,68,68,.1);border-color:#ef4444;color:#fecaca}
+@media(max-width:640px){.modal-backdrop{padding:16px 8px 24px}.modal-dialog{max-width:100%}.modal-header{padding:20px 18px 16px}.modal-header h2{font-size:1.15rem}.modal-body{padding:18px}}
+
+@media(max-width:900px){:root{--pad:20px}}
+@media(max-width:640px){:root{--pad:12px}}
+
+@media(min-width:901px){
+  body.reveal-init .reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.22,.7,.3,1),transform .9s cubic-bezier(.22,.7,.3,1);transition-delay:var(--reveal-delay,0s);will-change:opacity,transform}
+  body.reveal-init .reveal.reveal--visible{opacity:1;transform:translateY(0)}
+}
+@media(prefers-reduced-motion:reduce){
+  body.reveal-init .reveal{opacity:1!important;transform:none!important;transition:none!important}
+  .site-canvas{display:none}
+}
+</style>
 </head>
 <body>
-    <div id="header-placeholder"></div>
-    
-    <main>
-        <section class="section">
-            <div class="container">
-                <h1>Портфолио</h1>
-                <p class="hero-desc" style="font-size: 1.2rem; margin-bottom: 3rem; max-width: 700px;">Реальные проекты, которые принесли нашим клиентам рост и прибыль.</p>
-                
-                <div class="portfolio-grid">
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">NEO BANK</div>
-                        <div class="portfolio-info">
-                            <h3>NeoBank Platform</h3>
-                            <p>Рост активных клиентов +210%</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">AI RECOMMEND</div>
-                        <div class="portfolio-info">
-                            <h3>AI рекомендательная система</h3>
-                            <p>Рост конверсии +34%</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">MOBILE APP</div>
-                        <div class="portfolio-info">
-                            <h3>FitTrack приложение</h3>
-                            <p>50k+ установок</p>
-                        </div>
-                    </div>
-                </div>
+
+<canvas id="siteCanvas" class="site-canvas" aria-hidden="true"></canvas>
+
+<!-- HEADER -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="/" class="logo" aria-label="ALBE DIGITAL — на главную">ALBE<span class="accent">DIGITAL</span></a>
+    <nav class="main-nav" aria-label="Основная навигация">
+      <a href="/">Главная</a>
+      <a href="/services.html">Услуги</a>
+      <a href="/portfolio.html" class="active" aria-current="page">Шаблоны</a>
+      <a href="/about.html">О нас</a>
+      <a href="/blog/">Блог</a>
+      <a href="/#contacts">Контакты</a>
+      <button type="button" class="nav-cta" data-open-modal>Оставить заявку</button>
+    </nav>
+    <button class="burger" id="burgerBtn" aria-label="Открыть меню" aria-expanded="false"><span></span></button>
+  </div>
+</header>
+
+<nav class="mobile-nav" id="mobileNav" aria-label="Мобильное меню">
+  <a href="/">Главная</a>
+  <a href="/services.html">Услуги</a>
+  <a href="/portfolio.html" class="active" aria-current="page">Шаблоны</a>
+  <a href="/about.html">О нас</a>
+  <a href="/blog/">Блог</a>
+  <a href="/#contacts">Контакты</a>
+  <button type="button" class="nav-cta" data-open-modal>Оставить заявку</button>
+</nav>
+
+<main id="top">
+
+  <!-- BREADCRUMBS -->
+  <nav class="breadcrumbs" aria-label="Хлебные крошки">
+    <ol>
+      <li><a href="/">Главная</a></li>
+      <li aria-current="page">Шаблоны</li>
+    </ol>
+  </nav>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="page-hero__inner">
+      <span class="page-hero__eyebrow">Готовые решения · ALBE DIGITAL</span>
+      <h1>Шаблоны сайтов<br>и <em>мобильных приложений</em></h1>
+      <p>Готовые решения с быстрым запуском: выбираете формат, смотрите живой шаблон и запускаем за <strong>3–7 дней</strong>. Адаптив, SEO-база, подключение домена и хостинга — в стоимости. Хотите кастомизацию — соберём модули индивидуально.</p>
+    </div>
+  </section>
+
+  <!-- TABS + GRID -->
+  <section class="section" style="padding-top:56px" aria-label="Каталог шаблонов">
+    <div class="container">
+
+      <div class="tabs-bar" id="tplTabs" role="tablist">
+        <button class="tab-btn active" data-tab="landing" role="tab" aria-selected="true">Визитки и Лендинги</button>
+        <button class="tab-btn" data-tab="website" role="tab" aria-selected="false">Многостраничные сайты</button>
+        <button class="tab-btn" data-tab="shop" role="tab" aria-selected="false">Онлайн магазины</button>
+        <button class="tab-btn" data-tab="mobile" role="tab" aria-selected="false">Мобильные приложения</button>
+      </div>
+
+      <!-- === ВИЗИТКИ И ЛЕНДИНГИ === -->
+      <div class="tab-panel active" data-panel="landing">
+        <div class="tpl-grid">
+
+          <article class="tpl-card">
+            <div class="tpl-media">
+              <span class="tpl-badge">Хит</span>
+              <img src="/images/01.webp" alt="Шаблон премиального лендинга для бизнеса ALBE DIGITAL" loading="lazy" width="640" height="400">
             </div>
-        </section>
-    </main>
-    
-    <div id="footer-placeholder"></div>
-    <div class="totop" id="toTopBtn">↑</div>
-    
-    <script src="header-loader.js"></script>
-    <script src="common.js"></script>
+            <div class="tpl-body">
+              <span class="tpl-tag">Лендинг</span>
+              <h3>Премиум-лендинг для бизнеса</h3>
+              <p>Одностраничник с формой заявки, блоком преимуществ и SEO-базой. Идеален для быстрого старта и рекламы.</p>
+              <ul class="tpl-includes">
+                <li>Иммерсивный дизайн и анимации</li>
+                <li>Форма заявки + Telegram</li>
+                <li>SEO-база: метатеги, микроразметка</li>
+                <li>PageSpeed 90+</li>
+              </ul>
+              <div class="tpl-footer">
+                <div class="tpl-price">от 30 000 ₽ <small>3–5 дней</small></div>
+                <div class="tpl-actions">
+                  <a href="/" class="tpl-btn tpl-btn-view" target="_blank" rel="noopener">Демо ↗</a>
+                  <button type="button" class="tpl-btn tpl-btn-buy" data-open-modal data-service="Готовый сайт">Купить</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="tpl-card">
+            <div class="tpl-media">
+              <img src="/images/05.webp" alt="Шаблон персонального сайта артиста BALM" loading="lazy" width="640" height="400">
+            </div>
+            <div class="tpl-body">
+              <span class="tpl-tag">Лендинг</span>
+              <h3>Сайт артиста / эксперта</h3>
+              <p>Персональный сайт с иммерсивным дизайном, афишей, портфолио и магазином мерча.</p>
+              <ul class="tpl-includes">
+                <li>Галерея и портфолио</li>
+                <li>Аудиоплеер / видеоблок</li>
+                <li>Магазин мерча (E-commerce)</li>
+                <li>Афиша мероприятий</li>
+              </ul>
+              <div class="tpl-footer">
+                <div class="tpl-price">от 40 000 ₽ <small>4–6 дней</small></div>
+                <div class="tpl-actions">
+                  <a href="https://balm-music.ru/" class="tpl-btn tpl-btn-view" target="_blank" rel="noopener">Демо ↗</a>
+                  <button type="button" class="tpl-btn tpl-btn-buy" data-open-modal data-service="Готовый сайт">Купить</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="tpl-card">
+            <div class="tpl-media">
+              <img src="/images/07.webp" alt="Шаблон сайта студии красоты Sculptor" loading="lazy" width="640" height="400">
+            </div>
+            <div class="tpl-body">
+              <span class="tpl-tag">Визитка</span>
+              <h3>Сайт-визитка студии / салона</h3>
+              <p>Компактный сайт с онлайн-записью, портфолио мастеров и программой лояльности.</p>
+              <ul class="tpl-includes">
+                <li>Онлайн-запись</li>
+                <li>Портфолио мастеров</li>
+                <li>Галерея работ</li>
+                <li>Программа лояльности</li>
+              </ul>
+              <div class="tpl-footer">
+                <div class="tpl-price">от 30 000 ₽ <small>3–5 дней</small></div>
+                <div class="tpl-actions">
+                  <a href="https://sculptorspb.ru/" class="tpl-btn tpl-btn-view" target="_blank" rel="noopener">Демо ↗</a>
+                  <button type="button" class="tpl-btn tpl-btn-buy" data-open-modal data-service="Готовый сайт">Купить</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- === МНОГОСТРАНИЧНЫЕ САЙТЫ === -->
+      <div class="tab-panel" data-panel="website">
+        <div class="tpl-grid">
+
+          <article class="tpl-card">
+            <div class="tpl-media">
+              <span class="tpl-badge tpl-badge--green">SEO-ready</span>
+              <img src="/images/06.webp" alt="Шаблон многостраничного сайта застройщика Kingwoods" loading="lazy" width="640" height="400">
+            </div>
+            <div class="tpl-body">
+              <span class="tpl-tag">Многостраничный</span>
+              <h3>Корпоративный сайт с блогом</h3>
+              <p>Многостраничник для компании: услуги, о нас, блог, контакты. Работает на SEO и контент-маркетинг.</p>
+              <ul class="tpl-includes">
+                <li>Главная, услуги, о компании, контакты</li>
+                <li>Блог с редактором и категориями</li>
+                <li>SEO-оптимизация всех страниц</li>
+                <li>Карта сайта, robots.txt, микроразметка</li>
+              </ul>
+              <div class="tpl-footer">
+                <div class="tpl-price">от 60 000 ₽ <small>5–7 дней</small></div>
+                <div class="tpl-actions">
+                  <a href="https://sochi.kingwoods.ru/" class="tpl-btn tpl-btn-view" target="_blank" rel="noopener">Демо ↗</a>
+                  <button type="button" class="tpl-btn tpl-btn-buy" data-open-modal data-service="Готовый сайт">Купить</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="tpl-card">
+            <div class="tpl-media">
+              <img src="/images/03.webp" alt="Шаблон сайта автодилера Pickup Center" loading="lazy" width="640" height="400">
+            </div>
+            <div class="tpl-body">
+              <span class="tpl-tag">Многостраничный</span>
+              <h3>Сайт-каталог с подбором</h3>
+              <p>Многостраничник с расширенным каталогом, фильтрами по параметрам и заявкой на подбор.</p>
+              <ul class="tpl-includes">
+                <li>Каталог с фильтрами по параметрам</li>
+                <li>Карточки товаров с характеристиками</li>
+                <li>Заявка на подбор / тест-драйв</li>
+                <li>Интеграция с CRM</li>
+              </ul>
+              <div class="tpl-footer">
+                <div class="tpl-price">от 90 000 ₽ <small>7–10 дней</small></div>
+                <div class="tpl-actions">
+                  <a href="https://www.pickup-center.ru/" class="tpl-btn tpl-btn-view" target="_blank" rel="noopener">Демо ↗</a>
+                  <button type="button" class="tpl-btn tpl-btn-buy" data-open-modal data-service="Готовый сайт">Купить</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="tpl-card">
+            <div class="tpl-media">
+              <span class="tpl-badge tpl-badge--cyan">Медицина</span>
+              <img src="/images/09.webp" alt="Шаблон сайта клиники AnatoMia SPA" loading="lazy" width="640" height="400">
+            </div>
+            <div class="tpl-body">
+              <span class="tpl-tag">Многостраничный</span>
+              <h3>Сайт клиники / медицинского центра</h3>
+              <p>Сайт с каталогом услуг, командой врачей, отзывами пациентов и удобной онлайн-записью.</p>
+              <ul class="tpl-includes">
+                <li>Каталог услуг и цен</li>
+                <li>Команда врачей с профилями</li>
+                <li>Отзывы и рейтинги</li>
+                <li>Онлайн-запись</li>
+              </ul>
+              <div class="tpl-footer">
+                <div class="tpl-price">от 80 000 ₽ <small>7–10 дней</small></div>
+                <div class="tpl-actions">
+                  <a href="https://anatomiaspb.ru/" class="tpl-btn tpl-btn-view" target="_blank" rel="noopener">Демо ↗</a>
+                  <button type="button" class="tpl-btn tpl-btn-buy" data-open-modal data-service="Готовый сайт">Купить</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- === ОНЛАЙН МАГАЗИНЫ === -->
+      <div class="tab-panel" data-panel="shop">
+        <div class="tpl-grid">
+
+          <article class="tpl-card">
+            <div class="tpl-media">
+              <span class="tpl-badge">Хит</span>
+              <img src="/images/02.webp" alt="Шаблон интернет-магазина электротранспорта" loading="lazy" width="640" height="400">
+            </div>
+            <div class="tpl-body">
+              <span class="tpl-tag">E-commerce</span>
+              <h3>Онлайн магазин «Старт»</h3>
+              <p>Быстрый запуск магазина с каталогом, корзиной и онлайн-оплатой. Backend Laravel, кастомная админка.</p>
+              <ul class="tpl-includes">
+                <li>Каталог с фильтрами и сортировкой</li>
+                <li>Корзина и оформление заказа</li>
+                <li>Онлайн-оплата (ЮKassa, Tinkoff)</li>
+                <li>Личный кабинет покупателя</li>
+              </ul>
+              <div class="tpl-footer">
+                <div class="tpl-price">от 150 000 ₽ <small>7 дней</small></div>
+                <div class="tpl-actions">
+                  <a href="/online-shop.html" class="tpl-btn tpl-btn-view">Демо ↗</a>
+                  <button type="button" class="tpl-btn tpl-btn-buy" data-open-modal data-service="Готовый сайт">Купить</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="tpl-card">
+            <div class="tpl-media">
+              <span class="tpl-badge tpl-badge--green">+1С</span>
+              <img src="/images/04.webp" alt="Шаблон интернет-магазина автомобилей AVM Motors" loading="lazy" width="640" height="400">
+            </div>
+            <div class="tpl-body">
+              <span class="tpl-tag">E-commerce</span>
+              <h3>Онлайн магазин «Бизнес»</h3>
+              <p>Магазин с интеграцией 1С, складским учётом и программой лояльности. Для растущего бизнеса.</p>
+              <ul class="tpl-includes">
+                <li>Интеграция с 1С / МойСклад</li>
+                <li>Складской учёт и статусы заказов</li>
+                <li>Программа лояльности и скидки</li>
+                <li>Админ-панель с аналитикой</li>
+              </ul>
+              <div class="tpl-footer">
+                <div class="tpl-price">от 250 000 ₽ <small>10–14 дней</small></div>
+                <div class="tpl-actions">
+                  <a href="https://avmmotors.by" class="tpl-btn tpl-btn-view" target="_blank" rel="noopener">Демо ↗</a>
+                  <button type="button" class="tpl-btn tpl-btn-buy" data-open-modal data-service="Готовый сайт">Купить</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="tpl-card">
+            <div class="tpl-media">
+              <span class="tpl-badge tpl-badge--purple">Premium</span>
+              <img src="/images/11.webp" alt="Шаблон премиум-магазина с мультиязычностью" loading="lazy" width="640" height="400">
+            </div>
+            <div class="tpl-body">
+              <span class="tpl-tag">E-commerce</span>
+              <h3>Онлайн магазин «Премиум»</h3>
+              <p>Масштабируемый магазин с мультиязычностью, маркетплейсами и API для мобильного приложения.</p>
+              <ul class="tpl-includes">
+                <li>Мультиязычность и мультивалютность</li>
+                <li>Интеграция с маркетплейсами</li>
+                <li>API для мобильного приложения</li>
+                <li>Расширенная аналитика продаж</li>
+              </ul>
+              <div class="tpl-footer">
+                <div class="tpl-price">от 450 000 ₽ <small>от 3 недель</small></div>
+                <div class="tpl-actions">
+                  <a href="/online-shop.html" class="tpl-btn tpl-btn-view">Демо ↗</a>
+                  <button type="button" class="tpl-btn tpl-btn-buy" data-open-modal data-service="Готовый сайт">Купить</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- === МОБИЛЬНЫЕ ПРИЛОЖЕНИЯ === -->
+      <div class="tab-panel" data-panel="mobile">
+        <div class="tpl-grid">
+
+          <article class="tpl-card">
+            <div class="tpl-media tpl-media--icon">
+              <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="rgba(245,183,0,.55)" stroke-width="1.1" aria-hidden="true">
+                <rect x="6" y="2" width="12" height="20" rx="2"/>
+                <path d="M12 18h.01"/>
+              </svg>
+              <span>Mobile App</span>
+            </div>
+            <div class="tpl-body">
+              <span class="tpl-tag">iOS · Android</span>
+              <h3>Мобильное приложение магазина</h3>
+              <p>Кроссплатформенное приложение для интернет-магазина с каталогом, корзиной и push-уведомлениями.</p>
+              <ul class="tpl-includes">
+                <li>React Native / Expo (iOS + Android)</li>
+                <li>Каталог, корзина, оплата</li>
+                <li>Push-уведомления и акции</li>
+                <li>Синхронизация с backend магазина</li>
+              </ul>
+              <div class="tpl-footer">
+                <div class="tpl-price">от 350 000 ₽ <small>от 3 недель</small></div>
+                <div class="tpl-actions">
+                  <a href="https://t.me/albe_web" class="tpl-btn tpl-btn-view" target="_blank" rel="noopener">Запросить демо</a>
+                  <button type="button" class="tpl-btn tpl-btn-buy" data-open-modal data-service="Разработка">Купить</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="tpl-card">
+            <div class="tpl-media tpl-media--icon">
+              <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="rgba(6,182,212,.55)" stroke-width="1.1" aria-hidden="true">
+                <rect x="6" y="2" width="12" height="20" rx="2"/>
+                <path d="M9 7h6M9 11h6M9 15h4"/>
+                <path d="M12 18h.01"/>
+              </svg>
+              <span>Booking App</span>
+            </div>
+            <div class="tpl-body">
+              <span class="tpl-tag">iOS · Android</span>
+              <h3>Приложение для записи / booking</h3>
+              <p>Приложение для салонов, клиник и сервисов с онлайн-записью, расписанием и напоминаниями.</p>
+              <ul class="tpl-includes">
+                <li>Онлайн-запись и календарь</li>
+                <li>Push-напоминания о визите</li>
+                <li>Профили мастеров / специалистов</li>
+                <li>Программа лояльности</li>
+              </ul>
+              <div class="tpl-footer">
+                <div class="tpl-price">от 300 000 ₽ <small>от 3 недель</small></div>
+                <div class="tpl-actions">
+                  <a href="https://t.me/albe_web" class="tpl-btn tpl-btn-view" target="_blank" rel="noopener">Запросить демо</a>
+                  <button type="button" class="tpl-btn tpl-btn-buy" data-open-modal data-service="Разработка">Купить</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="tpl-card">
+            <div class="tpl-media tpl-media--icon">
+              <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="rgba(139,92,246,.55)" stroke-width="1.1" aria-hidden="true">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>
+              </svg>
+              <span>AI Assistant</span>
+            </div>
+            <div class="tpl-body">
+              <span class="tpl-tag">AI · ML</span>
+              <h3>AI-ассистент / чат-бот</h3>
+              <p>Приложение или бот с AI-ассистентом на базе LLM: подбор, консультации, автоматизация.</p>
+              <ul class="tpl-includes">
+                <li>LLM на базе GPT / Claude</li>
+                <li>Интеграция с CRM и базой знаний</li>
+                <li>Голосовой и текстовый ввод</li>
+                <li>Аналитика диалогов</li>
+              </ul>
+              <div class="tpl-footer">
+                <div class="tpl-price">от 400 000 ₽ <small>от 4 недель</small></div>
+                <div class="tpl-actions">
+                  <a href="https://t.me/albe_web" class="tpl-btn tpl-btn-view" target="_blank" rel="noopener">Запросить демо</a>
+                  <button type="button" class="tpl-btn tpl-btn-buy" data-open-modal data-service="AI реклама">Купить</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-box">
+      <div class="cta-text">
+        <h3>Не нашли нужный шаблон?</h3>
+        <p>Соберём кастомное решение под ваш бизнес: любой стек, любой функционал. От идеи до запуска — за один договор.</p>
+      </div>
+      <button type="button" class="cta-btn" data-open-modal>Обсудить проект →</button>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER LOADER -->
+<div id="footer-placeholder" aria-label="Подвал сайта"></div>
+<noscript>
+  <footer style="padding:24px;text-align:center;border-top:1px solid rgba(255,255,255,.08);background:rgba(18,21,26,.92)">
+    <div style="color:#83878E;font-size:.85rem">© ALBE DIGITAL. Все права защищены.</div>
+  </footer>
+</noscript>
+<script src="/js/footer-loader.js" defer></script>
+
+<!-- LEAD MODAL -->
+<div class="modal-backdrop" id="leadModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="leadModalTitle">
+  <div class="modal-dialog">
+    <div class="modal-header">
+      <div>
+        <h2 id="leadModalTitle">Оставить заявку</h2>
+        <div class="modal-sub">Ответим в течение рабочего дня — бесплатная консультация и оценка</div>
+      </div>
+      <button type="button" class="modal-close" data-close-modal aria-label="Закрыть"></button>
+    </div>
+    <div class="modal-body">
+      <form class="lead-form" id="leadForm" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="nameInput">Ваше имя</label>
+          <input class="form-input" type="text" id="nameInput" name="name" placeholder="Как к вам обращаться" autocomplete="name" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="contactInput">Контакт</label>
+          <input class="form-input" type="text" id="contactInput" name="contact" inputmode="tel" autocomplete="tel" placeholder="+7 (999) 123-45-67" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="serviceSelect">Что интересует?</label>
+          <select class="form-select" id="serviceSelect" name="service" required>
+            <option value="">Выберите из списка</option>
+            <option value="Готовый сайт">Готовый шаблон</option>
+            <option value="Разработка">Разработка под ключ</option>
+            <option value="SEO оптимизация">SEO-продвижение</option>
+            <option value="Дизайн">Дизайн</option>
+            <option value="AI реклама">AI-решения</option>
+            <option value="Пока не знаю">Пока не знаю</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="commentInput">Комментарий (необязательно)</label>
+          <textarea class="form-input form-textarea" id="commentInput" name="comment" rows="3" placeholder="Какой шаблон, сроки, бюджет"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Отправить заявку</button>
+        <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Шаблоны сайтов ALBE DIGITAL",
+  "description": "Готовые шаблоны сайтов и приложений: лендинги, многостраничные сайты, интернет-магазины, мобильные приложения. Запуск за 3–7 дней.",
+  "url": "https://albe.su/portfolio.html",
+  "inLanguage": "ru",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "ALBE DIGITAL",
+    "url": "https://albe.su/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ALBE DIGITAL",
+    "url": "https://albe.su/",
+    "logo": "https://albe.su/images/logo.png"
+  },
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"item":{"@type":"Product","name":"Премиум-лендинг для бизнеса","description":"Одностраничный сайт с формой заявки и SEO-базой. Запуск за 3–5 дней.","url":"https://albe.su/portfolio.html#landing","brand":{"@type":"Brand","name":"ALBE DIGITAL"},"offers":{"@type":"Offer","priceCurrency":"RUB","price":"30000","availability":"https://schema.org/InStock"}}},
+      {"@type":"ListItem","position":2,"item":{"@type":"Product","name":"Сайт артиста / эксперта","description":"Персональный сайт с иммерсивным дизайном, портфолио и магазином мерча.","url":"https://albe.su/portfolio.html#landing","brand":{"@type":"Brand","name":"ALBE DIGITAL"},"offers":{"@type":"Offer","priceCurrency":"RUB","price":"40000","availability":"https://schema.org/InStock"}}},
+      {"@type":"ListItem","position":3,"item":{"@type":"Product","name":"Сайт-визитка студии / салона","description":"Сайт с онлайн-записью и портфолио мастеров.","url":"https://albe.su/portfolio.html#landing","brand":{"@type":"Brand","name":"ALBE DIGITAL"},"offers":{"@type":"Offer","priceCurrency":"RUB","price":"30000","availability":"https://schema.org/InStock"}}},
+      {"@type":"ListItem","position":4,"item":{"@type":"Product","name":"Корпоративный сайт с блогом","description":"Многостраничник для компании с блогом и SEO.","url":"https://albe.su/portfolio.html#website","brand":{"@type":"Brand","name":"ALBE DIGITAL"},"offers":{"@type":"Offer","priceCurrency":"RUB","price":"60000","availability":"https://schema.org/InStock"}}},
+      {"@type":"ListItem","position":5,"item":{"@type":"Product","name":"Сайт-каталог с подбором","description":"Многостраничник с расширенным каталогом и фильтрами.","url":"https://albe.su/portfolio.html#website","brand":{"@type":"Brand","name":"ALBE DIGITAL"},"offers":{"@type":"Offer","priceCurrency":"RUB","price":"90000","availability":"https://schema.org/InStock"}}},
+      {"@type":"ListItem","position":6,"item":{"@type":"Product","name":"Сайт клиники / медцентра","description":"Сайт с каталогом услуг, командой врачей и онлайн-записью.","url":"https://albe.su/portfolio.html#website","brand":{"@type":"Brand","name":"ALBE DIGITAL"},"offers":{"@type":"Offer","priceCurrency":"RUB","price":"80000","availability":"https://schema.org/InStock"}}},
+      {"@type":"ListItem","position":7,"item":{"@type":"Product","name":"Онлайн магазин «Старт»","description":"Готовый интернет-магазин на Laravel с каталогом, корзиной и оплатой.","url":"https://albe.su/portfolio.html#shop","brand":{"@type":"Brand","name":"ALBE DIGITAL"},"offers":{"@type":"Offer","priceCurrency":"RUB","price":"150000","availability":"https://schema.org/InStock"}}},
+      {"@type":"ListItem","position":8,"item":{"@type":"Product","name":"Онлайн магазин «Бизнес»","description":"Магазин с интеграцией 1С и складским учётом.","url":"https://albe.su/portfolio.html#shop","brand":{"@type":"Brand","name":"ALBE DIGITAL"},"offers":{"@type":"Offer","priceCurrency":"RUB","price":"250000","availability":"https://schema.org/InStock"}}},
+      {"@type":"ListItem","position":9,"item":{"@type":"Product","name":"Онлайн магазин «Премиум»","description":"Масштабируемый магазин с мультиязычностью и API.","url":"https://albe.su/portfolio.html#shop","brand":{"@type":"Brand","name":"ALBE DIGITAL"},"offers":{"@type":"Offer","priceCurrency":"RUB","price":"450000","availability":"https://schema.org/InStock"}}},
+      {"@type":"ListItem","position":10,"item":{"@type":"Product","name":"Мобильное приложение магазина","description":"React Native приложение для интернет-магазина.","url":"https://albe.su/portfolio.html#mobile","brand":{"@type":"Brand","name":"ALBE DIGITAL"},"offers":{"@type":"Offer","priceCurrency":"RUB","price":"350000","availability":"https://schema.org/InStock"}}},
+      {"@type":"ListItem","position":11,"item":{"@type":"Product","name":"Приложение для записи / booking","description":"Приложение с онлайн-записью для салонов и клиник.","url":"https://albe.su/portfolio.html#mobile","brand":{"@type":"Brand","name":"ALBE DIGITAL"},"offers":{"@type":"Offer","priceCurrency":"RUB","price":"300000","availability":"https://schema.org/InStock"}}},
+      {"@type":"ListItem","position":12,"item":{"@type":"Product","name":"AI-ассистент / чат-бот","description":"AI-приложение на базе LLM.","url":"https://albe.su/portfolio.html#mobile","brand":{"@type":"Brand","name":"ALBE DIGITAL"},"offers":{"@type":"Offer","priceCurrency":"RUB","price":"400000","availability":"https://schema.org/InStock"}}}
+    ]
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Главная","item":"https://albe.su/"},
+      {"@type":"ListItem","position":2,"name":"Шаблоны","item":"https://albe.su/portfolio.html"}
+    ]
+  }
+}
+</script>
+
+<script>
+/* ============================================================
+   КОНФЕТТИ (тот же эффект, что на главной)
+   ============================================================ */
+(function(){
+  var c=document.getElementById('siteCanvas');if(!c)return;
+  var ctx=c.getContext('2d',{alpha:true}),
+  words=['REACT','NEXT.JS','TYPESCRIPT','VUE','NODE.JS','LARAVEL','POSTGRESQL','REDIS','DOCKER','KUBERNETES','IOS','ANDROID','FLUTTER','SWIFT','KOTLIN','AI','ML','NLP','FIGMA','UI/UX','DESIGN','GSAP','SEO','PPC','E-COMMERCE','CRM','ERP','1С','ЛЕНДИНГ','МАГАЗИН','ПРИЛОЖЕНИЕ','ШАБЛОН','</>','{}','()','const','API','HTML','CSS','JS'],
+  W=0,H=0,fs=15,cols=0,dr=[],sp=[],cw=[],
+  hc=['rgba(255,255,255,0.85)','rgba(245,183,0,0.85)','rgba(255,224,122,0.85)','rgba(16,185,129,0.75)','rgba(6,182,212,0.75)','rgba(209,212,218,0.7)'],
+  gc=['rgba(255,255,255,0.4)','rgba(245,183,0,0.5)','rgba(255,224,122,0.4)','rgba(16,185,129,0.4)','rgba(6,182,212,0.4)','rgba(209,212,218,0.3)'];
+  function pw(){return words[(Math.random()*words.length)|0]}
+  function rs(){
+    var r=c.getBoundingClientRect(),d=Math.min(window.devicePixelRatio||1,2);
+    W=Math.max(1,Math.floor(r.width));H=Math.max(1,Math.floor(r.height));
+    c.width=Math.floor(W*d);c.height=Math.floor(H*d);
+    ctx.setTransform(d,0,0,d,0,0);
+    fs=W<640?12:W<1024?14:15;
+    cols=Math.floor(W/(fs*1.6));
+    dr=new Array(cols);sp=new Array(cols);cw=new Array(cols);
+    for(var i=0;i<cols;i++){dr[i]=Math.random()*(H/fs);sp[i]=.3+Math.random()*.4;cw[i]=pw()}
+    ctx.fillStyle='#14171C';ctx.fillRect(0,0,W,H)
+  }
+  function drw(){
+    ctx.fillStyle='rgba(20,23,28,0.06)';ctx.fillRect(0,0,W,H);
+    ctx.font=fs+'px "Courier New", monospace';
+    ctx.textBaseline='top';ctx.textAlign='left';
+    for(var i=0;i<cols;i++){
+      var wd=cw[i],x=i*fs*1.6,row=Math.floor(dr[i]),ch=wd.charAt(row%wd.length),ci=i%hc.length;
+      ctx.fillStyle=hc[ci];ctx.shadowColor=gc[ci];ctx.shadowBlur=5;
+      ctx.fillText(ch,x,row*fs);ctx.shadowBlur=0;
+      dr[i]+=sp[i];
+      if(row*fs>H&&Math.random()>.985){dr[i]=0;sp[i]=.3+Math.random()*.4;cw[i]=pw()}
+    }
+  }
+  rs();
+  var rt;
+  window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(rs,200)});
+  if(window.ResizeObserver)new ResizeObserver(rs).observe(c);
+  setInterval(drw,80)
+})();
+
+/* ============================================================
+   ТАБЫ ШАБЛОНОВ
+   ============================================================ */
+(function(){
+  var t=document.getElementById('tplTabs');if(!t)return;
+  var sec=t.closest('section');
+  t.addEventListener('click',function(e){
+    var b=e.target.closest('.tab-btn');if(!b)return;
+    var k=b.dataset.tab;
+    t.querySelectorAll('.tab-btn').forEach(function(x){
+      x.classList.remove('active');
+      x.setAttribute('aria-selected','false');
+    });
+    b.classList.add('active');
+    b.setAttribute('aria-selected','true');
+    sec.querySelectorAll('.tab-panel').forEach(function(p){
+      p.classList.toggle('active',p.dataset.panel===k);
+    });
+  });
+})();
+
+/* ============================================================
+   БУРГЕР
+   ============================================================ */
+(function(){
+  var b=document.getElementById('burgerBtn'),n=document.getElementById('mobileNav');
+  if(!b||!n)return;
+  function setState(o){
+    n.classList.toggle('open',o);
+    document.body.classList.toggle('menu-open',o);
+    b.setAttribute('aria-expanded',o?'true':'false');
+  }
+  b.addEventListener('click',function(){setState(!n.classList.contains('open'))});
+  n.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){setState(false)});
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&n.classList.contains('open'))setState(false);
+  });
+})();
+
+/* ============================================================
+   SCROLLED HEADER
+   ============================================================ */
+(function(){
+  var h=document.getElementById('siteHeader');if(!h)return;
+  function s(){h.classList.toggle('scrolled',window.scrollY>30)}
+  window.addEventListener('scroll',s,{passive:true});
+  s();
+})();
+
+/* ============================================================
+   REVEAL
+   ============================================================ */
+(function(){
+  if(!window.matchMedia||!('IntersectionObserver' in window))return;
+  if(!window.matchMedia('(min-width:901px)').matches)return;
+  var sel=['.tpl-card','.cta-box'];
+  var els=Array.prototype.slice.call(document.querySelectorAll(sel.join(',')));
+  if(!els.length)return;
+  document.body.classList.add('reveal-init');
+  var groups=new Map();
+  els.forEach(function(el){
+    el.classList.add('reveal');
+    var p=el.parentElement||document.body;
+    if(!groups.has(p))groups.set(p,[]);
+    groups.get(p).push(el);
+  });
+  groups.forEach(function(list){
+    list.forEach(function(el,i){
+      el.style.setProperty('--reveal-delay',(Math.min(i,6)*0.07)+'s');
+    });
+  });
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting)return;
+      var el=e.target;
+      io.unobserve(el);
+      el.classList.add('reveal--visible');
+      var d=parseFloat(getComputedStyle(el).getPropertyValue('--reveal-delay'))||0;
+      setTimeout(function(){
+        el.classList.remove('reveal','reveal--visible');
+        el.style.removeProperty('--reveal-delay');
+      },900+d*1000+100);
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -60px 0px'});
+  els.forEach(function(el){io.observe(el)});
+})();
+
+/* ============================================================
+   МОДАЛКА ЗАЯВКИ
+   ============================================================ */
+(function(){
+  var modal=document.getElementById('leadModal');if(!modal)return;
+  var lastFocus=null;
+  function openModal(service){
+    lastFocus=document.activeElement;
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.classList.add('modal-open');
+    var statusEl=document.getElementById('formStatus');
+    if(statusEl){statusEl.className='form-status';statusEl.textContent='';}
+    if(service){
+      var select=document.getElementById('serviceSelect');
+      if(select){
+        for(var i=0;i<select.options.length;i++){
+          if(select.options[i].value===service){select.selectedIndex=i;break;}
+        }
+      }
+    }
+    requestAnimationFrame(function(){
+      var firstInput=modal.querySelector('input, select, textarea, button');
+      if(firstInput)firstInput.focus({preventScroll:true});
+    });
+  }
+  function closeModal(){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.classList.remove('modal-open');
+    if(lastFocus&&lastFocus.focus)lastFocus.focus({preventScroll:true});
+  }
+  window.__openLeadModal=openModal;
+  document.querySelectorAll('[data-open-modal]').forEach(function(el){
+    el.addEventListener('click',function(e){
+      e.preventDefault();
+      var mobileNav=document.getElementById('mobileNav');
+      if(mobileNav&&mobileNav.classList.contains('open')){
+        document.body.classList.remove('menu-open');
+        mobileNav.classList.remove('open');
+        var burger=document.getElementById('burgerBtn');
+        if(burger)burger.setAttribute('aria-expanded','false');
+      }
+      openModal(el.dataset.service);
+    });
+  });
+  modal.querySelectorAll('[data-close-modal]').forEach(function(el){
+    el.addEventListener('click',function(e){e.preventDefault();closeModal()});
+  });
+  modal.addEventListener('click',function(e){if(e.target===modal)closeModal()});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&modal.classList.contains('open'))closeModal();
+  });
+
+  /* Обработчик формы */
+  var WORKER_URL='https://albe.faralenatmir.workers.dev';
+  var form=document.getElementById('leadForm');
+  if(!form)return;
+  var nameInput=document.getElementById('nameInput');
+  var contactInput=document.getElementById('contactInput');
+  var serviceSelect=document.getElementById('serviceSelect');
+  var commentInput=document.getElementById('commentInput');
+  var statusEl=document.getElementById('formStatus');
+  var submitBtn=form.querySelector('.form-submit');
+  function showError(m){statusEl.className='form-status error show';statusEl.textContent=m}
+  function showSuccess(m){statusEl.className='form-status success show';statusEl.textContent=m}
+  function clearStatus(){statusEl.className='form-status';statusEl.textContent=''}
+  form.addEventListener('submit',async function(e){
+    e.preventDefault();clearStatus();
+    var name=nameInput.value.trim();
+    var contact=contactInput.value.trim();
+    var service=serviceSelect.value;
+    var comment=commentInput?commentInput.value.trim():'';
+    if(name.length<2){showError('Укажите имя');nameInput.focus();return}
+    var digits=contact.replace(/\D/g,'');
+    if(digits.length<10){showError('Проверьте контакт');contactInput.focus();return}
+    if(!service){showError('Выберите услугу');serviceSelect.focus();return}
+    submitBtn.disabled=true;
+    var original=submitBtn.textContent;
+    submitBtn.textContent='Отправляем...';
+    try{
+      var resp=await fetch(WORKER_URL,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({name:name,contact:contact,service:service,comment:comment,contactType:'phone'})
+      });
+      var data=null;
+      try{data=await resp.json()}catch(_){}
+      if(resp.ok&&data&&data.ok){
+        showSuccess('✓ Заявка отправлена! Свяжемся с вами в течение рабочего дня.');
+        form.reset();
+      }else{
+        showError('Ошибка. Напишите в Telegram @albe_web.');
+      }
+    }catch(_){
+      showError('Ошибка сети. Напишите в Telegram @albe_web.');
+    }finally{
+      submitBtn.disabled=false;
+      submitBtn.textContent=original;
+    }
+  });
+})();
+</script>
 </body>
 </html>
