@@ -1,0 +1,1293 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Онлайн магазин — готовый шаблон под ключ | ALBE DIGITAL</title>
+<meta name="description" content="Готовый премиум интернет-магазин на Laravel: каталог, корзина, админка. Запуск от 7 дней. Ставка 2 000 ₽/час." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   КАТАЛОГ MAISON
+   ========================================================= */
+:root{
+  --bg:#ffffff; --bg-soft:#f5f5f5; --paper:#ffffff;
+  --text:#2a2a2a; --text-strong:#111111; --muted:#767676; --line:#e6e6e6;
+  --edge:40px;
+  --font-display:'Cormorant Garamond',Georgia,serif;
+  --font-ui:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --t-xs:11px; --t-sm:13px; --t-md:15px; --t-lg:20px; --t-xl:28px; --t-2xl:44px; --t-3xl:64px;
+
+  --gold:#F5B700; --gold-2:#FFD24A; --green:#10B981; --cyan:#06B6D4; --purple:#8B5CF6;
+  --muted-albe:#C7CBD1; --dim-albe:#83878E;
+  --ff-geist:'Inter',system-ui,sans-serif;
+}
+@media(max-width:768px){:root{--edge:20px;--t-3xl:40px;--t-2xl:32px;--t-xl:22px;}}
+@media(max-width:480px){:root{--edge:16px;--t-3xl:34px;--t-2xl:26px;}}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+body{
+  font-family:var(--font-ui);font-size:var(--t-md);line-height:1.6;
+  color:var(--text);background:var(--bg);min-height:100vh;overflow-x:hidden;
+}
+img{display:block;max-width:100%;height:auto;}
+button,input,select{font:inherit;color:inherit;}
+button{cursor:pointer;background:none;border:0;}
+a{color:inherit;text-decoration:none;}
+ul,ol{list-style:none;}
+summary{list-style:none;cursor:pointer;}
+summary::-webkit-details-marker{display:none;}
+
+/* ALBE casebar */
+.albe-casebar{
+  background:#14171C;color:#fff;border-bottom:1px solid rgba(245,183,0,.2);
+  padding:12px var(--edge);display:flex;align-items:center;justify-content:space-between;
+  gap:16px;font-size:12px;letter-spacing:.06em;position:relative;z-index:60;
+}
+.albe-casebar__brand{display:inline-flex;align-items:center;gap:8px;font-weight:500;font-size:14px;letter-spacing:.08em;white-space:nowrap;}
+.albe-casebar__brand span{color:#F5B700;}
+.albe-casebar__label{text-transform:uppercase;color:#C7CBD1;font-size:11px;letter-spacing:.14em;}
+.albe-casebar__cta{
+  display:inline-flex;align-items:center;gap:6px;padding:8px 16px;
+  background:#F5B700;color:#14171C;font-size:11px;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;transition:background .2s,transform .2s;white-space:nowrap;
+}
+.albe-casebar__cta:hover{background:#FFD24A;transform:translateY(-1px);}
+@media(max-width:720px){.albe-casebar__label{display:none;}.albe-casebar{padding:10px var(--edge);}}
+
+/* Хлебные крошки */
+.breadcrumbs{
+  padding:14px var(--edge);
+  background:var(--bg);
+  border-bottom:1px solid var(--line);
+  font-size:11px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.breadcrumbs ol{
+  display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+  max-width:100%;
+}
+.breadcrumbs li{display:flex;align-items:center;gap:8px;line-height:1.4;}
+.breadcrumbs li:not(:last-child)::after{
+  content:'/';
+  color:var(--line);
+  font-weight:300;
+}
+.breadcrumbs a{color:var(--muted);transition:color .2s;}
+.breadcrumbs a:hover{color:var(--text-strong);}
+.breadcrumbs li[aria-current="page"]{color:var(--text-strong);}
+@media(max-width:480px){
+  .breadcrumbs{padding:12px var(--edge);font-size:10px;letter-spacing:.06em;}
+}
+
+/* MAISON header */
+.header{
+  position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line);
+  padding:18px var(--edge);display:flex;align-items:center;justify-content:space-between;gap:20px;
+}
+.logo{font-family:var(--font-display);font-size:22px;font-weight:600;letter-spacing:.14em;color:var(--text-strong);white-space:nowrap;}
+.nav{display:flex;gap:32px;}
+.nav a{font-size:var(--t-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);transition:color .2s;}
+.nav a:hover{color:var(--text-strong);}
+.header-icons{display:flex;align-items:center;gap:4px;}
+.icon-btn{width:40px;height:40px;display:grid;place-items:center;color:var(--text-strong);transition:background .2s;}
+.icon-btn:hover{background:var(--bg-soft);}
+@media(max-width:860px){.nav{display:none;}}
+
+/* HERO */
+.hero{
+  position:relative;min-height:620px;height:72vh;max-height:820px;
+  display:flex;align-items:flex-end;overflow:hidden;background:#111;color:#fff;
+}
+.hero__media{position:absolute;inset:0;}
+.hero__media img{width:100%;height:100%;object-fit:cover;object-position:center 30%;}
+.hero__overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(17,17,17,.18) 0%,rgba(17,17,17,0) 22%,rgba(17,17,17,.1) 55%,rgba(17,17,17,.78) 100%);
+}
+.hero__content{position:relative;z-index:2;padding:0 var(--edge) 72px;max-width:760px;width:100%;}
+.hero__eyebrow{font-size:var(--t-xs);letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.82);margin-bottom:24px;}
+.hero__title{font-family:var(--font-display);font-size:var(--t-3xl);font-weight:400;line-height:1;letter-spacing:-.01em;color:#fff;margin-bottom:22px;}
+.hero__text{font-size:var(--t-md);line-height:1.65;color:rgba(255,255,255,.85);max-width:46ch;margin-bottom:32px;}
+.hero__cta{
+  display:inline-flex;align-items:center;gap:14px;padding:15px 30px;
+  border:1px solid rgba(255,255,255,.9);color:#fff;font-size:var(--t-xs);
+  letter-spacing:.14em;text-transform:uppercase;transition:background .28s,color .28s;
+}
+.hero__cta:hover{background:#fff;color:#111;}
+@media(max-width:768px){
+  .hero{min-height:520px;height:68vh;max-height:660px;}
+  .hero__media img{object-position:center 25%;}
+  .hero__content{padding:0 var(--edge) 44px;}
+  .hero__eyebrow{margin-bottom:16px;}
+  .hero__title{margin-bottom:16px;}
+  .hero__text{margin-bottom:26px;font-size:14px;}
+  .hero__cta{padding:13px 24px;}
+}
+
+/* TOOLBAR / CHIPS / LAYOUT */
+.toolbar{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:16px var(--edge);border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg);
+}
+.toolbar__left{display:flex;align-items:center;gap:16px;min-width:0;}
+.filter-btn{
+  display:inline-flex;align-items:center;gap:8px;padding:10px 16px;
+  border:1px solid var(--text-strong);font-size:var(--t-xs);letter-spacing:.1em;
+  text-transform:uppercase;transition:background .2s,color .2s;white-space:nowrap;
+}
+.filter-btn:hover{background:var(--text-strong);color:var(--bg);}
+.filter-btn__count{
+  display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 5px;
+  background:var(--text-strong);color:var(--bg);font-size:10px;border-radius:9px;margin-left:2px;
+}
+.filter-btn:hover .filter-btn__count{background:var(--bg);color:var(--text-strong);}
+.result-count{font-size:var(--t-xs);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sort-wrap{position:relative;flex-shrink:0;}
+.sort-select{
+  appearance:none;-webkit-appearance:none;border:0;border-bottom:1px solid var(--line);
+  background:transparent;padding:8px 24px 8px 0;font-size:var(--t-xs);
+  letter-spacing:.08em;text-transform:uppercase;cursor:pointer;
+}
+.sort-select:focus{outline:none;border-bottom-color:var(--text-strong);}
+.sort-wrap::after{
+  content:'';position:absolute;right:2px;top:50%;width:0;height:0;margin-top:-2px;
+  border-left:4px solid transparent;border-right:4px solid transparent;
+  border-top:5px solid var(--text-strong);pointer-events:none;
+}
+@media(min-width:1024px){.filter-btn{display:none;}}
+@media(max-width:480px){.result-count{display:none;}.toolbar{padding:12px var(--edge);}}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:16px var(--edge) 0;}
+.chips:empty{display:none;}
+.chip{
+  display:inline-flex;align-items:center;gap:8px;padding:6px 10px 6px 12px;
+  background:var(--bg);border:1px solid var(--line);font-size:var(--t-xs);color:var(--text-strong);
+}
+.chip button{color:var(--muted);font-size:14px;line-height:1;transition:color .2s;}
+.chip button:hover{color:var(--text-strong);}
+
+.layout{padding:32px var(--edge) 64px;display:block;}
+@media(min-width:1024px){
+  .layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:48px;align-items:start;}
+}
+
+/* FILTERS */
+.filters{background:var(--bg);}
+.filters__head{
+  display:none;justify-content:space-between;align-items:center;
+  padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:24px;
+}
+.filters__head-title{font-size:var(--t-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--text-strong);}
+.filters__close{width:32px;height:32px;display:grid;place-items:center;font-size:18px;color:var(--muted);}
+.filters__close:hover{color:var(--text-strong);}
+.filter-group{border-bottom:1px solid var(--line);padding:20px 0;}
+.filter-group:first-of-type{padding-top:0;}
+.filter-group summary{
+  display:flex;justify-content:space-between;align-items:center;font-size:var(--t-xs);
+  letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--text-strong);padding-bottom:4px;
+}
+.filter-group summary::after{content:'−';font-size:16px;line-height:1;color:var(--muted);}
+.filter-group:not([open]) summary::after{content:'+';}
+.filter-group:not([open]) summary{padding-bottom:0;}
+.filter-options{display:grid;gap:12px;padding-top:16px;}
+.opt{display:flex;align-items:center;gap:10px;font-size:var(--t-sm);color:var(--muted);cursor:pointer;transition:color .2s;user-select:none;}
+.opt:hover{color:var(--text-strong);}
+.opt input{position:absolute;opacity:0;pointer-events:none;}
+.opt__box{flex-shrink:0;width:16px;height:16px;border:1px solid var(--line);display:grid;place-items:center;transition:background .2s,border-color .2s;background:var(--bg);}
+.opt__box::after{content:'';width:6px;height:6px;background:var(--bg);opacity:0;transition:opacity .15s;}
+.opt input:checked ~ .opt__box{background:var(--text-strong);border-color:var(--text-strong);}
+.opt input:checked ~ .opt__box::after{opacity:1;}
+.opt input:checked ~ .opt__text{color:var(--text-strong);font-weight:500;}
+.price-range{padding-top:16px;display:grid;gap:12px;}
+.price-range input[type="range"]{-webkit-appearance:none;appearance:none;width:100%;height:2px;background:var(--line);outline:none;margin:10px 0;}
+.price-range input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:14px;height:14px;background:var(--text-strong);border-radius:50%;cursor:pointer;border:2px solid var(--bg);box-shadow:0 0 0 1px var(--text-strong);}
+.price-range input[type="range"]::-moz-range-thumb{width:14px;height:14px;background:var(--text-strong);border-radius:50%;cursor:pointer;border:2px solid var(--bg);box-shadow:0 0 0 1px var(--text-strong);}
+.price-values{display:flex;justify-content:space-between;font-size:var(--t-xs);color:var(--muted);}
+.filters__reset{margin-top:24px;width:100%;padding:12px;border:1px solid var(--line);font-size:var(--t-xs);letter-spacing:.1em;text-transform:uppercase;color:var(--text-strong);transition:border-color .2s,background .2s;}
+.filters__reset:hover{border-color:var(--text-strong);background:var(--bg-soft);}
+@media(max-width:1023px){
+  .filters{position:fixed;top:0;right:0;bottom:0;width:min(340px,88vw);z-index:100;padding:20px 20px 32px;overflow-y:auto;-webkit-overflow-scrolling:touch;transform:translateX(100%);visibility:hidden;transition:transform .32s cubic-bezier(.25,.1,.25,1),visibility 0s linear .32s;box-shadow:-20px 0 40px rgba(0,0,0,.06);border-left:1px solid var(--line);}
+  .filters.is-open{transform:translateX(0);visibility:visible;transition:transform .32s cubic-bezier(.25,.1,.25,1),visibility 0s;}
+  .filters__head{display:flex;}
+}
+.overlay{position:fixed;inset:0;background:rgba(17,17,17,.4);z-index:99;opacity:0;pointer-events:none;transition:opacity .28s ease;}
+.overlay.is-visible{opacity:1;pointer-events:auto;}
+
+/* PRODUCT GRID */
+.grid{display:grid;grid-template-columns:1fr;gap:32px 16px;}
+@media(min-width:640px){.grid{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:1024px){.grid{grid-template-columns:repeat(3,1fr);gap:40px 20px;}}
+.card{display:flex;flex-direction:column;background:var(--bg);}
+.card__media{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--bg-soft);}
+.card__media img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.25,.1,.25,1);}
+.card:hover .card__media img{transform:scale(1.03);}
+.card__badge{position:absolute;top:12px;left:12px;padding:5px 9px;background:var(--text-strong);color:var(--bg);font-size:10px;letter-spacing:.12em;text-transform:uppercase;}
+.card__add{position:absolute;left:12px;right:12px;bottom:12px;padding:12px;background:var(--bg);border:1px solid var(--text-strong);font-size:var(--t-xs);letter-spacing:.1em;text-transform:uppercase;color:var(--text-strong);opacity:0;transform:translateY(6px);transition:opacity .25s,transform .25s,background .2s,color .2s;}
+.card:hover .card__add{opacity:1;transform:translateY(0);}
+.card__add:hover{background:var(--text-strong);color:var(--bg);}
+@media(hover:none){.card__add{opacity:1;transform:none;}}
+.card__info{padding:16px 2px 0;display:flex;flex-direction:column;gap:4px;}
+.card__brand{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.card__title{font-family:var(--font-display);font-size:18px;font-weight:500;line-height:1.25;color:var(--text-strong);}
+.card__price{font-size:var(--t-sm);color:var(--text);margin-top:2px;}
+.card__colors{display:flex;gap:6px;margin-top:8px;}
+.swatch{width:11px;height:11px;border-radius:50%;border:1px solid var(--line);}
+.empty{grid-column:1/-1;padding:64px 24px;text-align:center;border:1px dashed var(--line);background:var(--bg);}
+.empty__title{font-family:var(--font-display);font-size:var(--t-xl);color:var(--text-strong);margin-bottom:8px;}
+.empty__text{color:var(--muted);margin-bottom:24px;}
+.empty__btn{display:inline-block;padding:12px 24px;border:1px solid var(--text-strong);font-size:var(--t-xs);letter-spacing:.1em;text-transform:uppercase;color:var(--text-strong);transition:background .2s,color .2s;}
+.empty__btn:hover{background:var(--text-strong);color:var(--bg);}
+
+/* =========================================================
+   CONFIGURATOR
+   ========================================================= */
+.config{
+  background:#14171C;color:#fff;padding:96px var(--edge) 140px;
+  position:relative;isolation:isolate;font-family:var(--font-ui);
+  overflow:clip; /* не создаёт scroll container → sticky работает */
+}
+.config::before{
+  content:'КОНФИГУРАТОР';
+  position:absolute;top:-.1em;right:var(--edge);
+  font-family:var(--ff-geist);font-size:clamp(5rem,13vw,13rem);font-weight:500;
+  line-height:.8;letter-spacing:-.05em;color:rgba(245,183,0,.045);
+  -webkit-text-stroke:1px rgba(245,183,0,.07);z-index:0;pointer-events:none;user-select:none;
+}
+.config::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:280px;
+  background:linear-gradient(180deg,rgba(245,183,0,.06) 0%,rgba(245,183,0,.02) 45%,transparent 100%);
+  pointer-events:none;z-index:0;
+}
+.config__inner{max-width:1240px;margin:0 auto;position:relative;z-index:1;}
+
+.config__header{margin-bottom:56px;max-width:820px;}
+.config__header::before{content:'';display:block;width:60px;height:1px;background:linear-gradient(90deg,#F5B700,transparent);margin-bottom:24px;}
+.config__num{display:block;font-size:.7rem;letter-spacing:.28em;color:#F5B700;text-transform:uppercase;margin-bottom:20px;opacity:.9;font-weight:500;}
+.config__title{font-family:var(--ff-geist);font-size:clamp(1.8rem,4.2vw,3rem);font-weight:500;line-height:1.12;letter-spacing:-.02em;color:#fff;margin-bottom:20px;}
+.config__lead{font-size:clamp(.95rem,1.6vw,1.05rem);line-height:1.7;color:#C7CBD1;max-width:640px;}
+.config__rate{
+  display:inline-flex;align-items:center;gap:10px;
+  margin-top:20px;padding:8px 14px;
+  background:rgba(245,183,0,.08);
+  border:1px solid rgba(245,183,0,.28);
+  font-size:.8rem;color:#F5B700;font-weight:500;letter-spacing:.02em;
+}
+.config__rate::before{content:'◆';font-size:.65rem;}
+
+/* Base */
+.config-base{
+  position:relative;display:grid;grid-template-columns:1fr auto;gap:32px;
+  padding:36px 32px;margin-bottom:40px;
+  background:linear-gradient(135deg,rgba(245,183,0,.09),rgba(245,183,0,.02));
+  border:1px solid rgba(245,183,0,.3);align-items:start;
+}
+.config-base::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#F5B700,transparent);}
+.config-base__title{font-family:var(--ff-geist);font-size:1.4rem;font-weight:500;color:#fff;margin-bottom:8px;letter-spacing:-.005em;}
+.config-base__desc{font-size:.9rem;color:#C7CBD1;margin-bottom:20px;line-height:1.6;}
+.config-base__list{display:grid;grid-template-columns:1fr;gap:10px;}
+@media(min-width:720px){.config-base__list{grid-template-columns:repeat(2,1fr);}}
+.config-base__list li{position:relative;padding-left:20px;font-size:.88rem;line-height:1.5;color:#C7CBD1;}
+.config-base__list li::before{content:'';position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:#F5B700;box-shadow:0 0 10px rgba(245,183,0,.55);}
+.config-base__price{text-align:right;flex-shrink:0;}
+.config-base__price-label{display:block;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:#F5B700;margin-bottom:8px;font-weight:500;}
+.config-base__price-value{display:block;font-family:var(--ff-geist);font-size:clamp(1.5rem,3vw,2rem);font-weight:500;color:#fff;line-height:1;letter-spacing:-.01em;}
+.config-base__price-hours{display:block;margin-top:10px;font-size:.78rem;color:#83878E;letter-spacing:.04em;}
+@media(max-width:640px){.config-base{grid-template-columns:1fr;padding:28px 24px;gap:20px;}.config-base__price{text-align:left;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);}}
+
+/* Group */
+.config-group{margin-bottom:44px;}
+.config-group__head{display:flex;align-items:baseline;gap:16px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:24px;}
+.config-group__num{font-family:var(--ff-geist);font-size:.7rem;letter-spacing:.22em;color:#F5B700;font-weight:500;opacity:.85;}
+.config-group__head h3{font-family:var(--ff-geist);font-size:1.15rem;font-weight:500;color:#fff;letter-spacing:-.005em;line-height:1.3;}
+
+/* Options */
+.config-options{display:grid;grid-template-columns:1fr;gap:10px;}
+@media(min-width:640px){.config-options{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:1024px){.config-options{grid-template-columns:repeat(3,1fr);gap:12px;}}
+
+.config-option{
+  position:relative;display:grid;grid-template-columns:24px 1fr auto;gap:14px;
+  padding:18px 20px;background:rgba(33,37,44,.6);
+  border:1px solid rgba(255,255,255,.08);cursor:pointer;
+  transition:border-color .25s,background .25s;align-items:center;user-select:none;
+}
+.config-option:hover{border-color:rgba(245,183,0,.35);background:rgba(33,37,44,.9);}
+.config-option input{position:absolute;opacity:0;pointer-events:none;}
+.config-option__box{flex-shrink:0;width:20px;height:20px;border:1px solid rgba(255,255,255,.25);display:grid;place-items:center;transition:background .2s,border-color .2s;background:rgba(255,255,255,.02);}
+.config-option__box::after{content:'';width:8px;height:8px;background:#14171C;opacity:0;transition:opacity .15s;}
+.config-option input:checked ~ .config-option__box{background:#F5B700;border-color:#F5B700;}
+.config-option input:checked ~ .config-option__box::after{opacity:1;}
+.config-option:has(input:checked){border-color:rgba(245,183,0,.55);background:rgba(245,183,0,.06);box-shadow:0 0 0 1px rgba(245,183,0,.15);}
+.config-option__content{display:flex;flex-direction:column;gap:3px;min-width:0;}
+.config-option__title{font-family:var(--ff-geist);font-size:.94rem;font-weight:500;color:#fff;line-height:1.3;transition:color .2s;}
+.config-option__desc{font-size:.76rem;color:#83878E;line-height:1.4;}
+.config-option:has(input:checked) .config-option__title{color:#F5B700;}
+.config-option__pricing{display:flex;flex-direction:column;align-items:flex-end;gap:3px;text-align:right;flex-shrink:0;}
+.config-option__price{font-family:var(--ff-geist);font-size:.88rem;font-weight:500;color:#C7CBD1;white-space:nowrap;transition:color .2s;}
+.config-option__hours{font-size:.7rem;color:#83878E;letter-spacing:.02em;white-space:nowrap;transition:color .2s;}
+.config-option:has(input:checked) .config-option__price{color:#F5B700;}
+.config-option:has(input:checked) .config-option__hours{color:rgba(245,183,0,.7);}
+
+/* Guarantee */
+.config-guarantee{
+  display:grid;grid-template-columns:auto 1fr auto;gap:20px;
+  align-items:center;padding:24px 28px;margin-bottom:32px;
+  background:linear-gradient(135deg,rgba(16,185,129,.12),rgba(16,185,129,.02));
+  border:1px solid rgba(16,185,129,.3);border-left:3px solid #10B981;
+}
+.config-guarantee__icon{width:44px;height:44px;border-radius:50%;background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.4);display:grid;place-items:center;color:#10B981;font-size:22px;font-weight:700;flex-shrink:0;}
+.config-guarantee__title{font-family:var(--ff-geist);font-size:1rem;font-weight:500;color:#fff;line-height:1.3;margin-bottom:4px;}
+.config-guarantee__desc{font-size:.85rem;color:#C7CBD1;line-height:1.55;}
+.config-guarantee__value{font-family:var(--ff-geist);font-size:1.5rem;font-weight:500;color:#10B981;line-height:1;white-space:nowrap;}
+@media(max-width:640px){.config-guarantee{grid-template-columns:1fr;padding:20px;text-align:left;}.config-guarantee__value{font-size:1.3rem;}}
+
+/* Sticky total */
+.config-total{
+  position:fixed;left:0;right:0;bottom:0;z-index:40;
+  background:rgba(15,18,22,.96);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  border-top:1px solid rgba(245,183,0,.35);
+  padding:0 var(--edge);
+  box-shadow:0 -20px 40px rgba(0,0,0,.5);
+  transform:translateY(100%);
+  transition:transform .3s ease;
+  pointer-events:none;
+}
+.config-total.is-visible{transform:translateY(0);pointer-events:auto;}
+.config-total__inner{
+  max-width:1240px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:24px;padding:20px 0;flex-wrap:wrap;
+}
+.config-total__left{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;min-width:0;}
+.config-total__label{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:#83878E;font-weight:500;}
+.config-total__value{font-family:var(--ff-geist);font-size:clamp(1.4rem,3vw,2rem);font-weight:500;color:#F5B700;line-height:1;letter-spacing:-.01em;text-shadow:0 0 30px rgba(245,183,0,.35);}
+.config-total__note{font-size:.8rem;color:#83878E;line-height:1.4;}
+.config-total__cta{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 28px;background:#F5B700;color:#14171C;
+  font-size:.84rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  transition:background .2s,transform .2s,box-shadow .2s;white-space:nowrap;
+}
+.config-total__cta:hover{background:#FFD24A;transform:translateY(-2px);box-shadow:0 12px 30px rgba(245,183,0,.4);}
+@media(max-width:640px){
+  .config-total__inner{flex-direction:column;align-items:stretch;gap:14px;padding:16px 0;}
+  .config-total__left{justify-content:space-between;}
+  .config-total__cta{justify-content:center;width:100%;}
+}
+
+/* =========================================================
+   ПОДВАЛ ALBE — ваш готовый
+   ========================================================= */
+.site-footer{
+  --pad:var(--edge);
+  border-top:1px solid rgba(255,255,255,.08);
+  background:rgba(18,21,26,.92);
+  padding:64px 0 24px;position:relative;overflow:hidden;z-index:1;
+  font-family:var(--ff-geist);color:#fff;line-height:1.65;-webkit-font-smoothing:antialiased;
+}
+.site-footer *{box-sizing:border-box;}
+.site-footer a{color:inherit;text-decoration:none;transition:color .25s ease;}
+.site-footer a:hover{color:var(--gold,#F5B700);}
+.site-footer ul{list-style:none;margin:0;padding:0;}
+.site-footer p{margin:0;}
+.footer-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:44px;margin-bottom:44px;padding-left:var(--pad);padding-right:var(--pad);}
+.footer-brand .logo{display:inline-flex;align-items:center;font-family:var(--ff-geist);font-size:1.3rem;font-weight:500;letter-spacing:.06em;color:#fff;white-space:nowrap;line-height:1;margin-bottom:16px;}
+.footer-brand .logo .accent{color:var(--gold,#F5B700);margin-left:.35em;}
+.footer-brand p{font-size:.9rem;color:var(--muted-albe);line-height:1.75;max-width:340px;}
+.footer-requisites{margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.08);font-size:.76rem;color:var(--dim-albe);line-height:1.6;max-width:340px;}
+.footer-requisites span{display:block;}
+.footer-col h3{font-size:.76rem;color:var(--gold,#F5B700);letter-spacing:.16em;text-transform:uppercase;margin:0 0 18px;font-weight:500;}
+.footer-col ul{display:flex;flex-direction:column;gap:10px;}
+.footer-col a{font-size:.9rem;color:var(--muted-albe);}
+.footer-cities{position:relative;z-index:1;padding:32px var(--pad) 0;margin-bottom:36px;display:flex;align-items:baseline;gap:28px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.08);}
+.footer-cities h3{font-size:.76rem;color:var(--gold,#F5B700);letter-spacing:.16em;text-transform:uppercase;font-weight:500;flex-shrink:0;margin:0;}
+.footer-cities ul{display:flex;flex-wrap:wrap;gap:10px 24px;}
+.footer-cities a{font-size:.9rem;color:var(--muted-albe);transition:color .25s ease;position:relative;}
+.footer-cities a.active{color:var(--gold,#F5B700);pointer-events:none;}
+.footer-cities a.active::after{content:'·';position:absolute;right:-14px;top:50%;transform:translateY(-50%);color:var(--gold,#F5B700);opacity:.5;}
+.footer-bottom{position:relative;z-index:1;padding:24px var(--pad) 0;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.84rem;color:var(--dim-albe);}
+.footer-tagline{font-family:var(--ff-geist);font-weight:500;letter-spacing:.04em;background:linear-gradient(90deg,var(--gold,#F5B700),#FFE07A,var(--green,#10B981),var(--cyan,#06B6D4));background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:albeFooterShimmer 6s linear infinite;text-align:right;}
+@keyframes albeFooterShimmer{0%{background-position:0% center}100%{background-position:200% center}}
+@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;gap:28px;}.footer-cities{flex-direction:column;gap:12px;align-items:flex-start;padding-top:24px;margin-bottom:24px;}}
+@media(max-width:560px){.footer-grid{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;align-items:center;text-align:center;}.footer-tagline{text-align:center;font-size:clamp(.52rem,2.7vw,.8rem);white-space:nowrap;overflow:hidden;}}
+@media(prefers-reduced-motion:reduce){.footer-tagline{animation:none;}}
+</style>
+</head>
+<body>
+
+<!-- ALBE casebar -->
+<div class="albe-casebar">
+  <a href="#" class="albe-casebar__brand">ALBE<span>DIGITAL</span></a>
+  <span class="albe-casebar__label">Готовый интернет-магазин · запуск от 7 дней</span>
+  <a href="#config" class="albe-casebar__cta">Конфигуратор →</a>
+</div>
+
+<!-- Хлебные крошки -->
+<nav class="breadcrumbs" aria-label="Хлебные крошки">
+  <ol>
+    <li><a href="/">Главная</a></li>
+    <li><a href="/portfolio.html">Шаблоны</a></li>
+    <li aria-current="page">Онлайн магазин</li>
+  </ol>
+</nav>
+
+<!-- MAISON header -->
+<header class="header">
+  <a href="#" class="logo">MAISON</a>
+  <nav class="nav" aria-label="Навигация">
+    <a href="#">Новинки</a>
+    <a href="#">Одежда</a>
+    <a href="#">Аксессуары</a>
+    <a href="#">Наследие</a>
+  </nav>
+  <div class="header-icons">
+    <button class="icon-btn" aria-label="Поиск">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
+    </button>
+    <button class="icon-btn" aria-label="Корзина">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 7h12l-1 14H7L6 7Z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero__media">
+    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1800&q=85&fit=crop&auto=format" alt="Кампания коллекции" fetchpriority="high" />
+  </div>
+  <div class="hero__overlay"></div>
+  <div class="hero__content">
+    <p class="hero__eyebrow">Готовый магазин · Премиум-класс</p>
+    <h1 class="hero__title">Тихая роскошь<br>в каждой детали</h1>
+    <p class="hero__text">Отобранные силуэты, натуральные материалы и безупречный крой. Редакционная подборка сезона.</p>
+    <a href="#catalog" class="hero__cta">Смотреть коллекцию <span>→</span></a>
+  </div>
+</section>
+
+<!-- TOOLBAR -->
+<div class="toolbar" id="catalog">
+  <div class="toolbar__left">
+    <button class="filter-btn" id="filterOpen" aria-expanded="false">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+      Фильтры
+      <span class="filter-btn__count" id="filterCount" hidden>0</span>
+    </button>
+    <span class="result-count" id="resultCount"></span>
+  </div>
+  <div class="sort-wrap">
+    <label>
+      <span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Сортировать</span>
+      <select class="sort-select" id="sortSelect">
+        <option value="featured">По подборке</option>
+        <option value="price-asc">Цена ↑</option>
+        <option value="price-desc">Цена ↓</option>
+        <option value="new">Новинки</option>
+      </select>
+    </label>
+  </div>
+</div>
+
+<div class="chips" id="chips"></div>
+
+<!-- CATALOG -->
+<main class="layout">
+  <aside class="filters" id="filtersPanel" aria-label="Фильтры">
+    <div class="filters__head">
+      <span class="filters__head-title">Фильтры</span>
+      <button class="filters__close" id="filterClose" aria-label="Закрыть">✕</button>
+    </div>
+    <details class="filter-group" open>
+      <summary>Категория</summary>
+      <div class="filter-options" data-group="category">
+        <label class="opt"><input type="checkbox" value="outerwear"><span class="opt__box"></span><span class="opt__text">Верхняя одежда</span></label>
+        <label class="opt"><input type="checkbox" value="knitwear"><span class="opt__box"></span><span class="opt__text">Трикотаж</span></label>
+        <label class="opt"><input type="checkbox" value="tailoring"><span class="opt__box"></span><span class="opt__text">Костюмы</span></label>
+        <label class="opt"><input type="checkbox" value="accessories"><span class="opt__box"></span><span class="opt__text">Аксессуары</span></label>
+      </div>
+    </details>
+    <details class="filter-group" open>
+      <summary>Размер</summary>
+      <div class="filter-options" data-group="size">
+        <label class="opt"><input type="checkbox" value="XS"><span class="opt__box"></span><span class="opt__text">XS</span></label>
+        <label class="opt"><input type="checkbox" value="S"><span class="opt__box"></span><span class="opt__text">S</span></label>
+        <label class="opt"><input type="checkbox" value="M"><span class="opt__box"></span><span class="opt__text">M</span></label>
+        <label class="opt"><input type="checkbox" value="L"><span class="opt__box"></span><span class="opt__text">L</span></label>
+        <label class="opt"><input type="checkbox" value="XL"><span class="opt__box"></span><span class="opt__text">XL</span></label>
+      </div>
+    </details>
+    <details class="filter-group" open>
+      <summary>Цвет</summary>
+      <div class="filter-options" data-group="color">
+        <label class="opt"><input type="checkbox" value="black"><span class="opt__box"></span><span class="opt__text">Чёрный</span></label>
+        <label class="opt"><input type="checkbox" value="ecru"><span class="opt__box"></span><span class="opt__text">Экрю</span></label>
+        <label class="opt"><input type="checkbox" value="grey"><span class="opt__box"></span><span class="opt__text">Серый</span></label>
+        <label class="opt"><input type="checkbox" value="brown"><span class="opt__box"></span><span class="opt__text">Коричневый</span></label>
+      </div>
+    </details>
+    <details class="filter-group" open>
+      <summary>Цена</summary>
+      <div class="price-range">
+        <input type="range" id="priceRange" min="0" max="2500" step="50" value="2500" aria-label="Максимальная цена">
+        <div class="price-values">
+          <span>0 €</span>
+          <span id="priceOutput">2 500 €</span>
+        </div>
+      </div>
+    </details>
+    <button class="filters__reset" id="resetBtn">Сбросить всё</button>
+  </aside>
+
+  <div class="overlay" id="overlay"></div>
+  <section class="grid" id="grid" aria-live="polite"></section>
+</main>
+
+<!-- ============================================================
+     КОНФИГУРАТОР ГОТОВОГО МАГАЗИНА
+     ============================================================ -->
+<section class="config" id="config">
+  <div class="config__inner">
+    <div class="config__header">
+      <span class="config__num">Конфигуратор · часовая ставка</span>
+      <h2 class="config__title">Соберите готовый интернет-магазин<br>под свой бизнес</h2>
+      <p class="config__lead">Вы покупаете <strong style="color:#F5B700">готовую платформу</strong>, а не разработку с нуля. Базовая комплектация — каталог, корзина, админка на Laravel, премиум-дизайн. Отметьте нужные модули — стоимость и срок запуска пересчитаются автоматически.</p>
+      <div class="config__rate">Ставка 2 000 ₽/час · База — 75 часов работы команды</div>
+    </div>
+
+    <!-- BASE -->
+    <div class="config-base">
+      <div>
+        <div class="config-base__title">Базовая комплектация</div>
+        <div class="config-base__desc">Готовый интернет-магазин на Laravel 11 + кастомная админ-панель</div>
+        <ul class="config-base__list">
+          <li>Премиум-дизайн (белый + графит)</li>
+          <li>Каталог с фильтрами и сортировкой</li>
+          <li>Корзина и оформление заказа</li>
+          <li>Backend Laravel 11 + MySQL</li>
+          <li>Кастомная админ-панель (Laravel custom)</li>
+          <li>Адаптив под все устройства</li>
+          <li>Базовая SEO-настройка (метатеги, sitemap, robots)</li>
+          <li>Запуск за 7 дней</li>
+        </ul>
+      </div>
+      <div class="config-base__price">
+        <span class="config-base__price-label">Фикс. стоимость</span>
+        <span class="config-base__price-value">150 000 ₽</span>
+        <span class="config-base__price-hours">75 часов · 7 дней</span>
+      </div>
+    </div>
+
+    <!-- ГРУППА 1 -->
+    <div class="config-group">
+      <div class="config-group__head">
+        <span class="config-group__num">01</span>
+        <h3>Функционал магазина</h3>
+      </div>
+      <div class="config-options">
+        <label class="config-option">
+          <input type="checkbox" data-price="16000" data-hours="8">
+          <span class="config-option__box"></span>
+          <div class="config-option__content">
+            <div class="config-option__title">Онлайн-оплата</div>
+            <div class="config-option__desc">ЮKassa, Тинькофф, СБП</div>
+          </div>
+          <div class="config-option__pricing">
+            <span class="config-option__price">+16 000 ₽</span>
+            <span class="config-option__hours">+8 ч</span>
+          </div>
+        </label>
+        <label class="config-option">
+          <input type="checkbox" data-price="16000" data-hours="8">
+          <span class="config-option__box"></span>
+          <div class="config-option__content">
+            <div class="config-option__title">Расчёт доставки</div>
+            <div class="config-option__desc">СДЭК, Boxberry, Почта</div>
+          </div>
+          <div class="config-option__pricing">
+            <span class="config-option__price">+16 000 ₽</span>
+            <span class="config-option__hours">+8 ч</span>
+          </div>
+        </label>
+        <label class="config-option">
+          <input type="checkbox" data-price="24000" data-hours="12">
+          <span class="config-option__box"></span>
+          <div class="config-option__content">
+            <div class="config-option__title">Личный кабинет</div>
+            <div class="config-option__desc">История заказов, адреса</div>
+          </div>
+          <div class="config-option__pricing">
+            <span class="config-option__price">+24 000 ₽</span>
+            <span class="config-option__hours">+12 ч</span>
+          </div>
+        </label>
+        <label class="config-option">
+          <input type="checkbox" data-price="24000" data-hours="12">
+          <span class="config-option__box"></span>
+          <div class="config-option__content">
+            <div class="config-option__title">Мультиязычность</div>
+            <div class="config-option__desc">RU + EN (или другой)</div>
+          </div>
+          <div class="config-option__pricing">
+            <span class="config-option__price">+24 000 ₽</span>
+            <span class="config-option__hours">+12 ч</span>
+          </div>
+        </label>
+        <label class="config-option">
+          <input type="checkbox" data-price="16000" data-hours="8">
+          <span class="config-option__box"></span>
+          <div class="config-option__content">
+            <div class="config-option__title">Блог / статьи</div>
+            <div class="config-option__desc">SEO-контент, редактор</div>
+          </div>
+          <div class="config-option__pricing">
+            <span class="config-option__price">+16 000 ₽</span>
+            <span class="config-option__hours">+8 ч</span>
+          </div>
+        </label>
+        <label class="config-option">
+          <input type="checkbox" data-price="10000" data-hours="5">
+          <span class="config-option__box"></span>
+          <div class="config-option__content">
+            <div class="config-option__title">Отзывы и рейтинги</div>
+            <div class="config-option__desc">Модерация, звёзды</div>
+          </div>
+          <div class="config-option__pricing">
+            <span class="config-option__price">+10 000 ₽</span>
+            <span class="config-option__hours">+5 ч</span>
+          </div>
+        </label>
+        <label class="config-option">
+          <input type="checkbox" data-price="8000" data-hours="4">
+          <span class="config-option__box"></span>
+          <div class="config-option__content">
+            <div class="config-option__title">Промокоды и скидки</div>
+            <div class="config-option__desc">Гибкие правила</div>
+          </div>
+          <div class="config-option__pricing">
+            <span class="config-option__price">+8 000 ₽</span>
+            <span class="config-option__hours">+4 ч</span>
+          </div>
+        </label>
+        <label class="config-option">
+          <input type="checkbox" data-price="24000" data-hours="12">
+          <span class="config-option__box"></span>
+          <div class="config-option__content">
+            <div class="config-option__title">Программа лояльности</div>
+            <div class="config-option__desc">Бонусы, уровни</div>
+          </div>
+          <div class="config-option__pricing">
+            <span class="config-option__price">+24 000 ₽</span>
+            <span class="config-option__hours">+12 ч</span>
+          </div>
+        </label>
+        <label class="config-option">
+          <input type="checkbox" data-price="8000" data-hours="4">
+          <span class="config-option__box"></span>
+          <div class="config-option__content">
+            <div class="config-option__title">Избранное (Wishlist)</div>
+            <div class="config-option__desc">Сохранение товаров</div>
+          </div>
+          <div class="config-option__pricing">
+            <span class="config-option__price">+8 000 ₽</span>
+            <span class="config-option__hours">+4 ч</span>
+          </div>
+        </label>
+        <label class="config-option">
+          <input type="checkbox" data-price="10000" data-hours="5">
+          <span class="config-option__box"></span>
+          <div class="config-option__content">
+            <div class="config-option__title">Сравнение товаров</div>
+            <div class="config-option__desc">Таблица характеристик</div>
+          </div>
+          <div class="config-option__pricing">
+            <span class="config-option__price">+10 000 ₽</span>
+            <span class="config-option__hours">+5 ч</span>
+          </div>
+        </label>
+        <label class="config-option">
+          <input type="checkbox" data-price="14000" data-hours="7">
+          <span class="config-option__box"></span>
+          <div class="config-option__content">
+            <div class="config-option__title">Подарочные сертификаты</div>
+            <div class="config-option__desc">Электронные, с балансом</div>
+          </div>
+          <div class="config-option__pricing">
+            <span class="config-option__price">+14 000 ₽</span>
+            <span class="config-option__hours">+7 ч</span>
+          </div>
+        </label>
+        <label class="config-option">
+          <input type="checkbox" data-price="6000" data-hours="3">
+          <span class="config-option__box"></span>
+          <div class="config-option__content">
+            <div class="config-option__title">Онлайн-чат</div>
+            <div class="config-option__desc">Виджет на сайте</div>
+          </div>
+          <div class="config-option__pricing">
+            <span class="config-option__price">+6 000 ₽</span>
+            <span class="config-option__hours">+3 ч</span>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- ГРУППА 2 -->
+    <div class="config-group">
+      <div class="config-group__head">
+        <span class="config-group__num">02</span>
+        <h3>Интеграции</h3>
+      </div>
+      <div class="config-options">
+        <label class="config-option">
+          <input type="checkbox" data-price="30000" data-hours="15">
+          <span class="config-option__box"></span>
+          <div class="config-option__content">
+            <div class="config-option__title">1С / МойСклад</div>
+            <div class="config-option__desc">Синхронизация товаров и остатков</div>
+          </div>
+          <div class="config-option__pricing">
+            <span class="config-option__price">+30 000 ₽</span>
+            <span class="config-option__hours">+15 ч</span>
+          </div>
+        </label>
+        <label class="config-option">
+          <input type="checkbox" data-price="20000" data-hours="10">
+          <span class="config-option__box"></span>
+          <div class="config-option__content">
+            <div class="config-option__title">Bitrix24 / amoCRM</div>
+            <div class="config-option__desc">Заявки и сделки в CRM</div>
+          </div>
+          <div class="config-option__pricing">
+            <span class="config-option__price">+20 000 ₽</span>
+            <span class="config-option__hours">+10 ч</span>
+          </div>
+        </label>
+        <label class="config-option">
+          <input type="checkbox" data-price="12000" data-hours="6">
+          <span class="config-option__box"></span>
+          <div class="config-option__content">
+            <div class="config-option__title">Телефония</div>
+            <div class="config-option__desc">Mango, Beeline, Sipuni</div>
+          </div>
+          <div class="config-option__pricing">
+            <span class="config-option__price">+12 000 ₽</span>
+            <span class="config-option__hours">+6 ч</span>
+          </div>
+        </label>
+        <label class="config-option">
+          <input type="checkbox" data-price="24000" data-hours="12">
+          <span class="config-option__box"></span>
+          <div class="config-option__content">
+            <div class="config-option__title">Маркетплейсы</div>
+            <div class="config-option__desc">Яндекс.Маркет, Google Merchant</div>
+          </div>
+          <div class="config-option__pricing">
+            <span class="config-option__price">+24 000 ₽</span>
+            <span class="config-option__hours">+12 ч</span>
+          </div>
+        </label>
+        <label class="config-option">
+          <input type="checkbox" data-price="12000" data-hours="6">
+          <span class="config-option__box"></span>
+          <div class="config-option__content">
+            <div class="config-option__title">Email-рассылки</div>
+            <div class="config-option__desc">Unisender, SendPulse</div>
+          </div>
+          <div class="config-option__pricing">
+            <span class="config-option__price">+12 000 ₽</span>
+            <span class="config-option__hours">+6 ч</span>
+          </div>
+        </label>
+        <label class="config-option">
+          <input type="checkbox" data-price="20000" data-hours="10">
+          <span class="config-option__box"></span>
+          <div class="config-option__content">
+            <div class="config-option__title">Telegram-бот</div>
+            <div class="config-option__desc">Заказы, уведомления</div>
+          </div>
+          <div class="config-option__pricing">
+            <span class="config-option__price">+20 000 ₽</span>
+            <span class="config-option__hours">+10 ч</span>
+          </div>
+        </label>
+        <label class="config-option">
+          <input type="checkbox" data-price="10000" data-hours="5">
+          <span class="config-option__box"></span>
+          <div class="config-option__content">
+            <div class="config-option__title">WhatsApp-уведомления</div>
+            <div class="config-option__desc">Статусы заказов</div>
+          </div>
+          <div class="config-option__pricing">
+            <span class="config-option__price">+10 000 ₽</span>
+            <span class="config-option__hours">+5 ч</span>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- ГРУППА 3 -->
+    <div class="config-group">
+      <div class="config-group__head">
+        <span class="config-group__num">03</span>
+        <h3>Маркетинг и SEO</h3>
+      </div>
+      <div class="config-options">
+        <label class="config-option">
+          <input type="checkbox" data-price="30000" data-hours="15">
+          <span class="config-option__box"></span>
+          <div class="config-option__content">
+            <div class="config-option__title">Расширенная SEO-настройка</div>
+            <div class="config-option__desc">Семантика, метатеги, структура</div>
+          </div>
+          <div class="config-option__pricing">
+            <span class="config-option__price">+30 000 ₽</span>
+            <span class="config-option__hours">+15 ч</span>
+          </div>
+        </label>
+        <label class="config-option">
+          <input type="checkbox" data-price="40000" data-hours="20">
+          <span class="config-option__box"></span>
+          <div class="config-option__content">
+            <div class="config-option__title">Гарантия ТОП-10 Яндекса</div>
+            <div class="config-option__desc">Вывод в ТОП-10 за 1 месяц</div>
+          </div>
+          <div class="config-option__pricing">
+            <span class="config-option__price">+40 000 ₽</span>
+            <span class="config-option__hours">+20 ч</span>
+          </div>
+        </label>
+        <label class="config-option">
+          <input type="checkbox" data-price="12000" data-hours="6">
+          <span class="config-option__box"></span>
+          <div class="config-option__content">
+            <div class="config-option__title">Аналитика</div>
+            <div class="config-option__desc">GA4 + Метрика + цели</div>
+          </div>
+          <div class="config-option__pricing">
+            <span class="config-option__price">+12 000 ₽</span>
+            <span class="config-option__hours">+6 ч</span>
+          </div>
+        </label>
+        <label class="config-option">
+          <input type="checkbox" data-price="8000" data-hours="4">
+          <span class="config-option__box"></span>
+          <div class="config-option__content">
+            <div class="config-option__title">Schema.org разметка</div>
+            <div class="config-option__desc">Для расширенных сниппетов</div>
+          </div>
+          <div class="config-option__pricing">
+            <span class="config-option__price">+8 000 ₽</span>
+            <span class="config-option__hours">+4 ч</span>
+          </div>
+        </label>
+        <label class="config-option">
+          <input type="checkbox" data-price="16000" data-hours="8">
+          <span class="config-option__box"></span>
+          <div class="config-option__content">
+            <div class="config-option__title">Core Web Vitals 90+</div>
+            <div class="config-option__desc">Оптимизация скорости</div>
+          </div>
+          <div class="config-option__pricing">
+            <span class="config-option__price">+16 000 ₽</span>
+            <span class="config-option__hours">+8 ч</span>
+          </div>
+        </label>
+        <label class="config-option">
+          <input type="checkbox" data-price="20000" data-hours="10">
+          <span class="config-option__box"></span>
+          <div class="config-option__content">
+            <div class="config-option__title">Настройка Яндекс.Директ</div>
+            <div class="config-option__desc">Поиск + РСЯ</div>
+          </div>
+          <div class="config-option__pricing">
+            <span class="config-option__price">+20 000 ₽</span>
+            <span class="config-option__hours">+10 ч</span>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- ГРУППА 4 -->
+    <div class="config-group">
+      <div class="config-group__head">
+        <span class="config-group__num">04</span>
+        <h3>Брендинг и запуск</h3>
+      </div>
+      <div class="config-options">
+        <label class="config-option">
+          <input type="checkbox" data-price="20000" data-hours="10">
+          <span class="config-option__box"></span>
+          <div class="config-option__content">
+            <div class="config-option__title">Логотип + фирменный стиль</div>
+            <div class="config-option__desc">Айдентика под ваш бренд</div>
+          </div>
+          <div class="config-option__pricing">
+            <span class="config-option__price">+20 000 ₽</span>
+            <span class="config-option__hours">+10 ч</span>
+          </div>
+        </label>
+        <label class="config-option">
+          <input type="checkbox" data-price="20000" data-hours="10">
+          <span class="config-option__box"></span>
+          <div class="config-option__content">
+            <div class="config-option__title">Наполнение каталога</div>
+            <div class="config-option__desc">До 100 товаров</div>
+          </div>
+          <div class="config-option__pricing">
+            <span class="config-option__price">+20 000 ₽</span>
+            <span class="config-option__hours">+10 ч</span>
+          </div>
+        </label>
+        <label class="config-option">
+          <input type="checkbox" data-price="8000" data-hours="4">
+          <span class="config-option__box"></span>
+          <div class="config-option__content">
+            <div class="config-option__title">Обучение персонала</div>
+            <div class="config-option__desc">2 часа + запись</div>
+          </div>
+          <div class="config-option__pricing">
+            <span class="config-option__price">+8 000 ₽</span>
+            <span class="config-option__hours">+4 ч</span>
+          </div>
+        </label>
+        <label class="config-option">
+          <input type="checkbox" data-price="12000" data-hours="0">
+          <span class="config-option__box"></span>
+          <div class="config-option__content">
+            <div class="config-option__title">Хостинг на 1 год</div>
+            <div class="config-option__desc">Надёжный сервер, SSL включён</div>
+          </div>
+          <div class="config-option__pricing">
+            <span class="config-option__price">+12 000 ₽</span>
+            <span class="config-option__hours">фикс.</span>
+          </div>
+        </label>
+        <label class="config-option">
+          <input type="checkbox" data-price="1500" data-hours="0">
+          <span class="config-option__box"></span>
+          <div class="config-option__content">
+            <div class="config-option__title">Домен .ru</div>
+            <div class="config-option__desc">Регистрация на 1 год</div>
+          </div>
+          <div class="config-option__pricing">
+            <span class="config-option__price">+1 500 ₽</span>
+            <span class="config-option__hours">фикс.</span>
+          </div>
+        </label>
+        <label class="config-option">
+          <input type="checkbox" data-price="40000" data-hours="20">
+          <span class="config-option__box"></span>
+          <div class="config-option__content">
+            <div class="config-option__title">Техподдержка 3 месяца</div>
+            <div class="config-option__desc">Доработки, консультации</div>
+          </div>
+          <div class="config-option__pricing">
+            <span class="config-option__price">+40 000 ₽</span>
+            <span class="config-option__hours">+20 ч</span>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Гарантия -->
+    <div class="config-guarantee">
+      <div class="config-guarantee__icon">✓</div>
+      <div>
+        <div class="config-guarantee__title">Гарантия вывода в ТОП-10 Яндекса за 1 месяц</div>
+        <div class="config-guarantee__desc">Фиксируется в договоре. Не достигли KPI — дорабатываем за свой счёт. Опция «Гарантия ТОП-10 Яндекса» в блоке «Маркетинг и SEO» (+20 ч · +40 000 ₽).</div>
+      </div>
+      <div class="config-guarantee__value">1 мес</div>
+    </div>
+  </div>
+</section>
+
+<!-- Sticky total -->
+<div class="config-total" id="configTotal">
+  <div class="config-total__inner">
+    <div class="config-total__left">
+      <span class="config-total__label">Итого</span>
+      <span class="config-total__value" id="totalValue">150 000 ₽</span>
+      <span class="config-total__note" id="totalNote">75 часов · запуск за 7 дней</span>
+    </div>
+    <a href="https://t.me/albe_web" target="_blank" rel="noopener" class="config-total__cta">Оставить заявку →</a>
+  </div>
+</div>
+
+<!-- ============================================================
+     ПОДВАЛ ALBE DIGITAL — ваш готовый
+     Для перехода на footer-loader.js замените этот блок на:
+     <div id="footer-placeholder"></div>
+     <script src="/js/footer-loader.js" defer></script>
+     ============================================================ -->
+<footer class="site-footer" data-nosnippet="true" role="contentinfo">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#top" class="logo" aria-label="ALBE DIGITAL — на главную">ALBE<span class="accent">DIGITAL</span></a>
+      <p>Разработка сайтов под ключ, премиум дизайн, SEO-продвижение с гарантией, AI-решения, мобильные приложения и разработка ЛНА.</p>
+      <div class="footer-requisites">
+        <span>ООО "АЛЬБЕ-ДИДЖИТАЛ".</span>
+        <span>ИНН 7811818720, ОГРН 1267800072000</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h3>Услуги</h3>
+      <ul>
+        <li><a href="/services.html">Веб-разработка</a></li>
+        <li><a href="/services.html">Дизайн</a></li>
+        <li><a href="/services.html">E-commerce</a></li>
+        <li><a href="/services.html">SEO и аналитика</a></li>
+        <li><a href="/services.html">AI и ML</a></li>
+        <li><a href="/services.html">Мобильные приложения</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>Компания</h3>
+      <ul>
+        <li><a href="/portfolio.html">Кейсы</a></li>
+        <li><a href="/services.html">ЛНА</a></li>
+        <li><a href="/about.html">О нас</a></li>
+        <li><a href="/blog/">Блог</a></li>
+        <li><a href="/#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>Документы</h3>
+      <ul>
+        <li><a href="/privacy.html">Политика конфиденциальности</a></li>
+        <li><a href="/privacy.html">Пользовательское соглашение</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>Контакты</h3>
+      <ul>
+        <li><a href="https://t.me/albe_web" target="_blank" rel="noopener">Telegram @albe_web</a></li>
+        <li><a href="mailto:digitalalbe@gmail.com">digitalalbe@gmail.com</a></li>
+        <li>Санкт-Петербург</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-cities">
+    <h3>География</h3>
+    <ul>
+      <li><a href="/" class="active" aria-current="page">Санкт-Петербург</a></li>
+      <li><a href="/msk/">Москва</a></li>
+      <li><a href="/kazan/">Казань</a></li>
+      <li><a href="/nsk/">Новосибирск</a></li>
+      <li><a href="/ekb/">Екатеринбург</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <div>© <span id="year"></span> ALBE DIGITAL. Все права защищены.</div>
+    <div class="footer-tagline">МЫ СОЗДАЕМ НЕ ПРОСТО САЙТЫ — МЫ СОЗДАЕМ БИЗНЕС</div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   КАТАЛОГ
+   ============================================================ */
+const PRODUCTS = [
+  { id:1,  brand:'MAISON',    title:'Пальто-халат из шерсти мериноса',      price:1850, cat:'outerwear',   sizes:['S','M','L'],      colors:['ecru','grey'],   isNew:true,  img:'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=600&q=80&fit=crop' },
+  { id:2,  brand:'ATELIER N', title:'Кашемировый свитер с высоким воротом', price:420,  cat:'knitwear',    sizes:['XS','S','M','L'], colors:['black','ecru'],  isNew:false, img:'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600&q=80&fit=crop' },
+  { id:3,  brand:'STUDIO K',  title:'Костюм двойка свободного кроя',        price:1290, cat:'tailoring',   sizes:['S','M','L','XL'], colors:['black','grey'],  isNew:true,  img:'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80&fit=crop' },
+  { id:4,  brand:'MAISON',    title:'Кожаная сумка-тоут',                    price:890,  cat:'accessories', sizes:['XS'],            colors:['brown','black'], isNew:false, img:'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&q=80&fit=crop' },
+  { id:5,  brand:'ATELIER N', title:'Шерстяные брюки со стрелками',          price:350,  cat:'tailoring',   sizes:['S','M','L'],      colors:['grey','black'],  isNew:false, img:'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600&q=80&fit=crop' },
+  { id:6,  brand:'STUDIO K',  title:'Тренч из хлопка габардин',              price:980,  cat:'outerwear',   sizes:['S','M','L','XL'], colors:['ecru','brown'],  isNew:true,  img:'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80&fit=crop' },
+  { id:7,  brand:'MAISON',    title:'Шелковый шарф с принтом',                price:210,  cat:'accessories', sizes:['XS'],            colors:['black','ecru'],  isNew:false, img:'https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=600&q=80&fit=crop' },
+  { id:8,  brand:'ATELIER N', title:'Жакет с накладными карманами',           price:760,  cat:'tailoring',   sizes:['XS','S','M'],     colors:['brown','grey'],  isNew:false, img:'https://images.unsplash.com/photo-1591369822096-ffd140ec948f?w=600&q=80&fit=crop' },
+  { id:9,  brand:'STUDIO K',  title:'Объемный кардиган из мохера',            price:490,  cat:'knitwear',    sizes:['S','M','L'],      colors:['ecru','grey'],   isNew:true,  img:'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&q=80&fit=crop' },
+  { id:10, brand:'MAISON',    title:'Кожаные перчатки с подкладкой',          price:180,  cat:'accessories', sizes:['S','M','L'],      colors:['black','brown'], isNew:false, img:'https://images.unsplash.com/photo-1544923246-77307dd654cb?w=600&q=80&fit=crop' },
+  { id:11, brand:'ATELIER N', title:'Платье-миди из вискозы',                 price:540,  cat:'tailoring',   sizes:['XS','S','M','L'], colors:['black','grey'],  isNew:true,  img:'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&q=80&fit=crop' },
+  { id:12, brand:'STUDIO K',  title:'Пуховик с поясом',                       price:1350, cat:'outerwear',   sizes:['S','M','L'],      colors:['black','ecru'],  isNew:false, img:'https://images.unsplash.com/photo-1548126032-079a0fb0099d?w=600&q=80&fit=crop' }
+];
+const COLOR_HEX = { black:'#111111', ecru:'#ebe6dc', grey:'#9a9a9a', brown:'#4a3a2a' };
+const LABELS = {
+  outerwear:'Верхняя одежда', knitwear:'Трикотаж', tailoring:'Костюмы', accessories:'Аксессуары',
+  black:'Чёрный', ecru:'Экрю', grey:'Серый', brown:'Коричневый'
+};
+const state = { categories:new Set(), sizes:new Set(), colors:new Set(), maxPrice:2500, sort:'featured' };
+
+const $ = id => document.getElementById(id);
+const grid = $('grid'), chipsEl = $('chips'), countEl = $('resultCount'), badgeEl = $('filterCount');
+const priceRange = $('priceRange'), priceOut = $('priceOutput'), sortSelect = $('sortSelect');
+const panel = $('filtersPanel'), overlay = $('overlay'), openBtn = $('filterOpen'), closeBtn = $('filterClose'), resetBtn = $('resetBtn');
+
+const fmt = n => new Intl.NumberFormat('ru-RU').format(n) + ' €';
+function pluralize(n){ const m10=n%10,m100=n%100; if(m10===1&&m100!==11)return 'предмет'; if(m10>=2&&m10<=4&&(m100<10||m100>=20))return 'предмета'; return 'предметов'; }
+
+function getFiltered(){
+  let list = PRODUCTS.filter(p => {
+    if(state.categories.size && !state.categories.has(p.cat)) return false;
+    if(state.sizes.size && !p.sizes.some(s=>state.sizes.has(s))) return false;
+    if(state.colors.size && !p.colors.some(c=>state.colors.has(c))) return false;
+    if(p.price > state.maxPrice) return false;
+    return true;
+  });
+  if(state.sort==='price-asc')  list.sort((a,b)=>a.price-b.price);
+  if(state.sort==='price-desc') list.sort((a,b)=>b.price-a.price);
+  if(state.sort==='new')        list.sort((a,b)=>Number(b.isNew)-Number(a.isNew));
+  return list;
+}
+function cardHTML(p){
+  const swatches = p.colors.map(c=>`<span class="swatch" style="background:${COLOR_HEX[c]}" title="${LABELS[c]}"></span>`).join('');
+  return `<article class="card">
+    <div class="card__media">
+      ${p.isNew?'<span class="card__badge">Новинка</span>':''}
+      <img src="${p.img}" alt="${p.title}" loading="lazy">
+      <button class="card__add" type="button">Быстрый просмотр</button>
+    </div>
+    <div class="card__info">
+      <span class="card__brand">${p.brand}</span>
+      <h3 class="card__title">${p.title}</h3>
+      <span class="card__price">${fmt(p.price)}</span>
+      <div class="card__colors">${swatches}</div>
+    </div>
+  </article>`;
+}
+function chipHTML(group,value,label){ return `<span class="chip">${label}<button type="button" data-group="${group}" data-value="${value}" aria-label="Убрать фильтр">✕</button></span>`; }
+function renderChips(){
+  const chips=[];
+  state.categories.forEach(v=>chips.push(chipHTML('category',v,LABELS[v])));
+  state.sizes.forEach(v=>chips.push(chipHTML('size',v,v)));
+  state.colors.forEach(v=>chips.push(chipHTML('color',v,LABELS[v])));
+  if(state.maxPrice<2500) chips.push(chipHTML('price','',`До ${fmt(state.maxPrice)}`));
+  chipsEl.innerHTML = chips.join('');
+}
+function render(){
+  const list = getFiltered();
+  grid.innerHTML = list.length ? list.map(cardHTML).join('') : `<div class="empty"><div class="empty__title">Ничего не найдено</div><p class="empty__text">Попробуйте изменить параметры подбора.</p><button class="empty__btn" id="emptyReset">Сбросить фильтры</button></div>`;
+  countEl.textContent = `${list.length} ${pluralize(list.length)}`;
+  const activeCount = state.categories.size + state.sizes.size + state.colors.size + (state.maxPrice<2500?1:0);
+  if(badgeEl){ badgeEl.textContent=activeCount; badgeEl.hidden = activeCount===0; }
+  renderChips();
+  const er = $('emptyReset'); if(er) er.addEventListener('click', resetAll);
+}
+function resetAll(){
+  state.categories.clear(); state.sizes.clear(); state.colors.clear();
+  state.maxPrice=2500; priceRange.value=2500; priceOut.textContent=fmt(2500);
+  document.querySelectorAll('[data-group] input[type="checkbox"]').forEach(i=>i.checked=false);
+  render();
+}
+document.querySelectorAll('[data-group] input[type="checkbox"]').forEach(input=>{
+  input.addEventListener('change',()=>{
+    const group = input.closest('[data-group]').dataset.group;
+    const set = group==='category'?state.categories:group==='size'?state.sizes:state.colors;
+    input.checked ? set.add(input.value) : set.delete(input.value);
+    render();
+  });
+});
+priceRange.addEventListener('input',()=>{ state.maxPrice=Number(priceRange.value); priceOut.textContent=fmt(state.maxPrice); render(); });
+sortSelect.addEventListener('change',()=>{ state.sort=sortSelect.value; render(); });
+chipsEl.addEventListener('click',e=>{
+  const btn = e.target.closest('button[data-group]'); if(!btn) return;
+  const { group, value } = btn.dataset;
+  if(group==='price'){ state.maxPrice=2500; priceRange.value=2500; priceOut.textContent=fmt(2500); }
+  else{
+    const set = group==='category'?state.categories:group==='size'?state.sizes:state.colors;
+    set.delete(value);
+    const inp = document.querySelector(`[data-group="${group}"] input[value="${value}"]`);
+    if(inp) inp.checked = false;
+  }
+  render();
+});
+resetBtn.addEventListener('click', resetAll);
+
+let scrollLockY = 0;
+function openFilters(){
+  scrollLockY = window.scrollY;
+  panel.classList.add('is-open'); overlay.classList.add('is-visible');
+  openBtn.setAttribute('aria-expanded','true');
+  document.body.style.position='fixed';
+  document.body.style.top=`-${scrollLockY}px`;
+  document.body.style.width='100%';
+}
+function closeFilters(){
+  panel.classList.remove('is-open'); overlay.classList.remove('is-visible');
+  openBtn.setAttribute('aria-expanded','false');
+  document.body.style.position='';
+  document.body.style.top='';
+  document.body.style.width='';
+  window.scrollTo(0, scrollLockY);
+}
+openBtn.addEventListener('click', openFilters);
+closeBtn.addEventListener('click', closeFilters);
+overlay.addEventListener('click', closeFilters);
+document.addEventListener('keydown', e=>{ if(e.key==='Escape' && panel.classList.contains('is-open')) closeFilters(); });
+render();
+
+/* ============================================================
+   КОНФИГУРАТОР — расчёт по часовой ставке 2 000 ₽
+   ============================================================ */
+(function(){
+  const BASE_PRICE = 150000;
+  const BASE_HOURS = 75;
+  const RATE = 2000;
+  const HOURS_PER_DAY = 11;
+
+  const totalValue = $('totalValue');
+  const totalNote = $('totalNote');
+  const options = document.querySelectorAll('.config-option input[type="checkbox"]');
+
+  const fmtRub = n => new Intl.NumberFormat('ru-RU').format(n) + ' ₽';
+
+  function pluralizeHours(n){
+    const m100 = n % 100;
+    if (m100 >= 11 && m100 <= 14) return n + ' часов';
+    const m10 = n % 10;
+    if (m10 === 1) return n + ' час';
+    if (m10 >= 2 && m10 <= 4) return n + ' часа';
+    return n + ' часов';
+  }
+  function pluralizeDays(n){
+    const m100 = n % 100;
+    if (m100 >= 11 && m100 <= 14) return n + ' дней';
+    const m10 = n % 10;
+    if (m10 === 1) return n + ' день';
+    if (m10 >= 2 && m10 <= 4) return n + ' дня';
+    return n + ' дней';
+  }
+
+  function recalc(){
+    let sum = BASE_PRICE;
+    let hours = BASE_HOURS;
+    options.forEach(o => {
+      if (o.checked) {
+        sum += Number(o.dataset.price) || 0;
+        hours += Number(o.dataset.hours) || 0;
+      }
+    });
+    const days = Math.max(7, Math.ceil(hours / HOURS_PER_DAY));
+    totalValue.textContent = fmtRub(sum);
+    totalNote.textContent = `${pluralizeHours(hours)} · запуск за ${pluralizeDays(days)}`;
+  }
+
+  options.forEach(o => o.addEventListener('change', recalc));
+  recalc();
+
+  /* Показ sticky-итога только пока секция конфигуратора в поле зрения */
+  const totalBar = document.getElementById('configTotal');
+  const configSection = document.getElementById('config');
+  if (totalBar && configSection && 'IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        totalBar.classList.toggle('is-visible', entry.isIntersecting);
+      });
+    }, { threshold: 0 });
+    obs.observe(configSection);
+  } else if (totalBar) {
+    totalBar.classList.add('is-visible');
+  }
+})();
+
+/* Год в подвале */
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
