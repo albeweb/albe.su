@@ -136,17 +136,17 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 .tpl-intro strong{color:rgb(var(--tab-a));font-weight:500}
 .tpl-intro__price{display:inline-block;margin-top:10px;padding:6px 14px;background:rgba(var(--tab-a),.1);border:1px solid rgba(var(--tab-a),.35);font-family:var(--ff-geist);font-weight:500;font-size:.86rem;letter-spacing:.04em;color:rgb(var(--tab-a));text-shadow:0 0 12px rgba(var(--tab-a),.35)}
 @media(max-width:640px){.tpl-intro{padding:16px 18px;font-size:.9rem;margin-bottom:24px}}
-.tpl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tpl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
 @media(max-width:1024px){.tpl-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.tpl-grid{grid-template-columns:1fr}}
 .tpl-card{position:relative;display:flex;flex-direction:column;background:var(--card-bg);border:var(--brd);overflow:hidden;transition:border-color var(--tr-slow),transform var(--tr-slow),box-shadow var(--tr-slow)}
 .tpl-card::before{content:'';position:absolute;top:0;left:22px;right:22px;height:2px;background:linear-gradient(90deg,transparent,rgb(var(--tab-a)) 50%,transparent);opacity:.5;transition:opacity var(--tr-slow),left var(--tr-slow),right var(--tr-slow);z-index:3;border-radius:0 0 2px 2px}
 .tpl-card:hover{border-color:rgba(var(--tab-a),.55);transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 0 1px rgba(var(--tab-a),.2)}
 .tpl-card:hover::before{opacity:1;left:0;right:0;box-shadow:0 0 20px rgba(var(--tab-a),.6)}
-.tpl-media{position:relative;aspect-ratio:16/10;overflow:hidden;background:linear-gradient(135deg,#0F1115,#1A1D24);border-bottom:var(--brd)}
-.tpl-media img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .6s ease}
+.tpl-media{position:relative;overflow:hidden;background:linear-gradient(135deg,#0F1115,#1A1D24);border-bottom:var(--brd)}
+.tpl-media img{width:100%;height:auto;display:block;transition:transform .6s ease}
 .tpl-card:hover .tpl-media img{transform:scale(1.04)}
-.tpl-media--icon{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px}
+.tpl-media--icon{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;min-height:220px;padding:24px 0}
 .tpl-media--icon svg{position:relative;z-index:1;color:rgb(var(--tab-a));opacity:.55}
 .tpl-media--icon span{position:relative;z-index:1;font-family:var(--ff-geist);font-weight:500;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
 .tpl-media::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(var(--tab-a),.1),transparent 60%);pointer-events:none}
