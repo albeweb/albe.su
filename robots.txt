@@ -1,17 +1,18 @@
 # ================================================================
 # robots.txt для https://albe.su
-# Обновлено: 5 ноября 2026
+# Обновлено: 10 ноября 2026
 #
 # Структура сайта:
 #   /                        — главная
 #   /about.html              — о компании
 #   /services.html           — услуги
-#   /portfolio.html          — портфолио
+#   /ready-sites.html        — готовые сайты
 #   /privacy.html            — политика конфиденциальности
 #   /blog/                   — блог
 #   /msk/  /ekb/  /kazan/  /nsk/ — региональные страницы
+#   /demo/shop-start/        — демо-магазин (не индексируем)
 #   /images/                 — изображения
-#   /js/, /header-loader.js, /footer-loader.js — служебные скрипты
+#   *.woff2                  — шрифты
 #   /header.html, /footer.html — шаблоны для JS-загрузчиков
 # ================================================================
 
@@ -25,6 +26,7 @@ Allow: /
 Disallow: /404.html
 Disallow: /header.html
 Disallow: /footer.html
+Disallow: /demo/
 
 # UTM-метки и клик-идентификаторы
 Disallow: /*utm_
@@ -45,6 +47,7 @@ Allow: /
 Disallow: /404.html
 Disallow: /header.html
 Disallow: /footer.html
+Disallow: /demo/
 Disallow: /*utm_
 Disallow: /*fbclid
 Disallow: /*gclid
@@ -62,6 +65,7 @@ Allow: /
 Disallow: /404.html
 Disallow: /header.html
 Disallow: /footer.html
+Disallow: /demo/
 Disallow: /*utm_
 Disallow: /*fbclid
 Disallow: /*gclid
