@@ -1,52 +1,37 @@
 # ================================================================
 # robots.txt для https://albe.su
 # Обновлено: 10 ноября 2026
-#
-# Структура сайта:
-#   /                        — главная
-#   /about.html              — о компании
-#   /services.html           — услуги
-#   /ready-sites.html        — готовые сайты
-#   /privacy.html            — политика конфиденциальности
-#   /blog/                   — блог
-#   /msk/  /ekb/  /kazan/  /nsk/ — региональные страницы
-#   /demo/shop-start/        — демо-магазин (не индексируем)
-#   /images/                 — изображения
-#   *.woff2                  — шрифты
-#   /header.html, /footer.html — шаблоны для JS-загрузчиков
 # ================================================================
 
-# ----------------------------------------------------------------
-# 1. Все роботы по умолчанию
-# ----------------------------------------------------------------
 User-agent: *
 Allow: /
-
-# Служебное — не индексируем
 Disallow: /404.html
+Disallow: /404
 Disallow: /header.html
+Disallow: /header
 Disallow: /footer.html
+Disallow: /footer
+Disallow: /index.html
 Disallow: /demo/
-
-# UTM-метки и клик-идентификаторы
 Disallow: /*utm_
 Disallow: /*fbclid
 Disallow: /*gclid
 Disallow: /*yclid
 Disallow: /*?from=
 Disallow: /*&from=
+Disallow: /*_openstat
+Disallow: /*erid
+Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&fbclid&gclid&yclid&from&_openstat&erid
 
-# Yandex Clean-param: игнорировать параметры при обходе
-Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&fbclid&gclid&yclid&from
-
-# ----------------------------------------------------------------
-# 2. Яндекс
-# ----------------------------------------------------------------
 User-agent: Yandex
 Allow: /
 Disallow: /404.html
+Disallow: /404
 Disallow: /header.html
+Disallow: /header
 Disallow: /footer.html
+Disallow: /footer
+Disallow: /index.html
 Disallow: /demo/
 Disallow: /*utm_
 Disallow: /*fbclid
@@ -54,17 +39,19 @@ Disallow: /*gclid
 Disallow: /*yclid
 Disallow: /*?from=
 Disallow: /*&from=
-Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&fbclid&gclid&yclid&from
-Crawl-delay: 1
+Disallow: /*_openstat
+Disallow: /*erid
+Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&fbclid&gclid&yclid&from&_openstat&erid
 
-# ----------------------------------------------------------------
-# 3. Google
-# ----------------------------------------------------------------
 User-agent: Googlebot
 Allow: /
 Disallow: /404.html
+Disallow: /404
 Disallow: /header.html
+Disallow: /header
 Disallow: /footer.html
+Disallow: /footer
+Disallow: /index.html
 Disallow: /demo/
 Disallow: /*utm_
 Disallow: /*fbclid
@@ -72,29 +59,24 @@ Disallow: /*gclid
 Disallow: /*yclid
 Disallow: /*?from=
 Disallow: /*&from=
+Disallow: /*_openstat
+Disallow: /*erid
 
-# ----------------------------------------------------------------
-# 4. Картинки — разрешены везде
-# ----------------------------------------------------------------
 User-agent: Googlebot-Image
 Allow: /
 
 User-agent: YandexImages
 Allow: /
 
-# ----------------------------------------------------------------
-# 5. AI-краулеры
-#    Разрешаем — чтобы попадать в AI-ответы ChatGPT / Perplexity /
-#    Claude / Google AI Overviews. Если НЕ хотите, чтобы ваш контент
-#    использовался в обучении моделей — замените Allow на Disallow.
-# ----------------------------------------------------------------
 User-agent: GPTBot
 Allow: /
 Disallow: /404.html
+Disallow: /404
 
 User-agent: OAI-SearchBot
 Allow: /
 Disallow: /404.html
+Disallow: /404
 
 User-agent: ChatGPT-User
 Allow: /
@@ -102,17 +84,16 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 Disallow: /404.html
+Disallow: /404
 
 User-agent: ClaudeBot
 Allow: /
 Disallow: /404.html
+Disallow: /404
 
 User-agent: Google-Extended
 Allow: /
 
-# ----------------------------------------------------------------
-# 6. Агрессивные SEO-краулеры — ограничиваем скорость обхода
-# ----------------------------------------------------------------
 User-agent: AhrefsBot
 Crawl-delay: 10
 
@@ -134,9 +115,6 @@ Crawl-delay: 15
 User-agent: BLEXBot
 Crawl-delay: 15
 
-# ----------------------------------------------------------------
-# 7. Мусорные скраперы — блокируем полностью
-# ----------------------------------------------------------------
 User-agent: Bytespider
 Disallow: /
 
@@ -146,7 +124,4 @@ Disallow: /
 User-agent: ZoominfoBot
 Disallow: /
 
-# ----------------------------------------------------------------
-# 8. Sitemap
-# ----------------------------------------------------------------
 Sitemap: https://albe.su/sitemap.xml
