@@ -525,10 +525,74 @@ body.service-modal-open .site-header{right:var(--sbw,0px)}
 .form-consent-text{font-size:.8rem;color:var(--muted);line-height:1.5}
 .form-consent-text a{color:rgb(var(--sec-a));text-decoration:underline;text-underline-offset:2px}
 .form-consent-text a:hover{color:var(--gold-2)}
+
+/* ═══════ CONSTRUCTOR LINK ═══════ */
+.main-nav a.nav-constructor {
+  position: relative;
+  padding: 10px 18px;
+  background: rgba(245,183,0,.06);
+  border: 1px solid rgba(245,183,0,.45);
+  border-radius: 0;
+  color: var(--gold) !important;
+  font-weight: 500 !important;
+  white-space: nowrap;
+  letter-spacing: .04em;
+  line-height: 1;
+  font-size: .82rem;
+  text-transform: uppercase;
+  transition: all .3s ease;
+  animation: constructorPulse 2.8s ease-in-out infinite;
+}
+.main-nav a.nav-constructor::after {
+  display: none !important;
+  width: 0 !important;
+}
+.main-nav a.nav-constructor:hover {
+  background: var(--gold);
+  color: var(--bg-3) !important;
+  border-color: var(--gold);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px var(--gold-35);
+  animation: none;
+}
+@keyframes constructorPulse {
+  0%, 100% { border-color: rgba(245,183,0,.45); box-shadow: 0 0 0 rgba(245,183,0,0); }
+  50% { border-color: rgba(245,183,0,.85); box-shadow: 0 0 14px rgba(245,183,0,.3); }
+}
+
+/* Mobile */
+.mobile-nav a.nav-constructor {
+  margin: 8px 0;
+  padding: 14px 18px;
+  background: rgba(245,183,0,.08);
+  border: 1px solid rgba(245,183,0,.5);
+  border-bottom: 1px solid rgba(245,183,0,.5);
+  color: var(--gold);
+  border-radius: 0;
+  text-align: center;
+  justify-content: center;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  font-size: .9rem;
+  animation: constructorPulse 2.8s ease-in-out infinite;
+}
+.mobile-nav a.nav-constructor:hover {
+  background: var(--gold);
+  color: var(--bg-3);
+  padding-left: 18px;
+  animation: none;
+}
+
+@media(max-width:1024px) {
+  .main-nav a.nav-constructor { padding: 8px 14px; font-size: .76rem; }
+}
 </style></head><body>
 <canvas id="siteCanvas" class="site-canvas" aria-hidden="true"></canvas>
-<header class="site-header" id="siteHeader"><div class="header-inner"><a href="/" class="logo" aria-label="ALBE DIGITAL — на главную">ALBE<span class="accent">DIGITAL</span></a><nav class="main-nav" aria-label="Основная навигация"><a href="/#cases">Кейсы</a><a href="/services">Услуги</a><a href="/ready-sites">Готовые сайты</a><a href="/about">О нас</a><a href="/#lna">ЛНА</a><a href="/#process">Процесс</a><a href="/seo-prodvizhenie">SEO-продвижение</a><a href="/blog/">Блог</a><a href="/#calculator">Калькулятор</a><a href="/#faq">FAQ</a><a href="/#contacts">Контакты</a><button type="button" class="nav-cta" data-open-modal>Оставить заявку</button></nav><button class="burger" id="burgerBtn" aria-label="Открыть меню" aria-expanded="false"><span></span></button></div></header>
-<nav class="mobile-nav" id="mobileNav" aria-label="Мобильное меню"><a href="/#cases">Кейсы</a><a href="/services">Услуги</a><a href="/ready-sites">Готовые сайты</a><a href="/about">О нас</a><a href="/#lna">ЛНА</a><a href="/#process">Процесс</a><a href="/seo-prodvizhenie">SEO-продвижение</a><a href="/blog/">Блог</a><a href="/#calculator">Калькулятор</a><a href="/#faq">FAQ</a><a href="/#contacts">Контакты</a><button type="button" class="nav-cta" data-open-modal>Оставить заявку</button></nav>
+<header class="site-header" id="siteHeader"><div class="header-inner"><a href="/" class="logo" aria-label="ALBE DIGITAL — на главную">ALBE<span class="accent">DIGITAL</span></a><nav class="main-nav" aria-label="Основная навигация"><a href="/#cases">Кейсы</a><a href="/services">Услуги</a><a href="/ready-sites">Готовые сайты</a><a href="/about">О нас</a><a href="/#lna">ЛНА</a><a href="/#process">Процесс</a><a href="/seo-prodvizhenie">SEO-продвижение</a><a href="/blog/">Блог</a><a href="/#calculator">Калькулятор</a><a href="/#faq">FAQ</a><a href="/#contacts">Контакты</a><a href="https://albe.su/constructor" class="nav-constructor" target="_blank" rel="noopener">Конструктор сайтов</a><button type="button" class="nav-cta" data-open-modal>Оставить заявку</button></nav><button class="burger" id="burgerBtn" aria-label="Открыть меню" aria-expanded="false"><span></span></button></div></header>
+<nav class="mobile-nav" id="mobileNav" aria-label="Мобильное меню"><a href="/#cases">Кейсы</a><a href="/services">Услуги</a><a href="/ready-sites">Готовые сайты</a><a href="/about">О нас</a><a href="/#lna">ЛНА</a><a href="/#process">Процесс</a><a href="/seo-prodvizhenie">SEO-продвижение</a><a href="/blog/">Блог</a><a href="/#calculator">Калькулятор</a><a href="/#faq">FAQ</a><a href="/#contacts">Контакты</a><a href="https://albe.su/constructor" class="nav-constructor" target="_blank" rel="noopener">Конструктор сайтов</a><button type="button" class="nav-cta" data-open-modal>Оставить заявку</button></nav>
 <main id="top">
 <section class="hero-section"><div class="masked-container" aria-hidden="true"><svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none"><defs><radialGradient id="dynamicGrad" cx="50%" cy="50%" r="80%"><stop offset="0%" stop-color="#F5B700" stop-opacity="0.45"><animate attributeName="stop-color" values="#F5B700;#10B981;#06B6D4;#8B5CF6;#F5B700" dur="8s" repeatCount="indefinite"/></stop><stop offset="40%" stop-color="#10B981" stop-opacity="0.26"><animate attributeName="stop-color" values="#10B981;#06B6D4;#8B5CF6;#F5B700;#10B981" dur="8s" repeatCount="indefinite"/></stop><stop offset="75%" stop-color="#06B6D4" stop-opacity="0.12"><animate attributeName="stop-color" values="#06B6D4;#8B5CF6;#F5B700;#10B981;#06B6D4" dur="8s" repeatCount="indefinite"/></stop><stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.03"><animate attributeName="stop-color" values="#8B5CF6;#F5B700;#10B981;#06B6D4;#8B5CF6" dur="8s" repeatCount="indefinite"/></stop></radialGradient></defs><rect width="100%" height="100%" fill="url(#dynamicGrad)"/></svg></div><div class="hero-center"><h1 class="hero-subtitle-top">РАЗРАБОТКА САЙТОВ ПОД КЛЮЧ</h1><div class="albe-letters" aria-hidden="true"><span class="albe-letter albe-a" style="animation-delay:.1s">A</span><span class="albe-letter" style="animation-delay:.34s">L</span><span class="albe-letter" style="animation-delay:.58s">B</span><span class="albe-letter" style="animation-delay:.82s">E</span></div><div class="hero-subtitle-bottom">DIGITAL AGENCY</div><div class="static-prefix">МЫ СОЗДАЕМ</div><div class="dynamic-word-container" id="dynamicWord">ЦИФРОВЫЕ ПРОДУКТЫ</div><div class="hero-stats"><div class="stat-item"><div class="stat-number">7+</div><div class="stat-label">лет опыта</div></div><div class="stat-item"><div class="stat-number">150+</div><div class="stat-label">проектов</div></div><div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">поддержка</div></div><div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">результат</div></div></div></div><div class="hero-bottom-row"><div class="hero-badges">
 <button type="button" class="badge" data-service="design">Премиум дизайн</button>
