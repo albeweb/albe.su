@@ -25,13 +25,18 @@
 
 /* ===== THEME ===== */
 html[data-theme="dark"]{
-  --c1:#22D3EE; --c2:#34D399; --c3:#A78BFA; --c4:#C4B5FD;
+  --c1:#22D3EE; --c1-rgb:34,211,238;
+  --c2:#67E8F9; --c2-rgb:103,232,249;
+  --c3:#A78BFA; --c3-rgb:167,139,250;
+  --c4:#C4B5FD; --c4-rgb:196,181,253;
+  --rose:#FB7185; --rose-rgb:251,113,133;
+
   --bg:#06070B; --bg-2:#0B0E15;
   --txt:#EDEFF7; --txt-h:#FFFFFF; --mut:#8A90A6;
   --line:rgba(255,255,255,.08); --line-2:rgba(255,255,255,.14);
   --card-bg:linear-gradient(160deg,rgba(255,255,255,.045),rgba(255,255,255,.012));
   --card-shadow:0 18px 44px -30px rgba(0,0,0,.7);
-  --card-shadow-h:0 40px 80px -34px rgba(0,0,0,.95),0 0 60px -22px rgba(52,211,153,.32);
+  --card-shadow-h:0 40px 80px -34px rgba(0,0,0,.95),0 0 60px -22px rgba(var(--c3-rgb),.32);
   --panel-bg:rgba(14,17,26,.86); --panel-bg-solid:#0E111A;
   --input-bg:rgba(255,255,255,.045); --input-border:rgba(255,255,255,.11);
   --ghost-txt:#E6E9F2; --ghost-border:rgba(255,255,255,.16); --ghost-bg:rgba(255,255,255,.02);
@@ -49,34 +54,46 @@ html[data-theme="dark"]{
   --hero-veil-2:rgba(4,6,13,.36);
   --hero-veil-edge:rgba(4,6,13,.42);
 
-  --sc-sky-1:#03050B; --sc-sky-2:#060A16; --sc-sky-3:#0A0F1C; --sc-sky-4:#0C1020;
-  --sc-star:#ffffff; --sc-constellation:#22D3EE;
-  --sc-aur-cyan:#22D3EE; --sc-aur-emerald:#34D399; --sc-aur-violet:#A78BFA;
-  --sc-moon-core:#F0F9FF; --sc-moon-core-2:#E0F2FE;
-  --sc-moon-ring-1:#BAE6FD; --sc-moon-ring-2:#7DD3FC;
-  --sc-moon-glow:#7DD3FC; --sc-moon-crater:#BAE6FD;
-  --sc-mtn-far-top:#2A3B52; --sc-mtn-far-bot:#0F172A;
-  --sc-mtn-mid-top:#101828; --sc-mtn-mid-bot:#0A0E1A;
-  --sc-mtn-near-top:#06090F; --sc-mtn-near-bot:#04060D;
-  --sc-snow:#E0F2FE;
-  --sc-lake-top:#0E1D33; --sc-lake-mid:#081524; --sc-lake-bot:#03050B;
-  --sc-treeline:#04060D; --sc-pine:#02040A;
-  --sc-villa-bg:#0A0D14; --sc-window:#FBBF24; --sc-window-stroke:#FCD34D;
-  --sc-window-op:.24; --sc-window-op-b:.3; --sc-window-op-c:.2;
-  --sc-smoke:#A7ADC2; --sc-firefly:#FCD34D; --sc-particle:#34D399;
-  --sc-horizon:#22D3EE;
-  --sc-refl-1:#A78BFA; --sc-refl-2:#22D3EE; --sc-refl-3:#FCD34D;
-  --sc-meteor:#E0F2FE; --sc-mtn-shadow:#000000;
-  --sc-cloud-cyan:#22D3EE; --sc-cloud-violet:#A78BFA; --sc-cloud-op:.05;
+  --sc-sky-1:#070b18; --sc-sky-2:#101830; --sc-sky-3:#1a2444; --sc-sky-4:#253660;
+  --sc-star:#ffffff; --sc-constellation:#67E8F9;
+  --sc-aur-cyan:#22D3EE; --sc-aur-emerald:#67E8F9; --sc-aur-violet:#A78BFA;
+  --sc-moon-core:#f0f4ff; --sc-moon-core-2:#dce5ff;
+  --sc-moon-ring-1:#a8c0ff; --sc-moon-ring-2:#8ab4ff;
+  --sc-moon-glow:#7da4ff; --sc-moon-crater:#c4d5ff;
+  --sc-mtn-far-top:#253660; --sc-mtn-far-bot:#0a0f1e;
+  --sc-mtn-mid-top:#1a2444; --sc-mtn-mid-bot:#0a1020;
+  --sc-mtn-near-top:#0d1428; --sc-mtn-near-bot:#05080f;
+  --sc-snow:#e8f0ff;
+  --sc-ground-top:#d0dcf0; --sc-ground-mid:#b8c8e0; --sc-ground-bot:#a0b4d0;
+  --sc-treeline:#0a1a2e; --sc-pine:#051525;
+  --sc-villa-bg:#2a1f15;
+  --sc-window:#FBBF24; --sc-window-stroke:#FCD34D;
+  --sc-smoke:#a7b0c8;
+  --sc-particle:#A78BFA;
+  --sc-horizon:#67E8F9;
+  --sc-mtn-shadow:#05080f;
+  --sc-tree-1:#0d3a2c; --sc-tree-2:#0a4a38; --sc-tree-3:#06614a;
+  --sc-star-top:#FCD34D; --sc-star-top-glow:rgba(252,211,77,.6);
+  --sc-roof-snow:#f0f4ff;
+  --sc-bulb-gold:#FCD34D; --sc-bulb-red:#FB7185; --sc-bulb-blue:#22D3EE; --sc-bulb-violet:#A78BFA;
+  --sc-orn-red:#DC2626; --sc-orn-gold:#FCD34D; --sc-orn-violet:#A78BFA;
+  --sc-snowman:#f0f4ff; --sc-snowman-shadow:#b8c8dc;
+  --sc-snowman-nose:#F97316; --sc-snowman-hat:#0a0f1e; --sc-snowman-scarf:#DC2626;
+  --sc-garland-wire:#4a3525;
 }
 html[data-theme="light"]{
-  --c1:#0E7490; --c2:#059669; --c3:#7C3AED; --c4:#A78BFA;
+  --c1:#0E7490; --c1-rgb:14,116,144;
+  --c2:#06B6D4; --c2-rgb:6,182,212;
+  --c3:#7C3AED; --c3-rgb:124,58,237;
+  --c4:#A78BFA; --c4-rgb:167,139,250;
+  --rose:#FB7185; --rose-rgb:251,113,133;
+
   --bg:#F5F7FA; --bg-2:#FFFFFF;
   --txt:#1F2937; --txt-h:#0A0C13; --mut:#6B7280;
   --line:rgba(10,12,25,.09); --line-2:rgba(10,12,25,.14);
   --card-bg:#FFFFFF;
   --card-shadow:0 14px 34px -26px rgba(10,12,25,.28);
-  --card-shadow-h:0 30px 60px -30px rgba(10,12,25,.35),0 0 60px -22px rgba(5,150,105,.2);
+  --card-shadow-h:0 30px 60px -30px rgba(10,12,25,.35),0 0 60px -22px rgba(var(--c3-rgb),.2);
   --panel-bg:rgba(255,255,255,.94); --panel-bg-solid:#FFFFFF;
   --input-bg:#F8FAFC; --input-border:rgba(10,12,25,.11);
   --ghost-txt:#0A0C13; --ghost-border:rgba(10,12,25,.14); --ghost-bg:#FFFFFF;
@@ -94,31 +111,39 @@ html[data-theme="light"]{
   --hero-veil-2:rgba(255,255,255,.32);
   --hero-veil-edge:rgba(255,255,255,.34);
 
-  --sc-sky-1:#FEF3C7; --sc-sky-2:#FCE7F3; --sc-sky-3:#DBEAFE; --sc-sky-4:#BFDBFE;
-  --sc-star:#94A3B8; --sc-constellation:#0E7490;
-  --sc-aur-cyan:#7DD3FC; --sc-aur-emerald:#6EE7B7; --sc-aur-violet:#C4B5FD;
-  --sc-moon-core:#FFF7ED; --sc-moon-core-2:#FEF3C7;
-  --sc-moon-ring-1:#FDE68A; --sc-moon-ring-2:#FCD34D;
-  --sc-moon-glow:#FDE68A; --sc-moon-crater:#FDE68A;
-  --sc-mtn-far-top:#94A3B8; --sc-mtn-far-bot:#CBD5E1;
-  --sc-mtn-mid-top:#64748B; --sc-mtn-mid-bot:#94A3B8;
+  --sc-sky-1:#fef6e8; --sc-sky-2:#fce7f3; --sc-sky-3:#dbeafe; --sc-sky-4:#bfdbfe;
+  --sc-star:#cbd5e1; --sc-constellation:#0E7490;
+  --sc-aur-cyan:#67E8F9; --sc-aur-emerald:#A78BFA; --sc-aur-violet:#C4B5FD;
+  --sc-moon-core:#fff7ed; --sc-moon-core-2:#fef3c7;
+  --sc-moon-ring-1:#fde68a; --sc-moon-ring-2:#fcd34d;
+  --sc-moon-glow:#fde68a; --sc-moon-crater:#fde68a;
+  --sc-mtn-far-top:#94a3b8; --sc-mtn-far-bot:#cbd5e1;
+  --sc-mtn-mid-top:#64748b; --sc-mtn-mid-bot:#94a3b8;
   --sc-mtn-near-top:#475569; --sc-mtn-near-bot:#334155;
-  --sc-snow:#FFFFFF;
-  --sc-lake-top:#93C5FD; --sc-lake-mid:#BFDBFE; --sc-lake-bot:#DBEAFE;
-  --sc-treeline:#1E293B; --sc-pine:#0F172A;
-  --sc-villa-bg:#1E293B;
+  --sc-snow:#ffffff;
+  --sc-ground-top:#f8fafc; --sc-ground-mid:#e2e8f0; --sc-ground-bot:#cbd5e1;
+  --sc-treeline:#1e293b; --sc-pine:#0f172a;
+  --sc-villa-bg:#1e293b;
   --sc-window:#F59E0B; --sc-window-stroke:#D97706;
-  --sc-window-op:.42; --sc-window-op-b:.5; --sc-window-op-c:.35;
-  --sc-smoke:#94A3B8; --sc-firefly:#D97706; --sc-particle:#059669;
+  --sc-smoke:#94a3b8;
+  --sc-particle:#7C3AED;
   --sc-horizon:#0E7490;
-  --sc-refl-1:#7C3AED; --sc-refl-2:#0E7490; --sc-refl-3:#D97706;
-  --sc-meteor:#94A3B8; --sc-mtn-shadow:#64748B;
-  --sc-cloud-cyan:#7DD3FC; --sc-cloud-violet:#C4B5FD; --sc-cloud-op:.08;
+  --sc-mtn-shadow:#64748b;
+  --sc-tree-1:#064e3b; --sc-tree-2:#065f46; --sc-tree-3:#047857;
+  --sc-star-top:#D97706; --sc-star-top-glow:rgba(217,119,6,.5);
+  --sc-roof-snow:#ffffff;
+  --sc-bulb-gold:#D97706; --sc-bulb-red:#DC2626; --sc-bulb-blue:#0891B2; --sc-bulb-violet:#7C3AED;
+  --sc-orn-red:#DC2626; --sc-orn-gold:#D97706; --sc-orn-violet:#7C3AED;
+  --sc-snowman:#ffffff; --sc-snowman-shadow:#cbd5e1;
+  --sc-snowman-nose:#EA580C; --sc-snowman-hat:#0f172a; --sc-snowman-scarf:#DC2626;
+  --sc-garland-wire:#334155;
 }
+
 :root{
   --grad:linear-gradient(100deg,var(--c1) 0%,var(--c2) 46%,var(--c3) 100%);
   --ease:cubic-bezier(.19,1,.22,1);
   --ease2:cubic-bezier(.65,0,.35,1);
+  --text-shadow-light:0 1px 2px rgba(0,0,0,.4);
 }
 
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -155,7 +180,7 @@ svg{display:block}
 .scroll-progress{
   position:fixed;top:0;left:0;height:2px;width:100%;background:var(--grad);
   transform-origin:0 50%;transform:scaleX(0);z-index:9000;pointer-events:none;
-  box-shadow:0 0 18px rgba(52,211,153,.6);
+  box-shadow:0 0 18px rgba(var(--c1-rgb),.6);
 }
 .grain{
   position:fixed;inset:-100%;z-index:8000;pointer-events:none;opacity:var(--grain-opacity);
@@ -197,10 +222,10 @@ svg{display:block}
 html[data-theme="light"] .theme-toggle .ico-moon{display:block}
 html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 .nav__fav{position:relative;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line-2);background:var(--input-bg);color:var(--txt);transition:all .3s var(--ease);flex-shrink:0}
-.nav__fav:hover{border-color:rgba(251,113,133,.5);color:#FB7185}
+.nav__fav:hover{border-color:rgba(var(--rose-rgb),.5);color:var(--rose)}
 .nav__fav svg{width:17px;height:17px}
-.nav__fav.is-active{color:#FB7185;border-color:rgba(251,113,133,.55);background:rgba(251,113,133,.1)}
-.nav__fav-count{position:absolute;top:-4px;right:-4px;min-width:17px;height:17px;padding:0 4px;border-radius:100px;background:var(--grad);color:#04060A;font-size:9.5px;font-weight:800;display:grid;place-items:center;line-height:1;box-shadow:0 2px 8px -2px rgba(52,211,153,.8);transform:scale(0);transition:transform .35s var(--ease)}
+.nav__fav.is-active{color:var(--rose);border-color:rgba(var(--rose-rgb),.55);background:rgba(var(--rose-rgb),.1)}
+.nav__fav-count{position:absolute;top:-4px;right:-4px;min-width:17px;height:17px;padding:0 4px;border-radius:100px;background:var(--grad);color:#fff;font-size:9.5px;font-weight:800;display:grid;place-items:center;line-height:1;box-shadow:0 2px 8px -2px rgba(var(--c1-rgb),.8);transform:scale(0);transition:transform .35s var(--ease);text-shadow:0 1px 1px rgba(0,0,0,.3)}
 .nav__fav-count.is-on{transform:scale(1)}
 @media(max-width:1180px){.nav__phone{display:none}}
 @media(max-width:980px){.nav__links{display:none}}
@@ -217,13 +242,14 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 .btn--sm{padding:12px 22px;font-size:10.5px}
 .btn--full{width:100%}
 .btn--grad{
-  color:#04060A;background:var(--grad);background-size:200% 100%;
-  animation:gradShift 7s ease infinite;box-shadow:0 8px 32px -8px rgba(52,211,153,.55);
-  transition:transform .45s var(--ease),box-shadow .45s var(--ease),color .35s;
+  color:#fff;text-shadow:var(--text-shadow-light);
+  background:var(--grad);background-size:200% 100%;
+  animation:gradShift 7s ease infinite;
+  box-shadow:0 8px 32px -8px rgba(var(--c1-rgb),.55);
 }
-.btn--grad:hover{box-shadow:0 14px 44px -8px rgba(167,139,250,.7);color:#fff}
+.btn--grad:hover{box-shadow:0 14px 44px -8px rgba(var(--c3-rgb),.7);color:#fff}
 .btn--ghost{color:var(--ghost-txt);border:1px solid var(--ghost-border);background:var(--ghost-bg);backdrop-filter:blur(8px)}
-.btn--ghost:hover{border-color:rgba(52,211,153,.5);background:rgba(52,211,153,.06);color:var(--txt-h)}
+.btn--ghost:hover{border-color:rgba(var(--c1-rgb),.5);background:rgba(var(--c1-rgb),.06);color:var(--txt-h)}
 .btn__txt{position:relative;z-index:2;display:flex;align-items:center;gap:10px}
 .btn__txt svg{width:14px;height:14px}
 .btn::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,var(--c3),var(--c4));opacity:0;transition:opacity .45s var(--ease)}
@@ -247,10 +273,10 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 .cselect.is-open .cselect__menu{opacity:1;visibility:visible;transform:none}
 .cselect__option{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;border-radius:11px;font-size:13px;font-weight:600;color:var(--txt);cursor:pointer;transition:background .2s,color .2s;white-space:nowrap}
 .cselect__option:hover{background:var(--input-bg);color:var(--txt-h)}
-.cselect__option.is-active{color:var(--txt-h);background:linear-gradient(100deg,rgba(34,211,238,.18),rgba(167,139,250,.18))}
+.cselect__option.is-active{color:var(--txt-h);background:linear-gradient(100deg,rgba(var(--c1-rgb),.18),rgba(var(--c3-rgb),.18))}
 .cselect__option.is-active::after{content:'';width:6px;height:6px;border-radius:50%;background:var(--c2);box-shadow:0 0 8px var(--c2);flex-shrink:0}
 
-/* ===== PAGE HERO + SCENE ===== */
+/* ===== PAGE HERO ===== */
 .page-hero{position:relative;min-height:70vh;padding:clamp(130px,16vh,190px) 0 clamp(44px,6vh,80px);overflow:hidden;border-bottom:1px solid var(--line);display:flex;align-items:center}
 .page-hero__bg{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
 .hero-scene{position:absolute;inset:0;overflow:hidden}
@@ -258,7 +284,8 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 .page-hero__veil{
   position:absolute;inset:0;z-index:2;pointer-events:none;
   background:
-    radial-gradient(ellipse 62% 60% at 50% 48%, var(--hero-veil-1) 0%, var(--hero-veil-2) 44%, transparent 80%),
+    radial-gradient(ellipse 62% 60% at 30% 55%, var(--hero-veil-1) 0%, var(--hero-veil-2) 50%, transparent 82%),
+    linear-gradient(90deg, var(--hero-veil-1) 0%, transparent 65%),
     radial-gradient(ellipse 100% 40% at 50% 100%, var(--hero-veil-edge), transparent 70%);
   transition:background .35s var(--ease);
 }
@@ -281,7 +308,7 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 }
 .ph-stat span{font-size:11.5px;color:var(--mut);letter-spacing:.06em;text-transform:uppercase;font-weight:600}
 
-/* Scene animations */
+/* ===== SCENE ANIMATIONS ===== */
 .sc-tw{transform-box:fill-box;transform-origin:center;animation:twinkle var(--dur,4s) ease-in-out infinite;animation-delay:var(--delay,0s)}
 @keyframes twinkle{0%,100%{opacity:.15;transform:scale(.75)}50%{opacity:1;transform:scale(1.15)}}
 .sc-aur-a{transform-origin:50% 50%;animation:auroraA 30s ease-in-out infinite}
@@ -291,22 +318,39 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 .sc-moon-r{transform-box:fill-box;transform-origin:center;animation:moonSpin 100s linear infinite}
 .sc-moon-r2{animation-duration:150s;animation-direction:reverse}
 @keyframes moonSpin{to{transform:rotate(360deg)}}
-.sc-cloud{animation:cloudDrift var(--dur,150s) linear infinite;animation-delay:var(--delay,0s);will-change:transform}
-@keyframes cloudDrift{from{transform:translateX(-460px)}to{transform:translateX(2380px)}}
 .sc-smoke{transform-box:fill-box;transform-origin:center bottom;animation:smokeV 8s ease-in-out infinite}
 @keyframes smokeV{0%{opacity:0;transform:translateY(8px) scale(.9)}30%{opacity:.65}100%{opacity:0;transform:translateY(-24px) scale(1.3)}}
 .sc-dot{transform-box:fill-box;transform-origin:center;animation:dotFloat var(--dur,16s) ease-in-out infinite;animation-delay:var(--delay,0s)}
 @keyframes dotFloat{0%,100%{transform:translateY(0);opacity:.15}50%{transform:translateY(-26px);opacity:.9}}
-.sc-firefly{transform-box:fill-box;transform-origin:center;animation:fireflyFloat var(--dur,14s) ease-in-out infinite;animation-delay:var(--delay,0s);filter:drop-shadow(0 0 4px rgba(252,211,77,.7))}
-@keyframes fireflyFloat{0%,100%{transform:translate(0,0);opacity:.18}50%{transform:translate(var(--dx,18px),var(--dy,-26px));opacity:1}}
-.sc-meteor line{stroke:var(--sc-meteor);stroke-width:1.5;stroke-linecap:round;opacity:0;filter:drop-shadow(0 0 4px rgba(224,242,254,.7));animation:meteor 14s ease-in infinite;animation-delay:var(--delay,0s)}
-@keyframes meteor{0%,92%,100%{opacity:0;transform:translate(0,0)}93%{opacity:1}97%{opacity:1;transform:translate(220px,120px)}98%,100%{opacity:0;transform:translate(220px,120px)}}
-.sc-reflect line{stroke-dasharray:44 26;animation:reflectShim 16s linear infinite}
-@keyframes reflectShim{to{stroke-dashoffset:-140}}
 
-/* ===== CATALOG LAYOUT ===== */
+.w-snowflake{animation:snowFall var(--dur,14s) linear infinite;animation-delay:var(--delay,0s)}
+@keyframes snowFall{
+  0%{transform:translate(0,-60px);opacity:0}
+  10%{opacity:1}
+  90%{opacity:1}
+  100%{transform:translate(var(--drift,20px),1200px);opacity:0}
+}
+.w-bulb{
+  animation:bulbTwinkle var(--dur,3s) ease-in-out infinite;
+  animation-delay:var(--delay,0s);
+  transform-box:fill-box;transform-origin:center;
+}
+@keyframes bulbTwinkle{
+  0%,100%{opacity:.5;transform:scale(.85)}
+  50%{opacity:1;transform:scale(1.2)}
+}
+.w-star-tree{
+  animation:starPulse 2.8s ease-in-out infinite;
+  transform-box:fill-box;transform-origin:center;
+}
+@keyframes starPulse{
+  0%,100%{opacity:.85;transform:scale(.95)}
+  50%{opacity:1;transform:scale(1.1)}
+}
+
+/* ===== CATALOG LAYOUT (narrower sidebar) ===== */
 .catalog-layout{
-  display:grid;grid-template-columns:292px minmax(0,1fr);
+  display:grid;grid-template-columns:240px minmax(0,1fr);
   gap:clamp(18px,2.4vw,32px);align-items:start;
   padding-top:clamp(28px,4vh,48px);padding-bottom:clamp(70px,10vh,130px);
 }
@@ -315,64 +359,66 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 /* ===== FILTERS SIDEBAR ===== */
 .filters{
   position:sticky;top:86px;max-height:calc(100vh - 104px);overflow-y:auto;
-  padding:20px;border-radius:22px;background:var(--card-bg);
-  border:1px solid var(--line);box-shadow:var(--card-shadow);scrollbar-width:thin;
+  padding:18px;border-radius:22px;background:var(--card-bg);
+  border:1px solid var(--line);box-shadow:var(--card-shadow);
+  scrollbar-width:thin;scrollbar-color:var(--line-2) transparent;
 }
-.filters::-webkit-scrollbar{width:5px}
-.filters::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:5px}
+.filters::-webkit-scrollbar{width:4px}
+.filters::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:4px}
 .filters__head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px}
 .filters__head h2{font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--txt-h)}
 .filters__reset{font-size:11.5px;font-weight:700;color:var(--mut);padding:6px 10px;border-radius:8px;border:1px solid transparent;transition:all .3s var(--ease);cursor:pointer}
-.filters__reset:hover{color:#FB7185;border-color:rgba(251,113,133,.3);background:rgba(251,113,133,.06)}
+.filters__reset:hover{color:var(--rose);border-color:rgba(var(--rose-rgb),.3);background:rgba(var(--rose-rgb),.06)}
 .filters__close{display:none}
-.fgroup{padding:16px 0;border-bottom:1px solid var(--line)}
+.fgroup{padding:14px 0;border-bottom:1px solid var(--line)}
 .fgroup:last-child{border-bottom:none;padding-bottom:4px}
-.fgroup__title{font-family:'Unbounded',sans-serif;font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin-bottom:13px;display:flex;align-items:center;justify-content:space-between}
+.fgroup__title{font-family:'Unbounded',sans-serif;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin-bottom:11px;display:flex;align-items:center;justify-content:space-between}
 .fgroup__title b{color:var(--c2);font-weight:600}
-.fsearch{width:100%;padding:11px 14px;border-radius:12px;background:var(--input-bg);border:1px solid var(--input-border);color:var(--field-txt);font-family:'Manrope',sans-serif;font-size:13px;outline:none;transition:border-color .3s,box-shadow .3s}
+.fsearch{width:100%;padding:10px 12px;border-radius:11px;background:var(--input-bg);border:1px solid var(--input-border);color:var(--field-txt);font-family:'Manrope',sans-serif;font-size:12.5px;outline:none;transition:border-color .3s,box-shadow .3s}
 .fsearch::placeholder{color:var(--mut)}
-.fsearch:focus{border-color:rgba(52,211,153,.55);box-shadow:0 0 0 4px rgba(52,211,153,.08)}
-.fchips{display:flex;flex-wrap:wrap;gap:7px}
-.fchip{padding:8px 13px;border-radius:100px;border:1px solid var(--line);background:var(--chip-bg);font-size:12px;font-weight:600;color:var(--chip-txt);transition:all .3s var(--ease);white-space:nowrap;cursor:pointer}
+.fsearch:focus{border-color:rgba(var(--c1-rgb),.55);box-shadow:0 0 0 4px rgba(var(--c1-rgb),.08)}
+.fchips{display:flex;flex-wrap:wrap;gap:6px}
+.fchip{padding:7px 11px;border-radius:100px;border:1px solid var(--line);background:var(--chip-bg);font-size:11.5px;font-weight:600;color:var(--chip-txt);transition:all .3s var(--ease);white-space:nowrap;cursor:pointer}
 .fchip:hover{color:var(--txt-h);border-color:var(--line-2);transform:translateY(-1px)}
 .fchip.is-active{
   color:#fff;border-color:transparent;background:var(--grad);background-size:200% 100%;
-  animation:gradShift 7s ease infinite;box-shadow:0 6px 20px -8px rgba(52,211,153,.65);
-  text-shadow:0 1px 2px rgba(0,0,0,.18);
+  animation:gradShift 7s ease infinite;box-shadow:0 6px 20px -8px rgba(var(--c1-rgb),.65);
+  text-shadow:var(--text-shadow-light);
 }
-.price-row{display:flex;align-items:center;gap:8px}
-.price-inp{flex:1;min-width:0;padding:10px 12px;border-radius:11px;background:var(--input-bg);border:1px solid var(--input-border);color:var(--field-txt);font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;outline:none;transition:border-color .3s,box-shadow .3s;-moz-appearance:textfield}
+.price-row{display:flex;align-items:center;gap:6px}
+.price-inp{flex:1;min-width:0;padding:9px 10px;border-radius:10px;background:var(--input-bg);border:1px solid var(--input-border);color:var(--field-txt);font-family:'Manrope',sans-serif;font-size:12.5px;font-weight:700;outline:none;transition:border-color .3s,box-shadow .3s;-moz-appearance:textfield}
 .price-inp::-webkit-outer-spin-button,.price-inp::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
 .price-inp::placeholder{color:var(--mut);font-weight:500}
-.price-inp:focus{border-color:rgba(52,211,153,.55);box-shadow:0 0 0 4px rgba(52,211,153,.08)}
-.price-row span{color:var(--mut);font-size:12px}
-.checks{max-height:236px;overflow-y:auto;padding-right:4px;scrollbar-width:thin}
-.checks::-webkit-scrollbar{width:4px}
-.checks::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:4px}
-.check{display:flex;align-items:center;gap:10px;padding:6px 0;font-size:13px;color:var(--txt);user-select:none;cursor:pointer}
-.check input{-webkit-appearance:none;appearance:none;width:17px;height:17px;flex-shrink:0;border-radius:5px;border:1px solid var(--line-2);background:var(--input-bg);position:relative;transition:all .25s var(--ease);cursor:pointer}
+.price-inp:focus{border-color:rgba(var(--c1-rgb),.55);box-shadow:0 0 0 4px rgba(var(--c1-rgb),.08)}
+.price-row span{color:var(--mut);font-size:11px}
+.checks{max-height:236px;overflow-y:auto;padding-right:4px;scrollbar-width:thin;scrollbar-color:var(--line-2) transparent}
+.checks::-webkit-scrollbar{width:3px}
+.checks::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:3px}
+.check{display:flex;align-items:center;gap:9px;padding:5px 0;font-size:12.5px;color:var(--txt);user-select:none;cursor:pointer}
+.check input{-webkit-appearance:none;appearance:none;width:16px;height:16px;flex-shrink:0;border-radius:5px;border:1px solid var(--line-2);background:var(--input-bg);position:relative;transition:all .25s var(--ease);cursor:pointer}
 .check input:checked{background:var(--grad);border-color:transparent}
-.check input:checked::after{content:'';position:absolute;left:5.5px;top:2px;width:4.5px;height:8.5px;border:2px solid #04060A;border-top:0;border-left:0;transform:rotate(45deg)}
-.check:hover input{border-color:rgba(52,211,153,.5)}
+.check input:checked::after{content:'';position:absolute;left:5px;top:2px;width:4px;height:8px;border:2px solid #fff;border-top:0;border-left:0;transform:rotate(45deg)}
+.check:hover input{border-color:rgba(var(--c1-rgb),.5)}
 
-/* region picker */
 .rselect{position:relative}
-.rselect__trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px 14px;border-radius:12px;border:1px solid var(--input-border);background:var(--input-bg);font-size:13px;font-weight:600;color:var(--field-txt);transition:border-color .3s,box-shadow .3s;cursor:pointer}
-.rselect__trigger:hover{border-color:rgba(52,211,153,.35)}
-.rselect.is-open .rselect__trigger{border-color:rgba(52,211,153,.55);box-shadow:0 0 0 4px rgba(52,211,153,.08)}
+.rselect__trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px;border-radius:11px;border:1px solid var(--input-border);background:var(--input-bg);font-size:12.5px;font-weight:600;color:var(--field-txt);transition:border-color .3s,box-shadow .3s;cursor:pointer}
+.rselect__trigger:hover{border-color:rgba(var(--c1-rgb),.35)}
+.rselect.is-open .rselect__trigger{border-color:rgba(var(--c1-rgb),.55);box-shadow:0 0 0 4px rgba(var(--c1-rgb),.08)}
 .rselect__value{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.rselect__caret{width:12px;height:12px;color:var(--mut);flex-shrink:0;transition:transform .3s var(--ease)}
+.rselect__caret{width:11px;height:11px;color:var(--mut);flex-shrink:0;transition:transform .3s var(--ease)}
 .rselect.is-open .rselect__caret{transform:rotate(180deg);color:var(--c2)}
-.rselect__menu{position:absolute;top:calc(100% + 8px);left:0;right:0;z-index:90;background:var(--panel-bg-solid);border:1px solid var(--line-2);border-radius:14px;box-shadow:0 26px 60px -18px var(--corner-shadow);padding:8px;max-height:330px;overflow-y:auto;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .25s var(--ease),transform .25s var(--ease),visibility .25s}
+.rselect__menu{position:absolute;top:calc(100% + 8px);left:0;right:0;z-index:90;background:var(--panel-bg-solid);border:1px solid var(--line-2);border-radius:14px;box-shadow:0 26px 60px -18px var(--corner-shadow);padding:6px;max-height:330px;overflow-y:auto;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .25s var(--ease),transform .25s var(--ease),visibility .25s}
 .rselect.is-open .rselect__menu{opacity:1;visibility:visible;transform:none}
-.rselect__search{width:100%;padding:9px 12px;border-radius:9px;border:1px solid var(--line);background:var(--input-bg);color:var(--field-txt);font-family:'Manrope',sans-serif;font-size:13px;outline:none;margin-bottom:6px;position:sticky;top:0;z-index:2}
-.rselect__search:focus{border-color:rgba(52,211,153,.5)}
-.rgroup__title{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);padding:10px 10px 5px;font-weight:800}
-.ropt{padding:8px 10px;border-radius:9px;font-size:12.5px;font-weight:600;color:var(--txt);cursor:pointer;display:flex;justify-content:space-between;gap:10px;align-items:center;transition:background .2s,color .2s}
+.rselect__menu::-webkit-scrollbar{width:4px}
+.rselect__menu::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:4px}
+.rselect__search{width:100%;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--input-bg);color:var(--field-txt);font-family:'Manrope',sans-serif;font-size:12.5px;outline:none;margin-bottom:6px;position:sticky;top:0;z-index:2}
+.rselect__search:focus{border-color:rgba(var(--c1-rgb),.5)}
+.rgroup__title{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);padding:8px 8px 4px;font-weight:800}
+.ropt{padding:7px 9px;border-radius:8px;font-size:12px;font-weight:600;color:var(--txt);cursor:pointer;display:flex;justify-content:space-between;gap:10px;align-items:center;transition:background .2s,color .2s}
 .ropt:hover{background:var(--input-bg);color:var(--txt-h)}
-.ropt.is-active{color:var(--txt-h);background:linear-gradient(100deg,rgba(34,211,238,.16),rgba(167,139,250,.16))}
-.ropt small{color:var(--mut);font-size:10.5px;font-weight:600}
-.rselect__empty{padding:16px 10px;font-size:12.5px;color:var(--mut);text-align:center}
+.ropt.is-active{color:var(--txt-h);background:linear-gradient(100deg,rgba(var(--c1-rgb),.16),rgba(var(--c3-rgb),.16))}
+.ropt small{color:var(--mut);font-size:10px;font-weight:600}
+.rselect__empty{padding:14px 10px;font-size:12px;color:var(--mut);text-align:center}
 
 /* ===== RESULTS ===== */
 .results-head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:16px}
@@ -387,12 +433,12 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 @media(max-width:1080px){.filter-toggle{display:inline-flex}}
 
 .active-filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
-.afchip{display:inline-flex;align-items:center;gap:8px;padding:7px 8px 7px 13px;border-radius:100px;background:linear-gradient(135deg,rgba(52,211,153,.12),rgba(167,139,250,.12));border:1px solid rgba(52,211,153,.2);font-size:12px;font-weight:600;color:var(--txt-h)}
+.afchip{display:inline-flex;align-items:center;gap:8px;padding:7px 8px 7px 13px;border-radius:100px;background:linear-gradient(135deg,rgba(var(--c1-rgb),.12),rgba(var(--c3-rgb),.12));border:1px solid rgba(var(--c1-rgb),.2);font-size:12px;font-weight:600;color:var(--txt-h)}
 .afchip button{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.08);transition:background .25s,transform .25s;cursor:pointer}
-.afchip button:hover{background:rgba(251,113,133,.3);transform:rotate(90deg)}
+.afchip button:hover{background:rgba(var(--rose-rgb),.3);transform:rotate(90deg)}
 .afchip button svg{width:9px;height:9px}
 .afchip--clear{background:none;border-color:var(--line);color:var(--mut);padding:7px 14px;cursor:pointer;transition:all .3s}
-.afchip--clear:hover{color:#FB7185;border-color:rgba(251,113,133,.3)}
+.afchip--clear:hover{color:var(--rose);border-color:rgba(var(--rose-rgb),.3)}
 
 .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(286px,1fr));gap:clamp(14px,1.6vw,22px)}
 .card{
@@ -404,23 +450,23 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
   will-change:transform;cursor:pointer;
 }
 .card.in{opacity:1;translate:0 0}
-.card:hover{border-color:rgba(52,211,153,.35);box-shadow:var(--card-shadow-h)}
+.card:hover{border-color:rgba(var(--c1-rgb),.35);box-shadow:var(--card-shadow-h)}
 .card__media{position:relative;aspect-ratio:16/10.6;overflow:hidden;background:var(--bg-2)}
 .card__img{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.01);transition:transform 1.1s var(--ease)}
 .card:hover .card__img{transform:scale(1.09)}
 .card__media::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,6,10,.24) 0%,transparent 34%,rgba(5,6,10,.82) 100%);opacity:.85;transition:opacity .5s}
 .card:hover .card__media::after{opacity:1}
 .card__badge{position:absolute;top:14px;left:14px;z-index:3;padding:6px 12px;border-radius:100px;font-family:'Unbounded',sans-serif;font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;background:rgba(5,6,10,.6);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.2);color:#fff}
-.card__badge[data-t="ХИТ"]{background:var(--grad);color:#04060A;border-color:transparent;box-shadow:0 6px 22px -6px rgba(52,211,153,.8)}
-.card__badge[data-t="NEW"]{background:rgba(167,139,250,.9);border-color:transparent;color:#0A0C13}
-.card__badge[data-t="−15%"]{background:rgba(251,113,133,.92);border-color:transparent;color:#12050A}
+.card__badge[data-t="ХИТ"]{background:var(--grad);color:#fff;border-color:transparent;box-shadow:0 6px 22px -6px rgba(var(--c1-rgb),.8);text-shadow:var(--text-shadow-light)}
+.card__badge[data-t="NEW"]{background:rgba(var(--c3-rgb),.92);border-color:transparent;color:#fff;text-shadow:var(--text-shadow-light)}
+.card__badge[data-t="−15%"]{background:rgba(var(--rose-rgb),.92);border-color:transparent;color:#fff;text-shadow:var(--text-shadow-light)}
 .card__fav{position:absolute;top:12px;right:12px;z-index:3;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:rgba(5,6,10,.5);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.16);color:#fff;transition:background .35s,transform .35s var(--ease),color .35s,border-color .35s;cursor:pointer}
 .card__fav:hover{background:rgba(255,255,255,.16);transform:scale(1.1)}
 .card__fav svg{width:16px;height:16px}
 .card__fav .fav-on{display:none}
 .card__fav.is-on .fav-off{display:none}
 .card__fav.is-on .fav-on{display:block}
-.card__fav.is-on{color:#FB7185;border-color:rgba(251,113,133,.55)}
+.card__fav.is-on{color:var(--rose);border-color:rgba(var(--rose-rgb),.55)}
 .card__hover{position:absolute;left:14px;right:14px;bottom:14px;z-index:3;opacity:0;transform:translateY(14px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
 .card:hover .card__hover{opacity:1;transform:none}
 .card__btn{width:100%;padding:13px;font-size:10px}
@@ -438,10 +484,10 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 .card__price span{font-size:11.5px;color:var(--mut);margin-left:4px}
 .card__arrow{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);color:var(--mut);transition:all .45s var(--ease)}
 .card__arrow svg{width:15px;height:15px}
-.card:hover .card__arrow{background:var(--grad);color:#04060A;border-color:transparent;transform:rotate(-45deg) scale(1.06)}
+.card:hover .card__arrow{background:var(--grad);color:#fff;border-color:transparent;transform:rotate(-45deg) scale(1.06);text-shadow:var(--text-shadow-light)}
 
-.catalog-empty{grid-column:1/-1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:clamp(50px,9vh,90px) 20px;border-radius:24px;border:1px dashed var(--line-2);background:linear-gradient(160deg,rgba(34,211,238,.05),rgba(167,139,250,.05))}
-.catalog-empty__ico{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(140deg,rgba(34,211,238,.15),rgba(167,139,250,.15));border:1px solid var(--line);color:var(--c1);margin-bottom:20px}
+.catalog-empty{grid-column:1/-1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:clamp(50px,9vh,90px) 20px;border-radius:24px;border:1px dashed var(--line-2);background:linear-gradient(160deg,rgba(var(--c1-rgb),.05),rgba(var(--c3-rgb),.05))}
+.catalog-empty__ico{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(140deg,rgba(var(--c1-rgb),.15),rgba(var(--c3-rgb),.15));border:1px solid var(--line);color:var(--c1);margin-bottom:20px}
 .catalog-empty__ico svg{width:28px;height:28px}
 .catalog-empty h3{font-family:'Unbounded',sans-serif;font-size:clamp(17px,2vw,21px);font-weight:600;letter-spacing:-.015em;margin-bottom:8px;color:var(--txt-h)}
 .catalog-empty p{font-size:13.5px;color:var(--mut);max-width:40ch;line-height:1.65;margin-bottom:24px}
@@ -450,7 +496,7 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 .pager button{min-width:42px;height:42px;padding:0 12px;border-radius:12px;border:1px solid var(--line);background:var(--chip-bg);color:var(--txt);font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:6px;transition:all .3s var(--ease);cursor:pointer}
 .pager button svg{width:14px;height:14px}
 .pager button:hover:not(:disabled){border-color:var(--line-2);color:var(--txt-h);transform:translateY(-2px)}
-.pager button.is-active{background:var(--grad);color:#04060A;border-color:transparent;box-shadow:0 8px 22px -10px rgba(52,211,153,.7)}
+.pager button.is-active{background:var(--grad);color:#fff;border-color:transparent;box-shadow:0 8px 22px -10px rgba(var(--c1-rgb),.7);text-shadow:var(--text-shadow-light)}
 .pager button:disabled{opacity:.3;pointer-events:none}
 .pager .dots{color:var(--mut);padding:0 4px;font-weight:700;user-select:none}
 .pager__info{width:100%;text-align:center;font-size:11.5px;color:var(--mut);margin-top:14px;letter-spacing:.05em}
@@ -459,15 +505,15 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 .cta-wrap{padding:0 clamp(20px,5vw,72px) clamp(70px,10vh,120px)}
 .cta{position:relative;overflow:hidden;border-radius:clamp(26px,4vw,48px);padding:clamp(50px,8vw,104px) clamp(24px,5vw,72px);text-align:center;background:var(--cta-bg);border:1px solid var(--line-2)}
 .cta::before,.cta::after{content:'';position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
-.cta::before{width:min(700px,80vw);height:min(700px,80vw);background:radial-gradient(circle,rgba(52,211,153,.24),transparent 64%);top:-46%;left:-14%}
-.cta::after{width:min(760px,86vw);height:min(760px,86vw);background:radial-gradient(circle,rgba(167,139,250,.28),transparent 64%);bottom:-52%;right:-16%}
+.cta::before{width:min(700px,80vw);height:min(700px,80vw);background:radial-gradient(circle,rgba(var(--c1-rgb),.24),transparent 64%);top:-46%;left:-14%}
+.cta::after{width:min(760px,86vw);height:min(760px,86vw);background:radial-gradient(circle,rgba(var(--c3-rgb),.28),transparent 64%);bottom:-52%;right:-16%}
 .cta__inner{position:relative;z-index:2;max-width:760px;margin:0 auto}
 .cta h2{font-family:'Unbounded',sans-serif;font-size:clamp(24px,3.8vw,50px);font-weight:700;line-height:1.06;letter-spacing:-.035em;margin-bottom:20px;text-transform:uppercase;color:var(--txt-h)}
 .cta p{font-size:clamp(14px,1.2vw,16px);color:var(--mut);max-width:52ch;margin:0 auto 36px;line-height:1.7}
 .cta__form{display:flex;gap:12px;max-width:520px;margin:0 auto;flex-wrap:wrap}
 .cta__input{flex:1 1 240px;padding:17px 24px;border-radius:100px;background:var(--input-bg);border:1px solid var(--input-border);color:var(--field-txt);font-family:'Manrope',sans-serif;font-size:14px;outline:none;transition:border-color .35s,box-shadow .35s}
 .cta__input::placeholder{color:var(--mut)}
-.cta__input:focus{border-color:rgba(52,211,153,.55);box-shadow:0 0 0 4px rgba(52,211,153,.08)}
+.cta__input:focus{border-color:rgba(var(--c1-rgb),.55);box-shadow:0 0 0 4px rgba(var(--c1-rgb),.08)}
 
 /* ===== FOOTER ===== */
 .footer{border-top:1px solid var(--line);padding:clamp(50px,7vh,80px) clamp(20px,5vw,72px) 34px;position:relative;overflow:hidden;background:var(--section-bg-2)}
@@ -498,20 +544,20 @@ html[data-theme="light"] .modal__backdrop{background:rgba(10,12,25,.42)}
 .field label{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);font-weight:700}
 .field input{padding:13px 16px;border-radius:14px;background:var(--input-bg);border:1px solid var(--input-border);color:var(--field-txt);font-family:'Manrope',sans-serif;font-size:13.5px;outline:none;transition:border-color .3s,box-shadow .3s;color-scheme:light}
 html[data-theme="dark"] .field input{color-scheme:dark}
-.field input:focus{border-color:rgba(52,211,153,.55);box-shadow:0 0 0 4px rgba(52,211,153,.08)}
+.field input:focus{border-color:rgba(var(--c1-rgb),.55);box-shadow:0 0 0 4px rgba(var(--c1-rgb),.08)}
 .modal__total{display:flex;justify-content:space-between;align-items:center;padding:18px 0;margin:18px 0 22px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:13.5px;color:var(--mut)}
 .modal__total b{font-family:'Unbounded',sans-serif;font-size:20px;font-weight:700;background:var(--grad);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradShift 6s ease infinite}
 
-/* ===== DETAIL MODAL ===== */
-.detail{position:fixed;inset:0;z-index:9550;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:opacity .5s var(--ease),visibility .5s}
+/* ===== DETAIL MODAL — no blur, subtle dim ===== */
+.detail{position:fixed;inset:0;z-index:9550;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:opacity .4s var(--ease),visibility .4s}
 .detail.is-open{opacity:1;visibility:visible}
-.detail__backdrop{position:absolute;inset:0;background:rgba(3,4,8,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
-html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.45)}
-.detail__panel{position:relative;z-index:2;width:min(1080px,100%);max-height:92vh;overflow-y:auto;border-radius:26px;background:var(--modal-bg);border:1px solid var(--line-2);box-shadow:0 60px 120px -40px rgba(0,0,0,.55);transform:translateY(36px) scale(.97);transition:transform .5s var(--ease);scrollbar-width:thin;scrollbar-color:var(--line-2) transparent}
+.detail__backdrop{position:absolute;inset:0;background:rgba(3,4,8,.4)}
+html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.2)}
+.detail__panel{position:relative;z-index:2;width:min(1080px,100%);max-height:92vh;overflow-y:auto;border-radius:26px;background:var(--modal-bg);border:1px solid var(--line-2);box-shadow:0 40px 90px -30px rgba(0,0,0,.6);transform:translateY(24px) scale(.98);transition:transform .45s var(--ease);scrollbar-width:thin;scrollbar-color:var(--line-2) transparent}
 .detail.is-open .detail__panel{transform:none}
 .detail__panel::-webkit-scrollbar{width:7px}
 .detail__panel::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:7px}
-.detail__close{position:absolute;top:18px;right:18px;z-index:5;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:rgba(5,6,10,.55);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.22);color:#fff;transition:all .3s var(--ease);cursor:pointer}
+.detail__close{position:absolute;top:18px;right:18px;z-index:5;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:rgba(5,6,10,.55);border:1px solid rgba(255,255,255,.22);color:#fff;transition:all .3s var(--ease);cursor:pointer}
 .detail__close:hover{background:rgba(255,255,255,.18);transform:rotate(90deg)}
 .detail__close svg{width:16px;height:16px}
 
@@ -519,9 +565,9 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.45)}
 .detail__hero-img{position:absolute;inset:0;background-size:cover;background-position:center}
 .detail__hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,6,10,.1) 0%,transparent 40%,rgba(5,6,10,.5) 100%)}
 .detail__hero-badge{position:absolute;top:18px;left:18px;z-index:3;padding:7px 14px;border-radius:100px;background:rgba(5,6,10,.6);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.2);color:#fff;font-family:'Unbounded',sans-serif;font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;display:none}
-.detail__hero-badge[data-t="ХИТ"]{background:var(--grad);color:#04060A;border-color:transparent;display:inline-block;box-shadow:0 6px 22px -6px rgba(52,211,153,.8)}
-.detail__hero-badge[data-t="NEW"]{background:rgba(167,139,250,.92);color:#0A0C13;border-color:transparent;display:inline-block}
-.detail__hero-badge[data-t="−15%"]{background:rgba(251,113,133,.92);color:#12050A;border-color:transparent;display:inline-block}
+.detail__hero-badge[data-t="ХИТ"]{background:var(--grad);color:#fff;border-color:transparent;display:inline-block;box-shadow:0 6px 22px -6px rgba(var(--c1-rgb),.8);text-shadow:var(--text-shadow-light)}
+.detail__hero-badge[data-t="NEW"]{background:rgba(var(--c3-rgb),.92);color:#fff;border-color:transparent;display:inline-block;text-shadow:var(--text-shadow-light)}
+.detail__hero-badge[data-t="−15%"]{background:rgba(var(--rose-rgb),.92);color:#fff;border-color:transparent;display:inline-block;text-shadow:var(--text-shadow-light)}
 
 .detail__body{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:clamp(22px,3vw,40px);padding:clamp(22px,3vw,36px)}
 @media(max-width:820px){.detail__body{grid-template-columns:1fr}}
@@ -530,7 +576,7 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.45)}
 .detail__top h2{font-family:'Unbounded',sans-serif;font-size:clamp(19px,2.6vw,28px);font-weight:700;letter-spacing:-.02em;line-height:1.15;color:var(--txt-h)}
 .detail__loc{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--mut);margin-top:7px}
 .detail__loc svg{width:13px;height:13px;color:var(--c1)}
-.detail__rating-box{flex-shrink:0;display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:12px;background:linear-gradient(135deg,rgba(52,211,153,.14),rgba(167,139,250,.14));border:1px solid rgba(52,211,153,.2)}
+.detail__rating-box{flex-shrink:0;display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:12px;background:linear-gradient(135deg,rgba(var(--c1-rgb),.14),rgba(var(--c3-rgb),.14));border:1px solid rgba(var(--c1-rgb),.2)}
 .detail__rating-box b{font-family:'Unbounded',sans-serif;font-size:17px;font-weight:700;color:var(--txt-h)}
 .detail__rating-box span{font-size:11.5px;color:var(--mut)}
 .detail__desc{font-size:14px;line-height:1.72;color:var(--txt);margin:16px 0 22px}
@@ -555,7 +601,7 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.45)}
 .review{padding:16px 18px;border-radius:14px;background:var(--card-bg);border:1px solid var(--line)}
 .review__head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:10px}
 .review__author{display:flex;align-items:center;gap:10px}
-.review__ava{width:36px;height:36px;border-radius:50%;background:var(--grad);background-size:200%;display:grid;place-items:center;font-family:'Unbounded',sans-serif;font-weight:700;font-size:13px;color:#04060A;flex-shrink:0;animation:gradShift 8s ease infinite}
+.review__ava{width:36px;height:36px;border-radius:50%;background:var(--grad);background-size:200%;display:grid;place-items:center;font-family:'Unbounded',sans-serif;font-weight:700;font-size:13px;color:#fff;flex-shrink:0;animation:gradShift 8s ease infinite;text-shadow:var(--text-shadow-light)}
 .review__name b{display:block;font-size:13px;font-weight:700;color:var(--txt-h)}
 .review__name span{font-size:11px;color:var(--mut)}
 .review__stars{display:flex;gap:2px;color:var(--c2);flex-shrink:0}
@@ -684,58 +730,53 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.45)}
       <div class="hero-scene" aria-hidden="true">
         <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMax slice">
           <defs>
-            <linearGradient id="ph-sky" x1="0" y1="0" x2="0" y2="1">
+            <linearGradient id="w-sky" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0" stop-color="var(--sc-sky-1)"/>
               <stop offset=".42" stop-color="var(--sc-sky-2)"/>
               <stop offset=".74" stop-color="var(--sc-sky-3)"/>
               <stop offset="1" stop-color="var(--sc-sky-4)"/>
             </linearGradient>
-            <linearGradient id="ph-aur1" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stop-color="var(--sc-aur-violet)" stop-opacity="0"/>
-              <stop offset=".25" stop-color="var(--sc-aur-violet)" stop-opacity=".48"/>
-              <stop offset=".55" stop-color="var(--sc-aur-emerald)" stop-opacity=".52"/>
-              <stop offset=".82" stop-color="var(--sc-aur-cyan)" stop-opacity=".48"/>
-              <stop offset="1" stop-color="var(--sc-aur-cyan)" stop-opacity="0"/>
-            </linearGradient>
-            <linearGradient id="ph-aur2" x1="0" y1="0" x2="1" y2="0">
+            <linearGradient id="w-aur1" x1="0" y1="0" x2="1" y2="0">
               <stop offset="0" stop-color="var(--sc-aur-cyan)" stop-opacity="0"/>
-              <stop offset=".4" stop-color="var(--sc-aur-cyan)" stop-opacity=".32"/>
-              <stop offset=".72" stop-color="var(--sc-aur-emerald)" stop-opacity=".3"/>
+              <stop offset=".3" stop-color="var(--sc-aur-cyan)" stop-opacity=".45"/>
+              <stop offset=".65" stop-color="var(--sc-aur-violet)" stop-opacity=".4"/>
               <stop offset="1" stop-color="var(--sc-aur-violet)" stop-opacity="0"/>
             </linearGradient>
-            <radialGradient id="ph-moong" cx="50%" cy="50%" r="50%">
-              <stop offset="0" stop-color="var(--sc-moon-core-2)" stop-opacity=".6"/>
-              <stop offset=".4" stop-color="var(--sc-moon-glow)" stop-opacity=".22"/>
+            <linearGradient id="w-aur2" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="var(--sc-aur-violet)" stop-opacity="0"/>
+              <stop offset=".35" stop-color="var(--sc-aur-violet)" stop-opacity=".3"/>
+              <stop offset=".7" stop-color="var(--sc-aur-cyan)" stop-opacity=".3"/>
+              <stop offset="1" stop-color="var(--sc-aur-cyan)" stop-opacity="0"/>
+            </linearGradient>
+            <radialGradient id="w-moong" cx="50%" cy="50%" r="50%">
+              <stop offset="0" stop-color="var(--sc-moon-core-2)" stop-opacity=".5"/>
+              <stop offset=".4" stop-color="var(--sc-moon-glow)" stop-opacity=".18"/>
               <stop offset="1" stop-color="var(--sc-moon-glow)" stop-opacity="0"/>
             </radialGradient>
-            <linearGradient id="ph-mtn-far" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="var(--sc-mtn-far-top)" stop-opacity=".7"/>
-              <stop offset="1" stop-color="var(--sc-mtn-far-bot)" stop-opacity=".12"/>
+            <linearGradient id="w-mtn-far" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="var(--sc-mtn-far-top)" stop-opacity=".85"/>
+              <stop offset="1" stop-color="var(--sc-mtn-far-bot)" stop-opacity=".3"/>
             </linearGradient>
-            <linearGradient id="ph-mtn-mid" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="var(--sc-mtn-mid-top)" stop-opacity=".9"/>
-              <stop offset="1" stop-color="var(--sc-mtn-mid-bot)" stop-opacity=".3"/>
+            <linearGradient id="w-mtn-mid" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="var(--sc-mtn-mid-top)" stop-opacity=".95"/>
+              <stop offset="1" stop-color="var(--sc-mtn-mid-bot)" stop-opacity=".5"/>
             </linearGradient>
-            <linearGradient id="ph-mtn-near" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="var(--sc-mtn-near-top)" stop-opacity=".95"/>
-              <stop offset="1" stop-color="var(--sc-mtn-near-bot)" stop-opacity=".6"/>
+            <linearGradient id="w-mtn-near" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="var(--sc-mtn-near-top)"/>
+              <stop offset="1" stop-color="var(--sc-mtn-near-bot)"/>
             </linearGradient>
-            <linearGradient id="ph-river" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="var(--sc-lake-top)" stop-opacity=".9"/>
-              <stop offset=".5" stop-color="var(--sc-lake-mid)" stop-opacity=".7"/>
-              <stop offset="1" stop-color="var(--sc-lake-bot)" stop-opacity=".97"/>
+            <linearGradient id="w-ground" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="var(--sc-ground-top)"/>
+              <stop offset=".6" stop-color="var(--sc-ground-mid)"/>
+              <stop offset="1" stop-color="var(--sc-ground-bot)"/>
             </linearGradient>
-            <linearGradient id="ph-villa" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="var(--c1)" stop-opacity=".7"/>
-              <stop offset="1" stop-color="var(--c3)" stop-opacity=".7"/>
-            </linearGradient>
-            <radialGradient id="ph-wg" cx="50%" cy="50%" r="50%">
-              <stop offset="0" stop-color="var(--sc-window)" stop-opacity=".85"/>
+            <radialGradient id="w-windowGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0" stop-color="var(--sc-window)" stop-opacity=".7"/>
               <stop offset="1" stop-color="var(--sc-window)" stop-opacity="0"/>
             </radialGradient>
           </defs>
 
-          <rect width="1920" height="1080" fill="url(#ph-sky)"/>
+          <rect width="1920" height="1080" fill="url(#w-sky)"/>
 
           <g fill="var(--sc-star)">
             <circle class="sc-tw" cx="120" cy="140" r="1.6" style="--dur:5.2s;--delay:-.8s"/>
@@ -747,143 +788,242 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.45)}
             <circle class="sc-tw" cx="1080" cy="160" r="1.7" style="--dur:6s;--delay:-3.5s"/>
             <circle class="sc-tw" cx="1240" cy="80" r="1.2" style="--dur:4.4s;--delay:-.9s"/>
             <circle class="sc-tw" cx="1420" cy="150" r="1.4" style="--dur:5.4s;--delay:-2.7s"/>
-            <circle class="sc-tw" cx="1600" cy="60" r="1" style="--dur:4.6s;--delay:-1.5s"/>
             <circle class="sc-tw" cx="1780" cy="180" r="1.5" style="--dur:5.9s;--delay:-3.2s"/>
-            <circle class="sc-tw" cx="80" cy="260" r="1.2" style="--dur:5.1s;--delay:-2.1s"/>
-            <circle class="sc-tw" cx="320" cy="300" r="1" style="--dur:4.7s;--delay:-1.4s"/>
-            <circle class="sc-tw" cx="700" cy="280" r="1.3" style="--dur:5.6s;--delay:-2.9s"/>
-            <circle class="sc-tw" cx="1020" cy="270" r="1.1" style="--dur:4.3s;--delay:-1.1s"/>
-            <circle class="sc-tw" cx="1340" cy="290" r="1.4" style="--dur:5.3s;--delay:-3.6s"/>
-            <circle class="sc-tw" cx="1660" cy="240" r="1.2" style="--dur:4.9s;--delay:-.7s"/>
+            <circle class="sc-tw" cx="80" cy="300" r="1.2" style="--dur:5.1s;--delay:-2.1s"/>
+            <circle class="sc-tw" cx="320" cy="340" r="1" style="--dur:4.7s;--delay:-1.4s"/>
+            <circle class="sc-tw" cx="700" cy="320" r="1.3" style="--dur:5.6s;--delay:-2.9s"/>
+            <circle class="sc-tw" cx="1020" cy="290" r="1.1" style="--dur:4.3s;--delay:-1.1s"/>
+            <circle class="sc-tw" cx="1340" cy="320" r="1.4" style="--dur:5.3s;--delay:-3.6s"/>
+            <circle class="sc-tw" cx="1660" cy="260" r="1.2" style="--dur:4.9s;--delay:-.7s"/>
+            <circle class="sc-tw" cx="1760" cy="360" r="1.1" style="--dur:4.2s;--delay:-2.6s"/>
+            <circle class="sc-tw" cx="480" cy="260" r="1.3" style="--dur:5.7s;--delay:-1.8s"/>
+            <circle class="sc-tw" cx="100" cy="420" r="1.2" style="--dur:4.6s;--delay:-3.4s"/>
+            <circle class="sc-tw" cx="1560" cy="200" r="1.1" style="--dur:5.5s;--delay:-2.2s"/>
           </g>
 
-          <g stroke="var(--sc-constellation)" stroke-opacity=".14" stroke-width=".7" fill="none">
+          <g stroke="var(--sc-constellation)" stroke-opacity=".18" stroke-width=".7" fill="none">
             <path d="M250 90 L400 160 L560 70"/>
             <path d="M1080 160 L1240 80 L1420 150"/>
+            <path d="M1660 260 L1780 180 L1760 360"/>
           </g>
-
-          <g class="sc-meteor" style="--delay:-2s"><line x1="1500" y1="180" x2="1560" y2="220"/></g>
-          <g class="sc-meteor" style="--delay:-8s"><line x1="300" y1="200" x2="360" y2="240"/></g>
-          <g class="sc-meteor" style="--delay:-12s"><line x1="900" y1="280" x2="960" y2="320"/></g>
 
           <g class="sc-aur-a">
-            <path d="M-100 300 C 300 180, 600 400, 960 260 S 1500 340, 1920 240 L1920 380 C 1500 480, 1200 360, 960 460 S 300 320, -100 440 Z" fill="url(#ph-aur1)"/>
+            <path d="M-100 280 C 300 160, 600 380, 960 240 S 1500 320, 1920 220 L1920 360 C 1500 460, 1200 340, 960 440 S 300 300, -100 420 Z" fill="url(#w-aur1)"/>
           </g>
           <g class="sc-aur-b">
-            <path d="M-100 420 C 260 320, 560 500, 900 380 S 1400 440, 1920 360 L1920 460 C 1400 540, 1200 460, 900 540 S 260 440, -100 520 Z" fill="url(#ph-aur2)"/>
+            <path d="M-100 400 C 260 300, 560 480, 900 360 S 1400 420, 1920 340 L1920 440 C 1400 520, 1200 440, 900 520 S 260 420, -100 500 Z" fill="url(#w-aur2)"/>
+          </g>
+
+          <circle cx="1550" cy="280" r="480" fill="url(#w-moong)"/>
+          <circle class="sc-moon-r" cx="1550" cy="280" r="170" fill="none" stroke="var(--sc-moon-ring-1)" stroke-opacity=".2" stroke-width="1" stroke-dasharray="2 12"/>
+          <circle cx="1550" cy="280" r="115" fill="var(--sc-moon-core)"/>
+          <circle cx="1550" cy="280" r="115" fill="var(--sc-moon-glow)" opacity=".25"/>
+          <circle cx="1530" cy="265" r="12" fill="var(--sc-moon-crater)" opacity=".3"/>
+          <circle cx="1568" cy="295" r="8" fill="var(--sc-moon-crater)" opacity=".25"/>
+          <circle cx="1545" cy="300" r="6" fill="var(--sc-moon-crater)" opacity=".2"/>
+
+          <path fill="url(#w-mtn-far)" d="M0 720 C 180 500, 320 420, 480 600 S 780 480, 1000 640 S 1280 480, 1480 620 S 1740 520, 1920 660 L1920 1080 L0 1080 Z"/>
+          <g fill="var(--sc-snow)" opacity=".45">
+            <path d="M480 600 L510 550 L530 580 L560 540 L590 580 L560 590 L530 560 L510 580 Z"/>
+            <path d="M1000 640 L1030 580 L1060 620 L1090 570 L1120 620 L1090 630 L1060 600 L1030 630 Z"/>
+            <path d="M1480 620 L1510 570 L1540 600 L1570 560 L1600 610 L1570 615 L1540 590 L1510 610 Z"/>
+          </g>
+
+          <path fill="url(#w-mtn-mid)" d="M0 830 C 200 700, 400 660, 600 780 S 1000 660, 1200 790 S 1500 700, 1700 800 S 1880 780, 1920 800 L1920 1080 L0 1080 Z"/>
+          <path fill="url(#w-mtn-near)" d="M0 880 C 240 820, 480 860, 720 840 S 1080 810, 1320 840 S 1640 850, 1860 830 S 1900 850, 1920 860 L1920 1080 L0 1080 Z"/>
+
+          <path fill="url(#w-ground)" d="M0 900 C 200 870, 400 890, 600 880 S 1000 870, 1200 880 S 1600 890, 1920 870 L1920 1080 L0 1080 Z"/>
+          <ellipse cx="600" cy="980" rx="200" ry="25" fill="var(--sc-snow)" opacity=".18"/>
+          <ellipse cx="1400" cy="1020" rx="250" ry="30" fill="var(--sc-snow)" opacity=".18"/>
+          <ellipse cx="300" cy="1000" rx="150" ry="18" fill="var(--sc-snow)" opacity=".12"/>
+          <line x1="0" y1="900" x2="1920" y2="900" stroke="var(--sc-horizon)" stroke-opacity=".14" stroke-width="1"/>
+
+          <g fill="var(--sc-pine)" opacity=".9">
+            <path d="M100,905 L120,830 L140,905 Z"/>
+            <path d="M200,910 L225,820 L250,910 Z"/>
+            <path d="M400,900 L420,835 L440,900 Z"/>
+            <path d="M700,905 L730,820 L760,905 Z"/>
+            <path d="M1400,905 L1420,840 L1440,905 Z"/>
+            <path d="M1700,900 L1720,830 L1740,900 Z"/>
+            <path d="M1850,905 L1880,820 L1910,905 Z"/>
+            <path d="M600,910 L620,845 L640,910 Z" opacity=".7"/>
+            <path d="M1580,905 L1600,840 L1620,905 Z" opacity=".7"/>
+          </g>
+
+          <!-- BIG CHRISTMAS TREE — lowered further so star fully visible -->
+          <g transform="translate(1000, 1070)">
+            <ellipse cx="0" cy="5" rx="220" ry="25" fill="var(--sc-mtn-shadow)" opacity=".5"/>
+            <rect x="-25" y="-40" width="50" height="55" fill="#3a2510"/>
+
+            <polygon points="-200,0 0,-250 200,0" fill="var(--sc-tree-3)"/>
+            <polygon points="-180,-10 0,-240 180,-10" fill="var(--sc-tree-2)" opacity=".4"/>
+            <polygon points="-150,-160 0,-390 150,-160" fill="var(--sc-tree-2)"/>
+            <polygon points="-100,-320 0,-500 100,-320" fill="var(--sc-tree-1)"/>
+            <polygon points="-60,-440 0,-580 60,-440" fill="var(--sc-tree-1)"/>
+
+            <path d="M-70,-190 Q 0,-240 70,-190 Q 35,-180 0,-200 Q -35,-180 -70,-190 Z" fill="var(--sc-roof-snow)" opacity=".9"/>
+            <path d="M-60,-340 Q 0,-390 60,-340 Q 30,-330 0,-350 Q -30,-330 -60,-340 Z" fill="var(--sc-roof-snow)" opacity=".9"/>
+            <path d="M-45,-450 Q 0,-500 45,-450 Q 22,-440 0,-460 Q -22,-440 -45,-450 Z" fill="var(--sc-roof-snow)" opacity=".9"/>
+            <path d="M-30,-540 Q 0,-580 30,-540 Q 15,-535 0,-548 Q -15,-535 -30,-540 Z" fill="var(--sc-roof-snow)" opacity=".9"/>
+
+            <g transform="translate(0,-600)">
+              <g class="w-star-tree">
+                <circle r="48" fill="var(--sc-star-top-glow)" opacity=".45"/>
+                <polygon points="0,-28 8,-8 28,-8 12,4 18,24 0,12 -18,24 -12,4 -28,-8 -8,-8" fill="var(--sc-star-top)"/>
+              </g>
+            </g>
+
+            <g>
+              <circle class="w-bulb" cx="-90" cy="-60" r="7" fill="var(--sc-bulb-gold)" style="--delay:0s"/>
+              <circle class="w-bulb" cx="60" cy="-100" r="7" fill="var(--sc-bulb-red)" style="--delay:-.3s"/>
+              <circle class="w-bulb" cx="-130" cy="-130" r="7" fill="var(--sc-bulb-blue)" style="--delay:-.6s"/>
+              <circle class="w-bulb" cx="100" cy="-170" r="7" fill="var(--sc-bulb-violet)" style="--delay:-.9s"/>
+              <circle class="w-bulb" cx="-60" cy="-200" r="7" fill="var(--sc-bulb-gold)" style="--delay:-.4s"/>
+              <circle class="w-bulb" cx="120" cy="-240" r="7" fill="var(--sc-bulb-red)" style="--delay:-.7s"/>
+              <circle class="w-bulb" cx="-110" cy="-260" r="7" fill="var(--sc-bulb-blue)" style="--delay:-1.1s"/>
+              <circle class="w-bulb" cx="70" cy="-300" r="6" fill="var(--sc-bulb-gold)" style="--delay:-.2s"/>
+              <circle class="w-bulb" cx="-70" cy="-360" r="6" fill="var(--sc-bulb-violet)" style="--delay:-.5s"/>
+              <circle class="w-bulb" cx="40" cy="-410" r="6" fill="var(--sc-bulb-red)" style="--delay:-.8s"/>
+              <circle class="w-bulb" cx="-45" cy="-460" r="6" fill="var(--sc-bulb-gold)" style="--delay:-1.2s"/>
+              <circle class="w-bulb" cx="25" cy="-505" r="5" fill="var(--sc-bulb-blue)" style="--delay:-.6s"/>
+              <circle class="w-bulb" cx="-15" cy="-545" r="5" fill="var(--sc-bulb-red)" style="--delay:-1s"/>
+            </g>
+
+            <g>
+              <circle cx="-150" cy="-30" r="11" fill="var(--sc-orn-red)"/>
+              <circle cx="-150" cy="-30" r="11" fill="var(--sc-snow)" opacity=".25"/>
+              <circle cx="130" cy="-40" r="11" fill="var(--sc-orn-gold)"/>
+              <circle cx="170" cy="-100" r="10" fill="var(--sc-orn-violet)"/>
+              <circle cx="-180" cy="-100" r="10" fill="var(--sc-orn-gold)"/>
+              <circle cx="-30" cy="-160" r="11" fill="var(--sc-orn-red)"/>
+              <circle cx="140" cy="-190" r="10" fill="var(--sc-orn-gold)"/>
+              <circle cx="-120" cy="-220" r="10" fill="var(--sc-orn-violet)"/>
+              <circle cx="80" cy="-260" r="9" fill="var(--sc-orn-red)"/>
+              <circle cx="-50" cy="-300" r="9" fill="var(--sc-orn-gold)"/>
+              <circle cx="100" cy="-330" r="8" fill="var(--sc-orn-violet)"/>
+              <circle cx="-80" cy="-370" r="8" fill="var(--sc-orn-red)"/>
+            </g>
+          </g>
+
+          <g transform="translate(1500, 900)">
+            <ellipse cx="0" cy="85" rx="130" ry="15" fill="var(--sc-mtn-shadow)" opacity=".4"/>
+            <rect x="-100" y="0" width="200" height="80" fill="var(--sc-villa-bg)"/>
+            <polygon points="-120,5 0,-70 120,5" fill="var(--sc-villa-bg)"/>
+            <polygon points="-120,5 0,-70 120,5" fill="var(--sc-pine)" opacity=".4"/>
+            <path d="M-125,5 Q -80,-15 0,-75 Q 80,-15 125,5 Q 80,-5 0,-60 Q -80,-5 -125,5 Z" fill="var(--sc-roof-snow)"/>
+            <ellipse cx="0" cy="80" rx="140" ry="10" fill="var(--sc-snow)"/>
+            <rect x="-15" y="30" width="30" height="50" fill="var(--sc-window)"/>
+            <rect x="-15" y="30" width="30" height="50" fill="var(--sc-window-stroke)" opacity=".3"/>
+            <rect x="-80" y="20" width="30" height="30" fill="var(--sc-window)"/>
+            <rect x="50" y="20" width="30" height="30" fill="var(--sc-window)"/>
+            <line x1="-65" y1="20" x2="-65" y2="50" stroke="var(--sc-villa-bg)" stroke-width="2"/>
+            <line x1="-80" y1="35" x2="-50" y2="35" stroke="var(--sc-villa-bg)" stroke-width="2"/>
+            <line x1="65" y1="20" x2="65" y2="50" stroke="var(--sc-villa-bg)" stroke-width="2"/>
+            <line x1="50" y1="35" x2="80" y2="35" stroke="var(--sc-villa-bg)" stroke-width="2"/>
+            <circle cx="-65" cy="35" r="60" fill="url(#w-windowGlow)" opacity=".6"/>
+            <circle cx="65" cy="35" r="60" fill="url(#w-windowGlow)" opacity=".6"/>
+            <rect x="60" y="-75" width="18" height="35" fill="var(--sc-villa-bg)"/>
+            <rect x="56" y="-80" width="26" height="8" fill="var(--sc-roof-snow)"/>
+            <g class="sc-smoke" stroke="var(--sc-smoke)" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-opacity=".7">
+              <path d="M69,-82 Q 60,-100 75,-120 Q 90,-140 70,-160"/>
+            </g>
+          </g>
+
+          <!-- Snowman 1 shifted down-left -->
+          <g transform="translate(340, 985)">
+            <ellipse cx="0" cy="80" rx="70" ry="12" fill="var(--sc-mtn-shadow)" opacity=".4"/>
+            <circle cx="0" cy="40" r="60" fill="var(--sc-snowman)"/>
+            <circle cx="0" cy="40" r="60" fill="var(--sc-snowman-shadow)" opacity=".2"/>
+            <circle cx="0" cy="-20" r="42" fill="var(--sc-snowman)"/>
+            <circle cx="0" cy="-70" r="28" fill="var(--sc-snowman)"/>
+            <circle cx="0" cy="20" r="4" fill="#1a1a2e"/>
+            <circle cx="0" cy="45" r="4" fill="#1a1a2e"/>
+            <circle cx="0" cy="65" r="4" fill="#1a1a2e"/>
+            <circle cx="-10" cy="-78" r="4.5" fill="#1a1a2e"/>
+            <circle cx="10" cy="-78" r="4.5" fill="#1a1a2e"/>
+            <polygon points="0,-70 38,-72 0,-64" fill="var(--sc-snowman-nose)"/>
+            <circle cx="-8" cy="-58" r="2.5" fill="#1a1a2e"/>
+            <circle cx="0" cy="-56" r="2.5" fill="#1a1a2e"/>
+            <circle cx="8" cy="-58" r="2.5" fill="#1a1a2e"/>
+            <path d="M-28,-50 Q 0,-38 28,-50 L 32,-35 Q 0,-25 -32,-35 Z" fill="var(--sc-snowman-scarf)"/>
+            <path d="M24,-42 L 30,-12 L 18,-12 L 14,-42 Z" fill="var(--sc-snowman-scarf)"/>
+            <path d="M-22,-92 L -20,-120 Q 0,-128 20,-120 L 22,-92 Z" fill="var(--sc-snowman-hat)"/>
+            <rect x="-26" y="-98" width="52" height="8" fill="var(--sc-snowman-hat)"/>
+            <circle cx="0" cy="-125" r="6" fill="var(--sc-snowman)"/>
+            <line x1="-58" y1="5" x2="-100" y2="-15" stroke="#4a3525" stroke-width="4" stroke-linecap="round"/>
+            <line x1="58" y1="5" x2="100" y2="-25" stroke="#4a3525" stroke-width="4" stroke-linecap="round"/>
+            <line x1="-100" y1="-15" x2="-115" y2="-30" stroke="#4a3525" stroke-width="3" stroke-linecap="round"/>
+            <line x1="100" y1="-25" x2="115" y2="-40" stroke="#4a3525" stroke-width="3" stroke-linecap="round"/>
+          </g>
+
+          <!-- Snowman 2 shifted down-left -->
+          <g transform="translate(730, 1015) scale(.72)">
+            <ellipse cx="0" cy="80" rx="70" ry="12" fill="var(--sc-mtn-shadow)" opacity=".4"/>
+            <circle cx="0" cy="40" r="60" fill="var(--sc-snowman)"/>
+            <circle cx="0" cy="40" r="60" fill="var(--sc-snowman-shadow)" opacity=".2"/>
+            <circle cx="0" cy="-20" r="42" fill="var(--sc-snowman)"/>
+            <circle cx="0" cy="-70" r="28" fill="var(--sc-snowman)"/>
+            <circle cx="0" cy="20" r="4" fill="#1a1a2e"/>
+            <circle cx="0" cy="45" r="4" fill="#1a1a2e"/>
+            <circle cx="0" cy="65" r="4" fill="#1a1a2e"/>
+            <circle cx="-10" cy="-78" r="4.5" fill="#1a1a2e"/>
+            <circle cx="10" cy="-78" r="4.5" fill="#1a1a2e"/>
+            <polygon points="0,-70 38,-72 0,-64" fill="var(--sc-snowman-nose)"/>
+            <circle cx="-8" cy="-58" r="2.5" fill="#1a1a2e"/>
+            <circle cx="0" cy="-56" r="2.5" fill="#1a1a2e"/>
+            <circle cx="8" cy="-58" r="2.5" fill="#1a1a2e"/>
+            <path d="M-28,-50 Q 0,-38 28,-50 L 32,-35 Q 0,-25 -32,-35 Z" fill="var(--sc-snowman-scarf)"/>
+            <path d="M24,-42 L 30,-12 L 18,-12 L 14,-42 Z" fill="var(--sc-snowman-scarf)"/>
+            <path d="M-22,-92 L -20,-120 Q 0,-128 20,-120 L 22,-92 Z" fill="var(--sc-snowman-hat)"/>
+            <rect x="-26" y="-98" width="52" height="8" fill="var(--sc-snowman-hat)"/>
+            <circle cx="0" cy="-125" r="6" fill="var(--sc-snowman)"/>
+            <line x1="-58" y1="5" x2="-100" y2="-15" stroke="#4a3525" stroke-width="4" stroke-linecap="round"/>
+            <line x1="58" y1="5" x2="100" y2="-25" stroke="#4a3525" stroke-width="4" stroke-linecap="round"/>
+            <line x1="-100" y1="-15" x2="-115" y2="-30" stroke="#4a3525" stroke-width="3" stroke-linecap="round"/>
+          </g>
+
+          <g fill="var(--sc-pine)" opacity=".9">
+            <path d="M-30,1080 L-30,700 L-70,780 L-50,760 L-90,850 L-70,830 L-120,930 L-95,900 L-160,1080 Z"/>
+            <path d="M1950,1080 L1950,700 L1910,780 L1930,760 L1890,850 L1910,830 L1860,930 L1885,900 L1820,1080 Z"/>
           </g>
 
           <g>
-            <circle cx="360" cy="240" r="420" fill="url(#ph-moong)"/>
-            <circle class="sc-moon-r" cx="360" cy="240" r="155" fill="none" stroke="var(--sc-moon-ring-1)" stroke-opacity=".24" stroke-width="1" stroke-dasharray="2 9"/>
-            <circle class="sc-moon-r sc-moon-r2" cx="360" cy="240" r="205" fill="none" stroke="var(--sc-moon-ring-2)" stroke-opacity=".14" stroke-width=".8" stroke-dasharray="1 13"/>
-            <circle cx="360" cy="240" r="82" fill="var(--sc-moon-core-2)" opacity=".46"/>
-            <circle cx="360" cy="240" r="66" fill="var(--sc-moon-core)" opacity=".62"/>
-            <circle cx="338" cy="224" r="9" fill="var(--sc-moon-crater)" opacity=".22"/>
-            <circle cx="372" cy="248" r="6" fill="var(--sc-moon-crater)" opacity=".2"/>
-            <circle cx="345" cy="256" r="12" fill="var(--sc-moon-crater)" opacity=".12"/>
-            <circle cx="385" cy="228" r="4" fill="var(--sc-moon-crater)" opacity=".18"/>
+            <path d="M-50,90 Q 300,190 700,130 T 1500,150 T 1970,110" fill="none" stroke="var(--sc-garland-wire)" stroke-width="2" opacity=".55"/>
+            <circle class="w-bulb" cx="100" cy="140" r="8" fill="var(--sc-bulb-gold)" style="--delay:-.1s"/>
+            <circle class="w-bulb" cx="250" cy="165" r="8" fill="var(--sc-bulb-red)" style="--delay:-.4s"/>
+            <circle class="w-bulb" cx="400" cy="175" r="8" fill="var(--sc-bulb-blue)" style="--delay:-.7s"/>
+            <circle class="w-bulb" cx="550" cy="170" r="8" fill="var(--sc-bulb-violet)" style="--delay:-1s"/>
+            <circle class="w-bulb" cx="700" cy="155" r="8" fill="var(--sc-bulb-gold)" style="--delay:-.3s"/>
+            <circle class="w-bulb" cx="850" cy="145" r="8" fill="var(--sc-bulb-red)" style="--delay:-.6s"/>
+            <circle class="w-bulb" cx="1000" cy="140" r="8" fill="var(--sc-bulb-blue)" style="--delay:-.9s"/>
+            <circle class="w-bulb" cx="1150" cy="145" r="8" fill="var(--sc-bulb-violet)" style="--delay:-1.2s"/>
+            <circle class="w-bulb" cx="1300" cy="150" r="8" fill="var(--sc-bulb-gold)" style="--delay:-.5s"/>
+            <circle class="w-bulb" cx="1450" cy="145" r="8" fill="var(--sc-bulb-red)" style="--delay:-.8s"/>
+            <circle class="w-bulb" cx="1600" cy="135" r="8" fill="var(--sc-bulb-blue)" style="--delay:-1.1s"/>
+            <circle class="w-bulb" cx="1750" cy="125" r="8" fill="var(--sc-bulb-violet)" style="--delay:-.2s"/>
+            <circle class="w-bulb" cx="1900" cy="115" r="8" fill="var(--sc-bulb-gold)" style="--delay:-.9s"/>
           </g>
 
-          <g transform="translate(0,200)">
-            <g class="sc-cloud" style="--dur:160s;--delay:-50s">
-              <ellipse cx="0" cy="0" rx="80" ry="18" fill="var(--sc-cloud-violet)" fill-opacity="var(--sc-cloud-op)"/>
-              <ellipse cx="70" cy="-10" rx="60" ry="22" fill="var(--sc-cloud-violet)" fill-opacity="var(--sc-cloud-op)"/>
-              <ellipse cx="140" cy="4" rx="70" ry="16" fill="var(--sc-cloud-violet)" fill-opacity="var(--sc-cloud-op)"/>
-            </g>
-            <g class="sc-cloud" style="--dur:200s;--delay:-110s">
-              <ellipse cx="0" cy="0" rx="65" ry="14" fill="var(--sc-cloud-cyan)" fill-opacity="var(--sc-cloud-op)"/>
-              <ellipse cx="55" cy="-6" rx="50" ry="18" fill="var(--sc-cloud-cyan)" fill-opacity="var(--sc-cloud-op)"/>
-            </g>
-          </g>
-
-          <path fill="url(#ph-mtn-far)" d="M0 700 C 200 520, 380 440, 600 600 S 980 460, 1200 620 S 1500 500, 1700 620 S 1880 640, 1920 650 L1920 1080 L0 1080 Z"/>
-          <g fill="var(--sc-snow)" fill-opacity=".13">
-            <path d="M520 570 L580 500 L640 555 L690 515 L750 570 L690 562 L640 545 L580 520 L520 570 Z"/>
-            <path d="M1080 560 L1140 480 L1200 545 L1250 500 L1310 565 L1250 555 L1200 535 L1140 500 L1080 560 Z"/>
-            <path d="M1560 555 L1620 490 L1680 545 L1720 510 L1780 560 L1720 552 L1680 530 L1620 505 L1560 555 Z"/>
-          </g>
-
-          <path fill="url(#ph-mtn-mid)" d="M0 800 C 220 640, 460 590, 700 720 S 1060 580, 1300 730 S 1620 620, 1840 730 S 1910 760, 1920 770 L1920 1080 L0 1080 Z"/>
-          <path fill="url(#ph-mtn-near)" d="M0 880 C 240 800, 460 830, 700 820 S 1080 790, 1320 820 S 1640 840, 1860 830 S 1910 850, 1920 860 L1920 1080 L0 1080 Z"/>
-
-          <path fill="var(--sc-treeline)" opacity=".94" d="M0 870 C 60 845, 120 858, 180 843 S 300 860, 360 843 S 480 858, 540 843 S 660 860, 720 843 S 840 858, 900 843 S 1020 860, 1080 843 S 1200 858, 1260 843 S 1380 860, 1440 843 S 1560 858, 1620 843 S 1740 860, 1800 843 S 1890 858, 1920 843 L1920 1080 L0 1080 Z"/>
-
-          <path fill="url(#ph-river)" d="M0 900 Q 200 870 400 900 T 800 980 Q 1000 1030 1200 1010 T 1600 1040 Q 1750 1060 1920 1050 L1920 1080 L0 1080 Z"/>
-          <line x1="0" y1="900" x2="1920" y2="900" stroke="var(--sc-horizon)" stroke-opacity=".16" stroke-width="1" fill="none"/>
-
-          <g class="sc-reflect" fill="none" stroke-linecap="round">
-            <line x1="300" y1="930" x2="500" y2="930" stroke="var(--sc-refl-1)" stroke-opacity=".14" stroke-width="1.2"/>
-            <line x1="580" y1="965" x2="820" y2="965" stroke="var(--sc-refl-2)" stroke-opacity=".16" stroke-width="1"/>
-            <line x1="260" y1="995" x2="480" y2="995" stroke="var(--sc-refl-1)" stroke-opacity=".1" stroke-width="1.2"/>
-            <line x1="1000" y1="1000" x2="1220" y2="1000" stroke="var(--sc-refl-2)" stroke-opacity=".12" stroke-width="1"/>
-            <line x1="1300" y1="1030" x2="1560" y2="1030" stroke="var(--sc-refl-3)" stroke-opacity=".14" stroke-width="1.5"/>
-          </g>
-
-          <g transform="translate(1000,760)">
-            <ellipse cx="80" cy="60" rx="90" ry="6" fill="var(--sc-mtn-shadow)" fill-opacity=".5"/>
-            <path d="M10 60 L10 20 L50 0 L120 0 L160 20 L160 60 Z" fill="var(--sc-villa-bg)" stroke="url(#ph-villa)" stroke-width="1.1"/>
-            <path d="M5 20 L50 -2 L160 -2 L165 20" fill="none" stroke="url(#ph-villa)" stroke-width="1.4"/>
-            <rect x="30" y="30" width="24" height="30" fill="var(--sc-window)" fill-opacity="var(--sc-window-op)" stroke="var(--sc-window-stroke)" stroke-opacity=".5" stroke-width=".7"/>
-            <rect x="64" y="30" width="24" height="30" fill="var(--sc-window)" fill-opacity="var(--sc-window-op-b)" stroke="var(--sc-window-stroke)" stroke-opacity=".5" stroke-width=".7"/>
-            <rect x="98" y="30" width="24" height="30" fill="var(--sc-window)" fill-opacity="var(--sc-window-op-c)" stroke="var(--sc-window-stroke)" stroke-opacity=".5" stroke-width=".7"/>
-            <rect x="130" y="0" width="8" height="14" fill="var(--sc-villa-bg)" stroke="url(#ph-villa)" stroke-width=".6"/>
-            <circle cx="80" cy="45" r="80" fill="url(#ph-wg)" opacity=".3"/>
-            <g class="sc-smoke" stroke="var(--sc-smoke)" stroke-opacity=".35" fill="none" stroke-width=".8" stroke-linecap="round">
-              <path d="M134 -2 Q 132 -10 136 -16 Q 140 -22 136 -28"/>
-            </g>
-          </g>
-
-          <g transform="translate(660,790) scale(.72)">
-            <ellipse cx="80" cy="60" rx="85" ry="5" fill="var(--sc-mtn-shadow)" fill-opacity=".4"/>
-            <path d="M10 60 L10 20 L50 0 L120 0 L160 20 L160 60 Z" fill="var(--sc-villa-bg)" stroke="url(#ph-villa)" stroke-width="1.2"/>
-            <path d="M5 20 L50 -2 L160 -2 L165 20" fill="none" stroke="url(#ph-villa)" stroke-width="1.4"/>
-            <rect x="30" y="30" width="24" height="30" fill="var(--sc-window)" fill-opacity="var(--sc-window-op-b)" stroke="var(--sc-window-stroke)" stroke-opacity=".5" stroke-width=".8"/>
-            <rect x="70" y="30" width="24" height="30" fill="var(--sc-window)" fill-opacity="var(--sc-window-op)" stroke="var(--sc-window-stroke)" stroke-opacity=".5" stroke-width=".8"/>
-            <rect x="110" y="30" width="24" height="30" fill="var(--sc-window)" fill-opacity="var(--sc-window-op-c)" stroke="var(--sc-window-stroke)" stroke-opacity=".5" stroke-width=".8"/>
-            <circle cx="80" cy="45" r="80" fill="url(#ph-wg)" opacity=".28"/>
-          </g>
-
-          <g transform="translate(1440,780) scale(.62)">
-            <ellipse cx="80" cy="60" rx="80" ry="5" fill="var(--sc-mtn-shadow)" fill-opacity=".4"/>
-            <path d="M10 60 L10 20 L50 0 L120 0 L160 20 L160 60 Z" fill="var(--sc-villa-bg)" stroke="url(#ph-villa)" stroke-width="1.2"/>
-            <path d="M5 20 L50 -2 L160 -2 L165 20" fill="none" stroke="url(#ph-villa)" stroke-width="1.4"/>
-            <rect x="30" y="30" width="24" height="30" fill="var(--sc-window)" fill-opacity="var(--sc-window-op)" stroke="var(--sc-window-stroke)" stroke-opacity=".5" stroke-width=".8"/>
-            <rect x="70" y="30" width="24" height="30" fill="var(--sc-window)" fill-opacity="var(--sc-window-op-b)" stroke="var(--sc-window-stroke)" stroke-opacity=".5" stroke-width=".8"/>
-            <rect x="110" y="30" width="24" height="30" fill="var(--sc-window)" fill-opacity="var(--sc-window-op-c)" stroke="var(--sc-window-stroke)" stroke-opacity=".5" stroke-width=".8"/>
-            <circle cx="80" cy="45" r="80" fill="url(#ph-wg)" opacity=".26"/>
-          </g>
-
-          <g fill="var(--sc-pine)" opacity=".94">
-            <path d="M-20 1080 L-20 650 L42 780 L22 758 L72 862 L48 838 L102 952 L72 922 L138 1080 Z"/>
-            <path d="M60 1080 L60 800 L108 888 L94 872 L138 960 L114 938 L162 1032 L136 1010 L182 1080 Z" opacity=".78"/>
-            <path d="M1940 1080 L1940 640 L1866 770 L1894 748 L1836 870 L1866 844 L1794 970 L1830 942 L1754 1080 Z"/>
-            <path d="M1860 1080 L1860 800 L1808 888 L1824 872 L1774 962 L1800 942 L1742 1036 L1772 1014 L1722 1080 Z" opacity=".78"/>
-            <path d="M560 1080 L560 860 L580 900 L575 890 L595 930 L590 920 L610 960 L605 955 L625 1080 Z" opacity=".6"/>
-            <path d="M1300 1080 L1300 870 L1320 910 L1315 900 L1335 940 L1330 930 L1350 970 L1345 965 L1365 1080 Z" opacity=".6"/>
-          </g>
-
-          <g fill="var(--sc-firefly)">
-            <circle class="sc-firefly" cx="260" cy="820" r="1.8" style="--dur:14s;--delay:-2s;--dx:22px;--dy:-30px"/>
-            <circle class="sc-firefly" cx="380" cy="835" r="2.1" style="--dur:16s;--delay:-5s;--dx:-16px;--dy:-38px"/>
-            <circle class="sc-firefly" cx="520" cy="828" r="1.6" style="--dur:12s;--delay:-1s;--dx:20px;--dy:-22px"/>
-            <circle class="sc-firefly" cx="720" cy="838" r="2" style="--dur:15s;--delay:-7s;--dx:-22px;--dy:-32px"/>
-            <circle class="sc-firefly" cx="920" cy="830" r="1.7" style="--dur:13s;--delay:-3s;--dx:18px;--dy:-28px"/>
-            <circle class="sc-firefly" cx="1180" cy="825" r="1.9" style="--dur:17s;--delay:-6s;--dx:-14px;--dy:-34px"/>
-            <circle class="sc-firefly" cx="1380" cy="828" r="1.6" style="--dur:14s;--delay:-4s;--dx:20px;--dy:-26px"/>
-            <circle class="sc-firefly" cx="1620" cy="820" r="2" style="--dur:16s;--delay:-8s;--dx:-18px;--dy:-30px"/>
-            <circle class="sc-firefly" cx="1720" cy="835" r="1.7" style="--dur:12s;--delay:-2.5s;--dx:14px;--dy:-28px"/>
+          <g fill="var(--sc-snow)">
+            <circle class="w-snowflake" cx="80" cy="-20" r="4" style="--dur:14s;--delay:-2s;--drift:30px"/>
+            <circle class="w-snowflake" cx="220" cy="-20" r="3" style="--dur:11s;--delay:-5s;--drift:-20px"/>
+            <circle class="w-snowflake" cx="380" cy="-20" r="5" style="--dur:16s;--delay:-8s;--drift:40px"/>
+            <circle class="w-snowflake" cx="540" cy="-20" r="3" style="--dur:12s;--delay:-3s;--drift:-30px"/>
+            <circle class="w-snowflake" cx="700" cy="-20" r="4" style="--dur:15s;--delay:-7s;--drift:25px"/>
+            <circle class="w-snowflake" cx="860" cy="-20" r="3" style="--dur:13s;--delay:-1s;--drift:-15px"/>
+            <circle class="w-snowflake" cx="1020" cy="-20" r="5" style="--dur:17s;--delay:-10s;--drift:35px"/>
+            <circle class="w-snowflake" cx="1180" cy="-20" r="4" style="--dur:12s;--delay:-4s;--drift:-25px"/>
+            <circle class="w-snowflake" cx="1340" cy="-20" r="3" style="--dur:14s;--delay:-9s;--drift:20px"/>
+            <circle class="w-snowflake" cx="1500" cy="-20" r="5" style="--dur:16s;--delay:-6s;--drift:-40px"/>
+            <circle class="w-snowflake" cx="1660" cy="-20" r="4" style="--dur:13s;--delay:-11s;--drift:30px"/>
+            <circle class="w-snowflake" cx="1820" cy="-20" r="3" style="--dur:15s;--delay:-2.5s;--drift:-20px"/>
           </g>
 
           <g fill="var(--sc-particle)">
-            <circle class="sc-dot" cx="420" cy="500" r="2.2" style="--dur:16s;--delay:-3s"/>
-            <circle class="sc-dot" cx="660" cy="420" r="1.8" style="--dur:19s;--delay:-6s"/>
-            <circle class="sc-dot" cx="940" cy="540" r="2.4" style="--dur:14s;--delay:-4s"/>
-            <circle class="sc-dot" cx="1220" cy="470" r="2" style="--dur:18s;--delay:-9s"/>
-            <circle class="sc-dot" cx="1430" cy="580" r="2.1" style="--dur:15s;--delay:-1s"/>
-            <circle class="sc-dot" cx="280" cy="640" r="1.6" style="--dur:20s;--delay:-8s"/>
-            <circle class="sc-dot" cx="1720" cy="460" r="2" style="--dur:17s;--delay:-5s"/>
-            <circle class="sc-dot" cx="1820" cy="620" r="1.8" style="--dur:13s;--delay:-3s"/>
+            <circle class="sc-dot" cx="350" cy="500" r="2" style="--dur:16s;--delay:-3s"/>
+            <circle class="sc-dot" cx="700" cy="450" r="1.8" style="--dur:19s;--delay:-6s"/>
+            <circle class="sc-dot" cx="1200" cy="480" r="2.2" style="--dur:14s;--delay:-4s"/>
+            <circle class="sc-dot" cx="1550" cy="550" r="1.6" style="--dur:18s;--delay:-9s"/>
           </g>
         </svg>
       </div>
@@ -1154,9 +1294,6 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.45)}
 const $  = (s, r=document) => r.querySelector(s);
 const $$ = (s, r=document) => Array.prototype.slice.call(r.querySelectorAll(s));
 
-/* ============================================================
-   THEME
-============================================================ */
 const themeMeta = document.getElementById('themeColorMeta');
 function applyTheme(theme){
   document.documentElement.setAttribute('data-theme', theme);
@@ -1172,9 +1309,6 @@ $('#themeToggle').addEventListener('click', () => {
   applyTheme(cur === 'dark' ? 'light' : 'dark');
 });
 
-/* ============================================================
-   SCROLL PROGRESS + NAV
-============================================================ */
 const navEl = $('#nav'), barEl = $('#scrollProgress');
 let tick = false;
 function onScroll(){
@@ -1187,9 +1321,6 @@ function onScroll(){
 addEventListener('scroll', () => { if (!tick){ tick = true; requestAnimationFrame(onScroll); } }, {passive:true});
 onScroll();
 
-/* ============================================================
-   MAGNETIC
-============================================================ */
 function bindMagnetic(root){
   $$('[data-magnetic]', root).forEach(el => {
     if (el.dataset.magBound) return;
@@ -1203,9 +1334,6 @@ function bindMagnetic(root){
 }
 bindMagnetic(document);
 
-/* ============================================================
-   REVEAL
-============================================================ */
 let revealObserver = null;
 function initReveal(){
   if (revealObserver) return;
@@ -1218,9 +1346,6 @@ function initReveal(){
 }
 initReveal();
 
-/* ============================================================
-   DATA
-============================================================ */
 const DISTRICTS = [
   { id:'all',  n:'Все',   full:'Все округа' },
   { id:'cfo',  n:'ЦФО',   full:'Центральный ФО' },
@@ -1370,14 +1495,10 @@ const AMEN = [
 const AMEN_MAP = {};
 AMEN.forEach(a => { AMEN_MAP[a.id] = a.n; });
 
-/* === ЛОКАЛЬНЫЕ ИЗОБРАЖЕНИЯ === */
 const IMGS = ['a.webp','b.webp','c.webp','d.webp','e.webp','f.webp','g.webp','h.webp','i.webp','j.webp'];
 const imgUrl = id => id;
 const bigImgUrl = id => id;
 
-/* ============================================================
-   CATALOG GENERATOR
-============================================================ */
 function mulberry32(a){
   return function(){
     a |= 0; a = (a + 0x6D2B79F5) | 0;
@@ -1483,9 +1604,6 @@ const DATA = buildCatalog();
 const BY_ID = new Map();
 DATA.forEach(d => BY_ID.set(d.id, d));
 
-/* ============================================================
-   FORMAT
-============================================================ */
 const fmt = n => Number(n).toLocaleString('ru-RU');
 function plural(n, f){
   const n10 = n % 10, n100 = n % 100;
@@ -1497,9 +1615,6 @@ const roomWord = n => plural(n, ['спальня','спальни','спален
 const objWord  = n => plural(n, ['объект','объекта','объектов']);
 const revWord  = n => plural(n, ['отзыв','отзыва','отзывов']);
 
-/* ============================================================
-   STATE
-============================================================ */
 const PER = 24;
 
 const state = {
@@ -1529,9 +1644,6 @@ function saveFavs(){
 
 let RESULT = DATA.slice();
 
-/* ============================================================
-   UI BUILD FILTERS
-============================================================ */
 const districtChips = $('#districtChips');
 districtChips.innerHTML = DISTRICTS.map(d =>
   '<button class="fchip' + (d.id === 'all' ? ' is-active' : '') + '" type="button" data-district="' + d.id + '">' + d.n + '</button>'
@@ -1565,9 +1677,6 @@ amenityList.innerHTML = AMEN.map(a =>
   '<label class="check"><input type="checkbox" value="' + a.id + '"><span>' + a.n + '</span></label>'
 ).join('');
 
-/* ============================================================
-   REGION PICKER
-============================================================ */
 const regionSelect = $('#regionSelect');
 const regionValue  = $('#regionValue');
 const regionList   = $('#regionList');
@@ -1639,9 +1748,6 @@ document.addEventListener('keydown', e => {
   }
 });
 
-/* ============================================================
-   CUSTOM SELECT
-============================================================ */
 function closeAllCSelects(){
   $$('[data-cselect].is-open').forEach(c => c.classList.remove('is-open'));
 }
@@ -1682,9 +1788,6 @@ $('#sortSelect').addEventListener('cselect:change', e => {
   applyAndRender();
 });
 
-/* ============================================================
-   FILTER EVENTS
-============================================================ */
 districtChips.addEventListener('click', e => {
   const chip = e.target.closest('[data-district]');
   if (!chip) return;
@@ -1822,9 +1925,6 @@ function resetAll(){
 }
 $('#resetAll').addEventListener('click', resetAll);
 
-/* ============================================================
-   SYNC / FILTER / RENDER
-============================================================ */
 function syncControls(){
   $$('[data-district]', districtChips).forEach(c => c.classList.toggle('is-active', c.dataset.district === state.district));
   $$('[data-type]', typeChips).forEach(c => c.classList.toggle('is-active', state.types.has(c.dataset.type)));
@@ -2086,9 +2186,6 @@ function applyAndRender(){
   renderGrid();
 }
 
-/* ============================================================
-   BOOKING MODAL
-============================================================ */
 const modal = $('#modal');
 const modalTitle = $('#modalTitle');
 const modalPlace = $('#modalPlace');
@@ -2146,9 +2243,6 @@ $('#modalSubmit').addEventListener('click', function(){
   }, 1600);
 });
 
-/* ============================================================
-   DETAIL MODAL
-============================================================ */
 const detail = $('#detail');
 const detailImg = $('#detailImg');
 const detailBadge = $('#detailBadge');
@@ -2305,9 +2399,6 @@ $('#detailBook').addEventListener('click', () => {
   setTimeout(() => openModal(id), 320);
 });
 
-/* ============================================================
-   CTA FORM
-============================================================ */
 $('#ctaForm').addEventListener('submit', e => {
   e.preventDefault();
   const btn = e.target.querySelector('button');
@@ -2318,9 +2409,6 @@ $('#ctaForm').addEventListener('submit', e => {
   setTimeout(() => { txt.textContent = orig; }, 2200);
 });
 
-/* ============================================================
-   START
-============================================================ */
 $('#statCount').textContent = fmt(DATA.length);
 
 syncControls();
