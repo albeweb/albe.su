@@ -49,7 +49,6 @@ html[data-theme="dark"]{
   --hero-veil-2:rgba(4,6,13,.36);
   --hero-veil-edge:rgba(4,6,13,.42);
 
-  /* scene vars */
   --sc-sky-1:#03050B; --sc-sky-2:#060A16; --sc-sky-3:#0A0F1C; --sc-sky-4:#0C1020;
   --sc-star:#ffffff; --sc-constellation:#22D3EE;
   --sc-aur-cyan:#22D3EE; --sc-aur-emerald:#34D399; --sc-aur-violet:#A78BFA;
@@ -222,7 +221,6 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
   animation:gradShift 7s ease infinite;box-shadow:0 8px 32px -8px rgba(52,211,153,.55);
   transition:transform .45s var(--ease),box-shadow .45s var(--ease),color .35s;
 }
-/* Highlighted / hover → white text */
 .btn--grad:hover{box-shadow:0 14px 44px -8px rgba(167,139,250,.7);color:#fff}
 .btn--ghost{color:var(--ghost-txt);border:1px solid var(--ghost-border);background:var(--ghost-bg);backdrop-filter:blur(8px)}
 .btn--ghost:hover{border-color:rgba(52,211,153,.5);background:rgba(52,211,153,.06);color:var(--txt-h)}
@@ -645,7 +643,6 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.45)}
 <div class="scroll-progress" id="scrollProgress"></div>
 <div class="grain"></div>
 
-<!-- NAV -->
 <header class="nav is-scrolled" id="nav">
   <a href="#" class="logo">
     <svg class="logo__mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
@@ -682,7 +679,6 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.45)}
 </header>
 
 <main>
-  <!-- PAGE HERO with SVG scene -->
   <section class="page-hero">
     <div class="page-hero__bg">
       <div class="hero-scene" aria-hidden="true">
@@ -741,7 +737,6 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.45)}
 
           <rect width="1920" height="1080" fill="url(#ph-sky)"/>
 
-          <!-- stars -->
           <g fill="var(--sc-star)">
             <circle class="sc-tw" cx="120" cy="140" r="1.6" style="--dur:5.2s;--delay:-.8s"/>
             <circle class="sc-tw" cx="250" cy="90" r="1.2" style="--dur:4.5s;--delay:-2s"/>
@@ -762,18 +757,15 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.45)}
             <circle class="sc-tw" cx="1660" cy="240" r="1.2" style="--dur:4.9s;--delay:-.7s"/>
           </g>
 
-          <!-- constellation -->
           <g stroke="var(--sc-constellation)" stroke-opacity=".14" stroke-width=".7" fill="none">
             <path d="M250 90 L400 160 L560 70"/>
             <path d="M1080 160 L1240 80 L1420 150"/>
           </g>
 
-          <!-- meteors -->
           <g class="sc-meteor" style="--delay:-2s"><line x1="1500" y1="180" x2="1560" y2="220"/></g>
           <g class="sc-meteor" style="--delay:-8s"><line x1="300" y1="200" x2="360" y2="240"/></g>
           <g class="sc-meteor" style="--delay:-12s"><line x1="900" y1="280" x2="960" y2="320"/></g>
 
-          <!-- aurora (different shapes than homepage) -->
           <g class="sc-aur-a">
             <path d="M-100 300 C 300 180, 600 400, 960 260 S 1500 340, 1920 240 L1920 380 C 1500 480, 1200 360, 960 460 S 300 320, -100 440 Z" fill="url(#ph-aur1)"/>
           </g>
@@ -781,7 +773,6 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.45)}
             <path d="M-100 420 C 260 320, 560 500, 900 380 S 1400 440, 1920 360 L1920 460 C 1400 540, 1200 460, 900 540 S 260 440, -100 520 Z" fill="url(#ph-aur2)"/>
           </g>
 
-          <!-- moon on LEFT (different from homepage) -->
           <g>
             <circle cx="360" cy="240" r="420" fill="url(#ph-moong)"/>
             <circle class="sc-moon-r" cx="360" cy="240" r="155" fill="none" stroke="var(--sc-moon-ring-1)" stroke-opacity=".24" stroke-width="1" stroke-dasharray="2 9"/>
@@ -794,7 +785,6 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.45)}
             <circle cx="385" cy="228" r="4" fill="var(--sc-moon-crater)" opacity=".18"/>
           </g>
 
-          <!-- clouds -->
           <g transform="translate(0,200)">
             <g class="sc-cloud" style="--dur:160s;--delay:-50s">
               <ellipse cx="0" cy="0" rx="80" ry="18" fill="var(--sc-cloud-violet)" fill-opacity="var(--sc-cloud-op)"/>
@@ -807,7 +797,6 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.45)}
             </g>
           </g>
 
-          <!-- far mountains (different peaks) -->
           <path fill="url(#ph-mtn-far)" d="M0 700 C 200 520, 380 440, 600 600 S 980 460, 1200 620 S 1500 500, 1700 620 S 1880 640, 1920 650 L1920 1080 L0 1080 Z"/>
           <g fill="var(--sc-snow)" fill-opacity=".13">
             <path d="M520 570 L580 500 L640 555 L690 515 L750 570 L690 562 L640 545 L580 520 L520 570 Z"/>
@@ -815,20 +804,14 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.45)}
             <path d="M1560 555 L1620 490 L1680 545 L1720 510 L1780 560 L1720 552 L1680 530 L1620 505 L1560 555 Z"/>
           </g>
 
-          <!-- mid mountains -->
           <path fill="url(#ph-mtn-mid)" d="M0 800 C 220 640, 460 590, 700 720 S 1060 580, 1300 730 S 1620 620, 1840 730 S 1910 760, 1920 770 L1920 1080 L0 1080 Z"/>
-
-          <!-- near hills -->
           <path fill="url(#ph-mtn-near)" d="M0 880 C 240 800, 460 830, 700 820 S 1080 790, 1320 820 S 1640 840, 1860 830 S 1910 850, 1920 860 L1920 1080 L0 1080 Z"/>
 
-          <!-- treeline (different undulation) -->
           <path fill="var(--sc-treeline)" opacity=".94" d="M0 870 C 60 845, 120 858, 180 843 S 300 860, 360 843 S 480 858, 540 843 S 660 860, 720 843 S 840 858, 900 843 S 1020 860, 1080 843 S 1200 858, 1260 843 S 1380 860, 1440 843 S 1560 858, 1620 843 S 1740 860, 1800 843 S 1890 858, 1920 843 L1920 1080 L0 1080 Z"/>
 
-          <!-- winding river -->
           <path fill="url(#ph-river)" d="M0 900 Q 200 870 400 900 T 800 980 Q 1000 1030 1200 1010 T 1600 1040 Q 1750 1060 1920 1050 L1920 1080 L0 1080 Z"/>
           <line x1="0" y1="900" x2="1920" y2="900" stroke="var(--sc-horizon)" stroke-opacity=".16" stroke-width="1" fill="none"/>
 
-          <!-- reflections -->
           <g class="sc-reflect" fill="none" stroke-linecap="round">
             <line x1="300" y1="930" x2="500" y2="930" stroke="var(--sc-refl-1)" stroke-opacity=".14" stroke-width="1.2"/>
             <line x1="580" y1="965" x2="820" y2="965" stroke="var(--sc-refl-2)" stroke-opacity=".16" stroke-width="1"/>
@@ -837,7 +820,6 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.45)}
             <line x1="1300" y1="1030" x2="1560" y2="1030" stroke="var(--sc-refl-3)" stroke-opacity=".14" stroke-width="1.5"/>
           </g>
 
-          <!-- villa 1 (mid-right, larger) -->
           <g transform="translate(1000,760)">
             <ellipse cx="80" cy="60" rx="90" ry="6" fill="var(--sc-mtn-shadow)" fill-opacity=".5"/>
             <path d="M10 60 L10 20 L50 0 L120 0 L160 20 L160 60 Z" fill="var(--sc-villa-bg)" stroke="url(#ph-villa)" stroke-width="1.1"/>
@@ -852,7 +834,6 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.45)}
             </g>
           </g>
 
-          <!-- villa 2 (left, smaller) -->
           <g transform="translate(660,790) scale(.72)">
             <ellipse cx="80" cy="60" rx="85" ry="5" fill="var(--sc-mtn-shadow)" fill-opacity=".4"/>
             <path d="M10 60 L10 20 L50 0 L120 0 L160 20 L160 60 Z" fill="var(--sc-villa-bg)" stroke="url(#ph-villa)" stroke-width="1.2"/>
@@ -863,7 +844,6 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.45)}
             <circle cx="80" cy="45" r="80" fill="url(#ph-wg)" opacity=".28"/>
           </g>
 
-          <!-- villa 3 (far right, small) -->
           <g transform="translate(1440,780) scale(.62)">
             <ellipse cx="80" cy="60" rx="80" ry="5" fill="var(--sc-mtn-shadow)" fill-opacity=".4"/>
             <path d="M10 60 L10 20 L50 0 L120 0 L160 20 L160 60 Z" fill="var(--sc-villa-bg)" stroke="url(#ph-villa)" stroke-width="1.2"/>
@@ -874,7 +854,6 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.45)}
             <circle cx="80" cy="45" r="80" fill="url(#ph-wg)" opacity=".26"/>
           </g>
 
-          <!-- pine trees -->
           <g fill="var(--sc-pine)" opacity=".94">
             <path d="M-20 1080 L-20 650 L42 780 L22 758 L72 862 L48 838 L102 952 L72 922 L138 1080 Z"/>
             <path d="M60 1080 L60 800 L108 888 L94 872 L138 960 L114 938 L162 1032 L136 1010 L182 1080 Z" opacity=".78"/>
@@ -884,7 +863,6 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.45)}
             <path d="M1300 1080 L1300 870 L1320 910 L1315 900 L1335 940 L1330 930 L1350 970 L1345 965 L1365 1080 Z" opacity=".6"/>
           </g>
 
-          <!-- fireflies -->
           <g fill="var(--sc-firefly)">
             <circle class="sc-firefly" cx="260" cy="820" r="1.8" style="--dur:14s;--delay:-2s;--dx:22px;--dy:-30px"/>
             <circle class="sc-firefly" cx="380" cy="835" r="2.1" style="--dur:16s;--delay:-5s;--dx:-16px;--dy:-38px"/>
@@ -897,7 +875,6 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.45)}
             <circle class="sc-firefly" cx="1720" cy="835" r="1.7" style="--dur:12s;--delay:-2.5s;--dx:14px;--dy:-28px"/>
           </g>
 
-          <!-- ambient particles -->
           <g fill="var(--sc-particle)">
             <circle class="sc-dot" cx="420" cy="500" r="2.2" style="--dur:16s;--delay:-3s"/>
             <circle class="sc-dot" cx="660" cy="420" r="1.8" style="--dur:19s;--delay:-6s"/>
@@ -932,7 +909,6 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.45)}
     </div>
   </section>
 
-  <!-- CATALOG -->
   <div class="wrap catalog-layout">
     <div class="filters-backdrop" id="filtersBackdrop"></div>
 
@@ -1094,7 +1070,6 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.45)}
   </div>
 </nav>
 
-<!-- BOOKING MODAL -->
 <div class="modal" id="modal">
   <div class="modal__backdrop" data-close-modal></div>
   <div class="modal__panel">
@@ -1114,7 +1089,6 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.45)}
   </div>
 </div>
 
-<!-- DETAIL MODAL -->
 <div class="detail" id="detail" aria-hidden="true">
   <div class="detail__backdrop" data-close-detail></div>
   <div class="detail__panel">
@@ -1396,18 +1370,10 @@ const AMEN = [
 const AMEN_MAP = {};
 AMEN.forEach(a => { AMEN_MAP[a.id] = a.n; });
 
-const IMGS = [
-  '1518780664697-55e3ad937233','1449158743715-0a90ebb6d2d8','1470770841072-f978cf4d019e',
-  '1613490493576-7fde63acd811','1510798831971-661eb04b3739','1499696010180-025ef6e1a8f9',
-  '1502005229762-cf1b2da7c5d6','1564013799919-ab600027ffc6','1600585154340-be6161a56a0c',
-  '1600596542815-ffad4c1539a9','1520250497591-112f2f40a3f4','1613977257363-707ba9348227',
-  '1512917774080-9991f1c4c750','1568605114967-8130f3a36994','1580587771525-78b9dba3b914',
-  '1523217582562-09d0def993a6','1600607687939-ce8a6c25118c','1600566753086-00f18fb6b3ea',
-  '1449844908441-8829872d2607','1502672260266-1c1ef2d93688','1560448204-e02f11c3d0e2',
-  '1493809842364-78817add7ffb','1484154218962-a197022b5858','1512915922686-57c11dde9b6b'
-];
-const imgUrl = id => 'https://images.unsplash.com/photo-' + id + '?w=760&q=72&auto=format&fit=crop';
-const bigImgUrl = id => 'https://images.unsplash.com/photo-' + id + '?w=1400&q=80&auto=format&fit=crop';
+/* === ЛОКАЛЬНЫЕ ИЗОБРАЖЕНИЯ === */
+const IMGS = ['a.webp','b.webp','c.webp','d.webp','e.webp','f.webp','g.webp','h.webp','i.webp','j.webp'];
+const imgUrl = id => id;
+const bigImgUrl = id => id;
 
 /* ============================================================
    CATALOG GENERATOR
@@ -1481,7 +1447,6 @@ function buildCatalog(){
       else if (rr < 0.14) tag = 'NEW';
       else if (rr < 0.19) tag = '−15%';
 
-      // additional detail specs
       const area = ri(45, 380);
       const baths = ri(1, Math.min(4, rooms));
       const year = ri(2010, 2024);
@@ -2079,7 +2044,6 @@ pagerEl.addEventListener('click', e => {
   window.scrollTo({ top: y, behavior: 'smooth' });
 });
 
-/* card interactions: fav / book / open detail */
 gridEl.addEventListener('click', e => {
   const fav = e.target.closest('[data-fav]');
   if (fav){
@@ -2281,7 +2245,6 @@ function openDetail(id){
 
   detailDesc.textContent = DESCR[obj.id % DESCR.length];
 
-  /* specs */
   const specItems = [
     { ico:'i-users', b: obj.guests + ' гостей', s:'Вместимость' },
     { ico:'i-bed',   b: obj.rooms + ' ' + roomWord(obj.rooms), s:'Спальни' },
@@ -2297,14 +2260,11 @@ function openDetail(id){
     '</div>'
   ).join('');
 
-  /* amenities */
   detailAmen.innerHTML = obj.am.map(a => '<span>' + AMEN_MAP[a] + '</span>').join('');
 
-  /* yandex map */
   const mapQuery = encodeURIComponent(obj.place.split(',')[0].trim() + ' ' + shortRegion(REGIONS.find(r=>r.id===obj.rg)?.n || ''));
   detailMap.innerHTML = '<iframe src="https://yandex.ru/map-widget/v1/?text=' + mapQuery + '&z=10" allowfullscreen loading="lazy" title="Карта — ' + obj.place + '"></iframe>';
 
-  /* reviews */
   const revs = getReviews(obj);
   detailReviews.innerHTML = revs.map(r => {
     const letter = r.name.trim().charAt(0).toUpperCase();
