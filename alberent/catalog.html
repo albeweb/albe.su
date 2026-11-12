@@ -146,7 +146,7 @@ html[data-theme="light"]{
   --text-shadow-light:0 1px 2px rgba(0,0,0,.4);
 }
 
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scrollbar-gutter:stable}
 body{
   background:var(--bg); color:var(--txt);
   font-family:'Manrope',system-ui,sans-serif; font-weight:400; line-height:1.55;
@@ -158,12 +158,11 @@ a{color:inherit;text-decoration:none}
 button{font-family:inherit;border:none;background:none;color:inherit;cursor:pointer}
 ::selection{background:var(--c2);color:var(--sel-txt)}
 
-/* ===== PAGE SCROLLBAR (вертикальный скролл страницы) ===== */
+/* ===== PAGE SCROLLBAR ===== */
 ::-webkit-scrollbar{width:6px;height:6px}
 ::-webkit-scrollbar-track{background:var(--scrollbar-track)}
 ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--c1),var(--c3));border-radius:6px}
 ::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,var(--c2),var(--c4))}
-/* Firefox: webkit-псевдоэлементы не поддерживает — тонкий нативный скролл */
 @supports (-moz-appearance:none){
   html{scrollbar-width:thin;scrollbar-color:var(--c3) var(--scrollbar-track)}
 }
@@ -356,7 +355,7 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
   50%{opacity:1;transform:scale(1.1)}
 }
 
-/* ===== CATALOG LAYOUT (narrower sidebar) ===== */
+/* ===== CATALOG LAYOUT ===== */
 .catalog-layout{
   display:grid;grid-template-columns:240px minmax(0,1fr);
   gap:clamp(18px,2.4vw,32px);align-items:start;
@@ -487,8 +486,28 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 .card__rate svg{width:12px;height:12px}
 .card__loc{display:flex;align-items:flex-start;gap:5px;font-size:12px;color:var(--mut);margin-bottom:13px;line-height:1.4}
 .card__loc .loc-ico{width:12px;height:12px;color:var(--c1);flex-shrink:0;margin-top:2px}
-.card__meta{display:flex;gap:6px;flex-wrap:wrap;font-size:10.5px;color:var(--card-meta-txt);margin-bottom:14px}
+.card__meta{display:flex;gap:6px;flex-wrap:wrap;font-size:10.5px;color:var(--card-meta-txt);margin-bottom:12px}
 .card__meta span{padding:4px 9px;border-radius:100px;border:1px solid var(--line);background:var(--card-meta-bg);white-space:nowrap}
+
+/* === CARD 3D TOUR BUTTON — prominent === */
+.card__tour-row{padding:0 0 14px;margin-top:2px}
+.card__tour{
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  width:100%;padding:11px 14px;border-radius:12px;
+  background:linear-gradient(135deg,rgba(var(--c1-rgb),.18),rgba(var(--c3-rgb),.18));
+  border:1px solid rgba(var(--c1-rgb),.38);
+  color:var(--c2);font-size:11px;font-weight:800;
+  letter-spacing:.12em;text-transform:uppercase;
+  cursor:pointer;transition:all .3s var(--ease);
+  font-family:'Manrope',sans-serif;
+}
+.card__tour:hover{
+  background:var(--grad);color:#fff;border-color:transparent;
+  box-shadow:0 10px 24px -8px rgba(var(--c1-rgb),.75);
+  transform:translateY(-1px);
+}
+.card__tour svg{width:15px;height:15px}
+
 .card__foot{display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid var(--line)}
 .card__price b{font-family:'Unbounded',sans-serif;font-size:15.5px;font-weight:700;letter-spacing:-.02em;color:var(--txt-h)}
 .card__price span{font-size:11.5px;color:var(--mut);margin-left:4px}
@@ -558,7 +577,7 @@ html[data-theme="dark"] .field input{color-scheme:dark}
 .modal__total{display:flex;justify-content:space-between;align-items:center;padding:18px 0;margin:18px 0 22px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:13.5px;color:var(--mut)}
 .modal__total b{font-family:'Unbounded',sans-serif;font-size:20px;font-weight:700;background:var(--grad);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradShift 6s ease infinite}
 
-/* ===== DETAIL MODAL — no blur, subtle dim ===== */
+/* ===== DETAIL MODAL ===== */
 .detail{position:fixed;inset:0;z-index:9550;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:opacity .4s var(--ease),visibility .4s}
 .detail.is-open{opacity:1;visibility:visible}
 .detail__backdrop{position:absolute;inset:0;background:rgba(3,4,8,.4)}
@@ -625,11 +644,148 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.2)}
 .detail__price b{font-family:'Unbounded',sans-serif;font-size:clamp(22px,3vw,26px);font-weight:700;letter-spacing:-.02em;background:var(--grad);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradShift 6s ease infinite}
 .detail__price span{font-size:12.5px;color:var(--mut)}
 .detail__note{font-size:11.5px;color:var(--mut);text-align:center;margin-top:12px;line-height:1.5}
+.detail__tour-btn{
+  margin-top:10px;display:flex;align-items:center;justify-content:center;gap:9px;
+  width:100%;padding:13px 18px;border-radius:100px;
+  background:linear-gradient(135deg,rgba(var(--c1-rgb),.14),rgba(var(--c3-rgb),.14));
+  border:1px solid rgba(var(--c1-rgb),.4);
+  color:var(--c2);font-family:'Unbounded',sans-serif;font-size:11px;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;
+  cursor:pointer;transition:all .3s var(--ease);
+}
+.detail__tour-btn:hover{
+  background:var(--grad);color:#fff;border-color:transparent;
+  box-shadow:0 10px 24px -8px rgba(var(--c1-rgb),.7);
+  transform:translateY(-1px);
+}
+.detail__tour-btn svg{width:15px;height:15px;flex-shrink:0}
 .detail__contact{padding:18px 20px;border-radius:18px;background:var(--card-bg);border:1px solid var(--line)}
 .detail__contact b{display:block;font-family:'Unbounded',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--txt-h);margin-bottom:6px}
 .detail__contact p{font-size:12px;color:var(--mut);line-height:1.55;margin-bottom:10px}
 .detail__contact a{font-family:'Unbounded',sans-serif;font-size:14px;font-weight:700;color:var(--c2);transition:color .3s}
 .detail__contact a:hover{color:var(--c1)}
+
+/* ===== 3D TOUR MODAL ===== */
+.tour{position:fixed;inset:0;z-index:9700;opacity:0;visibility:hidden;transition:opacity .4s var(--ease),visibility .4s;background:#02040f}
+.tour.is-open{opacity:1;visibility:visible}
+.tour__viewport{
+  position:absolute;inset:0;overflow:hidden;
+  cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;
+}
+.tour.is-dragging .tour__viewport{cursor:grabbing}
+.tour__pano{
+  position:absolute;top:0;left:0;
+  will-change:transform;
+  transform:translate3d(0,0,0);
+}
+.tour__pano-svg{display:block;width:100%;height:100%;pointer-events:none}
+
+.tour__hotspot{
+  position:absolute;z-index:3;
+  width:18px;height:18px;
+  transform:translate(-50%,-50%);
+  background:none;border:none;padding:0;cursor:pointer;
+}
+.tour__hotspot-dot{
+  position:absolute;inset:0;border-radius:50%;
+  background:#fff;
+  border:2.5px solid var(--c2);
+  animation:tourPulse 2.4s ease-in-out infinite;
+}
+@keyframes tourPulse{
+  0%{box-shadow:0 0 0 0 rgba(var(--c1-rgb),.65),0 0 14px rgba(var(--c1-rgb),.6)}
+  70%{box-shadow:0 0 0 16px rgba(var(--c1-rgb),0),0 0 22px rgba(var(--c1-rgb),.9)}
+  100%{box-shadow:0 0 0 0 rgba(var(--c1-rgb),0),0 0 14px rgba(var(--c1-rgb),.6)}
+}
+.tour__hotspot-label{
+  position:absolute;top:calc(100% + 10px);left:50%;
+  transform:translateX(-50%) translateY(-4px);
+  padding:6px 12px;border-radius:100px;
+  background:rgba(5,6,10,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.22);
+  color:#fff;font-family:'Manrope',sans-serif;
+  font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  white-space:nowrap;
+  opacity:0;pointer-events:none;
+  transition:opacity .3s var(--ease),transform .3s var(--ease);
+}
+.tour__hotspot:hover .tour__hotspot-label,
+.tour__hotspot:focus-visible .tour__hotspot-label{
+  opacity:1;transform:translateX(-50%) translateY(0);
+}
+
+.tour__top{
+  position:absolute;top:20px;left:20px;right:80px;z-index:6;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:16px;
+  pointer-events:none;
+}
+.tour__title{display:flex;flex-direction:column;gap:6px;min-width:0}
+.tour__label{
+  font-size:9.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(255,255,255,.65);
+}
+.tour__title b{
+  font-family:'Unbounded',sans-serif;font-size:clamp(14px,1.6vw,17px);font-weight:700;
+  color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.55);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.tour__compass-wrap{
+  flex-shrink:0;width:50px;height:50px;border-radius:50%;
+  padding:4px;
+  background:rgba(5,6,10,.55);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.2);
+  color:var(--c2);
+  box-shadow:0 8px 22px -8px rgba(0,0,0,.5);
+}
+.tour__compass{display:block;width:100%;height:100%;transition:transform .2s linear}
+
+.tour__close{
+  position:absolute;top:20px;right:20px;z-index:7;
+  width:44px;height:44px;border-radius:50%;
+  display:grid;place-items:center;
+  background:rgba(5,6,10,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.22);color:#fff;
+  cursor:pointer;transition:all .3s var(--ease);
+}
+.tour__close:hover{background:rgba(255,255,255,.18);transform:rotate(90deg)}
+.tour__close svg{width:18px;height:18px}
+
+.tour__bottom{
+  position:absolute;left:20px;right:20px;bottom:20px;z-index:6;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+}
+.tour__hint{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:9px 14px;border-radius:100px;
+  background:rgba(5,6,10,.55);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.18);
+  color:rgba(255,255,255,.85);
+  font-size:11px;font-weight:600;letter-spacing:.02em;
+}
+.tour__hint svg{width:14px;height:14px;color:var(--c2)}
+.tour__actions{display:flex;align-items:center;gap:10px}
+.tour__auto-btn{
+  width:42px;height:42px;border-radius:50%;
+  display:grid;place-items:center;
+  background:rgba(5,6,10,.55);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.22);color:#fff;
+  cursor:pointer;transition:all .3s var(--ease);
+}
+.tour__auto-btn:hover{background:rgba(255,255,255,.18);transform:scale(1.05)}
+.tour__auto-btn.is-on{color:var(--c2);border-color:rgba(var(--c1-rgb),.5);box-shadow:0 0 18px -4px rgba(var(--c1-rgb),.5)}
+.tour__auto-btn svg{width:16px;height:16px}
+.tour__auto-btn .tour__ico-play{display:block}
+.tour__auto-btn .tour__ico-pause{display:none}
+.tour__auto-btn.is-on .tour__ico-play{display:none}
+.tour__auto-btn.is-on .tour__ico-pause{display:block}
+.tour__demo{
+  padding:7px 12px;border-radius:100px;
+  background:rgba(var(--rose-rgb),.22);
+  border:1px solid rgba(var(--rose-rgb),.45);
+  color:#fff;
+  font-size:9.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  text-shadow:0 1px 2px rgba(0,0,0,.4);
+}
 
 /* ===== MOBILE NAV ===== */
 .mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:950;padding:8px 6px calc(8px + env(safe-area-inset-bottom,0px));background:var(--panel-bg);backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);border-top:1px solid var(--line-2);box-shadow:0 -10px 30px -20px var(--corner-shadow)}
@@ -654,6 +810,12 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.2)}
   .detail{padding:0}
   .detail__panel{border-radius:22px;max-height:96vh}
   .detail__hero{aspect-ratio:16/9}
+  .tour__top{top:16px;left:16px;right:76px}
+  .tour__close{top:16px;right:16px;width:40px;height:40px}
+  .tour__bottom{left:16px;right:16px;bottom:16px}
+  .tour__hint{padding:8px 12px;font-size:10.5px}
+  .tour__hint span{display:none}
+  .tour__compass-wrap{width:42px;height:42px}
 }
 @media(min-width:1081px){.filters-backdrop{display:none}}
 
@@ -693,6 +855,10 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.2)}
     <symbol id="i-chev-l" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></symbol>
     <symbol id="i-chev-r" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></symbol>
     <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="16" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+    <symbol id="i-360" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3.5a9 9 0 11-11 15"/><path d="M17 3.5v5h-5"/><circle cx="12" cy="12" r="2.6"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M7 4l14 8-14 8V4z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24" fill="currentColor" stroke="none"><rect x="6" y="4" width="4" height="16" rx="1.2"/><rect x="14" y="4" width="4" height="16" rx="1.2"/></symbol>
+    <symbol id="i-drag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l-3 3 3 3M15 5l3 3-3 3M5 12h14"/></symbol>
   </defs>
 </svg>
 
@@ -860,7 +1026,6 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.2)}
             <path d="M1580,905 L1600,840 L1620,905 Z" opacity=".7"/>
           </g>
 
-          <!-- BIG CHRISTMAS TREE — lowered further so star fully visible -->
           <g transform="translate(1000, 1070)">
             <ellipse cx="0" cy="5" rx="220" ry="25" fill="var(--sc-mtn-shadow)" opacity=".5"/>
             <rect x="-25" y="-40" width="50" height="55" fill="#3a2510"/>
@@ -939,7 +1104,6 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.2)}
             </g>
           </g>
 
-          <!-- Snowman 1 shifted down-left -->
           <g transform="translate(340, 985)">
             <ellipse cx="0" cy="80" rx="70" ry="12" fill="var(--sc-mtn-shadow)" opacity=".4"/>
             <circle cx="0" cy="40" r="60" fill="var(--sc-snowman)"/>
@@ -966,7 +1130,6 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.2)}
             <line x1="100" y1="-25" x2="115" y2="-40" stroke="#4a3525" stroke-width="3" stroke-linecap="round"/>
           </g>
 
-          <!-- Snowman 2 shifted down-left -->
           <g transform="translate(730, 1015) scale(.72)">
             <ellipse cx="0" cy="80" rx="70" ry="12" fill="var(--sc-mtn-shadow)" opacity=".4"/>
             <circle cx="0" cy="40" r="60" fill="var(--sc-snowman)"/>
@@ -1285,6 +1448,10 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.2)}
         <div class="detail__price-card">
           <div class="detail__price"><b id="detailPrice"></b><span>/ ночь</span></div>
           <button class="btn btn--grad btn--full" id="detailBook" data-magnetic><span class="btn__txt">Забронировать</span></button>
+          <button class="detail__tour-btn" type="button" id="detailTour">
+            <svg class="ico-svg"><use href="#i-360"/></svg>
+            <span>3D тур</span>
+          </button>
           <div class="detail__note">Бесплатная отмена за 48 часов до заезда</div>
         </div>
         <div class="detail__contact">
@@ -1293,6 +1460,228 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.2)}
           <a href="tel:+78000000000">+7 800 000-00-00</a>
         </div>
       </aside>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 3D TOUR MODAL ===== -->
+<div class="tour" id="tour" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="tourTitle">
+  <div class="tour__viewport" id="tourViewport">
+    <div class="tour__pano" id="tourPano">
+      <svg class="tour__pano-svg" viewBox="0 0 5760 1080" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="tSky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#02040f"/>
+            <stop offset=".4" stop-color="#081229"/>
+            <stop offset=".7" stop-color="#152045"/>
+            <stop offset="1" stop-color="#2a3a68"/>
+          </linearGradient>
+          <linearGradient id="tAur" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#22D3EE" stop-opacity="0"/>
+            <stop offset=".25" stop-color="#22D3EE" stop-opacity=".55"/>
+            <stop offset=".6" stop-color="#A78BFA" stop-opacity=".45"/>
+            <stop offset="1" stop-color="#A78BFA" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="tFar" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1e2c52" stop-opacity=".9"/>
+            <stop offset="1" stop-color="#0a1020" stop-opacity=".3"/>
+          </linearGradient>
+          <linearGradient id="tMid" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#142039"/>
+            <stop offset="1" stop-color="#050810"/>
+          </linearGradient>
+          <linearGradient id="tNear" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#0a1428"/>
+            <stop offset="1" stop-color="#03060f"/>
+          </linearGradient>
+          <linearGradient id="tGround" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#c8d6ec"/>
+            <stop offset=".6" stop-color="#a4b4d0"/>
+            <stop offset="1" stop-color="#8494b4"/>
+          </linearGradient>
+          <radialGradient id="tMoon" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="#dce5ff" stop-opacity=".5"/>
+            <stop offset=".4" stop-color="#7da4ff" stop-opacity=".18"/>
+            <stop offset="1" stop-color="#7da4ff" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="tWin" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="#FBBF24" stop-opacity=".8"/>
+            <stop offset="1" stop-color="#FBBF24" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <rect width="5760" height="1080" fill="url(#tSky)"/>
+
+        <g fill="#fff">
+          <circle cx="180" cy="150" r="1.5" opacity=".7"/><circle cx="320" cy="80" r="1.2" opacity=".5"/>
+          <circle cx="500" cy="200" r="1.6" opacity=".8"/><circle cx="680" cy="120" r="1.1" opacity=".6"/>
+          <circle cx="850" cy="180" r="1.4" opacity=".7"/><circle cx="1050" cy="90" r="1.3" opacity=".5"/>
+          <circle cx="1220" cy="220" r="1.5" opacity=".8"/><circle cx="1400" cy="140" r="1.2" opacity=".6"/>
+          <circle cx="1580" cy="180" r="1.4" opacity=".7"/><circle cx="1750" cy="100" r="1.6" opacity=".5"/>
+          <circle cx="1950" cy="200" r="1.3" opacity=".8"/><circle cx="2150" cy="130" r="1.2" opacity=".6"/>
+          <circle cx="2350" cy="170" r="1.5" opacity=".7"/><circle cx="2550" cy="110" r="1.3" opacity=".5"/>
+          <circle cx="2750" cy="200" r="1.4" opacity=".8"/><circle cx="2950" cy="150" r="1.1" opacity=".6"/>
+          <circle cx="3150" cy="180" r="1.6" opacity=".7"/><circle cx="3350" cy="120" r="1.2" opacity=".5"/>
+          <circle cx="3550" cy="220" r="1.4" opacity=".8"/><circle cx="3750" cy="130" r="1.5" opacity=".6"/>
+          <circle cx="3950" cy="180" r="1.3" opacity=".7"/><circle cx="4150" cy="100" r="1.6" opacity=".5"/>
+          <circle cx="4350" cy="200" r="1.2" opacity=".8"/><circle cx="4550" cy="140" r="1.4" opacity=".6"/>
+          <circle cx="4750" cy="180" r="1.5" opacity=".7"/><circle cx="4950" cy="110" r="1.3" opacity=".5"/>
+          <circle cx="5150" cy="210" r="1.2" opacity=".8"/><circle cx="5350" cy="130" r="1.6" opacity=".6"/>
+          <circle cx="5550" cy="170" r="1.4" opacity=".7"/>
+          <circle cx="100" cy="280" r="1.3" opacity=".6"/><circle cx="450" cy="310" r="1.2" opacity=".5"/>
+          <circle cx="900" cy="290" r="1.5" opacity=".7"/><circle cx="1350" cy="320" r="1.3" opacity=".6"/>
+          <circle cx="1800" cy="280" r="1.4" opacity=".5"/><circle cx="2250" cy="300" r="1.6" opacity=".7"/>
+          <circle cx="2700" cy="270" r="1.2" opacity=".6"/><circle cx="3150" cy="290" r="1.5" opacity=".5"/>
+          <circle cx="3600" cy="310" r="1.3" opacity=".7"/><circle cx="4050" cy="280" r="1.4" opacity=".6"/>
+          <circle cx="4500" cy="300" r="1.6" opacity=".5"/><circle cx="4950" cy="290" r="1.2" opacity=".7"/>
+          <circle cx="5400" cy="310" r="1.5" opacity=".6"/>
+        </g>
+
+        <g opacity=".55">
+          <path d="M0 320 C 500 200, 1100 450, 1700 300 S 2900 420, 3500 280 S 4700 400, 5300 260 L5760 320 L5760 420 C 5300 480, 4700 440, 4000 500 S 2900 480, 2300 520 S 1100 460, 500 520 L0 420 Z" fill="url(#tAur)"/>
+        </g>
+        <g opacity=".3">
+          <path d="M0 440 C 600 340, 1200 560, 1800 440 S 3000 540, 3600 420 S 4800 520, 5400 400 L5760 440 L5760 480 C 5400 560, 4800 500, 4200 560 S 3000 540, 2400 580 S 1200 540, 600 600 L0 520 Z" fill="url(#tAur)"/>
+        </g>
+
+        <circle cx="4700" cy="200" r="300" fill="url(#tMoon)"/>
+        <circle cx="4700" cy="200" r="100" fill="#f0f4ff"/>
+        <circle cx="4675" cy="180" r="11" fill="#dce5ff" opacity=".35"/>
+        <circle cx="4715" cy="215" r="8" fill="#dce5ff" opacity=".3"/>
+        <circle cx="4690" cy="225" r="5" fill="#dce5ff" opacity=".25"/>
+
+        <path d="M0 650 L160 500 L300 570 L450 460 L620 550 L780 480 L960 590 L1120 500 L1290 570 L1460 480 L1630 600 L1800 510 L1970 580 L2140 460 L2320 560 L2480 490 L2660 590 L2820 500 L2990 580 L3160 460 L3340 560 L3500 480 L3680 600 L3840 510 L4010 580 L4180 460 L4360 560 L4520 490 L4700 590 L4860 500 L5040 580 L5200 460 L5380 560 L5540 480 L5720 590 L5760 520 L5760 1080 L0 1080 Z" fill="url(#tFar)"/>
+
+        <g fill="#e8f0ff" opacity=".4">
+          <path d="M450 460 L475 500 L500 480 L525 510 L490 520 L465 495 L450 510 Z"/>
+          <path d="M1120 500 L1145 535 L1170 515 L1195 545 L1160 555 L1135 530 L1120 545 Z"/>
+          <path d="M1800 510 L1825 545 L1850 525 L1875 555 L1840 565 L1815 540 L1800 555 Z"/>
+          <path d="M2480 490 L2505 525 L2530 505 L2555 535 L2520 545 L2495 520 L2480 535 Z"/>
+          <path d="M3160 460 L3185 495 L3210 475 L3235 505 L3200 515 L3175 490 L3160 505 Z"/>
+          <path d="M3840 510 L3865 545 L3890 525 L3915 555 L3880 565 L3855 540 L3840 555 Z"/>
+          <path d="M4520 490 L4545 525 L4570 505 L4595 535 L4560 545 L4535 520 L4520 535 Z"/>
+          <path d="M5200 460 L5225 495 L5250 475 L5275 505 L5240 515 L5215 490 L5200 505 Z"/>
+        </g>
+
+        <path d="M0 800 C 200 720, 450 760, 700 780 C 950 800, 1150 720, 1400 760 C 1650 800, 1850 720, 2100 760 C 2350 800, 2550 730, 2800 770 C 3050 810, 3250 730, 3500 770 C 3750 810, 3950 740, 4200 780 C 4450 820, 4650 740, 4900 780 C 5150 820, 5350 750, 5600 790 L5760 800 L5760 1080 L0 1080 Z" fill="url(#tMid)"/>
+
+        <path d="M0 900 C 240 870, 480 880, 720 875 C 960 870, 1200 890, 1440 880 C 1680 870, 1920 890, 2160 880 C 2400 870, 2640 890, 2880 880 C 3120 870, 3360 890, 3600 880 C 3840 870, 4080 890, 4320 880 C 4560 870, 4800 890, 5040 880 C 5280 870, 5520 890, 5760 880 L5760 1080 L0 1080 Z" fill="url(#tNear)"/>
+
+        <path d="M0 940 C 400 920, 800 930, 1200 925 C 1600 920, 2000 930, 2400 925 C 2800 920, 3200 930, 3600 925 C 4000 920, 4400 930, 4800 925 C 5200 920, 5600 930, 5760 925 L5760 1080 L0 1080 Z" fill="url(#tGround)"/>
+
+        <ellipse cx="400" cy="1020" rx="280" ry="25" fill="#e8f0ff" opacity=".3"/>
+        <ellipse cx="2400" cy="1040" rx="350" ry="28" fill="#e8f0ff" opacity=".25"/>
+        <ellipse cx="4400" cy="1020" rx="320" ry="26" fill="#e8f0ff" opacity=".28"/>
+        <ellipse cx="5400" cy="1050" rx="250" ry="20" fill="#e8f0ff" opacity=".22"/>
+
+        <g fill="#03080f">
+          <path d="M80 940 L100 850 L120 940 Z"/><path d="M150 940 L175 830 L200 940 Z"/>
+          <path d="M250 940 L270 870 L290 940 Z"/><path d="M350 940 L380 820 L410 940 Z"/>
+          <path d="M550 940 L570 880 L590 940 Z"/><path d="M700 940 L725 850 L750 940 Z"/>
+          <path d="M900 940 L920 870 L940 940 Z"/><path d="M1050 940 L1075 840 L1100 940 Z"/>
+          <path d="M1250 940 L1280 820 L1310 940 Z"/><path d="M1500 940 L1520 870 L1540 940 Z"/>
+          <path d="M1700 940 L1725 840 L1750 940 Z"/><path d="M1900 940 L1920 880 L1940 940 Z"/>
+          <path d="M2100 940 L2130 830 L2160 940 Z"/><path d="M2350 940 L2370 870 L2390 940 Z"/>
+          <path d="M2600 940 L2625 840 L2650 940 Z"/><path d="M2800 940 L2820 870 L2840 940 Z"/>
+          <path d="M3050 940 L3075 830 L3100 940 Z"/><path d="M3300 940 L3320 860 L3340 940 Z"/>
+          <path d="M3550 940 L3575 840 L3600 940 Z"/><path d="M3850 940 L3875 860 L3900 940 Z"/>
+          <path d="M4150 940 L4175 830 L4200 940 Z"/><path d="M4450 940 L4470 870 L4490 940 Z"/>
+          <path d="M4750 940 L4775 840 L4800 940 Z"/><path d="M5050 940 L5075 860 L5100 940 Z"/>
+          <path d="M5350 940 L5375 840 L5400 940 Z"/><path d="M5600 940 L5620 870 L5640 940 Z"/>
+        </g>
+
+        <g transform="translate(1700, 850)">
+          <ellipse cx="0" cy="80" rx="120" ry="12" fill="#000" opacity=".45"/>
+          <rect x="-90" y="0" width="180" height="80" fill="#1a1208"/>
+          <polygon points="-105,5 0,-70 105,5" fill="#0a0805"/>
+          <path d="M-110,5 Q -55,-20 0,-75 Q 55,-20 110,5 Q 55,-5 0,-65 Q -55,-5 -110,5 Z" fill="#e8f0ff" opacity=".9"/>
+          <rect x="-15" y="35" width="30" height="45" fill="#FBBF24"/>
+          <rect x="-70" y="30" width="26" height="26" fill="#FBBF24"/>
+          <rect x="44" y="30" width="26" height="26" fill="#FBBF24"/>
+          <circle cx="-70" cy="43" r="55" fill="url(#tWin)" opacity=".7"/>
+          <circle cx="57" cy="43" r="55" fill="url(#tWin)" opacity=".7"/>
+          <circle cx="0" cy="57" r="45" fill="url(#tWin)" opacity=".6"/>
+          <rect x="65" y="-80" width="20" height="35" fill="#1a1208"/>
+          <rect x="60" y="-85" width="30" height="8" fill="#e8f0ff"/>
+        </g>
+
+        <g transform="translate(4600, 870)">
+          <ellipse cx="0" cy="70" rx="100" ry="10" fill="#000" opacity=".45"/>
+          <rect x="-75" y="0" width="150" height="70" fill="#1a1208"/>
+          <polygon points="-90,5 0,-60 90,5" fill="#0a0805"/>
+          <path d="M-95,5 Q -45,-15 0,-65 Q 45,-15 95,5 Q 45,0 0,-55 Q -45,0 -95,5 Z" fill="#e8f0ff" opacity=".9"/>
+          <rect x="-12" y="30" width="24" height="40" fill="#FBBF24"/>
+          <rect x="-60" y="25" width="22" height="22" fill="#FBBF24"/>
+          <rect x="38" y="25" width="22" height="22" fill="#FBBF24"/>
+          <circle cx="-60" cy="36" r="48" fill="url(#tWin)" opacity=".7"/>
+          <circle cx="49" cy="36" r="48" fill="url(#tWin)" opacity=".7"/>
+          <circle cx="0" cy="50" r="38" fill="url(#tWin)" opacity=".6"/>
+          <rect x="55" y="-70" width="16" height="30" fill="#1a1208"/>
+        </g>
+
+        <g fill="#02060d">
+          <path d="M-30 1080 L-30 750 L-70 830 L-50 800 L-90 890 L-70 860 L-120 960 L-95 930 L-150 1080 Z"/>
+          <path d="M200 1080 L180 800 L150 860 L170 840 L140 900 L160 880 L120 970 L145 950 L110 1080 Z"/>
+          <path d="M5650 1080 L5650 750 L5610 830 L5630 800 L5590 890 L5610 860 L5560 960 L5585 930 L5530 1080 Z"/>
+          <path d="M5600 1080 L5600 800 L5560 860 L5580 840 L5540 900 L5560 880 L5520 970 L5545 950 L5500 1080 Z"/>
+        </g>
+      </svg>
+
+      <button class="tour__hotspot" type="button" data-sx="691" data-sy="799" aria-label="Терраса">
+        <span class="tour__hotspot-dot"></span>
+        <span class="tour__hotspot-label">Терраса</span>
+      </button>
+      <button class="tour__hotspot" type="button" data-sx="1728" data-sy="842" aria-label="Камин">
+        <span class="tour__hotspot-dot"></span>
+        <span class="tour__hotspot-label">Камин</span>
+      </button>
+      <button class="tour__hotspot" type="button" data-sx="2649" data-sy="799" aria-label="Спальня">
+        <span class="tour__hotspot-dot"></span>
+        <span class="tour__hotspot-label">Спальня</span>
+      </button>
+      <button class="tour__hotspot" type="button" data-sx="3571" data-sy="778" aria-label="Кухня">
+        <span class="tour__hotspot-dot"></span>
+        <span class="tour__hotspot-label">Кухня</span>
+      </button>
+      <button class="tour__hotspot" type="button" data-sx="4377" data-sy="475" aria-label="Вид на горы">
+        <span class="tour__hotspot-dot"></span>
+        <span class="tour__hotspot-label">Вид на горы</span>
+      </button>
+      <button class="tour__hotspot" type="button" data-sx="5069" data-sy="842" aria-label="Баня">
+        <span class="tour__hotspot-dot"></span>
+        <span class="tour__hotspot-label">Баня</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="tour__top">
+    <div class="tour__title">
+      <span class="tour__label">3D тур · Демо-панорама</span>
+      <b id="tourTitle">Дом у озера</b>
+    </div>
+    <div class="tour__compass-wrap">
+      <svg class="tour__compass" id="tourCompass" viewBox="0 0 40 40" aria-hidden="true">
+        <circle cx="20" cy="20" r="17" fill="none" stroke="currentColor" stroke-opacity=".35" stroke-width="1.5"/>
+        <polygon points="20,6 23,20 20,24 17,20" fill="currentColor"/>
+      </svg>
+    </div>
+  </div>
+
+  <button class="tour__close" id="tourClose" type="button" aria-label="Закрыть 3D тур">
+    <svg class="ico-svg"><use href="#i-close"/></svg>
+  </button>
+
+  <div class="tour__bottom">
+    <div class="tour__hint">
+      <svg class="ico-svg"><use href="#i-drag"/></svg>
+      <span>Потяните, чтобы осмотреться</span>
+    </div>
+    <div class="tour__actions">
+      <button class="tour__auto-btn is-on" id="tourAuto" type="button" aria-label="Автотур" title="Автотур">
+        <svg class="ico-svg tour__ico-play"><use href="#i-play"/></svg>
+        <svg class="ico-svg tour__ico-pause"><use href="#i-pause"/></svg>
+      </button>
+      <span class="tour__demo">Демо</span>
     </div>
   </div>
 </div>
@@ -1755,6 +2144,7 @@ document.addEventListener('keydown', e => {
     closeModal();
     closeDetail();
     closeFilters();
+    closeTour();
   }
 });
 
@@ -2065,6 +2455,12 @@ function cardHTML(d){
         '<span class="card__rate"><svg class="ico-svg"><use href="#i-star-fill"/></svg>' + d.rating.toFixed(1) + '</span></div>' +
       '<div class="card__loc"><svg class="ico-svg loc-ico"><use href="#i-pin"/></svg><span>' + d.place + '</span></div>' +
       '<div class="card__meta"><span>до ' + d.guests + ' гостей</span><span>' + d.rooms + ' ' + roomWord(d.rooms) + '</span>' + am + '</div>' +
+      '<div class="card__tour-row">' +
+        '<button class="card__tour" type="button" data-tour="' + d.id + '">' +
+          '<svg class="ico-svg"><use href="#i-360"/></svg>' +
+          '<span>3D тур</span>' +
+        '</button>' +
+      '</div>' +
       '<div class="card__foot">' +
         '<div class="card__price"><b>' + fmt(d.price) + ' ₽</b><span>/ ночь</span></div>' +
         '<div class="card__arrow"><svg class="ico-svg"><use href="#i-arrow"/></svg></div>' +
@@ -2155,6 +2551,12 @@ pagerEl.addEventListener('click', e => {
 });
 
 gridEl.addEventListener('click', e => {
+  const tourBtn = e.target.closest('[data-tour]');
+  if (tourBtn){
+    e.stopPropagation();
+    openTour(parseInt(tourBtn.dataset.tour, 10));
+    return;
+  }
   const fav = e.target.closest('[data-fav]');
   if (fav){
     const id = parseInt(fav.dataset.fav, 10);
@@ -2196,6 +2598,7 @@ function applyAndRender(){
   renderGrid();
 }
 
+/* ===== MODAL ===== */
 const modal = $('#modal');
 const modalTitle = $('#modalTitle');
 const modalPlace = $('#modalPlace');
@@ -2253,6 +2656,7 @@ $('#modalSubmit').addEventListener('click', function(){
   }, 1600);
 });
 
+/* ===== DETAIL ===== */
 const detail = $('#detail');
 const detailImg = $('#detailImg');
 const detailBadge = $('#detailBadge');
@@ -2397,7 +2801,12 @@ function closeDetail(){
 }
 
 function unlockScroll(){
-  if (!modal.classList.contains('is-open') && !detail.classList.contains('is-open') && !filtersEl.classList.contains('is-open')){
+  if (
+    !modal.classList.contains('is-open') &&
+    !detail.classList.contains('is-open') &&
+    !filtersEl.classList.contains('is-open') &&
+    !tour.classList.contains('is-open')
+  ){
     document.body.style.overflow = '';
   }
 }
@@ -2408,7 +2817,187 @@ $('#detailBook').addEventListener('click', () => {
   closeDetail();
   setTimeout(() => openModal(id), 320);
 });
+$('#detailTour').addEventListener('click', () => {
+  const id = currentDetailId;
+  closeDetail();
+  setTimeout(() => openTour(id), 320);
+});
 
+/* ===== 3D TOUR ===== */
+const tour = $('#tour');
+const tourViewport = $('#tourViewport');
+const tourPano = $('#tourPano');
+const tourCompass = $('#tourCompass');
+const tourTitle = $('#tourTitle');
+const tourAutoBtn = $('#tourAuto');
+const tourClose = $('#tourClose');
+
+let tourX = 0;
+let tourPanoW = 0;
+let tourVpW = 0;
+let tourDragging = false;
+let tourAuto = true;
+let tourDir = -1;
+let tourStartX = 0;
+let tourStartTx = 0;
+let tourRAF = null;
+let tourAnimRAF = null;
+
+function layoutTourHotspots(vpH){
+  const scale = vpH / 1080;
+  $$('.tour__hotspot', tourPano).forEach(el => {
+    const sx = parseFloat(el.dataset.sx);
+    const sy = parseFloat(el.dataset.sy);
+    el.style.left = (sx * scale) + 'px';
+    el.style.top = (sy * scale) + 'px';
+  });
+}
+
+function tourLayout(){
+  const vpH = tourViewport.clientHeight || window.innerHeight;
+  const vpW = tourViewport.clientWidth || window.innerWidth;
+  tourVpW = vpW;
+  tourPanoW = Math.max(vpH * (5760 / 1080), vpW);
+  tourPano.style.width = tourPanoW + 'px';
+  tourPano.style.height = vpH + 'px';
+  layoutTourHotspots(vpH);
+  tourClamp();
+  tourApply();
+}
+
+function tourClamp(){
+  const min = Math.min(0, -(tourPanoW - tourVpW));
+  if (tourX > 0) tourX = 0;
+  if (tourX < min) tourX = min;
+}
+
+function tourApply(){
+  tourPano.style.transform = 'translate3d(' + tourX + 'px,0,0)';
+  const range = tourPanoW - tourVpW;
+  const angle = range > 0 ? (-tourX / range) * 360 : 0;
+  if (tourCompass) tourCompass.style.transform = 'rotate(' + (-angle) + 'deg)';
+}
+
+function tourTick(){
+  if (!tour.classList.contains('is-open')){ tourRAF = null; return; }
+  if (tourAuto && !tourDragging){
+    tourX += 0.8 * tourDir;
+    const min = Math.min(0, -(tourPanoW - tourVpW));
+    if (tourX <= min){ tourX = min; tourDir = 1; }
+    else if (tourX >= 0){ tourX = 0; tourDir = -1; }
+    tourApply();
+  }
+  tourRAF = requestAnimationFrame(tourTick);
+}
+
+function animateTourX(target){
+  const min = Math.min(0, -(tourPanoW - tourVpW));
+  target = Math.max(min, Math.min(0, target));
+  const startX = tourX;
+  const t0 = performance.now();
+  const dur = 900;
+  cancelAnimationFrame(tourAnimRAF);
+  function step(now){
+    const t = Math.min(1, (now - t0) / dur);
+    const eased = 1 - Math.pow(1 - t, 3);
+    tourX = startX + (target - startX) * eased;
+    tourApply();
+    if (t < 1) tourAnimRAF = requestAnimationFrame(step);
+  }
+  tourAnimRAF = requestAnimationFrame(step);
+}
+
+function openTour(id){
+  const item = BY_ID.get(id);
+  tourTitle.textContent = item ? item.title : '3D тур';
+  tour.classList.add('is-open');
+  tour.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+
+  tourX = 0;
+  tourDir = -1;
+  tourAuto = true;
+  tourAutoBtn.classList.add('is-on');
+
+  tourLayout();
+
+  const range = Math.max(0, tourPanoW - tourVpW);
+  if (range > 0){
+    tourX = -((id * 137) % 100) / 100 * range;
+    tourClamp();
+    tourApply();
+  }
+
+  if (!tourRAF) tourRAF = requestAnimationFrame(tourTick);
+}
+
+function closeTour(){
+  if (!tour.classList.contains('is-open')) return;
+  tour.classList.remove('is-open');
+  tour.setAttribute('aria-hidden', 'true');
+  if (tourRAF){ cancelAnimationFrame(tourRAF); tourRAF = null; }
+  if (tourAnimRAF){ cancelAnimationFrame(tourAnimRAF); tourAnimRAF = null; }
+  tourDragging = false;
+  tour.classList.remove('is-dragging');
+  unlockScroll();
+}
+
+tourClose.addEventListener('click', closeTour);
+
+tourAutoBtn.addEventListener('click', () => {
+  tourAuto = !tourAuto;
+  tourAutoBtn.classList.toggle('is-on', tourAuto);
+  if (tourAuto && !tourRAF && tour.classList.contains('is-open')){
+    tourRAF = requestAnimationFrame(tourTick);
+  }
+});
+
+tourViewport.addEventListener('pointerdown', e => {
+  if (e.button && e.button !== 0) return;
+  if (e.target.closest('.tour__top, .tour__close, .tour__bottom, .tour__hotspot')) return;
+  tourDragging = true;
+  tourStartX = e.clientX;
+  tourStartTx = tourX;
+  tour.classList.add('is-dragging');
+  cancelAnimationFrame(tourAnimRAF);
+  try { tourViewport.setPointerCapture(e.pointerId); } catch(err){}
+});
+
+tourViewport.addEventListener('pointermove', e => {
+  if (!tourDragging) return;
+  const dx = e.clientX - tourStartX;
+  tourX = tourStartTx + dx;
+  tourClamp();
+  tourApply();
+});
+
+function endTourDrag(e){
+  if (!tourDragging) return;
+  tourDragging = false;
+  tour.classList.remove('is-dragging');
+  try { tourViewport.releasePointerCapture(e.pointerId); } catch(err){}
+}
+tourViewport.addEventListener('pointerup', endTourDrag);
+tourViewport.addEventListener('pointercancel', endTourDrag);
+
+tourPano.addEventListener('click', e => {
+  const hs = e.target.closest('.tour__hotspot');
+  if (!hs) return;
+  const sx = parseFloat(hs.dataset.sx);
+  const vpH = tourViewport.clientHeight || window.innerHeight;
+  const scale = vpH / 1080;
+  const panoX = sx * scale;
+  const target = tourVpW / 2 - panoX;
+  tourAuto = false;
+  tourAutoBtn.classList.remove('is-on');
+  animateTourX(target);
+});
+
+addEventListener('resize', () => {
+  if (tour.classList.contains('is-open')) tourLayout();
+});
+
+/* ===== CTA FORM ===== */
 $('#ctaForm').addEventListener('submit', e => {
   e.preventDefault();
   const btn = e.target.querySelector('button');
