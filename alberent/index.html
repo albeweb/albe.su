@@ -229,15 +229,11 @@ body{
   line-height:1.55;
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
-  cursor:none;
   transition:background-color .35s var(--ease),color .35s var(--ease);
 }
-body.no-cursor{cursor:auto}
-@media(hover:none),(max-width:900px){body{cursor:auto}}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
-button{font-family:inherit;border:none;background:none;color:inherit;cursor:none}
-@media(hover:none),(max-width:900px){button{cursor:pointer}}
+button{font-family:inherit;border:none;background:none;color:inherit;cursor:pointer}
 ::selection{background:var(--c2);color:var(--sel-txt)}
 ::-webkit-scrollbar{width:9px}
 ::-webkit-scrollbar-track{background:var(--scrollbar-track)}
@@ -272,21 +268,6 @@ svg{display:block}
   z-index:9000;pointer-events:none;
   box-shadow:0 0 18px rgba(52,211,153,.6);
 }
-
-/* CURSOR */
-.cursor-dot,.cursor-ring{position:fixed;top:0;left:0;border-radius:50%;pointer-events:none;z-index:9999;will-change:transform}
-.cursor-dot{width:6px;height:6px;background:var(--txt-h);margin:-3px 0 0 -3px;mix-blend-mode:difference}
-.cursor-ring{
-  width:36px;height:36px;margin:-18px 0 0 -18px;
-  border:1px solid var(--line-2);
-  transition:width .35s var(--ease),height .35s var(--ease),margin .35s var(--ease),
-             background .35s var(--ease),border-color .35s var(--ease);
-}
-.cursor-ring.is-hover{
-  width:72px;height:72px;margin:-36px 0 0 -36px;
-  background:rgba(52,211,153,.14);border-color:rgba(52,211,153,.6);
-}
-@media(max-width:900px),(hover:none){.cursor-dot,.cursor-ring{display:none}}
 
 .grain{
   position:fixed;inset:-100%;z-index:8000;pointer-events:none;opacity:var(--grain-opacity);
@@ -449,7 +430,7 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
   animation:gradShift 7s ease infinite;
   box-shadow:0 8px 32px -8px rgba(52,211,153,.55);
 }
-.btn--grad:hover{box-shadow:0 14px 44px -8px rgba(167,139,250,.7)}
+.btn--grad:hover{box-shadow:0 14px 44px -8px rgba(167,139,250,.7);color:#fff}
 .btn--ghost{
   color:var(--ghost-txt);border:1px solid var(--ghost-border);
   background:var(--ghost-bg);
@@ -708,10 +689,11 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 }
 .chip:hover{color:var(--txt-h);border-color:var(--line-2);transform:translateY(-2px);box-shadow:0 8px 20px -12px var(--corner-shadow)}
 .chip.is-active{
-  color:#04060A;border-color:transparent;
+  color:#fff;border-color:transparent;
   background:var(--grad);background-size:200% 100%;
   animation:gradShift 7s ease infinite;
   box-shadow:0 8px 26px -10px rgba(52,211,153,.65);
+  text-shadow:0 1px 2px rgba(0,0,0,.18);
 }
 
 /* CATALOG PANEL */
@@ -847,7 +829,7 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 .catalog-empty__ico svg{width:28px;height:28px}
 .catalog-empty h3{font-family:'Unbounded',sans-serif;font-size:clamp(17px,2vw,21px);font-weight:600;letter-spacing:-.015em;margin-bottom:8px;color:var(--txt-h)}
 .catalog-empty p{font-size:13.5px;color:var(--mut);max-width:38ch;line-height:1.65;margin-bottom:24px}
-.catalog__more{display:flex;justify-content:center;margin-top:clamp(36px,5vh,60px)}
+.catalog__more{display:flex;justify-content:center;margin-top:clamp(36px,5vh,60px);flex-wrap:wrap;gap:12px}
 
 /* FEATURES */
 .features{position:relative;overflow:hidden;background:var(--section-bg);transition:background-color .35s var(--ease)}
@@ -984,9 +966,8 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
   background:var(--input-bg);border:1px solid var(--input-border);
   color:var(--field-txt);font-family:'Manrope',sans-serif;font-size:14px;
   outline:none;transition:border-color .35s,background .35s,box-shadow .35s;
-  cursor:none;
+  cursor:text;
 }
-@media(hover:none),(max-width:900px){.cta__input{cursor:text}}
 .cta__input::placeholder{color:var(--mut)}
 .cta__input:focus{border-color:rgba(52,211,153,.55);box-shadow:0 0 0 4px rgba(52,211,153,.08)}
 
@@ -1179,7 +1160,7 @@ html[data-theme="dark"] .msheet__field input{color-scheme:dark}
 @media(max-width:900px){.msheet{display:block}}
 </style>
 </head>
-<body class="no-cursor">
+<body>
 
 <!-- SVG SPRITE -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1266,8 +1247,6 @@ html[data-theme="dark"] .msheet__field input{color-scheme:dark}
 
 <div class="scroll-progress" id="scrollProgress"></div>
 <div class="grain"></div>
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-ring" id="cursorRing"></div>
 
 <div class="loader" id="loader">
   <div class="loader__inner">
@@ -1593,7 +1572,7 @@ html[data-theme="dark"] .msheet__field input{color-scheme:dark}
         Один сервис, прозрачные условия, персональный консьерж 24/7.
       </p>
       <div class="hero__actions">
-        <a href="#catalog" class="btn btn--grad" data-magnetic>
+        <a href="catalog.html" class="btn btn--grad" data-magnetic>
           <span class="btn__txt">Смотреть каталог <svg class="ico-svg"><use href="#i-arrow"/></svg></span>
         </a>
         <a href="#features" class="btn btn--ghost" data-magnetic>
@@ -1674,6 +1653,9 @@ html[data-theme="dark"] .msheet__field input{color-scheme:dark}
     <div class="grid" id="grid"></div>
     <div class="catalog__more">
       <button class="btn btn--ghost" id="loadMore" data-magnetic><span class="btn__txt">Показать ещё</span></button>
+      <a href="catalog.html" class="btn btn--grad" data-magnetic>
+        <span class="btn__txt">Перейти в полный каталог <svg class="ico-svg"><use href="#i-arrow"/></svg></span>
+      </a>
     </div>
   </section>
 
@@ -1705,11 +1687,11 @@ html[data-theme="dark"] .msheet__field input{color-scheme:dark}
       </div>
     </div>
     <div class="dest-scroller" id="destScroller">
-      <article class="dest" data-reveal><div class="dest__img" style="background-image:url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=900&q=80&auto=format&fit=crop')"></div><div class="dest__info"><h3>Алтай</h3><p>Горные шале и панорамные купола</p><div class="dest__price">от <b>27 400 ₽</b> / ночь</div></div></article>
-      <article class="dest" data-reveal style="--d:.08s"><div class="dest__img" style="background-image:url('https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=900&q=80&auto=format&fit=crop')"></div><div class="dest__info"><h3>Байкал</h3><p>Резиденции с видом на великое озеро</p><div class="dest__price">от <b>22 500 ₽</b> / ночь</div></div></article>
-      <article class="dest" data-reveal style="--d:.16s"><div class="dest__img" style="background-image:url('https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=900&q=80&auto=format&fit=crop')"></div><div class="dest__info"><h3>Карелия</h3><p>Дома у озера в сосновом лесу</p><div class="dest__price">от <b>15 900 ₽</b> / ночь</div></div></article>
-      <article class="dest" data-reveal style="--d:.24s"><div class="dest__img" style="background-image:url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=900&q=80&auto=format&fit=crop')"></div><div class="dest__info"><h3>Сочи</h3><p>Виллы с бассейном и видом на море</p><div class="dest__price">от <b>26 500 ₽</b> / ночь</div></div></article>
-      <article class="dest" data-reveal style="--d:.32s"><div class="dest__img" style="background-image:url('https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=900&q=80&auto=format&fit=crop')"></div><div class="dest__info"><h3>Подмосковье</h3><p>A-frame и барнхаусы в часе от Москвы</p><div class="dest__price">от <b>12 800 ₽</b> / ночь</div></div></article>
+      <article class="dest" data-reveal><div class="dest__img" style="background-image:url('a.webp')"></div><div class="dest__info"><h3>Алтай</h3><p>Горные шале и панорамные купола</p><div class="dest__price">от <b>27 400 ₽</b> / ночь</div></div></article>
+      <article class="dest" data-reveal style="--d:.08s"><div class="dest__img" style="background-image:url('b.webp')"></div><div class="dest__info"><h3>Байкал</h3><p>Резиденции с видом на великое озеро</p><div class="dest__price">от <b>22 500 ₽</b> / ночь</div></div></article>
+      <article class="dest" data-reveal style="--d:.16s"><div class="dest__img" style="background-image:url('c.webp')"></div><div class="dest__info"><h3>Карелия</h3><p>Дома у озера в сосновом лесу</p><div class="dest__price">от <b>15 900 ₽</b> / ночь</div></div></article>
+      <article class="dest" data-reveal style="--d:.24s"><div class="dest__img" style="background-image:url('d.webp')"></div><div class="dest__info"><h3>Сочи</h3><p>Виллы с бассейном и видом на море</p><div class="dest__price">от <b>26 500 ₽</b> / ночь</div></div></article>
+      <article class="dest" data-reveal style="--d:.32s"><div class="dest__img" style="background-image:url('e.webp')"></div><div class="dest__info"><h3>Подмосковье</h3><p>A-frame и барнхаусы в часе от Москвы</p><div class="dest__price">от <b>12 800 ₽</b> / ночь</div></div></article>
     </div>
     <div class="dest-scroller__hint">← перетащите, чтобы увидеть больше</div>
   </section>
@@ -1767,7 +1749,7 @@ html[data-theme="dark"] .msheet__field input{color-scheme:dark}
       </a>
       <p>Премиальный сервис бронирования загородной недвижимости по всей России. С 2019 года.</p>
     </div>
-    <div class="footer__col"><h4>Сервис</h4><a href="#catalog">Каталог</a><a href="#features">Как это работает</a><a href="#destinations">Направления</a><a href="#reviews">Отзывы</a></div>
+    <div class="footer__col"><h4>Сервис</h4><a href="catalog.html">Каталог</a><a href="#features">Как это работает</a><a href="#destinations">Направления</a><a href="#reviews">Отзывы</a></div>
     <div class="footer__col"><h4>Компания</h4><a href="#">О нас</a><a href="#">Собственникам</a><a href="#">Партнёрам</a><a href="#">Вакансии</a></div>
     <div class="footer__col"><h4>Контакты</h4><a href="tel:+78000000000">+7 800 000-00-00</a><a href="mailto:hello@alberent.ru">hello@alberent.ru</a><a href="#">Москва, Пресненская наб. 12</a></div>
   </div>
@@ -1782,7 +1764,7 @@ html[data-theme="dark"] .msheet__field input{color-scheme:dark}
       <svg class="ico-svg"><use href="#i-home"/></svg>
       <span>Главная</span>
     </a>
-    <a href="#catalog" class="mobile-nav__item" data-mnav="catalog">
+    <a href="catalog.html" class="mobile-nav__item" data-mnav="catalog">
       <svg class="ico-svg"><use href="#i-grid"/></svg>
       <span>Каталог</span>
     </a>
@@ -1920,24 +1902,11 @@ function finishLoading(){
   loaderBar.style.width = '100%';
   loaderCount.textContent = '100';
   loader.classList.add('is-hidden');
-  document.body.classList.remove('no-cursor');
   document.getElementById('hero').classList.add('loaded');
   setTimeout(() => { if (loader.parentNode) loader.remove(); }, 1100);
   initCounters();
   setTimeout(initReveal, 200);
 }
-
-/* ===== CURSOR ===== */
-const dot  = document.getElementById('cursorDot');
-const ring = document.getElementById('cursorRing');
-const hasFinePointer = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
-if (hasFinePointer && dot && ring){
-  let mx = innerWidth/2, my = innerHeight/2, rx = mx, ry = my;
-  addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.transform = `translate(${mx}px,${my}px)`; }, {passive:true});
-  (function loop(){ rx += (mx-rx)*.16; ry += (my-ry)*.16; ring.style.transform = `translate(${rx}px,${ry}px)`; requestAnimationFrame(loop); })();
-  document.addEventListener('mouseover', e => { if (e.target.closest('a,button,.card,.chip,.dest,input,.cselect__trigger,.cp-select,.cp-reset,.theme-toggle,.mobile-nav__item,.msheet__close')) ring.classList.add('is-hover'); });
-  document.addEventListener('mouseout', e => { if (e.target.closest('a,button,.card,.chip,.dest,input,.cselect__trigger,.cp-select,.cp-reset,.theme-toggle,.mobile-nav__item,.msheet__close')) ring.classList.remove('is-hover'); });
-} else { document.body.classList.remove('no-cursor'); }
 
 /* ===== SCROLL / NAV ===== */
 const nav = document.getElementById('nav');
@@ -1971,6 +1940,7 @@ bindMagnetic(document);
 /* ===== HERO BLOBS PARALLAX ===== */
 const hero = document.getElementById('hero');
 const blobs = hero ? hero.querySelectorAll('.blob') : [];
+const hasFinePointer = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
 if (hasFinePointer && hero){
   hero.addEventListener('mousemove', e => {
     const nx = e.clientX/innerWidth - .5;
@@ -2055,27 +2025,30 @@ function setCSelect(id, value){
 }
 initCSelects();
 
-/* ===== CATALOG DATA ===== */
-const U = (id,w=900) => `https://images.unsplash.com/photo-${id}?w=${w}&q=80&auto=format&fit=crop`;
+/* ===== CATALOG DATA — ЛОКАЛЬНЫЕ ФОТО ===== */
+const LOCAL_IMGS = ['a.webp','b.webp','c.webp','d.webp','e.webp','f.webp','g.webp','h.webp','i.webp','j.webp'];
+let _imgI = 0;
+const IMG = () => LOCAL_IMGS[(_imgI++) % LOCAL_IMGS.length];
+
 const DATA = [
-  {id:1,title:'Дом у озера',place:'Карелия · Сортавала',price:24500,guests:8,rooms:4,rating:'4.9',tag:'ХИТ',cat:'karelia',img:U('1518780664697-55e3ad937233')},
-  {id:2,title:'A-frame в лесу',place:'Подмосковье · Истра',price:12800,guests:4,rooms:2,rating:'4.8',tag:'NEW',cat:'near',img:U('1449158743715-0a90ebb6d2d8')},
-  {id:3,title:'Шале «Алтай»',place:'Алтай · Манжерок',price:31200,guests:10,rooms:5,rating:'5.0',tag:'ХИТ',cat:'altai',img:U('1470770841072-f978cf4d019e')},
-  {id:4,title:'Вилла «Сочи»',place:'Сочи · Адлер',price:42000,guests:12,rooms:6,rating:'4.9',tag:'',cat:'sochi',img:U('1613490493576-7fde63acd811')},
-  {id:5,title:'Барнхаус у реки',place:'Подмосковье · Дмитров',price:18600,guests:6,rooms:3,rating:'4.7',tag:'',cat:'near',img:U('1510798831971-661eb04b3739')},
-  {id:6,title:'Панорамный купол',place:'Карелия · Рускеала',price:15900,guests:2,rooms:1,rating:'4.9',tag:'NEW',cat:'karelia',img:U('1499696010180-025ef6e1a8f9')},
-  {id:7,title:'Резиденция на Байкале',place:'Байкал · Листвянка',price:38500,guests:8,rooms:4,rating:'5.0',tag:'ХИТ',cat:'baikal',img:U('1502005229762-cf1b2da7c5d6')},
-  {id:8,title:'Дом-скала',place:'Алтай · Чемал',price:27400,guests:6,rooms:3,rating:'4.8',tag:'',cat:'altai',img:U('1564013799919-ab600027ffc6')},
-  {id:9,title:'Стеклянный лофт',place:'Подмосковье · Руза',price:21000,guests:5,rooms:2,rating:'4.6',tag:'',cat:'near',img:U('1600585154340-be6161a56a0c')},
-  {id:10,title:'Усадьба «Сосны»',place:'Карелия · Приозерск',price:19800,guests:10,rooms:5,rating:'4.7',tag:'',cat:'karelia',img:U('1600596542815-ffad4c1539a9')},
-  {id:11,title:'Мини-отель «Тишина»',place:'Сочи · Красная Поляна',price:26500,guests:4,rooms:2,rating:'4.9',tag:'NEW',cat:'sochi',img:U('1520250497591-112f2f40a3f4')},
-  {id:12,title:'Эко-лодж «Байкал»',place:'Байкал · Ольхон',price:22500,guests:6,rooms:3,rating:'4.8',tag:'',cat:'baikal',img:U('1613977257363-707ba9348227')},
-  {id:13,title:'Хвойный лофт',place:'Карелия · Лахденпохья',price:21500,guests:4,rooms:2,rating:'4.8',tag:'NEW',cat:'karelia',img:U('1512917774080-9991f1c4c750')},
-  {id:14,title:'Горный A-frame',place:'Алтай · Ая',price:29800,guests:4,rooms:2,rating:'4.9',tag:'',cat:'altai',img:U('1568605114967-8130f3a36994')},
-  {id:15,title:'Вилла «Магнолия»',place:'Сочи · Хоста',price:54000,guests:10,rooms:5,rating:'5.0',tag:'ХИТ',cat:'sochi',img:U('1580587771525-78b9dba3b914')},
-  {id:16,title:'Дом у сосен',place:'Подмосковье · Звенигород',price:15400,guests:8,rooms:4,rating:'4.7',tag:'',cat:'near',img:U('1523217582562-09d0def993a6')},
-  {id:17,title:'Кедровый дом',place:'Байкал · Большое Голоустное',price:31000,guests:6,rooms:3,rating:'4.8',tag:'',cat:'baikal',img:U('1600607687939-ce8a6c25118c')},
-  {id:18,title:'Шале «Лесное»',place:'Карелия · Сортавала',price:18900,guests:6,rooms:3,rating:'4.9',tag:'',cat:'karelia',img:U('1600566753086-00f18fb6b3ea')}
+  {id:1,title:'Дом у озера',place:'Карелия · Сортавала',price:24500,guests:8,rooms:4,rating:'4.9',tag:'ХИТ',cat:'karelia',img:IMG()},
+  {id:2,title:'A-frame в лесу',place:'Подмосковье · Истра',price:12800,guests:4,rooms:2,rating:'4.8',tag:'NEW',cat:'near',img:IMG()},
+  {id:3,title:'Шале «Алтай»',place:'Алтай · Манжерок',price:31200,guests:10,rooms:5,rating:'5.0',tag:'ХИТ',cat:'altai',img:IMG()},
+  {id:4,title:'Вилла «Сочи»',place:'Сочи · Адлер',price:42000,guests:12,rooms:6,rating:'4.9',tag:'',cat:'sochi',img:IMG()},
+  {id:5,title:'Барнхаус у реки',place:'Подмосковье · Дмитров',price:18600,guests:6,rooms:3,rating:'4.7',tag:'',cat:'near',img:IMG()},
+  {id:6,title:'Панорамный купол',place:'Карелия · Рускеала',price:15900,guests:2,rooms:1,rating:'4.9',tag:'NEW',cat:'karelia',img:IMG()},
+  {id:7,title:'Резиденция на Байкале',place:'Байкал · Листвянка',price:38500,guests:8,rooms:4,rating:'5.0',tag:'ХИТ',cat:'baikal',img:IMG()},
+  {id:8,title:'Дом-скала',place:'Алтай · Чемал',price:27400,guests:6,rooms:3,rating:'4.8',tag:'',cat:'altai',img:IMG()},
+  {id:9,title:'Стеклянный лофт',place:'Подмосковье · Руза',price:21000,guests:5,rooms:2,rating:'4.6',tag:'',cat:'near',img:IMG()},
+  {id:10,title:'Усадьба «Сосны»',place:'Карелия · Приозерск',price:19800,guests:10,rooms:5,rating:'4.7',tag:'',cat:'karelia',img:IMG()},
+  {id:11,title:'Мини-отель «Тишина»',place:'Сочи · Красная Поляна',price:26500,guests:4,rooms:2,rating:'4.9',tag:'NEW',cat:'sochi',img:IMG()},
+  {id:12,title:'Эко-лодж «Байкал»',place:'Байкал · Ольхон',price:22500,guests:6,rooms:3,rating:'4.8',tag:'',cat:'baikal',img:IMG()},
+  {id:13,title:'Хвойный лофт',place:'Карелия · Лахденпохья',price:21500,guests:4,rooms:2,rating:'4.8',tag:'NEW',cat:'karelia',img:IMG()},
+  {id:14,title:'Горный A-frame',place:'Алтай · Ая',price:29800,guests:4,rooms:2,rating:'4.9',tag:'',cat:'altai',img:IMG()},
+  {id:15,title:'Вилла «Магнолия»',place:'Сочи · Хоста',price:54000,guests:10,rooms:5,rating:'5.0',tag:'ХИТ',cat:'sochi',img:IMG()},
+  {id:16,title:'Дом у сосен',place:'Подмосковье · Звенигород',price:15400,guests:8,rooms:4,rating:'4.7',tag:'',cat:'near',img:IMG()},
+  {id:17,title:'Кедровый дом',place:'Байкал · Большое Голоустное',price:31000,guests:6,rooms:3,rating:'4.8',tag:'',cat:'baikal',img:IMG()},
+  {id:18,title:'Шале «Лесное»',place:'Карелия · Сортавала',price:18900,guests:6,rooms:3,rating:'4.9',tag:'',cat:'karelia',img:IMG()}
 ];
 
 const SPANS = [7,5,5,7,4,4,4,6,6,4,4,4];
@@ -2153,7 +2126,6 @@ function renderCards(){
   const rest = list.length - slice.length;
   if (rest > 0){
     loadMoreBtn.style.display = ''; loadMoreBtn.disabled = false;
-    loadMoreBtn.style.opacity = ''; loadMoreBtn.style.pointerEvents = '';
     loadMoreBtn.querySelector('.btn__txt').textContent = `Показать ещё ${Math.min(PAGE, rest)}`;
   } else { loadMoreBtn.style.display = 'none'; }
 }
@@ -2279,6 +2251,7 @@ document.getElementById('mBookingSearch')?.addEventListener('click', () => {
 /* ===== MOBILE NAV ACTIVE STATE ===== */
 document.querySelectorAll('[data-mnav]').forEach(item => {
   if (item.tagName === 'BUTTON') return;
+  if (item.getAttribute('href') === 'catalog.html') return; // external link
   item.addEventListener('click', () => {
     document.querySelectorAll('.mobile-nav__item').forEach(i => i.classList.remove('is-active'));
     item.classList.add('is-active');
