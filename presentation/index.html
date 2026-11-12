@@ -22,9 +22,6 @@
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 
-/* ============================================================
-   THEME
-   ============================================================ */
 html[data-theme="dark"]{
   --c1:#22D3EE; --c1-rgb:34,211,238;
   --c2:#67E8F9; --c2-rgb:103,232,249;
@@ -34,7 +31,6 @@ html[data-theme="dark"]{
   --txt:#EDEFF7; --txt-h:#FFFFFF; --mut:#9CA3BA;
   --line:rgba(255,255,255,.08); --line-2:rgba(255,255,255,.14);
   --card-bg:linear-gradient(160deg,rgba(255,255,255,.05),rgba(255,255,255,.015));
-  --card-bg-solid:#0F131F;
   --card-shadow-h:0 30px 60px -30px rgba(0,0,0,.85),0 0 50px -20px rgba(var(--c3-rgb),.25);
   --panel-bg:rgba(14,17,26,.86); --panel-bg-solid:#0E111A;
   --input-bg:rgba(255,255,255,.045);
@@ -43,28 +39,21 @@ html[data-theme="dark"]{
   --scrollbar-track:#05060A; --sel-txt:#04060A;
   --grain-opacity:.045; --text-shadow-light:0 1px 2px rgba(0,0,0,.35);
   --chip-bg:rgba(255,255,255,.03);
-
-  --hero-veil-1:rgba(6,7,11,.55);
-  --hero-veil-2:rgba(6,7,11,.22);
-  --hero-veil-edge:rgba(6,7,11,.55);
-
+  --hero-veil-1:rgba(6,7,11,.55); --hero-veil-2:rgba(6,7,11,.22); --hero-veil-edge:rgba(6,7,11,.55);
   --s-spring-sky:#3E5A7A; --s-summer-sky:#1A4060; --s-autumn-sky:#6B3A52;
   --s-winter-sky:#1A2440; --s-winter-sky-2:#080D1C;
   --s-spring-ground:#4E8B5F; --s-summer-ground:#2E6D4A; --s-autumn-ground:#9A4E2A;
   --s-winter-ground:#C8D8EA; --s-winter-ground-2:#8BA0BC;
-  --s-sun-core:#FCE9A0; --s-sun-glow:#FBBF24;
-  --s-moon-core:#EAF2FE; --s-moon-glow:#7DD3FC;
+  --s-sun-core:#FCE9A0; --s-sun-glow:#FBBF24; --s-moon-core:#EAF2FE; --s-moon-glow:#7DD3FC;
   --s-star:#FFFFFF;
   --s-mtn-far-top:#3A4866; --s-mtn-far-bot:#1A2238;
   --s-mtn-mid-top:#1E2A44; --s-mtn-mid-bot:#0A101F;
   --s-spring-blossom-1:#FFC0D9; --s-spring-blossom-2:#FF9BC8; --s-spring-trunk:#4A3020;
   --s-summer-leaf-1:#3FA65B; --s-summer-leaf-2:#2E8A47; --s-summer-trunk:#4A3020;
   --s-autumn-leaf-1:#E8903F; --s-autumn-leaf-2:#C9432E; --s-autumn-leaf-3:#E8B84B; --s-autumn-trunk:#4A3020;
-  --s-winter-pine:#0E1526; --s-snow:#EFF6FF;
-  --s-window:#FBBF24;
+  --s-winter-pine:#0E1526; --s-snow:#EFF6FF; --s-window:#FBBF24;
   --s-petal:#FFB7D5; --s-firefly:#FCD34D; --s-leaf-fall:#E8903F; --s-snowflake:#FFFFFF;
-  --s-aurora-1:#22D3EE; --s-aurora-2:#A78BFA;
-  --s-villa-bg:#2A1F18;
+  --s-aurora-1:#22D3EE; --s-aurora-2:#A78BFA; --s-villa-bg:#2A1F18;
 }
 html[data-theme="light"]{
   --c1:#0E7490; --c1-rgb:14,116,144;
@@ -75,7 +64,6 @@ html[data-theme="light"]{
   --txt:#1F2937; --txt-h:#0A0C13; --mut:#5B6475;
   --line:rgba(10,12,25,.09); --line-2:rgba(10,12,25,.14);
   --card-bg:#FFFFFF;
-  --card-bg-solid:#FFFFFF;
   --card-shadow-h:0 24px 50px -30px rgba(10,12,25,.32),0 0 50px -20px rgba(var(--c3-rgb),.18);
   --panel-bg:rgba(255,255,255,.94); --panel-bg-solid:#FFFFFF;
   --input-bg:#F8FAFC;
@@ -84,65 +72,49 @@ html[data-theme="light"]{
   --scrollbar-track:#F1F5F9; --sel-txt:#fff;
   --grain-opacity:.028; --text-shadow-light:0 1px 2px rgba(0,0,0,.15);
   --chip-bg:#F8FAFC;
-
-  --hero-veil-1:rgba(255,255,255,.55);
-  --hero-veil-2:rgba(255,255,255,.2);
-  --hero-veil-edge:rgba(255,255,255,.4);
-
+  --hero-veil-1:rgba(255,255,255,.55); --hero-veil-2:rgba(255,255,255,.2); --hero-veil-edge:rgba(255,255,255,.4);
   --s-spring-sky:#F5B8D5; --s-summer-sky:#7FC8EA; --s-autumn-sky:#F4A26E;
   --s-winter-sky:#8FA8CB; --s-winter-sky-2:#C8D4E8;
   --s-spring-ground:#A8DBB0; --s-summer-ground:#6FBA85; --s-autumn-ground:#E8B47A;
   --s-winter-ground:#FFFFFF; --s-winter-ground-2:#E8EFF8;
-  --s-sun-core:#FFFFFF; --s-sun-glow:#FCD34D;
-  --s-moon-core:#FFF7ED; --s-moon-glow:#FDE68A;
+  --s-sun-core:#FFFFFF; --s-sun-glow:#FCD34D; --s-moon-core:#FFF7ED; --s-moon-glow:#FDE68A;
   --s-star:#94A3B8;
   --s-mtn-far-top:#B8C8DC; --s-mtn-far-bot:#DCE5F0;
   --s-mtn-mid-top:#8FA8C0; --s-mtn-mid-bot:#B8C8DC;
   --s-spring-blossom-1:#FFD5E5; --s-spring-blossom-2:#FFB8D3; --s-spring-trunk:#6B4530;
   --s-summer-leaf-1:#5FBF75; --s-summer-leaf-2:#3FA65B; --s-summer-trunk:#6B4530;
   --s-autumn-leaf-1:#F4A85A; --s-autumn-leaf-2:#E85D4A; --s-autumn-leaf-3:#F4CE68; --s-autumn-trunk:#6B4530;
-  --s-winter-pine:#334155; --s-snow:#FFFFFF;
-  --s-window:#F59E0B;
+  --s-winter-pine:#334155; --s-snow:#FFFFFF; --s-window:#F59E0B;
   --s-petal:#FFC0D9; --s-firefly:#F59E0B; --s-leaf-fall:#F4A85A; --s-snowflake:#FFFFFF;
-  --s-aurora-1:#67E8F9; --s-aurora-2:#C4B5FD;
-  --s-villa-bg:#4A3928;
+  --s-aurora-1:#67E8F9; --s-aurora-2:#C4B5FD; --s-villa-bg:#4A3928;
 }
 
-/* ============================================================
-   TOKENS
-   ============================================================ */
 :root{
-  --fs-h2:    clamp(28px, 4.2vw, 54px);
-  --fs-h3:    clamp(19px, 1.7vw, 22px);
-  --fs-lead:  clamp(16px, 1.3vw, 18px);
-  --fs-body:  clamp(15px, 1.1vw, 16.5px);
-  --fs-small: clamp(12px, 1vw, 13.5px);
-  --fs-value: clamp(28px, 3.2vw, 40px);
-
-  --gap:      20px;
-  --radius:   20px;
-  --pad:      clamp(24px, 3vw, 32px);
-
+  --fs-h2: clamp(30px,4vw,56px);
+  --fs-h3: clamp(18px,1.6vw,22px);
+  --fs-lead: clamp(16px,1.25vw,19px);
+  --fs-body: clamp(14.5px,1.1vw,17px);
+  --fs-small: clamp(11.5px,0.9vw,13px);
+  --fs-value: clamp(26px,3vw,42px);
+  --gap:clamp(14px,1.8vw,22px);
+  --radius:18px;
+  --pad:clamp(18px,2vw,26px);
   --grad:linear-gradient(100deg,var(--c1) 0%,var(--c2) 46%,var(--c3) 100%);
   --ease:cubic-bezier(.19,1,.22,1);
   --page-x:80px;
 }
 @media(max-width:1280px){:root{--page-x:40px}}
 @media(max-width:900px){:root{--page-x:20px}}
-@media(max-width:600px){:root{--page-x:14px; --gap:12px}}
+@media(max-width:600px){:root{--page-x:14px;--gap:14px}}
 @media(max-width:400px){:root{--page-x:10px}}
 
-/* ============================================================
-   BASE
-   ============================================================ */
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scrollbar-gutter:stable}
 html,body{height:100%}
 body{
-  background:var(--bg); color:var(--txt);
+  background:var(--bg);color:var(--txt);
   font-family:'Manrope',system-ui,sans-serif;
-  font-size:var(--fs-body);
-  font-weight:400; line-height:1.6;
-  overflow-x:hidden; -webkit-font-smoothing:antialiased;
+  font-size:var(--fs-body);font-weight:400;line-height:1.55;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
   -webkit-tap-highlight-color:transparent;
   transition:background-color .35s var(--ease),color .35s var(--ease);
 }
@@ -154,20 +126,13 @@ button{font-family:inherit;border:none;background:none;color:inherit;cursor:poin
 ::-webkit-scrollbar-track{background:var(--scrollbar-track)}
 ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--c1),var(--c3));border-radius:6px}
 
-/* ===== СНОСКИ-ОПРЕДЕЛЕНИЯ (abbr с tooltip) ===== */
 abbr[title]{
   text-decoration:underline dotted;
   text-decoration-color:rgba(var(--c1-rgb),.6);
   text-underline-offset:3px;
-  cursor:help;
-  border-bottom:none;
-  font-weight:600;
-  color:var(--txt-h);
-  position:relative;
+  cursor:help;border-bottom:none;font-weight:600;color:var(--txt-h);
 }
-abbr[title]:hover{
-  text-decoration-color:var(--c2);
-}
+abbr[title]:hover{text-decoration-color:var(--c2)}
 
 @keyframes gradShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 
@@ -187,341 +152,247 @@ abbr[title]:hover{
 svg{display:block}
 .ico-svg{display:inline-block;vertical-align:middle;flex-shrink:0}
 
-/* ============================================================
-   NAV + DOTS
-   ============================================================ */
 .nav{
   position:fixed;top:0;left:0;right:0;z-index:900;
   display:flex;align-items:center;justify-content:space-between;gap:20px;
-  padding:16px var(--page-x);
+  padding:14px var(--page-x);
   background:var(--nav-bg);
   backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%);
   border-bottom:1px solid var(--line);
 }
-.logo{display:flex;align-items:center;gap:12px}
-.logo__mark{width:36px;height:36px;flex-shrink:0}
+.logo{display:flex;align-items:center;gap:10px}
+.logo__mark{width:34px;height:34px;flex-shrink:0}
 .logo__text{font-family:'Unbounded',sans-serif;font-weight:700;font-size:15px;letter-spacing:.06em;color:var(--txt-h)}
 .logo__text em{font-style:normal;font-weight:300;color:var(--mut);margin-left:5px;letter-spacing:.14em;font-size:12px}
-.nav__right{display:flex;align-items:center;gap:14px}
+.nav__right{display:flex;align-items:center;gap:12px}
 .nav__counter{font-family:'Unbounded',sans-serif;font-size:13px;font-weight:600;letter-spacing:.12em;color:var(--mut);display:flex;align-items:center;gap:6px}
 .nav__counter b{color:var(--txt-h);font-weight:700}
 .nav__counter span{opacity:.5}
 .theme-toggle{
-  width:38px;height:38px;border-radius:50%;
+  width:36px;height:36px;border-radius:50%;
   display:grid;place-items:center;
   border:1px solid var(--line-2);background:var(--input-bg);color:var(--txt);
   transition:all .3s var(--ease);flex-shrink:0;
 }
 .theme-toggle:hover{border-color:var(--c2);color:var(--c2);transform:rotate(15deg)}
-.theme-toggle svg{width:17px;height:17px}
+.theme-toggle svg{width:16px;height:16px}
 .theme-toggle .ico-moon{display:none}
 html[data-theme="light"] .theme-toggle .ico-moon{display:block}
 html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 
 .dots{
   position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:880;
-  display:flex;flex-direction:column;gap:12px;
-  padding:14px 10px;border-radius:100px;
+  display:flex;flex-direction:column;gap:10px;
+  padding:12px 8px;border-radius:100px;
   background:var(--panel-bg);
   backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   border:1px solid var(--line);
 }
-.dot{width:8px;height:8px;border-radius:50%;background:var(--line-2);transition:all .35s var(--ease);position:relative;cursor:pointer}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--line-2);transition:all .35s var(--ease);position:relative;cursor:pointer}
 .dot::before{content:'';position:absolute;inset:-6px;border-radius:50%}
 .dot:hover{background:var(--mut);transform:scale(1.15)}
 .dot.is-active{background:var(--c2);box-shadow:0 0 12px var(--c2);transform:scale(1.3)}
 
-/* ============================================================
-   BUTTONS
-   ============================================================ */
 .btn{
   position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;
   font-family:'Unbounded',sans-serif;font-weight:500;font-size:13px;
-  letter-spacing:.08em;text-transform:uppercase;padding:16px 30px;border-radius:100px;
+  letter-spacing:.08em;text-transform:uppercase;padding:15px 28px;border-radius:100px;
   overflow:hidden;transition:transform .45s var(--ease),box-shadow .45s var(--ease),color .35s;
 }
 .btn--grad{color:#fff;text-shadow:var(--text-shadow-light);background:var(--grad);background-size:200% 100%;animation:gradShift 7s ease infinite;box-shadow:0 8px 32px -8px rgba(var(--c1-rgb),.55)}
 .btn--grad:hover{box-shadow:0 14px 44px -8px rgba(var(--c3-rgb),.7)}
 .btn--ghost{color:var(--ghost-txt);border:1px solid var(--ghost-border);background:var(--ghost-bg);backdrop-filter:blur(8px)}
 .btn--ghost:hover{border-color:rgba(var(--c1-rgb),.5);background:rgba(var(--c1-rgb),.06);color:var(--txt-h)}
-.btn__txt{position:relative;z-index:2;display:flex;align-items:center;gap:10px}
+.btn__txt{position:relative;z-index:2;display:flex;align-items:center;gap:9px}
 .btn__txt svg{width:14px;height:14px}
 
 /* ============================================================
-   SLIDE — чередующийся фон + орнамент-разделитель
+   SLIDE — FIT-TO-VIEWPORT
    ============================================================ */
+main{transform-style:flat;overflow-x:clip}
 .slide{
   position:relative;
-  padding:clamp(100px,12vh,140px) var(--page-x) clamp(70px,9vh,110px);
   min-height:100vh;
+  min-height:100dvh;
+  padding:88px var(--page-x) 40px;
   display:flex;align-items:center;
-  scroll-snap-align:start;
   background:var(--bg);
   transition:background-color .5s var(--ease);
+  transform-origin:50% 50%;
+  backface-visibility:hidden;
+  contain:layout style;
+  overflow:hidden;
+}
+@media (min-width: 901px) and (min-height: 720px){
+  .slide{
+    height:100vh;height:100dvh;
+    max-height:100vh;max-height:100dvh;
+    min-height:0;
+  }
 }
 .slide:nth-of-type(even){background:var(--bg-2)}
 
-/* Мягкое свечение внутри слайда — глубина */
 .slide::after{
-  content:'';
-  position:absolute;inset:0;
+  content:'';position:absolute;inset:0;
   background:
     radial-gradient(ellipse 55% 45% at 15% 15%, rgba(var(--c1-rgb),.045), transparent 60%),
     radial-gradient(ellipse 55% 45% at 85% 85%, rgba(var(--c3-rgb),.04), transparent 60%);
-  pointer-events:none;
-  z-index:0;
+  pointer-events:none;z-index:0;
 }
-
-/* Дизайнерский разделитель сверху у всех слайдов, кроме обложки */
 .slide:not(.slide--cover)::before{
-  content:'';
-  position:absolute;
-  top:0;
-  left:50%;
+  content:'';position:absolute;top:0;left:50%;
   transform:translateX(-50%);
-  width:min(820px,82%);
-  height:1px;
-  background:linear-gradient(90deg,
-    transparent,
-    var(--line-2) 12%,
-    rgba(var(--c1-rgb),.45) 38%,
-    var(--c2) 50%,
-    rgba(var(--c1-rgb),.45) 62%,
-    var(--line-2) 88%,
-    transparent);
+  width:min(820px,82%);height:1px;
+  background:linear-gradient(90deg,transparent,var(--line-2) 12%,rgba(var(--c1-rgb),.45) 38%,var(--c2) 50%,rgba(var(--c1-rgb),.45) 62%,var(--line-2) 88%,transparent);
   z-index:4;
 }
-/* Ромб-акцент по центру разделителя */
 .slide:not(.slide--cover) .slide__inner::before{
-  content:'';
-  position:absolute;
-  top:calc(-1 * clamp(100px,12vh,140px) - 4px);
-  left:50%;
-  width:9px;height:9px;
+  content:'';position:absolute;
+  top:calc(-88px - 5px);
+  left:50%;width:10px;height:10px;
   transform:translateX(-50%) rotate(45deg);
   background:linear-gradient(135deg,var(--c2),var(--c3));
   box-shadow:0 0 20px rgba(var(--c1-rgb),.7),0 0 40px rgba(var(--c3-rgb),.35);
-  z-index:5;
-  pointer-events:none;
+  z-index:5;pointer-events:none;
 }
-/* Малые боковые точки на разделителе */
 .slide:not(.slide--cover) .slide__inner::after{
-  content:'';
-  position:absolute;
-  top:calc(-1 * clamp(100px,12vh,140px) - 1px);
-  left:50%;
-  transform:translateX(-50%);
-  width:min(820px,82%);
-  height:3px;
+  content:'';position:absolute;
+  top:calc(-88px - 1px);
+  left:50%;transform:translateX(-50%);
+  width:min(820px,82%);height:3px;
   background:
     radial-gradient(circle at 20% 50%, rgba(var(--c1-rgb),.7) 1.2px, transparent 2px),
     radial-gradient(circle at 80% 50%, rgba(var(--c3-rgb),.7) 1.2px, transparent 2px);
-  pointer-events:none;
-  z-index:5;
+  pointer-events:none;z-index:5;
 }
 
-.slide__inner{width:100%;position:relative;z-index:2}
-
+.slide__inner{
+  width:100%;position:relative;z-index:2;
+  display:flex;
+  flex-direction:column;
+  gap:clamp(16px, 2vh, 26px);
+}
 .slide-num{
   font-family:'Unbounded',sans-serif;font-size:var(--fs-small);font-weight:600;
-  letter-spacing:.24em;text-transform:uppercase;color:var(--mut);
-  display:inline-flex;align-items:center;gap:14px;
-  margin-bottom:20px;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--mut);
+  display:inline-flex;align-items:center;gap:12px;margin:0;
 }
-.slide-num::before{content:'';width:32px;height:1px;background:var(--grad)}
+.slide-num::before{content:'';width:30px;height:1px;background:var(--grad)}
 .slide-num b{color:var(--c2);font-weight:700}
-
 .slide h2{
   font-family:'Unbounded',sans-serif;font-weight:700;
   font-size:var(--fs-h2);line-height:1.05;
-  letter-spacing:-.035em;color:var(--txt-h);
-  max-width:24ch;
-  margin-bottom:20px;
+  letter-spacing:-.03em;color:var(--txt-h);
+  max-width:26ch;margin:0;
 }
 .slide h2 em{font-style:normal;font-weight:300;color:var(--c2)}
-
 .slide-lead{
   font-size:var(--fs-lead);color:var(--mut);
-  max-width:64ch;line-height:1.7;
-  margin-bottom:clamp(28px,4vh,48px);
+  max-width:72ch;line-height:1.55;margin:0;
 }
 
-/* ============================================================
-   CARDS — градиентная рамка + внутреннее свечение при hover
-   ============================================================ */
 .card{
   position:relative;
   padding:var(--pad);
   border-radius:var(--radius);
   background:var(--card-bg);
   border:1px solid var(--line);
-  transition:
-    transform .4s var(--ease),
-    border-color .4s var(--ease),
-    box-shadow .4s var(--ease),
-    background .4s var(--ease);
-  overflow:hidden;
-  isolation:isolate;
+  transition:transform .4s var(--ease),border-color .4s var(--ease),box-shadow .4s var(--ease),background .4s var(--ease);
+  overflow:hidden;isolation:isolate;
 }
-/* Внутреннее свечение при hover */
 .card::after{
-  content:'';
-  position:absolute;
-  inset:0;
-  border-radius:inherit;
+  content:'';position:absolute;inset:0;border-radius:inherit;
   background:
     radial-gradient(circle at 50% 0%, rgba(var(--c1-rgb),.12), transparent 55%),
     radial-gradient(circle at 50% 100%, rgba(var(--c3-rgb),.08), transparent 55%);
-  opacity:0;
-  transition:opacity .4s var(--ease);
-  pointer-events:none;
-  z-index:0;
+  opacity:0;transition:opacity .4s var(--ease);pointer-events:none;z-index:0;
 }
 .card > *{position:relative;z-index:1}
 .card:hover{
-  transform:translateY(-3px);
-  border-color:transparent;
+  transform:translateY(-3px);border-color:transparent;
   background:
     var(--card-bg) padding-box,
     linear-gradient(135deg, var(--c1), var(--c2) 40%, var(--c3) 100%) border-box;
   box-shadow:var(--card-shadow-h);
 }
 .card:hover::after{opacity:1}
-
-/* Тонкая бликовая полоса сверху — как "стекло" */
 .card::before{
-  content:'';
-  position:absolute;
-  top:0;left:0;right:0;
-  height:1px;
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
   background:linear-gradient(90deg,transparent,rgba(255,255,255,.18) 50%,transparent);
-  opacity:.5;
-  z-index:2;
-  pointer-events:none;
+  opacity:.5;z-index:2;pointer-events:none;
 }
-html[data-theme="light"] .card::before{
-  background:linear-gradient(90deg,transparent,rgba(0,0,0,.06) 50%,transparent);
+html[data-theme="light"] .card::before{background:linear-gradient(90deg,transparent,rgba(0,0,0,.06) 50%,transparent)}
+.card:hover .card-value,
+.card:hover .card-title,
+.card:hover .card-label,
+.card:hover .card-text,
+.card:hover .card-eyebrow{
+  color:var(--txt-h);-webkit-text-fill-color:var(--txt-h);
+  background-image:none;-webkit-background-clip:initial;background-clip:initial;
 }
-
+.card:hover .card-value{
+  background:linear-gradient(90deg,var(--txt-h),var(--txt-h));
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+}
 .card--accent{
   background:linear-gradient(160deg,rgba(var(--c1-rgb),.06),rgba(var(--c3-rgb),.06));
   border-color:rgba(var(--c1-rgb),.18);
 }
-.card--accent::before{
-  height:2px;
-  background:var(--grad);
-  opacity:.9;
-  top:-1px;
-}
+.card--accent::before{height:2px;background:var(--grad);opacity:.9;top:-1px}
 .card--accent:hover{
   border-color:transparent;
   background:
     linear-gradient(160deg,rgba(var(--c1-rgb),.08),rgba(var(--c3-rgb),.08)) padding-box,
-    linear-gradient(135deg, var(--c1), var(--c2) 40%, var(--c3) 100%) border-box;
+    linear-gradient(135deg,var(--c1),var(--c2) 40%,var(--c3) 100%) border-box;
   box-shadow:0 24px 50px -24px rgba(var(--c1-rgb),.5),0 0 60px -20px rgba(var(--c3-rgb),.35);
 }
-
 .card-ico{
-  width:48px;height:48px;border-radius:12px;
+  width:46px;height:46px;border-radius:12px;
   display:grid;place-items:center;
   background:linear-gradient(140deg,rgba(var(--c1-rgb),.18),rgba(var(--c3-rgb),.18));
-  border:1px solid rgba(var(--c1-rgb),.25);
-  color:var(--c2);
-  margin-bottom:18px;
+  border:1px solid rgba(var(--c1-rgb),.25);color:var(--c2);
+  margin-bottom:12px;
   transition:transform .4s var(--ease),box-shadow .4s var(--ease);
 }
-.card:hover .card-ico{
-  transform:scale(1.06) rotate(-3deg);
-  box-shadow:0 0 24px rgba(var(--c1-rgb),.35);
-}
+.card:hover .card-ico{transform:scale(1.06) rotate(-3deg);box-shadow:0 0 24px rgba(var(--c1-rgb),.35)}
 .card-ico svg{width:22px;height:22px}
-
-.card-dot{
-  width:14px;height:14px;border-radius:50%;
-  background:var(--grad);
-  box-shadow:0 0 16px rgba(var(--c1-rgb),.7);
-  margin-bottom:20px;
-}
-
-.card-eyebrow{
-  font-family:'Unbounded',sans-serif;
-  font-size:var(--fs-small);letter-spacing:.14em;text-transform:uppercase;
-  color:var(--c2);font-weight:700;
-  margin-bottom:10px;
-}
-
-.card-title{
-  font-family:'Unbounded',sans-serif;
-  font-size:var(--fs-h3);font-weight:600;
-  letter-spacing:-.015em;line-height:1.35;
-  color:var(--txt-h);
-  margin-bottom:8px;
-}
-
-.card-text{
-  font-size:var(--fs-body);
-  color:var(--mut);
-  line-height:1.6;
-}
-
-.card-label{
-  font-size:var(--fs-small);
-  letter-spacing:.12em;text-transform:uppercase;
-  color:var(--mut);font-weight:600;
-  line-height:1.5;
-}
-
+.card-dot{width:13px;height:13px;border-radius:50%;background:var(--grad);box-shadow:0 0 16px rgba(var(--c1-rgb),.7);margin-bottom:14px}
+.card-eyebrow{font-family:'Unbounded',sans-serif;font-size:var(--fs-small);letter-spacing:.12em;text-transform:uppercase;color:var(--c2);font-weight:700;margin-bottom:8px}
+.card-title{font-family:'Unbounded',sans-serif;font-size:var(--fs-h3);font-weight:600;letter-spacing:-.01em;line-height:1.3;color:var(--txt-h);margin-bottom:6px}
+.card-text{font-size:var(--fs-body);color:var(--mut);line-height:1.55}
+.card-label{font-size:var(--fs-small);letter-spacing:.08em;text-transform:uppercase;color:var(--mut);font-weight:600;line-height:1.45}
 .card-value{
-  font-family:'Unbounded',sans-serif;
-  font-size:var(--fs-value);font-weight:800;
+  font-family:'Unbounded',sans-serif;font-size:var(--fs-value);font-weight:800;
   line-height:1;letter-spacing:-.02em;
   background:var(--grad);background-size:200%;
   -webkit-background-clip:text;background-clip:text;
   color:transparent;animation:gradShift 8s ease infinite;
-  margin-bottom:12px;
+  margin-bottom:10px;
 }
-
 .card--center{text-align:center}
 .card--center .card-ico{margin-left:auto;margin-right:auto}
 .card--row{display:flex;align-items:center;gap:16px}
 .card--row-top{display:flex;align-items:flex-start;gap:16px}
 .card--row .card-ico, .card--row-top .card-ico{margin-bottom:0;flex-shrink:0}
-.card--row .card-ico{width:52px;height:52px;border-radius:50%}
+.card--row .card-ico{width:46px;height:46px;border-radius:50%}
+.card-ava{width:50px;height:50px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;background:var(--grad);background-size:200%;color:#fff;text-shadow:var(--text-shadow-light);font-family:'Unbounded',sans-serif;font-weight:700;font-size:17px}
+.fund-dot{width:11px;height:11px;border-radius:3px;flex-shrink:0;margin-top:6px;box-shadow:0 0 10px currentColor}
+.fund-pct{margin-left:auto;flex-shrink:0;font-family:'Unbounded',sans-serif;font-size:var(--fs-h3);font-weight:700;color:var(--c2)}
 
-.card-ava{
-  width:52px;height:52px;border-radius:50%;flex-shrink:0;
-  display:grid;place-items:center;
-  background:var(--grad);background-size:200%;
-  color:#fff;text-shadow:var(--text-shadow-light);
-  font-family:'Unbounded',sans-serif;font-weight:700;font-size:18px;
-}
-
-.fund-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0;margin-top:6px;box-shadow:0 0 10px currentColor}
-
-.fund-pct{
-  margin-left:auto;flex-shrink:0;
-  font-family:'Unbounded',sans-serif;font-size:var(--fs-h3);font-weight:700;
-  color:var(--c2);
-}
-
-/* ============================================================
-   GRIDS
-   ============================================================ */
 .grid{display:grid;gap:var(--gap)}
 .grid--2{grid-template-columns:repeat(2,1fr)}
 .grid--3{grid-template-columns:repeat(3,1fr)}
 .grid--4{grid-template-columns:repeat(4,1fr)}
 .grid--center{align-items:center}
 
-/* ============================================================
-   COVER
-   ============================================================ */
+/* ===== COVER ===== */
 .slide--cover{
-  padding:clamp(150px,18vh,200px) var(--page-x) clamp(70px,9vh,110px);
   text-align:center;
   display:flex;align-items:center;justify-content:center;
   overflow:hidden;
   background:var(--bg) !important;
+  padding:88px var(--page-x) 60px;
 }
 .slide--cover::after{display:none}
 .cover__scene{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
@@ -534,71 +405,27 @@ html[data-theme="light"] .card::before{
 }
 .cover__inner{position:relative;z-index:3;width:100%}
 .cover__eyebrow{
-  display:inline-flex;align-items:center;gap:12px;
-  padding:10px 20px 10px 14px;border-radius:100px;
+  display:inline-flex;align-items:center;gap:10px;
+  padding:9px 18px 9px 14px;border-radius:100px;
   background:var(--panel-bg);border:1px solid var(--line-2);
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--mut);
-  margin-bottom:40px;
+  font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--mut);
+  margin-bottom:28px;
 }
-.cover__eyebrow .dot{
-  width:7px;height:7px;border-radius:50%;background:var(--c2);
-  box-shadow:0 0 14px var(--c2);
-  animation:pulse 2.2s ease-in-out infinite;
-}
+.cover__eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--c2);box-shadow:0 0 14px var(--c2);animation:pulse 2.2s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.7)}}
-.cover__title{
-  font-family:'Unbounded',sans-serif;font-weight:800;
-  font-size:clamp(38px,7.5vw,108px);line-height:.94;
-  letter-spacing:-.04em;text-transform:uppercase;
-  color:var(--txt-h);margin-bottom:28px;
-  text-shadow:0 4px 30px rgba(0,0,0,.25);
-}
+.cover__title{font-family:'Unbounded',sans-serif;font-weight:800;font-size:clamp(42px,6.6vw,94px);line-height:.94;letter-spacing:-.04em;text-transform:uppercase;color:var(--txt-h);margin-bottom:22px;text-shadow:0 4px 30px rgba(0,0,0,.25)}
 .cover__title em{font-style:normal;font-weight:300;color:var(--c2)}
-.cover__sub{
-  font-size:clamp(15px,1.45vw,19px);color:var(--txt);
-  max-width:640px;margin:0 auto 48px;line-height:1.65;
-  text-shadow:0 1px 14px rgba(0,0,0,.2);
-}
-.cover__stats{
-  display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(24px,4vw,56px);
-  max-width:680px;margin:0 auto;padding-top:28px;border-top:1px solid var(--line);
-}
+.cover__sub{font-size:clamp(15px,1.3vw,18px);color:var(--txt);max-width:640px;margin:0 auto 34px;line-height:1.6;text-shadow:0 1px 14px rgba(0,0,0,.2)}
+.cover__stats{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(24px,4vw,54px);max-width:700px;margin:0 auto;padding-top:26px;border-top:1px solid var(--line)}
 .cover__stat{text-align:center}
-.cover__stat b{
-  display:block;font-family:'Unbounded',sans-serif;
-  font-size:clamp(24px,3.2vw,42px);font-weight:700;line-height:1;
-  background:var(--grad);background-size:200%;-webkit-background-clip:text;background-clip:text;
-  color:transparent;animation:gradShift 8s ease infinite;
-}
-.cover__stat span{
-  display:block;font-size:13px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--txt);margin-top:8px;font-weight:600;opacity:.85;
-}
-.cover__seasons{
-  position:absolute;left:var(--page-x);right:var(--page-x);
-  bottom:clamp(40px,6vh,70px);z-index:2;
-  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;pointer-events:none;
-}
-.cover__seasons span{
-  font-family:'Unbounded',sans-serif;font-size:12px;font-weight:600;
-  letter-spacing:.24em;text-transform:uppercase;
-  color:var(--txt);opacity:.8;text-align:center;
-  display:flex;flex-direction:column;align-items:center;gap:8px;
-  text-shadow:0 1px 12px rgba(0,0,0,.4);
-}
-.cover__seasons span::before{content:'';width:32px;height:1px;background:currentColor;opacity:.5}
-.cover__scroll{
-  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:12px;
-  font-size:12px;letter-spacing:.34em;text-transform:uppercase;
-  color:var(--mut);z-index:3;
-}
-.cover__scroll i{
-  width:1px;height:44px;
-  background:linear-gradient(180deg,var(--c2),transparent);
-  animation:scrollLine 2.2s ease-in-out infinite;transform-origin:top;
-}
+.cover__stat b{display:block;font-family:'Unbounded',sans-serif;font-size:clamp(24px,3vw,40px);font-weight:700;line-height:1;background:var(--grad);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradShift 8s ease infinite}
+.cover__stat span{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--txt);margin-top:7px;font-weight:600;opacity:.85}
+.cover__seasons{position:absolute;left:var(--page-x);right:var(--page-x);bottom:clamp(30px,5vh,60px);z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;pointer-events:none}
+.cover__seasons span{font-family:'Unbounded',sans-serif;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--txt);opacity:.8;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px;text-shadow:0 1px 12px rgba(0,0,0,.4)}
+.cover__seasons span::before{content:'';width:28px;height:1px;background:currentColor;opacity:.5}
+.cover__scroll{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--mut);z-index:3}
+.cover__scroll i{width:1px;height:36px;background:linear-gradient(180deg,var(--c2),transparent);animation:scrollLine 2.2s ease-in-out infinite;transform-origin:top}
 @keyframes scrollLine{0%{transform:scaleY(0)}45%{transform:scaleY(1)}100%{transform:scaleY(0);transform-origin:bottom}}
 
 .s-tw{transform-box:fill-box;transform-origin:center;animation:twinkle var(--dur,4s) ease-in-out infinite;animation-delay:var(--delay,0s)}
@@ -614,373 +441,134 @@ html[data-theme="light"] .card::before{
 .s-snowflake{transform-box:fill-box;animation:snowFall var(--dur,15s) linear infinite;animation-delay:var(--delay,0s)}
 @keyframes snowFall{0%{transform:translate(0,-60px);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translate(var(--dx,30px),900px);opacity:0}}
 
-/* ============================================================
-   PRODUCT / CATALOG
-   ============================================================ */
-.product-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px);align-items:center}
-.product-copy{display:flex;flex-direction:column;gap:16px}
-.product-copy h3{font-family:'Unbounded',sans-serif;font-size:var(--fs-h3);font-weight:600;letter-spacing:-.015em;color:var(--txt-h);margin-bottom:8px}
-.product-features{display:flex;flex-direction:column;gap:14px;margin-top:8px}
-.product-copy .slide-lead{margin-bottom:8px}
-
-.browser-frame{
-  position:relative;
-  border-radius:var(--radius);overflow:hidden;
-  border:1px solid var(--line-2);
-  background:var(--bg-2);
-  box-shadow:0 40px 80px -30px rgba(0,0,0,.55),0 0 80px -30px rgba(var(--c1-rgb),.35);
-}
-.browser-chrome{display:flex;align-items:center;gap:12px;padding:11px 14px;background:var(--panel-bg-solid);border-bottom:1px solid var(--line)}
-.browser-dots{display:flex;gap:6px;flex-shrink:0}
-.browser-dots i{width:10px;height:10px;border-radius:50%;background:var(--line-2)}
+/* ===== PRODUCT / CATALOG ===== */
+.product-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,36px);align-items:center;min-height:0}
+.product-copy{display:flex;flex-direction:column;gap:14px;min-width:0}
+.product-copy h3{font-family:'Unbounded',sans-serif;font-size:var(--fs-h3);font-weight:600;letter-spacing:-.01em;color:var(--txt-h);margin:0}
+.product-features{display:flex;flex-direction:column;gap:12px;margin-top:6px}
+.browser-frame{position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line-2);background:var(--bg-2);box-shadow:0 40px 80px -30px rgba(0,0,0,.55),0 0 80px -30px rgba(var(--c1-rgb),.35);min-width:0}
+.browser-chrome{display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--panel-bg-solid);border-bottom:1px solid var(--line)}
+.browser-dots{display:flex;gap:5px;flex-shrink:0}
+.browser-dots i{width:9px;height:9px;border-radius:50%;background:var(--line-2)}
 .browser-dots i:nth-child(1){background:#FB7185}
 .browser-dots i:nth-child(2){background:#FCD34D}
 .browser-dots i:nth-child(3){background:#34D399}
-.browser-url{
-  flex:1;min-width:0;padding:5px 12px;border-radius:6px;
-  background:var(--input-bg);
-  font-family:'Manrope',sans-serif;font-size:14px;font-weight:600;color:var(--mut);
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-  display:flex;align-items:center;gap:6px;
-}
-.browser-url::before{content:'';width:9px;height:9px;border-radius:50%;border:1.5px solid var(--c2);flex-shrink:0}
-.browser-live{
-  padding:4px 10px;border-radius:100px;
-  background:rgba(var(--c1-rgb),.16);border:1px solid rgba(var(--c1-rgb),.35);
-  font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--c2);flex-shrink:0;
-  display:flex;align-items:center;gap:5px;
-}
-.browser-live::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--c2);box-shadow:0 0 8px var(--c2);animation:pulse 1.8s ease-in-out infinite}
-.browser-iframe{display:block;width:100%;height:min(560px,58vh);border:0;background:var(--bg)}
+.browser-url{flex:1;min-width:0;padding:4px 10px;border-radius:6px;background:var(--input-bg);font-family:'Manrope',sans-serif;font-size:13px;font-weight:600;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;gap:6px}
+.browser-url::before{content:'';width:8px;height:8px;border-radius:50%;border:1.5px solid var(--c2);flex-shrink:0}
+.browser-live{padding:3px 9px;border-radius:100px;background:rgba(var(--c1-rgb),.16);border:1px solid rgba(var(--c1-rgb),.35);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--c2);flex-shrink:0;display:flex;align-items:center;gap:4px}
+.browser-live::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--c2);box-shadow:0 0 8px var(--c2);animation:pulse 1.8s ease-in-out infinite}
+.browser-iframe{display:block;width:100%;height:min(500px,52vh);border:0;background:var(--bg)}
 
-/* ============================================================
-   INVEST CTA
-   ============================================================ */
-.invest-cta{
-  margin-top:var(--gap);
-  padding:var(--pad);
-  border-radius:var(--radius);
-  background:var(--card-bg);border:1px solid var(--line-2);
-  display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
-}
-.invest-cta__txt b{display:block;font-family:'Unbounded',sans-serif;font-size:var(--fs-h3);font-weight:700;color:var(--txt-h);margin-bottom:5px}
-.invest-cta__txt span{font-size:var(--fs-body);color:var(--mut);line-height:1.55}
+.invest-cta{margin-top:6px;padding:var(--pad);border-radius:var(--radius);background:var(--card-bg);border:1px solid var(--line-2);display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.invest-cta__txt b{display:block;font-family:'Unbounded',sans-serif;font-size:var(--fs-h3);font-weight:700;color:var(--txt-h);margin-bottom:4px}
+.invest-cta__txt span{font-size:var(--fs-body);color:var(--mut);line-height:1.5}
 
-/* ============================================================
-   FUNDS
-   ============================================================ */
-.funds-grid{display:grid;grid-template-columns:auto 1fr;gap:clamp(32px,5vw,64px);align-items:center}
-.donut-wrap{position:relative;width:clamp(220px,28vw,320px);height:clamp(220px,28vw,320px);flex-shrink:0}
+.funds-grid{display:grid;grid-template-columns:auto 1fr;gap:clamp(28px,4.5vw,56px);align-items:center;min-height:0}
+.donut-wrap{position:relative;width:clamp(200px,25vw,290px);height:clamp(200px,25vw,290px);flex-shrink:0}
 .donut-svg{width:100%;height:100%;transform:rotate(-90deg)}
 .donut-svg circle{fill:none;stroke-width:26;transition:stroke-width .3s var(--ease)}
 .donut-svg circle:hover{stroke-width:32}
 .donut-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none}
-.donut-center b{
-  font-family:'Unbounded',sans-serif;font-size:clamp(20px,2.6vw,30px);font-weight:800;
-  letter-spacing:-.02em;
-  background:var(--grad);background-size:200%;-webkit-background-clip:text;background-clip:text;
-  color:transparent;animation:gradShift 8s ease infinite;line-height:1;
-}
-.donut-center span{font-size:var(--fs-small);letter-spacing:.14em;text-transform:uppercase;color:var(--mut);font-weight:700;margin-top:6px}
-.funds-legend{display:flex;flex-direction:column;gap:14px;width:100%}
+.donut-center b{font-family:'Unbounded',sans-serif;font-size:clamp(20px,2.4vw,28px);font-weight:800;letter-spacing:-.02em;background:var(--grad);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradShift 8s ease infinite;line-height:1}
+.donut-center span{font-size:var(--fs-small);letter-spacing:.12em;text-transform:uppercase;color:var(--mut);font-weight:700;margin-top:6px}
+.funds-legend{display:flex;flex-direction:column;gap:10px;width:100%}
 
-/* ============================================================
-   CHART
-   ============================================================ */
-.chart-wrap{
-  padding:var(--pad);
-  border-radius:var(--radius);background:var(--card-bg);border:1px solid var(--line);
-  position:relative;overflow:hidden;
-}
-.chart-header{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:20px;flex-wrap:wrap}
-.chart-title{font-family:'Unbounded',sans-serif;font-size:var(--fs-h3);font-weight:700;color:var(--txt-h);margin-bottom:4px;line-height:1.3}
+.chart-wrap{padding:var(--pad);border-radius:var(--radius);background:var(--card-bg);border:1px solid var(--line);position:relative;overflow:hidden;min-height:0}
+.chart-header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:14px;flex-wrap:wrap}
+.chart-title{font-family:'Unbounded',sans-serif;font-size:var(--fs-h3);font-weight:700;color:var(--txt-h);margin-bottom:3px;line-height:1.25}
 .chart-sub{font-size:var(--fs-small);color:var(--mut)}
-.chart-legend{display:flex;gap:20px;flex-wrap:wrap}
-.legend-item{display:flex;align-items:center;gap:8px;font-size:var(--fs-small);font-weight:600;color:var(--mut)}
-.legend-swatch{width:14px;height:10px;border-radius:3px}
+.chart-legend{display:flex;gap:16px;flex-wrap:wrap}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:var(--fs-small);font-weight:600;color:var(--mut)}
+.legend-swatch{width:13px;height:10px;border-radius:3px}
 .legend-swatch--rev{background:linear-gradient(135deg,var(--c1),var(--c2))}
 .legend-swatch--profit{background:var(--c3)}
-.chart{width:100%;height:auto;display:block;overflow:visible}
-.chart-note{font-size:var(--fs-small);color:var(--mut);line-height:1.6;margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
+.chart{width:100%;height:auto;display:block;overflow:visible;max-height:52vh}
+.chart-note{font-size:11.5px;color:var(--mut);line-height:1.5;margin-top:12px;padding-top:10px;border-top:1px solid var(--line)}
 
-/* ============================================================
-   ROADMAP
-   ============================================================ */
 .roadmap{position:relative}
-.roadmap::before{
-  content:'';position:absolute;top:22px;left:6%;right:6%;height:1px;
-  background:linear-gradient(90deg,transparent,var(--line-2) 15%,var(--line-2) 85%,transparent);
-  z-index:0;
-}
+.roadmap::before{content:'';position:absolute;top:22px;left:6%;right:6%;height:1px;background:linear-gradient(90deg,transparent,var(--line-2) 15%,var(--line-2) 85%,transparent);z-index:0}
 
-/* ============================================================
-   OFFICE
-   ============================================================ */
-.office-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,4vw,48px);align-items:center}
-.office-visual{
-  position:relative;border-radius:var(--radius);overflow:hidden;
-  border:1px solid var(--line-2);
-  background:linear-gradient(135deg,rgba(var(--c1-rgb),.16),rgba(var(--c3-rgb),.16));
-  aspect-ratio:16/11;min-height:340px;
-  display:flex;align-items:center;justify-content:center;
-}
-.office-visual::before{
-  content:'';position:absolute;inset:0;
-  background-image:
-    linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);
-  background-size:40px 40px;
-  mask-image:radial-gradient(ellipse at 50% 50%,#000 40%,transparent 75%);
-  -webkit-mask-image:radial-gradient(ellipse at 50% 50%,#000 40%,transparent 75%);
-}
+.office-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,4vw,44px);align-items:center;min-height:0}
+.office-visual{position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line-2);background:linear-gradient(135deg,rgba(var(--c1-rgb),.16),rgba(var(--c3-rgb),.16));aspect-ratio:16/10;min-height:260px;max-height:58vh;display:flex;align-items:center;justify-content:center}
+.office-visual::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:38px 38px;mask-image:radial-gradient(ellipse at 50% 50%,#000 40%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse at 50% 50%,#000 40%,transparent 75%)}
 .office-pin{position:relative;z-index:2;text-align:center;padding:20px}
-.office-pin__ico{
-  width:80px;height:80px;border-radius:24px;margin:0 auto 18px;
-  display:grid;place-items:center;
-  background:var(--grad);background-size:200%;
-  color:#fff;text-shadow:var(--text-shadow-light);
-  box-shadow:0 20px 44px -14px rgba(var(--c1-rgb),.7);
-  animation:pulsePin 3s ease-in-out infinite;
-}
+.office-pin__ico{width:72px;height:72px;border-radius:20px;margin:0 auto 16px;display:grid;place-items:center;background:var(--grad);background-size:200%;color:#fff;text-shadow:var(--text-shadow-light);box-shadow:0 20px 44px -14px rgba(var(--c1-rgb),.7);animation:pulsePin 3s ease-in-out infinite}
 @keyframes pulsePin{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
-.office-pin__ico svg{width:36px;height:36px}
-.office-pin b{display:block;font-family:'Unbounded',sans-serif;font-size:var(--fs-h3);font-weight:700;letter-spacing:-.02em;color:var(--txt-h);margin-bottom:6px}
+.office-pin__ico svg{width:32px;height:32px}
+.office-pin b{display:block;font-family:'Unbounded',sans-serif;font-size:var(--fs-h3);font-weight:700;letter-spacing:-.02em;color:var(--txt-h);margin-bottom:5px}
 .office-pin span{font-size:var(--fs-body);color:var(--txt);opacity:.85}
-.team-list{display:flex;flex-direction:column;gap:var(--gap)}
+.team-list{display:flex;flex-direction:column;gap:10px}
 
-/* ============================================================
-   FOUNDER
-   ============================================================ */
-.founder-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(24px,4vw,56px);align-items:start}
-.founder-card{
-  text-align:center;
-  padding:clamp(36px,4.5vw,56px) clamp(28px,3.5vw,44px);
-}
+.founder-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(24px,4vw,48px);align-items:center;min-height:0}
+.founder-card{text-align:center;padding:clamp(24px,2.8vw,36px) clamp(20px,2.4vw,32px)}
 .founder-card.card--accent::before{display:none}
-.founder-photo{
-  width:220px;height:220px;border-radius:50%;margin:0 auto 28px;
-  overflow:hidden;position:relative;
-  background:var(--grad);background-size:200%;
-  box-shadow:0 22px 44px -14px rgba(var(--c1-rgb),.6),0 0 0 4px rgba(var(--c1-rgb),.14);
-  animation:gradShift 8s ease infinite;
-}
+.founder-photo{width:clamp(140px,16vw,200px);height:clamp(140px,16vw,200px);border-radius:50%;margin:0 auto 18px;overflow:hidden;position:relative;background:var(--grad);background-size:200%;box-shadow:0 22px 44px -14px rgba(var(--c1-rgb),.6),0 0 0 4px rgba(var(--c1-rgb),.14);animation:gradShift 8s ease infinite}
 .founder-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1s var(--ease)}
 .founder-photo:hover img{transform:scale(1.06)}
-.founder-name{
-  font-family:'Unbounded',sans-serif;
-  font-size:clamp(22px,2.3vw,29px);
-  font-weight:700;letter-spacing:-.02em;
-  color:var(--txt-h);line-height:1.2;
-  margin-bottom:12px;
-}
-.founder-role{font-size:clamp(16px,1.35vw,18px);color:var(--mut);margin-bottom:26px;line-height:1.55}
-.founder-tags{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:28px}
-.founder-tag{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:10px 16px;border-radius:100px;
-  background:var(--chip-bg);border:1px solid var(--line);
-  font-size:14px;font-weight:600;color:var(--txt);
-}
-.founder-tag svg{width:15px;height:15px;color:var(--c2)}
-.founder-edu{padding-top:26px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:18px;text-align:left}
-.founder-edu-row{display:flex;align-items:flex-start;gap:14px}
-.founder-edu-row svg{width:20px;height:20px;color:var(--c2);flex-shrink:0;margin-top:2px}
-.founder-edu-row b{display:block;font-size:17px;font-weight:700;color:var(--txt-h);line-height:1.35;margin-bottom:4px}
-.founder-edu-row span{font-size:15px;color:var(--mut);line-height:1.5;display:block}
+.founder-name{font-family:'Unbounded',sans-serif;font-size:clamp(17px,1.7vw,23px);font-weight:700;letter-spacing:-.02em;color:var(--txt-h);line-height:1.22;margin-bottom:8px}
+.founder-role{font-size:clamp(13px,1.1vw,15px);color:var(--mut);margin-bottom:16px;line-height:1.5}
+.founder-tags{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:16px}
+.founder-tag{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:100px;background:var(--chip-bg);border:1px solid var(--line);font-size:12.5px;font-weight:600;color:var(--txt)}
+.founder-tag svg{width:12px;height:12px;color:var(--c2)}
+.founder-edu{padding-top:16px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:12px;text-align:left}
+.founder-edu-row{display:flex;align-items:flex-start;gap:11px}
+.founder-edu-row svg{width:16px;height:16px;color:var(--c2);flex-shrink:0;margin-top:2px}
+.founder-edu-row b{display:block;font-size:13.5px;font-weight:700;color:var(--txt-h);line-height:1.35;margin-bottom:2px}
+.founder-edu-row span{font-size:12.5px;color:var(--mut);line-height:1.45;display:block}
 
-.founder-timeline{display:flex;flex-direction:column;gap:var(--gap);position:relative}
-.ftl-item{padding-left:72px}
-.ftl-item__dot{
-  position:absolute;left:var(--pad);top:var(--pad);
-  width:28px;height:28px;border-radius:50%;
-  display:grid;place-items:center;
-  background:var(--grad);background-size:200%;
-  color:#fff;font-family:'Unbounded',sans-serif;font-weight:800;font-size:13px;
-  box-shadow:0 0 16px rgba(var(--c1-rgb),.55);
-  text-shadow:var(--text-shadow-light);
-  z-index:3;animation:gradShift 8s ease infinite;
-}
-.ftl-item::after{
-  content:'';position:absolute;
-  left:calc(var(--pad) + 13.5px);
-  top:calc(var(--pad) + 28px);
-  bottom:calc(-1 * var(--gap));
-  width:1px;
-  background:linear-gradient(180deg,rgba(var(--c1-rgb),.5),transparent);
-  z-index:0;
-}
+.founder-timeline{display:flex;flex-direction:column;gap:10px;position:relative}
+.ftl-item{padding-left:60px}
+.ftl-item__dot{position:absolute;left:var(--pad);top:var(--pad);width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--grad);background-size:200%;color:#fff;font-family:'Unbounded',sans-serif;font-weight:800;font-size:12px;box-shadow:0 0 16px rgba(var(--c1-rgb),.55);text-shadow:var(--text-shadow-light);z-index:3;animation:gradShift 8s ease infinite}
+.ftl-item::after{content:'';position:absolute;left:calc(var(--pad) + 11.5px);top:calc(var(--pad) + 24px);bottom:calc(-1 * 10px);width:1px;background:linear-gradient(180deg,rgba(var(--c1-rgb),.5),transparent);z-index:0}
 .ftl-item:last-child::after{display:none}
-.ftl-metric{
-  display:inline-flex;align-items:center;gap:9px;
-  margin-top:14px;padding:9px 16px;border-radius:100px;
-  background:linear-gradient(135deg,rgba(var(--c1-rgb),.14),rgba(var(--c3-rgb),.14));
-  border:1px solid rgba(var(--c1-rgb),.28);
-  font-size:var(--fs-small);font-weight:700;color:var(--txt-h);
-}
-.ftl-metric b{
-  font-family:'Unbounded',sans-serif;font-size:var(--fs-small);font-weight:800;
-  background:var(--grad);background-size:200%;-webkit-background-clip:text;background-clip:text;
-  color:transparent;animation:gradShift 8s ease infinite;
-}
-.ftl-metric svg{width:14px;height:14px;color:var(--c2)}
+.ftl-metric{display:inline-flex;align-items:center;gap:7px;margin-top:10px;padding:6px 12px;border-radius:100px;background:linear-gradient(135deg,rgba(var(--c1-rgb),.14),rgba(var(--c3-rgb),.14));border:1px solid rgba(var(--c1-rgb),.28);font-size:11.5px;font-weight:700;color:var(--txt-h)}
+.ftl-metric b{font-family:'Unbounded',sans-serif;font-size:11.5px;font-weight:800;background:var(--grad);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradShift 8s ease infinite}
+.ftl-metric svg{width:12px;height:12px;color:var(--c2)}
 
-/* ============================================================
-   UNIT ECON
-   ============================================================ */
-.unit-econ{
-  margin-top:var(--gap);
-  padding:var(--pad);
-  border-radius:var(--radius);
-  background:linear-gradient(160deg,rgba(var(--c1-rgb),.06),rgba(var(--c3-rgb),.06));
-  border:1px solid rgba(var(--c1-rgb),.18);
-}
-.unit-econ h3{
-  font-family:'Unbounded',sans-serif;
-  font-size:var(--fs-h3);font-weight:700;
-  color:var(--txt-h);
-  margin-bottom:20px;
-  letter-spacing:-.01em;
-}
-.unit-econ__grid{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:12px;
-  margin-bottom:20px;
-}
-.unit-econ__item{
-  padding:16px 14px;
-  border-radius:12px;
-  background:var(--card-bg);
-  border:1px solid var(--line);
-}
-.unit-econ__item small{
-  display:block;
-  font-size:var(--fs-small);
-  color:var(--mut);
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  margin-bottom:6px;
-  font-weight:600;
-}
-.unit-econ__item b{
-  display:block;
-  font-family:'Unbounded',sans-serif;
-  font-size:clamp(16px,1.5vw,20px);
-  font-weight:700;
-  color:var(--txt-h);
-  line-height:1.2;
-}
+.unit-econ{padding:var(--pad);border-radius:var(--radius);background:linear-gradient(160deg,rgba(var(--c1-rgb),.06),rgba(var(--c3-rgb),.06));border:1px solid rgba(var(--c1-rgb),.18)}
+.unit-econ h3{font-family:'Unbounded',sans-serif;font-size:var(--fs-h3);font-weight:700;color:var(--txt-h);margin-bottom:12px;letter-spacing:-.01em}
+.unit-econ__grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:12px}
+.unit-econ__item{padding:12px 10px;border-radius:10px;background:var(--card-bg);border:1px solid var(--line)}
+.unit-econ__item small{display:block;font-size:11px;color:var(--mut);letter-spacing:.05em;text-transform:uppercase;margin-bottom:4px;font-weight:600}
+.unit-econ__item b{display:block;font-family:'Unbounded',sans-serif;font-size:clamp(15px,1.3vw,19px);font-weight:700;color:var(--txt-h);line-height:1.2}
 .unit-econ__item--accent{background:linear-gradient(160deg,rgba(var(--c1-rgb),.12),rgba(var(--c3-rgb),.12));border-color:rgba(var(--c1-rgb),.3)}
 .unit-econ__item--accent b{background:var(--grad);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradShift 8s ease infinite}
-.unit-econ__metrics{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-  padding-top:20px;
-  border-top:1px solid var(--line);
-}
+.unit-econ__metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding-top:12px;border-top:1px solid var(--line)}
 .unit-econ__metric{text-align:center}
-.unit-econ__metric b{
-  display:block;
-  font-family:'Unbounded',sans-serif;
-  font-size:clamp(20px,2vw,26px);
-  font-weight:800;
-  background:var(--grad);background-size:200%;
-  -webkit-background-clip:text;background-clip:text;
-  color:transparent;
-  animation:gradShift 8s ease infinite;
-  line-height:1;
-  margin-bottom:6px;
-}
-.unit-econ__metric span{
-  font-size:var(--fs-small);
-  color:var(--mut);
-  font-weight:600;
-  line-height:1.4;
-  display:block;
-}
+.unit-econ__metric b{display:block;font-family:'Unbounded',sans-serif;font-size:clamp(18px,1.9vw,24px);font-weight:800;background:var(--grad);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradShift 8s ease infinite;line-height:1;margin-bottom:4px}
+.unit-econ__metric span{font-size:11.5px;color:var(--mut);font-weight:600;line-height:1.4;display:block}
 
-/* ============================================================
-   COMPETITORS
-   ============================================================ */
-.comp-row{
-  display:grid;
-  grid-template-columns:1.2fr 1fr 1fr 1fr;
-  gap:0;
-  border-radius:var(--radius);
-  overflow:hidden;
-  border:1px solid var(--line);
-  margin-top:var(--gap);
-}
-.comp-row__cell{
-  padding:20px 22px;
-  font-size:var(--fs-body);
-  border-right:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-  background:var(--card-bg);
-  line-height:1.5;
-}
+.comp-row{display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;gap:0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
+.comp-row__cell{padding:12px 14px;font-size:clamp(12.5px,1vw,14px);border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--card-bg);line-height:1.45}
 .comp-row__cell:nth-child(4n){border-right:none}
 .comp-row__cell:nth-last-child(-n+4){border-bottom:none}
-.comp-row__head{
-  font-family:'Unbounded',sans-serif;
-  font-size:var(--fs-small);
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  font-weight:700;
-  color:var(--txt-h);
-  background:var(--panel-bg-solid) !important;
-}
-.comp-row__head--albe{
-  background:linear-gradient(160deg,rgba(var(--c1-rgb),.14),rgba(var(--c3-rgb),.14)) !important;
-  color:var(--c2) !important;
-}
-.comp-row__cell--albe{
-  background:linear-gradient(160deg,rgba(var(--c1-rgb),.06),rgba(var(--c3-rgb),.06));
-  color:var(--txt-h);
-  font-weight:600;
-}
+.comp-row__head{font-family:'Unbounded',sans-serif;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--txt-h);background:var(--panel-bg-solid) !important}
+.comp-row__head--albe{background:linear-gradient(160deg,rgba(var(--c1-rgb),.14),rgba(var(--c3-rgb),.14)) !important;color:var(--c2) !important}
+.comp-row__cell--albe{background:linear-gradient(160deg,rgba(var(--c1-rgb),.06),rgba(var(--c3-rgb),.06));color:var(--txt-h);font-weight:600}
 .comp-row__cell b{color:var(--txt-h)}
 
-/* ============================================================
-   FINAL CTA
-   ============================================================ */
-.cta-final{
-  padding:clamp(36px,6vw,64px);
-  border-radius:clamp(22px,3vw,28px);
-  background:linear-gradient(140deg,rgba(var(--c1-rgb),.1),rgba(var(--c3-rgb),.1));
-  border:1px solid rgba(var(--c1-rgb),.24);
-  text-align:center;position:relative;overflow:hidden;
-}
+.cta-final{padding:clamp(26px,3.4vw,46px);border-radius:clamp(20px,2.6vw,26px);background:linear-gradient(140deg,rgba(var(--c1-rgb),.1),rgba(var(--c3-rgb),.1));border:1px solid rgba(var(--c1-rgb),.24);text-align:center;position:relative;overflow:hidden}
 .cta-final::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(var(--c1-rgb),.15),transparent 60%);pointer-events:none}
-.cta-final h2{margin:0 auto 20px;position:relative;max-width:none;text-align:center}
-.cta-final p{position:relative;max-width:56ch;margin:0 auto 32px;font-size:var(--fs-lead);color:var(--mut);line-height:1.7}
-.cta-final__actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;position:relative}
-.cta-final .slide-num{justify-content:center;display:flex;position:relative}
-.contact-row{
-  display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(20px,4vw,48px);
-  margin-top:44px;padding-top:32px;border-top:1px solid var(--line);
-  position:relative;
-}
-.contact-item{display:flex;flex-direction:column;gap:5px;text-align:left}
-.contact-item small{font-size:var(--fs-small);letter-spacing:.14em;text-transform:uppercase;color:var(--mut);font-weight:700}
+.cta-final .slide-num{justify-content:center;display:flex;position:relative;margin-bottom:10px}
+.cta-final h2{margin:0 auto 16px;position:relative;max-width:none;text-align:center}
+.cta-final p{position:relative;max-width:58ch;margin:0 auto 26px;font-size:var(--fs-lead);color:var(--mut);line-height:1.6}
+.cta-final__actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;position:relative}
+.contact-row{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(24px,4vw,48px);margin-top:22px;padding-top:16px;border-top:1px solid var(--line);position:relative}
+.contact-item{display:flex;flex-direction:column;gap:4px;text-align:left}
+.contact-item small{font-size:var(--fs-small);letter-spacing:.12em;text-transform:uppercase;color:var(--mut);font-weight:700}
 .contact-item a,.contact-item b{font-family:'Unbounded',sans-serif;font-size:var(--fs-body);font-weight:600;color:var(--txt-h);transition:color .3s}
 .contact-item a:hover{color:var(--c2)}
 
-.footer-slide{
-  padding:32px var(--page-x);
-  border-top:1px solid var(--line);
-  display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;
-  font-size:var(--fs-small);color:var(--mut);letter-spacing:.03em;
-  background:var(--panel-bg-solid);
-}
+.footer-slide{padding:22px var(--page-x);border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:var(--fs-small);color:var(--mut);letter-spacing:.03em;background:var(--panel-bg-solid)}
 .footer-slide a:hover{color:var(--c2)}
 
-/* ============================================================
-   REVEAL
-   ============================================================ */
-[data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
-[data-reveal].in{opacity:1;transform:none}
+[data-reveal]{
+  opacity:0;
+  transform:translate3d(0, 20px, 0);
+  transition:opacity .6s var(--ease),transform .6s var(--ease);
+  transition-delay:var(--d,0s);
+}
+[data-reveal].in{opacity:1;transform:translate3d(0,0,0)}
 
 /* ============================================================
    RESPONSIVE
@@ -993,112 +581,90 @@ html[data-theme="light"] .card::before{
   .unit-econ__metrics{grid-template-columns:repeat(2,1fr)}
   .comp-row{grid-template-columns:1fr 1fr}
 }
-
 @media(max-width:900px){
   .dots{display:none}
   .slide{
-    padding:clamp(90px,11vh,120px) var(--page-x) clamp(50px,7vh,80px);
-    min-height:auto;
+    min-height:100vh;min-height:100dvh;
+    height:auto !important;max-height:none !important;
+    overflow:visible !important;
+    padding:84px var(--page-x) 44px;
+    contain:none;
   }
-  .slide--cover{min-height:100vh}
-
-  .grid--2,
-  .grid--3,
-  .grid--4{grid-template-columns:1fr}
-
-  .product-grid,
-  .office-grid,
-  .founder-grid,
-  .funds-grid{grid-template-columns:1fr}
-
+  .slide--cover{padding:100px var(--page-x) 44px}
+  .grid--2,.grid--3,.grid--4{grid-template-columns:1fr}
+  .product-grid,.office-grid,.founder-grid,.funds-grid{grid-template-columns:1fr}
   .funds-grid{justify-items:center}
-
-  .cover__seasons{display:none}
-  .cover__scroll{display:none}
-
+  .cover__seasons,.cover__scroll{display:none}
   .browser-iframe{height:360px}
-  .donut-wrap{width:210px;height:210px}
-
+  .donut-wrap{width:220px;height:220px}
   .contact-row{flex-direction:column;align-items:center;text-align:center;gap:22px}
   .contact-item{text-align:center;align-items:center}
-
-  .btn{padding:15px 26px;font-size:12px}
-
-  .founder-photo{width:190px;height:190px}
-
+  .btn{padding:14px 24px;font-size:13px}
+  .founder-photo{width:170px;height:170px}
   .unit-econ__grid{grid-template-columns:1fr 1fr}
   .comp-row{grid-template-columns:1fr}
   .comp-row__cell{border-right:none}
   .comp-row__cell:not(:last-child){border-bottom:1px solid var(--line)}
-
   .slide:not(.slide--cover) .slide__inner::before,
   .slide:not(.slide--cover) .slide__inner::after{display:none}
+  .chart{max-height:none}
 }
-
 @media(max-width:600px){
-  .slide{padding:clamp(84px,10vh,110px) var(--page-x) clamp(44px,6vh,68px)}
-  .slide--cover{padding:clamp(100px,13vh,140px) var(--page-x) clamp(44px,6vh,68px)}
-
+  .slide{padding:76px var(--page-x) 44px}
+  .slide--cover{padding:88px var(--page-x) 44px}
   .nav{padding:10px var(--page-x)}
-  .logo__text{font-size:13px}
-  .logo__text em{font-size:11px;margin-left:4px}
+  .logo__text{font-size:14px}
+  .logo__text em{font-size:11.5px;margin-left:4px}
   .logo__mark{width:30px;height:30px}
-  .logo{gap:10px}
   .theme-toggle{width:34px;height:34px}
-  .theme-toggle svg{width:16px;height:16px}
-  .nav__counter{font-size:11.5px;gap:4px}
-  .nav__right{gap:10px}
-
-  .cover__eyebrow{font-size:11px;letter-spacing:.12em;padding:8px 15px 8px 11px;margin-bottom:24px}
-  .cover__title{font-size:clamp(30px,10vw,52px);letter-spacing:-.03em;margin-bottom:18px}
-  .cover__sub{font-size:15px;line-height:1.6;margin-bottom:30px;padding:0 6px}
-  .cover__stats{gap:18px 26px;padding-top:20px;max-width:100%}
-  .cover__stat b{font-size:25px}
-  .cover__stat span{font-size:11.5px;letter-spacing:.08em;margin-top:5px}
-
+  .theme-toggle svg{width:15px;height:15px}
+  .nav__counter{font-size:12px;gap:4px}
   .browser-iframe{height:300px}
-  .browser-chrome{padding:8px 10px;gap:8px}
-  .browser-url{font-size:12px;padding:4px 8px}
-  .browser-live{font-size:10.5px;padding:2px 7px}
-
   .donut-wrap{width:180px;height:180px}
-
-  .cta-final{padding:26px 18px}
   .cta-final__actions{gap:10px;flex-direction:column;width:100%}
   .cta-final__actions .btn{width:100%}
-
-  .founder-photo{width:170px;height:170px;margin-bottom:22px}
-
-  .office-visual{min-height:220px}
-  .office-pin__ico{width:56px;height:56px;border-radius:16px;margin-bottom:12px}
-  .office-pin__ico svg{width:26px;height:26px}
-
-  .btn{padding:14px 22px;font-size:12px;letter-spacing:.06em;gap:8px}
-  .btn__txt svg{width:12px;height:12px}
-
-  .footer-slide{padding:22px var(--page-x);font-size:11.5px;flex-direction:column;text-align:center;gap:8px}
-
-  .unit-econ__grid{grid-template-columns:1fr 1fr;gap:10px}
-  .unit-econ__metrics{grid-template-columns:1fr 1fr;gap:14px}
-  .unit-econ__item{padding:12px 10px}
+  .footer-slide{padding:18px var(--page-x);flex-direction:column;text-align:center;gap:6px}
+  .unit-econ__grid{grid-template-columns:1fr 1fr}
+  .unit-econ__metrics{grid-template-columns:1fr 1fr}
+  .office-visual{min-height:200px}
 }
 
-@media(max-width:400px){
-  .founder-photo{width:150px;height:150px}
-  .donut-wrap{width:160px;height:160px}
-  .browser-iframe{height:260px}
-  .unit-econ__grid{grid-template-columns:1fr}
+/* Низкие экраны (768p, зум 125%) — умеренное сжатие, но всё ещё крупно */
+@media (min-width: 901px) and (max-height: 800px){
+  .slide{padding-top:76px;padding-bottom:26px}
+  .slide__inner{gap:12px}
+  .slide h2{font-size:clamp(24px,2.9vw,36px)}
+  .slide-lead{font-size:clamp(14px,1.05vw,16px);line-height:1.5}
+  .card{padding:14px 16px}
+  .card-value{font-size:clamp(20px,2.1vw,28px)}
+  .card-title{font-size:clamp(15px,1.2vw,17px)}
+  .card-text{font-size:13.5px;line-height:1.5}
+  .card-label{font-size:11px}
+  .card-ico{width:38px;height:38px;margin-bottom:10px}
+  .card-ico svg{width:18px;height:18px}
+  .browser-iframe{height:min(380px,48vh)}
+  .chart{max-height:42vh}
+  .founder-photo{width:140px;height:140px;margin-bottom:12px}
+  .office-visual{min-height:200px;max-height:48vh}
+  .donut-wrap{width:200px;height:200px}
+  .unit-econ__item{padding:10px 8px}
+  .unit-econ__item b{font-size:clamp(13px,1.1vw,16px)}
+  .unit-econ__metric b{font-size:clamp(15px,1.5vw,20px)}
+  .ftl-item{padding-left:50px}
+  .ftl-item__dot{width:22px;height:22px;font-size:11px}
+  .ftl-item::after{left:calc(var(--pad) + 10.5px);top:calc(var(--pad) + 22px)}
+  .card-ava{width:42px;height:42px;font-size:15px}
 }
 
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   [data-reveal]{opacity:1!important;transform:none!important}
+  .slide{transform:none!important;opacity:1!important}
 }
 </style>
 </head>
 <body>
 
-<!-- SVG SPRITE -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
@@ -1154,9 +720,6 @@ html[data-theme="light"] .card::before{
 
 <main>
 
-<!-- ============================================================
-     01 · COVER
-     ============================================================ -->
 <section class="slide slide--cover" id="slide-cover" data-slide="01">
   <div class="cover__scene" aria-hidden="true">
     <svg viewBox="0 0 2400 1080" preserveAspectRatio="xMidYMax slice">
@@ -1202,7 +765,6 @@ html[data-theme="light"] .card::before{
         <circle class="s-tw" cx="1860" cy="140" r="1.8" style="--dur:5s;--delay:-.5s"/>
         <circle class="s-tw" cx="1950" cy="90" r="1.3" style="--dur:4.2s;--delay:-2s"/>
         <circle class="s-tw" cx="2050" cy="160" r="1.6" style="--dur:5.6s;--delay:-1.2s"/>
-        <circle class="s-tw" cx="2180" cy="70" r="1.2" style="--dur:4.8s;--delay:-3.1s"/>
       </g>
       <path class="s-aur" d="M1810 210 C 1960 110, 2120 320, 2300 170 C 2340 260, 2370 340, 2395 290 L2395 400 C 2340 430, 2200 320, 2090 400 C 1970 340, 1880 400, 1810 360 Z" fill="url(#sAurora)" opacity=".75"/>
       <circle cx="900" cy="380" r="230" fill="url(#sSunGlow)"/>
@@ -1259,37 +821,25 @@ html[data-theme="light"] .card::before{
     </svg>
   </div>
   <div class="cover__veil" aria-hidden="true"></div>
-
   <div class="cover__inner">
     <div class="cover__eyebrow"><span class="dot"></span>Инвестиционное предложение · 2026</div>
     <h1 class="cover__title">ALBE <em>RENT</em></h1>
-    <p class="cover__sub">
-      Премиальный сервис бронирования загородной недвижимости по всей России.
-      Привлекаем инвестиции для масштабирования — готовая команда, продукт и трафик.
-    </p>
+    <p class="cover__sub">Премиальный сервис бронирования загородной недвижимости по всей России. Привлекаем инвестиции для масштабирования — готовая команда, продукт и трафик.</p>
     <div class="cover__stats">
       <div class="cover__stat"><b>5 млн ₽</b><span>инвестиции</span></div>
       <div class="cover__stat"><b>6–7 месяцев</b><span>окупаемость</span></div>
       <div class="cover__stat"><b>30%</b><span>доля инвестора</span></div>
     </div>
   </div>
-
-  <div class="cover__seasons" aria-hidden="true">
-    <span>Весна</span><span>Лето</span><span>Осень</span><span>Зима</span>
-  </div>
+  <div class="cover__seasons" aria-hidden="true"><span>Весна</span><span>Лето</span><span>Осень</span><span>Зима</span></div>
   <div class="cover__scroll"><i></i>Листайте</div>
 </section>
 
-<!-- ============================================================
-     02 · ABOUT
-     ============================================================ -->
 <section class="slide" id="slide-about" data-slide="02">
   <div class="slide__inner">
     <div class="slide-num"><b>02</b> — О проекте</div>
     <h2>Один сервис для <em>загородного отдыха всей России</em></h2>
-    <p class="slide-lead">
-      ALBE RENT — платформа, которая объединяет тысячи проверенных резиденций, шале и вилл в единый сервис с прозрачными условиями, мгновенным подтверждением брони и персональным консьержем 24/7.
-    </p>
+    <p class="slide-lead">ALBE RENT — платформа, которая объединяет тысячи проверенных резиденций, шале и вилл в единый сервис с прозрачными условиями, мгновенным подтверждением брони и персональным консьержем 24/7.</p>
     <div class="grid grid--4">
       <div class="card" data-reveal><div class="card-value">10 400+</div><div class="card-label">объектов в каталоге</div></div>
       <div class="card" data-reveal style="--d:.08s"><div class="card-value">85</div><div class="card-label">регионов России</div></div>
@@ -1299,107 +849,75 @@ html[data-theme="light"] .card::before{
   </div>
 </section>
 
-<!-- ============================================================
-     03 · MARKET
-     ============================================================ -->
 <section class="slide" id="slide-market" data-slide="03">
   <div class="slide__inner">
     <div class="slide-num"><b>03</b> — Рынок</div>
     <h2>Рынок <em>381 млрд ₽</em>, растущий на 22% в год</h2>
-    <p class="slide-lead">
-      Посуточная аренда РФ — 381 млрд ₽ в 2025 (+22% г/г), прогноз 549 млрд ₽ к 2028 (Авито Путешествия). Внутренний туризм — 173,9 млн поездок (+7,4%, +43,5% к 2021, Ростуризм). Спрос на загородные дома растёт в 2,1 раза быстрее предложения — структурный разрыв, который заполняет ALBE RENT.
-    </p>
+    <p class="slide-lead">Посуточная аренда РФ — 381 млрд ₽ в 2025 (+22% г/г), прогноз 549 млрд ₽ к 2028 (Авито Путешествия). Внутренний туризм — 173,9 млн поездок (+7,4%, +43,5% к 2021, Ростуризм). Спрос на загородные дома растёт в 2,1 раза быстрее предложения.</p>
     <div class="grid grid--4">
-      <div class="card" data-reveal>
-        <div class="card-value">381 млрд ₽</div>
-        <div class="card-label">объём рынка посуточной аренды РФ · 2025 (Авито Путешествия)</div>
-      </div>
-      <div class="card" data-reveal style="--d:.08s">
-        <div class="card-value">×2,1</div>
-        <div class="card-label">рост спроса на загородные дома за год · ноябрь 2025 +77%</div>
-      </div>
-      <div class="card" data-reveal style="--d:.16s">
-        <div class="card-value">11 800 ₽</div>
-        <div class="card-label">средняя цена загородного дома в РФ / ночь (Авито + Туризм.РФ)</div>
-      </div>
-      <div class="card" data-reveal style="--d:.24s">
-        <div class="card-value">71%</div>
-        <div class="card-label">загрузка у управляющих компаний с 20+ объектов (у одиночек — 53,5%)</div>
-      </div>
+      <div class="card" data-reveal><div class="card-value">381 млрд ₽</div><div class="card-label">объём рынка посуточной аренды РФ · 2025 (Авито Путешествия)</div></div>
+      <div class="card" data-reveal style="--d:.08s"><div class="card-value">×2,1</div><div class="card-label">рост спроса на загородные дома за год · ноябрь 2025 +77%</div></div>
+      <div class="card" data-reveal style="--d:.16s"><div class="card-value">11 800 ₽</div><div class="card-label">средняя цена загородного дома в РФ / ночь (Авито + Туризм.РФ)</div></div>
+      <div class="card" data-reveal style="--d:.24s"><div class="card-value">71%</div><div class="card-label">загрузка у управляющих компаний с 20+ объектов (у одиночек — 53,5%)</div></div>
     </div>
-    <p class="slide-lead" style="margin-top:32px;margin-bottom:0;max-width:76ch">
-      <b style="color:var(--txt-h)">Ключевой вывод:</b> предложение загородных объектов за год выросло на 32%, но спрос — в 2,1 раза. Разница в загрузке между одиночными владельцами (53,5%) и управляющими компаниями (71%) показывает: <b style="color:var(--txt-h)">масштаб управляющей компании напрямую конвертируется в выручку собственника</b>. Это рынок, где выигрывает не тот, у кого больше объявлений, а тот, кто обеспечивает заполняемость.
+    <p class="slide-lead" style="max-width:80ch">
+      <b style="color:var(--txt-h)">Ключевой вывод:</b> предложение загородных объектов за год выросло на 32%, но спрос — в 2,1 раза. Разница в загрузке между одиночными владельцами (53,5%) и управляющими компаниями (71%) показывает: <b style="color:var(--txt-h)">масштаб управляющей компании напрямую конвертируется в выручку собственника</b>.
     </p>
   </div>
 </section>
 
-<!-- ============================================================
-     04 · COMPETITORS
-     ============================================================ -->
 <section class="slide" id="slide-competitors" data-slide="04">
   <div class="slide__inner">
     <div class="slide-num"><b>04</b> — Конкуренты</div>
     <h2>Авито и Суточно — <em>маркетплейсы объявлений</em>, не сервис качества</h2>
-    <p class="slide-lead">
-      Крупные площадки решают задачу «найти объявление», а не «получить предсказуемый отдых». Их экономика построена на комиссии с транзакции — качество конкретного дома не входит в их KPI. Это структурный конфликт интересов, который в премиум-сегменте оставляет окно для специализированного игрока.
-    </p>
     <div class="grid grid--3">
       <div class="card" data-reveal>
         <div class="card-eyebrow">Авито Путешествия</div>
-        <div class="card-value" style="font-size:clamp(22px,2.4vw,32px)">15–20%</div>
-        <div class="card-label" style="margin-bottom:16px">комиссия с арендодателя · с апреля 2026 до 20%</div>
+        <div class="card-value" style="font-size:clamp(20px,2.4vw,32px)">15–20%</div>
+        <div class="card-label" style="margin-bottom:10px">комиссия с арендодателя · с апреля 2026 до 20%</div>
         <div class="card-text"><b style="color:var(--txt-h)">До 40%</b> с учётом продвижения. 500 000+ объектов. Верификация поверхностная. Негативные отзывы отклоняются.</div>
       </div>
       <div class="card" data-reveal style="--d:.1s">
         <div class="card-eyebrow">Суточно.ру</div>
-        <div class="card-value" style="font-size:clamp(22px,2.4vw,32px)">15–25%</div>
-        <div class="card-label" style="margin-bottom:16px">комиссия с гостя · стандарт 17%, СтандартПлюс 20%</div>
+        <div class="card-value" style="font-size:clamp(20px,2.4vw,32px)">15–25%</div>
+        <div class="card-label" style="margin-bottom:10px">комиссия с гостя · стандарт 17%, СтандартПлюс 20%</div>
         <div class="card-text">По отзывам: «никого не проверяют», «допускают мутных арендодателей». Предоплата = комиссия сервиса.</div>
       </div>
       <div class="card card--accent" data-reveal style="--d:.2s">
         <div class="card-eyebrow">ALBE RENT</div>
-        <div class="card-value" style="font-size:clamp(22px,2.4vw,32px)">12–15%</div>
-        <div class="card-label" style="margin-bottom:16px">комиссия с собственника · ниже Авито и Суточно</div>
-        <div class="card-text"><b style="color:var(--txt-h)">Личная проверка</b> каждого дома. Консьерж 24/7 — трансфер, клининг, ранний заезд. Доп. выручка 15–20% маржи.</div>
+        <div class="card-value" style="font-size:clamp(20px,2.4vw,32px)">12–15%</div>
+        <div class="card-label" style="margin-bottom:10px">комиссия с собственника · ниже Авито и Суточно</div>
+        <div class="card-text"><b style="color:var(--txt-h)">Личная проверка</b> каждого дома. Консьерж 24/7. Доп. выручка 15–20% маржи.</div>
       </div>
     </div>
-
     <div class="comp-row" data-reveal style="--d:.25s">
       <div class="comp-row__cell comp-row__head">Критерий</div>
       <div class="comp-row__cell comp-row__head">Авито</div>
       <div class="comp-row__cell comp-row__head">Суточно.ру</div>
       <div class="comp-row__cell comp-row__head comp-row__head--albe">ALBE RENT</div>
-
       <div class="comp-row__cell">Комиссия</div>
       <div class="comp-row__cell"><b>15–20%</b> (до 40% с продвижением)</div>
       <div class="comp-row__cell"><b>15–25%</b> (17% стандарт)</div>
       <div class="comp-row__cell comp-row__cell--albe"><b>12–15%</b></div>
-
       <div class="comp-row__cell">Верификация</div>
       <div class="comp-row__cell">Поверхностная</div>
       <div class="comp-row__cell">Не проводится</div>
       <div class="comp-row__cell comp-row__cell--albe">Личная проверка каждого дома</div>
-
       <div class="comp-row__cell">Сервис гостю</div>
       <div class="comp-row__cell">Нет</div>
       <div class="comp-row__cell">Нет</div>
       <div class="comp-row__cell comp-row__cell--albe">Консьерж 24/7</div>
-
       <div class="comp-row__cell">Позиционирование</div>
       <div class="comp-row__cell">Масса объявлений</div>
       <div class="comp-row__cell">Масса объявлений</div>
       <div class="comp-row__cell comp-row__cell--albe">Премиум-качество</div>
     </div>
-
-    <p class="slide-lead" style="margin-top:32px;margin-bottom:0;max-width:76ch">
-      <b style="color:var(--txt-h)">Почему это окно не закроется быстро:</b> Авито и Суточно не могут ужесточить верификацию без потери объёма — их бизнес держится на массе объявлений. ALBE RENT строит барьер не на трафике, а на качестве и возврате гостей: <b style="color:var(--txt-h)">каждый клиент приносит 4,25 ₽ прибыли на каждый 1 ₽, потраченный на привлечение</b> (это отношение <abbr title="LTV / CAC — на русском «ценность клиента / стоимость привлечения». Показывает, сколько рублей прибыли приносит клиент на каждый рубль, потраченный на его привлечение. Больше 3× — здоровый показатель.">LTV/CAC</abbr>), и окупает расходы с первой же брони. Мы выигрываем не рекламой, а тем, что гость возвращается.
+    <p class="slide-lead" style="max-width:80ch">
+      <b style="color:var(--txt-h)">Почему это окно не закроется быстро:</b> Авито и Суточно не могут ужесточить верификацию без потери объёма. ALBE RENT строит барьер не на трафике, а на качестве и возврате гостей: <b style="color:var(--txt-h)">каждый клиент приносит 4,25 ₽ прибыли на 1 ₽ привлечения</b> (<abbr title="LTV / CAC — «ценность клиента / стоимость привлечения». Сколько рублей прибыли приносит клиент на каждый рубль, потраченный на его привлечение. Больше 3× — здоровый показатель.">LTV/CAC</abbr>), окупается с 1-й брони.
     </p>
   </div>
 </section>
 
-<!-- ============================================================
-     05 · PRODUCT
-     ============================================================ -->
 <section class="slide" id="slide-product" data-slide="05">
   <div class="slide__inner">
     <div class="slide-num"><b>05</b> — Продукт</div>
@@ -1407,30 +925,19 @@ html[data-theme="light"] .card::before{
     <div class="product-grid">
       <div class="product-copy">
         <h3>Сайт и сервис уже в продакшене</h3>
-        <p class="slide-lead">
-          Премиальный лендинг, полноценный каталог, фильтры по регионам, удобствам и цене, интеграция с картами и системой бронирования — всё работает и приносит первых клиентов.
-        </p>
+        <p class="slide-lead">Премиальный лендинг, полноценный каталог, фильтры по регионам, удобствам и цене, интеграция с картами и системой бронирования.</p>
         <div class="product-features">
           <div class="card card--row-top" data-reveal>
             <div class="card-ico"><svg class="ico-svg"><use href="#i-sparkle"/></svg></div>
-            <div>
-              <div class="card-title">Премиальный дизайн</div>
-              <div class="card-text">Тёмная/светлая темы, анимации, ощущение luxury-сервиса</div>
-            </div>
+            <div><div class="card-title">Премиальный дизайн</div><div class="card-text">Тёмная/светлая темы, анимации, ощущение luxury-сервиса</div></div>
           </div>
           <div class="card card--row-top" data-reveal style="--d:.08s">
             <div class="card-ico"><svg class="ico-svg"><use href="#i-bolt"/></svg></div>
-            <div>
-              <div class="card-title">Мгновенное подтверждение</div>
-              <div class="card-text">Интеграция с календарями собственников и CRM</div>
-            </div>
+            <div><div class="card-title">Мгновенное подтверждение</div><div class="card-text">Интеграция с календарями собственников и CRM</div></div>
           </div>
           <div class="card card--row-top" data-reveal style="--d:.16s">
             <div class="card-ico"><svg class="ico-svg"><use href="#i-shield"/></svg></div>
-            <div>
-              <div class="card-title">Верификация объектов</div>
-              <div class="card-text">Личная проверка каждого дома перед публикацией</div>
-            </div>
+            <div><div class="card-title">Верификация объектов</div><div class="card-text">Личная проверка каждого дома перед публикацией</div></div>
           </div>
         </div>
       </div>
@@ -1446,9 +953,6 @@ html[data-theme="light"] .card::before{
   </div>
 </section>
 
-<!-- ============================================================
-     06 · CATALOG
-     ============================================================ -->
 <section class="slide" id="slide-catalog" data-slide="06">
   <div class="slide__inner">
     <div class="slide-num"><b>06</b> — Каталог</div>
@@ -1464,30 +968,19 @@ html[data-theme="light"] .card::before{
       </div>
       <div class="product-copy">
         <h3>Умный поиск и моментальное бронирование</h3>
-        <p class="slide-lead">
-          Клиент выбирает регион, даты, число гостей и удобства — сервис мгновенно показывает подходящие объекты с прозрачной ценой и живыми отзывами.
-        </p>
+        <p class="slide-lead">Клиент выбирает регион, даты, число гостей и удобства — сервис мгновенно показывает подходящие объекты с прозрачной ценой и живыми отзывами.</p>
         <div class="product-features">
           <div class="card card--row-top">
             <div class="card-ico"><svg class="ico-svg"><use href="#i-target"/></svg></div>
-            <div>
-              <div class="card-title">Фильтры по 85 регионам</div>
-              <div class="card-text">Цена, гости, спальни, рейтинг, удобства, тип жилья</div>
-            </div>
+            <div><div class="card-title">Фильтры по 85 регионам</div><div class="card-text">Цена, гости, спальни, рейтинг, удобства, тип жилья</div></div>
           </div>
           <div class="card card--row-top">
             <div class="card-ico"><svg class="ico-svg"><use href="#i-users"/></svg></div>
-            <div>
-              <div class="card-title">Карточки объектов</div>
-              <div class="card-text">Галерея, карта, отзывы, характеристики, 3D-тур</div>
-            </div>
+            <div><div class="card-title">Карточки объектов</div><div class="card-text">Галерея, карта, отзывы, характеристики, 3D-тур</div></div>
           </div>
           <div class="card card--row-top">
             <div class="card-ico"><svg class="ico-svg"><use href="#i-check"/></svg></div>
-            <div>
-              <div class="card-title">Бесшовная бронь</div>
-              <div class="card-text">Оплата, подтверждение и заселение без звонков</div>
-            </div>
+            <div><div class="card-title">Бесшовная бронь</div><div class="card-text">Оплата, подтверждение и заселение без звонков</div></div>
           </div>
         </div>
       </div>
@@ -1495,154 +988,64 @@ html[data-theme="light"] .card::before{
   </div>
 </section>
 
-<!-- ============================================================
-     07 · BUSINESS MODEL + UNIT ECONOMICS
-     ============================================================ -->
 <section class="slide" id="slide-model" data-slide="07">
   <div class="slide__inner">
     <div class="slide-num"><b>07</b> — Бизнес-модель</div>
     <h2>Средний чек <em>15 000 ₽</em> — комиссия и сервис</h2>
-    <p class="slide-lead">
-      Четыре источника выручки, каждый с подтверждённой рыночной практикой. <abbr title="Валовая маржа — сколько остаётся от выручки после вычета прямых затрат (без учёта аренды офиса, зарплат менеджеров и т.п.). 87,6% значит, что из каждых 100 ₽ выручки 87,6 ₽ остаётся до операционных расходов.">Валовая маржа</abbr> сервиса — 87,6%. Средняя загрузка платформы: 20–40% объектов получают 1 бронь в неделю, что при 10 400 объектах даёт 9 000–18 000 броней в месяц по платформе.
-    </p>
-
     <div class="grid grid--4">
-      <div class="card" data-reveal>
-        <div class="card-ico"><svg class="ico-svg"><use href="#i-percent"/></svg></div>
-        <div class="card-value">12–15%</div>
-        <div class="card-label">комиссия сервиса · на 3–5 п.п. ниже Авито</div>
-      </div>
-      <div class="card" data-reveal style="--d:.08s">
-        <div class="card-ico"><svg class="ico-svg"><use href="#i-sparkle"/></svg></div>
-        <div class="card-value">15–20%</div>
-        <div class="card-label">маржа доп. услуг · консьерж, трансфер, клининг</div>
-      </div>
-      <div class="card" data-reveal style="--d:.16s">
-        <div class="card-ico"><svg class="ico-svg"><use href="#i-bag"/></svg></div>
-        <div class="card-value">2 990 ₽</div>
-        <div class="card-label">премиум-размещение для собственников / мес</div>
-      </div>
-      <div class="card" data-reveal style="--d:.24s">
-        <div class="card-ico"><svg class="ico-svg"><use href="#i-users"/></svg></div>
-        <div class="card-value">B2B</div>
-        <div class="card-label">корпоративные брони для компаний и ретритов</div>
-      </div>
+      <div class="card" data-reveal><div class="card-ico"><svg class="ico-svg"><use href="#i-percent"/></svg></div><div class="card-value">12–15%</div><div class="card-label">комиссия сервиса · на 3–5 п.п. ниже Авито</div></div>
+      <div class="card" data-reveal style="--d:.08s"><div class="card-ico"><svg class="ico-svg"><use href="#i-sparkle"/></svg></div><div class="card-value">15–20%</div><div class="card-label">маржа доп. услуг · консьерж, трансфер, клининг</div></div>
+      <div class="card" data-reveal style="--d:.16s"><div class="card-ico"><svg class="ico-svg"><use href="#i-bag"/></svg></div><div class="card-value">2 990 ₽</div><div class="card-label">премиум-размещение для собственников / мес</div></div>
+      <div class="card" data-reveal style="--d:.24s"><div class="card-ico"><svg class="ico-svg"><use href="#i-users"/></svg></div><div class="card-value">B2B</div><div class="card-label">корпоративные брони для компаний и ретритов</div></div>
     </div>
-
     <div class="unit-econ" data-reveal style="--d:.3s">
       <h3>Юнит-экономика одной брони <span style="font-weight:400;color:var(--mut);font-size:var(--fs-small)">— расчёт прибыли с одного бронирования</span></h3>
       <div class="unit-econ__grid">
-        <div class="unit-econ__item">
-          <small>Средний чек</small>
-          <b>15 000 ₽</b>
-        </div>
-        <div class="unit-econ__item">
-          <small>Комиссия 13,5%</small>
-          <b>2 025 ₽</b>
-        </div>
-        <div class="unit-econ__item">
-          <small>Доп. услуги (ср.)</small>
-          <b>400 ₽</b>
-        </div>
-        <div class="unit-econ__item">
-          <small>Валовая выручка</small>
-          <b>2 425 ₽</b>
-        </div>
-        <div class="unit-econ__item unit-econ__item--accent">
-          <small>Валовая прибыль</small>
-          <b>2 125 ₽</b>
-        </div>
+        <div class="unit-econ__item"><small>Средний чек</small><b>15 000 ₽</b></div>
+        <div class="unit-econ__item"><small>Комиссия 13,5%</small><b>2 025 ₽</b></div>
+        <div class="unit-econ__item"><small>Доп. услуги (ср.)</small><b>400 ₽</b></div>
+        <div class="unit-econ__item"><small>Валовая выручка</small><b>2 425 ₽</b></div>
+        <div class="unit-econ__item unit-econ__item--accent"><small>Валовая прибыль</small><b>2 125 ₽</b></div>
       </div>
       <div class="unit-econ__metrics">
-        <div class="unit-econ__metric">
-          <b>87,6%</b>
-          <span>валовая маржа</span>
-        </div>
-        <div class="unit-econ__metric">
-          <b>8 500 ₽</b>
-          <span><abbr title="LTV (Lifetime Value) — сколько прибыли приносит один клиент за всё время, что пользуется сервисом. Здесь — 4 брони по 2 125 ₽ за 2 года.">LTV</abbr> гостя · 4 брони / 2 года</span>
-        </div>
-        <div class="unit-econ__metric">
-          <b>2 000 ₽</b>
-          <span><abbr title="CAC (Customer Acquisition Cost) — сколько стоит привлечь одного нового клиента (реклама, скидки, партнёрства).">CAC</abbr> — стоимость привлечения</span>
-        </div>
-        <div class="unit-econ__metric">
-          <b>4,25×</b>
-          <span><abbr title="Отношение LTV к CAC. Показывает, сколько рублей прибыли приносит клиент на 1 ₽, потраченный на привлечение. Больше 3× — отлично, больше 5× — очень хорошо.">LTV/CAC</abbr> · окупаемость с 1-й брони</span>
-        </div>
+        <div class="unit-econ__metric"><b>87,6%</b><span>валовая маржа</span></div>
+        <div class="unit-econ__metric"><b>8 500 ₽</b><span><abbr title="LTV (Lifetime Value) — сколько прибыли приносит один клиент за всё время, что пользуется сервисом. Здесь — 4 брони по 2 125 ₽ за 2 года.">LTV</abbr> гостя · 4 брони / 2 года</span></div>
+        <div class="unit-econ__metric"><b>2 000 ₽</b><span><abbr title="CAC (Customer Acquisition Cost) — сколько стоит привлечь одного нового клиента (реклама, скидки, партнёрства).">CAC</abbr> — стоимость привлечения</span></div>
+        <div class="unit-econ__metric"><b>4,25×</b><span><abbr title="Отношение LTV к CAC. Сколько рублей прибыли приносит клиент на 1 ₽, потраченный на привлечение. Больше 3× — отлично.">LTV/CAC</abbr> · окупаемость с 1-й брони</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     08 · TRACTION
-     ============================================================ -->
 <section class="slide" id="slide-traction" data-slide="08">
   <div class="slide__inner">
     <div class="slide-num"><b>08</b> — Traction</div>
     <h2>Что <em>уже сделано</em></h2>
-    <p class="slide-lead">
-      Мы не с идеей и не на стадии MVP — у нас работающий продукт, готовая база объектов, юридическая структура и первые продажи. Инвестиции нужны для масштабирования, а не для запуска.
-    </p>
     <div class="grid grid--3">
-      <div class="card" data-reveal>
-        <div class="card-ico"><svg class="ico-svg"><use href="#i-check"/></svg></div>
-        <div class="card-title">Готовый продукт</div>
-        <div class="card-text">Сайт, каталог, фильтры, бронирование, CRM</div>
-      </div>
-      <div class="card" data-reveal style="--d:.06s">
-        <div class="card-ico"><svg class="ico-svg"><use href="#i-building"/></svg></div>
-        <div class="card-title">База собственников</div>
-        <div class="card-text">10 400+ объектов, договоры, верификация</div>
-      </div>
-      <div class="card" data-reveal style="--d:.12s">
-        <div class="card-ico"><svg class="ico-svg"><use href="#i-shield"/></svg></div>
-        <div class="card-title">Юр. структура</div>
-        <div class="card-text">ООО, оферта, политика, налоги</div>
-      </div>
-      <div class="card" data-reveal style="--d:.18s">
-        <div class="card-ico"><svg class="ico-svg"><use href="#i-chart"/></svg></div>
-        <div class="card-title">Трафик и продажи</div>
-        <div class="card-text">Первые клиенты, органика, реклама</div>
-      </div>
-      <div class="card" data-reveal style="--d:.24s">
-        <div class="card-ico"><svg class="ico-svg"><use href="#i-users"/></svg></div>
-        <div class="card-title">Команда</div>
-        <div class="card-text">Собственник, разработка, маркетинг</div>
-      </div>
-      <div class="card" data-reveal style="--d:.3s">
-        <div class="card-ico"><svg class="ico-svg"><use href="#i-award"/></svg></div>
-        <div class="card-title">Бренд</div>
-        <div class="card-text">ALBE RENT — премиум-позиционирование</div>
-      </div>
+      <div class="card" data-reveal><div class="card-ico"><svg class="ico-svg"><use href="#i-check"/></svg></div><div class="card-title">Готовый продукт</div><div class="card-text">Сайт, каталог, фильтры, бронирование, CRM</div></div>
+      <div class="card" data-reveal style="--d:.06s"><div class="card-ico"><svg class="ico-svg"><use href="#i-building"/></svg></div><div class="card-title">База собственников</div><div class="card-text">10 400+ объектов, договоры, верификация</div></div>
+      <div class="card" data-reveal style="--d:.12s"><div class="card-ico"><svg class="ico-svg"><use href="#i-shield"/></svg></div><div class="card-title">Юр. структура</div><div class="card-text">ООО, оферта, политика, налоги</div></div>
+      <div class="card" data-reveal style="--d:.18s"><div class="card-ico"><svg class="ico-svg"><use href="#i-chart"/></svg></div><div class="card-title">Трафик и продажи</div><div class="card-text">Первые клиенты, органика, реклама</div></div>
+      <div class="card" data-reveal style="--d:.24s"><div class="card-ico"><svg class="ico-svg"><use href="#i-users"/></svg></div><div class="card-title">Команда</div><div class="card-text">Собственник, разработка, маркетинг</div></div>
+      <div class="card" data-reveal style="--d:.3s"><div class="card-ico"><svg class="ico-svg"><use href="#i-award"/></svg></div><div class="card-title">Бренд</div><div class="card-text">ALBE RENT — премиум-позиционирование</div></div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     09 · FINANCIAL MODEL
-     ============================================================ -->
 <section class="slide" id="slide-financials" data-slide="09">
   <div class="slide__inner">
     <div class="slide-num"><b>09</b> — Финансовая модель</div>
     <h2>Выход на окупаемость <em>за 6–7 месяцев</em></h2>
-    <p class="slide-lead">
-      Консервативный сценарий: 120 → 900 броней в месяц за год, средний чек 15 000 ₽, валовая прибыль 2 125 ₽ с брони. Возврат 5 000 000 ₽ инвестору — из операционной прибыли в течение 6–7 месяцев.
-    </p>
     <div class="chart-wrap" data-reveal>
       <div class="chart-header">
-        <div>
-          <div class="chart-title">Прогноз · 12 месяцев</div>
-          <div class="chart-sub">Выручка и чистый поток, млн ₽ / мес · 120 → 900 броней/мес при чеке 15 000 ₽</div>
-        </div>
+        <div><div class="chart-title">Прогноз · 12 месяцев</div><div class="chart-sub">Выручка и чистый поток, млн ₽ / мес · 120 → 900 броней/мес при чеке 15 000 ₽</div></div>
         <div class="chart-legend">
           <div class="legend-item"><span class="legend-swatch legend-swatch--rev"></span>Выручка</div>
           <div class="legend-item"><span class="legend-swatch legend-swatch--profit"></span>Чистый поток</div>
-          <div class="legend-item"><svg style="width:16px;height:16px;color:var(--c1)"><use href="#i-target"/></svg>Окупаемость · М7</div>
+          <div class="legend-item"><svg style="width:14px;height:14px;color:var(--c1)"><use href="#i-target"/></svg>Окупаемость · М7</div>
         </div>
       </div>
-      <svg class="chart" viewBox="0 0 900 380" preserveAspectRatio="xMidYMid meet" aria-label="Прогноз 12 месяцев">
+      <svg class="chart" viewBox="0 0 900 340" preserveAspectRatio="xMidYMid meet" aria-label="Прогноз 12 месяцев">
         <defs>
           <linearGradient id="gradRev" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0" stop-color="var(--c2)" stop-opacity=".9"/>
@@ -1668,88 +1071,77 @@ html[data-theme="light"] .card::before{
         <line x1="493" y1="20" x2="493" y2="340" stroke="var(--c1)" stroke-width="1.5" stroke-dasharray="4 4" opacity=".65"/>
         <text x="497" y="26" font-family="Unbounded,sans-serif" font-size="10" font-weight="700" letter-spacing="1.5" fill="var(--c1)">ОКУПАЕМОСТЬ · М7</text>
         <g>
-          <rect x="52"  y="287.4" width="42" height="32.6"  rx="4" fill="url(#gradRev)"/>
-          <rect x="122" y="260.2" width="42" height="59.8"  rx="4" fill="url(#gradRev)"/>
-          <rect x="192" y="227.7" width="42" height="92.3"  rx="4" fill="url(#gradRev)"/>
-          <rect x="262" y="189.6" width="42" height="130.4" rx="4" fill="url(#gradRev)"/>
-          <rect x="332" y="151.6" width="42" height="168.4" rx="4" fill="url(#gradRev)"/>
-          <rect x="402" y="108.2" width="42" height="211.8" rx="4" fill="url(#gradRev)"/>
-          <rect x="472" y="81.0"  width="42" height="239.0" rx="4" fill="url(#gradRev)"/>
-          <rect x="542" y="62.0"  width="42" height="258.0" rx="4" fill="url(#gradRev)"/>
-          <rect x="612" y="53.8"  width="42" height="266.2" rx="4" fill="url(#gradRev)"/>
-          <rect x="682" y="70.1"  width="42" height="249.9" rx="4" fill="url(#gradRev)"/>
-          <rect x="752" y="89.1"  width="42" height="230.9" rx="4" fill="url(#gradRev)"/>
-          <rect x="822" y="75.6"  width="42" height="244.4" rx="4" fill="url(#gradRev)"/>
+          <rect x="52" y="290" width="42" height="30" rx="4" fill="url(#gradRev)"/>
+          <rect x="122" y="263" width="42" height="57" rx="4" fill="url(#gradRev)"/>
+          <rect x="192" y="231" width="42" height="89" rx="4" fill="url(#gradRev)"/>
+          <rect x="262" y="193" width="42" height="127" rx="4" fill="url(#gradRev)"/>
+          <rect x="332" y="155" width="42" height="165" rx="4" fill="url(#gradRev)"/>
+          <rect x="402" y="112" width="42" height="208" rx="4" fill="url(#gradRev)"/>
+          <rect x="472" y="85" width="42" height="235" rx="4" fill="url(#gradRev)"/>
+          <rect x="542" y="66" width="42" height="254" rx="4" fill="url(#gradRev)"/>
+          <rect x="612" y="58" width="42" height="262" rx="4" fill="url(#gradRev)"/>
+          <rect x="682" y="74" width="42" height="246" rx="4" fill="url(#gradRev)"/>
+          <rect x="752" y="93" width="42" height="227" rx="4" fill="url(#gradRev)"/>
+          <rect x="822" y="80" width="42" height="240" rx="4" fill="url(#gradRev)"/>
         </g>
         <g>
-          <rect x="58"  y="304.9" width="30" height="15.1"  rx="3" fill="var(--c3)"/>
-          <rect x="128" y="276.4" width="30" height="43.6"  rx="3" fill="var(--c3)"/>
-          <rect x="198" y="237.5" width="30" height="82.5"  rx="3" fill="var(--c3)"/>
-          <rect x="268" y="198.5" width="30" height="121.5" rx="3" fill="var(--c3)"/>
-          <rect x="338" y="154.9" width="30" height="165.1" rx="3" fill="var(--c3)"/>
-          <rect x="408" y="128.8" width="30" height="191.2" rx="3" fill="var(--c3)"/>
-          <rect x="478" y="110.0" width="30" height="210.0" rx="3" fill="var(--c3)"/>
-          <rect x="548" y="103.0" width="30" height="217.0" rx="3" fill="var(--c3)"/>
-          <rect x="618" y="117.1" width="30" height="202.9" rx="3" fill="var(--c3)"/>
-          <rect x="688" y="133.7" width="30" height="186.3" rx="3" fill="var(--c3)"/>
-          <rect x="758" y="121.8" width="30" height="198.2" rx="3" fill="var(--c3)"/>
-          <rect x="828" y="121.8" width="30" height="198.2" rx="3" fill="var(--c3)"/>
+          <rect x="58" y="305" width="30" height="15" rx="3" fill="var(--c3)"/>
+          <rect x="128" y="279" width="30" height="41" rx="3" fill="var(--c3)"/>
+          <rect x="198" y="241" width="30" height="79" rx="3" fill="var(--c3)"/>
+          <rect x="268" y="202" width="30" height="118" rx="3" fill="var(--c3)"/>
+          <rect x="338" y="158" width="30" height="162" rx="3" fill="var(--c3)"/>
+          <rect x="408" y="132" width="30" height="188" rx="3" fill="var(--c3)"/>
+          <rect x="478" y="114" width="30" height="206" rx="3" fill="var(--c3)"/>
+          <rect x="548" y="107" width="30" height="213" rx="3" fill="var(--c3)"/>
+          <rect x="618" y="121" width="30" height="199" rx="3" fill="var(--c3)"/>
+          <rect x="688" y="137" width="30" height="183" rx="3" fill="var(--c3)"/>
+          <rect x="758" y="126" width="30" height="194" rx="3" fill="var(--c3)"/>
+          <rect x="828" y="126" width="30" height="194" rx="3" fill="var(--c3)"/>
         </g>
         <g font-family="Manrope,sans-serif" font-size="10" fill="var(--mut)" text-anchor="middle">
-          <text x="73"  y="335">М1</text><text x="143" y="335">М2</text><text x="213" y="335">М3</text>
+          <text x="73" y="335">М1</text><text x="143" y="335">М2</text><text x="213" y="335">М3</text>
           <text x="283" y="335">М4</text><text x="353" y="335">М5</text><text x="423" y="335">М6</text>
           <text x="493" y="335">М7</text><text x="563" y="335">М8</text><text x="633" y="335">М9</text>
           <text x="703" y="335">М10</text><text x="773" y="335">М11</text><text x="843" y="335">М12</text>
         </g>
       </svg>
-      <p class="chart-note">* Консервативный сценарий: 120 → 900 комиссионных броней/мес, чек 15 000 ₽, валовая прибыль 2 125 ₽/бронь, маркетинг фронт-лоадится (250 → 60 тыс ₽/мес), операционные — 83 тыс ₽/мес. Суммарно год 1 ≈ 17 млн ₽ чистыми. Окупаемость тела инвестиций — М7.</p>
+      <p class="chart-note">* Консервативный сценарий: 120 → 900 броней/мес, чек 15 000 ₽, валовая прибыль 2 125 ₽/бронь. Год 1 ≈ 17 млн ₽ чистыми. Окупаемость тела инвестиций — М7.</p>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     10 · INVEST
-     ============================================================ -->
 <section class="slide" id="slide-invest" data-slide="10">
   <div class="slide__inner">
     <div class="slide-num"><b>10</b> — Предложение</div>
     <h2>Инвестируйте <em>5 000 000 ₽</em></h2>
-    <p class="slide-lead">
-      Простая и прозрачная сделка: фиксированная сумма, предсказуемый срок возврата, доля в растущем проекте. При среднем чеке 15 000 ₽ и валовой марже 87,6% каждая бронь возвращает 2 125 ₽ валовой прибыли — окупаемость тела инвестиций в течение 6–7 месяцев консервативного сценария.
-    </p>
+    <p class="slide-lead">Простая и прозрачная сделка: фиксированная сумма, предсказуемый срок возврата, доля в растущем проекте. При среднем чеке 15 000 ₽ и валовой марже 87,6% каждая бронь возвращает 2 125 ₽ валовой прибыли.</p>
     <div class="grid grid--3">
       <div class="card card--accent card--center" data-reveal>
         <div class="card-ico"><svg class="ico-svg"><use href="#i-ruble"/></svg></div>
         <div class="card-value">5 000 000 ₽</div>
         <div class="card-label">Сумма инвестиций</div>
-        <div class="card-text" style="margin-top:14px">Единый транш, оформляется договором</div>
+        <div class="card-text" style="margin-top:10px">Единый транш, оформляется договором</div>
       </div>
       <div class="card card--accent card--center" data-reveal style="--d:.1s">
         <div class="card-ico"><svg class="ico-svg"><use href="#i-clock"/></svg></div>
         <div class="card-value">6–7 месяцев</div>
         <div class="card-label">Окупаемость</div>
-        <div class="card-text" style="margin-top:14px">При средней загрузке платформы 20–40%</div>
+        <div class="card-text" style="margin-top:10px">При средней загрузке платформы 20–40%</div>
       </div>
       <div class="card card--accent card--center" data-reveal style="--d:.2s">
         <div class="card-ico"><svg class="ico-svg"><use href="#i-percent"/></svg></div>
         <div class="card-value">30%</div>
         <div class="card-label">Доля инвестора</div>
-        <div class="card-text" style="margin-top:14px">Сохраняется после окупаемости</div>
+        <div class="card-text" style="margin-top:10px">Сохраняется после окупаемости</div>
       </div>
     </div>
     <div class="invest-cta" data-reveal style="--d:.3s">
-      <div class="invest-cta__txt">
-        <b>Готовы обсудить детали?</b>
-        <span>Покажем финансовую модель, договор и отчётность по запросу.</span>
-      </div>
+      <div class="invest-cta__txt"><b>Готовы обсудить детали?</b><span>Покажем финансовую модель, договор и отчётность по запросу.</span></div>
       <a href="#slide-contact" class="btn btn--grad"><span class="btn__txt">Запросить условия <svg class="ico-svg"><use href="#i-arrow"/></svg></span></a>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     11 · USE OF FUNDS
-     ============================================================ -->
 <section class="slide" id="slide-funds" data-slide="11">
   <div class="slide__inner">
     <div class="slide-num"><b>11</b> — Использование средств</div>
@@ -1766,141 +1158,67 @@ html[data-theme="light"] .card::before{
         <div class="donut-center"><b>5 млн ₽</b><span>инвестиции</span></div>
       </div>
       <div class="funds-legend" data-reveal style="--d:.15s">
-        <div class="card card--row-top">
-          <div class="fund-dot" style="background:var(--c1);color:var(--c1)"></div>
-          <div style="flex:1;min-width:0">
-            <div class="card-title">Маркетинг и привлечение</div>
-            <div class="card-text">Яндекс.Директ, Google Ads, соцсети, блогеры, PR — до 2 000 000 ₽</div>
-          </div>
-          <div class="fund-pct">40%</div>
-        </div>
-        <div class="card card--row-top">
-          <div class="fund-dot" style="background:var(--c2);color:var(--c2)"></div>
-          <div style="flex:1;min-width:0">
-            <div class="card-title">Разработка и IT</div>
-            <div class="card-text">Мобильное приложение, интеграции, 3D-туры, CRM — до 1 250 000 ₽</div>
-          </div>
-          <div class="fund-pct">25%</div>
-        </div>
-        <div class="card card--row-top">
-          <div class="fund-dot" style="background:var(--c3);color:var(--c3)"></div>
-          <div style="flex:1;min-width:0">
-            <div class="card-title">Операции и офис в СПб</div>
-            <div class="card-text">Аренда, зарплаты менеджеров, юридика, бухгалтерия — до 1 000 000 ₽</div>
-          </div>
-          <div class="fund-pct">20%</div>
-        </div>
-        <div class="card card--row-top">
-          <div class="fund-dot" style="background:var(--c4);color:var(--c4)"></div>
-          <div style="flex:1;min-width:0">
-            <div class="card-title">Резервный фонд</div>
-            <div class="card-text">Буфер на 3 месяца операционки и непредвиденные — 750 000 ₽</div>
-          </div>
-          <div class="fund-pct">15%</div>
-        </div>
+        <div class="card card--row-top"><div class="fund-dot" style="background:var(--c1);color:var(--c1)"></div><div style="flex:1;min-width:0"><div class="card-title">Маркетинг и привлечение</div><div class="card-text">Яндекс.Директ, Google Ads, соцсети, блогеры, PR — до 2 000 000 ₽</div></div><div class="fund-pct">40%</div></div>
+        <div class="card card--row-top"><div class="fund-dot" style="background:var(--c2);color:var(--c2)"></div><div style="flex:1;min-width:0"><div class="card-title">Разработка и IT</div><div class="card-text">Мобильное приложение, интеграции, 3D-туры, CRM — до 1 250 000 ₽</div></div><div class="fund-pct">25%</div></div>
+        <div class="card card--row-top"><div class="fund-dot" style="background:var(--c3);color:var(--c3)"></div><div style="flex:1;min-width:0"><div class="card-title">Операции и офис в СПб</div><div class="card-text">Аренда, зарплаты менеджеров, юридика, бухгалтерия — до 1 000 000 ₽</div></div><div class="fund-pct">20%</div></div>
+        <div class="card card--row-top"><div class="fund-dot" style="background:var(--c4);color:var(--c4)"></div><div style="flex:1;min-width:0"><div class="card-title">Резервный фонд</div><div class="card-text">Буфер на 3 месяца операционки и непредвиденные — 750 000 ₽</div></div><div class="fund-pct">15%</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     12 · ROADMAP
-     ============================================================ -->
 <section class="slide" id="slide-roadmap" data-slide="12">
   <div class="slide__inner">
     <div class="slide-num"><b>12</b> — Дорожная карта</div>
     <h2>План на <em>12 месяцев</em></h2>
-    <p class="slide-lead">
-      Три этапа роста: от масштабирования маркетинга и закрытия обязательств перед инвестором — до выхода в новые регионы и мобильного приложения.
-    </p>
     <div class="roadmap">
       <div class="grid grid--4">
-        <div class="card" data-reveal>
-          <div class="card-dot"></div>
-          <div class="card-eyebrow">Месяцы 1–2</div>
-          <div class="card-title">Запуск и подготовка</div>
-          <div class="card-text">Набор команды, открытие офиса в СПб, запуск рекламных кампаний в Яндекс.Директ и соцсетях, доработка воронки бронирования.</div>
-        </div>
-        <div class="card" data-reveal style="--d:.1s">
-          <div class="card-dot"></div>
-          <div class="card-eyebrow">Месяцы 3–4</div>
-          <div class="card-title">Масштабирование</div>
-          <div class="card-text">Удвоение рекламного бюджета, партнёрства с собственниками, запуск консьерж-сервиса и доп. услуг. Рост выручки х2.</div>
-        </div>
-        <div class="card" data-reveal style="--d:.2s">
-          <div class="card-dot"></div>
-          <div class="card-eyebrow">Месяцы 5–7</div>
-          <div class="card-title">Окупаемость</div>
-          <div class="card-text">Выход на стабильную операционную прибыль. Полный возврат 5 000 000 ₽ инвестору в течение месяца 7. Инвестор закрепляет 30% доли.</div>
-        </div>
-        <div class="card" data-reveal style="--d:.3s">
-          <div class="card-dot"></div>
-          <div class="card-eyebrow">Месяцы 8–12</div>
-          <div class="card-title">Новый рост</div>
-          <div class="card-text">Мобильное приложение, B2B-направление, новые регионы (Крым, Кавказ, Урал). Дивиденды инвестору 30% от прибыли.</div>
-        </div>
+        <div class="card" data-reveal><div class="card-dot"></div><div class="card-eyebrow">Месяцы 1–2</div><div class="card-title">Запуск и подготовка</div><div class="card-text">Набор команды, офис в СПб, рекламные кампании в Яндекс.Директ и соцсетях, доработка воронки.</div></div>
+        <div class="card" data-reveal style="--d:.1s"><div class="card-dot"></div><div class="card-eyebrow">Месяцы 3–4</div><div class="card-title">Масштабирование</div><div class="card-text">Удвоение рекламного бюджета, партнёрства с собственниками, запуск консьерж-сервиса и доп. услуг.</div></div>
+        <div class="card" data-reveal style="--d:.2s"><div class="card-dot"></div><div class="card-eyebrow">Месяцы 5–7</div><div class="card-title">Окупаемость</div><div class="card-text">Стабильная операционная прибыль. Полный возврат 5 000 000 ₽ в месяце 7. Инвестор закрепляет 30% доли.</div></div>
+        <div class="card" data-reveal style="--d:.3s"><div class="card-dot"></div><div class="card-eyebrow">Месяцы 8–12</div><div class="card-title">Новый рост</div><div class="card-text">Мобильное приложение, B2B, новые регионы (Крым, Кавказ, Урал). Дивиденды инвестору 30% от прибыли.</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     13 · FOUNDER
-     ============================================================ -->
 <section class="slide" id="slide-founder" data-slide="13">
   <div class="slide__inner">
     <div class="slide-num"><b>13</b> — Основатель</div>
     <h2>Основатель, который <em>уже строил</em> оценённые рынком платформы</h2>
-    <p class="slide-lead">
-      За плечами — два проекта с оценкой по версии Forbes Russia, статус резидента Сколково и действующее digital-агентство. Проект ведёт предприниматель с опытом, а не «менеджер по презентациям».
-    </p>
     <div class="founder-grid">
       <div class="card card--accent founder-card" data-reveal>
-        <div class="founder-photo">
-          <img src="00001.webp" alt="Беляев Алексей Михайлович — основатель ALBE RENT">
-        </div>
+        <div class="founder-photo"><img src="00001.webp" alt="Беляев Алексей Михайлович — основатель ALBE RENT"></div>
         <div class="founder-name">Беляев Алексей Михайлович</div>
         <div class="founder-role">Основатель и Генеральный директор ALBE RENT</div>
         <div class="founder-tags">
           <span class="founder-tag"><svg class="ico-svg"><use href="#i-award"/></svg>Сколково</span>
-          <span class="founder-tag"><svg class="ico-svg"><use href="#i-chart"/></svg>Forbes Russia</span>
+          <span class="founder-tag"><svg class="ico-svg"><use href="#i-chart"/></svg>Forbes</span>
           <span class="founder-tag"><svg class="ico-svg"><use href="#i-rocket"/></svg>2 проекта</span>
         </div>
         <div class="founder-edu">
-          <div class="founder-edu-row">
-            <svg class="ico-svg"><use href="#i-graduation"/></svg>
-            <div><b>Высшее образование</b><span>Сколково Tech</span></div>
-          </div>
-          <div class="founder-edu-row">
-            <svg class="ico-svg"><use href="#i-award"/></svg>
-            <div><b>Резидент Сколково</b><span>2020 – 2022</span></div>
-          </div>
+          <div class="founder-edu-row"><svg class="ico-svg"><use href="#i-graduation"/></svg><div><b>Высшее образование</b><span>Сколково Tech</span></div></div>
+          <div class="founder-edu-row"><svg class="ico-svg"><use href="#i-award"/></svg><div><b>Резидент Сколково</b><span>2020 – 2022</span></div></div>
         </div>
       </div>
       <div class="founder-timeline">
         <div class="card ftl-item" data-reveal>
           <div class="ftl-item__dot">1</div>
           <div class="card-eyebrow">2018 – 2022</div>
-          <div class="card-title">Основатель и Генеральный директор «ВОЗДУХ»</div>
-          <div class="card-text">Агрегатор бронирования загородной недвижимости. Вывел платформу на рынок и построил операционную модель, ставшую основой для ALBE RENT.</div>
-          <div class="ftl-metric">
-            <svg class="ico-svg"><use href="#i-chart"/></svg>
-            Forbes Russia, 2022 — <b>250 млн ₽</b>
-          </div>
+          <div class="card-title">Основатель и CEO «ВОЗДУХ»</div>
+          <div class="card-text">Агрегатор бронирования загородной недвижимости. Построил операционную модель, ставшую основой для ALBE RENT.</div>
+          <div class="ftl-metric"><svg class="ico-svg"><use href="#i-chart"/></svg>Forbes, 2022 — <b>250 млн ₽</b></div>
         </div>
         <div class="card ftl-item" data-reveal style="--d:.1s">
           <div class="ftl-item__dot">2</div>
           <div class="card-eyebrow">2022 – 2024</div>
-          <div class="card-title">Основатель и Генеральный директор VIXI AI</div>
-          <div class="card-text">AI-платформа, выросшая в оценке в два раза за два года. Опыт вывода технологического продукта на рынок и работы с инвесторами.</div>
-          <div class="ftl-metric">
-            <svg class="ico-svg"><use href="#i-chart"/></svg>
-            Forbes Russia, 2024 — <b>500 млн ₽</b>
-          </div>
+          <div class="card-title">Основатель и CEO VIXI AI</div>
+          <div class="card-text">AI-платформа, выросшая в оценке в 2 раза за 2 года. Опыт вывода технологического продукта на рынок.</div>
+          <div class="ftl-metric"><svg class="ico-svg"><use href="#i-chart"/></svg>Forbes, 2024 — <b>500 млн ₽</b></div>
         </div>
         <div class="card ftl-item" data-reveal style="--d:.2s">
           <div class="ftl-item__dot">3</div>
-          <div class="card-eyebrow">2024 – настоящее время</div>
+          <div class="card-eyebrow">2024 – сейчас</div>
           <div class="card-title">Основатель ALBE DIGITAL</div>
           <div class="card-text">Диджитал-агентство полного цикла: разработка, маркетинг, продукт. Собственная команда, которая ведёт ALBE RENT.</div>
         </div>
@@ -1909,16 +1227,10 @@ html[data-theme="light"] .card::before{
   </div>
 </section>
 
-<!-- ============================================================
-     14 · TEAM + OFFICE
-     ============================================================ -->
 <section class="slide" id="slide-team" data-slide="14">
   <div class="slide__inner">
     <div class="slide-num"><b>14</b> — Команда и офис</div>
     <h2>Офис в <em>Санкт-Петербурге</em></h2>
-    <p class="slide-lead">
-      Юридическое лицо, команда и вся операционная деятельность — в Санкт-Петербурге. Инвестор получает личный доступ к отчётности, встречам и складу документов.
-    </p>
     <div class="office-grid">
       <div class="office-visual" data-reveal>
         <div class="office-pin">
@@ -1929,61 +1241,26 @@ html[data-theme="light"] .card::before{
       </div>
       <div>
         <div class="team-list">
-          <div class="card card--row" data-reveal>
-            <div class="card-ava">А</div>
-            <div>
-              <div class="card-title">Фаундер / CEO</div>
-              <div class="card-text">Стратегия, развитие, работа с инвесторами</div>
-            </div>
-          </div>
-          <div class="card card--row" data-reveal style="--d:.08s">
-            <div class="card-ava">Т</div>
-            <div>
-              <div class="card-title">CTO / Lead Developer</div>
-              <div class="card-text">Продукт, платформа, интеграции, мобильное приложение</div>
-            </div>
-          </div>
-          <div class="card card--row" data-reveal style="--d:.16s">
-            <div class="card-ava">М</div>
-            <div>
-              <div class="card-title">CMO / Маркетинг</div>
-              <div class="card-text">Performance-маркетинг, PR, блогеры, партнёрства</div>
-            </div>
-          </div>
-          <div class="card card--row" data-reveal style="--d:.24s">
-            <div class="card-ava">О</div>
-            <div>
-              <div class="card-title">COO / Операции</div>
-              <div class="card-text">Собственники, консьерж, клиентский сервис, юридика</div>
-            </div>
-          </div>
+          <div class="card card--row" data-reveal><div class="card-ava">А</div><div><div class="card-title">Фаундер / CEO</div><div class="card-text">Стратегия, развитие, работа с инвесторами</div></div></div>
+          <div class="card card--row" data-reveal style="--d:.08s"><div class="card-ava">Т</div><div><div class="card-title">CTO / Lead Developer</div><div class="card-text">Продукт, платформа, интеграции, мобильное приложение</div></div></div>
+          <div class="card card--row" data-reveal style="--d:.16s"><div class="card-ava">М</div><div><div class="card-title">CMO / Маркетинг</div><div class="card-text">Performance-маркетинг, PR, блогеры, партнёрства</div></div></div>
+          <div class="card card--row" data-reveal style="--d:.24s"><div class="card-ava">О</div><div><div class="card-title">COO / Операции</div><div class="card-text">Собственники, консьерж, клиентский сервис, юридика</div></div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     15 · CONTACT — только телефон, телеграм, сайт
-     ============================================================ -->
 <section class="slide" id="slide-contact" data-slide="15">
   <div class="slide__inner">
     <div class="cta-final" data-reveal>
       <div class="slide-num">15 — Контакты</div>
       <h2>Готовы обсудить <em>условия сделки</em></h2>
-      <p>
-        Свяжитесь с нами удобным способом, чтобы получить полную финансовую модель, договор и презентацию. Готовы встретиться лично в Санкт-Петербурге или провести онлайн-встречу.
-      </p>
+      <p>Свяжитесь удобным способом, чтобы получить полную финансовую модель, договор и презентацию. Готовы встретиться лично в Санкт-Петербурге или онлайн.</p>
       <div class="cta-final__actions">
-        <a href="tel:+79959870353" class="btn btn--grad">
-          <span class="btn__txt">+7 995 987-03-53</span>
-        </a>
-        <a href="https://t.me/albe_spb" target="_blank" rel="noopener" class="btn btn--ghost">
-          <span class="btn__txt">Телеграм · @albe_spb <svg class="ico-svg"><use href="#i-telegram"/></svg></span>
-        </a>
-        <a href="https://albe.su/alberent" target="_blank" rel="noopener" class="btn btn--ghost">
-          <span class="btn__txt">albe.su/alberent <svg class="ico-svg"><use href="#i-globe"/></svg></span>
-        </a>
+        <a href="tel:+79959870353" class="btn btn--grad"><span class="btn__txt">+7 995 987-03-53</span></a>
+        <a href="https://t.me/albe_spb" target="_blank" rel="noopener" class="btn btn--ghost"><span class="btn__txt">Телеграм · @albe_spb <svg class="ico-svg"><use href="#i-telegram"/></svg></span></a>
+        <a href="https://albe.su/alberent" target="_blank" rel="noopener" class="btn btn--ghost"><span class="btn__txt">albe.su/alberent <svg class="ico-svg"><use href="#i-globe"/></svg></span></a>
       </div>
       <div class="contact-row">
         <div class="contact-item"><small>Телефон</small><a href="tel:+79959870353">+7 995 987-03-53</a></div>
@@ -2021,17 +1298,96 @@ document.getElementById('themeToggle').addEventListener('click', () => {
 });
 
 const bar = document.getElementById('scrollProgress');
-let tick = false;
+const slides = Array.from(document.querySelectorAll('.slide'));
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const isMobileViewport = () => window.matchMedia('(max-width: 900px)').matches;
+
+let metrics = [];
+function measureSlides(){
+  const sy = window.scrollY || window.pageYOffset;
+  metrics = slides.map(el => {
+    const r = el.getBoundingClientRect();
+    const top = r.top + sy;
+    return { el, top, h: r.height, cy: top + r.height / 2 };
+  });
+}
+let lastY = -1;
+let rafId = 0;
+
+function updateSlides(){
+  rafId = 0;
+  if (reduceMotion.matches || isMobileViewport()) return;
+  const y = window.scrollY || window.pageYOffset;
+  if (Math.abs(y - lastY) < 0.5) return;
+  lastY = y;
+  const vh = window.innerHeight;
+  const vc = y + vh / 2;
+  const far = vh * 1.4;
+  for (let i = 0; i < metrics.length; i++){
+    const m = metrics[i];
+    const el = m.el;
+    const d = m.cy - vc;
+    const ad = Math.abs(d);
+    if (ad > far){
+      if (el._off !== true){
+        el.style.transform = '';
+        el.style.opacity = '';
+        el.style.willChange = 'auto';
+        el._off = true;
+        el._idle = true;
+        el._wg = false;
+      }
+      continue;
+    }
+    el._off = false;
+    const p = Math.max(-1, Math.min(1, d / vh));
+    const ap = Math.abs(p);
+    if (ap < 0.03){
+      if (el._idle !== true){
+        el.style.transform = '';
+        el.style.opacity = '';
+        el.style.willChange = 'auto';
+        el._idle = true;
+        el._wg = false;
+      }
+      continue;
+    }
+    el._idle = false;
+    if (!el._wg){
+      el.style.willChange = 'transform, opacity';
+      el._wg = true;
+    }
+    const rotX = p * -10;
+    const tz = -ap * 140;
+    const sc = 1 - ap * 0.07;
+    const op = Math.max(0, 1 - Math.max(0, ap - 0.4) * 1.4);
+    el.style.transform =
+      'translate3d(0,0,0) perspective(1400px) rotateX(' +
+      rotX.toFixed(2) + 'deg) translateZ(' +
+      tz.toFixed(1) + 'px) scale(' +
+      sc.toFixed(3) + ')';
+    el.style.opacity = op.toFixed(3);
+  }
+}
 function onScroll(){
   const h = document.documentElement;
   const max = h.scrollHeight - h.clientHeight;
-  bar.style.transform = 'scaleX(' + (max > 0 ? h.scrollTop/max : 0) + ')';
-  tick = false;
+  bar.style.transform = 'scaleX(' + (max > 0 ? h.scrollTop / max : 0) + ')';
+  if (!rafId) rafId = requestAnimationFrame(updateSlides);
 }
-addEventListener('scroll', () => { if (!tick){ tick = true; requestAnimationFrame(onScroll); } }, {passive:true});
+addEventListener('scroll', onScroll, { passive: true });
+addEventListener('resize', () => {
+  measureSlides();
+  lastY = -1;
+  onScroll();
+}, { passive: true });
+if (document.fonts && document.fonts.ready){
+  document.fonts.ready.then(measureSlides);
+}
+addEventListener('load', measureSlides);
+measureSlides();
 onScroll();
 
-const slides = Array.from(document.querySelectorAll('.slide'));
 const dotsWrap = document.getElementById('dots');
 slides.forEach((s, i) => {
   const a = document.createElement('a');
@@ -2042,7 +1398,6 @@ slides.forEach((s, i) => {
 });
 const dots = Array.from(dotsWrap.children);
 const slideNumEl = document.getElementById('slideNum');
-
 const io = new IntersectionObserver((entries) => {
   entries.forEach(en => {
     if (en.isIntersecting && en.intersectionRatio > 0.4){
