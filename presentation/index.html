@@ -43,50 +43,28 @@ html[data-theme="dark"]{
   --scrollbar-track:#05060A; --sel-txt:#04060A;
   --grain-opacity:.045; --corner-shadow:rgba(0,0,0,.5);
   --text-shadow-light:0 1px 2px rgba(0,0,0,.35);
+  --chip-bg:rgba(255,255,255,.03);
 
   --hero-veil-1:rgba(6,7,11,.55);
   --hero-veil-2:rgba(6,7,11,.22);
   --hero-veil-edge:rgba(6,7,11,.55);
 
-  /* ===== SEASONS SVG ===== */
-  --s-spring-sky:#3E5A7A;
-  --s-summer-sky:#1A4060;
-  --s-autumn-sky:#6B3A52;
-  --s-winter-sky:#1A2440;
-  --s-winter-sky-2:#080D1C;
-  --s-spring-ground:#4E8B5F;
-  --s-summer-ground:#2E6D4A;
-  --s-autumn-ground:#9A4E2A;
-  --s-winter-ground:#C8D8EA;
-  --s-winter-ground-2:#8BA0BC;
-  --s-sun-core:#FCE9A0;
-  --s-sun-glow:#FBBF24;
-  --s-moon-core:#EAF2FE;
-  --s-moon-glow:#7DD3FC;
+  --s-spring-sky:#3E5A7A; --s-summer-sky:#1A4060; --s-autumn-sky:#6B3A52;
+  --s-winter-sky:#1A2440; --s-winter-sky-2:#080D1C;
+  --s-spring-ground:#4E8B5F; --s-summer-ground:#2E6D4A; --s-autumn-ground:#9A4E2A;
+  --s-winter-ground:#C8D8EA; --s-winter-ground-2:#8BA0BC;
+  --s-sun-core:#FCE9A0; --s-sun-glow:#FBBF24;
+  --s-moon-core:#EAF2FE; --s-moon-glow:#7DD3FC;
   --s-star:#FFFFFF;
-  --s-mtn-far-top:#3A4866;
-  --s-mtn-far-bot:#1A2238;
-  --s-mtn-mid-top:#1E2A44;
-  --s-mtn-mid-bot:#0A101F;
-  --s-spring-blossom-1:#FFC0D9;
-  --s-spring-blossom-2:#FF9BC8;
-  --s-spring-trunk:#4A3020;
-  --s-summer-leaf-1:#3FA65B;
-  --s-summer-leaf-2:#2E8A47;
-  --s-summer-trunk:#4A3020;
-  --s-autumn-leaf-1:#E8903F;
-  --s-autumn-leaf-2:#C9432E;
-  --s-autumn-leaf-3:#E8B84B;
-  --s-autumn-trunk:#4A3020;
-  --s-winter-pine:#0E1526;
-  --s-snow:#EFF6FF;
+  --s-mtn-far-top:#3A4866; --s-mtn-far-bot:#1A2238;
+  --s-mtn-mid-top:#1E2A44; --s-mtn-mid-bot:#0A101F;
+  --s-spring-blossom-1:#FFC0D9; --s-spring-blossom-2:#FF9BC8; --s-spring-trunk:#4A3020;
+  --s-summer-leaf-1:#3FA65B; --s-summer-leaf-2:#2E8A47; --s-summer-trunk:#4A3020;
+  --s-autumn-leaf-1:#E8903F; --s-autumn-leaf-2:#C9432E; --s-autumn-leaf-3:#E8B84B; --s-autumn-trunk:#4A3020;
+  --s-winter-pine:#0E1526; --s-snow:#EFF6FF;
   --s-window:#FBBF24;
-  --s-petal:#FFB7D5;
-  --s-firefly:#FCD34D;
-  --s-leaf-fall:#E8903F;
-  --s-snowflake:#FFFFFF;
-  --s-aurora-1:#22D3EE;
-  --s-aurora-2:#A78BFA;
+  --s-petal:#FFB7D5; --s-firefly:#FCD34D; --s-leaf-fall:#E8903F; --s-snowflake:#FFFFFF;
+  --s-aurora-1:#22D3EE; --s-aurora-2:#A78BFA;
   --s-villa-bg:#2A1F18;
 }
 html[data-theme="light"]{
@@ -108,57 +86,39 @@ html[data-theme="light"]{
   --scrollbar-track:#F1F5F9; --sel-txt:#fff;
   --grain-opacity:.028; --corner-shadow:rgba(10,12,25,.25);
   --text-shadow-light:0 1px 2px rgba(0,0,0,.15);
+  --chip-bg:#F8FAFC;
 
   --hero-veil-1:rgba(255,255,255,.55);
   --hero-veil-2:rgba(255,255,255,.2);
   --hero-veil-edge:rgba(255,255,255,.4);
 
-  --s-spring-sky:#F5B8D5;
-  --s-summer-sky:#7FC8EA;
-  --s-autumn-sky:#F4A26E;
-  --s-winter-sky:#8FA8CB;
-  --s-winter-sky-2:#C8D4E8;
-  --s-spring-ground:#A8DBB0;
-  --s-summer-ground:#6FBA85;
-  --s-autumn-ground:#E8B47A;
-  --s-winter-ground:#FFFFFF;
-  --s-winter-ground-2:#E8EFF8;
-  --s-sun-core:#FFFFFF;
-  --s-sun-glow:#FCD34D;
-  --s-moon-core:#FFF7ED;
-  --s-moon-glow:#FDE68A;
+  --s-spring-sky:#F5B8D5; --s-summer-sky:#7FC8EA; --s-autumn-sky:#F4A26E;
+  --s-winter-sky:#8FA8CB; --s-winter-sky-2:#C8D4E8;
+  --s-spring-ground:#A8DBB0; --s-summer-ground:#6FBA85; --s-autumn-ground:#E8B47A;
+  --s-winter-ground:#FFFFFF; --s-winter-ground-2:#E8EFF8;
+  --s-sun-core:#FFFFFF; --s-sun-glow:#FCD34D;
+  --s-moon-core:#FFF7ED; --s-moon-glow:#FDE68A;
   --s-star:#94A3B8;
-  --s-mtn-far-top:#B8C8DC;
-  --s-mtn-far-bot:#DCE5F0;
-  --s-mtn-mid-top:#8FA8C0;
-  --s-mtn-mid-bot:#B8C8DC;
-  --s-spring-blossom-1:#FFD5E5;
-  --s-spring-blossom-2:#FFB8D3;
-  --s-spring-trunk:#6B4530;
-  --s-summer-leaf-1:#5FBF75;
-  --s-summer-leaf-2:#3FA65B;
-  --s-summer-trunk:#6B4530;
-  --s-autumn-leaf-1:#F4A85A;
-  --s-autumn-leaf-2:#E85D4A;
-  --s-autumn-leaf-3:#F4CE68;
-  --s-autumn-trunk:#6B4530;
-  --s-winter-pine:#334155;
-  --s-snow:#FFFFFF;
+  --s-mtn-far-top:#B8C8DC; --s-mtn-far-bot:#DCE5F0;
+  --s-mtn-mid-top:#8FA8C0; --s-mtn-mid-bot:#B8C8DC;
+  --s-spring-blossom-1:#FFD5E5; --s-spring-blossom-2:#FFB8D3; --s-spring-trunk:#6B4530;
+  --s-summer-leaf-1:#5FBF75; --s-summer-leaf-2:#3FA65B; --s-summer-trunk:#6B4530;
+  --s-autumn-leaf-1:#F4A85A; --s-autumn-leaf-2:#E85D4A; --s-autumn-leaf-3:#F4CE68; --s-autumn-trunk:#6B4530;
+  --s-winter-pine:#334155; --s-snow:#FFFFFF;
   --s-window:#F59E0B;
-  --s-petal:#FFC0D9;
-  --s-firefly:#F59E0B;
-  --s-leaf-fall:#F4A85A;
-  --s-snowflake:#FFFFFF;
-  --s-aurora-1:#67E8F9;
-  --s-aurora-2:#C4B5FD;
+  --s-petal:#FFC0D9; --s-firefly:#F59E0B; --s-leaf-fall:#F4A85A; --s-snowflake:#FFFFFF;
+  --s-aurora-1:#67E8F9; --s-aurora-2:#C4B5FD;
   --s-villa-bg:#4A3928;
 }
 
 :root{
   --grad:linear-gradient(100deg,var(--c1) 0%,var(--c2) 46%,var(--c3) 100%);
   --ease:cubic-bezier(.19,1,.22,1);
-  --page-x:40px;
+  --page-x:80px;
 }
+@media(max-width:1200px){:root{--page-x:48px}}
+@media(max-width:800px){:root{--page-x:24px}}
+@media(max-width:520px){:root{--page-x:16px}}
 
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scrollbar-gutter:stable}
 html,body{height:100%}
@@ -182,7 +142,6 @@ button{font-family:inherit;border:none;background:none;color:inherit;cursor:poin
   html{scrollbar-width:thin;scrollbar-color:var(--c3) var(--scrollbar-track)}
 }
 
-/* ===== UTILS ===== */
 .grad-text{
   background:linear-gradient(100deg,var(--c1),var(--c2) 40%,var(--c3) 75%,var(--c4));
   background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
@@ -205,7 +164,6 @@ button{font-family:inherit;border:none;background:none;color:inherit;cursor:poin
 .ico-svg{display:inline-block;vertical-align:middle;flex-shrink:0}
 svg{display:block}
 
-/* ===== NAV — 40px paddings ===== */
 .nav{
   position:fixed;top:0;left:0;right:0;z-index:900;
   display:flex;align-items:center;justify-content:space-between;gap:20px;
@@ -238,7 +196,6 @@ svg{display:block}
 html[data-theme="light"] .theme-toggle .ico-moon{display:block}
 html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 
-/* ===== SIDE DOTS ===== */
 .dots{
   position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:880;
   display:flex;flex-direction:column;gap:14px;
@@ -264,7 +221,6 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 }
 @media(max-width:900px){.dots{display:none}}
 
-/* ===== BUTTONS ===== */
 .btn{
   position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;
   font-family:'Unbounded',sans-serif;font-weight:500;font-size:13px;
@@ -285,7 +241,6 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 .btn__txt{position:relative;z-index:2;display:flex;align-items:center;gap:10px}
 .btn__txt svg{width:14px;height:14px}
 
-/* ===== SLIDES — 40px paddings, контент от краёв ===== */
 main{padding-top:0}
 .slide{
   position:relative;
@@ -329,15 +284,8 @@ main{padding-top:0}
   display:flex;align-items:center;justify-content:center;
   overflow:hidden;
 }
-.cover__scene{
-  position:absolute;inset:0;z-index:0;
-  pointer-events:none;overflow:hidden;
-}
-.cover__scene svg{
-  position:absolute;inset:0;
-  width:100%;height:100%;
-  display:block;
-}
+.cover__scene{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.cover__scene svg{position:absolute;inset:0;width:100%;height:100%;display:block}
 .cover__veil{
   position:absolute;inset:0;z-index:1;pointer-events:none;
   background:
@@ -349,8 +297,7 @@ main{padding-top:0}
 .cover__eyebrow{
   display:inline-flex;align-items:center;gap:12px;
   padding:10px 20px 10px 14px;border-radius:100px;
-  background:var(--panel-bg);
-  border:1px solid var(--line-2);
+  background:var(--panel-bg);border:1px solid var(--line-2);
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--mut);
   margin-bottom:40px;
@@ -365,8 +312,7 @@ main{padding-top:0}
   font-family:'Unbounded',sans-serif;font-weight:800;
   font-size:clamp(38px,7.5vw,108px);line-height:.94;
   letter-spacing:-.04em;text-transform:uppercase;
-  color:var(--txt-h);
-  margin-bottom:28px;
+  color:var(--txt-h);margin-bottom:28px;
   text-shadow:0 4px 30px rgba(0,0,0,.25);
 }
 .cover__title em{font-style:normal;font-weight:300;color:var(--c2)}
@@ -393,8 +339,7 @@ main{padding-top:0}
 .cover__seasons{
   position:absolute;left:var(--page-x);right:var(--page-x);
   bottom:clamp(40px,6vh,70px);z-index:2;
-  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
-  pointer-events:none;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;pointer-events:none;
 }
 .cover__seasons span{
   font-family:'Unbounded',sans-serif;font-size:12px;font-weight:600;
@@ -403,9 +348,7 @@ main{padding-top:0}
   display:flex;flex-direction:column;align-items:center;gap:8px;
   text-shadow:0 1px 12px rgba(0,0,0,.4);
 }
-.cover__seasons span::before{
-  content:'';width:32px;height:1px;background:currentColor;opacity:.5;
-}
+.cover__seasons span::before{content:'';width:32px;height:1px;background:currentColor;opacity:.5}
 @media(max-width:700px){.cover__seasons{display:none}}
 .cover__scroll{
   position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
@@ -421,7 +364,6 @@ main{padding-top:0}
 @keyframes scrollLine{0%{transform:scaleY(0)}45%{transform:scaleY(1)}100%{transform:scaleY(0);transform-origin:bottom}}
 @media(max-width:700px){.cover__scroll{display:none}}
 
-/* ===== SEASON SVG ANIMATIONS ===== */
 .s-tw{transform-box:fill-box;transform-origin:center;animation:twinkle var(--dur,4s) ease-in-out infinite;animation-delay:var(--delay,0s)}
 @keyframes twinkle{0%,100%{opacity:.15;transform:scale(.75)}50%{opacity:1;transform:scale(1.15)}}
 .s-aur{transform-origin:50% 50%;animation:auroraSway 26s ease-in-out infinite}
@@ -429,8 +371,7 @@ main{padding-top:0}
 .s-petal{transform-box:fill-box;animation:petalFall var(--dur,12s) linear infinite;animation-delay:var(--delay,0s)}
 @keyframes petalFall{
   0%{transform:translate(0,-60px) rotate(0deg);opacity:0}
-  10%{opacity:1}
-  90%{opacity:1}
+  10%{opacity:1}90%{opacity:1}
   100%{transform:translate(var(--dx,40px),900px) rotate(360deg);opacity:0}
 }
 .s-firefly{transform-box:fill-box;transform-origin:center;animation:fireflyFloat var(--dur,14s) ease-in-out infinite;animation-delay:var(--delay,0s);filter:drop-shadow(0 0 4px rgba(252,211,77,.7))}
@@ -441,19 +382,16 @@ main{padding-top:0}
 .s-leaf{transform-box:fill-box;animation:leafFall var(--dur,13s) linear infinite;animation-delay:var(--delay,0s)}
 @keyframes leafFall{
   0%{transform:translate(0,-60px) rotate(0deg);opacity:0}
-  10%{opacity:1}
-  90%{opacity:1}
+  10%{opacity:1}90%{opacity:1}
   100%{transform:translate(var(--dx,60px),900px) rotate(-540deg);opacity:0}
 }
 .s-snowflake{transform-box:fill-box;animation:snowFall var(--dur,15s) linear infinite;animation-delay:var(--delay,0s)}
 @keyframes snowFall{
   0%{transform:translate(0,-60px);opacity:0}
-  10%{opacity:1}
-  90%{opacity:1}
+  10%{opacity:1}90%{opacity:1}
   100%{transform:translate(var(--dx,30px),900px);opacity:0}
 }
 
-/* ===== SLIDE PRODUCT — BROWSER FRAME ===== */
 .product-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px);align-items:center}
 .product-copy{display:flex;flex-direction:column;gap:16px}
 .product-copy h3{font-family:'Unbounded',sans-serif;font-size:clamp(20px,2vw,26px);font-weight:600;letter-spacing:-.015em;color:var(--txt-h);margin-bottom:8px}
@@ -474,7 +412,6 @@ main{padding-top:0}
 .product-feat__txt span{font-size:14px;color:var(--mut);line-height:1.5}
 @media(max-width:960px){.product-grid{grid-template-columns:1fr}}
 
-/* ===== BROWSER FRAME ===== */
 .browser-frame{
   position:relative;
   border-radius:16px;overflow:hidden;
@@ -525,7 +462,6 @@ main{padding-top:0}
   border:0;background:var(--bg);
 }
 
-/* ===== SLIDE INVEST (hero numbers) ===== */
 .invest-hero{
   display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,28px);
   margin-bottom:clamp(32px,5vh,56px);
@@ -582,7 +518,6 @@ main{padding-top:0}
 }
 .invest-cta__txt span{font-size:15px;color:var(--mut)}
 
-/* ===== STATS ROW (traction) ===== */
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.8vw,22px);margin-top:clamp(24px,4vh,40px)}
 @media(max-width:800px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
 .stat-card{
@@ -607,7 +542,6 @@ main{padding-top:0}
   line-height:1.4;
 }
 
-/* ===== USE OF FUNDS ===== */
 .funds-grid{display:grid;grid-template-columns:auto 1fr;gap:clamp(32px,5vw,64px);align-items:center}
 @media(max-width:800px){.funds-grid{grid-template-columns:1fr;text-align:center;justify-items:center}}
 .donut-wrap{position:relative;width:clamp(220px,28vw,320px);height:clamp(220px,28vw,320px);flex-shrink:0}
@@ -650,7 +584,6 @@ main{padding-top:0}
   color:var(--c2);
 }
 
-/* ===== FINANCIAL CHART ===== */
 .chart-wrap{
   padding:clamp(20px,3vw,32px);
   border-radius:24px;background:var(--card-bg);border:1px solid var(--line);
@@ -664,7 +597,6 @@ main{padding-top:0}
 .legend-swatch--profit{background:var(--c3)}
 .chart{width:100%;height:auto;display:block;overflow:visible}
 
-/* ===== ROADMAP ===== */
 .roadmap{
   display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,2vw,20px);
   position:relative;
@@ -702,7 +634,6 @@ main{padding-top:0}
 }
 .rm-item p{font-size:14px;color:var(--mut);line-height:1.6}
 
-/* ===== TEAM / OFFICE ===== */
 .office-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,4vw,48px);align-items:center}
 @media(max-width:900px){.office-grid{grid-template-columns:1fr}}
 .office-visual{
@@ -754,6 +685,119 @@ main{padding-top:0}
 .team-item__txt b{display:block;font-size:15.5px;font-weight:700;color:var(--txt-h);margin-bottom:2px}
 .team-item__txt span{font-size:14px;color:var(--mut)}
 
+/* ===== FOUNDER ===== */
+.founder-grid{
+  display:grid;
+  grid-template-columns:minmax(0,.95fr) minmax(0,1.35fr);
+  gap:clamp(24px,4vw,56px);
+  align-items:start;
+}
+@media(max-width:960px){.founder-grid{grid-template-columns:1fr}}
+
+.founder-card{
+  position:relative;overflow:hidden;
+  padding:clamp(28px,3.5vw,40px);
+  border-radius:24px;
+  background:linear-gradient(160deg,rgba(var(--c1-rgb),.09),rgba(var(--c3-rgb),.09));
+  border:1px solid rgba(var(--c1-rgb),.22);
+  text-align:center;
+}
+.founder-card::before{
+  content:'';position:absolute;top:-1px;left:0;right:0;height:2px;
+  background:var(--grad);opacity:.9;
+}
+
+/* Founder photo */
+.founder-photo{
+  width:180px;height:180px;border-radius:50%;
+  margin:0 auto 24px;
+  overflow:hidden;
+  position:relative;
+  background:var(--grad);background-size:200%;
+  box-shadow:0 22px 44px -14px rgba(var(--c1-rgb),.6),0 0 0 4px rgba(var(--c1-rgb),.14);
+  animation:gradShift 8s ease infinite;
+}
+.founder-photo img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform 1s var(--ease);
+}
+.founder-photo:hover img{transform:scale(1.06)}
+
+.founder-name{
+  font-family:'Unbounded',sans-serif;font-size:clamp(19px,2.1vw,25px);
+  font-weight:700;letter-spacing:-.02em;color:var(--txt-h);line-height:1.2;
+  margin-bottom:8px;
+}
+.founder-role{font-size:14.5px;color:var(--mut);margin-bottom:22px;line-height:1.5}
+.founder-tags{
+  display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:24px;
+}
+.founder-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:7px 13px;border-radius:100px;
+  background:var(--chip-bg);
+  border:1px solid var(--line);
+  font-size:12.5px;font-weight:600;color:var(--txt);
+}
+.founder-tag svg{width:13px;height:13px;color:var(--c2)}
+.founder-edu{
+  padding-top:20px;border-top:1px solid var(--line);
+  display:flex;flex-direction:column;gap:12px;text-align:left;
+}
+.founder-edu-row{display:flex;align-items:flex-start;gap:11px}
+.founder-edu-row svg{width:16px;height:16px;color:var(--c2);flex-shrink:0;margin-top:3px}
+.founder-edu-row b{display:block;font-size:14.5px;font-weight:700;color:var(--txt-h);line-height:1.35;margin-bottom:2px}
+.founder-edu-row span{font-size:13px;color:var(--mut);line-height:1.45;display:block}
+
+.founder-timeline{display:flex;flex-direction:column;gap:16px;position:relative}
+.ftl-item{
+  position:relative;padding:20px 22px 20px 62px;
+  border-radius:18px;
+  background:var(--card-bg);border:1px solid var(--line);
+  transition:transform .4s var(--ease),border-color .4s var(--ease),box-shadow .4s var(--ease);
+}
+.ftl-item:hover{transform:translateY(-3px);border-color:rgba(var(--c1-rgb),.35);box-shadow:var(--card-shadow-h)}
+.ftl-item__dot{
+  position:absolute;left:22px;top:22px;
+  width:24px;height:24px;border-radius:50%;
+  display:grid;place-items:center;
+  background:var(--grad);background-size:200%;
+  color:#fff;font-family:'Unbounded',sans-serif;font-weight:800;font-size:11px;
+  box-shadow:0 0 16px rgba(var(--c1-rgb),.55);
+  text-shadow:var(--text-shadow-light);
+  z-index:2;
+  animation:gradShift 8s ease infinite;
+}
+.ftl-item::before{
+  content:'';position:absolute;left:33.5px;top:46px;bottom:-18px;width:1px;
+  background:linear-gradient(180deg,rgba(var(--c1-rgb),.5),transparent);
+}
+.ftl-item:last-child::before{display:none}
+.ftl-item__period{
+  font-family:'Unbounded',sans-serif;font-size:12px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--c2);
+  margin-bottom:6px;
+}
+.ftl-item h4{
+  font-family:'Unbounded',sans-serif;font-size:16px;font-weight:600;
+  color:var(--txt-h);letter-spacing:-.015em;line-height:1.3;margin-bottom:6px;
+}
+.ftl-item p{font-size:14px;color:var(--mut);line-height:1.6}
+.ftl-item__metric{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:12px;padding:7px 13px;
+  border-radius:100px;
+  background:linear-gradient(135deg,rgba(var(--c1-rgb),.14),rgba(var(--c3-rgb),.14));
+  border:1px solid rgba(var(--c1-rgb),.28);
+  font-size:12.5px;font-weight:700;color:var(--txt-h);
+}
+.ftl-item__metric b{
+  font-family:'Unbounded',sans-serif;font-size:13px;font-weight:800;
+  background:var(--grad);background-size:200%;-webkit-background-clip:text;background-clip:text;
+  color:transparent;animation:gradShift 8s ease infinite;
+}
+.ftl-item__metric svg{width:13px;height:13px;color:var(--c2)}
+
 /* ===== CTA FINAL ===== */
 .cta-final{
   padding:clamp(36px,6vw,64px);
@@ -784,7 +828,6 @@ main{padding-top:0}
 }
 .contact-item a:hover{color:var(--c2)}
 
-/* ===== FOOTER — 40px paddings ===== */
 .footer-slide{
   padding:40px var(--page-x);
   border-top:1px solid var(--line);
@@ -794,13 +837,12 @@ main{padding-top:0}
 }
 .footer-slide a:hover{color:var(--c2)}
 
-/* ===== RESPONSIVE ===== */
 @media(max-width:640px){
   .browser-iframe{height:380px}
   .invest-hero{gap:12px}
+  .founder-photo{width:150px;height:150px}
 }
 
-/* ===== REVEAL ===== */
 [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
 [data-reveal].in{opacity:1;transform:none}
 
@@ -834,6 +876,9 @@ main{padding-top:0}
     <symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M8 7h2M14 7h2M8 11h2M14 11h2M8 15h2M14 15h2M10 21v-3h4v3"/></symbol>
     <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M22 20V6"/></symbol>
     <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></symbol>
+    <symbol id="i-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L7 21l5-3 5 3-1.5-8.5"/></symbol>
+    <symbol id="i-graduation" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.1 2.7 2.5 6 2.5s6-1.4 6-2.5v-5"/></symbol>
+    <symbol id="i-rocket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4c3 0 5 2 5 5l-4 4-3 3-4-4 3-3zM9 12L4 17l3-1 1 3 5-5"/><circle cx="15" cy="9" r="1.3" fill="currentColor"/></symbol>
   </defs>
 </svg>
 
@@ -855,7 +900,7 @@ main{padding-top:0}
     <span class="logo__text">ALBE<em>RENT</em></span>
   </a>
   <div class="nav__right">
-    <div class="nav__counter"><b id="slideNum">01</b><span>/ 13</span></div>
+    <div class="nav__counter"><b id="slideNum">01</b><span>/ 14</span></div>
     <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
       <svg class="ico-svg ico-sun"><use href="#i-sun"/></svg>
       <svg class="ico-svg ico-moon"><use href="#i-moon"/></svg>
@@ -868,27 +913,22 @@ main{padding-top:0}
 
 <main>
 
-  <!-- 01 · COVER with 4 SEASONS -->
+  <!-- 01 · COVER -->
   <section class="slide slide--cover" id="slide-cover" data-slide="01">
     <div class="cover__scene" aria-hidden="true">
       <svg viewBox="0 0 2400 1080" preserveAspectRatio="xMidYMax slice">
         <defs>
           <linearGradient id="sSkyH" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="var(--s-spring-sky)"/>
-            <stop offset=".28" stop-color="var(--s-summer-sky)"/>
-            <stop offset=".52" stop-color="var(--s-autumn-sky)"/>
-            <stop offset=".76" stop-color="var(--s-winter-sky)"/>
+            <stop offset="0" stop-color="var(--s-spring-sky)"/><stop offset=".28" stop-color="var(--s-summer-sky)"/>
+            <stop offset=".52" stop-color="var(--s-autumn-sky)"/><stop offset=".76" stop-color="var(--s-winter-sky)"/>
             <stop offset="1" stop-color="var(--s-winter-sky-2)"/>
           </linearGradient>
           <linearGradient id="sSkyDark" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#000" stop-opacity=".55"/>
-            <stop offset=".55" stop-color="#000" stop-opacity="0"/>
+            <stop offset="0" stop-color="#000" stop-opacity=".55"/><stop offset=".55" stop-color="#000" stop-opacity="0"/>
           </linearGradient>
           <linearGradient id="sGround" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="var(--s-spring-ground)"/>
-            <stop offset=".28" stop-color="var(--s-summer-ground)"/>
-            <stop offset=".52" stop-color="var(--s-autumn-ground)"/>
-            <stop offset=".76" stop-color="var(--s-winter-ground)"/>
+            <stop offset="0" stop-color="var(--s-spring-ground)"/><stop offset=".28" stop-color="var(--s-summer-ground)"/>
+            <stop offset=".52" stop-color="var(--s-autumn-ground)"/><stop offset=".76" stop-color="var(--s-winter-ground)"/>
             <stop offset="1" stop-color="var(--s-winter-ground-2)"/>
           </linearGradient>
           <radialGradient id="sSunGlow">
@@ -907,16 +947,13 @@ main{padding-top:0}
             <stop offset="1" stop-color="var(--s-aurora-2)" stop-opacity="0"/>
           </linearGradient>
           <linearGradient id="sMtnFar" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="var(--s-mtn-far-top)"/>
-            <stop offset="1" stop-color="var(--s-mtn-far-bot)"/>
+            <stop offset="0" stop-color="var(--s-mtn-far-top)"/><stop offset="1" stop-color="var(--s-mtn-far-bot)"/>
           </linearGradient>
           <linearGradient id="sMtnMid" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="var(--s-mtn-mid-top)"/>
-            <stop offset="1" stop-color="var(--s-mtn-mid-bot)"/>
+            <stop offset="0" stop-color="var(--s-mtn-mid-top)"/><stop offset="1" stop-color="var(--s-mtn-mid-bot)"/>
           </linearGradient>
           <radialGradient id="sWindow">
-            <stop offset="0" stop-color="var(--s-window)" stop-opacity=".8"/>
-            <stop offset="1" stop-color="var(--s-window)" stop-opacity="0"/>
+            <stop offset="0" stop-color="var(--s-window)" stop-opacity=".8"/><stop offset="1" stop-color="var(--s-window)" stop-opacity="0"/>
           </radialGradient>
         </defs>
 
@@ -946,17 +983,10 @@ main{padding-top:0}
         <circle cx="2175" cy="272" r="5" fill="var(--s-moon-glow)" opacity=".35"/>
         <circle cx="2155" cy="278" r="3.5" fill="var(--s-moon-glow)" opacity=".3"/>
 
-        <path fill="url(#sMtnFar)" opacity=".85"
-              d="M0 640 C 200 480, 380 450, 560 570 C 740 470, 940 450, 1140 580 C 1340 480, 1520 470, 1700 590 C 1880 510, 2060 490, 2240 610 C 2320 570, 2380 580, 2400 620 L2400 1080 L0 1080 Z"/>
-
-        <path fill="url(#sMtnMid)"
-              d="M0 780 C 200 680, 400 640, 600 740 C 800 640, 1000 620, 1200 740 C 1400 660, 1600 640, 1800 760 C 2000 680, 2200 660, 2400 780 L2400 1080 L0 1080 Z"/>
-
-        <path fill="url(#sGround)"
-              d="M0 880 C 200 850, 400 870, 600 862 C 800 850, 1000 872, 1200 866 C 1400 856, 1600 882, 1800 876 C 2000 866, 2200 890, 2400 882 L2400 1080 L0 1080 Z"/>
-
-        <path fill="var(--s-snow)" opacity=".55"
-              d="M1800 876 C 2000 866, 2200 890, 2400 882 L2400 1080 L1800 1080 Z"/>
+        <path fill="url(#sMtnFar)" opacity=".85" d="M0 640 C 200 480, 380 450, 560 570 C 740 470, 940 450, 1140 580 C 1340 480, 1520 470, 1700 590 C 1880 510, 2060 490, 2240 610 C 2320 570, 2380 580, 2400 620 L2400 1080 L0 1080 Z"/>
+        <path fill="url(#sMtnMid)" d="M0 780 C 200 680, 400 640, 600 740 C 800 640, 1000 620, 1200 740 C 1400 660, 1600 640, 1800 760 C 2000 680, 2200 660, 2400 780 L2400 1080 L0 1080 Z"/>
+        <path fill="url(#sGround)" d="M0 880 C 200 850, 400 870, 600 862 C 800 850, 1000 872, 1200 866 C 1400 856, 1600 882, 1800 876 C 2000 866, 2200 890, 2400 882 L2400 1080 L0 1080 Z"/>
+        <path fill="var(--s-snow)" opacity=".55" d="M1800 876 C 2000 866, 2200 890, 2400 882 L2400 1080 L1800 1080 Z"/>
 
         <g fill="var(--s-snow)" opacity=".5">
           <path d="M2060 490 L2100 530 L2140 505 L2180 540 L2120 560 L2080 530 L2060 545 Z"/>
@@ -987,7 +1017,6 @@ main{padding-top:0}
           <circle cx="60" cy="-200" r="68" fill="var(--s-summer-leaf-1)"/>
           <circle cx="-25" cy="-270" r="52" fill="var(--s-summer-leaf-2)"/>
         </g>
-
         <g transform="translate(930,900)">
           <ellipse cx="0" cy="42" rx="130" ry="14" fill="rgba(0,0,0,.4)"/>
           <rect x="-105" y="-65" width="210" height="105" fill="var(--s-villa-bg)"/>
@@ -1000,7 +1029,6 @@ main{padding-top:0}
           <circle cx="56" cy="-24" r="55" fill="url(#sWindow)" opacity=".45"/>
           <rect x="76" y="-135" width="20" height="42" fill="var(--s-villa-bg)"/>
         </g>
-
         <g transform="translate(1130,885) scale(.7)">
           <rect x="-11" y="-170" width="22" height="170" fill="var(--s-summer-trunk)"/>
           <circle cx="0" cy="-225" r="82" fill="var(--s-summer-leaf-1)"/>
@@ -1053,7 +1081,6 @@ main{padding-top:0}
           <circle class="s-petal" cx="200" cy="0" r="3.5" style="--dur:14s;--delay:-4.5s;--dx:-25px"/>
           <circle class="s-petal" cx="620" cy="0" r="4" style="--dur:17s;--delay:-9s;--dx:35px"/>
         </g>
-
         <g fill="var(--s-firefly)">
           <circle class="s-firefly" cx="720" cy="700" r="2.4" style="--dur:14s;--delay:-2s;--dx:22px;--dy:-30px"/>
           <circle class="s-firefly" cx="830" cy="720" r="2.8" style="--dur:16s;--delay:-5s;--dx:-16px;--dy:-38px"/>
@@ -1062,7 +1089,6 @@ main{padding-top:0}
           <circle class="s-firefly" cx="1150" cy="700" r="2.3" style="--dur:13s;--delay:-3s;--dx:18px;--dy:-28px"/>
           <circle class="s-firefly" cx="790" cy="660" r="2.5" style="--dur:17s;--delay:-6s;--dx:-14px;--dy:-34px"/>
         </g>
-
         <g fill="var(--s-leaf-fall)">
           <circle class="s-leaf" cx="1280" cy="0" r="5" style="--dur:13s;--delay:-2s;--dx:60px"/>
           <circle class="s-leaf" cx="1380" cy="0" r="4" style="--dur:15s;--delay:-5s;--dx:-40px"/>
@@ -1071,7 +1097,6 @@ main{padding-top:0}
           <circle class="s-leaf" cx="1680" cy="0" r="4" style="--dur:14s;--delay:-3s;--dx:45px"/>
           <circle class="s-leaf" cx="1740" cy="0" r="4.5" style="--dur:11s;--delay:-6.5s;--dx:-35px"/>
         </g>
-
         <g fill="var(--s-snowflake)">
           <circle class="s-snowflake" cx="1850" cy="0" r="3.5" style="--dur:14s;--delay:-2s;--dx:30px"/>
           <circle class="s-snowflake" cx="1930" cy="0" r="2.8" style="--dur:11s;--delay:-5s;--dx:-20px"/>
@@ -1089,9 +1114,7 @@ main{padding-top:0}
 
     <div class="cover__inner">
       <div class="cover__eyebrow"><span class="dot"></span>Инвестиционное предложение · 2026</div>
-      <h1 class="cover__title">
-        ALBE <em>RENT</em>
-      </h1>
+      <h1 class="cover__title">ALBE <em>RENT</em></h1>
       <p class="cover__sub">
         Премиальный сервис бронирования загородной недвижимости по всей России.
         Привлекаем инвестиции для масштабирования — готовая команда, продукт и трафик.
@@ -1104,10 +1127,7 @@ main{padding-top:0}
     </div>
 
     <div class="cover__seasons" aria-hidden="true">
-      <span>Весна</span>
-      <span>Лето</span>
-      <span>Осень</span>
-      <span>Зима</span>
+      <span>Весна</span><span>Лето</span><span>Осень</span><span>Зима</span>
     </div>
 
     <div class="cover__scroll"><i></i>Листайте</div>
@@ -1122,22 +1142,10 @@ main{padding-top:0}
         ALBE RENT — платформа, которая объединяет тысячи проверенных резиденций, шале и вилл в единый сервис с прозрачными условиями, мгновенным подтверждением брони и персональным консьержем 24/7.
       </p>
       <div class="stats-grid">
-        <div class="stat-card" data-reveal>
-          <div class="stat-card__value">10 400+</div>
-          <div class="stat-card__label">объектов в каталоге</div>
-        </div>
-        <div class="stat-card" data-reveal style="--d:.08s">
-          <div class="stat-card__value">85</div>
-          <div class="stat-card__label">регионов России</div>
-        </div>
-        <div class="stat-card" data-reveal style="--d:.16s">
-          <div class="stat-card__value">8</div>
-          <div class="stat-card__label">федеральных округов</div>
-        </div>
-        <div class="stat-card" data-reveal style="--d:.24s">
-          <div class="stat-card__value">4.8</div>
-          <div class="stat-card__label">средний рейтинг</div>
-        </div>
+        <div class="stat-card" data-reveal><div class="stat-card__value">10 400+</div><div class="stat-card__label">объектов в каталоге</div></div>
+        <div class="stat-card" data-reveal style="--d:.08s"><div class="stat-card__value">85</div><div class="stat-card__label">регионов России</div></div>
+        <div class="stat-card" data-reveal style="--d:.16s"><div class="stat-card__value">8</div><div class="stat-card__label">федеральных округов</div></div>
+        <div class="stat-card" data-reveal style="--d:.24s"><div class="stat-card__value">4.8</div><div class="stat-card__label">средний рейтинг</div></div>
       </div>
     </div>
   </section>
@@ -1156,24 +1164,15 @@ main{padding-top:0}
           <div class="product-features">
             <div class="product-feat" data-reveal>
               <div class="product-feat__ico"><svg class="ico-svg"><use href="#i-sparkle"/></svg></div>
-              <div class="product-feat__txt">
-                <b>Премиальный дизайн</b>
-                <span>Тёмная/светлая темы, анимации, ощущение luxury-сервиса</span>
-              </div>
+              <div class="product-feat__txt"><b>Премиальный дизайн</b><span>Тёмная/светлая темы, анимации, ощущение luxury-сервиса</span></div>
             </div>
             <div class="product-feat" data-reveal style="--d:.08s">
               <div class="product-feat__ico"><svg class="ico-svg"><use href="#i-bolt"/></svg></div>
-              <div class="product-feat__txt">
-                <b>Мгновенное подтверждение</b>
-                <span>Интеграция с календарями собственников и CRM</span>
-              </div>
+              <div class="product-feat__txt"><b>Мгновенное подтверждение</b><span>Интеграция с календарями собственников и CRM</span></div>
             </div>
             <div class="product-feat" data-reveal style="--d:.16s">
               <div class="product-feat__ico"><svg class="ico-svg"><use href="#i-shield"/></svg></div>
-              <div class="product-feat__txt">
-                <b>Верификация объектов</b>
-                <span>Личная проверка каждого дома перед публикацией</span>
-              </div>
+              <div class="product-feat__txt"><b>Верификация объектов</b><span>Личная проверка каждого дома перед публикацией</span></div>
             </div>
           </div>
         </div>
@@ -1211,24 +1210,15 @@ main{padding-top:0}
           <div class="product-features">
             <div class="product-feat">
               <div class="product-feat__ico"><svg class="ico-svg"><use href="#i-target"/></svg></div>
-              <div class="product-feat__txt">
-                <b>Фильтры по 85 регионам</b>
-                <span>Цена, гости, спальни, рейтинг, удобства, тип жилья</span>
-              </div>
+              <div class="product-feat__txt"><b>Фильтры по 85 регионам</b><span>Цена, гости, спальни, рейтинг, удобства, тип жилья</span></div>
             </div>
             <div class="product-feat">
               <div class="product-feat__ico"><svg class="ico-svg"><use href="#i-users"/></svg></div>
-              <div class="product-feat__txt">
-                <b>Карточки объектов</b>
-                <span>Галерея, карта, отзывы, характеристики, 3D-тур</span>
-              </div>
+              <div class="product-feat__txt"><b>Карточки объектов</b><span>Галерея, карта, отзывы, характеристики, 3D-тур</span></div>
             </div>
             <div class="product-feat">
               <div class="product-feat__ico"><svg class="ico-svg"><use href="#i-check"/></svg></div>
-              <div class="product-feat__txt">
-                <b>Бесшовная бронь</b>
-                <span>Оплата, подтверждение и заселение без звонков</span>
-              </div>
+              <div class="product-feat__txt"><b>Бесшовная бронь</b><span>Оплата, подтверждение и заселение без звонков</span></div>
             </div>
           </div>
         </div>
@@ -1245,22 +1235,10 @@ main{padding-top:0}
         После 2022 года внутренний туризм в России вырос на 40%+, а спрос на премиальную загородную аренду опережает предложение. Клиенты готовы платить за сервис — привычка к Airbnb переходит на локальные платформы.
       </p>
       <div class="stats-grid">
-        <div class="stat-card" data-reveal>
-          <div class="stat-card__value">250 млрд ₽</div>
-          <div class="stat-card__label">TAM · рынок краткосрочной аренды загородной недвижимости РФ / год</div>
-        </div>
-        <div class="stat-card" data-reveal style="--d:.08s">
-          <div class="stat-card__value">45 млрд ₽</div>
-          <div class="stat-card__label">SAM · премиум-сегмент (10 400+ объектов, ср. чек 25 000 ₽)</div>
-        </div>
-        <div class="stat-card" data-reveal style="--d:.16s">
-          <div class="stat-card__value">1.5 млрд ₽</div>
-          <div class="stat-card__label">SOM · целевая доля ALBE RENT к 2027 году</div>
-        </div>
-        <div class="stat-card" data-reveal style="--d:.24s">
-          <div class="stat-card__value">+34%</div>
-          <div class="stat-card__label">годовой рост категории в премиум-сегменте</div>
-        </div>
+        <div class="stat-card" data-reveal><div class="stat-card__value">250 млрд ₽</div><div class="stat-card__label">TAM · рынок краткосрочной аренды загородной недвижимости РФ / год</div></div>
+        <div class="stat-card" data-reveal style="--d:.08s"><div class="stat-card__value">45 млрд ₽</div><div class="stat-card__label">SAM · премиум-сегмент (10 400+ объектов, ср. чек 25 000 ₽)</div></div>
+        <div class="stat-card" data-reveal style="--d:.16s"><div class="stat-card__value">1.5 млрд ₽</div><div class="stat-card__label">SOM · целевая доля ALBE RENT к 2027 году</div></div>
+        <div class="stat-card" data-reveal style="--d:.24s"><div class="stat-card__value">+34%</div><div class="stat-card__label">годовой рост категории в премиум-сегменте</div></div>
       </div>
     </div>
   </section>
@@ -1272,30 +1250,22 @@ main{padding-top:0}
       <h2>Четыре источника <em>выручки</em></h2>
       <div class="stats-grid" style="grid-template-columns:repeat(4,1fr)">
         <div class="stat-card" data-reveal>
-          <div class="stat-card__ico" style="margin-bottom:14px">
-            <svg class="ico-svg" style="width:22px;height:22px;color:var(--c2)"><use href="#i-percent"/></svg>
-          </div>
+          <div class="stat-card__ico" style="margin-bottom:14px"><svg class="ico-svg" style="width:22px;height:22px;color:var(--c2)"><use href="#i-percent"/></svg></div>
           <div class="stat-card__value" style="font-size:clamp(20px,2.6vw,28px)">12–15%</div>
           <div class="stat-card__label">комиссия сервиса с каждого бронирования</div>
         </div>
         <div class="stat-card" data-reveal style="--d:.08s">
-          <div class="stat-card__ico" style="margin-bottom:14px">
-            <svg class="ico-svg" style="width:22px;height:22px;color:var(--c2)"><use href="#i-sparkle"/></svg>
-          </div>
+          <div class="stat-card__ico" style="margin-bottom:14px"><svg class="ico-svg" style="width:22px;height:22px;color:var(--c2)"><use href="#i-sparkle"/></svg></div>
           <div class="stat-card__value" style="font-size:clamp(20px,2.6vw,28px)">15–20%</div>
           <div class="stat-card__label">маржа доп. услуг: консьерж, трансфер, клининг</div>
         </div>
         <div class="stat-card" data-reveal style="--d:.16s">
-          <div class="stat-card__ico" style="margin-bottom:14px">
-            <svg class="ico-svg" style="width:22px;height:22px;color:var(--c2)"><use href="#i-bag"/></svg>
-          </div>
+          <div class="stat-card__ico" style="margin-bottom:14px"><svg class="ico-svg" style="width:22px;height:22px;color:var(--c2)"><use href="#i-bag"/></svg></div>
           <div class="stat-card__value" style="font-size:clamp(20px,2.6vw,28px)">2 990 ₽</div>
           <div class="stat-card__label">премиум-размещение для собственников / мес</div>
         </div>
         <div class="stat-card" data-reveal style="--d:.24s">
-          <div class="stat-card__ico" style="margin-bottom:14px">
-            <svg class="ico-svg" style="width:22px;height:22px;color:var(--c2)"><use href="#i-users"/></svg>
-          </div>
+          <div class="stat-card__ico" style="margin-bottom:14px"><svg class="ico-svg" style="width:22px;height:22px;color:var(--c2)"><use href="#i-users"/></svg></div>
           <div class="stat-card__value" style="font-size:clamp(20px,2.6vw,28px)">B2B</div>
           <div class="stat-card__label">корпоративные брони для компаний и ретритов</div>
         </div>
@@ -1401,42 +1371,27 @@ main{padding-top:0}
             <circle cx="100" cy="100" r="78" stroke="var(--c3)" stroke-dasharray="98 490" stroke-dashoffset="-318.5"/>
             <circle cx="100" cy="100" r="78" stroke="var(--c4)" stroke-dasharray="73.5 490" stroke-dashoffset="-416.5"/>
           </svg>
-          <div class="donut-center">
-            <b>5 млн ₽</b>
-            <span>инвестиции</span>
-          </div>
+          <div class="donut-center"><b>5 млн ₽</b><span>инвестиции</span></div>
         </div>
         <div class="funds-legend" data-reveal style="--d:.15s">
           <div class="fund-item">
             <div class="fund-item__dot" style="background:var(--c1);color:var(--c1)"></div>
-            <div class="fund-item__txt">
-              <b>Маркетинг и привлечение</b>
-              <span>Яндекс.Директ, Google Ads, соцсети, блогеры, PR — до 2 000 000 ₽</span>
-            </div>
+            <div class="fund-item__txt"><b>Маркетинг и привлечение</b><span>Яндекс.Директ, Google Ads, соцсети, блогеры, PR — до 2 000 000 ₽</span></div>
             <div class="fund-item__pct">40%</div>
           </div>
           <div class="fund-item">
             <div class="fund-item__dot" style="background:var(--c2);color:var(--c2)"></div>
-            <div class="fund-item__txt">
-              <b>Разработка и IT</b>
-              <span>Мобильное приложение, интеграции, 3D-туры, CRM — до 1 250 000 ₽</span>
-            </div>
+            <div class="fund-item__txt"><b>Разработка и IT</b><span>Мобильное приложение, интеграции, 3D-туры, CRM — до 1 250 000 ₽</span></div>
             <div class="fund-item__pct">25%</div>
           </div>
           <div class="fund-item">
             <div class="fund-item__dot" style="background:var(--c3);color:var(--c3)"></div>
-            <div class="fund-item__txt">
-              <b>Операции и офис в СПб</b>
-              <span>Аренда, зарплаты менеджеров, юридика, бухгалтерия — до 1 000 000 ₽</span>
-            </div>
+            <div class="fund-item__txt"><b>Операции и офис в СПб</b><span>Аренда, зарплаты менеджеров, юридика, бухгалтерия — до 1 000 000 ₽</span></div>
             <div class="fund-item__pct">20%</div>
           </div>
           <div class="fund-item">
             <div class="fund-item__dot" style="background:var(--c4);color:var(--c4)"></div>
-            <div class="fund-item__txt">
-              <b>Резервный фонд</b>
-              <span>Буфер на 3 месяца операционки и непредвиденные — 750 000 ₽</span>
-            </div>
+            <div class="fund-item__txt"><b>Резервный фонд</b><span>Буфер на 3 месяца операционки и непредвиденные — 750 000 ₽</span></div>
             <div class="fund-item__pct">15%</div>
           </div>
         </div>
@@ -1466,17 +1421,13 @@ main{padding-top:0}
         </div>
         <svg class="chart" viewBox="0 0 900 380" preserveAspectRatio="xMidYMid meet" aria-label="Прогноз 12 месяцев">
           <g stroke="var(--line)" stroke-width="1">
-            <line x1="40" y1="40" x2="880" y2="40"/>
-            <line x1="40" y1="110" x2="880" y2="110"/>
-            <line x1="40" y1="180" x2="880" y2="180"/>
-            <line x1="40" y1="250" x2="880" y2="250"/>
+            <line x1="40" y1="40" x2="880" y2="40"/><line x1="40" y1="110" x2="880" y2="110"/>
+            <line x1="40" y1="180" x2="880" y2="180"/><line x1="40" y1="250" x2="880" y2="250"/>
             <line x1="40" y1="320" x2="880" y2="320"/>
           </g>
           <g font-family="Manrope,sans-serif" font-size="11" fill="var(--mut)">
-            <text x="30" y="44" text-anchor="end">16</text>
-            <text x="30" y="114" text-anchor="end">12</text>
-            <text x="30" y="184" text-anchor="end">8</text>
-            <text x="30" y="254" text-anchor="end">4</text>
+            <text x="30" y="44" text-anchor="end">16</text><text x="30" y="114" text-anchor="end">12</text>
+            <text x="30" y="184" text-anchor="end">8</text><text x="30" y="254" text-anchor="end">4</text>
             <text x="30" y="324" text-anchor="end">0</text>
           </g>
           <line x1="480" y1="20" x2="480" y2="340" stroke="var(--c1)" stroke-width="1.5" stroke-dasharray="4 4" opacity=".55"/>
@@ -1606,11 +1557,74 @@ main{padding-top:0}
     </div>
   </section>
 
-  <!-- 13 · CONTACT -->
-  <section class="slide" id="slide-contact" data-slide="13">
+  <!-- 13 · FOUNDER -->
+  <section class="slide" id="slide-founder" data-slide="13">
+    <div class="slide__inner">
+      <div class="slide-num"><b>13</b> — Основатель</div>
+      <h2>Основатель, который <em>уже строил</em> оценённые рынком платформы</h2>
+      <p class="slide-lead">
+        За плечами — два проекта с оценкой по версии Forbes Russia, статус резидента Сколково и действующее digital-агентство. Проект ведёт предприниматель с опытом, а не «менеджер по презентациям».
+      </p>
+      <div class="founder-grid">
+        <div class="founder-card" data-reveal>
+          <div class="founder-photo">
+            <img src="00001.webp" alt="Беляев Алексей Михайлович — основатель ALBE RENT">
+          </div>
+          <div class="founder-name">Беляев Алексей Михайлович</div>
+          <div class="founder-role">Основатель и Генеральный директор ALBE RENT</div>
+          <div class="founder-tags">
+            <span class="founder-tag"><svg class="ico-svg"><use href="#i-award"/></svg>Сколково</span>
+            <span class="founder-tag"><svg class="ico-svg"><use href="#i-chart"/></svg>Forbes Russia</span>
+            <span class="founder-tag"><svg class="ico-svg"><use href="#i-rocket"/></svg>2 проекта</span>
+          </div>
+          <div class="founder-edu">
+            <div class="founder-edu-row">
+              <svg class="ico-svg"><use href="#i-graduation"/></svg>
+              <div><b>Высшее образование</b><span>Сколково Tech</span></div>
+            </div>
+            <div class="founder-edu-row">
+              <svg class="ico-svg"><use href="#i-award"/></svg>
+              <div><b>Резидент Сколково</b><span>2020 – 2022</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="founder-timeline">
+          <div class="ftl-item" data-reveal>
+            <div class="ftl-item__dot">1</div>
+            <div class="ftl-item__period">2018 – 2022</div>
+            <h4>Основатель и Генеральный директор «ВОЗДУХ»</h4>
+            <p>Агрегатор бронирования загородной недвижимости. Вывел платформу на рынок и построил операционную модель, ставшую основой для ALBE RENT.</p>
+            <div class="ftl-item__metric">
+              <svg class="ico-svg"><use href="#i-chart"/></svg>
+              Forbes Russia, 2022 — <b>250 млн ₽</b>
+            </div>
+          </div>
+          <div class="ftl-item" data-reveal style="--d:.1s">
+            <div class="ftl-item__dot">2</div>
+            <div class="ftl-item__period">2022 – 2024</div>
+            <h4>Основатель и Генеральный директор VIXI AI</h4>
+            <p>AI-платформа, выросшая в оценке в два раза за два года. Опыт вывода технологического продукта на рынок и работы с инвесторами.</p>
+            <div class="ftl-item__metric">
+              <svg class="ico-svg"><use href="#i-chart"/></svg>
+              Forbes Russia, 2024 — <b>500 млн ₽</b>
+            </div>
+          </div>
+          <div class="ftl-item" data-reveal style="--d:.2s">
+            <div class="ftl-item__dot">3</div>
+            <div class="ftl-item__period">2024 – настоящее время</div>
+            <h4>Основатель ALBE DIGITAL</h4>
+            <p>Диджитал-агентство полного цикла: разработка, маркетинг, продукт. Собственная команда, которая ведёт ALBE RENT.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 · CONTACT -->
+  <section class="slide" id="slide-contact" data-slide="14">
     <div class="slide__inner">
       <div class="cta-final" data-reveal>
-        <div class="slide-num" style="justify-content:center;display:flex">13 — Контакты</div>
+        <div class="slide-num" style="justify-content:center;display:flex">14 — Контакты</div>
         <h2 style="text-align:center;max-width:none">Готовы обсудить <em>условия сделки</em></h2>
         <p>
           Свяжитесь с нами, чтобы получить полную финансовую модель, договор и презентацию. Готовы встретиться лично в офисе в Санкт-Петербурге или провести онлайн-встречу в удобное время.
@@ -1624,22 +1638,10 @@ main{padding-top:0}
           </a>
         </div>
         <div class="contact-row">
-          <div class="contact-item">
-            <small>Email</small>
-            <a href="mailto:invest@albe.su">invest@albe.su</a>
-          </div>
-          <div class="contact-item">
-            <small>Телефон</small>
-            <a href="tel:+78000000000">+7 800 000-00-00</a>
-          </div>
-          <div class="contact-item">
-            <small>Офис</small>
-            <b>СПб, Пресненская наб. 12</b>
-          </div>
-          <div class="contact-item">
-            <small>Сайт</small>
-            <a href="https://albe.su/alberent" target="_blank" rel="noopener">albe.su/alberent</a>
-          </div>
+          <div class="contact-item"><small>Email</small><a href="mailto:invest@albe.su">invest@albe.su</a></div>
+          <div class="contact-item"><small>Телефон</small><a href="tel:+78000000000">+7 800 000-00-00</a></div>
+          <div class="contact-item"><small>Офис</small><b>СПб, Пресненская наб. 12</b></div>
+          <div class="contact-item"><small>Сайт</small><a href="https://albe.su/alberent" target="_blank" rel="noopener">albe.su/alberent</a></div>
         </div>
       </div>
     </div>
@@ -1656,7 +1658,6 @@ main{padding-top:0}
 (function(){
 'use strict';
 
-/* ===== THEME ===== */
 const themeMeta = document.getElementById('themeColorMeta');
 function applyTheme(theme){
   document.documentElement.setAttribute('data-theme', theme);
@@ -1673,7 +1674,6 @@ themeToggle.addEventListener('click', () => {
   applyTheme(cur === 'dark' ? 'light' : 'dark');
 });
 
-/* ===== SCROLL PROGRESS ===== */
 const bar = document.getElementById('scrollProgress');
 let tick = false;
 function onScroll(){
@@ -1685,7 +1685,6 @@ function onScroll(){
 addEventListener('scroll', () => { if (!tick){ tick = true; requestAnimationFrame(onScroll); } }, {passive:true});
 onScroll();
 
-/* ===== DOTS NAV ===== */
 const slides = Array.from(document.querySelectorAll('.slide'));
 const dotsWrap = document.getElementById('dots');
 slides.forEach((s, i) => {
@@ -1710,7 +1709,6 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: [0.4, 0.6, 0.8] });
 slides.forEach(s => io.observe(s));
 
-/* ===== REVEAL ===== */
 const revealIO = new IntersectionObserver((entries) => {
   entries.forEach(en => {
     if (en.isIntersecting){
@@ -1721,7 +1719,6 @@ const revealIO = new IntersectionObserver((entries) => {
 }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
 document.querySelectorAll('[data-reveal]').forEach(el => revealIO.observe(el));
 
-/* ===== SMOOTH ANCHOR ===== */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const id = a.getAttribute('href');
