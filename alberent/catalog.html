@@ -476,9 +476,6 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 .card__fav.is-on .fav-off{display:none}
 .card__fav.is-on .fav-on{display:block}
 .card__fav.is-on{color:var(--rose);border-color:rgba(var(--rose-rgb),.55)}
-.card__hover{position:absolute;left:14px;right:14px;bottom:14px;z-index:3;opacity:0;transform:translateY(14px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
-.card:hover .card__hover{opacity:1;transform:none}
-.card__btn{width:100%;padding:13px;font-size:10px}
 .card__body{padding:16px 18px 18px}
 .card__head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:5px}
 .card__head h3{font-family:'Unbounded',sans-serif;font-size:14px;font-weight:600;letter-spacing:-.01em;line-height:1.3;color:var(--card-title-txt)}
@@ -489,14 +486,22 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 .card__meta{display:flex;gap:6px;flex-wrap:wrap;font-size:10.5px;color:var(--card-meta-txt);margin-bottom:12px}
 .card__meta span{padding:4px 9px;border-radius:100px;border:1px solid var(--line);background:var(--card-meta-bg);white-space:nowrap}
 
-/* === CARD 3D TOUR BUTTON — prominent === */
-.card__tour-row{padding:0 0 14px;margin-top:2px}
+/* === CARD ACTION BUTTONS === */
+.card__actions{
+  display:flex;flex-direction:column;gap:8px;
+  padding:0 0 14px;margin-top:2px;
+}
+.card__book{
+  width:100%;
+  padding:12px 22px;
+  font-size:10.5px;
+}
 .card__tour{
   display:flex;align-items:center;justify-content:center;gap:9px;
-  width:100%;padding:11px 14px;border-radius:12px;
+  width:100%;padding:12px 22px;border-radius:100px;
   background:linear-gradient(135deg,rgba(var(--c1-rgb),.18),rgba(var(--c3-rgb),.18));
   border:1px solid rgba(var(--c1-rgb),.38);
-  color:var(--c2);font-size:11px;font-weight:800;
+  color:var(--c2);font-size:10.5px;font-weight:800;
   letter-spacing:.12em;text-transform:uppercase;
   cursor:pointer;transition:all .3s var(--ease);
   font-family:'Manrope',sans-serif;
@@ -506,7 +511,7 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
   box-shadow:0 10px 24px -8px rgba(var(--c1-rgb),.75);
   transform:translateY(-1px);
 }
-.card__tour svg{width:15px;height:15px}
+.card__tour svg{width:14px;height:14px}
 
 .card__foot{display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid var(--line)}
 .card__price b{font-family:'Unbounded',sans-serif;font-size:15.5px;font-weight:700;letter-spacing:-.02em;color:var(--txt-h)}
@@ -561,7 +566,7 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 .modal.is-open{opacity:1;visibility:visible}
 .modal__backdrop{position:absolute;inset:0;background:rgba(3,4,8,.65);backdrop-filter:blur(14px)}
 html[data-theme="light"] .modal__backdrop{background:rgba(10,12,25,.42)}
-.modal__panel{position:relative;z-index:2;width:min(460px,100%);max-height:92vh;overflow-y:auto;padding:clamp(26px,4vw,40px);border-radius:28px;background:var(--modal-bg);border:1px solid var(--line-2);box-shadow:0 60px 120px -40px rgba(0,0,0,.55);transform:translateY(36px) scale(.96);transition:transform .55s var(--ease)}
+.modal__panel{position:relative;z-index:2;width:min(460px,100%);max-height:86vh;max-height:86dvh;overflow-y:auto;padding:clamp(26px,4vw,40px);border-radius:28px;background:var(--modal-bg);border:1px solid var(--line-2);box-shadow:0 60px 120px -40px rgba(0,0,0,.55);transform:translateY(36px) scale(.96);transition:transform .55s var(--ease)}
 .modal.is-open .modal__panel{transform:none}
 .modal__close{position:absolute;top:18px;right:18px;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);color:var(--mut);transition:background .3s,color .3s,transform .35s var(--ease);cursor:pointer}
 .modal__close svg{width:15px;height:15px}
@@ -582,7 +587,7 @@ html[data-theme="dark"] .field input{color-scheme:dark}
 .detail.is-open{opacity:1;visibility:visible}
 .detail__backdrop{position:absolute;inset:0;background:rgba(3,4,8,.4)}
 html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.2)}
-.detail__panel{position:relative;z-index:2;width:min(1080px,100%);max-height:92vh;overflow-y:auto;border-radius:26px;background:var(--modal-bg);border:1px solid var(--line-2);box-shadow:0 40px 90px -30px rgba(0,0,0,.6);transform:translateY(24px) scale(.98);transition:transform .45s var(--ease);scrollbar-width:thin;scrollbar-color:var(--line-2) transparent}
+.detail__panel{position:relative;z-index:2;width:min(1080px,100%);max-height:86vh;max-height:86dvh;overflow-y:auto;border-radius:26px;background:var(--modal-bg);border:1px solid var(--line-2);box-shadow:0 40px 90px -30px rgba(0,0,0,.6);transform:translateY(24px) scale(.98);transition:transform .45s var(--ease);scrollbar-width:thin;scrollbar-color:var(--line-2) transparent}
 .detail.is-open .detail__panel{transform:none}
 .detail__panel::-webkit-scrollbar{width:7px}
 .detail__panel::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:7px}
@@ -807,8 +812,9 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.2)}
   .filters-backdrop{position:fixed;inset:0;z-index:9550;background:rgba(3,4,8,.55);backdrop-filter:blur(8px);opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
   .filters-backdrop.is-open{opacity:1;visibility:visible}
   .page-hero{min-height:auto;padding-top:clamp(120px,15vh,160px)}
-  .detail{padding:0}
-  .detail__panel{border-radius:22px;max-height:96vh}
+  .detail{padding:0 6px}
+  .detail__panel{border-radius:22px;max-height:88vh;max-height:88dvh}
+  .detail__body{padding:16px 13px}
   .detail__hero{aspect-ratio:16/9}
   .tour__top{top:16px;left:16px;right:76px}
   .tour__close{top:16px;right:16px;width:40px;height:40px}
@@ -2448,14 +2454,14 @@ function cardHTML(d){
         '<svg class="fav-off ico-svg"><use href="#i-heart"/></svg>' +
         '<svg class="fav-on ico-svg"><use href="#i-heart-fill"/></svg>' +
       '</button>' +
-      '<div class="card__hover"><button class="btn btn--grad card__btn" data-book="' + d.id + '"><span class="btn__txt">Забронировать</span></button></div>' +
     '</div>' +
     '<div class="card__body">' +
       '<div class="card__head"><h3>' + d.title + '</h3>' +
         '<span class="card__rate"><svg class="ico-svg"><use href="#i-star-fill"/></svg>' + d.rating.toFixed(1) + '</span></div>' +
       '<div class="card__loc"><svg class="ico-svg loc-ico"><use href="#i-pin"/></svg><span>' + d.place + '</span></div>' +
       '<div class="card__meta"><span>до ' + d.guests + ' гостей</span><span>' + d.rooms + ' ' + roomWord(d.rooms) + '</span>' + am + '</div>' +
-      '<div class="card__tour-row">' +
+      '<div class="card__actions">' +
+        '<button class="btn btn--grad card__book" data-book="' + d.id + '"><span class="btn__txt">Забронировать</span></button>' +
         '<button class="card__tour" type="button" data-tour="' + d.id + '">' +
           '<svg class="ico-svg"><use href="#i-360"/></svg>' +
           '<span>3D тур</span>' +
