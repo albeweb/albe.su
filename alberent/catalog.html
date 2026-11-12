@@ -835,6 +835,47 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.2)}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   [data-reveal],.card{opacity:1!important;transform:none!important;translate:0 0!important}
 }
+
+/* ===== HIDE SCROLLBARS ON MOBILE ===== */
+@media(max-width:1080px){
+  *, *::before, *::after{
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+  *::-webkit-scrollbar,
+  *::-webkit-scrollbar-track,
+  *::-webkit-scrollbar-thumb,
+  *::-webkit-scrollbar-corner{
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    background: transparent !important;
+  }
+}
+
+/* ===== DARK THEME CARD VISIBILITY ===== */
+html[data-theme="dark"] .card{
+  background: linear-gradient(
+    160deg,
+    rgba(167,139,250,.085) 0%,
+    rgba(103,232,249,.025) 50%,
+    rgba(167,139,250,.045) 100%
+  );
+  border-color: rgba(167,139,250,.32);
+}
+html[data-theme="dark"] .card:hover{
+  border-color: rgba(167,139,250,.62);
+  box-shadow:
+    0 40px 80px -34px rgba(0,0,0,.95),
+    0 0 60px -18px rgba(167,139,250,.5);
+}
+html[data-theme="dark"] .card .card__foot{
+  border-top-color: rgba(167,139,250,.18);
+}
+html[data-theme="dark"] .card .card__meta span{
+  border-color: rgba(167,139,250,.18);
+  background: rgba(167,139,250,.05);
+}
 </style>
 </head>
 <body>
