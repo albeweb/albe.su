@@ -805,6 +805,9 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.2)}
 @media(max-width:900px){
   .mobile-nav{display:block}
   body{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+  .wrap{padding:0 10px}
+  .cta-wrap{padding:0 10px clamp(70px,10vh,120px)}
+  .footer{padding:clamp(50px,7vh,80px) 10px 34px}
   .filters{position:fixed;left:0;right:0;bottom:0;top:auto;z-index:9600;max-height:88vh;border-radius:24px 24px 0 0;border-left:none;border-right:none;border-bottom:none;transform:translateY(101%);transition:transform .42s var(--ease);padding-bottom:calc(26px + env(safe-area-inset-bottom,0px));background:var(--panel-bg-solid);box-shadow:0 -30px 80px -20px var(--corner-shadow)}
   .filters.is-open{transform:none}
   .filters__close{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);color:var(--mut);cursor:pointer}
@@ -872,7 +875,7 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.2)}
 <div class="grain"></div>
 
 <header class="nav is-scrolled" id="nav">
-  <a href="#" class="logo">
+  <a href="https://albe.su/alberent/" class="logo">
     <svg class="logo__mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
       <defs>
         <linearGradient id="lg1" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
