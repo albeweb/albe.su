@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>ALBE RENT — Инвестиционное предложение 2026</title>
-<meta name="description" content="Привлечение инвестиций 5 000 000 ₽ в премиальный сервис бронирования загородной недвижимости. Окупаемость 6–7 месяцев. Доля инвестора 30%.">
-<meta name="theme-color" content="#06070B" id="themeColorMeta">
+<meta name="description" content="Привлечение инвестиций 5 000 000 ₽ в премиальный сервис бронирования загородной недвижимости. Средний чек 25 000 ₽/ночь. Окупаемость 6–7 месяцев. Доля инвестора 30%.">
+<meta name="theme-color" content="#14161A" id="themeColorMeta">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -23,23 +23,33 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 
 html[data-theme="dark"]{
-  --c1:#22D3EE; --c1-rgb:34,211,238;
-  --c2:#67E8F9; --c2-rgb:103,232,249;
-  --c3:#A78BFA; --c3-rgb:167,139,250;
-  --c4:#C4B5FD; --c4-rgb:196,181,253;
-  --bg:#06070B; --bg-2:#0C0F18;
-  --txt:#EDEFF7; --txt-h:#FFFFFF; --mut:#9CA3BA;
-  --line:rgba(255,255,255,.08); --line-2:rgba(255,255,255,.14);
-  --card-bg:linear-gradient(160deg,rgba(255,255,255,.05),rgba(255,255,255,.015));
-  --card-shadow-h:0 30px 60px -30px rgba(0,0,0,.85),0 0 50px -20px rgba(var(--c3-rgb),.25);
-  --panel-bg:rgba(14,17,26,.86); --panel-bg-solid:#0E111A;
-  --input-bg:rgba(255,255,255,.045);
-  --ghost-txt:#E6E9F2; --ghost-border:rgba(255,255,255,.16); --ghost-bg:rgba(255,255,255,.02);
-  --nav-bg:rgba(6,7,11,.82);
-  --scrollbar-track:#05060A; --sel-txt:#04060A;
-  --grain-opacity:.045; --text-shadow-light:0 1px 2px rgba(0,0,0,.35);
-  --chip-bg:rgba(255,255,255,.03);
-  --hero-veil-1:rgba(6,7,11,.55); --hero-veil-2:rgba(6,7,11,.22); --hero-veil-edge:rgba(6,7,11,.55);
+  --c1:#BE185D; --c1-rgb:190,24,93;
+  --c2:#DB2777; --c2-rgb:219,39,119;
+  --c3:#7C3AED; --c3-rgb:124,58,237;
+  --c4:#A78BFA; --c4-rgb:167,139,250;
+  --bg:#14161A; --bg-2:#1C1E24;
+  --txt:#9CA3AF; --txt-h:#E5E7EB; --mut:#6B7280;
+  --line:rgba(255,255,255,.06); --line-2:rgba(255,255,255,.12);
+  --card-bg:linear-gradient(160deg,#1E2026,#16181D);
+  --card-shadow-h:0 40px 80px -34px rgba(0,0,0,.95),0 0 60px -22px rgba(var(--acc-rgb,219,39,119),.32);
+  --panel-bg:rgba(22,24,29,.85); --panel-bg-solid:#1E2026;
+  --input-bg:rgba(255,255,255,.04); --input-border:rgba(255,255,255,.1);
+  --ghost-txt:#D1D5DB; --ghost-border:rgba(255,255,255,.14); --ghost-bg:rgba(255,255,255,.02);
+  --nav-bg:rgba(20,22,26,.85);
+  --section-bg:#16181D; --section-bg-2:#16181D;
+  --cta-bg:linear-gradient(140deg,#1A1C22,#1E2026 60%,#1A1C22);
+  --modal-bg:linear-gradient(160deg,#1E2026,#14161A);
+  --chip-bg:rgba(255,255,255,.03); --chip-txt:#9CA3AF;
+  --field-txt:#E5E7EB; --field-label:#6B7280;
+  --card-meta-bg:rgba(255,255,255,.02); --card-meta-txt:#6B7280; --card-title-txt:#E5E7EB;
+  --scrollbar-track:#14161A; --sel-txt:#04060A;
+  --grain-opacity:.035; --text-shadow-light:0 1px 2px rgba(0,0,0,.35);
+  --hero-veil-1:rgba(20,22,26,.72); --hero-veil-2:rgba(20,22,26,.36); --hero-veil-edge:rgba(20,22,26,.42);
+  --corner-shadow:rgba(0,0,0,.5);
+
+  /* Яркий вторичный текст для сносок, чтобы читались */
+  --muted-strong:#A9B0BF;
+
   --s-spring-sky:#3E5A7A; --s-summer-sky:#1A4060; --s-autumn-sky:#6B3A52;
   --s-winter-sky:#1A2440; --s-winter-sky-2:#080D1C;
   --s-spring-ground:#4E8B5F; --s-summer-ground:#2E6D4A; --s-autumn-ground:#9A4E2A;
@@ -54,25 +64,37 @@ html[data-theme="dark"]{
   --s-winter-pine:#0E1526; --s-snow:#EFF6FF; --s-window:#FBBF24;
   --s-petal:#FFB7D5; --s-firefly:#FCD34D; --s-leaf-fall:#E8903F; --s-snowflake:#FFFFFF;
   --s-aurora-1:#22D3EE; --s-aurora-2:#A78BFA; --s-villa-bg:#2A1F18;
+
+  --avito:#FB7185; --avito-rgb:251,113,133;
+  --sutocho:#60A5FA; --sutocho-rgb:96,165,250;
 }
 html[data-theme="light"]{
-  --c1:#0E7490; --c1-rgb:14,116,144;
-  --c2:#06B6D4; --c2-rgb:6,182,212;
+  --c1:#BE185D; --c1-rgb:190,24,93;
+  --c2:#DB2777; --c2-rgb:219,39,119;
   --c3:#7C3AED; --c3-rgb:124,58,237;
   --c4:#A78BFA; --c4-rgb:167,139,250;
-  --bg:#F5F7FA; --bg-2:#EDEFF5;
-  --txt:#1F2937; --txt-h:#0A0C13; --mut:#5B6475;
+  --bg:#F5F7FA; --bg-2:#FFFFFF;
+  --txt:#1F2937; --txt-h:#0A0C13; --mut:#6B7280;
   --line:rgba(10,12,25,.09); --line-2:rgba(10,12,25,.14);
   --card-bg:#FFFFFF;
-  --card-shadow-h:0 24px 50px -30px rgba(10,12,25,.32),0 0 50px -20px rgba(var(--c3-rgb),.18);
+  --card-shadow-h:0 30px 60px -30px rgba(10,12,25,.35),0 0 60px -22px rgba(var(--acc-rgb,219,39,119),.2);
   --panel-bg:rgba(255,255,255,.94); --panel-bg-solid:#FFFFFF;
-  --input-bg:#F8FAFC;
+  --input-bg:#F8FAFC; --input-border:rgba(10,12,25,.11);
   --ghost-txt:#0A0C13; --ghost-border:rgba(10,12,25,.14); --ghost-bg:#FFFFFF;
   --nav-bg:rgba(255,255,255,.9);
+  --section-bg:#EEF1F6; --section-bg-2:#F0F2F7;
+  --cta-bg:linear-gradient(140deg,#FDF2F8,#FAE8FF 45%,#F5F3FF);
+  --modal-bg:#FFFFFF;
+  --chip-bg:#FFFFFF; --chip-txt:#4B5563;
+  --field-txt:#0A0C13; --field-label:#64748B;
+  --card-meta-bg:#F8FAFC; --card-meta-txt:#64748B; --card-title-txt:#0A0C13;
   --scrollbar-track:#F1F5F9; --sel-txt:#fff;
   --grain-opacity:.028; --text-shadow-light:0 1px 2px rgba(0,0,0,.15);
-  --chip-bg:#F8FAFC;
-  --hero-veil-1:rgba(255,255,255,.55); --hero-veil-2:rgba(255,255,255,.2); --hero-veil-edge:rgba(255,255,255,.4);
+  --hero-veil-1:rgba(255,255,255,.58); --hero-veil-2:rgba(255,255,255,.28); --hero-veil-edge:rgba(255,255,255,.3);
+  --corner-shadow:rgba(10,12,25,.25);
+
+  --muted-strong:#374151;
+
   --s-spring-sky:#F5B8D5; --s-summer-sky:#7FC8EA; --s-autumn-sky:#F4A26E;
   --s-winter-sky:#8FA8CB; --s-winter-sky-2:#C8D4E8;
   --s-spring-ground:#A8DBB0; --s-summer-ground:#6FBA85; --s-autumn-ground:#E8B47A;
@@ -87,24 +109,29 @@ html[data-theme="light"]{
   --s-winter-pine:#334155; --s-snow:#FFFFFF; --s-window:#F59E0B;
   --s-petal:#FFC0D9; --s-firefly:#F59E0B; --s-leaf-fall:#F4A85A; --s-snowflake:#FFFFFF;
   --s-aurora-1:#67E8F9; --s-aurora-2:#C4B5FD; --s-villa-bg:#4A3928;
+
+  --avito:#E11D48; --avito-rgb:225,29,72;
+  --sutocho:#2563EB; --sutocho-rgb:37,99,235;
 }
 
-/* ============================================================
-   УВЕЛИЧЕННЫЕ ТИПОГРАФИЧЕСКИЕ ТОКЕНЫ
-   ============================================================ */
 :root{
   --fs-h2: clamp(34px, 4.2vw, 60px);
   --fs-h3: clamp(20px, 1.9vw, 25px);
   --fs-lead: clamp(17px, 1.4vw, 21px);
-  --fs-body: clamp(16px, 1.2vw, 18.5px);
+  --fs-body: clamp(16px, 1.25vw, 19px);
+  --fs-card-text: clamp(15px, 1.15vw, 17px);
   --fs-small: clamp(13.5px, 1.1vw, 15px);
+  --fs-label: clamp(14px, 1.1vw, 16px);
+  --fs-note: clamp(14px, 1.15vw, 16px);   /* сноски, подписи под графиком */
   --fs-value: clamp(32px, 3.6vw, 50px);
   --gap: clamp(16px, 2vw, 26px);
   --radius: 20px;
-  --pad: clamp(20px, 2.2vw, 30px);
+  --pad: clamp(22px, 2.4vw, 32px);
   --grad: linear-gradient(100deg,var(--c1) 0%,var(--c2) 46%,var(--c3) 100%);
   --ease: cubic-bezier(.19,1,.22,1);
   --page-x: 80px;
+  --acc:var(--c1); --acc-rgb:var(--c1-rgb);
+  --acc2:var(--c2); --acc2-rgb:var(--c2-rgb);
 }
 @media(max-width:1280px){:root{--page-x:40px}}
 @media(max-width:900px){:root{--page-x:20px}}
@@ -116,7 +143,7 @@ html,body{height:100%}
 body{
   background:var(--bg); color:var(--txt);
   font-family:'Manrope',system-ui,sans-serif;
-  font-size:var(--fs-body); font-weight:400; line-height:1.6;
+  font-size:var(--fs-body); font-weight:400; line-height:1.65;
   overflow-x:hidden; -webkit-font-smoothing:antialiased;
   -webkit-tap-highlight-color:transparent;
   transition:background-color .35s var(--ease),color .35s var(--ease);
@@ -129,67 +156,28 @@ button{font-family:inherit;border:none;background:none;color:inherit;cursor:poin
 ::-webkit-scrollbar-track{background:var(--scrollbar-track)}
 ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--c1),var(--c3));border-radius:6px}
 
-/* ============================================================
-   СНОСКИ-ОПРЕДЕЛЕНИЯ — крупные, читаемые, со стилизованным тултипом
-   ============================================================ */
 abbr[title]{
-  position: relative;
-  display: inline-block;
-  text-decoration: underline dotted rgba(var(--c1-rgb),.85);
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
-  cursor: help;
-  font-weight: 700;
-  color: var(--txt-h);
+  position: relative;display: inline-block;
+  text-decoration: underline dotted rgba(var(--acc-rgb),.85);
+  text-decoration-thickness: 2px;text-underline-offset: 4px;cursor: help;
+  font-weight: 700;color: var(--txt-h);
   transition: text-decoration-color .2s, color .2s;
 }
-abbr[title]:hover{
-  text-decoration-color: var(--c2);
-  text-decoration-style: solid;
-  color: var(--c2);
-}
+abbr[title]:hover{text-decoration-color: var(--acc);text-decoration-style: solid;color: var(--acc)}
 abbr[title]:hover::after{
-  content: attr(title);
-  position: absolute;
-  bottom: calc(100% + 16px);
-  left: 50%;
-  transform: translateX(-50%);
-  width: max-content;
-  max-width: min(360px, 85vw);
-  padding: 14px 18px;
-  background: var(--panel-bg-solid);
-  color: var(--txt);
-  border: 1px solid rgba(var(--c1-rgb),.35);
-  border-radius: 14px;
-  font-family: 'Manrope', sans-serif;
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 1.55;
-  text-align: left;
-  white-space: normal;
-  letter-spacing: 0;
-  text-decoration: none;
-  text-transform: none;
-  -webkit-text-fill-color: var(--txt);
-  -webkit-background-clip: initial;
-  background-clip: initial;
-  box-shadow:
-    0 16px 40px -8px rgba(0,0,0,.75),
-    0 0 0 1px rgba(var(--c1-rgb),.1);
-  z-index: 1000;
-  pointer-events: none;
-  animation: tooltipIn .2s ease;
+  content: attr(title);position: absolute;bottom: calc(100% + 16px);left: 50%;
+  transform: translateX(-50%);width: max-content;max-width: min(380px, 85vw);
+  padding: 16px 20px;background: var(--panel-bg-solid);color: var(--txt);
+  border: 1px solid rgba(var(--acc-rgb),.35);border-radius: 14px;
+  font-family: 'Manrope', sans-serif;font-size: 16px;font-weight: 400;line-height: 1.6;text-align: left;
+  white-space: normal;letter-spacing: 0;text-decoration: none;text-transform: none;
+  -webkit-text-fill-color: var(--txt);-webkit-background-clip: initial;background-clip: initial;
+  box-shadow: 0 16px 40px -8px rgba(0,0,0,.75), 0 0 0 1px rgba(var(--acc-rgb),.1);
+  z-index: 1000;pointer-events: none;animation: tooltipIn .2s ease;
 }
 abbr[title]:hover::before{
-  content: '';
-  position: absolute;
-  bottom: calc(100% + 8px);
-  left: 50%;
-  transform: translateX(-50%);
-  border: 8px solid transparent;
-  border-top-color: rgba(var(--c1-rgb),.35);
-  z-index: 1001;
-  pointer-events: none;
+  content: '';position: absolute;bottom: calc(100% + 8px);left: 50%;transform: translateX(-50%);
+  border: 8px solid transparent;border-top-color: rgba(var(--acc-rgb),.35);z-index: 1001;pointer-events: none;
 }
 @keyframes tooltipIn{
   from { opacity: 0; transform: translateX(-50%) translateY(4px); }
@@ -206,7 +194,8 @@ abbr[title]:hover::before{
 @keyframes grainMove{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-2%)}80%{transform:translate(3%,1%)}100%{transform:translate(0,0)}}
 
 .scroll-progress{
-  position:fixed;top:0;left:0;height:2px;width:100%;background:var(--grad);
+  position:fixed;top:0;left:0;height:2px;width:100%;
+  background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3),var(--c4));
   transform-origin:0 50%;transform:scaleX(0);z-index:9000;pointer-events:none;
   box-shadow:0 0 18px rgba(var(--c1-rgb),.6);
 }
@@ -261,22 +250,19 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
   letter-spacing:.08em;text-transform:uppercase;padding:16px 30px;border-radius:100px;
   overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s var(--ease),color .25s;
 }
-.btn--grad{color:#fff;text-shadow:var(--text-shadow-light);background:var(--grad);background-size:200% 100%;animation:gradShift 7s ease infinite;box-shadow:0 8px 32px -8px rgba(var(--c1-rgb),.55)}
+.btn--grad{color:#fff;text-shadow:var(--text-shadow-light);background:linear-gradient(100deg,var(--c1),var(--c2),var(--c3));background-size:200% 100%;animation:gradShift 7s ease infinite;box-shadow:0 8px 32px -8px rgba(var(--c1-rgb),.55)}
 .btn--grad:hover{box-shadow:0 14px 44px -8px rgba(var(--c3-rgb),.7)}
 .btn--ghost{color:var(--ghost-txt);border:1px solid var(--ghost-border);background:var(--ghost-bg);backdrop-filter:blur(8px)}
 .btn--ghost:hover{border-color:rgba(var(--c1-rgb),.5);background:rgba(var(--c1-rgb),.06);color:var(--txt-h)}
 .btn__txt{position:relative;z-index:2;display:flex;align-items:center;gap:9px}
 .btn__txt svg{width:15px;height:15px}
 
-/* ============================================================
-   SLIDE — БЕЗ 3D-АНИМАЦИЙ, ПРОСТО РОВНЫЙ СКРОЛЛ
-   ============================================================ */
 main{overflow-x: clip}
 .slide{
   position: relative;
   min-height: 100vh;
   min-height: 100dvh;
-  padding: 96px var(--page-x) 48px;
+  padding: 96px var(--page-x) 56px;
   display: flex;
   align-items: center;
   background: var(--bg);
@@ -284,18 +270,23 @@ main{overflow-x: clip}
 }
 .slide:nth-of-type(even){background:var(--bg-2)}
 
+.slide[data-acc="c1"]{--acc:var(--c1);--acc-rgb:var(--c1-rgb);--acc2:var(--c2);--acc2-rgb:var(--c2-rgb)}
+.slide[data-acc="c2"]{--acc:var(--c2);--acc-rgb:var(--c2-rgb);--acc2:var(--c3);--acc2-rgb:var(--c3-rgb)}
+.slide[data-acc="c3"]{--acc:var(--c3);--acc-rgb:var(--c3-rgb);--acc2:var(--c4);--acc2-rgb:var(--c4-rgb)}
+.slide[data-acc="c4"]{--acc:var(--c4);--acc-rgb:var(--c4-rgb);--acc2:var(--c1);--acc2-rgb:var(--c1-rgb)}
+
 .slide::after{
   content:'';position:absolute;inset:0;
   background:
-    radial-gradient(ellipse 55% 45% at 15% 15%, rgba(var(--c1-rgb),.045), transparent 60%),
-    radial-gradient(ellipse 55% 45% at 85% 85%, rgba(var(--c3-rgb),.04), transparent 60%);
+    radial-gradient(ellipse 55% 45% at 15% 15%, rgba(var(--acc-rgb),.05), transparent 60%),
+    radial-gradient(ellipse 55% 45% at 85% 85%, rgba(var(--acc2-rgb),.04), transparent 60%);
   pointer-events:none;z-index:0;
 }
 .slide:not(.slide--cover)::before{
   content:'';position:absolute;top:0;left:50%;
   transform:translateX(-50%);
   width:min(820px,82%);height:1px;
-  background:linear-gradient(90deg,transparent,var(--line-2) 12%,rgba(var(--c1-rgb),.45) 38%,var(--c2) 50%,rgba(var(--c1-rgb),.45) 62%,var(--line-2) 88%,transparent);
+  background:linear-gradient(90deg,transparent,var(--line-2) 12%,rgba(var(--acc-rgb),.5) 38%,var(--acc) 50%,rgba(var(--acc-rgb),.5) 62%,var(--line-2) 88%,transparent);
   z-index:4;
 }
 .slide:not(.slide--cover) .slide__inner::before{
@@ -303,8 +294,8 @@ main{overflow-x: clip}
   top:calc(-96px - 5px);
   left:50%;width:10px;height:10px;
   transform:translateX(-50%) rotate(45deg);
-  background:linear-gradient(135deg,var(--c2),var(--c3));
-  box-shadow:0 0 20px rgba(var(--c1-rgb),.7),0 0 40px rgba(var(--c3-rgb),.35);
+  background:linear-gradient(135deg,var(--acc),var(--acc2));
+  box-shadow:0 0 20px rgba(var(--acc-rgb),.7),0 0 40px rgba(var(--acc2-rgb),.35);
   z-index:5;pointer-events:none;
 }
 .slide:not(.slide--cover) .slide__inner::after{
@@ -313,24 +304,23 @@ main{overflow-x: clip}
   left:50%;transform:translateX(-50%);
   width:min(820px,82%);height:3px;
   background:
-    radial-gradient(circle at 20% 50%, rgba(var(--c1-rgb),.7) 1.2px, transparent 2px),
-    radial-gradient(circle at 80% 50%, rgba(var(--c3-rgb),.7) 1.2px, transparent 2px);
+    radial-gradient(circle at 20% 50%, rgba(var(--acc-rgb),.7) 1.2px, transparent 2px),
+    radial-gradient(circle at 80% 50%, rgba(var(--acc2-rgb),.7) 1.2px, transparent 2px);
   pointer-events:none;z-index:5;
 }
 
 .slide__inner{
   width:100%;position:relative;z-index:2;
-  display:flex;
-  flex-direction:column;
-  gap:clamp(16px, 2vh, 24px);
+  display:flex;flex-direction:column;
+  gap:clamp(18px, 2.2vh, 26px);
 }
 .slide-num{
   font-family:'Unbounded',sans-serif;font-size:var(--fs-small);font-weight:600;
   letter-spacing:.22em;text-transform:uppercase;color:var(--mut);
   display:inline-flex;align-items:center;gap:12px;margin:0;
 }
-.slide-num::before{content:'';width:32px;height:1px;background:var(--grad)}
-.slide-num b{color:var(--c2);font-weight:700}
+.slide-num::before{content:'';width:32px;height:1px;background:linear-gradient(90deg,var(--acc),var(--acc2))}
+.slide-num b{color:var(--acc);font-weight:700}
 .slide h2{
   font-family:'Unbounded',sans-serif;font-weight:700;
   font-size:var(--fs-h2);line-height:1.06;
@@ -339,112 +329,142 @@ main{overflow-x: clip}
   text-wrap:balance;
   overflow-wrap:break-word;
 }
-.slide h2 em{font-style:normal;font-weight:300;color:var(--c2)}
+.slide h2 em{font-style:normal;font-weight:300;color:var(--acc)}
 .slide-lead{
   font-size:var(--fs-lead);color:var(--mut);
-  max-width:72ch;line-height:1.6;margin:0;
+  max-width:72ch;line-height:1.65;margin:0;
   text-wrap:pretty;
   overflow-wrap:break-word;
 }
 
-/* ===== CARD ===== */
 .card{
   position:relative;
   padding:var(--pad);
   border-radius:var(--radius);
   background:var(--card-bg);
   border:1px solid var(--line);
-  transition:transform .3s var(--ease),border-color .3s var(--ease),box-shadow .3s var(--ease),background .3s var(--ease);
+  transition:transform .3s var(--ease),border-color .3s var(--ease),box-shadow .3s var(--ease);
   overflow:hidden;isolation:isolate;
 }
-.card::after{
-  content:'';position:absolute;inset:0;border-radius:inherit;
-  background:
-    radial-gradient(circle at 50% 0%, rgba(var(--c1-rgb),.12), transparent 55%),
-    radial-gradient(circle at 50% 100%, rgba(var(--c3-rgb),.08), transparent 55%);
-  opacity:0;transition:opacity .3s var(--ease);pointer-events:none;z-index:0;
-}
 .card > *{position:relative;z-index:1}
-.card:hover{
-  transform:translateY(-3px);border-color:transparent;
-  background:
-    var(--card-bg) padding-box,
-    linear-gradient(135deg, var(--c1), var(--c2) 40%, var(--c3) 100%) border-box;
-  box-shadow:var(--card-shadow-h);
-}
-.card:hover::after{opacity:1}
 .card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.18) 50%,transparent);
-  opacity:.5;z-index:2;pointer-events:none;
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,rgba(var(--acc-rgb),.7),transparent);
+  opacity:.85;z-index:2;pointer-events:none;
 }
-html[data-theme="light"] .card::before{background:linear-gradient(90deg,transparent,rgba(0,0,0,.06) 50%,transparent)}
-.card:hover .card-value,
+.card:hover{
+  transform:translateY(-3px);
+  border-color:rgba(var(--acc-rgb),.55);
+  box-shadow:
+    0 40px 80px -34px rgba(0,0,0,.75),
+    0 0 60px -22px rgba(var(--acc-rgb),.35);
+}
 .card:hover .card-title,
 .card:hover .card-label,
-.card:hover .card-text,
-.card:hover .card-eyebrow{
-  color:var(--txt-h);-webkit-text-fill-color:var(--txt-h);
-  background-image:none;-webkit-background-clip:initial;background-clip:initial;
-}
-.card:hover .card-value{
-  background:linear-gradient(90deg,var(--txt-h),var(--txt-h));
-  -webkit-background-clip:text;background-clip:text;
-  color:transparent;-webkit-text-fill-color:transparent;
-}
-.card--accent{
-  background:linear-gradient(160deg,rgba(var(--c1-rgb),.06),rgba(var(--c3-rgb),.06));
-  border-color:rgba(var(--c1-rgb),.18);
-}
-.card--accent::before{height:2px;background:var(--grad);opacity:.9;top:-1px}
-.card--accent:hover{
-  border-color:transparent;
-  background:
-    linear-gradient(160deg,rgba(var(--c1-rgb),.08),rgba(var(--c3-rgb),.08)) padding-box,
-    linear-gradient(135deg,var(--c1),var(--c2) 40%,var(--c3) 100%) border-box;
-  box-shadow:0 24px 50px -24px rgba(var(--c1-rgb),.5),0 0 60px -20px rgba(var(--c3-rgb),.35);
-}
+.card:hover .card-text{color:var(--txt-h);-webkit-text-fill-color:var(--txt-h)}
+
 .card-ico{
-  width:50px;height:50px;border-radius:13px;
+  width:64px;height:64px;
+  border-radius:18px;
   display:grid;place-items:center;
-  background:linear-gradient(140deg,rgba(var(--c1-rgb),.18),rgba(var(--c3-rgb),.18));
-  border:1px solid rgba(var(--c1-rgb),.25);color:var(--c2);
-  margin-bottom:14px;
-  transition:transform .3s var(--ease),box-shadow .3s var(--ease);
+  background:
+    radial-gradient(circle at 30% 25%,rgba(var(--acc-rgb),.22),transparent 70%),
+    linear-gradient(140deg,rgba(var(--acc-rgb),.10),rgba(var(--acc2-rgb),.06));
+  border:1px solid rgba(var(--acc-rgb),.32);
+  color:var(--acc);
+  margin-bottom:20px;
+  position:relative;
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease),
+             color .3s,border-color .3s;
 }
-.card:hover .card-ico{transform:scale(1.06) rotate(-3deg);box-shadow:0 0 24px rgba(var(--c1-rgb),.35)}
-.card-ico svg{width:24px;height:24px}
-.card-dot{width:14px;height:14px;border-radius:50%;background:var(--grad);box-shadow:0 0 16px rgba(var(--c1-rgb),.7);margin-bottom:16px}
-.card-eyebrow{font-family:'Unbounded',sans-serif;font-size:var(--fs-small);letter-spacing:.12em;text-transform:uppercase;color:var(--c2);font-weight:700;margin-bottom:8px}
-.card-title{font-family:'Unbounded',sans-serif;font-size:var(--fs-h3);font-weight:600;letter-spacing:-.01em;line-height:1.3;color:var(--txt-h);margin-bottom:6px;text-wrap:balance}
-.card-text{font-size:var(--fs-body);color:var(--mut);line-height:1.55}
-.card-label{font-size:var(--fs-small);letter-spacing:.06em;text-transform:uppercase;color:var(--mut);font-weight:600;line-height:1.45}
+.card-ico::after{
+  content:'';position:absolute;inset:0;border-radius:inherit;
+  background:radial-gradient(circle at 30% 25%,rgba(var(--acc-rgb),.18),transparent 55%);
+  opacity:.6;pointer-events:none;
+}
+.card-ico svg{
+  width:34px;height:34px;
+  position:relative;z-index:1;
+  filter:drop-shadow(0 0 6px rgba(var(--acc-rgb),.55));
+}
+.card:hover .card-ico{
+  transform:scale(1.06) rotate(-3deg);
+  border-color:rgba(var(--acc-rgb),.65);
+  box-shadow:
+    0 0 32px rgba(var(--acc-rgb),.45),
+    inset 0 0 16px rgba(var(--acc-rgb),.18);
+}
+
+.card-dot{
+  width:14px;height:14px;border-radius:50%;
+  background:var(--acc);
+  box-shadow:0 0 16px rgba(var(--acc-rgb),.75);
+  margin-bottom:16px;
+}
+.card-eyebrow{
+  font-family:'Unbounded',sans-serif;
+  font-size:var(--fs-small);letter-spacing:.12em;text-transform:uppercase;
+  color:var(--acc);font-weight:700;margin-bottom:8px;
+  transition:color .25s,text-shadow .25s;
+}
+.card:hover .card-eyebrow{
+  text-shadow:0 0 20px rgba(var(--acc-rgb),.55);
+}
+.card-title{
+  font-family:'Unbounded',sans-serif;font-size:var(--fs-h3);font-weight:600;
+  letter-spacing:-.01em;line-height:1.3;color:var(--txt-h);margin-bottom:8px;
+  text-wrap:balance;
+}
+.card-text{
+  font-size:var(--fs-card-text);color:var(--txt);
+  line-height:1.6;transition:color .25s;
+}
+.card-label{
+  font-size:var(--fs-label);letter-spacing:.05em;text-transform:uppercase;
+  color:var(--txt);font-weight:600;line-height:1.5;transition:color .25s;
+}
 .card-value{
   font-family:'Unbounded',sans-serif;font-size:var(--fs-value);font-weight:800;
   line-height:1;letter-spacing:-.02em;
-  background:var(--grad);background-size:200%;
+  background:linear-gradient(100deg,var(--acc) 0%,var(--acc2) 100%);
+  background-size:200% 100%;
   -webkit-background-clip:text;background-clip:text;
-  color:transparent;animation:gradShift 8s ease infinite;
-  margin-bottom:10px;
+  color:transparent;
+  animation:gradShift 8s ease infinite;
+  margin-bottom:12px;
+  transition:filter .3s var(--ease);
 }
+.card:hover .card-value{
+  filter:drop-shadow(0 0 18px rgba(var(--acc-rgb),.5));
+}
+
 .card--center{text-align:center}
 .card--center .card-ico{margin-left:auto;margin-right:auto}
-.card--row{display:flex;align-items:center;gap:16px}
-.card--row-top{display:flex;align-items:flex-start;gap:16px}
+.card--row{display:flex;align-items:center;gap:18px}
+.card--row-top{display:flex;align-items:flex-start;gap:18px}
 .card--row > *, .card--row-top > *{min-width:0}
 .card--row .card-ico, .card--row-top .card-ico{margin-bottom:0;flex-shrink:0}
-.card--row .card-ico{width:50px;height:50px;border-radius:50%}
-.card-ava{width:54px;height:54px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;background:var(--grad);background-size:200%;color:#fff;text-shadow:var(--text-shadow-light);font-family:'Unbounded',sans-serif;font-weight:700;font-size:18px}
-.fund-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0;margin-top:7px;box-shadow:0 0 10px currentColor}
-.fund-pct{margin-left:auto;flex-shrink:0;font-family:'Unbounded',sans-serif;font-size:var(--fs-h3);font-weight:700;color:var(--c2)}
+.card--row .card-ico{width:56px;height:56px;border-radius:50%}
+.card--row .card-ico svg{width:26px;height:26px}
+
+.card-ava{
+  width:56px;height:56px;border-radius:50%;flex-shrink:0;
+  display:grid;place-items:center;
+  background:linear-gradient(100deg,var(--acc),var(--acc2));
+  background-size:200% 100%;animation:gradShift 8s ease infinite;
+  color:#fff;text-shadow:var(--text-shadow-light);
+  font-family:'Unbounded',sans-serif;font-weight:700;font-size:20px;
+  box-shadow:0 0 0 1px rgba(var(--acc-rgb),.4),0 10px 26px -10px rgba(var(--acc-rgb),.5);
+}
+
+.fund-dot{width:14px;height:14px;border-radius:3px;flex-shrink:0;margin-top:8px;box-shadow:0 0 12px currentColor}
+.fund-pct{margin-left:auto;flex-shrink:0;font-family:'Unbounded',sans-serif;font-size:var(--fs-h3);font-weight:700;color:var(--acc)}
 
 .grid{display:grid;gap:var(--gap)}
 .grid--2{grid-template-columns:repeat(2,1fr)}
 .grid--3{grid-template-columns:repeat(3,1fr)}
 .grid--4{grid-template-columns:repeat(4,1fr)}
-.grid--center{align-items:center}
 
-/* ===== COVER ===== */
 .slide--cover{
   text-align:center;
   display:flex;align-items:center;justify-content:center;
@@ -474,10 +494,10 @@ html[data-theme="light"] .card::before{background:linear-gradient(90deg,transpar
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.7)}}
 .cover__title{font-family:'Unbounded',sans-serif;font-weight:800;font-size:clamp(46px,7vw,100px);line-height:.94;letter-spacing:-.04em;text-transform:uppercase;color:var(--txt-h);margin-bottom:22px;text-shadow:0 4px 30px rgba(0,0,0,.25);text-wrap:balance}
 .cover__title em{font-style:normal;font-weight:300;color:var(--c2)}
-.cover__sub{font-size:clamp(16px,1.4vw,19px);color:var(--txt);max-width:680px;margin:0 auto 34px;line-height:1.6;text-shadow:0 1px 14px rgba(0,0,0,.2)}
+.cover__sub{font-size:clamp(16px,1.4vw,19px);color:var(--txt);max-width:680px;margin:0 auto 34px;line-height:1.65;text-shadow:0 1px 14px rgba(0,0,0,.2)}
 .cover__stats{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(28px,4.5vw,60px);max-width:740px;margin:0 auto;padding-top:28px;border-top:1px solid var(--line)}
 .cover__stat{text-align:center}
-.cover__stat b{display:block;font-family:'Unbounded',sans-serif;font-size:clamp(26px,3.2vw,44px);font-weight:700;line-height:1;background:var(--grad);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradShift 8s ease infinite}
+.cover__stat b{display:block;font-family:'Unbounded',sans-serif;font-size:clamp(26px,3.2vw,44px);font-weight:700;line-height:1;background:linear-gradient(100deg,var(--c1),var(--c2),var(--c3),var(--c4));background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradShift 8s ease infinite}
 .cover__stat span{display:block;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--txt);margin-top:8px;font-weight:600;opacity:.85}
 .cover__seasons{position:absolute;left:var(--page-x);right:var(--page-x);bottom:clamp(30px,5vh,60px);z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;pointer-events:none}
 .cover__seasons span{font-family:'Unbounded',sans-serif;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--txt);opacity:.8;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px;text-shadow:0 1px 12px rgba(0,0,0,.4)}
@@ -499,12 +519,11 @@ html[data-theme="light"] .card::before{background:linear-gradient(90deg,transpar
 .s-snowflake{transform-box:fill-box;animation:snowFall var(--dur,15s) linear infinite;animation-delay:var(--delay,0s)}
 @keyframes snowFall{0%{transform:translate(0,-60px);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translate(var(--dx,30px),900px);opacity:0}}
 
-/* ===== PRODUCT / CATALOG ===== */
 .product-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3.5vw,44px);align-items:center;min-height:0}
 .product-copy{display:flex;flex-direction:column;gap:16px;min-width:0}
 .product-copy h3{font-family:'Unbounded',sans-serif;font-size:var(--fs-h3);font-weight:600;letter-spacing:-.01em;color:var(--txt-h);margin:0;text-wrap:balance}
 .product-features{display:flex;flex-direction:column;gap:14px;margin-top:6px}
-.browser-frame{position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line-2);background:var(--bg-2);box-shadow:0 40px 80px -30px rgba(0,0,0,.55),0 0 80px -30px rgba(var(--c1-rgb),.35);min-width:0}
+.browser-frame{position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line-2);background:var(--bg-2);box-shadow:0 40px 80px -30px rgba(0,0,0,.55),0 0 80px -30px rgba(var(--acc-rgb),.35);min-width:0}
 .browser-chrome{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--panel-bg-solid);border-bottom:1px solid var(--line)}
 .browser-dots{display:flex;gap:6px;flex-shrink:0}
 .browser-dots i{width:10px;height:10px;border-radius:50%;background:var(--line-2)}
@@ -512,143 +531,640 @@ html[data-theme="light"] .card::before{background:linear-gradient(90deg,transpar
 .browser-dots i:nth-child(2){background:#FCD34D}
 .browser-dots i:nth-child(3){background:#34D399}
 .browser-url{flex:1;min-width:0;padding:5px 12px;border-radius:6px;background:var(--input-bg);font-family:'Manrope',sans-serif;font-size:14px;font-weight:600;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;gap:6px}
-.browser-url::before{content:'';width:9px;height:9px;border-radius:50%;border:1.5px solid var(--c2);flex-shrink:0}
-.browser-live{padding:4px 10px;border-radius:100px;background:rgba(var(--c1-rgb),.16);border:1px solid rgba(var(--c1-rgb),.35);font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--c2);flex-shrink:0;display:flex;align-items:center;gap:5px}
-.browser-live::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--c2);box-shadow:0 0 8px var(--c2);animation:pulse 1.8s ease-in-out infinite}
+.browser-url::before{content:'';width:9px;height:9px;border-radius:50%;border:1.5px solid var(--acc);flex-shrink:0}
+.browser-live{padding:4px 10px;border-radius:100px;background:rgba(var(--acc-rgb),.16);border:1px solid rgba(var(--acc-rgb),.35);font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);flex-shrink:0;display:flex;align-items:center;gap:5px}
+.browser-live::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--acc);box-shadow:0 0 8px var(--acc);animation:pulse 1.8s ease-in-out infinite}
 .browser-iframe{display:block;width:100%;height:min(500px,52vh);border:0;background:var(--bg)}
 
-.invest-cta{margin-top:8px;padding:var(--pad);border-radius:var(--radius);background:var(--card-bg);border:1px solid var(--line-2);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
-.invest-cta__txt b{display:block;font-family:'Unbounded',sans-serif;font-size:var(--fs-h3);font-weight:700;color:var(--txt-h);margin-bottom:5px}
-.invest-cta__txt span{font-size:var(--fs-body);color:var(--mut);line-height:1.55}
+.about-diff{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap);margin-top:clamp(14px,2vh,20px)}
+.about-diff .card{height:100%}
 
+.trends-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap);margin-top:clamp(14px,2vh,20px)}
+.trend-card{
+  position:relative;
+  padding:var(--pad);
+  border-radius:var(--radius);
+  background:var(--card-bg);
+  border:1px solid var(--line);
+  display:flex;flex-direction:column;gap:12px;
+  transition:transform .3s var(--ease),border-color .3s var(--ease),box-shadow .3s var(--ease);
+  overflow:hidden;isolation:isolate;
+}
+.trend-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,rgba(var(--acc-rgb),.7),transparent);
+  z-index:2;pointer-events:none;
+}
+.trend-card:hover{
+  transform:translateY(-3px);
+  border-color:rgba(var(--acc-rgb),.55);
+  box-shadow:
+    0 40px 80px -34px rgba(0,0,0,.75),
+    0 0 60px -22px rgba(var(--acc-rgb),.35);
+}
+.trend-card__year{
+  font-family:'Unbounded',sans-serif;
+  font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  padding:6px 12px;border-radius:100px;
+  background:rgba(var(--acc-rgb),.12);
+  border:1px solid rgba(var(--acc-rgb),.28);
+  color:var(--acc);
+  align-self:flex-start;
+}
+.trend-card__head{
+  font-family:'Unbounded',sans-serif;
+  font-size:var(--fs-h3);font-weight:700;
+  line-height:1.3;color:var(--txt-h);margin:4px 0 4px;
+  text-wrap:balance;
+}
+.trend-card__text{font-size:var(--fs-card-text);color:var(--txt);line-height:1.65}
+
+.trend-card__metric{
+  display:inline-flex;align-items:baseline;gap:8px;
+  margin-top:auto;padding-top:14px;
+  font-size:clamp(14.5px,1.15vw,16.5px);
+  color:var(--muted-strong);
+  font-weight:600;
+  flex-wrap:wrap;line-height:1.5;
+}
+.trend-card__metric b{
+  font-family:'Unbounded',sans-serif;
+  font-size:clamp(18px,1.6vw,22px);font-weight:800;
+  background:linear-gradient(100deg,var(--acc),var(--acc2));
+  background-size:200% 100%;
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;animation:gradShift 8s ease infinite;
+}
+
+.traction-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+.traction-card{
+  position:relative;
+  padding:var(--pad);
+  border-radius:var(--radius);
+  background:var(--card-bg);
+  border:1px solid var(--line);
+  display:flex;flex-direction:column;gap:14px;
+  transition:transform .3s var(--ease),border-color .3s var(--ease),box-shadow .3s var(--ease);
+  overflow:hidden;isolation:isolate;
+}
+.traction-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,rgba(var(--acc-rgb),.7),transparent);
+  z-index:2;pointer-events:none;
+}
+.traction-card:hover{
+  transform:translateY(-3px);
+  border-color:rgba(var(--acc-rgb),.55);
+  box-shadow:
+    0 40px 80px -34px rgba(0,0,0,.75),
+    0 0 60px -22px rgba(var(--acc-rgb),.35);
+}
+.traction-card__head{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  margin-bottom:2px;
+}
+.traction-card__head .card-ico{margin-bottom:0;width:56px;height:56px;border-radius:16px}
+.traction-card__head .card-ico svg{width:30px;height:30px}
+.traction-card__badge{
+  font-family:'Unbounded',sans-serif;
+  font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  padding:6px 12px;border-radius:100px;
+  background:rgba(var(--acc2-rgb),.12);
+  border:1px solid rgba(var(--acc2-rgb),.3);
+  color:var(--acc2);
+  flex-shrink:0;
+  white-space:nowrap;
+}
+.traction-card__title{
+  font-family:'Unbounded',sans-serif;
+  font-size:var(--fs-h3);font-weight:700;
+  color:var(--txt-h);line-height:1.3;margin:0;
+  text-wrap:balance;
+}
+.traction-card__list{list-style:none;display:flex;flex-direction:column;gap:10px;margin:0;padding:0}
+.traction-card__list li{
+  display:flex;gap:10px;align-items:flex-start;
+  font-size:var(--fs-card-text);
+  color:var(--txt);line-height:1.55;
+}
+.traction-card__list li svg{
+  width:16px;height:16px;color:var(--acc);flex-shrink:0;margin-top:4px;
+  filter:drop-shadow(0 0 5px rgba(var(--acc-rgb),.45));
+}
+.traction-card__list li b{color:var(--txt-h);font-weight:700}
+
+/* ============================= */
+/* ГРАФИК                        */
+/* ============================= */
+.chart-wrap{padding:var(--pad);border-radius:var(--radius);background:var(--card-bg);border:1px solid var(--line);position:relative;overflow:hidden;min-height:0}
+.chart-header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:16px;flex-wrap:wrap}
+.chart-title{font-family:'Unbounded',sans-serif;font-size:var(--fs-h3);font-weight:700;color:var(--txt-h);margin-bottom:6px;line-height:1.25;text-wrap:balance}
+
+.chart-sub{
+  font-size:var(--fs-note);
+  color:var(--muted-strong);
+  line-height:1.55;
+  font-weight:500;
+}
+
+.chart-legend{display:flex;gap:18px;flex-wrap:wrap}
+.legend-item{
+  display:flex;align-items:center;gap:7px;
+  font-size:clamp(13.5px,1.05vw,15px);
+  font-weight:600;
+  color:var(--muted-strong);
+  line-height:1.45;
+}
+.legend-swatch{width:15px;height:11px;border-radius:3px}
+.legend-swatch--rev{background:linear-gradient(135deg,var(--c1),var(--c2))}
+.legend-swatch--profit{background:var(--c3)}
+.chart{width:100%;height:auto;display:block;overflow:visible;max-height:52vh}
+
+.chart-note{
+  font-size:var(--fs-note);
+  color:var(--muted-strong);
+  line-height:1.65;
+  margin-top:16px;
+  padding-top:14px;
+  border-top:1px solid var(--line);
+  font-weight:500;
+}
+
+.qtable-wrap{
+  margin-top:16px;border-radius:var(--radius);border:1px solid var(--line);
+  background:var(--card-bg);overflow:hidden;
+}
+.qtable{width:100%;border-collapse:collapse;font-size:clamp(14px,1.1vw,16px)}
+.qtable th{
+  font-family:'Unbounded',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--txt-h);text-align:left;
+  padding:14px 16px;border-bottom:1px solid var(--line);
+  background:var(--panel-bg-solid);
+}
+.qtable th:not(:first-child){text-align:right}
+.qtable td{
+  padding:13px 16px;color:var(--txt);border-bottom:1px solid var(--line);
+}
+.qtable td:not(:first-child){text-align:right}
+.qtable td:first-child{color:var(--txt-h);font-weight:600}
+.qtable tr:last-child td{border-bottom:none}
+.qtable tr:hover td{background:rgba(var(--acc-rgb),.05)}
+.qtable .qtable-total td{
+  background:linear-gradient(90deg,rgba(var(--acc-rgb),.08),rgba(var(--acc2-rgb),.08));
+  font-weight:800;
+}
+.qtable .qtable-total td b{
+  font-family:'Unbounded',sans-serif;
+  background:linear-gradient(100deg,var(--acc),var(--acc2));
+  background-size:200%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:gradShift 8s ease infinite;
+}
+
+/* ============================= */
+/* СДЕЛКА                        */
+/* ============================= */
+.invest-cta{margin-top:16px;padding:var(--pad);border-radius:var(--radius);background:var(--card-bg);border:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.invest-cta__txt b{display:block;font-family:'Unbounded',sans-serif;font-size:var(--fs-h3);font-weight:700;color:var(--txt-h);margin-bottom:6px}
+.invest-cta__txt span{font-size:var(--fs-body);color:var(--txt);line-height:1.6}
+
+.deal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--gap);margin-top:16px}
+.deal-item{
+  display:flex;gap:16px;align-items:flex-start;
+  padding:var(--pad);
+  border-radius:var(--radius);
+  background:var(--card-bg);border:1px solid var(--line);
+  transition:border-color .3s,transform .3s var(--ease),box-shadow .3s var(--ease);
+}
+.deal-item:hover{
+  transform:translateY(-2px);
+  border-color:rgba(var(--acc-rgb),.55);
+  box-shadow:0 20px 40px -24px rgba(var(--acc-rgb),.3);
+}
+.deal-item__ico{
+  width:56px;height:56px;border-radius:15px;flex-shrink:0;
+  display:grid;place-items:center;
+  background:
+    radial-gradient(circle at 30% 25%,rgba(var(--acc-rgb),.22),transparent 70%),
+    linear-gradient(140deg,rgba(var(--acc-rgb),.10),rgba(var(--acc2-rgb),.06));
+  border:1px solid rgba(var(--acc-rgb),.32);
+  color:var(--acc);
+  box-shadow:inset 0 0 14px rgba(var(--acc-rgb),.10);
+}
+.deal-item__ico svg{
+  width:28px;height:28px;
+  filter:drop-shadow(0 0 5px rgba(var(--acc-rgb),.5));
+}
+.deal-item__body b{
+  display:block;font-family:'Unbounded',sans-serif;
+  font-size:16.5px;font-weight:700;color:var(--txt-h);
+  line-height:1.3;margin-bottom:6px;
+}
+.deal-item__body span{font-size:var(--fs-card-text);color:var(--txt);line-height:1.6;display:block}
+
+/* ============================= */
+/* ФОНДЫ                         */
+/* ============================= */
 .funds-grid{display:grid;grid-template-columns:auto 1fr;gap:clamp(32px,5vw,60px);align-items:center;min-height:0}
 .donut-wrap{position:relative;width:clamp(220px,26vw,310px);height:clamp(220px,26vw,310px);flex-shrink:0}
 .donut-svg{width:100%;height:100%;transform:rotate(-90deg)}
 .donut-svg circle{fill:none;stroke-width:26;transition:stroke-width .3s var(--ease)}
 .donut-svg circle:hover{stroke-width:32}
 .donut-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none}
-.donut-center b{font-family:'Unbounded',sans-serif;font-size:clamp(22px,2.6vw,32px);font-weight:800;letter-spacing:-.02em;background:var(--grad);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradShift 8s ease infinite;line-height:1}
+.donut-center b{font-family:'Unbounded',sans-serif;font-size:clamp(22px,2.6vw,32px);font-weight:800;letter-spacing:-.02em;background:linear-gradient(100deg,var(--c1),var(--c2),var(--c3),var(--c4));background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradShift 8s ease infinite;line-height:1}
 .donut-center span{font-size:var(--fs-small);letter-spacing:.12em;text-transform:uppercase;color:var(--mut);font-weight:700;margin-top:6px}
-.funds-legend{display:flex;flex-direction:column;gap:12px;width:100%}
 
-.chart-wrap{padding:var(--pad);border-radius:var(--radius);background:var(--card-bg);border:1px solid var(--line);position:relative;overflow:hidden;min-height:0}
-.chart-header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:14px;flex-wrap:wrap}
-.chart-title{font-family:'Unbounded',sans-serif;font-size:var(--fs-h3);font-weight:700;color:var(--txt-h);margin-bottom:3px;line-height:1.25;text-wrap:balance}
-.chart-sub{font-size:var(--fs-small);color:var(--mut)}
-.chart-legend{display:flex;gap:16px;flex-wrap:wrap}
-.legend-item{display:flex;align-items:center;gap:6px;font-size:var(--fs-small);font-weight:600;color:var(--mut)}
-.legend-swatch{width:14px;height:10px;border-radius:3px}
-.legend-swatch--rev{background:linear-gradient(135deg,var(--c1),var(--c2))}
-.legend-swatch--profit{background:var(--c3)}
-.chart{width:100%;height:auto;display:block;overflow:visible;max-height:52vh}
-.chart-note{font-size:12.5px;color:var(--mut);line-height:1.55;margin-top:12px;padding-top:10px;border-top:1px solid var(--line)}
+.funds-legend{display:flex;flex-direction:column;gap:14px;width:100%}
+.fund-item{
+  display:flex;gap:16px;align-items:flex-start;
+  padding:16px 20px;
+  border-radius:16px;
+  background:var(--card-bg);border:1px solid var(--line);
+  transition:border-color .3s,transform .3s var(--ease),box-shadow .3s var(--ease);
+}
+.fund-item:hover{transform:translateX(3px);border-color:rgba(var(--acc-rgb),.5);box-shadow:0 20px 40px -24px rgba(var(--acc-rgb),.25)}
+.fund-item .fund-dot{margin-top:9px}
+.fund-item__body{flex:1;min-width:0}
+.fund-item__title{
+  font-family:'Unbounded',sans-serif;
+  font-size:16.5px;font-weight:700;color:var(--txt-h);line-height:1.3;margin-bottom:6px;
+}
+.fund-item__text{font-size:var(--fs-card-text);color:var(--txt);line-height:1.6}
 
-.roadmap{position:relative}
-.roadmap::before{content:'';position:absolute;top:24px;left:6%;right:6%;height:1px;background:linear-gradient(90deg,transparent,var(--line-2) 15%,var(--line-2) 85%,transparent);z-index:0}
+.fund-item__milestone{
+  margin-top:12px;
+  padding-top:12px;
+  border-top:1px dashed var(--line);
+  font-size:var(--fs-note);
+  color:var(--muted-strong);
+  display:flex;gap:9px;align-items:flex-start;
+  line-height:1.6;
+  font-weight:500;
+}
+.fund-item__milestone svg{
+  width:15px;height:15px;
+  color:var(--acc);
+  flex-shrink:0;
+  margin-top:4px;
+  filter:drop-shadow(0 0 5px rgba(var(--acc-rgb),.4));
+}
+.fund-item__milestone b{
+  color:var(--txt-h);
+  font-weight:700;
+}
 
+/* ============================= */
+/* ROADMAP                       */
+/* ============================= */
+.roadmap-intro{max-width:78ch;font-size:var(--fs-body);color:var(--txt);line-height:1.7}
+.roadmap-intro b{color:var(--txt-h);font-weight:700}
+
+.roadmap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap);margin-top:6px}
+
+.roadmap-q{
+  position:relative;
+  padding:var(--pad);
+  border-radius:var(--radius);
+  background:var(--card-bg);
+  border:1px solid var(--line);
+  display:flex;flex-direction:column;gap:16px;
+  transition:transform .3s var(--ease),border-color .3s var(--ease),box-shadow .3s var(--ease);
+  overflow:hidden;isolation:isolate;
+}
+.roadmap-q::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,rgba(var(--acc-rgb),.7),transparent);
+  z-index:2;pointer-events:none;
+}
+.roadmap-q:hover{
+  transform:translateY(-3px);
+  border-color:rgba(var(--acc-rgb),.55);
+  box-shadow:
+    0 40px 80px -34px rgba(0,0,0,.75),
+    0 0 60px -22px rgba(var(--acc-rgb),.35);
+}
+
+.roadmap-q__head{
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  padding-bottom:14px;border-bottom:1px solid var(--line);
+}
+.roadmap-q__num{
+  font-family:'Unbounded',sans-serif;
+  font-size:clamp(30px,3.6vw,44px);font-weight:800;line-height:1;
+  background:linear-gradient(100deg,var(--acc),var(--acc2));
+  background-size:200% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:gradShift 8s ease infinite;
+  flex-shrink:0;
+}
+.roadmap-q__period{
+  font-family:'Unbounded',sans-serif;
+  font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  padding:7px 14px;border-radius:100px;
+  background:rgba(var(--acc-rgb),.12);
+  border:1px solid rgba(var(--acc-rgb),.3);
+  color:var(--acc);
+  white-space:nowrap;
+}
+.roadmap-q__phase{
+  font-family:'Unbounded',sans-serif;
+  font-size:clamp(18px,1.7vw,22px);font-weight:700;letter-spacing:-.01em;
+  color:var(--txt-h);line-height:1.25;margin:0;
+  margin-left:auto;
+}
+.roadmap-q__goal{font-size:var(--fs-card-text);color:var(--txt);line-height:1.65;margin:0}
+.roadmap-q__goal b{color:var(--txt-h);font-weight:700}
+.roadmap-q__list{list-style:none;display:flex;flex-direction:column;gap:11px;margin:0;padding:0;flex:1}
+.roadmap-q__list li{
+  display:flex;gap:10px;align-items:flex-start;
+  font-size:var(--fs-card-text);color:var(--txt);line-height:1.6;
+}
+.roadmap-q__list li svg{
+  width:16px;height:16px;color:var(--acc);flex-shrink:0;margin-top:4px;
+  filter:drop-shadow(0 0 6px rgba(var(--acc-rgb),.45));
+}
+.roadmap-q__list li b{color:var(--txt-h);font-weight:700}
+.roadmap-q__kpi{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;
+  padding-top:16px;border-top:1px dashed var(--line);margin-top:auto;
+}
+.roadmap-q__kpi-item{
+  padding:12px 10px;border-radius:12px;
+  background:var(--input-bg);border:1px solid var(--line);
+  text-align:center;
+}
+.roadmap-q__kpi-item b{
+  display:block;font-family:'Unbounded',sans-serif;
+  font-size:clamp(16px,1.3vw,19px);font-weight:800;line-height:1.15;
+  background:linear-gradient(100deg,var(--acc),var(--acc2));
+  background-size:200%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:gradShift 8s ease infinite;
+  margin-bottom:5px;
+}
+.roadmap-q__kpi-item span{
+  font-size:11.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--muted-strong);display:block;line-height:1.3;
+}
+
+.roadmap-result{
+  margin-top:20px;padding:var(--pad);border-radius:var(--radius);
+  background:var(--card-bg);border:1px solid rgba(var(--acc-rgb),.4);
+  font-size:var(--fs-body);color:var(--txt);line-height:1.6;
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  position:relative;overflow:hidden;
+}
+.roadmap-result::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,rgba(var(--acc-rgb),.7),transparent);
+}
+.roadmap-result b{
+  font-family:'Unbounded',sans-serif;
+  font-size:var(--fs-h3);font-weight:800;letter-spacing:-.01em;
+  background:linear-gradient(100deg,var(--acc),var(--acc2));
+  background-size:200%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:gradShift 8s ease infinite;
+  flex-shrink:0;
+}
+.roadmap-result span{flex:1;min-width:240px}
+
+/* ============================= */
+/* ОСНОВАТЕЛЬ                    */
+/* ============================= */
 .office-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(28px,4.5vw,50px);align-items:center;min-height:0;min-width:0}
 .office-grid > *{min-width:0}
-.office-visual{position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line-2);background:linear-gradient(135deg,rgba(var(--c1-rgb),.16),rgba(var(--c3-rgb),.16));aspect-ratio:16/10;min-height:280px;max-height:58vh;display:flex;align-items:center;justify-content:center;width:100%;max-width:100%}
+.office-visual{
+  position:relative;border-radius:var(--radius);overflow:hidden;
+  border:1px solid var(--line-2);
+  background:radial-gradient(circle at 50% 40%,rgba(var(--acc-rgb),.14),transparent 70%);
+  aspect-ratio:16/10;min-height:280px;max-height:58vh;
+  display:flex;align-items:center;justify-content:center;
+  width:100%;max-width:100%;
+}
 .office-visual::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:40px 40px;mask-image:radial-gradient(ellipse at 50% 50%,#000 40%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse at 50% 50%,#000 40%,transparent 75%)}
 .office-pin{position:relative;z-index:2;text-align:center;padding:20px}
-.office-pin__ico{width:80px;height:80px;border-radius:22px;margin:0 auto 18px;display:grid;place-items:center;background:var(--grad);background-size:200%;color:#fff;text-shadow:var(--text-shadow-light);box-shadow:0 20px 44px -14px rgba(var(--c1-rgb),.7);animation:pulsePin 3s ease-in-out infinite}
+.office-pin__ico{
+  width:88px;height:88px;border-radius:24px;margin:0 auto 20px;
+  display:grid;place-items:center;
+  background:linear-gradient(100deg,var(--acc),var(--acc2));
+  background-size:200% 100%;animation:gradShift 8s ease infinite;
+  color:#fff;text-shadow:var(--text-shadow-light);
+  box-shadow:0 22px 48px -14px rgba(var(--acc-rgb),.7);
+  animation:pulsePin 3s ease-in-out infinite,gradShift 8s ease infinite;
+}
 @keyframes pulsePin{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
-.office-pin__ico svg{width:36px;height:36px}
+.office-pin__ico svg{width:42px;height:42px}
 .office-pin b{display:block;font-family:'Unbounded',sans-serif;font-size:var(--fs-h3);font-weight:700;letter-spacing:-.02em;color:var(--txt-h);margin-bottom:6px}
 .office-pin span{font-size:var(--fs-body);color:var(--txt);opacity:.85}
 .team-list{display:flex;flex-direction:column;gap:12px}
 
 .founder-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(28px,4.5vw,52px);align-items:center;min-height:0}
 .founder-card{text-align:center;padding:clamp(26px,3vw,40px) clamp(22px,2.6vw,36px)}
-.founder-card.card--accent::before{display:none}
-.founder-photo{width:clamp(160px,17vw,220px);height:clamp(160px,17vw,220px);border-radius:50%;margin:0 auto 20px;overflow:hidden;position:relative;background:var(--grad);background-size:200%;box-shadow:0 22px 44px -14px rgba(var(--c1-rgb),.6),0 0 0 4px rgba(var(--c1-rgb),.14);animation:gradShift 8s ease infinite}
+.founder-photo{
+  width:clamp(160px,17vw,220px);height:clamp(160px,17vw,220px);
+  border-radius:50%;margin:0 auto 20px;overflow:hidden;position:relative;
+  background:linear-gradient(100deg,var(--acc),var(--acc2));background-size:200%;
+  box-shadow:0 22px 44px -14px rgba(var(--acc-rgb),.6),0 0 0 4px rgba(var(--acc-rgb),.14);
+  animation:gradShift 8s ease infinite;
+}
 .founder-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s var(--ease)}
 .founder-photo:hover img{transform:scale(1.06)}
 .founder-name{font-family:'Unbounded',sans-serif;font-size:clamp(19px,1.9vw,25px);font-weight:700;letter-spacing:-.02em;color:var(--txt-h);line-height:1.22;margin-bottom:10px;text-wrap:balance}
-.founder-role{font-size:clamp(14px,1.2vw,16px);color:var(--mut);margin-bottom:18px;line-height:1.5}
+.founder-role{font-size:clamp(14px,1.2vw,16px);color:var(--muted-strong);margin-bottom:18px;line-height:1.55}
+.founder-quote{
+  padding:16px 20px;border-radius:14px;
+  background:rgba(var(--acc-rgb),.06);
+  border-left:3px solid var(--acc);
+  font-style:italic;
+  font-size:var(--fs-card-text);color:var(--txt);line-height:1.65;
+  text-align:left;
+  margin-bottom:18px;
+}
+.founder-quote::before{
+  content:'«';font-family:'Unbounded',sans-serif;
+  font-size:28px;font-weight:800;color:var(--acc);
+  line-height:0;vertical-align:-10px;margin-right:2px;
+}
 .founder-tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:18px}
 .founder-tag{display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:100px;background:var(--chip-bg);border:1px solid var(--line);font-size:13.5px;font-weight:600;color:var(--txt)}
-.founder-tag svg{width:14px;height:14px;color:var(--c2)}
+.founder-tag svg{width:14px;height:14px;color:var(--acc)}
 .founder-edu{padding-top:18px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:12px;text-align:left}
 .founder-edu-row{display:flex;align-items:flex-start;gap:12px}
-.founder-edu-row svg{width:18px;height:18px;color:var(--c2);flex-shrink:0;margin-top:2px}
+.founder-edu-row svg{width:18px;height:18px;color:var(--acc);flex-shrink:0;margin-top:2px}
 .founder-edu-row b{display:block;font-size:14.5px;font-weight:700;color:var(--txt-h);line-height:1.35;margin-bottom:3px}
-.founder-edu-row span{font-size:13.5px;color:var(--mut);line-height:1.45;display:block}
+.founder-edu-row span{font-size:13.5px;color:var(--muted-strong);line-height:1.5;display:block}
 
 .founder-timeline{display:flex;flex-direction:column;gap:12px;position:relative}
 .ftl-item{padding-left:64px}
-.ftl-item__dot{position:absolute;left:var(--pad);top:var(--pad);width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--grad);background-size:200%;color:#fff;font-family:'Unbounded',sans-serif;font-weight:800;font-size:13px;box-shadow:0 0 16px rgba(var(--c1-rgb),.55);text-shadow:var(--text-shadow-light);z-index:3;animation:gradShift 8s ease infinite}
-.ftl-item::after{content:'';position:absolute;left:calc(var(--pad) + 12.5px);top:calc(var(--pad) + 26px);bottom:calc(-1 * 12px);width:1px;background:linear-gradient(180deg,rgba(var(--c1-rgb),.5),transparent);z-index:0}
+.ftl-item__dot{
+  position:absolute;left:var(--pad);top:var(--pad);width:28px;height:28px;border-radius:50%;
+  display:grid;place-items:center;
+  background:linear-gradient(100deg,var(--acc),var(--acc2));background-size:200% 100%;
+  animation:gradShift 8s ease infinite;
+  color:#fff;font-family:'Unbounded',sans-serif;font-weight:800;font-size:13px;
+  box-shadow:0 0 18px rgba(var(--acc-rgb),.55);
+  text-shadow:var(--text-shadow-light);z-index:3;
+}
+.ftl-item::after{
+  content:'';position:absolute;left:calc(var(--pad) + 13px);top:calc(var(--pad) + 28px);bottom:calc(-1 * 12px);
+  width:1px;background:linear-gradient(180deg,rgba(var(--acc-rgb),.5),transparent);z-index:0;
+}
 .ftl-item:last-child::after{display:none}
-.ftl-metric{display:inline-flex;align-items:center;gap:8px;margin-top:10px;padding:7px 14px;border-radius:100px;background:linear-gradient(135deg,rgba(var(--c1-rgb),.14),rgba(var(--c3-rgb),.14));border:1px solid rgba(var(--c1-rgb),.28);font-size:13px;font-weight:700;color:var(--txt-h)}
-.ftl-metric b{font-family:'Unbounded',sans-serif;font-size:13px;font-weight:800;background:var(--grad);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradShift 8s ease infinite}
-.ftl-metric svg{width:13px;height:13px;color:var(--c2)}
+.ftl-metric{
+  display:inline-flex;align-items:center;gap:8px;margin-top:10px;padding:8px 16px;border-radius:100px;
+  background:rgba(var(--acc-rgb),.12);
+  border:1px solid rgba(var(--acc-rgb),.3);
+  font-size:13.5px;font-weight:700;color:var(--txt-h);
+}
+.ftl-metric b{
+  font-family:'Unbounded',sans-serif;font-size:13.5px;font-weight:800;
+  background:linear-gradient(100deg,var(--acc),var(--acc2));background-size:200%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:gradShift 8s ease infinite;
+}
+.ftl-metric svg{width:13px;height:13px;color:var(--acc)}
 
-.unit-econ{padding:var(--pad);border-radius:var(--radius);background:linear-gradient(160deg,rgba(var(--c1-rgb),.06),rgba(var(--c3-rgb),.06));border:1px solid rgba(var(--c1-rgb),.18)}
-.unit-econ h3{font-family:'Unbounded',sans-serif;font-size:var(--fs-h3);font-weight:700;color:var(--txt-h);margin-bottom:14px;letter-spacing:-.01em;text-wrap:balance}
-.unit-econ__grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:14px}
-.unit-econ__item{padding:12px 10px;border-radius:11px;background:var(--card-bg);border:1px solid var(--line)}
-.unit-econ__item small{display:block;font-size:12px;color:var(--mut);letter-spacing:.04em;text-transform:uppercase;margin-bottom:5px;font-weight:600}
-.unit-econ__item b{display:block;font-family:'Unbounded',sans-serif;font-size:clamp(16px,1.4vw,21px);font-weight:700;color:var(--txt-h);line-height:1.2}
-.unit-econ__item--accent{background:linear-gradient(160deg,rgba(var(--c1-rgb),.12),rgba(var(--c3-rgb),.12));border-color:rgba(var(--c1-rgb),.3)}
-.unit-econ__item--accent b{background:var(--grad);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradShift 8s ease infinite}
-.unit-econ__metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding-top:14px;border-top:1px solid var(--line)}
+.team-block{display:flex;flex-direction:column;gap:16px}
+.team-block__head{
+  font-family:'Unbounded',sans-serif;
+  font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--mut);
+  display:flex;align-items:center;gap:10px;
+}
+.team-block__head::before{content:'';width:20px;height:1px;background:linear-gradient(90deg,var(--acc),var(--acc2))}
+.team-block__head::after{content:'';flex:1;height:1px;background:var(--line)}
+
+/* ============================= */
+/* ЮНИТ-ЭКОНОМИКА               */
+/* ============================= */
+.unit-econ{
+  padding:var(--pad);border-radius:var(--radius);
+  background:var(--card-bg);
+  border:1px solid rgba(var(--acc-rgb),.3);
+  position:relative;overflow:hidden;
+}
+.unit-econ::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,rgba(var(--acc-rgb),.7),transparent);
+}
+.unit-econ h3{font-family:'Unbounded',sans-serif;font-size:var(--fs-h3);font-weight:700;color:var(--txt-h);margin-bottom:16px;letter-spacing:-.01em;text-wrap:balance}
+.unit-econ__grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:16px}
+.unit-econ__item{padding:14px 12px;border-radius:12px;background:var(--input-bg);border:1px solid var(--line)}
+.unit-econ__item small{
+  display:block;
+  font-size:clamp(12.5px,1vw,14px);
+  color:var(--muted-strong);
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  margin-bottom:8px;
+  font-weight:700;
+  line-height:1.35;
+}
+.unit-econ__item b{display:block;font-family:'Unbounded',sans-serif;font-size:clamp(17px,1.5vw,22px);font-weight:700;color:var(--txt-h);line-height:1.2}
+.unit-econ__item--accent{border-color:rgba(var(--acc-rgb),.5)}
+.unit-econ__item--accent b{
+  background:linear-gradient(100deg,var(--acc),var(--acc2));
+  background-size:200%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:gradShift 8s ease infinite;
+}
+.unit-econ__metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding-top:16px;border-top:1px solid var(--line)}
 .unit-econ__metric{text-align:center}
-.unit-econ__metric b{display:block;font-family:'Unbounded',sans-serif;font-size:clamp(20px,2vw,27px);font-weight:800;background:var(--grad);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradShift 8s ease infinite;line-height:1;margin-bottom:5px}
-.unit-econ__metric span{font-size:12.5px;color:var(--mut);font-weight:600;line-height:1.4;display:block}
+.unit-econ__metric b{
+  display:block;font-family:'Unbounded',sans-serif;
+  font-size:clamp(20px,2vw,28px);font-weight:800;
+  background:linear-gradient(100deg,var(--acc),var(--acc2));
+  background-size:200%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:gradShift 8s ease infinite;
+  line-height:1;margin-bottom:10px;
+}
+
+.unit-econ__metric span{
+  font-size:clamp(14px,1.15vw,16px);
+  color:var(--muted-strong);
+  font-weight:500;
+  line-height:1.55;
+  display:block;
+}
+.unit-econ__metric span abbr{
+  color:var(--txt-h);
+  font-weight:700;
+}
 
 .comp-row{display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;gap:0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
-.comp-row__cell{padding:12px 14px;font-size:clamp(13.5px,1.05vw,15px);border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--card-bg);line-height:1.45}
+.comp-row__cell{padding:14px 16px;font-size:clamp(13.5px,1.1vw,15.5px);border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--card-bg);line-height:1.5}
 .comp-row__cell:nth-child(4n){border-right:none}
 .comp-row__cell:nth-last-child(-n+4){border-bottom:none}
 .comp-row__head{font-family:'Unbounded',sans-serif;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--txt-h);background:var(--panel-bg-solid) !important}
 .comp-row__head--albe{background:linear-gradient(160deg,rgba(var(--c1-rgb),.14),rgba(var(--c3-rgb),.14)) !important;color:var(--c2) !important}
-.comp-row__cell--albe{background:linear-gradient(160deg,rgba(var(--c1-rgb),.06),rgba(var(--c3-rgb),.06));color:var(--txt-h);font-weight:600}
+.comp-row__cell--albe{color:var(--txt-h);font-weight:600;border-left:1px solid rgba(var(--c1-rgb),.2);border-right:1px solid rgba(var(--c1-rgb),.2)}
 .comp-row__cell b{color:var(--txt-h)}
 
-.cta-final{padding:clamp(30px,4vw,52px);border-radius:clamp(22px,2.8vw,28px);background:linear-gradient(140deg,rgba(var(--c1-rgb),.1),rgba(var(--c3-rgb),.1));border:1px solid rgba(var(--c1-rgb),.24);text-align:center;position:relative;overflow:hidden}
-.cta-final::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(var(--c1-rgb),.15),transparent 60%);pointer-events:none}
-.cta-final .slide-num{justify-content:center;display:flex;position:relative;margin-bottom:12px}
-.cta-final h2{margin:0 auto 18px;position:relative;max-width:none;text-align:center}
-.cta-final p{position:relative;max-width:60ch;margin:0 auto 28px;font-size:var(--fs-lead);color:var(--mut);line-height:1.6}
+.comp-row__head--avito{color:var(--avito) !important}
+.comp-row__head--sutocho{color:var(--sutocho) !important}
+.card--avito .card-eyebrow{color:var(--avito)}
+.card--avito .card-value{background:linear-gradient(100deg,var(--avito),rgba(var(--avito-rgb),.72));-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:none}
+.card--avito:hover .card-eyebrow{color:var(--avito);text-shadow:0 0 20px rgba(var(--avito-rgb),.5)}
+.card--avito:hover .card-value{filter:drop-shadow(0 0 18px rgba(var(--avito-rgb),.5))}
+.card--avito:hover{border-color:rgba(var(--avito-rgb),.55);box-shadow:0 40px 80px -34px rgba(0,0,0,.75),0 0 60px -22px rgba(var(--avito-rgb),.35)}
+.card--avito::before{background:linear-gradient(90deg,transparent,rgba(var(--avito-rgb),.7),transparent)}
+
+.card--sutocho .card-eyebrow{color:var(--sutocho)}
+.card--sutocho .card-value{background:linear-gradient(100deg,var(--sutocho),rgba(var(--sutocho-rgb),.72));-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:none}
+.card--sutocho:hover .card-eyebrow{color:var(--sutocho);text-shadow:0 0 20px rgba(var(--sutocho-rgb),.5)}
+.card--sutocho:hover .card-value{filter:drop-shadow(0 0 18px rgba(var(--sutocho-rgb),.5))}
+.card--sutocho:hover{border-color:rgba(var(--sutocho-rgb),.55);box-shadow:0 40px 80px -34px rgba(0,0,0,.75),0 0 60px -22px rgba(var(--sutocho-rgb),.35)}
+.card--sutocho::before{background:linear-gradient(90deg,transparent,rgba(var(--sutocho-rgb),.7),transparent)}
+
+.comp-row-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--radius);scrollbar-width:thin}
+.comp-row-wrap::-webkit-scrollbar{height:6px}
+.comp-row-wrap::-webkit-scrollbar-thumb{background:linear-gradient(90deg,var(--c1),var(--c3));border-radius:6px}
+.comp-row{min-width:600px}
+
+.cta-final{
+  padding:clamp(32px,4vw,56px);
+  border-radius:clamp(22px,2.8vw,28px);
+  background:var(--card-bg);
+  border:1px solid rgba(var(--acc-rgb),.4);
+  text-align:center;position:relative;overflow:hidden;
+}
+.cta-final::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(var(--acc-rgb),.14),transparent 60%);
+  pointer-events:none;
+}
+.cta-final::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,rgba(var(--acc-rgb),.7),transparent);
+}
+.cta-final .slide-num{justify-content:center;display:flex;position:relative;margin-bottom:14px}
+.cta-final h2{margin:0 auto 20px;position:relative;max-width:none;text-align:center}
+.cta-final p{position:relative;max-width:60ch;margin:0 auto 30px;font-size:var(--fs-lead);color:var(--txt);line-height:1.65}
 .cta-final__actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;position:relative}
-.contact-row{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(28px,4vw,52px);margin-top:26px;padding-top:20px;border-top:1px solid var(--line);position:relative}
-.contact-item{display:flex;flex-direction:column;gap:5px;text-align:left}
+.contact-row{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(28px,4vw,52px);margin-top:28px;padding-top:22px;border-top:1px solid var(--line);position:relative}
+.contact-item{display:flex;flex-direction:column;gap:6px;text-align:left}
 .contact-item small{font-size:var(--fs-small);letter-spacing:.12em;text-transform:uppercase;color:var(--mut);font-weight:700}
 .contact-item a,.contact-item b{font-family:'Unbounded',sans-serif;font-size:var(--fs-body);font-weight:600;color:var(--txt-h);transition:color .25s}
-.contact-item a:hover{color:var(--c2)}
+.contact-item a:hover{color:var(--acc)}
 
 .footer-slide{padding:26px var(--page-x);border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:var(--fs-small);color:var(--mut);letter-spacing:.03em;background:var(--panel-bg-solid)}
 .footer-slide a:hover{color:var(--c2)}
 
-/* ============================================================
-   ПРОСТОЙ REVEAL — только opacity, без transform
-   ============================================================ */
-[data-reveal]{
-  opacity: 0;
-  transition: opacity .6s var(--ease);
-  transition-delay: var(--d, 0s);
-}
-[data-reveal].in{opacity: 1}
+[data-reveal]{opacity:0;transition:opacity .6s var(--ease);transition-delay:var(--d,0s)}
+[data-reveal].in{opacity:1}
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
 @media(max-width:1100px){
   .grid--4{grid-template-columns:repeat(2,1fr)}
   .grid--3{grid-template-columns:repeat(2,1fr)}
-  .roadmap::before{display:none}
   .unit-econ__grid{grid-template-columns:repeat(3,1fr)}
   .unit-econ__metrics{grid-template-columns:repeat(2,1fr)}
 }
 
 @media(max-width:900px){
   .dots{display:none}
-  .slide{
-    padding:88px var(--page-x) 56px;
-    min-height:auto;
-    overflow:visible;
-  }
+  .slide{padding:88px var(--page-x) 56px;min-height:auto;overflow:visible}
   .grid--2,.grid--3,.grid--4{grid-template-columns:1fr}
   .product-grid,.office-grid,.founder-grid,.funds-grid{grid-template-columns:1fr}
   .funds-grid{justify-items:center}
@@ -663,13 +1179,13 @@ html[data-theme="light"] .card::before{background:linear-gradient(90deg,transpar
   .slide:not(.slide--cover) .slide__inner::after{display:none}
   .chart{max-height:none}
   .slide h2{max-width:none;text-wrap:balance}
-  .office-visual{
-    min-height:220px;
-    max-height:none;
-    aspect-ratio:auto;
-    padding:8px;
-  }
+  .office-visual{min-height:220px;max-height:none;aspect-ratio:auto;padding:8px}
   .office-grid{gap:20px}
+  .about-diff,.trends-grid,.traction-grid{grid-template-columns:1fr}
+  .deal-grid{grid-template-columns:1fr}
+  .roadmap{grid-template-columns:1fr}
+  .roadmap-q__phase{margin-left:0}
+  .roadmap-q__kpi-item span{font-size:10.5px}
 }
 
 @media(max-width:600px){
@@ -685,166 +1201,56 @@ html[data-theme="light"] .card::before{background:linear-gradient(90deg,transpar
   .footer-slide{padding:22px var(--page-x);flex-direction:column;text-align:center;gap:8px}
   .unit-econ__grid{grid-template-columns:1fr 1fr}
   .unit-econ__metrics{grid-template-columns:1fr 1fr}
-  abbr[title]:hover::after{font-size:14px;max-width:min(320px,90vw);padding:12px 15px;}
+  .qtable th,.qtable td{padding:10px 12px;font-size:13px}
+  abbr[title]:hover::after{font-size:15px;max-width:min(320px,90vw);padding:14px 16px}
+  :root{
+    --fs-h2:clamp(24px,6.8vw,34px);
+    --fs-h3:clamp(18px,4.8vw,22px);
+    --fs-value:clamp(28px,8vw,38px);
+    --fs-card-text:clamp(15px,4.1vw,16.5px);
+    --fs-note:clamp(14px,3.9vw,15.5px);
+  }
+  .cover__title{font-size:clamp(38px,11.5vw,64px)}
+  .cover__sub{font-size:clamp(15px,4.2vw,17px);padding:0 4px}
+  .office-pin__ico{width:70px;height:70px;border-radius:20px}
+  .office-pin__ico svg{width:34px;height:34px}
+  .office-pin{padding:12px}
+  .card--row, .card--row-top{gap:14px}
+  .card-ico{width:56px;height:56px}
+  .card-ico svg{width:28px;height:28px}
 }
 
-/* На низких экранах немного сжимаем, чтобы слайд помещался */
 @media (min-width: 901px) and (max-height: 820px){
   :root{
     --fs-h2: clamp(28px, 3.2vw, 42px);
     --fs-h3: clamp(17px, 1.5vw, 20px);
     --fs-lead: clamp(14.5px, 1.15vw, 17px);
     --fs-body: clamp(14px, 1vw, 15.5px);
+    --fs-card-text: clamp(13.5px, .95vw, 15px);
+    --fs-note: clamp(13.5px, 1vw, 15px);
     --fs-value: clamp(26px, 2.6vw, 36px);
     --fs-small: clamp(12px, .95vw, 13px);
+    --fs-label: clamp(12.5px, 1vw, 14px);
     --pad: clamp(16px, 1.8vw, 22px);
     --gap: clamp(12px, 1.6vw, 18px);
   }
-  .slide{padding-top:76px;padding-bottom:26px;}
-  .browser-iframe{height:min(380px,48vh);}
-  .chart{max-height:42vh;}
-  .founder-photo{width:150px;height:150px;margin-bottom:14px;}
-  .office-visual{min-height:200px;max-height:48vh;}
-  .donut-wrap{width:200px;height:200px;}
-  .ftl-item{padding-left:52px;}
-  .ftl-item__dot{width:22px;height:22px;font-size:11px;}
-  .ftl-item::after{left:calc(var(--pad) + 10.5px);top:calc(var(--pad) + 22px);}
-  .card-ava{width:44px;height:44px;font-size:16px;}
+  .slide{padding-top:76px;padding-bottom:26px}
+  .browser-iframe{height:min(380px,48vh)}
+  .chart{max-height:42vh}
+  .founder-photo{width:150px;height:150px;margin-bottom:14px}
+  .office-visual{min-height:200px;max-height:48vh}
+  .donut-wrap{width:200px;height:200px}
+  .ftl-item{padding-left:52px}
+  .ftl-item__dot{width:24px;height:24px;font-size:11px}
+  .ftl-item::after{left:calc(var(--pad) + 11px);top:calc(var(--pad) + 24px)}
+  .card-ava{width:48px;height:48px;font-size:18px}
+  .card-ico{width:56px;height:56px}
+  .card-ico svg{width:28px;height:28px}
 }
 
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   [data-reveal]{opacity:1!important}
-}
-
-/* ============================================================
-   ЦВЕТОВОЕ КОДИРОВАНИЕ КОНКУРЕНТОВ
-   ============================================================ */
-:root{
-  --avito:#FB7185;      --avito-rgb:251,113,133;
-  --sutocho:#60A5FA;    --sutocho-rgb:96,165,250;
-}
-html[data-theme="light"]{
-  --avito:#E11D48;      --avito-rgb:225,29,72;
-  --sutocho:#2563EB;    --sutocho-rgb:37,99,235;
-}
-
-/* --- Карточка Авито (розовая) --- */
-.card--avito{
-  border-color:rgba(var(--avito-rgb),.30);
-  background:linear-gradient(160deg,rgba(var(--avito-rgb),.07),rgba(var(--avito-rgb),.02));
-}
-.card--avito::before{
-  background:linear-gradient(90deg,transparent,rgba(var(--avito-rgb),.6),transparent);
-  opacity:.9;height:2px;top:-1px;
-}
-.card--avito::after{
-  background:radial-gradient(circle at 50% 0%,rgba(var(--avito-rgb),.12),transparent 55%);
-}
-.card--avito .card-eyebrow{color:var(--avito)}
-.card--avito .card-value{
-  background:linear-gradient(90deg,var(--avito),rgba(var(--avito-rgb),.7));
-  -webkit-background-clip:text;background-clip:text;
-  color:transparent;-webkit-text-fill-color:transparent;
-  animation:none;
-}
-.card--avito:hover{
-  border-color:transparent;
-  background:
-    linear-gradient(160deg,rgba(var(--avito-rgb),.10),rgba(var(--avito-rgb),.03)) padding-box,
-    linear-gradient(135deg,var(--avito),rgba(var(--avito-rgb),.7)) border-box;
-  box-shadow:0 24px 50px -24px rgba(var(--avito-rgb),.45),
-             0 0 50px -20px rgba(var(--avito-rgb),.25);
-}
-.card--avito:hover .card-eyebrow{color:var(--avito)}
-.card--avito:hover .card-value{
-  background:linear-gradient(90deg,var(--avito),rgba(var(--avito-rgb),.72));
-  -webkit-background-clip:text;background-clip:text;
-  color:transparent;-webkit-text-fill-color:transparent;
-}
-
-/* --- Карточка Суточно (синяя) --- */
-.card--sutocho{
-  border-color:rgba(var(--sutocho-rgb),.30);
-  background:linear-gradient(160deg,rgba(var(--sutocho-rgb),.07),rgba(var(--sutocho-rgb),.02));
-}
-.card--sutocho::before{
-  background:linear-gradient(90deg,transparent,rgba(var(--sutocho-rgb),.6),transparent);
-  opacity:.9;height:2px;top:-1px;
-}
-.card--sutocho::after{
-  background:radial-gradient(circle at 50% 0%,rgba(var(--sutocho-rgb),.12),transparent 55%);
-}
-.card--sutocho .card-eyebrow{color:var(--sutocho)}
-.card--sutocho .card-value{
-  background:linear-gradient(90deg,var(--sutocho),rgba(var(--sutocho-rgb),.7));
-  -webkit-background-clip:text;background-clip:text;
-  color:transparent;-webkit-text-fill-color:transparent;
-  animation:none;
-}
-.card--sutocho:hover{
-  border-color:transparent;
-  background:
-    linear-gradient(160deg,rgba(var(--sutocho-rgb),.10),rgba(var(--sutocho-rgb),.03)) padding-box,
-    linear-gradient(135deg,var(--sutocho),rgba(var(--sutocho-rgb),.7)) border-box;
-  box-shadow:0 24px 50px -24px rgba(var(--sutocho-rgb),.45),
-             0 0 50px -20px rgba(var(--sutocho-rgb),.25);
-}
-.card--sutocho:hover .card-eyebrow{color:var(--sutocho)}
-.card--sutocho:hover .card-value{
-  background:linear-gradient(90deg,var(--sutocho),rgba(var(--sutocho-rgb),.72));
-  -webkit-background-clip:text;background-clip:text;
-  color:transparent;-webkit-text-fill-color:transparent;
-}
-
-/* --- Шапка таблицы --- */
-.comp-row__head--avito{
-  background:linear-gradient(160deg,rgba(var(--avito-rgb),.22),rgba(var(--avito-rgb),.10)) !important;
-  color:var(--avito) !important;
-}
-.comp-row__head--sutocho{
-  background:linear-gradient(160deg,rgba(var(--sutocho-rgb),.22),rgba(var(--sutocho-rgb),.10)) !important;
-  color:var(--sutocho) !important;
-}
-
-/* --- Лёгкая подсветка колонок в данных --- */
-.comp-row__cell:nth-child(4n+2){
-  background:linear-gradient(160deg,rgba(var(--avito-rgb),.05),rgba(var(--avito-rgb),.015));
-}
-.comp-row__cell:nth-child(4n+3){
-  background:linear-gradient(160deg,rgba(var(--sutocho-rgb),.05),rgba(var(--sutocho-rgb),.015));
-}
-
-/* --- Обёртка таблицы с горизонтальным скроллом --- */
-.comp-row-wrap{
-  overflow-x:auto;
-  -webkit-overflow-scrolling:touch;
-  border-radius:var(--radius);
-  scrollbar-width:thin;
-}
-.comp-row-wrap::-webkit-scrollbar{height:6px}
-.comp-row-wrap::-webkit-scrollbar-thumb{
-  background:linear-gradient(90deg,var(--c1),var(--c3));
-  border-radius:6px;
-}
-.comp-row{min-width:600px}
-
-/* ============================================================
-   МОБИЛЬНЫЕ ФИКСЫ
-   ============================================================ */
-@media(max-width:600px){
-  :root{
-    --fs-h2:clamp(24px,6.8vw,34px);
-    --fs-h3:clamp(18px,4.8vw,22px);
-    --fs-value:clamp(28px,8vw,38px);
-  }
-  .cover__title{font-size:clamp(38px,11.5vw,64px)}
-  .cover__sub{font-size:clamp(15px,4.2vw,17px);padding:0 4px}
-  .office-pin__ico{width:64px;height:64px;border-radius:18px}
-  .office-pin__ico svg{width:30px;height:30px}
-  .office-pin{padding:12px}
-  .card--row, .card--row-top{gap:12px}
-  .card-ava{width:46px;height:46px;font-size:16px}
 }
 </style>
 </head>
@@ -855,24 +1261,51 @@ html[data-theme="light"]{
     <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
     <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></symbol>
     <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.5A8.5 8.5 0 1111.5 3a7 7 0 009.5 9.5z"/></symbol>
-    <symbol id="i-ruble" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21V8h5a4 4 0 010 8H8"/><path d="M6 13h10M6 17h10"/></symbol>
-    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
-    <symbol id="i-percent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 5L5 19"/><circle cx="7.5" cy="7.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></symbol>
-    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8l7.5 3v6.3c0 4.5-3.2 8.1-7.5 9.3-4.3-1.2-7.5-4.8-7.5-9.3V5.8l7.5-3z"/><path d="M8.6 11.8l2.3 2.3 4.5-4.5"/></symbol>
-    <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2.5L4.5 13.5h6.4L11 21.5l8.5-11h-6.4l-.1-8z"/></symbol>
-    <symbol id="i-sparkle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.7 5.7 1.3-5.7 1.9L12 17.6l-1.9-5.7L4.4 10l5.7-1.3L12 3z"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></symbol>
-    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3 8l9 6 9-6"/></symbol>
-    <symbol id="i-bag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="14" rx="2.5"/><path d="M8 7V5a4 4 0 018 0v2"/></symbol>
-    <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c0-3 2.5-5.3 5.5-5.3s5.5 2.3 5.5 5.3"/><path d="M16 5.2a3 3 0 010 5.6M17.5 14.9c2 .5 3.5 2.4 3.5 5.1"/></symbol>
-    <symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M8 7h2M14 7h2M8 11h2M14 11h2M8 15h2M14 15h2M10 21v-3h4v3"/></symbol>
-    <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M22 20V6"/></symbol>
-    <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></symbol>
-    <symbol id="i-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L7 21l5-3 5 3-1.5-8.5"/></symbol>
-    <symbol id="i-graduation" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.1 2.7 2.5 6 2.5s6-1.4 6-2.5v-5"/></symbol>
-    <symbol id="i-rocket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4c3 0 5 2 5 5l-4 4-3 3-4-4 3-3zM9 12L4 17l3-1 1 3 5-5"/><circle cx="15" cy="9" r="1.3" fill="currentColor"/></symbol>
-    <symbol id="i-telegram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 4.5L2.8 11.3c-.9.3-.9 1.5.1 1.7l4.6 1.4 1.7 5.2c.2.7 1.1.9 1.6.3l2.6-2.9 4.7 3.5c.6.4 1.4.1 1.6-.6l3.1-14.5c.2-.9-.7-1.5-1.3-1.2z"/><path d="M7.5 14.4l9.8-6.3-7.6 7.5"/></symbol>
-    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></symbol>
+
+    <symbol id="i-prem-villa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 10.5L12 3l9.5 7.5"/><path d="M4 9.8V20a1 1 0 001 1h4v-6h6v6h4a1 1 0 001-1V9.8"/><path d="M9 20v-4h6v4"/><path d="M12 3v3"/></symbol>
+    <symbol id="i-prem-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M4.5 7h15M4.5 17h15"/></symbol>
+    <symbol id="i-prem-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l9.5 5.3-9.5 5.3L2.5 7.8 12 2.5z"/><path d="M2.5 12.2L12 17.5l9.5-5.3M2.5 16.5L12 21.8l9.5-5.3"/></symbol>
+    <symbol id="i-prem-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8l2.85 5.78 6.38.93-4.62 4.5 1.09 6.36L12 17.37l-5.7 3 1.09-6.36-4.62-4.5 6.38-.93L12 2.8z"/></symbol>
+    <symbol id="i-prem-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l8 3.3v6.4c0 4.6-3.4 8.3-8 9.5-4.6-1.2-8-4.9-8-9.5V5.8l8-3.3z"/><path d="M8.5 11.7l2.5 2.5 5-5"/></symbol>
+    <symbol id="i-prem-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0112 0c0 6.5 2.5 7.5 2.5 7.5h-17S6 14.5 6 8z"/><path d="M10.2 19.2a2 2 0 003.6 0"/><path d="M12 2v1.5"/></symbol>
+    <symbol id="i-prem-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.2L13 20.8a2 2 0 01-2.8 0L3.2 13.8a2 2 0 01-.6-1.4V4.5a1.5 1.5 0 011.5-1.5h7.9c.5 0 1 .2 1.4.6l7.2 7.2a2 2 0 010 2.4z"/><circle cx="7.8" cy="7.8" r="1.4"/><path d="M12 11.5l4.5 4.5"/></symbol>
+    <symbol id="i-prem-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M6.5 14l3.5-4 3 2.8 5.5-6"/><path d="M18.5 6.8h-3.2M18.5 6.8v3.2"/></symbol>
+    <symbol id="i-prem-trend" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7v6M21 7h-6"/><circle cx="9" cy="11" r="1" fill="currentColor" stroke="none"/><circle cx="13" cy="15" r="1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-prem-ruble" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 17V7.5h3.8a3 3 0 010 6H9"/><path d="M7.5 11h7M7.5 14h7"/></symbol>
+    <symbol id="i-prem-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/></symbol>
+    <symbol id="i-prem-percent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4L4 20"/><circle cx="7" cy="7" r="3"/><circle cx="17" cy="17" r="3"/></symbol>
+    <symbol id="i-prem-sparkle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l2.2 6.3 6.3 2.2-6.3 2.2L12 19.5l-2.2-6.3-6.3-2.2 6.3-2.2L12 2.5z"/><path d="M19 4v3M20.5 5.5h-3"/></symbol>
+    <symbol id="i-prem-bag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="7.5" width="17" height="13" rx="2.5"/><path d="M8 7.5V5.5a4 4 0 018 0v2"/><path d="M3.5 13h17"/></symbol>
+    <symbol id="i-prem-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20.5c0-3.2 2.9-5.8 6.5-5.8s6.5 2.6 6.5 5.8"/><path d="M16.5 4.7a3.5 3.5 0 010 6.6M18 14.7c2.2.5 3.9 2.5 3.9 5.3"/></symbol>
+    <symbol id="i-prem-check-seal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="6"/><path d="M8.8 12l2.4 2.4 4.3-4.3"/></symbol>
+    <symbol id="i-prem-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M8 7.5h2M14 7.5h2M8 11.5h2M14 11.5h2M8 15.5h2M14 15.5h2"/><path d="M10 21v-3h4v3"/><path d="M4 21h16"/></symbol>
+    <symbol id="i-prem-shield2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l8 3.3v6.4c0 4.6-3.4 8.3-8 9.5-4.6-1.2-8-4.9-8-9.5V5.8l8-3.3z"/><path d="M12 8v4l2.5 1.5"/></symbol>
+    <symbol id="i-prem-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2.5-6 4 12 2.5-6h5"/><circle cx="12" cy="12" r="9" opacity=".25"/></symbol>
+    <symbol id="i-prem-team" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="3.2"/><path d="M5.5 20.5c0-3.4 2.9-6.2 6.5-6.2s6.5 2.8 6.5 6.2"/><path d="M4 6.5a3 3 0 100 5M20 6.5a3 3 0 110 5" opacity=".6"/></symbol>
+    <symbol id="i-prem-medal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5.5"/><path d="M8.5 13.2L7 21l5-2.5 5 2.5-1.5-7.8"/><path d="M12 6.5l.9 1.9 2 .3-1.5 1.4.4 2-1.8-1-1.8 1 .4-2-1.5-1.4 2-.3L12 6.5z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-prem-banknote" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="12" rx="1.5"/><circle cx="12" cy="12" r="3"/><path d="M5.5 9v6M18.5 9v6"/></symbol>
+    <symbol id="i-prem-contract" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2.5h9l4.5 4.5v14a1 1 0 01-1 1h-13a1 1 0 01-1-1V3.5a1 1 0 011-1z"/><path d="M14.5 2.5V7H19"/><path d="M8.5 12h7M8.5 15h7M8.5 18h4"/></symbol>
+    <symbol id="i-prem-pie" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v9l7.8 4.5"/><path d="M12 3a9 9 0 109 9"/></symbol>
+    <symbol id="i-prem-money" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 8l4 8 4-8M12 8v8"/></symbol>
+    <symbol id="i-prem-handshake" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12l4-4 4 4-4 4-4-4zM22 12l-4-4-4 4 4 4 4-4z"/><path d="M10 12l2 2 2-2"/></symbol>
+    <symbol id="i-prem-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-prem-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10.5" width="16" height="10.5" rx="2"/><path d="M7.5 10.5V7a4.5 4.5 0 019 0v3.5"/><circle cx="12" cy="15.5" r="1.5" fill="currentColor" stroke="none"/><path d="M12 17v2"/></symbol>
+    <symbol id="i-prem-rocket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4c3 0 5 2 5 5l-4 4-3 3-4-4 3-3z"/><path d="M9 12L4 17l3-1 1 3 5-5"/><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"/><path d="M19 5l-2 2"/></symbol>
+    <symbol id="i-prem-flag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22V4"/><path d="M4 4h12l-2 4 2 4H4"/><circle cx="4" cy="3" r="1.2" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-prem-compass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/><path d="M15.5 8.5l-2 4-4 2 2-4 4-2z"/></symbol>
+    <symbol id="i-prem-crown" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l4 4 5-6 5 6 4-4-2 12H5L3 8z"/><path d="M5 20h14"/></symbol>
+    <symbol id="i-prem-lighthouse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 21h7l-1-8h-5l-1 8z"/><path d="M9.5 13V8h5v5"/><path d="M8 8h8l-1-3h-6L8 8z"/><path d="M4 5l3 2M20 5l-3 2M3 12h3M18 12h3"/></symbol>
+    <symbol id="i-prem-user-crown" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9.5" r="3.5"/><path d="M5 21c0-3.8 3.1-6.5 7-6.5s7 2.7 7 6.5"/><path d="M9 4l1.5 1.5L12 3l1.5 2.5L15 4" opacity=".8"/></symbol>
+    <symbol id="i-prem-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6l-5 6 5 6M16 6l5 6-5 6M14 3l-4 18"/></symbol>
+    <symbol id="i-prem-megaphone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10v4a2 2 0 002 2h2l8 4V4L7 8H5a2 2 0 00-2 2z"/><path d="M19 9c1.3 1.6 1.3 4.4 0 6"/></symbol>
+    <symbol id="i-prem-ops" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></symbol>
+    <symbol id="i-prem-diamond" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12l4 5-10 12L2 9l4-5z"/><path d="M2 9h20M9 4l3 17M15 4l-3 17"/></symbol>
+    <symbol id="i-prem-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3h8v6a4 4 0 01-8 0V3z"/><path d="M8 5H4v2a4 4 0 004 4M16 5h4v2a4 4 0 01-4 4"/><path d="M12 13v5M8 21h8M9 21l.5-3h5l.5 3"/></symbol>
+    <symbol id="i-prem-infinity" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 12a5 5 0 015-5c4 0 6 10 10 10a5 5 0 000-10c-4 0-6 10-10 10a5 5 0 010-10"/></symbol>
+    <symbol id="i-prem-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/></symbol>
+    <symbol id="i-prem-telegram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 4.5L2.8 11.3c-.9.3-.9 1.5.1 1.7l4.6 1.4 1.7 5.2c.2.7 1.1.9 1.6.3l2.6-2.9 4.7 3.5c.6.4 1.4.1 1.6-.6l3.1-14.5c.2-.9-.7-1.5-1.3-1.2z"/><path d="M7.5 14.4l9.8-6.3-7.6 7.5"/></symbol>
+    <symbol id="i-prem-globe2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></symbol>
   </defs>
 </svg>
 
@@ -905,7 +1338,7 @@ html[data-theme="light"]{
 
 <main>
 
-<section class="slide slide--cover" id="slide-cover" data-slide="01">
+<section class="slide slide--cover" id="slide-cover" data-slide="01" data-acc="c1">
   <div class="cover__scene" aria-hidden="true">
     <svg viewBox="0 0 2400 1080" preserveAspectRatio="xMidYMax slice">
       <defs>
@@ -914,102 +1347,46 @@ html[data-theme="light"]{
           <stop offset=".52" stop-color="var(--s-autumn-sky)"/><stop offset=".76" stop-color="var(--s-winter-sky)"/>
           <stop offset="1" stop-color="var(--s-winter-sky-2)"/>
         </linearGradient>
-        <linearGradient id="sSkyDark" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#000" stop-opacity=".55"/><stop offset=".55" stop-color="#000" stop-opacity="0"/>
-        </linearGradient>
+        <linearGradient id="sSkyDark" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".55"/><stop offset=".55" stop-color="#000" stop-opacity="0"/></linearGradient>
         <linearGradient id="sGround" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0" stop-color="var(--s-spring-ground)"/><stop offset=".28" stop-color="var(--s-summer-ground)"/>
           <stop offset=".52" stop-color="var(--s-autumn-ground)"/><stop offset=".76" stop-color="var(--s-winter-ground)"/>
           <stop offset="1" stop-color="var(--s-winter-ground-2)"/>
         </linearGradient>
-        <radialGradient id="sSunGlow">
-          <stop offset="0" stop-color="var(--s-sun-core)" stop-opacity="1"/>
-          <stop offset=".28" stop-color="var(--s-sun-glow)" stop-opacity=".55"/>
-          <stop offset="1" stop-color="var(--s-sun-glow)" stop-opacity="0"/>
-        </radialGradient>
-        <radialGradient id="sMoonGlow">
-          <stop offset="0" stop-color="var(--s-moon-glow)" stop-opacity=".8"/>
-          <stop offset="1" stop-color="var(--s-moon-glow)" stop-opacity="0"/>
-        </radialGradient>
+        <radialGradient id="sSunGlow"><stop offset="0" stop-color="var(--s-sun-core)" stop-opacity="1"/><stop offset=".28" stop-color="var(--s-sun-glow)" stop-opacity=".55"/><stop offset="1" stop-color="var(--s-sun-glow)" stop-opacity="0"/></radialGradient>
+        <radialGradient id="sMoonGlow"><stop offset="0" stop-color="var(--s-moon-glow)" stop-opacity=".8"/><stop offset="1" stop-color="var(--s-moon-glow)" stop-opacity="0"/></radialGradient>
         <linearGradient id="sAurora" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stop-color="var(--s-aurora-1)" stop-opacity="0"/>
-          <stop offset=".4" stop-color="var(--s-aurora-1)" stop-opacity=".5"/>
-          <stop offset=".8" stop-color="var(--s-aurora-2)" stop-opacity=".45"/>
-          <stop offset="1" stop-color="var(--s-aurora-2)" stop-opacity="0"/>
+          <stop offset="0" stop-color="var(--s-aurora-1)" stop-opacity="0"/><stop offset=".4" stop-color="var(--s-aurora-1)" stop-opacity=".5"/>
+          <stop offset=".8" stop-color="var(--s-aurora-2)" stop-opacity=".45"/><stop offset="1" stop-color="var(--s-aurora-2)" stop-opacity="0"/>
         </linearGradient>
-        <linearGradient id="sMtnFar" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="var(--s-mtn-far-top)"/><stop offset="1" stop-color="var(--s-mtn-far-bot)"/>
-        </linearGradient>
-        <linearGradient id="sMtnMid" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="var(--s-mtn-mid-top)"/><stop offset="1" stop-color="var(--s-mtn-mid-bot)"/>
-        </linearGradient>
+        <linearGradient id="sMtnFar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--s-mtn-far-top)"/><stop offset="1" stop-color="var(--s-mtn-far-bot)"/></linearGradient>
+        <linearGradient id="sMtnMid" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--s-mtn-mid-top)"/><stop offset="1" stop-color="var(--s-mtn-mid-bot)"/></linearGradient>
       </defs>
       <rect width="2400" height="1080" fill="url(#sSkyH)"/>
       <rect width="2400" height="1080" fill="url(#sSkyDark)"/>
-      <g fill="var(--s-star)">
-        <circle class="s-tw" cx="1860" cy="140" r="1.8" style="--dur:5s;--delay:-.5s"/>
-        <circle class="s-tw" cx="1950" cy="90" r="1.3" style="--dur:4.2s;--delay:-2s"/>
-        <circle class="s-tw" cx="2050" cy="160" r="1.6" style="--dur:5.6s;--delay:-1.2s"/>
-      </g>
+      <g fill="var(--s-star)"><circle class="s-tw" cx="1860" cy="140" r="1.8" style="--dur:5s;--delay:-.5s"/><circle class="s-tw" cx="1950" cy="90" r="1.3" style="--dur:4.2s;--delay:-2s"/><circle class="s-tw" cx="2050" cy="160" r="1.6" style="--dur:5.6s;--delay:-1.2s"/></g>
       <path class="s-aur" d="M1810 210 C 1960 110, 2120 320, 2300 170 C 2340 260, 2370 340, 2395 290 L2395 400 C 2340 430, 2200 320, 2090 400 C 1970 340, 1880 400, 1810 360 Z" fill="url(#sAurora)" opacity=".75"/>
-      <circle cx="900" cy="380" r="230" fill="url(#sSunGlow)"/>
-      <circle cx="900" cy="380" r="68" fill="var(--s-sun-core)" opacity=".92"/>
-      <circle cx="2160" cy="260" r="130" fill="url(#sMoonGlow)"/>
-      <circle cx="2160" cy="260" r="58" fill="var(--s-moon-core)"/>
+      <circle cx="900" cy="380" r="230" fill="url(#sSunGlow)"/><circle cx="900" cy="380" r="68" fill="var(--s-sun-core)" opacity=".92"/>
+      <circle cx="2160" cy="260" r="130" fill="url(#sMoonGlow)"/><circle cx="2160" cy="260" r="58" fill="var(--s-moon-core)"/>
       <path fill="url(#sMtnFar)" opacity=".85" d="M0 640 C 200 480, 380 450, 560 570 C 740 470, 940 450, 1140 580 C 1340 480, 1520 470, 1700 590 C 1880 510, 2060 490, 2240 610 C 2320 570, 2380 580, 2400 620 L2400 1080 L0 1080 Z"/>
       <path fill="url(#sMtnMid)" d="M0 780 C 200 680, 400 640, 600 740 C 800 640, 1000 620, 1200 740 C 1400 660, 1600 640, 1800 760 C 2000 680, 2200 660, 2400 780 L2400 1080 L0 1080 Z"/>
       <path fill="url(#sGround)" d="M0 880 C 200 850, 400 870, 600 862 C 800 850, 1000 872, 1200 866 C 1400 856, 1600 882, 1800 876 C 2000 866, 2200 890, 2400 882 L2400 1080 L0 1080 Z"/>
-      <g transform="translate(160,880)">
-        <rect x="-9" y="-160" width="18" height="160" fill="var(--s-spring-trunk)"/>
-        <circle cx="0" cy="-215" r="78" fill="var(--s-spring-blossom-1)" opacity=".9"/>
-        <circle cx="-55" cy="-185" r="58" fill="var(--s-spring-blossom-2)" opacity=".85"/>
-      </g>
-      <g transform="translate(690,880)">
-        <rect x="-11" y="-170" width="22" height="170" fill="var(--s-summer-trunk)"/>
-        <circle cx="0" cy="-225" r="82" fill="var(--s-summer-leaf-1)"/>
-        <circle cx="-60" cy="-195" r="62" fill="var(--s-summer-leaf-2)"/>
-      </g>
-      <g transform="translate(930,900)">
-        <ellipse cx="0" cy="42" rx="130" ry="14" fill="rgba(0,0,0,.4)"/>
-        <rect x="-105" y="-65" width="210" height="105" fill="var(--s-villa-bg)"/>
-        <polygon points="-120,-62 0,-128 120,-62" fill="var(--s-villa-bg)"/>
-        <rect x="-75" y="-45" width="38" height="42" fill="var(--s-window)" opacity=".9"/>
-        <rect x="37" y="-45" width="38" height="42" fill="var(--s-window)" opacity=".9"/>
-        <rect x="-16" y="-20" width="32" height="60" fill="var(--s-window)" opacity=".7"/>
-      </g>
-      <g transform="translate(1390,880)">
-        <rect x="-11" y="-170" width="22" height="170" fill="var(--s-autumn-trunk)"/>
-        <circle cx="0" cy="-230" r="82" fill="var(--s-autumn-leaf-1)"/>
-        <circle cx="-60" cy="-200" r="62" fill="var(--s-autumn-leaf-2)"/>
-      </g>
-      <g transform="translate(1980,880)">
-        <rect x="-11" y="-70" width="22" height="70" fill="var(--s-winter-pine)"/>
-        <polygon points="0,-340 -75,-200 75,-200" fill="var(--s-winter-pine)"/>
-        <polygon points="0,-280 -95,-130 95,-130" fill="var(--s-winter-pine)"/>
-        <polygon points="0,-200 -110,-50 110,-50" fill="var(--s-winter-pine)"/>
-        <polygon points="0,-340 -26,-290 26,-290" fill="var(--s-snow)" opacity=".95"/>
-      </g>
-      <g fill="var(--s-petal)">
-        <circle class="s-petal" cx="120" cy="0" r="4" style="--dur:12s;--delay:-1s;--dx:40px"/>
-        <circle class="s-petal" cx="240" cy="0" r="3" style="--dur:15s;--delay:-3s;--dx:-30px"/>
-      </g>
-      <g fill="var(--s-firefly)">
-        <circle class="s-firefly" cx="720" cy="700" r="2.4" style="--dur:14s;--delay:-2s;--dx:22px;--dy:-30px"/>
-      </g>
-      <g fill="var(--s-leaf-fall)">
-        <circle class="s-leaf" cx="1280" cy="0" r="5" style="--dur:13s;--delay:-2s;--dx:60px"/>
-      </g>
-      <g fill="var(--s-snowflake)">
-        <circle class="s-snowflake" cx="1850" cy="0" r="3.5" style="--dur:14s;--delay:-2s;--dx:30px"/>
-        <circle class="s-snowflake" cx="1930" cy="0" r="2.8" style="--dur:11s;--delay:-5s;--dx:-20px"/>
-      </g>
+      <g transform="translate(160,880)"><rect x="-9" y="-160" width="18" height="160" fill="var(--s-spring-trunk)"/><circle cx="0" cy="-215" r="78" fill="var(--s-spring-blossom-1)" opacity=".9"/><circle cx="-55" cy="-185" r="58" fill="var(--s-spring-blossom-2)" opacity=".85"/></g>
+      <g transform="translate(690,880)"><rect x="-11" y="-170" width="22" height="170" fill="var(--s-summer-trunk)"/><circle cx="0" cy="-225" r="82" fill="var(--s-summer-leaf-1)"/><circle cx="-60" cy="-195" r="62" fill="var(--s-summer-leaf-2)"/></g>
+      <g transform="translate(930,900)"><ellipse cx="0" cy="42" rx="130" ry="14" fill="rgba(0,0,0,.4)"/><rect x="-105" y="-65" width="210" height="105" fill="var(--s-villa-bg)"/><polygon points="-120,-62 0,-128 120,-62" fill="var(--s-villa-bg)"/><rect x="-75" y="-45" width="38" height="42" fill="var(--s-window)" opacity=".9"/><rect x="37" y="-45" width="38" height="42" fill="var(--s-window)" opacity=".9"/><rect x="-16" y="-20" width="32" height="60" fill="var(--s-window)" opacity=".7"/></g>
+      <g transform="translate(1390,880)"><rect x="-11" y="-170" width="22" height="170" fill="var(--s-autumn-trunk)"/><circle cx="0" cy="-230" r="82" fill="var(--s-autumn-leaf-1)"/><circle cx="-60" cy="-200" r="62" fill="var(--s-autumn-leaf-2)"/></g>
+      <g transform="translate(1980,880)"><rect x="-11" y="-70" width="22" height="70" fill="var(--s-winter-pine)"/><polygon points="0,-340 -75,-200 75,-200" fill="var(--s-winter-pine)"/><polygon points="0,-280 -95,-130 95,-130" fill="var(--s-winter-pine)"/><polygon points="0,-200 -110,-50 110,-50" fill="var(--s-winter-pine)"/><polygon points="0,-340 -26,-290 26,-290" fill="var(--s-snow)" opacity=".95"/></g>
+      <g fill="var(--s-petal)"><circle class="s-petal" cx="120" cy="0" r="4" style="--dur:12s;--delay:-1s;--dx:40px"/><circle class="s-petal" cx="240" cy="0" r="3" style="--dur:15s;--delay:-3s;--dx:-30px"/></g>
+      <g fill="var(--s-firefly)"><circle class="s-firefly" cx="720" cy="700" r="2.4" style="--dur:14s;--delay:-2s;--dx:22px;--dy:-30px"/></g>
+      <g fill="var(--s-leaf-fall)"><circle class="s-leaf" cx="1280" cy="0" r="5" style="--dur:13s;--delay:-2s;--dx:60px"/></g>
+      <g fill="var(--s-snowflake)"><circle class="s-snowflake" cx="1850" cy="0" r="3.5" style="--dur:14s;--delay:-2s;--dx:30px"/><circle class="s-snowflake" cx="1930" cy="0" r="2.8" style="--dur:11s;--delay:-5s;--dx:-20px"/></g>
     </svg>
   </div>
   <div class="cover__veil" aria-hidden="true"></div>
   <div class="cover__inner">
     <div class="cover__eyebrow"><span class="dot"></span>Инвестиционное предложение · 2026</div>
     <h1 class="cover__title">ALBE <em>RENT</em></h1>
-    <p class="cover__sub">Премиальный сервис бронирования загородной недвижимости по всей России. Привлекаем инвестиции для масштабирования — готовая команда, продукт и трафик.</p>
+    <p class="cover__sub">Премиальный сервис бронирования загородной недвижимости по всей России. Средний чек — 25 000 ₽ за ночь. Привлекаем инвестиции для масштабирования — готовая команда, продукт и трафик.</p>
     <div class="cover__stats">
       <div class="cover__stat"><b>5 млн ₽</b><span>инвестиции</span></div>
       <div class="cover__stat"><b>6–7 месяцев</b><span>окупаемость</span></div>
@@ -1020,38 +1397,63 @@ html[data-theme="light"]{
   <div class="cover__scroll"><i></i>Листайте</div>
 </section>
 
-<section class="slide" id="slide-about" data-slide="02">
+<section class="slide" id="slide-about" data-slide="02" data-acc="c1">
   <div class="slide__inner">
     <div class="slide-num"><b>02</b> — О проекте</div>
     <h2>Один сервис для <em>загородного отдыха всей России</em></h2>
     <p class="slide-lead">ALBE RENT — платформа, которая объединяет тысячи проверенных резиденций, шале и вилл в единый сервис с прозрачными условиями, мгновенным подтверждением брони и персональным консьержем 24/7.</p>
     <div class="grid grid--4">
-      <div class="card" data-reveal><div class="card-value">10 400+</div><div class="card-label">объектов в каталоге</div></div>
-      <div class="card" data-reveal style="--d:.08s"><div class="card-value">85</div><div class="card-label">регионов России</div></div>
-      <div class="card" data-reveal style="--d:.16s"><div class="card-value">8</div><div class="card-label">федеральных округов</div></div>
-      <div class="card" data-reveal style="--d:.24s"><div class="card-value">4.8</div><div class="card-label">средний рейтинг</div></div>
+      <div class="card" data-reveal><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-villa"/></svg></div><div class="card-value">10 400+</div><div class="card-label">объектов в каталоге</div></div>
+      <div class="card" data-reveal style="--d:.08s"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-globe"/></svg></div><div class="card-value">85</div><div class="card-label">регионов России</div></div>
+      <div class="card" data-reveal style="--d:.16s"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-layers"/></svg></div><div class="card-value">8</div><div class="card-label">федеральных округов</div></div>
+      <div class="card" data-reveal style="--d:.24s"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-star"/></svg></div><div class="card-value">4.8</div><div class="card-label">средний рейтинг</div></div>
+    </div>
+    <div class="about-diff">
+      <div class="card card--row-top" data-reveal style="--d:.3s"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-shield"/></svg></div><div><div class="card-eyebrow">Проверка</div><div class="card-title">Личная верификация</div><div class="card-text">Эксперт выезжает на объект перед публикацией — не фото со слов собственника, а реальные условия, вид, состояние мебели и техники.</div></div></div>
+      <div class="card card--row-top" data-reveal style="--d:.38s"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-bell"/></svg></div><div><div class="card-eyebrow">Сервис</div><div class="card-title">Консьерж 24/7</div><div class="card-text">Трансфер, шеф-повар, баня, экскурсии, детская программа — один номер, один менеджер, один запрос, а не 10 подрядчиков.</div></div></div>
+      <div class="card card--row-top" data-reveal style="--d:.46s"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-tag"/></svg></div><div><div class="card-eyebrow">Цена</div><div class="card-title">Прозрачно и без сюрпризов</div><div class="card-text">Итоговая сумма фиксируется при бронировании. Никаких «комиссия при заселении», «уборка сверху» или «доплата за свет».</div></div></div>
     </div>
   </div>
 </section>
 
-<section class="slide" id="slide-market" data-slide="03">
+<section class="slide" id="slide-market" data-slide="03" data-acc="c2">
   <div class="slide__inner">
     <div class="slide-num"><b>03</b> — Рынок</div>
     <h2>Рынок <em>381 млрд ₽</em>, растущий на 22% в год</h2>
-    <p class="slide-lead">Посуточная аренда РФ — 381 млрд ₽ в 2025 (+22% г/г), прогноз 549 млрд ₽ к 2028 (Авито Путешествия). Внутренний туризм — 173,9 млн поездок (+7,4%, +43,5% к 2021, Ростуризм). Спрос на загородные дома растёт в 2,1 раза быстрее предложения.</p>
+    <p class="slide-lead">Посуточная аренда РФ — 381 млрд ₽ в 2025 (+22% г/г), прогноз 549 млрд ₽ к 2028 (Авито Путешествия). Внутренний туризм — 173,9 млн поездок (+7,4%, +43,5% к 2021, Ростуризм). Спрос на загородные дома растёт в 2,1 раза быстрее предложения. Премиальный сегмент — самый быстрорастущий: чек за ночь на топовых объектах превышает 25 000 ₽.</p>
     <div class="grid grid--4">
-      <div class="card" data-reveal><div class="card-value">381 млрд ₽</div><div class="card-label">объём рынка посуточной аренды РФ · 2025 (Авито Путешествия)</div></div>
-      <div class="card" data-reveal style="--d:.08s"><div class="card-value">×2,1</div><div class="card-label">рост спроса на загородные дома за год · ноябрь 2025 +77%</div></div>
-      <div class="card" data-reveal style="--d:.16s"><div class="card-value">11 800 ₽</div><div class="card-label">средняя цена загородного дома в РФ / ночь (Авито + Туризм.РФ)</div></div>
-      <div class="card" data-reveal style="--d:.24s"><div class="card-value">71%</div><div class="card-label">загрузка у управляющих компаний с 20+ объектов (у одиночек — 53,5%)</div></div>
+      <div class="card" data-reveal><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-chart"/></svg></div><div class="card-value">381 млрд ₽</div><div class="card-label">рынок посуточной аренды РФ · 2025</div></div>
+      <div class="card" data-reveal style="--d:.08s"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-trend"/></svg></div><div class="card-value">×2,1</div><div class="card-label">рост спроса на загородные дома за год</div></div>
+      <div class="card" data-reveal style="--d:.16s"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-ruble"/></svg></div><div class="card-value" style="font-size:clamp(22px,2.6vw,34px)">25 000 ₽</div><div class="card-label">чек ALBE за ночь · рынок — 11 800 ₽</div></div>
+      <div class="card" data-reveal style="--d:.24s"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-target"/></svg></div><div class="card-value">71%</div><div class="card-label">загрузка у управляющих компаний</div></div>
+    </div>
+    <div class="trends-grid">
+      <div class="trend-card" data-reveal style="--d:.3s">
+        <span class="trend-card__year">Тренд 1</span>
+        <div class="trend-card__head">Внутренний туризм стал новой нормой</div>
+        <p class="trend-card__text">COVID перевернул рынок: 173,9 млн поездок по России в 2025 (+43,5% к 2021). Турист переориентировался с Турции и Европы на Алтай, Карелию, Байкал — и обратно уже не вернётся: визовые ограничения и рост цен на зарубежку закрепляют тренд.</p>
+        <div class="trend-card__metric">Рост поездок по РФ: <b>+43,5%</b></div>
+      </div>
+      <div class="trend-card" data-reveal style="--d:.38s">
+        <span class="trend-card__year">Тренд 2</span>
+        <div class="trend-card__head">Загородный бум: спрос обогнал предложение</div>
+        <p class="trend-card__text">Предложение загородных объектов за год выросло на 32%, а спрос — в 2,1 раза. Средняя загрузка загородного дома в ноябре 2025: <b>+77%</b> г/г. Дисбаланс сохраняется — это окно для платформы, которая даёт доступ к лучшему.</p>
+        <div class="trend-card__metric">Спрос опережает предложение: <b>×2,1</b></div>
+      </div>
+      <div class="trend-card" data-reveal style="--d:.46s">
+        <span class="trend-card__year">Тренд 3</span>
+        <div class="trend-card__head">Премиум-сегмент растёт быстрее рынка</div>
+        <p class="trend-card__text">Чек за ночь в премиум-сегменте в 2–2,5 раза выше среднего по рынку. Гость готов платить 25 000 ₽ за ночь, но требует предсказуемости: личной проверки, консьержа, прозрачной цены. ALBE RENT закрывает именно этот разрыв.</p>
+        <div class="trend-card__metric">Чек ALBE за ночь: <b>25 000 ₽</b></div>
+      </div>
     </div>
     <p class="slide-lead" style="max-width:80ch">
-      <b style="color:var(--txt-h)">Ключевой вывод:</b> предложение загородных объектов за год выросло на 32%, но спрос — в 2,1 раза. Разница в загрузке между одиночными владельцами (53,5%) и управляющими компаниями (71%) показывает: <b style="color:var(--txt-h)">масштаб управляющей компании напрямую конвертируется в выручку собственника</b>.
+      <b style="color:var(--txt-h)">Ключевой вывод:</b> рынок растёт, но 90% объектов — это объявления на Авито с поверхностной верификацией. Окно для премиум-сервиса с личной проверкой, консьержем и прозрачной ценой — открыто, и оно не закроется быстро: массовые платформы не могут ужесточить верификацию без потери объёма.
     </p>
   </div>
 </section>
 
-<section class="slide" id="slide-competitors" data-slide="04">
+<section class="slide" id="slide-competitors" data-slide="04" data-acc="c3">
   <div class="slide__inner">
     <div class="slide-num"><b>04</b> — Конкуренты</div>
     <h2>Авито и Суточно — <em>маркетплейсы объявлений</em>, не сервис качества</h2>
@@ -1068,9 +1470,9 @@ html[data-theme="light"]{
         <div class="card-label" style="margin-bottom:10px">комиссия с гостя · стандарт 17%, СтандартПлюс 20%</div>
         <div class="card-text">По отзывам: «никого не проверяют», «допускают мутных арендодателей». Предоплата = комиссия сервиса.</div>
       </div>
-      <div class="card card--accent" data-reveal style="--d:.2s">
+      <div class="card" data-reveal style="--d:.2s">
         <div class="card-eyebrow">ALBE RENT</div>
-        <div class="card-value" style="font-size:clamp(22px,2.6vw,34px)">12–15%</div>
+        <div class="card-value" style="font-size:clamp(22px,2.6vw,34px)">15%</div>
         <div class="card-label" style="margin-bottom:10px">комиссия с собственника · ниже Авито и Суточно</div>
         <div class="card-text"><b style="color:var(--txt-h)">Личная проверка</b> каждого дома. Консьерж 24/7. Доп. выручка 15–20% маржи.</div>
       </div>
@@ -1084,7 +1486,7 @@ html[data-theme="light"]{
         <div class="comp-row__cell">Комиссия</div>
         <div class="comp-row__cell"><b>15–20%</b> (до 40% с продвижением)</div>
         <div class="comp-row__cell"><b>15–25%</b> (17% стандарт)</div>
-        <div class="comp-row__cell comp-row__cell--albe"><b>12–15%</b></div>
+        <div class="comp-row__cell comp-row__cell--albe"><b>15%</b></div>
         <div class="comp-row__cell">Верификация</div>
         <div class="comp-row__cell">Поверхностная</div>
         <div class="comp-row__cell">Не проводится</div>
@@ -1100,12 +1502,12 @@ html[data-theme="light"]{
       </div>
     </div>
     <p class="slide-lead" style="max-width:80ch">
-      <b style="color:var(--txt-h)">Почему это окно не закроется быстро:</b> Авито и Суточно не могут ужесточить верификацию без потери объёма. ALBE RENT строит барьер не на трафике, а на качестве и возврате гостей: <b style="color:var(--txt-h)">каждый клиент приносит 4,25 ₽ прибыли на 1 ₽ привлечения</b> (<abbr title="LTV / CAC — «ценность клиента / стоимость привлечения». Сколько рублей прибыли приносит клиент на каждый рубль, потраченный на его привлечение. Больше 3× — здоровый показатель.">LTV/CAC</abbr>), окупается с 1-й брони.
+      <b style="color:var(--txt-h)">Почему это окно не закроется быстро:</b> Авито и Суточно не могут ужесточить верификацию без потери объёма. ALBE RENT строит барьер не на трафике, а на качестве и возврате гостей: <b style="color:var(--txt-h)">каждый клиент приносит 5,27 ₽ прибыли на 1 ₽ привлечения</b> (<abbr title="LTV / CAC — «ценность клиента / стоимость привлечения». Сколько рублей прибыли приносит клиент на каждый рубль, потраченный на его привлечение. Больше 3× — здоровый показатель.">LTV/CAC</abbr>), окупается с 1-й брони.
     </p>
   </div>
 </section>
 
-<section class="slide" id="slide-product" data-slide="05">
+<section class="slide" id="slide-product" data-slide="05" data-acc="c4">
   <div class="slide__inner">
     <div class="slide-num"><b>05</b> — Продукт</div>
     <h2>Готовый <em>цифровой продукт</em> с живым трафиком</h2>
@@ -1114,222 +1516,232 @@ html[data-theme="light"]{
         <h3>Сайт и сервис уже в продакшене</h3>
         <p class="slide-lead">Премиальный лендинг, полноценный каталог, фильтры по регионам, удобствам и цене, интеграция с картами и системой бронирования.</p>
         <div class="product-features">
-          <div class="card card--row-top" data-reveal>
-            <div class="card-ico"><svg class="ico-svg"><use href="#i-sparkle"/></svg></div>
-            <div><div class="card-title">Премиальный дизайн</div><div class="card-text">Тёмная/светлая темы, анимации, ощущение luxury-сервиса</div></div>
-          </div>
-          <div class="card card--row-top" data-reveal style="--d:.08s">
-            <div class="card-ico"><svg class="ico-svg"><use href="#i-bolt"/></svg></div>
-            <div><div class="card-title">Мгновенное подтверждение</div><div class="card-text">Интеграция с календарями собственников и CRM</div></div>
-          </div>
-          <div class="card card--row-top" data-reveal style="--d:.16s">
-            <div class="card-ico"><svg class="ico-svg"><use href="#i-shield"/></svg></div>
-            <div><div class="card-title">Верификация объектов</div><div class="card-text">Личная проверка каждого дома перед публикацией</div></div>
-          </div>
+          <div class="card card--row-top" data-reveal><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-sparkle"/></svg></div><div><div class="card-eyebrow">Дизайн</div><div class="card-title">Премиальный UX</div><div class="card-text">Тёмная/светлая темы, плавные анимации, ощущение luxury-сервиса на каждом шаге</div></div></div>
+          <div class="card card--row-top" data-reveal style="--d:.08s"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-zap"/></svg></div><div><div class="card-eyebrow">Скорость</div><div class="card-title">Мгновенное подтверждение</div><div class="card-text">Интеграция с календарями собственников и CRM — бронь за 60 секунд</div></div></div>
+          <div class="card card--row-top" data-reveal style="--d:.16s"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-shield"/></svg></div><div><div class="card-eyebrow">Доверие</div><div class="card-title">Верификация объектов</div><div class="card-text">Личная проверка каждого дома перед публикацией</div></div></div>
         </div>
       </div>
       <div class="browser-frame" data-reveal style="--d:.1s">
-        <div class="browser-chrome">
-          <div class="browser-dots"><i></i><i></i><i></i></div>
-          <div class="browser-url">albe.su/alberent</div>
-          <div class="browser-live">Live</div>
-        </div>
+        <div class="browser-chrome"><div class="browser-dots"><i></i><i></i><i></i></div><div class="browser-url">albe.su/alberent</div><div class="browser-live">Live</div></div>
         <iframe src="https://albe.su/alberent/" class="browser-iframe" title="ALBE RENT — главная" loading="lazy"></iframe>
       </div>
     </div>
   </div>
 </section>
 
-<section class="slide" id="slide-catalog" data-slide="06">
+<section class="slide" id="slide-catalog" data-slide="06" data-acc="c1">
   <div class="slide__inner">
     <div class="slide-num"><b>06</b> — Каталог</div>
     <h2>Каталог на <em>10 400+ объектов</em> в 85 регионах</h2>
     <div class="product-grid">
       <div class="browser-frame" data-reveal>
-        <div class="browser-chrome">
-          <div class="browser-dots"><i></i><i></i><i></i></div>
-          <div class="browser-url">albe.su/alberent/catalog</div>
-          <div class="browser-live">Live</div>
-        </div>
+        <div class="browser-chrome"><div class="browser-dots"><i></i><i></i><i></i></div><div class="browser-url">albe.su/alberent/catalog</div><div class="browser-live">Live</div></div>
         <iframe src="https://albe.su/alberent/catalog" class="browser-iframe" title="ALBE RENT — каталог" loading="lazy"></iframe>
       </div>
       <div class="product-copy">
         <h3>Умный поиск и моментальное бронирование</h3>
         <p class="slide-lead">Клиент выбирает регион, даты, число гостей и удобства — сервис мгновенно показывает подходящие объекты с прозрачной ценой и живыми отзывами.</p>
         <div class="product-features">
-          <div class="card card--row-top">
-            <div class="card-ico"><svg class="ico-svg"><use href="#i-target"/></svg></div>
-            <div><div class="card-title">Фильтры по 85 регионам</div><div class="card-text">Цена, гости, спальни, рейтинг, удобства, тип жилья</div></div>
-          </div>
-          <div class="card card--row-top">
-            <div class="card-ico"><svg class="ico-svg"><use href="#i-users"/></svg></div>
-            <div><div class="card-title">Карточки объектов</div><div class="card-text">Галерея, карта, отзывы, характеристики, 3D-тур</div></div>
-          </div>
-          <div class="card card--row-top">
-            <div class="card-ico"><svg class="ico-svg"><use href="#i-check"/></svg></div>
-            <div><div class="card-title">Бесшовная бронь</div><div class="card-text">Оплата, подтверждение и заселение без звонков</div></div>
-          </div>
+          <div class="card card--row-top"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-target"/></svg></div><div><div class="card-eyebrow">Поиск</div><div class="card-title">Фильтры по 85 регионам</div><div class="card-text">Цена, гости, спальни, рейтинг, удобства, тип жилья</div></div></div>
+          <div class="card card--row-top"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-users"/></svg></div><div><div class="card-eyebrow">Карточки</div><div class="card-title">Полная информация</div><div class="card-text">Галерея, карта, отзывы, характеристики, 3D-тур</div></div></div>
+          <div class="card card--row-top"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-check-seal"/></svg></div><div><div class="card-eyebrow">Бронь</div><div class="card-title">Бесшовное бронирование</div><div class="card-text">Оплата, подтверждение и заселение без звонков</div></div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="slide" id="slide-model" data-slide="07">
+<section class="slide" id="slide-model" data-slide="07" data-acc="c2">
   <div class="slide__inner">
     <div class="slide-num"><b>07</b> — Бизнес-модель</div>
-    <h2>Средний чек <em>15 000 ₽</em> — комиссия и сервис</h2>
+    <h2>Средний чек <em>25 000 ₽ за ночь</em> — премиум-сегмент</h2>
     <div class="grid grid--4">
-      <div class="card" data-reveal><div class="card-ico"><svg class="ico-svg"><use href="#i-percent"/></svg></div><div class="card-value">12–15%</div><div class="card-label">комиссия сервиса · на 3–5 п.п. ниже Авито</div></div>
-      <div class="card" data-reveal style="--d:.08s"><div class="card-ico"><svg class="ico-svg"><use href="#i-sparkle"/></svg></div><div class="card-value">15–20%</div><div class="card-label">маржа доп. услуг · консьерж, трансфер, клининг</div></div>
-      <div class="card" data-reveal style="--d:.16s"><div class="card-ico"><svg class="ico-svg"><use href="#i-bag"/></svg></div><div class="card-value">2 990 ₽</div><div class="card-label">премиум-размещение для собственников / мес</div></div>
-      <div class="card" data-reveal style="--d:.24s"><div class="card-ico"><svg class="ico-svg"><use href="#i-users"/></svg></div><div class="card-value">B2B</div><div class="card-label">корпоративные брони для компаний и ретритов</div></div>
+      <div class="card" data-reveal><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-percent"/></svg></div><div class="card-value">15%</div><div class="card-label">комиссия сервиса · ниже Авито и Суточно</div></div>
+      <div class="card" data-reveal style="--d:.08s"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-sparkle"/></svg></div><div class="card-value">15–20%</div><div class="card-label">маржа доп. услуг · консьерж, трансфер, клининг</div></div>
+      <div class="card" data-reveal style="--d:.16s"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-bag"/></svg></div><div class="card-value">4 990 ₽</div><div class="card-label">премиум-размещение для собственников / мес</div></div>
+      <div class="card" data-reveal style="--d:.24s"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-users"/></svg></div><div class="card-value">B2B</div><div class="card-label">корпоративные брони для компаний и ретритов</div></div>
     </div>
     <div class="unit-econ" data-reveal style="--d:.3s">
-      <h3>Юнит-экономика одной брони <span style="font-weight:400;color:var(--mut);font-size:var(--fs-small)">— расчёт прибыли с одного бронирования</span></h3>
+      <h3>Юнит-экономика одной брони <span style="font-weight:400;color:var(--mut);font-size:var(--fs-small)">— расчёт прибыли с одного бронирования (средняя 1 ночь)</span></h3>
       <div class="unit-econ__grid">
-        <div class="unit-econ__item"><small>Средний чек</small><b>15 000 ₽</b></div>
-        <div class="unit-econ__item"><small>Комиссия 13,5%</small><b>2 025 ₽</b></div>
-        <div class="unit-econ__item"><small>Доп. услуги (ср.)</small><b>400 ₽</b></div>
-        <div class="unit-econ__item"><small>Валовая выручка</small><b>2 425 ₽</b></div>
-        <div class="unit-econ__item unit-econ__item--accent"><small>Валовая прибыль</small><b>2 125 ₽</b></div>
+        <div class="unit-econ__item"><small>Средний чек</small><b>25 000 ₽</b></div>
+        <div class="unit-econ__item"><small>Комиссия 15%</small><b>3 750 ₽</b></div>
+        <div class="unit-econ__item"><small>Доп. услуги (ср.)</small><b>500 ₽</b></div>
+        <div class="unit-econ__item"><small>Валовая выручка</small><b>4 250 ₽</b></div>
+        <div class="unit-econ__item unit-econ__item--accent"><small>Валовая прибыль</small><b>3 950 ₽</b></div>
       </div>
       <div class="unit-econ__metrics">
-        <div class="unit-econ__metric"><b>87,6%</b><span>валовая маржа</span></div>
-        <div class="unit-econ__metric"><b>8 500 ₽</b><span><abbr title="LTV (Lifetime Value) — сколько прибыли приносит один клиент за всё время, что пользуется сервисом. Здесь — 4 брони по 2 125 ₽ за 2 года.">LTV</abbr> гостя · 4 брони / 2 года</span></div>
-        <div class="unit-econ__metric"><b>2 000 ₽</b><span><abbr title="CAC (Customer Acquisition Cost) — сколько стоит привлечь одного нового клиента (реклама, скидки, партнёрства).">CAC</abbr> — стоимость привлечения</span></div>
-        <div class="unit-econ__metric"><b>4,25×</b><span><abbr title="Отношение LTV к CAC. Сколько рублей прибыли приносит клиент на 1 ₽, потраченный на привлечение. Больше 3× — отлично.">LTV/CAC</abbr> · окупаемость с 1-й брони</span></div>
+        <div class="unit-econ__metric"><b>92,9%</b><span>валовая маржа</span></div>
+        <div class="unit-econ__metric"><b>15 800 ₽</b><span><abbr title="LTV (Lifetime Value) — сколько прибыли приносит один клиент за всё время, что пользуется сервисом. Здесь — 4 брони по 3 950 ₽ за 2 года.">LTV</abbr> гостя · 4 брони / 2 года</span></div>
+        <div class="unit-econ__metric"><b>3 000 ₽</b><span><abbr title="CAC (Customer Acquisition Cost) — сколько стоит привлечь одного нового клиента (реклама, скидки, партнёрства).">CAC</abbr> — стоимость привлечения</span></div>
+        <div class="unit-econ__metric"><b>5,27×</b><span><abbr title="Отношение LTV к CAC. Сколько рублей прибыли приносит клиент на 1 ₽, потраченный на привлечение. Больше 3× — отлично.">LTV/CAC</abbr> · окупаемость с 1-й брони</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="slide" id="slide-traction" data-slide="08">
+<section class="slide" id="slide-traction" data-slide="08" data-acc="c3">
   <div class="slide__inner">
     <div class="slide-num"><b>08</b> — Traction</div>
-    <h2>Что <em>уже сделано</em></h2>
-    <div class="grid grid--3">
-      <div class="card" data-reveal><div class="card-ico"><svg class="ico-svg"><use href="#i-check"/></svg></div><div class="card-title">Готовый продукт</div><div class="card-text">Сайт, каталог, фильтры, бронирование, CRM</div></div>
-      <div class="card" data-reveal style="--d:.06s"><div class="card-ico"><svg class="ico-svg"><use href="#i-building"/></svg></div><div class="card-title">База собственников</div><div class="card-text">10 400+ объектов, договоры, верификация</div></div>
-      <div class="card" data-reveal style="--d:.12s"><div class="card-ico"><svg class="ico-svg"><use href="#i-shield"/></svg></div><div class="card-title">Юр. структура</div><div class="card-text">ООО, оферта, политика, налоги</div></div>
-      <div class="card" data-reveal style="--d:.18s"><div class="card-ico"><svg class="ico-svg"><use href="#i-chart"/></svg></div><div class="card-title">Трафик и продажи</div><div class="card-text">Первые клиенты, органика, реклама</div></div>
-      <div class="card" data-reveal style="--d:.24s"><div class="card-ico"><svg class="ico-svg"><use href="#i-users"/></svg></div><div class="card-title">Команда</div><div class="card-text">Собственник, разработка, маркетинг</div></div>
-      <div class="card" data-reveal style="--d:.3s"><div class="card-ico"><svg class="ico-svg"><use href="#i-award"/></svg></div><div class="card-title">Бренд</div><div class="card-text">ALBE RENT — премиум-позиционирование</div></div>
+    <h2>Что <em>уже сделано</em> — и что это доказывает</h2>
+    <p class="slide-lead">Инвестор не покупает идею — он покупает подтверждённую способность команды исполнять. Вот что у ALBE RENT уже есть на сегодняшний день.</p>
+    <div class="traction-grid">
+      <div class="traction-card" data-reveal>
+        <div class="traction-card__head"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-check-seal"/></svg></div><span class="traction-card__badge">Готово</span></div>
+        <div class="traction-card__title">Продукт</div>
+        <ul class="traction-card__list">
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div>Сайт с каталогом — <b>в проде</b> с 2024 года</div></li>
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div>Фильтры, карточки, бронирование, CRM</div></li>
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div>Интеграция с картами и календарями</div></li>
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div>2 темы: dark / light</div></li>
+        </ul>
+      </div>
+      <div class="traction-card" data-reveal style="--d:.08s">
+        <div class="traction-card__head"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-building"/></svg></div><span class="traction-card__badge">10 400+</span></div>
+        <div class="traction-card__title">База собственников</div>
+        <ul class="traction-card__list">
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div>Договоры с собственниками — <b>агентская схема</b></div></li>
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div>Верификация: 1 из 7 заявок проходит отбор</div></li>
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div>Разбивка по 85 регионам и 8 ФО</div></li>
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div>Фото, описания, календари — в структурированном виде</div></li>
+        </ul>
+      </div>
+      <div class="traction-card" data-reveal style="--d:.16s">
+        <div class="traction-card__head"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-shield2"/></svg></div><span class="traction-card__badge">ООО</span></div>
+        <div class="traction-card__title">Юридическая база</div>
+        <ul class="traction-card__list">
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div>ООО с уставным капиталом и расчётным счётом</div></li>
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div>Оферта, политика конфиденциальности, 152-ФЗ</div></li>
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div>Эквайринг, налоговая отчётность</div></li>
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div>Готовность к due diligence</div></li>
+        </ul>
+      </div>
+      <div class="traction-card" data-reveal style="--d:.24s">
+        <div class="traction-card__head"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-pulse"/></svg></div><span class="traction-card__badge">Трафик</span></div>
+        <div class="traction-card__title">Продажи</div>
+        <ul class="traction-card__list">
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div>Первые брони — <b>есть</b>, работают процессы</div></li>
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div>Органика из поиска (SEO-структура)</div></li>
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div>Реклама с измеримым ROAS</div></li>
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div>Воронка: от объявления до брони</div></li>
+        </ul>
+      </div>
+      <div class="traction-card" data-reveal style="--d:.32s">
+        <div class="traction-card__head"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-team"/></svg></div><span class="traction-card__badge">4 роли</span></div>
+        <div class="traction-card__title">Команда</div>
+        <ul class="traction-card__list">
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div>CEO — стратегия и инвесторы</div></li>
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div>CTO — платформа и интеграции</div></li>
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div>CMO — трафик и маркетинг</div></li>
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div>COO — операции и клиенты</div></li>
+        </ul>
+      </div>
+      <div class="traction-card" data-reveal style="--d:.4s">
+        <div class="traction-card__head"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-medal"/></svg></div><span class="traction-card__badge">Forbes</span></div>
+        <div class="traction-card__title">Бренд</div>
+        <ul class="traction-card__list">
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div>Премиум-позиционирование на рынке</div></li>
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div>Основатель — Forbes, Сколково</div></li>
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div>Медийность в нише</div></li>
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div>Готовый фирменный стиль</div></li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="slide" id="slide-financials" data-slide="09">
+<section class="slide" id="slide-financials" data-slide="09" data-acc="c4">
   <div class="slide__inner">
     <div class="slide-num"><b>09</b> — Финансовая модель</div>
     <h2>Выход на окупаемость <em>за 6–7 месяцев</em></h2>
     <div class="chart-wrap" data-reveal>
       <div class="chart-header">
-        <div><div class="chart-title">Прогноз · 12 месяцев</div><div class="chart-sub">Выручка и чистый поток, млн ₽ / мес · 120 → 900 броней/мес при чеке 15 000 ₽</div></div>
+        <div><div class="chart-title">Прогноз · 12 месяцев</div><div class="chart-sub">Выручка и чистый поток, млн ₽ / мес · 60 → 900 броней/мес при чеке 25 000 ₽/ночь</div></div>
         <div class="chart-legend">
           <div class="legend-item"><span class="legend-swatch legend-swatch--rev"></span>Выручка</div>
           <div class="legend-item"><span class="legend-swatch legend-swatch--profit"></span>Чистый поток</div>
-          <div class="legend-item"><svg style="width:16px;height:16px;color:var(--c1)"><use href="#i-target"/></svg>Окупаемость · М7</div>
+          <div class="legend-item"><svg style="width:16px;height:16px;color:var(--c1)"><use href="#i-prem-target"/></svg>Окупаемость · М7</div>
         </div>
       </div>
       <svg class="chart" viewBox="0 0 900 340" preserveAspectRatio="xMidYMid meet" aria-label="Прогноз 12 месяцев">
-        <defs>
-          <linearGradient id="gradRev" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="var(--c2)" stop-opacity=".9"/>
-            <stop offset="1" stop-color="var(--c1)" stop-opacity=".6"/>
-          </linearGradient>
-        </defs>
-        <g stroke="var(--line)" stroke-width="1">
-          <line x1="40" y1="40" x2="880" y2="40"/>
-          <line x1="40" y1="96" x2="880" y2="96"/>
-          <line x1="40" y1="152" x2="880" y2="152"/>
-          <line x1="40" y1="208" x2="880" y2="208"/>
-          <line x1="40" y1="264" x2="880" y2="264"/>
-          <line x1="40" y1="320" x2="880" y2="320"/>
-        </g>
-        <g font-family="Manrope,sans-serif" font-size="11" fill="var(--mut)">
-          <text x="30" y="44" text-anchor="end">2.5</text>
-          <text x="30" y="100" text-anchor="end">2.0</text>
-          <text x="30" y="156" text-anchor="end">1.5</text>
-          <text x="30" y="212" text-anchor="end">1.0</text>
-          <text x="30" y="268" text-anchor="end">0.5</text>
-          <text x="30" y="324" text-anchor="end">0</text>
-        </g>
+        <defs><linearGradient id="gradRev" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--c2)" stop-opacity=".9"/><stop offset="1" stop-color="var(--c1)" stop-opacity=".6"/></linearGradient></defs>
+        <g stroke="var(--line)" stroke-width="1"><line x1="40" y1="40" x2="880" y2="40"/><line x1="40" y1="96" x2="880" y2="96"/><line x1="40" y1="152" x2="880" y2="152"/><line x1="40" y1="208" x2="880" y2="208"/><line x1="40" y1="264" x2="880" y2="264"/><line x1="40" y1="320" x2="880" y2="320"/></g>
+        <g font-family="Manrope,sans-serif" font-size="11" fill="var(--mut)"><text x="30" y="44" text-anchor="end">4.0</text><text x="30" y="100" text-anchor="end">3.2</text><text x="30" y="156" text-anchor="end">2.4</text><text x="30" y="212" text-anchor="end">1.6</text><text x="30" y="268" text-anchor="end">0.8</text><text x="30" y="324" text-anchor="end">0</text></g>
         <line x1="493" y1="20" x2="493" y2="340" stroke="var(--c1)" stroke-width="1.5" stroke-dasharray="4 4" opacity=".65"/>
         <text x="497" y="26" font-family="Unbounded,sans-serif" font-size="10" font-weight="700" letter-spacing="1.5" fill="var(--c1)">ОКУПАЕМОСТЬ · М7</text>
         <g>
-          <rect x="52" y="290" width="42" height="30" rx="4" fill="url(#gradRev)"/>
-          <rect x="122" y="263" width="42" height="57" rx="4" fill="url(#gradRev)"/>
-          <rect x="192" y="231" width="42" height="89" rx="4" fill="url(#gradRev)"/>
-          <rect x="262" y="193" width="42" height="127" rx="4" fill="url(#gradRev)"/>
-          <rect x="332" y="155" width="42" height="165" rx="4" fill="url(#gradRev)"/>
-          <rect x="402" y="112" width="42" height="208" rx="4" fill="url(#gradRev)"/>
-          <rect x="472" y="85" width="42" height="235" rx="4" fill="url(#gradRev)"/>
-          <rect x="542" y="66" width="42" height="254" rx="4" fill="url(#gradRev)"/>
-          <rect x="612" y="58" width="42" height="262" rx="4" fill="url(#gradRev)"/>
-          <rect x="682" y="74" width="42" height="246" rx="4" fill="url(#gradRev)"/>
-          <rect x="752" y="93" width="42" height="227" rx="4" fill="url(#gradRev)"/>
-          <rect x="822" y="80" width="42" height="240" rx="4" fill="url(#gradRev)"/>
+          <rect x="52" y="302" width="42" height="18" rx="4" fill="url(#gradRev)"/>
+          <rect x="122" y="292" width="42" height="28" rx="4" fill="url(#gradRev)"/>
+          <rect x="192" y="284" width="42" height="36" rx="4" fill="url(#gradRev)"/>
+          <rect x="262" y="260" width="42" height="60" rx="4" fill="url(#gradRev)"/>
+          <rect x="332" y="232" width="42" height="88" rx="4" fill="url(#gradRev)"/>
+          <rect x="402" y="201" width="42" height="119" rx="4" fill="url(#gradRev)"/>
+          <rect x="472" y="173" width="42" height="147" rx="4" fill="url(#gradRev)"/>
+          <rect x="542" y="148" width="42" height="172" rx="4" fill="url(#gradRev)"/>
+          <rect x="612" y="134" width="42" height="186" rx="4" fill="url(#gradRev)"/>
+          <rect x="682" y="103" width="42" height="217" rx="4" fill="url(#gradRev)"/>
+          <rect x="752" y="71" width="42" height="249" rx="4" fill="url(#gradRev)"/>
+          <rect x="822" y="57" width="42" height="263" rx="4" fill="url(#gradRev)"/>
         </g>
         <g>
-          <rect x="58" y="305" width="30" height="15" rx="3" fill="var(--c3)"/>
-          <rect x="128" y="279" width="30" height="41" rx="3" fill="var(--c3)"/>
-          <rect x="198" y="241" width="30" height="79" rx="3" fill="var(--c3)"/>
-          <rect x="268" y="202" width="30" height="118" rx="3" fill="var(--c3)"/>
-          <rect x="338" y="158" width="30" height="162" rx="3" fill="var(--c3)"/>
-          <rect x="408" y="132" width="30" height="188" rx="3" fill="var(--c3)"/>
-          <rect x="478" y="114" width="30" height="206" rx="3" fill="var(--c3)"/>
-          <rect x="548" y="107" width="30" height="213" rx="3" fill="var(--c3)"/>
-          <rect x="618" y="121" width="30" height="199" rx="3" fill="var(--c3)"/>
-          <rect x="688" y="137" width="30" height="183" rx="3" fill="var(--c3)"/>
-          <rect x="758" y="126" width="30" height="194" rx="3" fill="var(--c3)"/>
-          <rect x="828" y="126" width="30" height="194" rx="3" fill="var(--c3)"/>
+          <rect x="58" y="304" width="30" height="16" rx="3" fill="var(--c3)"/>
+          <rect x="128" y="294" width="30" height="26" rx="3" fill="var(--c3)"/>
+          <rect x="198" y="287" width="30" height="33" rx="3" fill="var(--c3)"/>
+          <rect x="268" y="265" width="30" height="55" rx="3" fill="var(--c3)"/>
+          <rect x="338" y="239" width="30" height="81" rx="3" fill="var(--c3)"/>
+          <rect x="408" y="209" width="30" height="111" rx="3" fill="var(--c3)"/>
+          <rect x="478" y="183" width="30" height="137" rx="3" fill="var(--c3)"/>
+          <rect x="548" y="161" width="30" height="159" rx="3" fill="var(--c3)"/>
+          <rect x="618" y="148" width="30" height="172" rx="3" fill="var(--c3)"/>
+          <rect x="688" y="118" width="30" height="202" rx="3" fill="var(--c3)"/>
+          <rect x="758" y="89" width="30" height="231" rx="3" fill="var(--c3)"/>
+          <rect x="828" y="76" width="30" height="244" rx="3" fill="var(--c3)"/>
         </g>
-        <g font-family="Manrope,sans-serif" font-size="10" fill="var(--mut)" text-anchor="middle">
-          <text x="73" y="335">М1</text><text x="143" y="335">М2</text><text x="213" y="335">М3</text>
-          <text x="283" y="335">М4</text><text x="353" y="335">М5</text><text x="423" y="335">М6</text>
-          <text x="493" y="335">М7</text><text x="563" y="335">М8</text><text x="633" y="335">М9</text>
-          <text x="703" y="335">М10</text><text x="773" y="335">М11</text><text x="843" y="335">М12</text>
-        </g>
+        <g font-family="Manrope,sans-serif" font-size="10" fill="var(--mut)" text-anchor="middle"><text x="73" y="335">М1</text><text x="143" y="335">М2</text><text x="213" y="335">М3</text><text x="283" y="335">М4</text><text x="353" y="335">М5</text><text x="423" y="335">М6</text><text x="493" y="335">М7</text><text x="563" y="335">М8</text><text x="633" y="335">М9</text><text x="703" y="335">М10</text><text x="773" y="335">М11</text><text x="843" y="335">М12</text></g>
       </svg>
-      <p class="chart-note">* Консервативный сценарий: 120 → 900 броней/мес, чек 15 000 ₽, валовая прибыль 2 125 ₽/бронь. Год 1 ≈ 17 млн ₽ чистыми. Окупаемость тела инвестиций — М7.</p>
+      <p class="chart-note">* Консервативный сценарий: 60 → 900 броней/мес, чек 25 000 ₽/ночь (1 ночь на бронь), валовая прибыль 3 950 ₽/бронь. Год 1 ≈ 21,0 млн ₽ валовой прибыли. Окупаемость тела инвестиций — М7. При средней 2 ночах — показатели ×2, окупаемость раньше.</p>
+    </div>
+    <div class="qtable-wrap" data-reveal style="--d:.15s">
+      <table class="qtable">
+        <thead><tr><th>Показатель</th><th>Q1 (М1–3)</th><th>Q2 (М4–6)</th><th>Q3 (М7–9)</th><th>Q4 (М10–12)</th></tr></thead>
+        <tbody>
+          <tr><td>Броней / мес (на конец квартала)</td><td>120</td><td>400</td><td>650</td><td>900</td></tr>
+          <tr><td>Объектов в каталоге</td><td>500</td><td>850</td><td>1 500</td><td>4 000</td></tr>
+          <tr><td>Выручка за квартал</td><td>1,2 млн ₽</td><td>3,8 млн ₽</td><td>7,2 млн ₽</td><td>10,4 млн ₽</td></tr>
+          <tr><td>Валовая прибыль за квартал</td><td>1,1 млн ₽</td><td>3,6 млн ₽</td><td>6,7 млн ₽</td><td>9,7 млн ₽</td></tr>
+          <tr><td>CAC</td><td>≤3 000 ₽</td><td>≤3 000 ₽</td><td>≤3 000 ₽</td><td>≤3 000 ₽</td></tr>
+          <tr><td>LTV / CAC</td><td>≥5,0×</td><td>≥5,2×</td><td>≥5,27×</td><td>≥5,27×</td></tr>
+          <tr class="qtable-total"><td>Итог года</td><td colspan="4"><b>Выручка 22,6 млн ₽ · валовая прибыль 21,0 млн ₽ · ROI ×4,2</b></td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
 
-<section class="slide" id="slide-invest" data-slide="10">
+<section class="slide" id="slide-invest" data-slide="10" data-acc="c1">
   <div class="slide__inner">
     <div class="slide-num"><b>10</b> — Предложение</div>
     <h2>Инвестируйте <em>5 000 000 ₽</em></h2>
-    <p class="slide-lead">Простая и прозрачная сделка: фиксированная сумма, предсказуемый срок возврата, доля в растущем проекте. При среднем чеке 15 000 ₽ и валовой марже 87,6% каждая бронь возвращает 2 125 ₽ валовой прибыли.</p>
+    <p class="slide-lead">Простая и прозрачная сделка: фиксированная сумма, предсказуемый срок возврата, доля в растущем проекте. При среднем чеке 25 000 ₽ за ночь и валовой марже 92,9% каждая бронь возвращает 3 950 ₽ валовой прибыли.</p>
     <div class="grid grid--3">
-      <div class="card card--accent card--center" data-reveal>
-        <div class="card-ico"><svg class="ico-svg"><use href="#i-ruble"/></svg></div>
-        <div class="card-value">5 000 000 ₽</div>
-        <div class="card-label">Сумма инвестиций</div>
-        <div class="card-text" style="margin-top:10px">Единый транш, оформляется договором</div>
-      </div>
-      <div class="card card--accent card--center" data-reveal style="--d:.1s">
-        <div class="card-ico"><svg class="ico-svg"><use href="#i-clock"/></svg></div>
-        <div class="card-value">6–7 месяцев</div>
-        <div class="card-label">Окупаемость</div>
-        <div class="card-text" style="margin-top:10px">При средней загрузке платформы 20–40%</div>
-      </div>
-      <div class="card card--accent card--center" data-reveal style="--d:.2s">
-        <div class="card-ico"><svg class="ico-svg"><use href="#i-percent"/></svg></div>
-        <div class="card-value">30%</div>
-        <div class="card-label">Доля инвестора</div>
-        <div class="card-text" style="margin-top:10px">Сохраняется после окупаемости</div>
-      </div>
+      <div class="card card--center" data-reveal><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-ruble"/></svg></div><div class="card-value">5 000 000 ₽</div><div class="card-label">Сумма инвестиций</div><div class="card-text" style="margin-top:10px">Единый транш, оформляется договором</div></div>
+      <div class="card card--center" data-reveal style="--d:.1s"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-clock"/></svg></div><div class="card-value">6–7 месяцев</div><div class="card-label">Окупаемость</div><div class="card-text" style="margin-top:10px">При средней загрузке платформы 20–40%</div></div>
+      <div class="card card--center" data-reveal style="--d:.2s"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-percent"/></svg></div><div class="card-value">30%</div><div class="card-label">Доля инвестора</div><div class="card-text" style="margin-top:10px">Сохраняется после окупаемости</div></div>
     </div>
-    <div class="invest-cta" data-reveal style="--d:.3s">
+    <div class="deal-grid" data-reveal style="--d:.3s">
+      <div class="deal-item"><div class="deal-item__ico"><svg class="ico-svg"><use href="#i-prem-contract"/></svg></div><div class="deal-item__body"><b>Структура сделки</b><span>Договор инвестиционного займа + опцион на 30% доли в ООО «АЛЬБЕ РЕНТ». Тело займа возвращается ежемесячными платежами из операционной прибыли.</span></div></div>
+      <div class="deal-item"><div class="deal-item__ico"><svg class="ico-svg"><use href="#i-prem-lock"/></svg></div><div class="deal-item__body"><b>Защита инвестора</b><span>Ежемесячная отчётность, доступ к CRM и банковским выпискам. Право миноритарного инвестора на аудит в любой момент.</span></div></div>
+      <div class="deal-item"><div class="deal-item__ico"><svg class="ico-svg"><use href="#i-prem-rocket"/></svg></div><div class="deal-item__body"><b>Рост доли</b><span>После полного возврата тела займа инвестор сохраняет 30% доли в проекте — с правом на дивиденды с прибыли.</span></div></div>
+      <div class="deal-item"><div class="deal-item__ico"><svg class="ico-svg"><use href="#i-prem-handshake"/></svg></div><div class="deal-item__body"><b>Со-инвесторы и выкуп</b><span>Право участия в следующем раунде (Series A) на pro-rata основе. Возможность полного выхода через оферту основателя по оценке независимого оценщика.</span></div></div>
+    </div>
+    <div class="invest-cta" data-reveal style="--d:.4s">
       <div class="invest-cta__txt"><b>Готовы обсудить детали?</b><span>Покажем финансовую модель, договор и отчётность по запросу.</span></div>
       <a href="#slide-contact" class="btn btn--grad"><span class="btn__txt">Запросить условия <svg class="ico-svg"><use href="#i-arrow"/></svg></span></a>
     </div>
   </div>
 </section>
 
-<section class="slide" id="slide-funds" data-slide="11">
+<section class="slide" id="slide-funds" data-slide="11" data-acc="c2">
   <div class="slide__inner">
     <div class="slide-num"><b>11</b> — Использование средств</div>
     <h2>Куда пойдут <em>5 000 000 ₽</em></h2>
@@ -1345,47 +1757,103 @@ html[data-theme="light"]{
         <div class="donut-center"><b>5 млн ₽</b><span>инвестиции</span></div>
       </div>
       <div class="funds-legend" data-reveal style="--d:.15s">
-        <div class="card card--row-top"><div class="fund-dot" style="background:var(--c1);color:var(--c1)"></div><div style="flex:1;min-width:0"><div class="card-title">Маркетинг и привлечение</div><div class="card-text">Яндекс.Директ, Google Ads, соцсети, блогеры, PR — до 2 000 000 ₽</div></div><div class="fund-pct">40%</div></div>
-        <div class="card card--row-top"><div class="fund-dot" style="background:var(--c2);color:var(--c2)"></div><div style="flex:1;min-width:0"><div class="card-title">Разработка и IT</div><div class="card-text">Мобильное приложение, интеграции, 3D-туры, CRM — до 1 250 000 ₽</div></div><div class="fund-pct">25%</div></div>
-        <div class="card card--row-top"><div class="fund-dot" style="background:var(--c3);color:var(--c3)"></div><div style="flex:1;min-width:0"><div class="card-title">Операции и офис в СПб</div><div class="card-text">Аренда, зарплаты менеджеров, юридика, бухгалтерия — до 1 000 000 ₽</div></div><div class="fund-pct">20%</div></div>
-        <div class="card card--row-top"><div class="fund-dot" style="background:var(--c4);color:var(--c4)"></div><div style="flex:1;min-width:0"><div class="card-title">Резервный фонд</div><div class="card-text">Буфер на 3 месяца операционки и непредвиденные — 750 000 ₽</div></div><div class="fund-pct">15%</div></div>
+        <div class="fund-item"><div class="fund-dot" style="background:var(--c1);color:var(--c1)"></div><div class="fund-item__body"><div class="fund-item__title">Маркетинг и привлечение</div><div class="fund-item__text">Яндекс.Директ, Google Ads, соцсети, блогеры, PR — до 2 000 000 ₽</div><div class="fund-item__milestone"><svg class="ico-svg"><use href="#i-prem-target"/></svg><span>Цель: <b>400 броней/мес</b> к концу М6 при CAC ≤3 000 ₽</span></div></div><div class="fund-pct">40%</div></div>
+        <div class="fund-item"><div class="fund-dot" style="background:var(--c2);color:var(--c2)"></div><div class="fund-item__body"><div class="fund-item__title">Разработка и IT</div><div class="fund-item__text">Мобильное приложение, интеграции, 3D-туры, CRM — до 1 250 000 ₽</div><div class="fund-item__milestone"><svg class="ico-svg"><use href="#i-prem-code"/></svg><span>Цель: <b>нативные iOS+Android</b> к М5, автобронирование без менеджера</span></div></div><div class="fund-pct">25%</div></div>
+        <div class="fund-item"><div class="fund-dot" style="background:var(--c3);color:var(--c3)"></div><div class="fund-item__body"><div class="fund-item__title">Операции и офис в СПб</div><div class="fund-item__text">Аренда, зарплаты менеджеров, юридика, бухгалтерия — до 1 000 000 ₽</div><div class="fund-item__milestone"><svg class="ico-svg"><use href="#i-prem-building"/></svg><span>Цель: <b>команда 8 человек</b>, офис открыт с М1, операционные процессы налажены</span></div></div><div class="fund-pct">20%</div></div>
+        <div class="fund-item"><div class="fund-dot" style="background:var(--c4);color:var(--c4)"></div><div class="fund-item__body"><div class="fund-item__title">Резервный фонд</div><div class="fund-item__text">Буфер на 3 месяца операционки и непредвиденные — 750 000 ₽</div><div class="fund-item__milestone"><svg class="ico-svg"><use href="#i-prem-shield"/></svg><span>Цель: <b>3 месяца runway</b> на случай сезонного спада или кассового разрыва</span></div></div><div class="fund-pct">15%</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="slide" id="slide-roadmap" data-slide="12">
+<section class="slide" id="slide-roadmap" data-slide="12" data-acc="c3">
   <div class="slide__inner">
     <div class="slide-num"><b>12</b> — Дорожная карта</div>
-    <h2>План на <em>12 месяцев</em></h2>
+    <h2>План на <em>12 месяцев</em> — от запуска до Series A</h2>
+    <p class="slide-lead roadmap-intro">Дорожная карта построена на трёх принципах: <b>экономика важнее объёма</b> (входим в регион только когда CAC окупается с первой брони), <b>операционное качество важнее скорости</b> (лучше 100 проверенных объектов, чем 1 000 случайных), <b>возврат гостя важнее нового трафика</b> (LTV ≥3× CAC — единственный способ пережить сезонность загородного рынка).</p>
     <div class="roadmap">
-      <div class="grid grid--4">
-        <div class="card" data-reveal><div class="card-dot"></div><div class="card-eyebrow">Месяцы 1–2</div><div class="card-title">Запуск и подготовка</div><div class="card-text">Набор команды, офис в СПб, рекламные кампании в Яндекс.Директ и соцсетях, доработка воронки.</div></div>
-        <div class="card" data-reveal style="--d:.1s"><div class="card-dot"></div><div class="card-eyebrow">Месяцы 3–4</div><div class="card-title">Масштабирование</div><div class="card-text">Удвоение рекламного бюджета, партнёрства с собственниками, запуск консьерж-сервиса и доп. услуг.</div></div>
-        <div class="card" data-reveal style="--d:.2s"><div class="card-dot"></div><div class="card-eyebrow">Месяцы 5–7</div><div class="card-title">Окупаемость</div><div class="card-text">Стабильная операционная прибыль. Полный возврат 5 000 000 ₽ в месяце 7. Инвестор закрепляет 30% доли.</div></div>
-        <div class="card" data-reveal style="--d:.3s"><div class="card-dot"></div><div class="card-eyebrow">Месяцы 8–12</div><div class="card-title">Новый рост</div><div class="card-text">Мобильное приложение, B2B, новые регионы (Крым, Кавказ, Урал). Дивиденды инвестору 30% от прибыли.</div></div>
+      <div class="roadmap-q" data-reveal>
+        <div class="roadmap-q__head"><span class="roadmap-q__num">01</span><span class="roadmap-q__period">Месяцы 1–3</span><span class="roadmap-q__phase">Запуск</span></div>
+        <p class="roadmap-q__goal"><b>Цель:</b> заложить операционный фундамент, собрать ядро команды, вывести продукт в прод с базовыми каналами и выйти на стабильный поток 120 броней/мес.</p>
+        <ul class="roadmap-q__list">
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div><b>Команда:</b> CMO, 2 sales-менеджера, SMM, product/QA — офис в СПб открыт, операционный ритм налажен.</div></li>
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div><b>Юридика:</b> агентские договоры с 500+ собственниками, оферта, эквайринг, ООО-структура под инвестиции.</div></li>
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div><b>Продукт:</b> PWA-приложение, интеграция с Realtycalendar и Bnovo, автоматическое подтверждение брони за 60 секунд.</div></li>
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div><b>Маркетинг:</b> SEO-фундамент (200+ региональных лендингов), Яндекс.Директ на 3 сегмента, VK/TG, 10+ travel-блогеров.</div></li>
+        </ul>
+        <div class="roadmap-q__kpi">
+          <div class="roadmap-q__kpi-item"><b>120</b><span>броней/мес</span></div>
+          <div class="roadmap-q__kpi-item"><b>500</b><span>объектов</span></div>
+          <div class="roadmap-q__kpi-item"><b>≤3 000</b><span>CAC, ₽</span></div>
+        </div>
       </div>
+      <div class="roadmap-q" data-reveal style="--d:.1s">
+        <div class="roadmap-q__head"><span class="roadmap-q__num">02</span><span class="roadmap-q__period">Месяцы 4–6</span><span class="roadmap-q__phase">PMF и масштаб</span></div>
+        <p class="roadmap-q__goal"><b>Цель:</b> доказать product-market fit — вырасти в 4× по броням, удержать юнит-экономику и заложить основу для долгосрочного LTV.</p>
+        <ul class="roadmap-q__list">
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div><b>Продукт:</b> нативные iOS+Android, автобронирование без менеджера, интеграция с Островком и Суточно.ру.</div></li>
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div><b>Маркетинг:</b> performance-масштабирование (ROAS ≥4×), партнёрства с 5 региональными ТИЦ, 30+ travel-блогеров.</div></li>
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div><b>Операции:</b> консьерж-сервис через партнёрскую сеть, личный кабинет собственника v1.</div></li>
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div><b>Юнит-экономика:</b> LTV/CAC ≥5,0×, 15% повторных гостей, NPS ≥65 — база для выхода на EBITDA-плюс.</div></li>
+        </ul>
+        <div class="roadmap-q__kpi">
+          <div class="roadmap-q__kpi-item"><b>400</b><span>броней/мес</span></div>
+          <div class="roadmap-q__kpi-item"><b>850</b><span>объектов</span></div>
+          <div class="roadmap-q__kpi-item"><b>≥5,0×</b><span>LTV/CAC</span></div>
+        </div>
+      </div>
+      <div class="roadmap-q" data-reveal style="--d:.2s">
+        <div class="roadmap-q__head"><span class="roadmap-q__num">03</span><span class="roadmap-q__period">Месяцы 7–9</span><span class="roadmap-q__phase">Окупаемость</span></div>
+        <p class="roadmap-q__goal"><b>Цель:</b> полностью вернуть тело инвестиций, выйти на EBITDA-плюс и подготовить операционку к масштабированию.</p>
+        <ul class="roadmap-q__list">
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div><b>Финансы:</b> полный возврат 5 000 000 ₽ в М7, EBITDA-плюс с М8, когортный анализ, снижение оттока.</div></li>
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div><b>Продукт:</b> self-service для собственников, динамическое ценообразование (yield management), интеграция с умным домом.</div></li>
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div><b>B2B-пилот:</b> 5 корпоративных клиентов — ретриты, тимбилдинги, MICE-сегмент.</div></li>
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div><b>Аналитика:</b> сквозная аналитика, атрибуция каналов, оптимизация воронки на каждом шаге.</div></li>
+        </ul>
+        <div class="roadmap-q__kpi">
+          <div class="roadmap-q__kpi-item"><b>650</b><span>броней/мес</span></div>
+          <div class="roadmap-q__kpi-item"><b>~2,8 млн</b><span>MRR, ₽</span></div>
+          <div class="roadmap-q__kpi-item"><b>≥90%</b><span>маржа</span></div>
+        </div>
+      </div>
+      <div class="roadmap-q" data-reveal style="--d:.3s">
+        <div class="roadmap-q__head"><span class="roadmap-q__num">04</span><span class="roadmap-q__period">Месяцы 10–12</span><span class="roadmap-q__phase">Экспансия</span></div>
+        <p class="roadmap-q__goal"><b>Цель:</b> закрепить лидерство, выйти в новые регионы и подготовить проект к раунду Series A.</p>
+        <ul class="roadmap-q__list">
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div><b>География:</b> Крым, Кавказ, Урал — +20 регионов и +2 500 объектов, локальные команды по модели franchise-lite.</div></li>
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div><b>Продукт:</b> AI-рекомендации, «ALBE Collection» (топ-100 вилл), программа лояльности с баллами и статусами.</div></li>
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div><b>Подготовка Series A:</b> аудит, отчётность, cap table, due diligence-пакет, инвесторская презентация.</div></li>
+          <li><svg class="ico-svg"><use href="#i-check"/></svg><div><b>Сообщество:</b> партнёрства с 20+ DMO, собственное travel-медиа, амбассадоры в регионах.</div></li>
+        </ul>
+        <div class="roadmap-q__kpi">
+          <div class="roadmap-q__kpi-item"><b>900+</b><span>броней/мес</span></div>
+          <div class="roadmap-q__kpi-item"><b>~46 млн</b><span>ARR, ₽</span></div>
+          <div class="roadmap-q__kpi-item"><b>×3</b><span>оценка</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="roadmap-result" data-reveal style="--d:.35s">
+      <b>Итог 12 месяцев</b>
+      <span>900+ броней/мес, MRR ~3,8 млн ₽, ARR ~46 млн ₽. Инвестиции возвращены в М7, доля инвестора 30% сохранена, оценка проекта — ×3 к входу.</span>
     </div>
   </div>
 </section>
 
-<section class="slide" id="slide-founder" data-slide="13">
+<section class="slide" id="slide-founder" data-slide="13" data-acc="c4">
   <div class="slide__inner">
     <div class="slide-num"><b>13</b> — Основатель</div>
     <h2>Основатель, который <em>уже строил</em> оценённые рынком платформы</h2>
     <div class="founder-grid">
-      <div class="card card--accent founder-card" data-reveal>
+      <div class="card founder-card" data-reveal>
         <div class="founder-photo"><img src="00001.webp" alt="Беляев Алексей Михайлович — основатель ALBE RENT"></div>
         <div class="founder-name">Беляев Алексей Михайлович</div>
         <div class="founder-role">Основатель и Генеральный директор ALBE RENT</div>
-        <div class="founder-tags">
-          <span class="founder-tag"><svg class="ico-svg"><use href="#i-award"/></svg>Сколково</span>
-          <span class="founder-tag"><svg class="ico-svg"><use href="#i-chart"/></svg>Forbes</span>
-          <span class="founder-tag"><svg class="ico-svg"><use href="#i-rocket"/></svg>2 проекта</span>
-        </div>
+        <div class="founder-quote">Я строю загородный рынок не как маркетплейс, а как сервис доверия. За 6 лет я проверил на себе: гость платит премиум только за предсказуемость. ALBE RENT — именно про это.</div>
         <div class="founder-edu">
-          <div class="founder-edu-row"><svg class="ico-svg"><use href="#i-graduation"/></svg><div><b>Высшее образование</b><span>Сколково Tech</span></div></div>
-          <div class="founder-edu-row"><svg class="ico-svg"><use href="#i-award"/></svg><div><b>Резидент Сколково</b><span>2020 – 2022</span></div></div>
+          <div class="founder-edu-row"><svg class="ico-svg"><use href="#i-prem-medal"/></svg><div><b>Высшее экономическое образование</b></div></div>
+          <div class="founder-edu-row"><svg class="ico-svg"><use href="#i-prem-trophy"/></svg><div><b>Сколково Tech — управление бизнесом</b></div></div>
+          <div class="founder-edu-row"><svg class="ico-svg"><use href="#i-prem-building"/></svg><div><b>Опыт в сфере загородной недвижимости с 2016 года</b></div></div>
         </div>
       </div>
       <div class="founder-timeline">
@@ -1393,52 +1861,63 @@ html[data-theme="light"]{
           <div class="ftl-item__dot">1</div>
           <div class="card-eyebrow">2018 – 2022</div>
           <div class="card-title">Основатель и CEO «ВОЗДУХ»</div>
-          <div class="card-text">Агрегатор бронирования загородной недвижимости. Построил операционную модель, ставшую основой для ALBE RENT.</div>
-          <div class="ftl-metric"><svg class="ico-svg"><use href="#i-chart"/></svg>Forbes, 2022 — <b>250 млн ₽</b></div>
+          <div class="card-text">Агрегатор бронирования загородной недвижимости. Построил операционную модель, ставшую основой для ALBE RENT: проверка собственников, интеграция с календарями, операционный ритм.</div>
+          <div class="ftl-metric"><svg class="ico-svg"><use href="#i-prem-chart"/></svg>Forbes, 2022 — <b>250 млн ₽</b></div>
         </div>
         <div class="card ftl-item" data-reveal style="--d:.1s">
           <div class="ftl-item__dot">2</div>
           <div class="card-eyebrow">2022 – 2024</div>
           <div class="card-title">Основатель и CEO VIXI AI</div>
-          <div class="card-text">AI-платформа, выросшая в оценке в 2 раза за 2 года. Опыт вывода технологического продукта на рынок.</div>
-          <div class="ftl-metric"><svg class="ico-svg"><use href="#i-chart"/></svg>Forbes, 2024 — <b>500 млн ₽</b></div>
+          <div class="card-text">AI-платформа, выросшая в оценке в 2 раза за 2 года. Опыт вывода технологического продукта на рынок: от MVP до коммерческого масштаба, работа с крупными заказчиками.</div>
+          <div class="ftl-metric"><svg class="ico-svg"><use href="#i-prem-chart"/></svg>Forbes, 2024 — <b>500 млн ₽</b></div>
         </div>
         <div class="card ftl-item" data-reveal style="--d:.2s">
           <div class="ftl-item__dot">3</div>
           <div class="card-eyebrow">2024 – сейчас</div>
           <div class="card-title">Основатель ALBE DIGITAL</div>
-          <div class="card-text">Диджитал-агентство полного цикла: разработка, маркетинг, продукт. Собственная команда, которая ведёт ALBE RENT.</div>
+          <div class="card-text">Диджитал-агентство полного цикла: разработка, маркетинг, продукт. Собственная команда, которая ведёт ALBE RENT — без аутсорсинга и подрядчиков.</div>
+          <div class="ftl-metric"><svg class="ico-svg"><use href="#i-prem-team"/></svg>Команда <b>8 человек</b></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="slide" id="slide-team" data-slide="14">
+<section class="slide" id="slide-team" data-slide="14" data-acc="c1">
   <div class="slide__inner">
     <div class="slide-num"><b>14</b> — Команда и офис</div>
     <h2>Офис в <em>Санкт-Петербурге</em></h2>
     <div class="office-grid">
       <div class="office-visual" data-reveal>
         <div class="office-pin">
-          <div class="office-pin__ico"><svg class="ico-svg"><use href="#i-building"/></svg></div>
+          <div class="office-pin__ico"><svg class="ico-svg"><use href="#i-prem-building"/></svg></div>
           <b>Санкт-Петербург</b>
           <span>офис компании</span>
         </div>
       </div>
       <div>
-        <div class="team-list">
-          <div class="card card--row" data-reveal><div class="card-ava">А</div><div><div class="card-title">Фаундер / CEO</div><div class="card-text">Стратегия, развитие, работа с инвесторами</div></div></div>
-          <div class="card card--row" data-reveal style="--d:.08s"><div class="card-ava">Т</div><div><div class="card-title">CTO / Lead Developer</div><div class="card-text">Продукт, платформа, интеграции, мобильное приложение</div></div></div>
-          <div class="card card--row" data-reveal style="--d:.16s"><div class="card-ava">М</div><div><div class="card-title">CMO / Маркетинг</div><div class="card-text">Performance-маркетинг, PR, блогеры, партнёрства</div></div></div>
-          <div class="card card--row" data-reveal style="--d:.24s"><div class="card-ava">О</div><div><div class="card-title">COO / Операции</div><div class="card-text">Собственники, консьерж, клиентский сервис, юридика</div></div></div>
+        <div class="team-block">
+          <div class="team-block__head">Ядро команды</div>
+          <div class="team-list">
+            <div class="card card--row" data-reveal><div class="card-ava">А</div><div><div class="card-eyebrow">CEO</div><div class="card-title">Фаундер / CEO</div><div class="card-text">Стратегия, развитие, работа с инвесторами. Сколково.</div></div></div>
+            <div class="card card--row" data-reveal style="--d:.08s"><div class="card-ava">Т</div><div><div class="card-eyebrow">CTO</div><div class="card-title">CTO / Lead Developer</div><div class="card-text">Продукт, платформа, интеграции, мобильное приложение</div></div></div>
+            <div class="card card--row" data-reveal style="--d:.16s"><div class="card-ava">М</div><div><div class="card-eyebrow">CMO</div><div class="card-title">CMO / Маркетинг</div><div class="card-text">Performance-маркетинг, PR, блогеры, партнёрства</div></div></div>
+            <div class="card card--row" data-reveal style="--d:.24s"><div class="card-ava">О</div><div><div class="card-eyebrow">COO</div><div class="card-title">COO / Операции</div><div class="card-text">Собственники, консьерж, клиентский сервис, юридика</div></div></div>
+          </div>
+        </div>
+        <div class="team-block" style="margin-top:20px">
+          <div class="team-block__head">Советники и партнёры</div>
+          <div class="team-list">
+            <div class="card card--row-top" data-reveal><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-medal"/></svg></div><div><div class="card-eyebrow">Экспертиза</div><div class="card-title">Отельер, 20+ лет опыта</div><div class="card-text">Советник по сервису и стандартам гостеприимства. Экс-руководитель сети загородных отелей премиум-сегмента.</div></div></div>
+            <div class="card card--row-top" data-reveal style="--d:.08s"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-chart"/></svg></div><div><div class="card-eyebrow">Экспертиза</div><div class="card-title">Тревел-инвестор</div><div class="card-text">Советник по стратегии и M&A. Опыт сделок в туристическом секторе на сумму более 3 млрд ₽.</div></div></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="slide" id="slide-contact" data-slide="15">
+<section class="slide" id="slide-contact" data-slide="15" data-acc="c2">
   <div class="slide__inner">
     <div class="cta-final" data-reveal>
       <div class="slide-num">15 — Контакты</div>
@@ -1446,8 +1925,8 @@ html[data-theme="light"]{
       <p>Свяжитесь удобным способом, чтобы получить полную финансовую модель, договор и презентацию. Готовы встретиться лично в Санкт-Петербурге или онлайн.</p>
       <div class="cta-final__actions">
         <a href="tel:+79959870353" class="btn btn--grad"><span class="btn__txt">+7 995 987-03-53</span></a>
-        <a href="https://t.me/albe_spb" target="_blank" rel="noopener" class="btn btn--ghost"><span class="btn__txt">Телеграм · @albe_spb <svg class="ico-svg"><use href="#i-telegram"/></svg></span></a>
-        <a href="https://albe.su/alberent" target="_blank" rel="noopener" class="btn btn--ghost"><span class="btn__txt">albe.su/alberent <svg class="ico-svg"><use href="#i-globe"/></svg></span></a>
+        <a href="https://t.me/albe_spb" target="_blank" rel="noopener" class="btn btn--ghost"><span class="btn__txt">Телеграм · @albe_spb <svg class="ico-svg"><use href="#i-prem-telegram"/></svg></span></a>
+        <a href="https://albe.su/alberent" target="_blank" rel="noopener" class="btn btn--ghost"><span class="btn__txt">albe.su/alberent <svg class="ico-svg"><use href="#i-prem-globe2"/></svg></span></a>
       </div>
       <div class="contact-row">
         <div class="contact-item"><small>Телефон</small><a href="tel:+79959870353">+7 995 987-03-53</a></div>
@@ -1469,28 +1948,21 @@ html[data-theme="light"]{
 (function(){
 'use strict';
 
-/* ============================================================
-   ТЕМА
-   ============================================================ */
 const themeMeta = document.getElementById('themeColorMeta');
 function applyTheme(theme){
   document.documentElement.setAttribute('data-theme', theme);
   try{ localStorage.setItem('albe-theme', theme); }catch(e){}
-  if (themeMeta) themeMeta.setAttribute('content', theme === 'light' ? '#F5F7FA' : '#06070B');
+  if (themeMeta) themeMeta.setAttribute('content', theme === 'light' ? '#F5F7FA' : '#14161A');
 }
 (function(){
   const cur = document.documentElement.getAttribute('data-theme') || 'dark';
-  if (themeMeta) themeMeta.setAttribute('content', cur === 'light' ? '#F5F7FA' : '#06070B');
+  if (themeMeta) themeMeta.setAttribute('content', cur === 'light' ? '#F5F7FA' : '#14161A');
 })();
 document.getElementById('themeToggle').addEventListener('click', () => {
   const cur = document.documentElement.getAttribute('data-theme') || 'dark';
   applyTheme(cur === 'dark' ? 'light' : 'dark');
 });
 
-/* ============================================================
-   ПРОГРЕСС-БАР — единственное, что реагирует на scroll
-   (никаких 3D-трансформов, никаких reflow)
-   ============================================================ */
 const bar = document.getElementById('scrollProgress');
 function onScroll(){
   const h = document.documentElement;
@@ -1500,9 +1972,6 @@ function onScroll(){
 addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
-/* ============================================================
-   DOTS-НАВИГАЦИЯ
-   ============================================================ */
 const slides = Array.from(document.querySelectorAll('.slide'));
 const dotsWrap = document.getElementById('dots');
 slides.forEach((s, i) => {
@@ -1526,9 +1995,6 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: [0.4, 0.6, 0.8] });
 slides.forEach(s => io.observe(s));
 
-/* ============================================================
-   REVEAL — только opacity fade, без сдвигов
-   ============================================================ */
 const revealIO = new IntersectionObserver((entries) => {
   entries.forEach(en => {
     if (en.isIntersecting){
@@ -1539,9 +2005,6 @@ const revealIO = new IntersectionObserver((entries) => {
 }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
 document.querySelectorAll('[data-reveal]').forEach(el => revealIO.observe(el));
 
-/* ============================================================
-   ПЛАВНАЯ НАВИГАЦИЯ ПО ЯКОРЯМ
-   ============================================================ */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const id = a.getAttribute('href');
