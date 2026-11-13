@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Каталог резиденций — ALBE RENT</title>
-<meta name="description" content="Более 10 000 проверенных загородных домов, вилл и шале в 85 регионах России. Фильтры по цене, гостям, удобствам и рейтингу.">
+<meta name="description" content="Более 10 000 проверенных загородных домов, вилл и шале в 85 регионах России.">
 <meta name="theme-color" content="#14161A" id="themeColorMeta">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,7 +27,6 @@ html[data-theme="dark"]{
   --c3:#A78BFA;--c3-rgb:167,139,250;
   --c4:#C4B5FD;
   --rose:#FB7185;--rose-rgb:251,113,133;
-  /* Графитовые цвета */
   --bg:#14161A;--bg-2:#1C1E24;
   --txt:#9CA3AF;--txt-h:#E5E7EB;--mut:#6B7280;
   --line:rgba(255,255,255,.06);--line-2:rgba(255,255,255,.12);
@@ -123,7 +122,9 @@ html[data-theme="light"]{
 }
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scrollbar-gutter:stable}
 body{background:var(--bg);color:var(--txt);font-family:var(--f-b);font-weight:400;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased;transition:background-color .35s var(--ease),color .35s var(--ease)}
-body.is-locked{position:fixed;width:100%;overflow:hidden}
+/* ==== SCROLL LOCK: без position:fixed и без scrollTo ==== */
+html.is-locked,
+html.is-locked body{overflow:hidden;overscroll-behavior:contain}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;border:none;background:none;color:inherit;cursor:pointer}
@@ -131,7 +132,6 @@ button{font-family:inherit;border:none;background:none;color:inherit;cursor:poin
 ::-webkit-scrollbar{width:6px;height:6px}
 ::-webkit-scrollbar-track{background:var(--scrollbar-track)}
 ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--c1),var(--c3));border-radius:6px}
-::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,var(--c2),var(--c4))}
 @supports (-moz-appearance:none){html{scrollbar-width:thin;scrollbar-color:var(--c3) var(--scrollbar-track)}}
 .ico-svg{display:inline-block;vertical-align:middle;flex-shrink:0}
 svg{display:block}
@@ -172,8 +172,6 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 @media(max-width:1180px){.nav__phone{display:none}}
 @media(max-width:980px){.nav__links{display:none}}
 @media(max-width:900px){.nav{padding:12px 16px}.nav__login{display:none!important}}
-
-/* Кнопки с более тусклым белым */
 .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--f-h);font-weight:500;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:16px 30px;border-radius:100px;overflow:hidden;transition:transform .45s var(--ease),box-shadow .45s var(--ease),color .35s;will-change:transform}
 .btn--sm{padding:12px 22px;font-size:10.5px}
 .btn--full{width:100%}
@@ -185,7 +183,6 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 .btn__txt svg{width:14px;height:14px}
 .btn::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,var(--c3),var(--c4));opacity:0;transition:opacity .45s var(--ease)}
 .btn--grad:hover::after{opacity:1}
-
 .cselect{position:relative}
 .cselect__trigger{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;border:none;background:transparent;outline:none;font-family:var(--f-b);font-size:13px;font-weight:700;color:var(--field-txt);padding:1px 0;text-align:left;min-width:0;cursor:pointer}
 .cselect__value{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13px}
@@ -196,23 +193,19 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 .cselect__option{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;border-radius:11px;font-size:13px;font-weight:600;color:var(--txt);cursor:pointer;transition:background .2s,color .2s;white-space:nowrap}
 .cselect__option:hover{background:var(--input-bg);color:var(--txt-h)}
 .cselect__option.is-active{color:var(--txt-h);background:linear-gradient(100deg,rgba(var(--c1-rgb),.18),rgba(var(--c3-rgb),.18))}
-.cselect__option.is-active::after{content:'';width:6px;height:6px;border-radius:50%;background:var(--c2);box-shadow:0 0 8px var(--c2);flex-shrink:0}
-
 .page-hero{position:relative;min-height:70vh;padding:clamp(130px,16vh,190px) 0 clamp(44px,6vh,80px);overflow:hidden;border-bottom:1px solid var(--line);display:flex;align-items:center}
 .page-hero__bg{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
 .hero-scene{position:absolute;inset:0;overflow:hidden}
 .hero-scene svg{position:absolute;inset:0;width:100%;height:100%}
-.page-hero__veil{position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(ellipse 62% 60% at 30% 55%,var(--hero-veil-1) 0%,var(--hero-veil-2) 50%,transparent 82%),linear-gradient(90deg,var(--hero-veil-1) 0%,transparent 65%),radial-gradient(ellipse 100% 40% at 50% 100%,var(--hero-veil-edge),transparent 70%);transition:background .35s var(--ease)}
+.page-hero__veil{position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(ellipse 62% 60% at 30% 55%,var(--hero-veil-1) 0%,var(--hero-veil-2) 50%,transparent 82%),linear-gradient(90deg,var(--hero-veil-1) 0%,transparent 65%)}
 .page-hero__inner{position:relative;z-index:4}
 .crumbs{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--mut);margin-bottom:22px;flex-wrap:wrap}
 .crumbs a:hover{color:var(--c2)}
-.crumbs span{opacity:.45}
 .page-hero h1{font-family:var(--f-h);font-weight:800;font-size:clamp(28px,4.4vw,58px);line-height:1.02;letter-spacing:-.035em;text-transform:uppercase;color:var(--txt-h);margin:16px 0 18px;max-width:18ch}
 .page-hero__sub{font-size:clamp(14px,1.15vw,16px);color:var(--mut);line-height:1.68;max-width:56ch}
 .page-hero__stats{display:flex;flex-wrap:wrap;gap:clamp(22px,4vw,58px);margin-top:clamp(28px,4vh,44px);padding-top:24px;border-top:1px solid var(--line);max-width:620px}
 .ph-stat b{display:block;font-family:var(--f-h);font-size:clamp(18px,2.2vw,28px);font-weight:700;letter-spacing:-.02em;line-height:1.15;background:var(--grad);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradShift 8s ease infinite}
 .ph-stat span{font-size:11.5px;color:var(--mut);letter-spacing:.06em;text-transform:uppercase;font-weight:600}
-
 .sc-tw{transform-box:fill-box;transform-origin:center;animation:twinkle var(--dur,4s) ease-in-out infinite;animation-delay:var(--delay,0s)}
 @keyframes twinkle{0%,100%{opacity:.15;transform:scale(.75)}50%{opacity:1;transform:scale(1.15)}}
 .sc-aur-a{transform-origin:50% 50%;animation:auroraA 30s ease-in-out infinite}
@@ -231,44 +224,21 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 @keyframes bulbTwinkle{0%,100%{opacity:.5;transform:scale(.85)}50%{opacity:1;transform:scale(1.2)}}
 .w-star-tree{animation:starPulse 2.8s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
 @keyframes starPulse{0%,100%{opacity:.85;transform:scale(.95)}50%{opacity:1;transform:scale(1.1)}}
-
 .catalog-layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:clamp(18px,2.4vw,32px);align-items:start;padding-top:clamp(28px,4vh,48px);padding-bottom:clamp(70px,10vh,130px);transition:grid-template-columns .4s var(--ease)}
 @media(max-width:1080px){.catalog-layout{grid-template-columns:1fr}}
-
-/* Стили для режима КАРТА */
 .catalog-layout.map-mode{grid-template-columns:280px minmax(0,1fr) 42%}
 .catalog-layout.map-mode .results{max-height:calc(100vh - 120px);overflow-y:auto;padding-right:10px}
 .catalog-layout.map-mode .cards-grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
 .catalog-layout.map-mode .map-view{display:block}
-.map-view{display:none;position:sticky;top:100px;height:calc(100vh - 120px);border-radius:24px;border:1px solid var(--line);overflow:hidden;background:#1A1C22;box-shadow:var(--card-shadow)}
-.map-inner{position:absolute;inset:-50%;width:200%;height:200%;cursor:grab;background-image:radial-gradient(circle at 20% 30%, rgba(34, 211, 238, 0.05) 0%, transparent 40%),radial-gradient(circle at 80% 70%, rgba(167, 139, 250, 0.05) 0%, transparent 40%),linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);background-size:100% 100%, 100% 100%, 40px 40px, 40px 40px;}
-.map-inner:active{cursor:grabbing}
+/* ==== Yandex map container ==== */
+.map-view{display:none;position:sticky;top:100px;height:calc(100vh - 120px);border-radius:24px;border:1px solid var(--line);overflow:hidden;background:var(--bg-2);box-shadow:var(--card-shadow);z-index:1}
+.map-inner{position:absolute;inset:0;width:100%;height:100%}
+.map-fallback{display:flex;align-items:center;justify-content:center;height:100%;padding:24px;text-align:center;color:var(--mut);font-size:13px;line-height:1.6}
 @media(max-width:1200px){
   .catalog-layout.map-mode{grid-template-columns:280px minmax(0,1fr)}
   .catalog-layout.map-mode .map-view{display:none!important}
   .map-toggle{display:none!important}
 }
-
-/* Маркеры и всплывашки */
-.map-pin{position:absolute;transform:translate(-50%,-50%);background:var(--bg-2);border:1px solid var(--line-2);padding:5px 10px;border-radius:100px;font-size:12px;font-weight:700;color:var(--txt-h);cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.4);transition:transform .2s,background .2s;z-index:2;white-space:nowrap}
-.map-pin:hover{transform:translate(-50%,-50%) scale(1.1);background:var(--grad);color:#fff;border-color:transparent;z-index:10}
-.map-popup{position:absolute;width:260px;background:var(--panel-bg-solid);border-radius:16px;border:1px solid var(--line-2);box-shadow:0 20px 40px -10px rgba(0,0,0,0.6);z-index:20;overflow:hidden;transform:translate(-50%,-100%);margin-top:-15px;animation:popIn .25s var(--ease)}
-@keyframes popIn{from{opacity:0;transform:translate(-50%,-90%) scale(.95)}to{opacity:1;transform:translate(-50%,-100%) scale(1)}}
-.map-popup::after{content:'';position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);border-width:8px 8px 0;border-style:solid;border-color:var(--panel-bg-solid) transparent transparent transparent}
-.map-popup__media{position:relative;height:140px}
-.map-popup__img{width:100%;height:100%;background-size:cover;background-position:center}
-.map-popup__close{position:absolute;top:8px;right:8px;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,0.5);color:#fff;display:grid;place-items:center;cursor:pointer;border:none;transition:background .2s}
-.map-popup__close:hover{background:rgba(0,0,0,0.8)}
-.map-popup__close svg{width:14px;height:14px}
-.map-popup__body{padding:12px 14px;cursor:pointer}
-.map-popup__head{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:4px}
-.map-popup__head h3{font-family:var(--f-h);font-size:13px;font-weight:600;color:var(--txt-h);margin:0;line-height:1.3}
-.map-popup__head span{display:flex;align-items:center;gap:3px;font-size:11px;color:var(--c2);font-weight:700;flex-shrink:0}
-.map-popup__head span svg{width:10px;height:10px}
-.map-popup__body p{font-size:11px;color:var(--mut);margin:0 0 8px}
-.map-popup__price{font-size:12px;color:var(--mut);margin-bottom:10px}
-.map-popup__price b{font-size:15px;font-family:var(--f-h);color:var(--txt-h)}
-
 .filters{position:sticky;top:86px;max-height:calc(100vh - 104px);overflow-y:auto;padding:18px;border-radius:22px;background:var(--card-bg);border:1px solid var(--line);box-shadow:var(--card-shadow);scrollbar-width:thin;scrollbar-color:var(--line-2) transparent}
 .filters::-webkit-scrollbar{width:2px}
 .filters::-webkit-scrollbar-track{background:transparent}
@@ -303,7 +273,6 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 .check input:checked{background:var(--grad);border-color:transparent}
 .check input:checked::after{content:'';position:absolute;left:5px;top:2px;width:4px;height:8px;border:2px solid #fff;border-top:0;border-left:0;transform:rotate(45deg)}
 .check:hover input{border-color:rgba(var(--c1-rgb),.5)}
-
 .rselect{position:relative}
 .rselect__trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px;border-radius:11px;border:1px solid var(--input-border);background:var(--input-bg);font-size:12.5px;font-weight:600;color:var(--field-txt);transition:border-color .3s,box-shadow .3s;cursor:pointer}
 .rselect__trigger:hover{border-color:rgba(var(--c1-rgb),.35)}
@@ -313,8 +282,6 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 .rselect.is-open .rselect__caret{transform:rotate(180deg);color:var(--c2)}
 .rselect__menu{position:absolute;top:calc(100% + 8px);left:0;right:0;z-index:90;background:var(--panel-bg-solid);border:1px solid var(--line-2);border-radius:14px;box-shadow:0 26px 60px -18px var(--corner-shadow);padding:6px;max-height:330px;overflow-y:auto;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .25s var(--ease),transform .25s var(--ease),visibility .25s}
 .rselect.is-open .rselect__menu{opacity:1;visibility:visible;transform:none}
-.rselect__menu::-webkit-scrollbar{width:4px}
-.rselect__menu::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:4px}
 .rselect__search{width:100%;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--input-bg);color:var(--field-txt);font-family:var(--f-b);font-size:12.5px;outline:none;margin-bottom:6px;position:sticky;top:0;z-index:2}
 .rselect__search:focus{border-color:rgba(var(--c1-rgb),.5)}
 .rgroup__title{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);padding:8px 8px 4px;font-weight:800}
@@ -323,7 +290,6 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 .ropt.is-active{color:var(--txt-h);background:linear-gradient(100deg,rgba(var(--c1-rgb),.16),rgba(var(--c3-rgb),.16))}
 .ropt small{color:var(--mut);font-size:10px;font-weight:600}
 .rselect__empty{padding:14px 10px;font-size:12px;color:var(--mut);text-align:center}
-
 .results-head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:16px}
 .results-count{font-size:13.5px;color:var(--mut)}
 .results-count b{color:var(--txt-h);font-family:var(--f-h);font-size:15px;font-weight:700}
@@ -337,7 +303,6 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 .map-toggle{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:100px;border:1px solid var(--line-2);background:var(--input-bg);font-size:12.5px;font-weight:700;color:var(--txt);transition:all .3s var(--ease);cursor:pointer}
 .map-toggle svg{width:15px;height:15px;color:var(--c2)}
 .map-toggle:hover{border-color:var(--c2);color:var(--c2)}
-
 .active-filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
 .afchip{display:inline-flex;align-items:center;gap:8px;padding:7px 8px 7px 13px;border-radius:100px;background:linear-gradient(135deg,rgba(var(--c1-rgb),.12),rgba(var(--c3-rgb),.12));border:1px solid rgba(var(--c1-rgb),.2);font-size:12px;font-weight:600;color:var(--txt-h)}
 .afchip button{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.08);transition:background .25s,transform .25s;cursor:pointer}
@@ -345,7 +310,6 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 .afchip button svg{width:9px;height:9px}
 .afchip--clear{background:none;border-color:var(--line);color:var(--mut);padding:7px 14px;cursor:pointer;transition:all .3s}
 .afchip--clear:hover{color:var(--rose);border-color:rgba(var(--rose-rgb),.3)}
-
 .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(286px,1fr));gap:clamp(14px,1.6vw,22px)}
 .card{position:relative;border-radius:22px;overflow:hidden;background:var(--card-bg);border:1px solid var(--line);opacity:0;translate:0 34px;box-shadow:var(--card-shadow);transition:opacity .7s var(--ease),translate .7s var(--ease),transform .5s var(--ease),border-color .5s var(--ease),box-shadow .5s var(--ease);will-change:transform;cursor:pointer}
 .card.in{opacity:1;translate:0 0}
@@ -354,13 +318,11 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 .card__img{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.01);transition:transform 1.1s var(--ease)}
 .card:hover .card__img{transform:scale(1.09)}
 .card__media::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,6,10,.24) 0%,transparent 34%,rgba(5,6,10,.82) 100%);opacity:.85;transition:opacity .5s}
-.card:hover .card__media::after{opacity:1}
 .card__badge,.detail__hero-badge{position:absolute;z-index:3;padding:6px 12px;border-radius:100px;font-family:var(--f-h);font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;background:rgba(5,6,10,.6);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.2);color:#fff}
 .card__badge{top:14px;left:14px}
-.card__badge[data-t="ХИТ"],.detail__hero-badge[data-t="ХИТ"]{background:var(--grad);color:#fff;border-color:transparent;box-shadow:0 6px 22px -6px rgba(var(--c1-rgb),.8);text-shadow:var(--text-shadow-light)}
-.card__badge[data-t="NEW"],.detail__hero-badge[data-t="NEW"]{background:rgba(var(--c3-rgb),.92);color:#fff;border-color:transparent;text-shadow:var(--text-shadow-light)}
-.card__badge[data-t="−15%"],.detail__hero-badge[data-t="−15%"]{background:rgba(var(--rose-rgb),.92);color:#fff;border-color:transparent;text-shadow:var(--text-shadow-light)}
-.detail__hero-badge[data-t]{display:inline-block}
+.card__badge[data-t="ХИТ"],.detail__hero-badge[data-t="ХИТ"]{background:var(--grad);color:#fff;border-color:transparent;box-shadow:0 6px 22px -6px rgba(var(--c1-rgb),.8)}
+.card__badge[data-t="NEW"],.detail__hero-badge[data-t="NEW"]{background:rgba(var(--c3-rgb),.92);color:#fff;border-color:transparent}
+.card__badge[data-t="−15%"],.detail__hero-badge[data-t="−15%"]{background:rgba(var(--rose-rgb),.92);color:#fff;border-color:transparent}
 .card__fav{position:absolute;top:12px;right:12px;z-index:3;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:rgba(5,6,10,.5);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.16);color:#fff;transition:background .35s,transform .35s var(--ease),color .35s,border-color .35s;cursor:pointer}
 .card__fav:hover{background:rgba(255,255,255,.16);transform:scale(1.1)}
 .card__fav svg{width:16px;height:16px}
@@ -388,7 +350,6 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 .card__arrow{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);color:var(--mut);transition:all .45s var(--ease)}
 .card__arrow svg{width:15px;height:15px}
 .card:hover .card__arrow{background:var(--grad);color:#fff;border-color:transparent;transform:rotate(-45deg) scale(1.06)}
-
 .catalog-empty{grid-column:1/-1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:clamp(50px,9vh,90px) 20px;border-radius:24px;border:1px dashed var(--line-2);background:linear-gradient(160deg,rgba(var(--c1-rgb),.05),rgba(var(--c3-rgb),.05))}
 .catalog-empty__ico{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(140deg,rgba(var(--c1-rgb),.15),rgba(var(--c3-rgb),.15));border:1px solid var(--line);color:var(--c1);margin-bottom:20px}
 .catalog-empty__ico svg{width:28px;height:28px}
@@ -402,7 +363,6 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 .pager button:disabled{opacity:.3;pointer-events:none}
 .pager .dots{color:var(--mut);padding:0 4px;font-weight:700;user-select:none}
 .pager__info{width:100%;text-align:center;font-size:11.5px;color:var(--mut);margin-top:14px;letter-spacing:.05em}
-
 .cta-wrap{padding:0 clamp(20px,5vw,72px) clamp(70px,10vh,120px)}
 .cta{position:relative;overflow:hidden;border-radius:clamp(26px,4vw,48px);padding:clamp(50px,8vw,104px) clamp(24px,5vw,72px);text-align:center;background:var(--cta-bg);border:1px solid var(--line-2)}
 .cta::before,.cta::after{content:'';position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
@@ -415,7 +375,6 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 .cta__input{flex:1 1 240px;padding:17px 24px;border-radius:100px;background:var(--input-bg);border:1px solid var(--input-border);color:var(--field-txt);font-family:var(--f-b);font-size:14px;outline:none;transition:border-color .35s,box-shadow .35s}
 .cta__input::placeholder{color:var(--mut)}
 .cta__input:focus{border-color:rgba(var(--c1-rgb),.55);box-shadow:0 0 0 4px rgba(var(--c1-rgb),.08)}
-
 .footer{border-top:1px solid var(--line);padding:clamp(50px,7vh,80px) clamp(20px,5vw,72px) 34px;position:relative;overflow:hidden;background:var(--section-bg-2)}
 .footer__top{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:clamp(28px,4vw,60px);padding-bottom:clamp(40px,6vh,64px)}
 .footer__brand p{font-size:13.5px;color:var(--mut);line-height:1.7;max-width:30ch;margin-top:18px}
@@ -426,7 +385,6 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 .footer__bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:26px;margin-top:20px;border-top:1px solid var(--line);font-size:11.5px;color:var(--mut);letter-spacing:.04em}
 @media(max-width:860px){.footer__top{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.footer__top{grid-template-columns:1fr}}
-
 .modal{position:fixed;inset:0;z-index:9500;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:opacity .5s var(--ease),visibility .5s}
 .modal.is-open{opacity:1;visibility:visible}
 .modal__backdrop{position:absolute;inset:0;background:rgba(3,4,8,.65);backdrop-filter:blur(14px)}
@@ -447,22 +405,46 @@ html[data-theme="dark"] .field input{color-scheme:dark}
 .modal__total{display:flex;justify-content:space-between;align-items:center;padding:18px 0;margin:18px 0 22px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:13.5px;color:var(--mut)}
 .modal__total b{font-family:var(--f-h);font-size:20px;font-weight:700;background:var(--grad);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradShift 6s ease infinite}
 
-/* === МОБИЛЬНАЯ КАРТОЧКА (ИСПРАВЛЕНИЕ ДЕРГАНЬЯ) === */
-.detail{position:fixed;inset:0;z-index:9550;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:opacity .4s var(--ease),visibility .4s}
+/* ============ DETAIL MODAL (переделан: без position:fixed body, без выезжания) ============ */
+.detail{
+  position:fixed;inset:0;z-index:9550;
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;
+  opacity:0;visibility:hidden;
+  transition:opacity .22s var(--ease),visibility .22s;
+  pointer-events:none; /* дети включают клики */
+}
 .detail.is-open{opacity:1;visibility:visible}
-.detail__backdrop{position:absolute;inset:0;background:rgba(3,4,8,.4);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.detail__backdrop{
+  position:absolute;inset:0;
+  background:rgba(3,4,8,.4);
+  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+  pointer-events:auto;
+}
 html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.2)}
 .detail__panel{
-  position:relative;z-index:2;width:min(1080px,100%);max-height:86vh;max-height:86dvh;overflow-y:auto;
-  border-radius:26px;background:var(--modal-bg);border:1px solid var(--line-2);
-  box-shadow:0 40px 90px -30px rgba(0,0,0,.6);transform:translateY(24px) scale(.98);
-  transition:transform .45s var(--ease);scrollbar-width:thin;scrollbar-color:var(--line-2) transparent;
-  /* Убираем мерцание */
-  will-change:transform;
+  position:relative;z-index:2;
+  width:min(1080px,100%);
+  max-height:86vh;max-height:86dvh;
+  overflow-y:auto;
+  border-radius:26px;
+  background:var(--modal-bg);
+  border:1px solid var(--line-2);
+  box-shadow:0 40px 90px -30px rgba(0,0,0,.6);
+  scrollbar-width:thin;scrollbar-color:var(--line-2) transparent;
   transform:translateZ(0);
   -webkit-overflow-scrolling:touch;
+  pointer-events:auto;
+  /* лёгкий scale без translateY — не выглядит "выезжающим снизу" */
+  transition:transform .22s var(--ease);
+  will-change:transform;
 }
 .detail.is-open .detail__panel{transform:translateZ(0)}
+/* на десктопе — небольшая «отдача», не выезжание */
+@media(min-width:901px){
+  .detail__panel{transform:translateZ(0) scale(.985)}
+  .detail.is-open .detail__panel{transform:translateZ(0) scale(1)}
+}
 .detail__panel::-webkit-scrollbar{width:7px}
 .detail__panel::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:7px}
 .detail__handle{display:none;position:absolute;top:10px;left:50%;transform:translateX(-50%);width:42px;height:4px;border-radius:4px;background:rgba(255,255,255,.6);box-shadow:0 1px 3px rgba(0,0,0,.35);z-index:6;pointer-events:none}
@@ -495,11 +477,12 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.2)}
 .detail__amen span::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--c2);box-shadow:0 0 6px var(--c2)}
 .detail__map{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--bg-2);aspect-ratio:16/9}
 .detail__map iframe{width:100%;height:100%;border:0;display:block;filter:saturate(.95)}
+.detail__map-placeholder{display:flex;align-items:center;justify-content:center;height:100%;color:var(--mut);font-size:12px}
 .detail__reviews{display:flex;flex-direction:column;gap:12px}
 .review{padding:16px 18px;border-radius:14px;background:var(--card-bg);border:1px solid var(--line)}
 .review__head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:10px}
 .review__author{display:flex;align-items:center;gap:10px}
-.review__ava{width:36px;height:36px;border-radius:50%;background:var(--grad);background-size:200%;display:grid;place-items:center;font-family:var(--f-h);font-weight:700;font-size:13px;color:#fff;flex-shrink:0;animation:gradShift 8s ease infinite;text-shadow:var(--text-shadow-light)}
+.review__ava{width:36px;height:36px;border-radius:50%;background:var(--grad);background-size:200%;display:grid;place-items:center;font-family:var(--f-h);font-weight:700;font-size:13px;color:#fff;flex-shrink:0;text-shadow:var(--text-shadow-light)}
 .review__name b{display:block;font-size:13px;font-weight:700;color:var(--txt-h)}
 .review__name span{font-size:11px;color:var(--mut)}
 .review__stars{display:flex;gap:2px;color:var(--c2);flex-shrink:0}
@@ -529,31 +512,31 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.2)}
 .tour__pano-svg{display:block;width:100%;height:100%;pointer-events:none}
 .tour__hotspot{position:absolute;z-index:3;width:18px;height:18px;transform:translate(-50%,-50%);background:none;border:none;padding:0;cursor:pointer}
 .tour__hotspot-dot{position:absolute;inset:0;border-radius:50%;background:#fff;border:2.5px solid var(--c2);animation:tourPulse 2.4s ease-in-out infinite}
-@keyframes tourPulse{0%{box-shadow:0 0 0 0 rgba(var(--c1-rgb),.65),0 0 14px rgba(var(--c1-rgb),.6)}70%{box-shadow:0 0 0 16px rgba(var(--c1-rgb),0),0 0 22px rgba(var(--c1-rgb),.9)}100%{box-shadow:0 0 0 0 rgba(var(--c1-rgb),0),0 0 14px rgba(var(--c1-rgb),.6)}}
-.tour__hotspot-label{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(-4px);padding:6px 12px;border-radius:100px;background:rgba(5,6,10,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.22);color:#fff;font-family:var(--f-b);font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .3s var(--ease),transform .3s var(--ease)}
-.tour__hotspot:hover .tour__hotspot-label,.tour__hotspot:focus-visible .tour__hotspot-label{opacity:1;transform:translateX(-50%) translateY(0)}
+@keyframes tourPulse{0%{box-shadow:0 0 0 0 rgba(var(--c1-rgb),.65)}70%{box-shadow:0 0 0 16px rgba(var(--c1-rgb),0)}100%{box-shadow:0 0 0 0 rgba(var(--c1-rgb),0)}}
+.tour__hotspot-label{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(-4px);padding:6px 12px;border-radius:100px;background:rgba(5,6,10,.82);color:#fff;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .3s var(--ease),transform .3s var(--ease)}
+.tour__hotspot:hover .tour__hotspot-label{opacity:1;transform:translateX(-50%) translateY(0)}
 .tour__top{position:absolute;top:20px;left:20px;right:80px;z-index:6;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;pointer-events:none}
 .tour__title{display:flex;flex-direction:column;gap:6px;min-width:0}
 .tour__label{font-size:9.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.65)}
 .tour__title b{font-family:var(--f-h);font-size:clamp(14px,1.6vw,17px);font-weight:700;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tour__compass-wrap{flex-shrink:0;width:50px;height:50px;border-radius:50%;padding:4px;background:rgba(5,6,10,.55);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.2);color:var(--c2);box-shadow:0 8px 22px -8px rgba(0,0,0,.5)}
+.tour__compass-wrap{flex-shrink:0;width:50px;height:50px;border-radius:50%;padding:4px;background:rgba(5,6,10,.55);border:1px solid rgba(255,255,255,.2);color:var(--c2)}
 .tour__compass{display:block;width:100%;height:100%;transition:transform .2s linear}
-.tour__close{position:absolute;top:20px;right:20px;z-index:7;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(5,6,10,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.22);color:#fff;cursor:pointer;transition:all .3s var(--ease)}
+.tour__close{position:absolute;top:20px;right:20px;z-index:7;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(5,6,10,.55);border:1px solid rgba(255,255,255,.22);color:#fff;cursor:pointer;transition:all .3s var(--ease)}
 .tour__close:hover{background:rgba(255,255,255,.18);transform:rotate(90deg)}
 .tour__close svg{width:18px;height:18px}
 .tour__bottom{position:absolute;left:20px;right:20px;bottom:20px;z-index:6;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.tour__hint{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:100px;background:rgba(5,6,10,.55);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.85);font-size:11px;font-weight:600;letter-spacing:.02em}
+.tour__hint{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:100px;background:rgba(5,6,10,.55);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.85);font-size:11px;font-weight:600}
 .tour__hint svg{width:14px;height:14px;color:var(--c2)}
 .tour__actions{display:flex;align-items:center;gap:10px}
-.tour__auto-btn{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:rgba(5,6,10,.55);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.22);color:#fff;cursor:pointer;transition:all .3s var(--ease)}
+.tour__auto-btn{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:rgba(5,6,10,.55);border:1px solid rgba(255,255,255,.22);color:#fff;cursor:pointer;transition:all .3s var(--ease)}
 .tour__auto-btn:hover{background:rgba(255,255,255,.18);transform:scale(1.05)}
-.tour__auto-btn.is-on{color:var(--c2);border-color:rgba(var(--c1-rgb),.5);box-shadow:0 0 18px -4px rgba(var(--c1-rgb),.5)}
+.tour__auto-btn.is-on{color:var(--c2);border-color:rgba(var(--c1-rgb),.5)}
 .tour__auto-btn svg{width:16px;height:16px}
 .tour__auto-btn .tour__ico-play{display:block}
 .tour__auto-btn .tour__ico-pause{display:none}
 .tour__auto-btn.is-on .tour__ico-play{display:none}
 .tour__auto-btn.is-on .tour__ico-pause{display:block}
-.tour__demo{padding:7px 12px;border-radius:100px;background:rgba(var(--rose-rgb),.22);border:1px solid rgba(var(--rose-rgb),.45);color:#fff;font-size:9.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;text-shadow:var(--text-shadow-light)}
+.tour__demo{padding:7px 12px;border-radius:100px;background:rgba(var(--rose-rgb),.22);border:1px solid rgba(var(--rose-rgb),.45);color:#fff;font-size:9.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
 
 .mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:950;padding:8px 6px calc(8px + env(safe-area-inset-bottom,0px));background:var(--panel-bg);backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);border-top:1px solid var(--line-2);box-shadow:0 -10px 30px -20px var(--corner-shadow)}
 .mobile-nav__items{display:flex;justify-content:space-around;align-items:stretch;gap:2px}
@@ -562,11 +545,9 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.2)}
 .mobile-nav__item span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 .mobile-nav__item:active{transform:scale(.94)}
 .mobile-nav__item.is-active{color:var(--c2)}
-.mobile-nav__item.is-active svg{transform:scale(1.08)}
 .mobile-nav__item.is-active::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:22px;height:2px;background:var(--grad);border-radius:0 0 2px 2px;box-shadow:0 0 10px var(--c2)}
 .mobile-nav__item--center{padding-top:0}
-.mobile-nav__circle{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--grad);background-size:200%;color:#E5E7EB;box-shadow:0 8px 22px -8px rgba(var(--c1-rgb),.7);margin-top:-14px;margin-bottom:2px;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
-.mobile-nav__item--center:hover .mobile-nav__circle{transform:scale(1.06) rotate(6deg)}
+.mobile-nav__circle{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--grad);background-size:200%;color:#E5E7EB;box-shadow:0 8px 22px -8px rgba(var(--c1-rgb),.7);margin-top:-14px;margin-bottom:2px;transition:transform .3s var(--ease)}
 .mobile-nav__item--center svg{width:22px;height:22px}
 .mobile-nav__item--center span{font-size:8.5px}
 .mobile-nav__item--center::before{display:none}
@@ -584,15 +565,32 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.2)}
   .filters-backdrop{position:fixed;inset:0;z-index:9550;background:rgba(3,4,8,.55);backdrop-filter:blur(8px);opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
   .filters-backdrop.is-open{opacity:1;visibility:visible}
   .page-hero{min-height:auto;padding-top:clamp(120px,15vh,160px)}
-  
-  /* Фикс мобильной карточки */
-  .detail{padding:0;align-items:flex-end}
-  .detail__panel{width:100%;height:92dvh;max-height:none;border-radius:24px 24px 0 0;border-bottom:none;border-left:none;border-right:none;transform:translateY(100%) translateZ(0)}
-  .detail.is-open .detail__panel{transform:translateY(0) translateZ(0)}
+
+  /* ==== DETAIL на мобильных: сидит на верхней границе mobile-nav ==== */
+  .detail{
+    padding:0;
+    align-items:flex-end;
+    padding-bottom:calc(76px + env(safe-area-inset-bottom,0px));
+    transition:opacity .2s var(--ease),visibility .2s;
+  }
+  .detail__backdrop{
+    /* не затемняем мобильное меню */
+    bottom:calc(76px + env(safe-area-inset-bottom,0px));
+  }
+  .detail__panel{
+    width:100%;
+    height:calc(100dvh - 76px - env(safe-area-inset-bottom,0px) - 8px);
+    max-height:none;
+    border-radius:24px 24px 0 0;
+    border-bottom:none;border-left:none;border-right:none;
+    /* НЕТ translateY — карточка просто проявляется */
+    transform:translateZ(0) !important;
+  }
+  .detail.is-open .detail__panel{transform:translateZ(0) !important}
   .detail__handle{display:block}
   .detail__body{padding:16px 13px}
   .detail__hero{aspect-ratio:16/9}
-  
+
   .tour__top{top:16px;left:16px;right:76px}
   .tour__close{top:16px;right:16px;width:40px;height:40px}
   .tour__bottom{left:16px;right:16px;bottom:16px}
@@ -614,8 +612,6 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.2)}
 }
 html[data-theme="dark"] .card{background:linear-gradient(160deg,#1E2026,#16181D);border-color:rgba(167,139,250,.25)}
 html[data-theme="dark"] .card:hover{border-color:rgba(167,139,250,.5);box-shadow:0 40px 80px -34px rgba(0,0,0,.95),0 0 60px -18px rgba(167,139,250,.4)}
-html[data-theme="dark"] .card .card__foot{border-top-color:rgba(255,255,255,.06)}
-html[data-theme="dark"] .card .card__meta span{border-color:rgba(255,255,255,.06);background:rgba(255,255,255,.02)}
 </style>
 </head>
 <body>
@@ -693,129 +689,23 @@ html[data-theme="dark"] .card .card__meta span{border-color:rgba(255,255,255,.06
           <defs>
             <linearGradient id="w-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--sc-sky-1)"/><stop offset=".42" stop-color="var(--sc-sky-2)"/><stop offset=".74" stop-color="var(--sc-sky-3)"/><stop offset="1" stop-color="var(--sc-sky-4)"/></linearGradient>
             <linearGradient id="w-aur1" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="var(--sc-aur-cyan)" stop-opacity="0"/><stop offset=".3" stop-color="var(--sc-aur-cyan)" stop-opacity=".45"/><stop offset=".65" stop-color="var(--sc-aur-violet)" stop-opacity=".4"/><stop offset="1" stop-color="var(--sc-aur-violet)" stop-opacity="0"/></linearGradient>
-            <linearGradient id="w-aur2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="var(--sc-aur-violet)" stop-opacity="0"/><stop offset=".35" stop-color="var(--sc-aur-violet)" stop-opacity=".3"/><stop offset=".7" stop-color="var(--sc-aur-cyan)" stop-opacity=".3"/><stop offset="1" stop-color="var(--sc-aur-cyan)" stop-opacity="0"/></linearGradient>
             <radialGradient id="w-moong" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="var(--sc-moon-core-2)" stop-opacity=".5"/><stop offset=".4" stop-color="var(--sc-moon-glow)" stop-opacity=".18"/><stop offset="1" stop-color="var(--sc-moon-glow)" stop-opacity="0"/></radialGradient>
             <linearGradient id="w-mtn-far" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--sc-mtn-far-top)" stop-opacity=".85"/><stop offset="1" stop-color="var(--sc-mtn-far-bot)" stop-opacity=".3"/></linearGradient>
             <linearGradient id="w-mtn-mid" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--sc-mtn-mid-top)" stop-opacity=".95"/><stop offset="1" stop-color="var(--sc-mtn-mid-bot)" stop-opacity=".5"/></linearGradient>
             <linearGradient id="w-mtn-near" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--sc-mtn-near-top)"/><stop offset="1" stop-color="var(--sc-mtn-near-bot)"/></linearGradient>
             <linearGradient id="w-ground" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--sc-ground-top)"/><stop offset=".6" stop-color="var(--sc-ground-mid)"/><stop offset="1" stop-color="var(--sc-ground-bot)"/></linearGradient>
-            <radialGradient id="w-windowGlow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="var(--sc-window)" stop-opacity=".7"/><stop offset="1" stop-color="var(--sc-window)" stop-opacity="0"/></radialGradient>
           </defs>
           <rect width="1920" height="1080" fill="url(#w-sky)"/>
           <g fill="var(--sc-star)">
-            <circle class="sc-tw" cx="120" cy="140" r="1.6" style="--dur:5.2s;--delay:-.8s"/><circle class="sc-tw" cx="250" cy="90" r="1.2" style="--dur:4.5s;--delay:-2s"/><circle class="sc-tw" cx="400" cy="160" r="1.5" style="--dur:5.8s;--delay:-1.3s"/><circle class="sc-tw" cx="560" cy="70" r="1" style="--dur:4.2s;--delay:-3s"/><circle class="sc-tw" cx="720" cy="180" r="1.3" style="--dur:5.5s;--delay:-2.4s"/><circle class="sc-tw" cx="900" cy="110" r="1.1" style="--dur:4.8s;--delay:-1.7s"/><circle class="sc-tw" cx="1080" cy="160" r="1.7" style="--dur:6s;--delay:-3.5s"/><circle class="sc-tw" cx="1240" cy="80" r="1.2" style="--dur:4.4s;--delay:-.9s"/><circle class="sc-tw" cx="1420" cy="150" r="1.4" style="--dur:5.4s;--delay:-2.7s"/><circle class="sc-tw" cx="1780" cy="180" r="1.5" style="--dur:5.9s;--delay:-3.2s"/><circle class="sc-tw" cx="80" cy="300" r="1.2" style="--dur:5.1s;--delay:-2.1s"/><circle class="sc-tw" cx="320" cy="340" r="1" style="--dur:4.7s;--delay:-1.4s"/><circle class="sc-tw" cx="700" cy="320" r="1.3" style="--dur:5.6s;--delay:-2.9s"/><circle class="sc-tw" cx="1020" cy="290" r="1.1" style="--dur:4.3s;--delay:-1.1s"/><circle class="sc-tw" cx="1340" cy="320" r="1.4" style="--dur:5.3s;--delay:-3.6s"/><circle class="sc-tw" cx="1660" cy="260" r="1.2" style="--dur:4.9s;--delay:-.7s"/><circle class="sc-tw" cx="1760" cy="360" r="1.1" style="--dur:4.2s;--delay:-2.6s"/><circle class="sc-tw" cx="480" cy="260" r="1.3" style="--dur:5.7s;--delay:-1.8s"/><circle class="sc-tw" cx="100" cy="420" r="1.2" style="--dur:4.6s;--delay:-3.4s"/><circle class="sc-tw" cx="1560" cy="200" r="1.1" style="--dur:5.5s;--delay:-2.2s"/>
+            <circle class="sc-tw" cx="120" cy="140" r="1.6" style="--dur:5.2s"/><circle class="sc-tw" cx="400" cy="160" r="1.5" style="--dur:5.8s"/><circle class="sc-tw" cx="720" cy="180" r="1.3" style="--dur:5.5s"/><circle class="sc-tw" cx="1080" cy="160" r="1.7" style="--dur:6s"/><circle class="sc-tw" cx="1420" cy="150" r="1.4" style="--dur:5.4s"/><circle class="sc-tw" cx="1780" cy="180" r="1.5" style="--dur:5.9s"/><circle class="sc-tw" cx="320" cy="340" r="1" style="--dur:4.7s"/><circle class="sc-tw" cx="700" cy="320" r="1.3" style="--dur:5.6s"/><circle class="sc-tw" cx="1020" cy="290" r="1.1" style="--dur:4.3s"/><circle class="sc-tw" cx="1340" cy="320" r="1.4" style="--dur:5.3s"/>
           </g>
-          <g stroke="var(--sc-constellation)" stroke-opacity=".18" stroke-width=".7" fill="none"><path d="M250 90 L400 160 L560 70"/><path d="M1080 160 L1240 80 L1420 150"/><path d="M1660 260 L1780 180 L1760 360"/></g>
-          <g class="sc-aur-a"><path d="M-100 280 C 300 160, 600 380, 960 240 S 1500 320, 1920 220 L1920 360 C 1500 460, 1200 340, 960 440 S 300 300, -100 420 Z" fill="url(#w-aur1)"/></g>
-          <g class="sc-aur-b"><path d="M-100 400 C 260 300, 560 480, 900 360 S 1400 420, 1920 340 L1920 440 C 1400 520, 1200 440, 900 520 S 260 420, -100 500 Z" fill="url(#w-aur2)"/></g>
-          <circle cx="1550" cy="280" r="480" fill="url(#w-moong)"/>
-          <circle class="sc-moon-r" cx="1550" cy="280" r="170" fill="none" stroke="var(--sc-moon-ring-1)" stroke-opacity=".2" stroke-width="1" stroke-dasharray="2 12"/>
-          <circle cx="1550" cy="280" r="115" fill="var(--sc-moon-core)"/>
-          <circle cx="1550" cy="280" r="115" fill="var(--sc-moon-glow)" opacity=".25"/>
-          <circle cx="1530" cy="265" r="12" fill="var(--sc-moon-crater)" opacity=".3"/>
-          <circle cx="1568" cy="295" r="8" fill="var(--sc-moon-crater)" opacity=".25"/>
-          <circle cx="1545" cy="300" r="6" fill="var(--sc-moon-crater)" opacity=".2"/>
           <path fill="url(#w-mtn-far)" d="M0 720 C 180 500, 320 420, 480 600 S 780 480, 1000 640 S 1280 480, 1480 620 S 1740 520, 1920 660 L1920 1080 L0 1080 Z"/>
-          <g fill="var(--sc-snow)" opacity=".45">
-            <path d="M480 600 L510 550 L530 580 L560 540 L590 580 L560 590 L530 560 L510 580 Z"/>
-            <path d="M1000 640 L1030 580 L1060 620 L1090 570 L1120 620 L1090 630 L1060 600 L1030 630 Z"/>
-            <path d="M1480 620 L1510 570 L1540 600 L1570 560 L1600 610 L1570 615 L1540 590 L1510 610 Z"/>
-          </g>
           <path fill="url(#w-mtn-mid)" d="M0 830 C 200 700, 400 660, 600 780 S 1000 660, 1200 790 S 1500 700, 1700 800 S 1880 780, 1920 800 L1920 1080 L0 1080 Z"/>
-          <path fill="url(#w-mtn-near)" d="M0 880 C 240 820, 480 860, 720 840 S 1080 810, 1320 840 S 1640 850, 1860 830 S 1900 850, 1920 860 L1920 1080 L0 1080 Z"/>
+          <path fill="url(#w-mtn-near)" d="M0 880 C 240 820, 480 860, 720 840 S 1080 810, 1320 840 S 1640 850, 1860 830 L1920 860 L1920 1080 L0 1080 Z"/>
           <path fill="url(#w-ground)" d="M0 900 C 200 870, 400 890, 600 880 S 1000 870, 1200 880 S 1600 890, 1920 870 L1920 1080 L0 1080 Z"/>
-          <ellipse cx="600" cy="980" rx="200" ry="25" fill="var(--sc-snow)" opacity=".18"/>
-          <ellipse cx="1400" cy="1020" rx="250" ry="30" fill="var(--sc-snow)" opacity=".18"/>
-          <ellipse cx="300" cy="1000" rx="150" ry="18" fill="var(--sc-snow)" opacity=".12"/>
-          <line x1="0" y1="900" x2="1920" y2="900" stroke="var(--sc-horizon)" stroke-opacity=".14" stroke-width="1"/>
           <g fill="var(--sc-pine)" opacity=".9">
-            <path d="M100,905 L120,830 L140,905 Z"/><path d="M200,910 L225,820 L250,910 Z"/><path d="M400,900 L420,835 L440,900 Z"/><path d="M700,905 L730,820 L760,905 Z"/><path d="M1400,905 L1420,840 L1440,905 Z"/><path d="M1700,900 L1720,830 L1740,900 Z"/><path d="M1850,905 L1880,820 L1910,905 Z"/><path d="M600,910 L620,845 L640,910 Z" opacity=".7"/><path d="M1580,905 L1600,840 L1620,905 Z" opacity=".7"/>
+            <path d="M100,905 L120,830 L140,905 Z"/><path d="M400,900 L420,835 L440,900 Z"/><path d="M700,905 L730,820 L760,905 Z"/><path d="M1400,905 L1420,840 L1440,905 Z"/><path d="M1700,900 L1720,830 L1740,900 Z"/>
           </g>
-          <g transform="translate(1000, 1070)">
-            <ellipse cx="0" cy="5" rx="220" ry="25" fill="var(--sc-mtn-shadow)" opacity=".5"/>
-            <rect x="-25" y="-40" width="50" height="55" fill="#3a2510"/>
-            <polygon points="-200,0 0,-250 200,0" fill="var(--sc-tree-3)"/>
-            <polygon points="-180,-10 0,-240 180,-10" fill="var(--sc-tree-2)" opacity=".4"/>
-            <polygon points="-150,-160 0,-390 150,-160" fill="var(--sc-tree-2)"/>
-            <polygon points="-100,-320 0,-500 100,-320" fill="var(--sc-tree-1)"/>
-            <polygon points="-60,-440 0,-580 60,-440" fill="var(--sc-tree-1)"/>
-            <path d="M-70,-190 Q 0,-240 70,-190 Q 35,-180 0,-200 Q -35,-180 -70,-190 Z" fill="var(--sc-roof-snow)" opacity=".9"/>
-            <path d="M-60,-340 Q 0,-390 60,-340 Q 30,-330 0,-350 Q -30,-330 -60,-340 Z" fill="var(--sc-roof-snow)" opacity=".9"/>
-            <path d="M-45,-450 Q 0,-500 45,-450 Q 22,-440 0,-460 Q -22,-440 -45,-450 Z" fill="var(--sc-roof-snow)" opacity=".9"/>
-            <path d="M-30,-540 Q 0,-580 30,-540 Q 15,-535 0,-548 Q -15,-535 -30,-540 Z" fill="var(--sc-roof-snow)" opacity=".9"/>
-            <g transform="translate(0,-600)"><g class="w-star-tree"><circle r="48" fill="var(--sc-star-top-glow)" opacity=".45"/><polygon points="0,-28 8,-8 28,-8 12,4 18,24 0,12 -18,24 -12,4 -28,-8 -8,-8" fill="var(--sc-star-top)"/></g></g>
-            <g>
-              <circle class="w-bulb" cx="-90" cy="-60" r="7" fill="var(--sc-bulb-gold)" style="--delay:0s"/><circle class="w-bulb" cx="60" cy="-100" r="7" fill="var(--sc-bulb-red)" style="--delay:-.3s"/><circle class="w-bulb" cx="-130" cy="-130" r="7" fill="var(--sc-bulb-blue)" style="--delay:-.6s"/><circle class="w-bulb" cx="100" cy="-170" r="7" fill="var(--sc-bulb-violet)" style="--delay:-.9s"/><circle class="w-bulb" cx="-60" cy="-200" r="7" fill="var(--sc-bulb-gold)" style="--delay:-.4s"/><circle class="w-bulb" cx="120" cy="-240" r="7" fill="var(--sc-bulb-red)" style="--delay:-.7s"/><circle class="w-bulb" cx="-110" cy="-260" r="7" fill="var(--sc-bulb-blue)" style="--delay:-1.1s"/><circle class="w-bulb" cx="70" cy="-300" r="6" fill="var(--sc-bulb-gold)" style="--delay:-.2s"/><circle class="w-bulb" cx="-70" cy="-360" r="6" fill="var(--sc-bulb-violet)" style="--delay:-.5s"/><circle class="w-bulb" cx="40" cy="-410" r="6" fill="var(--sc-bulb-red)" style="--delay:-.8s"/><circle class="w-bulb" cx="-45" cy="-460" r="6" fill="var(--sc-bulb-gold)" style="--delay:-1.2s"/><circle class="w-bulb" cx="25" cy="-505" r="5" fill="var(--sc-bulb-blue)" style="--delay:-.6s"/><circle class="w-bulb" cx="-15" cy="-545" r="5" fill="var(--sc-bulb-red)" style="--delay:-1s"/>
-            </g>
-            <g>
-              <circle cx="-150" cy="-30" r="11" fill="var(--sc-orn-red)"/><circle cx="-150" cy="-30" r="11" fill="var(--sc-snow)" opacity=".25"/><circle cx="130" cy="-40" r="11" fill="var(--sc-orn-gold)"/><circle cx="170" cy="-100" r="10" fill="var(--sc-orn-violet)"/><circle cx="-180" cy="-100" r="10" fill="var(--sc-orn-gold)"/><circle cx="-30" cy="-160" r="11" fill="var(--sc-orn-red)"/><circle cx="140" cy="-190" r="10" fill="var(--sc-orn-gold)"/><circle cx="-120" cy="-220" r="10" fill="var(--sc-orn-violet)"/><circle cx="80" cy="-260" r="9" fill="var(--sc-orn-red)"/><circle cx="-50" cy="-300" r="9" fill="var(--sc-orn-gold)"/><circle cx="100" cy="-330" r="8" fill="var(--sc-orn-violet)"/><circle cx="-80" cy="-370" r="8" fill="var(--sc-orn-red)"/>
-            </g>
-          </g>
-          <g transform="translate(1500, 900)">
-            <ellipse cx="0" cy="85" rx="130" ry="15" fill="var(--sc-mtn-shadow)" opacity=".4"/>
-            <rect x="-100" y="0" width="200" height="80" fill="var(--sc-villa-bg)"/>
-            <polygon points="-120,5 0,-70 120,5" fill="var(--sc-villa-bg)"/>
-            <polygon points="-120,5 0,-70 120,5" fill="var(--sc-pine)" opacity=".4"/>
-            <path d="M-125,5 Q -80,-15 0,-75 Q 80,-15 125,5 Q 80,-5 0,-60 Q -80,-5 -125,5 Z" fill="var(--sc-roof-snow)"/>
-            <ellipse cx="0" cy="80" rx="140" ry="10" fill="var(--sc-snow)"/>
-            <rect x="-15" y="30" width="30" height="50" fill="var(--sc-window)"/>
-            <rect x="-15" y="30" width="30" height="50" fill="var(--sc-window-stroke)" opacity=".3"/>
-            <rect x="-80" y="20" width="30" height="30" fill="var(--sc-window)"/>
-            <rect x="50" y="20" width="30" height="30" fill="var(--sc-window)"/>
-            <line x1="-65" y1="20" x2="-65" y2="50" stroke="var(--sc-villa-bg)" stroke-width="2"/>
-            <line x1="-80" y1="35" x2="-50" y2="35" stroke="var(--sc-villa-bg)" stroke-width="2"/>
-            <line x1="65" y1="20" x2="65" y2="50" stroke="var(--sc-villa-bg)" stroke-width="2"/>
-            <line x1="50" y1="35" x2="80" y2="35" stroke="var(--sc-villa-bg)" stroke-width="2"/>
-            <circle cx="-65" cy="35" r="60" fill="url(#w-windowGlow)" opacity=".6"/>
-            <circle cx="65" cy="35" r="60" fill="url(#w-windowGlow)" opacity=".6"/>
-            <rect x="60" y="-75" width="18" height="35" fill="var(--sc-villa-bg)"/>
-            <rect x="56" y="-80" width="26" height="8" fill="var(--sc-roof-snow)"/>
-            <g class="sc-smoke" stroke="var(--sc-smoke)" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-opacity=".7"><path d="M69,-82 Q 60,-100 75,-120 Q 90,-140 70,-160"/></g>
-          </g>
-          <g transform="translate(340, 985)">
-            <ellipse cx="0" cy="80" rx="70" ry="12" fill="var(--sc-mtn-shadow)" opacity=".4"/>
-            <circle cx="0" cy="40" r="60" fill="var(--sc-snowman)"/><circle cx="0" cy="40" r="60" fill="var(--sc-snowman-shadow)" opacity=".2"/>
-            <circle cx="0" cy="-20" r="42" fill="var(--sc-snowman)"/><circle cx="0" cy="-70" r="28" fill="var(--sc-snowman)"/>
-            <circle cx="0" cy="20" r="4" fill="#1a1a2e"/><circle cx="0" cy="45" r="4" fill="#1a1a2e"/><circle cx="0" cy="65" r="4" fill="#1a1a2e"/>
-            <circle cx="-10" cy="-78" r="4.5" fill="#1a1a2e"/><circle cx="10" cy="-78" r="4.5" fill="#1a1a2e"/>
-            <polygon points="0,-70 38,-72 0,-64" fill="var(--sc-snowman-nose)"/>
-            <circle cx="-8" cy="-58" r="2.5" fill="#1a1a2e"/><circle cx="0" cy="-56" r="2.5" fill="#1a1a2e"/><circle cx="8" cy="-58" r="2.5" fill="#1a1a2e"/>
-            <path d="M-28,-50 Q 0,-38 28,-50 L 32,-35 Q 0,-25 -32,-35 Z" fill="var(--sc-snowman-scarf)"/>
-            <path d="M24,-42 L 30,-12 L 18,-12 L 14,-42 Z" fill="var(--sc-snowman-scarf)"/>
-            <path d="M-22,-92 L -20,-120 Q 0,-128 20,-120 L 22,-92 Z" fill="var(--sc-snowman-hat)"/>
-            <rect x="-26" y="-98" width="52" height="8" fill="var(--sc-snowman-hat)"/>
-            <circle cx="0" cy="-125" r="6" fill="var(--sc-snowman)"/>
-            <line x1="-58" y1="5" x2="-100" y2="-15" stroke="#4a3525" stroke-width="4" stroke-linecap="round"/>
-            <line x1="58" y1="5" x2="100" y2="-25" stroke="#4a3525" stroke-width="4" stroke-linecap="round"/>
-            <line x1="-100" y1="-15" x2="-115" y2="-30" stroke="#4a3525" stroke-width="3" stroke-linecap="round"/>
-            <line x1="100" y1="-25" x2="115" y2="-40" stroke="#4a3525" stroke-width="3" stroke-linecap="round"/>
-          </g>
-          <g transform="translate(730, 1015) scale(.72)">
-            <ellipse cx="0" cy="80" rx="70" ry="12" fill="var(--sc-mtn-shadow)" opacity=".4"/>
-            <circle cx="0" cy="40" r="60" fill="var(--sc-snowman)"/><circle cx="0" cy="40" r="60" fill="var(--sc-snowman-shadow)" opacity=".2"/>
-            <circle cx="0" cy="-20" r="42" fill="var(--sc-snowman)"/><circle cx="0" cy="-70" r="28" fill="var(--sc-snowman)"/>
-            <circle cx="0" cy="20" r="4" fill="#1a1a2e"/><circle cx="0" cy="45" r="4" fill="#1a1a2e"/><circle cx="0" cy="65" r="4" fill="#1a1a2e"/>
-            <circle cx="-10" cy="-78" r="4.5" fill="#1a1a2e"/><circle cx="10" cy="-78" r="4.5" fill="#1a1a2e"/>
-            <polygon points="0,-70 38,-72 0,-64" fill="var(--sc-snowman-nose)"/>
-            <circle cx="-8" cy="-58" r="2.5" fill="#1a1a2e"/><circle cx="0" cy="-56" r="2.5" fill="#1a1a2e"/><circle cx="8" cy="-58" r="2.5" fill="#1a1a2e"/>
-            <path d="M-28,-50 Q 0,-38 28,-50 L 32,-35 Q 0,-25 -32,-35 Z" fill="var(--sc-snowman-scarf)"/>
-            <path d="M24,-42 L 30,-12 L 18,-12 L 14,-42 Z" fill="var(--sc-snowman-scarf)"/>
-            <path d="M-22,-92 L -20,-120 Q 0,-128 20,-120 L 22,-92 Z" fill="var(--sc-snowman-hat)"/>
-            <rect x="-26" y="-98" width="52" height="8" fill="var(--sc-snowman-hat)"/>
-            <circle cx="0" cy="-125" r="6" fill="var(--sc-snowman)"/>
-            <line x1="-58" y1="5" x2="-100" y2="-15" stroke="#4a3525" stroke-width="4" stroke-linecap="round"/>
-            <line x1="58" y1="5" x2="100" y2="-25" stroke="#4a3525" stroke-width="4" stroke-linecap="round"/>
-            <line x1="-100" y1="-15" x2="-115" y2="-30" stroke="#4a3525" stroke-width="3" stroke-linecap="round"/>
-          </g>
-          <g fill="var(--sc-pine)" opacity=".9"><path d="M-30,1080 L-30,700 L-70,780 L-50,760 L-90,850 L-70,830 L-120,930 L-95,900 L-160,1080 Z"/><path d="M1950,1080 L1950,700 L1910,780 L1930,760 L1890,850 L1910,830 L1860,930 L1885,900 L1820,1080 Z"/></g>
-          <g>
-            <path d="M-50,90 Q 300,190 700,130 T 1500,150 T 1970,110" fill="none" stroke="var(--sc-garland-wire)" stroke-width="2" opacity=".55"/>
-            <circle class="w-bulb" cx="100" cy="140" r="8" fill="var(--sc-bulb-gold)" style="--delay:-.1s"/><circle class="w-bulb" cx="250" cy="165" r="8" fill="var(--sc-bulb-red)" style="--delay:-.4s"/><circle class="w-bulb" cx="400" cy="175" r="8" fill="var(--sc-bulb-blue)" style="--delay:-.7s"/><circle class="w-bulb" cx="550" cy="170" r="8" fill="var(--sc-bulb-violet)" style="--delay:-1s"/><circle class="w-bulb" cx="700" cy="155" r="8" fill="var(--sc-bulb-gold)" style="--delay:-.3s"/><circle class="w-bulb" cx="850" cy="145" r="8" fill="var(--sc-bulb-red)" style="--delay:-.6s"/><circle class="w-bulb" cx="1000" cy="140" r="8" fill="var(--sc-bulb-blue)" style="--delay:-.9s"/><circle class="w-bulb" cx="1150" cy="145" r="8" fill="var(--sc-bulb-violet)" style="--delay:-1.2s"/><circle class="w-bulb" cx="1300" cy="150" r="8" fill="var(--sc-bulb-gold)" style="--delay:-.5s"/><circle class="w-bulb" cx="1450" cy="145" r="8" fill="var(--sc-bulb-red)" style="--delay:-.8s"/><circle class="w-bulb" cx="1600" cy="135" r="8" fill="var(--sc-bulb-blue)" style="--delay:-1.1s"/><circle class="w-bulb" cx="1750" cy="125" r="8" fill="var(--sc-bulb-violet)" style="--delay:-.2s"/><circle class="w-bulb" cx="1900" cy="115" r="8" fill="var(--sc-bulb-gold)" style="--delay:-.9s"/>
-          </g>
-          <g fill="var(--sc-snow)">
-            <circle class="w-snowflake" cx="80" cy="-20" r="4" style="--dur:14s;--delay:-2s;--drift:30px"/><circle class="w-snowflake" cx="220" cy="-20" r="3" style="--dur:11s;--delay:-5s;--drift:-20px"/><circle class="w-snowflake" cx="380" cy="-20" r="5" style="--dur:16s;--delay:-8s;--drift:40px"/><circle class="w-snowflake" cx="540" cy="-20" r="3" style="--dur:12s;--delay:-3s;--drift:-30px"/><circle class="w-snowflake" cx="700" cy="-20" r="4" style="--dur:15s;--delay:-7s;--drift:25px"/><circle class="w-snowflake" cx="860" cy="-20" r="3" style="--dur:13s;--delay:-1s;--drift:-15px"/><circle class="w-snowflake" cx="1020" cy="-20" r="5" style="--dur:17s;--delay:-10s;--drift:35px"/><circle class="w-snowflake" cx="1180" cy="-20" r="4" style="--dur:12s;--delay:-4s;--drift:-25px"/><circle class="w-snowflake" cx="1340" cy="-20" r="3" style="--dur:14s;--delay:-9s;--drift:20px"/><circle class="w-snowflake" cx="1500" cy="-20" r="5" style="--dur:16s;--delay:-6s;--drift:-40px"/><circle class="w-snowflake" cx="1660" cy="-20" r="4" style="--dur:13s;--delay:-11s;--drift:30px"/><circle class="w-snowflake" cx="1820" cy="-20" r="3" style="--dur:15s;--delay:-2.5s;--drift:-20px"/>
-          </g>
-          <g fill="var(--sc-particle)"><circle class="sc-dot" cx="350" cy="500" r="2" style="--dur:16s;--delay:-3s"/><circle class="sc-dot" cx="700" cy="450" r="1.8" style="--dur:19s;--delay:-6s"/><circle class="sc-dot" cx="1200" cy="480" r="2.2" style="--dur:14s;--delay:-4s"/><circle class="sc-dot" cx="1550" cy="550" r="1.6" style="--dur:18s;--delay:-9s"/></g>
         </svg>
       </div>
     </div>
@@ -887,7 +777,6 @@ html[data-theme="dark"] .card .card__meta span{border-color:rgba(255,255,255,.06
       <div class="pager" id="pager"></div>
     </section>
 
-    <!-- БЛОК КАРТЫ -->
     <div class="map-view" id="mapView">
       <div class="map-inner" id="mapInner"></div>
     </div>
@@ -1010,69 +899,27 @@ html[data-theme="dark"] .card .card__meta span{border-color:rgba(255,255,255,.06
   </div>
 </div>
 
-<div class="tour" id="tour" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="tourTitle">
+<div class="tour" id="tour" aria-hidden="true" role="dialog" aria-modal="true">
   <div class="tour__viewport" id="tourViewport">
     <div class="tour__pano" id="tourPano">
       <svg class="tour__pano-svg" viewBox="0 0 5760 1080" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
         <defs>
           <linearGradient id="tSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#02040f"/><stop offset=".4" stop-color="#081229"/><stop offset=".7" stop-color="#152045"/><stop offset="1" stop-color="#2a3a68"/></linearGradient>
-          <linearGradient id="tAur" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#22D3EE" stop-opacity="0"/><stop offset=".25" stop-color="#22D3EE" stop-opacity=".55"/><stop offset=".6" stop-color="#A78BFA" stop-opacity=".45"/><stop offset="1" stop-color="#A78BFA" stop-opacity="0"/></linearGradient>
-          <linearGradient id="tFar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1e2c52" stop-opacity=".9"/><stop offset="1" stop-color="#0a1020" stop-opacity=".3"/></linearGradient>
-          <linearGradient id="tMid" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#142039"/><stop offset="1" stop-color="#050810"/></linearGradient>
-          <linearGradient id="tNear" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a1428"/><stop offset="1" stop-color="#03060f"/></linearGradient>
-          <linearGradient id="tGround" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c8d6ec"/><stop offset=".6" stop-color="#a4b4d0"/><stop offset="1" stop-color="#8494b4"/></linearGradient>
-          <radialGradient id="tMoon" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#dce5ff" stop-opacity=".5"/><stop offset=".4" stop-color="#7da4ff" stop-opacity=".18"/><stop offset="1" stop-color="#7da4ff" stop-opacity="0"/></radialGradient>
-          <radialGradient id="tWin" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#FBBF24" stop-opacity=".8"/><stop offset="1" stop-color="#FBBF24" stop-opacity="0"/></radialGradient>
+          <linearGradient id="tGround" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c8d6ec"/><stop offset="1" stop-color="#8494b4"/></linearGradient>
         </defs>
         <rect width="5760" height="1080" fill="url(#tSky)"/>
         <g fill="#fff">
-          <circle cx="180" cy="150" r="1.5" opacity=".7"/><circle cx="320" cy="80" r="1.2" opacity=".5"/><circle cx="500" cy="200" r="1.6" opacity=".8"/><circle cx="680" cy="120" r="1.1" opacity=".6"/><circle cx="850" cy="180" r="1.4" opacity=".7"/><circle cx="1050" cy="90" r="1.3" opacity=".5"/><circle cx="1220" cy="220" r="1.5" opacity=".8"/><circle cx="1400" cy="140" r="1.2" opacity=".6"/><circle cx="1580" cy="180" r="1.4" opacity=".7"/><circle cx="1750" cy="100" r="1.6" opacity=".5"/><circle cx="1950" cy="200" r="1.3" opacity=".8"/><circle cx="2150" cy="130" r="1.2" opacity=".6"/><circle cx="2350" cy="170" r="1.5" opacity=".7"/><circle cx="2550" cy="110" r="1.3" opacity=".5"/><circle cx="2750" cy="200" r="1.4" opacity=".8"/><circle cx="2950" cy="150" r="1.1" opacity=".6"/><circle cx="3150" cy="180" r="1.6" opacity=".7"/><circle cx="3350" cy="120" r="1.2" opacity=".5"/><circle cx="3550" cy="220" r="1.4" opacity=".8"/><circle cx="3750" cy="130" r="1.5" opacity=".6"/><circle cx="3950" cy="180" r="1.3" opacity=".7"/><circle cx="4150" cy="100" r="1.6" opacity=".5"/><circle cx="4350" cy="200" r="1.2" opacity=".8"/><circle cx="4550" cy="140" r="1.4" opacity=".6"/><circle cx="4750" cy="180" r="1.5" opacity=".7"/><circle cx="4950" cy="110" r="1.3" opacity=".5"/><circle cx="5150" cy="210" r="1.2" opacity=".8"/><circle cx="5350" cy="130" r="1.6" opacity=".6"/><circle cx="5550" cy="170" r="1.4" opacity=".7"/>
-          <circle cx="100" cy="280" r="1.3" opacity=".6"/><circle cx="450" cy="310" r="1.2" opacity=".5"/><circle cx="900" cy="290" r="1.5" opacity=".7"/><circle cx="1350" cy="320" r="1.3" opacity=".6"/><circle cx="1800" cy="280" r="1.4" opacity=".5"/><circle cx="2250" cy="300" r="1.6" opacity=".7"/><circle cx="2700" cy="270" r="1.2" opacity=".6"/><circle cx="3150" cy="290" r="1.5" opacity=".5"/><circle cx="3600" cy="310" r="1.3" opacity=".7"/><circle cx="4050" cy="280" r="1.4" opacity=".6"/><circle cx="4500" cy="300" r="1.6" opacity=".5"/><circle cx="4950" cy="290" r="1.2" opacity=".7"/><circle cx="5400" cy="310" r="1.5" opacity=".6"/>
+          <circle cx="180" cy="150" r="1.5" opacity=".7"/><circle cx="500" cy="200" r="1.6" opacity=".8"/><circle cx="850" cy="180" r="1.4" opacity=".7"/><circle cx="1220" cy="220" r="1.5" opacity=".8"/><circle cx="1580" cy="180" r="1.4" opacity=".7"/><circle cx="1950" cy="200" r="1.3" opacity=".8"/><circle cx="2350" cy="170" r="1.5" opacity=".7"/><circle cx="2750" cy="200" r="1.4" opacity=".8"/><circle cx="3150" cy="180" r="1.6" opacity=".7"/><circle cx="3550" cy="220" r="1.4" opacity=".8"/><circle cx="3950" cy="180" r="1.3" opacity=".7"/><circle cx="4350" cy="200" r="1.2" opacity=".8"/><circle cx="4750" cy="180" r="1.5" opacity=".7"/><circle cx="5150" cy="210" r="1.2" opacity=".8"/><circle cx="5550" cy="170" r="1.4" opacity=".7"/>
         </g>
-        <g opacity=".55"><path d="M0 320 C 500 200, 1100 450, 1700 300 S 2900 420, 3500 280 S 4700 400, 5300 260 L5760 320 L5760 420 C 5300 480, 4700 440, 4000 500 S 2900 480, 2300 520 S 1100 460, 500 520 L0 420 Z" fill="url(#tAur)"/></g>
-        <g opacity=".3"><path d="M0 440 C 600 340, 1200 560, 1800 440 S 3000 540, 3600 420 S 4800 520, 5400 400 L5760 440 L5760 480 C 5400 560, 4800 500, 4200 560 S 3000 540, 2400 580 S 1200 540, 600 600 L0 520 Z" fill="url(#tAur)"/></g>
-        <circle cx="4700" cy="200" r="300" fill="url(#tMoon)"/>
-        <circle cx="4700" cy="200" r="100" fill="#f0f4ff"/>
-        <circle cx="4675" cy="180" r="11" fill="#dce5ff" opacity=".35"/><circle cx="4715" cy="215" r="8" fill="#dce5ff" opacity=".3"/><circle cx="4690" cy="225" r="5" fill="#dce5ff" opacity=".25"/>
-        <path d="M0 650 L160 500 L300 570 L450 460 L620 550 L780 480 L960 590 L1120 500 L1290 570 L1460 480 L1630 600 L1800 510 L1970 580 L2140 460 L2320 560 L2480 490 L2660 590 L2820 500 L2990 580 L3160 460 L3340 560 L3500 480 L3680 600 L3840 510 L4010 580 L4180 460 L4360 560 L4520 490 L4700 590 L4860 500 L5040 580 L5200 460 L5380 560 L5540 480 L5720 590 L5760 520 L5760 1080 L0 1080 Z" fill="url(#tFar)"/>
-        <g fill="#e8f0ff" opacity=".4">
-          <path d="M450 460 L475 500 L500 480 L525 510 L490 520 L465 495 L450 510 Z"/><path d="M1120 500 L1145 535 L1170 515 L1195 545 L1160 555 L1135 530 L1120 545 Z"/><path d="M1800 510 L1825 545 L1850 525 L1875 555 L1840 565 L1815 540 L1800 555 Z"/><path d="M2480 490 L2505 525 L2530 505 L2555 535 L2520 545 L2495 520 L2480 535 Z"/><path d="M3160 460 L3185 495 L3210 475 L3235 505 L3200 515 L3175 490 L3160 505 Z"/><path d="M3840 510 L3865 545 L3890 525 L3915 555 L3880 565 L3855 540 L3840 555 Z"/><path d="M4520 490 L4545 525 L4570 505 L4595 535 L4560 545 L4535 520 L4520 535 Z"/><path d="M5200 460 L5225 495 L5250 475 L5275 505 L5240 515 L5215 490 L5200 505 Z"/>
-        </g>
-        <path d="M0 800 C 200 720, 450 760, 700 780 C 950 800, 1150 720, 1400 760 C 1650 800, 1850 720, 2100 760 C 2350 800, 2550 730, 2800 770 C 3050 810, 3250 730, 3500 770 C 3750 810, 3950 740, 4200 780 C 4450 820, 4650 740, 4900 780 C 5150 820, 5350 750, 5600 790 L5760 800 L5760 1080 L0 1080 Z" fill="url(#tMid)"/>
-        <path d="M0 900 C 240 870, 480 880, 720 875 C 960 870, 1200 890, 1440 880 C 1680 870, 1920 890, 2160 880 C 2400 870, 2640 890, 2880 880 C 3120 870, 3360 890, 3600 880 C 3840 870, 4080 890, 4320 880 C 4560 870, 4800 890, 5040 880 C 5280 870, 5520 890, 5760 880 L5760 1080 L0 1080 Z" fill="url(#tNear)"/>
         <path d="M0 940 C 400 920, 800 930, 1200 925 C 1600 920, 2000 930, 2400 925 C 2800 920, 3200 930, 3600 925 C 4000 920, 4400 930, 4800 925 C 5200 920, 5600 930, 5760 925 L5760 1080 L0 1080 Z" fill="url(#tGround)"/>
-        <ellipse cx="400" cy="1020" rx="280" ry="25" fill="#e8f0ff" opacity=".3"/><ellipse cx="2400" cy="1040" rx="350" ry="28" fill="#e8f0ff" opacity=".25"/><ellipse cx="4400" cy="1020" rx="320" ry="26" fill="#e8f0ff" opacity=".28"/><ellipse cx="5400" cy="1050" rx="250" ry="20" fill="#e8f0ff" opacity=".22"/>
         <g fill="#03080f">
-          <path d="M80 940 L100 850 L120 940 Z"/><path d="M150 940 L175 830 L200 940 Z"/><path d="M250 940 L270 870 L290 940 Z"/><path d="M350 940 L380 820 L410 940 Z"/><path d="M550 940 L570 880 L590 940 Z"/><path d="M700 940 L725 850 L750 940 Z"/><path d="M900 940 L920 870 L940 940 Z"/><path d="M1050 940 L1075 840 L1100 940 Z"/><path d="M1250 940 L1280 820 L1310 940 Z"/><path d="M1500 940 L1520 870 L1540 940 Z"/><path d="M1700 940 L1725 840 L1750 940 Z"/><path d="M1900 940 L1920 880 L1940 940 Z"/><path d="M2100 940 L2130 830 L2160 940 Z"/><path d="M2350 940 L2370 870 L2390 940 Z"/><path d="M2600 940 L2625 840 L2650 940 Z"/><path d="M2800 940 L2820 870 L2840 940 Z"/><path d="M3050 940 L3075 830 L3100 940 Z"/><path d="M3300 940 L3320 860 L3340 940 Z"/><path d="M3550 940 L3575 840 L3600 940 Z"/><path d="M3850 940 L3875 860 L3900 940 Z"/><path d="M4150 940 L4175 830 L4200 940 Z"/><path d="M4450 940 L4470 870 L4490 940 Z"/><path d="M4750 940 L4775 840 L4800 940 Z"/><path d="M5050 940 L5075 860 L5100 940 Z"/><path d="M5350 940 L5375 840 L5400 940 Z"/><path d="M5600 940 L5620 870 L5640 940 Z"/>
-        </g>
-        <g transform="translate(1700, 850)">
-          <ellipse cx="0" cy="80" rx="120" ry="12" fill="#000" opacity=".45"/>
-          <rect x="-90" y="0" width="180" height="80" fill="#1a1208"/>
-          <polygon points="-105,5 0,-70 105,5" fill="#0a0805"/>
-          <path d="M-110,5 Q -55,-20 0,-75 Q 55,-20 110,5 Q 55,-5 0,-65 Q -55,-5 -110,5 Z" fill="#e8f0ff" opacity=".9"/>
-          <rect x="-15" y="35" width="30" height="45" fill="#FBBF24"/><rect x="-70" y="30" width="26" height="26" fill="#FBBF24"/><rect x="44" y="30" width="26" height="26" fill="#FBBF24"/>
-          <circle cx="-70" cy="43" r="55" fill="url(#tWin)" opacity=".7"/><circle cx="57" cy="43" r="55" fill="url(#tWin)" opacity=".7"/><circle cx="0" cy="57" r="45" fill="url(#tWin)" opacity=".6"/>
-          <rect x="65" y="-80" width="20" height="35" fill="#1a1208"/><rect x="60" y="-85" width="30" height="8" fill="#e8f0ff"/>
-        </g>
-        <g transform="translate(4600, 870)">
-          <ellipse cx="0" cy="70" rx="100" ry="10" fill="#000" opacity=".45"/>
-          <rect x="-75" y="0" width="150" height="70" fill="#1a1208"/>
-          <polygon points="-90,5 0,-60 90,5" fill="#0a0805"/>
-          <path d="M-95,5 Q -45,-15 0,-65 Q 45,-15 95,5 Q 45,0 0,-55 Q -45,0 -95,5 Z" fill="#e8f0ff" opacity=".9"/>
-          <rect x="-12" y="30" width="24" height="40" fill="#FBBF24"/><rect x="-60" y="25" width="22" height="22" fill="#FBBF24"/><rect x="38" y="25" width="22" height="22" fill="#FBBF24"/>
-          <circle cx="-60" cy="36" r="48" fill="url(#tWin)" opacity=".7"/><circle cx="49" cy="36" r="48" fill="url(#tWin)" opacity=".7"/><circle cx="0" cy="50" r="38" fill="url(#tWin)" opacity=".6"/>
-          <rect x="55" y="-70" width="16" height="30" fill="#1a1208"/>
-        </g>
-        <g fill="#02060d">
-          <path d="M-30 1080 L-30 750 L-70 830 L-50 800 L-90 890 L-70 860 L-120 960 L-95 930 L-150 1080 Z"/><path d="M200 1080 L180 800 L150 860 L170 840 L140 900 L160 880 L120 970 L145 950 L110 1080 Z"/><path d="M5650 1080 L5650 750 L5610 830 L5630 800 L5590 890 L5610 860 L5560 960 L5585 930 L5530 1080 Z"/><path d="M5600 1080 L5600 800 L5560 860 L5580 840 L5540 900 L5560 880 L5520 970 L5545 950 L5500 1080 Z"/>
+          <path d="M80 940 L100 850 L120 940 Z"/><path d="M250 940 L270 870 L290 940 Z"/><path d="M550 940 L570 880 L590 940 Z"/><path d="M900 940 L920 870 L940 940 Z"/><path d="M1250 940 L1280 820 L1310 940 Z"/><path d="M1700 940 L1725 840 L1750 940 Z"/><path d="M2100 940 L2130 830 L2160 940 Z"/><path d="M2600 940 L2625 840 L2650 940 Z"/><path d="M3050 940 L3075 830 L3100 940 Z"/><path d="M3550 940 L3575 840 L3600 940 Z"/><path d="M4150 940 L4175 830 L4200 940 Z"/><path d="M4750 940 L4775 840 L4800 940 Z"/><path d="M5350 940 L5375 840 L5400 940 Z"/>
         </g>
       </svg>
       <button class="tour__hotspot" type="button" data-sx="691" data-sy="799" aria-label="Терраса"><span class="tour__hotspot-dot"></span><span class="tour__hotspot-label">Терраса</span></button>
       <button class="tour__hotspot" type="button" data-sx="1728" data-sy="842" aria-label="Камин"><span class="tour__hotspot-dot"></span><span class="tour__hotspot-label">Камин</span></button>
       <button class="tour__hotspot" type="button" data-sx="2649" data-sy="799" aria-label="Спальня"><span class="tour__hotspot-dot"></span><span class="tour__hotspot-label">Спальня</span></button>
       <button class="tour__hotspot" type="button" data-sx="3571" data-sy="778" aria-label="Кухня"><span class="tour__hotspot-dot"></span><span class="tour__hotspot-label">Кухня</span></button>
-      <button class="tour__hotspot" type="button" data-sx="4377" data-sy="475" aria-label="Вид на горы"><span class="tour__hotspot-dot"></span><span class="tour__hotspot-label">Вид на горы</span></button>
-      <button class="tour__hotspot" type="button" data-sx="5069" data-sy="842" aria-label="Баня"><span class="tour__hotspot-dot"></span><span class="tour__hotspot-label">Баня</span></button>
     </div>
   </div>
   <div class="tour__top">
@@ -1085,18 +932,21 @@ html[data-theme="dark"] .card .card__meta span{border-color:rgba(255,255,255,.06
   <div class="tour__bottom">
     <div class="tour__hint"><svg class="ico-svg"><use href="#i-drag"/></svg><span>Потяните, чтобы осмотреться</span></div>
     <div class="tour__actions">
-      <button class="tour__auto-btn is-on" id="tourAuto" type="button" aria-label="Автотур" title="Автотур"><svg class="ico-svg tour__ico-play"><use href="#i-play"/></svg><svg class="ico-svg tour__ico-pause"><use href="#i-pause"/></svg></button>
+      <button class="tour__auto-btn is-on" id="tourAuto" type="button" aria-label="Автотур"><svg class="ico-svg tour__ico-play"><use href="#i-play"/></svg><svg class="ico-svg tour__ico-pause"><use href="#i-pause"/></svg></button>
       <span class="tour__demo">Демо</span>
     </div>
   </div>
 </div>
 
+<!-- Yandex Maps API — замените YOUR_API_KEY на свой ключ из https://developer.tech.yandex.ru/ -->
+<script src="https://api-maps.yandex.ru/2.1/?apikey=YOUR_API_KEY&lang=ru_RU" type="text/javascript"></script>
 <script>
 (function(){
 'use strict';
 const $=(s,r=document)=>r.querySelector(s);
 const $$=(s,r=document)=>Array.prototype.slice.call(r.querySelectorAll(s));
 
+/* ===== THEME ===== */
 const themeMeta=document.getElementById('themeColorMeta');
 const themeColor=t=>t==='light'?'#F5F7FA':'#14161A';
 function applyTheme(theme){
@@ -1160,11 +1010,6 @@ document.getElementById('mobileProfileBtn')?.addEventListener('click',()=>{
   if(!isAuthed()){
     localStorage.setItem('albe-auth','1');
     renderProfileNav();
-    const btn=document.getElementById('mobileProfileBtn');
-    btn.animate(
-      [{transform:'scale(1)'},{transform:'scale(1.12)'},{transform:'scale(1)'}],
-      {duration:420,easing:'cubic-bezier(.34,1.56,.64,1)'}
-    );
   } else {
     if(confirm('Выйти из аккаунта?')){
       localStorage.removeItem('albe-auth');
@@ -1174,24 +1019,18 @@ document.getElementById('mobileProfileBtn')?.addEventListener('click',()=>{
 });
 renderProfileNav();
 
-/* ===== БЛОКИРОВКА СКРОЛЛА БЕЗ ДЕРГАНЬЯ ===== */
-let scrollY = 0;
-function lockScroll() {
-  scrollY = window.scrollY;
-  document.body.style.top = `-${scrollY}px`;
-  document.body.classList.add('is-locked');
-}
-function unlockScroll() {
+/* ===== SCROLL LOCK — БЕЗ position:fixed и БЕЗ scrollTo ===== */
+function lockScroll(){ document.documentElement.classList.add('is-locked'); }
+function unlockScroll(){
   if (!modal.classList.contains('is-open') &&
       !detail.classList.contains('is-open') &&
       !filtersEl.classList.contains('is-open') &&
       !tour.classList.contains('is-open')) {
-    document.body.classList.remove('is-locked');
-    document.body.style.top = '';
-    window.scrollTo(0, scrollY);
+    document.documentElement.classList.remove('is-locked');
   }
 }
 
+/* ===== DATA ===== */
 const DISTRICTS=[
   {id:'all',n:'Все',full:'Все округа'},{id:'cfo',n:'ЦФО',full:'Центральный ФО'},{id:'szfo',n:'СЗФО',full:'Северо-Западный ФО'},{id:'yufo',n:'ЮФО',full:'Южный ФО'},{id:'skfo',n:'СКФО',full:'Северо-Кавказский ФО'},{id:'pfo',n:'ПФО',full:'Приволжский ФО'},{id:'urfo',n:'УФО',full:'Уральский ФО'},{id:'sfo',n:'СФО',full:'Сибирский ФО'},{id:'dfo',n:'ДФО',full:'Дальневосточный ФО'}
 ];
@@ -1285,8 +1124,7 @@ const REGIONS=[
 const TYPES=[
   {id:'dom',n:'Дом',mult:1.00,g:[2,12],r:[1,6],w:3.0},{id:'shale',n:'Шале',mult:1.35,g:[2,12],r:[2,6],w:1.5},{id:'villa',n:'Вилла',mult:2.00,g:[4,16],r:[3,8],w:1.2},{id:'aframe',n:'A-frame',mult:0.85,g:[2,6],r:[1,3],w:2.0},{id:'barn',n:'Барнхаус',mult:1.10,g:[2,8],r:[2,4],w:1.5},{id:'glamp',n:'Глэмпинг',mult:0.70,g:[2,4],r:[1,2],w:1.5},{id:'usadba',n:'Усадьба',mult:1.50,g:[6,20],r:[3,10],w:0.8},{id:'apart',n:'Апартаменты',mult:0.75,g:[2,6],r:[1,3],w:1.0},{id:'cottage',n:'Коттедж',mult:1.15,g:[4,14],r:[2,7],w:2.0}
 ];
-const TYPE_MAP={};
-TYPES.forEach(t=>{TYPE_MAP[t.id]=t.n});
+const TYPE_MAP={};TYPES.forEach(t=>{TYPE_MAP[t.id]=t.n});
 const TYPE_TITLES={
   dom:['Дом у озера','Дом в соснах','Дом у реки','Дом на склоне','Дом с камином','Дом «Тишина»','Дом у леса','Дом на берегу','Дом с террасой','Дом в горах','Дом у обрыва','Дом с баней'],
   shale:['Шале «Эдельвейс»','Шале «Вершина»','Шале у склона','Шале «Кедр»','Шале с камином','Шале «Панорама»','Горное шале','Шале «Альпы»','Шале «Лавина»'],
@@ -1301,38 +1139,22 @@ const TYPE_TITLES={
 const AMEN=[
   {id:'wifi',n:'Wi-Fi',w:9},{id:'bath',n:'Баня',w:7},{id:'park',n:'Парковка',w:8},{id:'kitchen',n:'Кухня',w:9},{id:'bbq',n:'Мангал',w:7},{id:'fire',n:'Камин',w:5},{id:'terrace',n:'Терраса',w:6},{id:'pool',n:'Бассейн',w:3},{id:'sauna',n:'Сауна',w:4},{id:'chan',n:'Чан',w:3},{id:'ac',n:'Кондиционер',w:6},{id:'view',n:'Панорамный вид',w:5},{id:'pets',n:'Можно с питомцами',w:5},{id:'spa',n:'СПА',w:2},{id:'breakfast',n:'Завтрак',w:3},{id:'transfer',n:'Трансфер',w:2},{id:'kids',n:'Детская площадка',w:3},{id:'lake',n:'Вид на воду',w:4}
 ];
-const AMEN_MAP={};
-AMEN.forEach(a=>{AMEN_MAP[a.id]=a.n});
+const AMEN_MAP={};AMEN.forEach(a=>{AMEN_MAP[a.id]=a.n});
 const IMGS=['a.webp','b.webp','c.webp','d.webp','e.webp','f.webp','g.webp','h.webp','i.webp','j.webp'];
-function mulberry32(a){
-  return function(){
-    a|=0;a=(a+0x6D2B79F5)|0;
-    let t=Math.imul(a^(a>>>15),1|a);
-    t=(t+Math.imul(t^(t>>>7),61|t))^t;
-    return ((t^(t>>>14))>>>0)/4294967296;
-  };
-}
-function shortRegion(n){
-  return n.replace(/^Республика /,'').replace(/ область$/,' обл.').replace(/ автономный округ$/,' АО').replace(/ автономная область$/,' АО').replace(/ — Алания$/,'');
-}
+function mulberry32(a){return function(){a|=0;a=(a+0x6D2B79F5)|0;let t=Math.imul(a^(a>>>15),1|a);t=(t+Math.imul(t^(t>>>7),61|t))^t;return ((t^(t>>>14))>>>0)/4294967296;}}
+function shortRegion(n){return n.replace(/^Республика /,'').replace(/ область$/,' обл.').replace(/ автономный округ$/,' АО').replace(/ автономная область$/,' АО').replace(/ — Алания$/,'')}
 const TARGET=10400;
 function buildCatalog(){
   const rnd=mulberry32(20250412);
   const ri=(a,b)=>Math.floor(rnd()*(b-a+1))+a;
   const pick=arr=>arr[Math.floor(rnd()*arr.length)];
-  const wpick=arr=>{
-    const total=arr.reduce((s,a)=>s+a.w,0);
-    let x=rnd()*total;
-    for(let i=0;i<arr.length;i++){if((x-=arr[i].w)<=0)return arr[i]}
-    return arr[arr.length-1];
-  };
+  const wpick=arr=>{const total=arr.reduce((s,a)=>s+a.w,0);let x=rnd()*total;for(let i=0;i<arr.length;i++){if((x-=arr[i].w)<=0)return arr[i]}return arr[arr.length-1]};
   const sumW=REGIONS.reduce((s,r)=>s+r.w,0);
   REGIONS.forEach(r=>{r.count=Math.max(10,Math.round(r.w/sumW*TARGET))});
   const total=REGIONS.reduce((s,r)=>s+r.count,0);
   const maxReg=REGIONS.reduce((a,b)=>(a.w>b.w?a:b),REGIONS[0]);
   maxReg.count+=(TARGET-total);
-  const out=[];
-  let id=1;
+  const out=[];let id=1;
   REGIONS.forEach(reg=>{
     const short=shortRegion(reg.n);
     const locs=(reg.loc&&reg.loc.length)?reg.loc:[reg.n];
@@ -1345,39 +1167,24 @@ function buildCatalog(){
       const reviews=ri(4,520);
       const loc=pick(locs);
       const place=(loc===reg.n||loc===short)?loc:(loc+', '+short);
-      const am=[];
-      const pool=AMEN.slice();
-      const nAm=ri(4,7);
+      const am=[];const pool=AMEN.slice();const nAm=ri(4,7);
       for(let k=0;k<nAm&&pool.length;k++){const a=wpick(pool);am.push(a.id);pool.splice(pool.indexOf(a),1)}
-      const rr=rnd();
-      let tag='';
-      if(rr<0.06)tag='ХИТ';else if(rr<0.14)tag='NEW';else if(rr<0.19)tag='−15%';
-      const area=ri(45,380);
-      const baths=ri(1,Math.min(4,rooms));
-      const year=ri(2010,2024);
-      const imgKey=pick(IMGS);
-      out.push({id:id++,title:pick(TYPE_TITLES[type.id]),type:type.id,place:place,rg:reg.id,d:reg.d,price:price,guests:guests,rooms:rooms,rating:rating,reviews:reviews,tag:tag,am:am,img:imgKey,bigImg:imgKey,area:area,baths:baths,year:year,score:rating*Math.log(reviews+2)});
+      const rr=rnd();let tag='';if(rr<0.06)tag='ХИТ';else if(rr<0.14)tag='NEW';else if(rr<0.19)tag='−15%';
+      out.push({id:id++,title:pick(TYPE_TITLES[type.id]),type:type.id,place:place,rg:reg.id,d:reg.d,price:price,guests:guests,rooms:rooms,rating:rating,reviews:reviews,tag:tag,am:am,img:pick(IMGS),bigImg:pick(IMGS),area:ri(45,380),baths:ri(1,Math.min(4,rooms)),year:ri(2010,2024),score:rating*Math.log(reviews+2)});
     }
   });
   return out;
 }
 const DATA=buildCatalog();
-const BY_ID=new Map();
-DATA.forEach(d=>BY_ID.set(d.id,d));
+const BY_ID=new Map();DATA.forEach(d=>BY_ID.set(d.id,d));
 const fmt=n=>Number(n).toLocaleString('ru-RU');
-function plural(n,f){
-  const n10=n%10,n100=n%100;
-  if(n10===1&&n100!==11)return f[0];
-  if(n10>=2&&n10<=4&&(n100<10||n100>=20))return f[1];
-  return f[2];
-}
+function plural(n,f){const n10=n%10,n100=n%100;if(n10===1&&n100!==11)return f[0];if(n10>=2&&n10<=4&&(n100<10||n100>=20))return f[1];return f[2]}
 const roomWord=n=>plural(n,['спальня','спальни','спален']);
 const objWord=n=>plural(n,['объект','объекта','объектов']);
 const revWord=n=>plural(n,['отзыв','отзыва','отзывов']);
 const PER=24;
 const state={district:'all',region:'all',q:'',types:new Set(),guests:0,rooms:0,priceMin:0,priceMax:0,rating:0,amenities:new Set(),sort:'pop',page:1,favOnly:false};
-let FAVS=new Set();
-try{const raw=localStorage.getItem('albe-favs');if(raw)FAVS=new Set(JSON.parse(raw))}catch(e){}
+let FAVS=new Set();try{const raw=localStorage.getItem('albe-favs');if(raw)FAVS=new Set(JSON.parse(raw))}catch(e){}
 function saveFavs(){try{localStorage.setItem('albe-favs',JSON.stringify([...FAVS]))}catch(e){}}
 let RESULT=DATA.slice();
 const districtChips=$('#districtChips');
@@ -1424,8 +1231,7 @@ regionSelect.querySelector('.rselect__trigger').addEventListener('click',e=>{
 regionSearch.addEventListener('input',()=>renderRegionList(regionSearch.value));
 regionSearch.addEventListener('click',e=>e.stopPropagation());
 regionList.addEventListener('click',e=>{
-  const opt=e.target.closest('.ropt');
-  if(!opt)return;
+  const opt=e.target.closest('.ropt');if(!opt)return;
   e.stopPropagation();
   state.region=opt.dataset.region;
   const reg=REGIONS.find(r=>r.id===state.region);
@@ -1440,11 +1246,8 @@ document.addEventListener('keydown',e=>{
 function closeAllCSelects(){$$('[data-cselect].is-open').forEach(c=>c.classList.remove('is-open'))}
 function initCSelects(){
   $$('[data-cselect]').forEach(cs=>{
-    if(cs.dataset.bound)return;
-    cs.dataset.bound='1';
-    const trigger=cs.querySelector('.cselect__trigger');
-    const valueEl=cs.querySelector('.cselect__value');
-    const menu=cs.querySelector('.cselect__menu');
+    if(cs.dataset.bound)return;cs.dataset.bound='1';
+    const trigger=cs.querySelector('.cselect__trigger');const valueEl=cs.querySelector('.cselect__value');const menu=cs.querySelector('.cselect__menu');
     if(!trigger||!menu)return;
     trigger.addEventListener('click',e=>{
       e.stopPropagation();
@@ -1453,12 +1256,10 @@ function initCSelects(){
       if(!wasOpen)cs.classList.add('is-open');
     });
     menu.addEventListener('click',e=>{
-      const opt=e.target.closest('.cselect__option');
-      if(!opt)return;
+      const opt=e.target.closest('.cselect__option');if(!opt)return;
       e.stopPropagation();
       const val=opt.dataset.value;
-      cs.dataset.value=val;
-      valueEl.textContent=opt.textContent.trim();
+      cs.dataset.value=val;valueEl.textContent=opt.textContent.trim();
       menu.querySelectorAll('.cselect__option').forEach(o=>o.classList.toggle('is-active',o===opt));
       cs.classList.remove('is-open');
       cs.dispatchEvent(new CustomEvent('cselect:change',{detail:{value:val},bubbles:true}));
@@ -1468,54 +1269,19 @@ function initCSelects(){
 initCSelects();
 $('#sortSelect').addEventListener('cselect:change',e=>{state.sort=e.detail.value;state.page=1;applyAndRender()});
 districtChips.addEventListener('click',e=>{
-  const chip=e.target.closest('[data-district]');
-  if(!chip)return;
+  const chip=e.target.closest('[data-district]');if(!chip)return;
   state.district=chip.dataset.district;
   const reg=REGIONS.find(r=>r.id===state.region);
   if(reg&&state.district!=='all'&&reg.d!==state.district){state.region='all';regionValue.textContent='Все регионы'}
-  renderRegionList('');
-  update();
+  renderRegionList('');update();
 });
-typeChips.addEventListener('click',e=>{
-  const chip=e.target.closest('[data-type]');
-  if(!chip)return;
-  const t=chip.dataset.type;
-  if(state.types.has(t))state.types.delete(t);else state.types.add(t);
-  update();
-});
-guestChips.addEventListener('click',e=>{
-  const chip=e.target.closest('[data-guests]');
-  if(!chip)return;
-  const g=parseInt(chip.dataset.guests,10);
-  state.guests=(state.guests===g)?0:g;
-  update();
-});
-roomChips.addEventListener('click',e=>{
-  const chip=e.target.closest('[data-rooms]');
-  if(!chip)return;
-  const r=parseInt(chip.dataset.rooms,10);
-  state.rooms=(state.rooms===r)?0:r;
-  update();
-});
-ratingChips.addEventListener('click',e=>{
-  const chip=e.target.closest('[data-rating]');
-  if(!chip)return;
-  const r=parseFloat(chip.dataset.rating);
-  state.rating=(state.rating===r)?0:r;
-  update();
-});
-amenityList.addEventListener('change',e=>{
-  const inp=e.target.closest('input[type="checkbox"]');
-  if(!inp)return;
-  if(inp.checked)state.amenities.add(inp.value);else state.amenities.delete(inp.value);
-  update();
-});
+typeChips.addEventListener('click',e=>{const chip=e.target.closest('[data-type]');if(!chip)return;const t=chip.dataset.type;if(state.types.has(t))state.types.delete(t);else state.types.add(t);update()});
+guestChips.addEventListener('click',e=>{const chip=e.target.closest('[data-guests]');if(!chip)return;const g=parseInt(chip.dataset.guests,10);state.guests=(state.guests===g)?0:g;update()});
+roomChips.addEventListener('click',e=>{const chip=e.target.closest('[data-rooms]');if(!chip)return;const r=parseInt(chip.dataset.rooms,10);state.rooms=(state.rooms===r)?0:r;update()});
+ratingChips.addEventListener('click',e=>{const chip=e.target.closest('[data-rating]');if(!chip)return;const r=parseFloat(chip.dataset.rating);state.rating=(state.rating===r)?0:r;update()});
+amenityList.addEventListener('change',e=>{const inp=e.target.closest('input[type="checkbox"]');if(!inp)return;if(inp.checked)state.amenities.add(inp.value);else state.amenities.delete(inp.value);update()});
 let qTimer=null;
-$('#fQuery').addEventListener('input',e=>{
-  clearTimeout(qTimer);
-  const v=e.target.value;
-  qTimer=setTimeout(()=>{state.q=v;update()},240);
-});
+$('#fQuery').addEventListener('input',e=>{clearTimeout(qTimer);const v=e.target.value;qTimer=setTimeout(()=>{state.q=v;update()},240)});
 let priceTimer=null;
 function onPriceChange(){
   clearTimeout(priceTimer);
@@ -1527,20 +1293,9 @@ function onPriceChange(){
 }
 $('#priceMin').addEventListener('input',onPriceChange);
 $('#priceMax').addEventListener('input',onPriceChange);
-$('#favBtn').addEventListener('click',()=>{
-  state.favOnly=!state.favOnly;
-  $('#favBtn').classList.toggle('is-active',state.favOnly);
-  update();
-  if(state.favOnly)$('#results').scrollIntoView({behavior:'smooth',block:'start'});
-});
-$('#mobileFavBtn').addEventListener('click',()=>{
-  state.favOnly=!state.favOnly;
-  $('#favBtn').classList.toggle('is-active',state.favOnly);
-  update();
-  $('#results').scrollIntoView({behavior:'smooth',block:'start'});
-});
+$('#favBtn').addEventListener('click',()=>{state.favOnly=!state.favOnly;$('#favBtn').classList.toggle('is-active',state.favOnly);update();if(state.favOnly)$('#results').scrollIntoView({behavior:'smooth',block:'start'})});
+$('#mobileFavBtn').addEventListener('click',()=>{state.favOnly=!state.favOnly;$('#favBtn').classList.toggle('is-active',state.favOnly);update();$('#results').scrollIntoView({behavior:'smooth',block:'start'})});
 $('#mobileSearchBtn').addEventListener('click',()=>{openFilters();setTimeout(()=>$('#fQuery').focus(),380)});
-
 const filtersEl=$('#filters');
 const filtersBackdrop=$('#filtersBackdrop');
 function openFilters(){filtersEl.classList.add('is-open');filtersBackdrop.classList.add('is-open');lockScroll()}
@@ -1548,7 +1303,6 @@ function closeFilters(){filtersEl.classList.remove('is-open');filtersBackdrop.cl
 $('#openFilters').addEventListener('click',openFilters);
 $('#closeFilters').addEventListener('click',closeFilters);
 filtersBackdrop.addEventListener('click',closeFilters);
-
 function resetAll(){
   state.district='all';state.region='all';state.q='';state.types.clear();state.guests=0;state.rooms=0;
   state.priceMin=0;state.priceMax=0;state.rating=0;state.amenities.clear();state.sort='pop';state.page=1;state.favOnly=false;
@@ -1557,11 +1311,9 @@ function resetAll(){
   regionValue.textContent='Все регионы';
   const cs=$('#sortSelect');
   if(cs){cs.dataset.value='pop';cs.querySelector('.cselect__value').textContent='По популярности';cs.querySelectorAll('.cselect__option').forEach(o=>o.classList.toggle('is-active',o.dataset.value==='pop'))}
-  renderRegionList('');
-  update();
+  renderRegionList('');update();
 }
 $('#resetAll').addEventListener('click',resetAll);
-
 function syncControls(){
   $$('[data-district]',districtChips).forEach(c=>c.classList.toggle('is-active',c.dataset.district===state.district));
   $$('[data-type]',typeChips).forEach(c=>c.classList.toggle('is-active',state.types.has(c.dataset.type)));
@@ -1573,7 +1325,6 @@ function syncControls(){
   $('#filterBadge').textContent=activeCount?'('+activeCount+')':'';
   $('#amenBadge').textContent=state.amenities.size?'('+state.amenities.size+')':'';
 }
-
 function applyFilters(){
   const q=state.q.trim().toLowerCase();
   RESULT=DATA.filter(d=>{
@@ -1598,10 +1349,8 @@ function applyFilters(){
     default:RESULT.sort((a,b)=>b.score-a.score);
   }
 }
-
 function renderActiveFilters(){
-  const box=$('#activeFilters');
-  const chips=[];
+  const box=$('#activeFilters');const chips=[];
   if(state.district!=='all'){const d=DISTRICTS.find(x=>x.id===state.district);chips.push({k:'district',label:d?d.full:state.district})}
   if(state.region!=='all'){const r=REGIONS.find(x=>x.id===state.region);chips.push({k:'region',label:r?r.n:state.region})}
   state.types.forEach(t=>chips.push({k:'type',v:t,label:TYPE_MAP[t]}));
@@ -1618,8 +1367,7 @@ function renderActiveFilters(){
 }
 $('#activeFilters').addEventListener('click',e=>{
   if(e.target.closest('#clearAllFilters')){resetAll();return}
-  const btn=e.target.closest('[data-rm]');
-  if(!btn)return;
+  const btn=e.target.closest('[data-rm]');if(!btn)return;
   const k=btn.dataset.rm,v=btn.dataset.v;
   switch(k){
     case 'district':state.district='all';renderRegionList('');break;
@@ -1636,16 +1384,14 @@ $('#activeFilters').addEventListener('click',e=>{
   }
   update();
 });
-
-const gridEl=$('#grid');
-const pagerEl=$('#pager');
+const gridEl=$('#grid');const pagerEl=$('#pager');
 function cardHTML(d){
   const badge=d.tag?'<span class="card__badge" data-t="'+d.tag+'">'+d.tag+'</span>':'';
   const am=d.am.slice(0,2).map(a=>'<span>'+AMEN_MAP[a]+'</span>').join('');
   const favCls=FAVS.has(d.id)?' is-on':'';
   return '<article class="card" data-id="'+d.id+'">'+
     '<div class="card__media"><div class="card__img" style="background-image:url(\''+d.img+'\')"></div>'+badge+
-      '<button class="card__fav'+favCls+'" data-fav="'+d.id+'" aria-label="В избранное"><svg class="fav-off ico-svg"><use href="#i-heart"/></svg><svg class="fav-on ico-svg"><use href="#i-heart-fill"/></svg></button></div>'+
+      '<button class="card__fav'+favCls+'" data-fav="'+d.id+'"><svg class="fav-off ico-svg"><use href="#i-heart"/></svg><svg class="fav-on ico-svg"><use href="#i-heart-fill"/></svg></button></div>'+
     '<div class="card__body">'+
       '<div class="card__head"><h3>'+d.title+'</h3><span class="card__rate"><svg class="ico-svg"><use href="#i-star-fill"/></svg>'+d.rating.toFixed(1)+'</span></div>'+
       '<div class="card__loc"><svg class="ico-svg loc-ico"><use href="#i-pin"/></svg><span>'+d.place+'</span></div>'+
@@ -1676,14 +1422,11 @@ function renderGrid(){
   $('#resCount').textContent=fmt(total);
   $('#resWord').textContent=objWord(total);
   renderPager(total,pages);
-  
-  // ОБНОВЛЯЕМ КАРТУ, ЕСЛИ ОНА ВКЛЮЧЕНА
-  if (mapMode) renderMapPins(slice);
+  if (mapMode) renderYandexMarkers(slice);
 }
 function renderPager(total,pages){
   if(total<=PER){pagerEl.innerHTML='';return}
-  const cur=state.page;
-  const nums=[];
+  const cur=state.page;const nums=[];
   if(pages<=7){for(let i=1;i<=pages;i++)nums.push(i)}
   else{nums.push(1);if(cur>3)nums.push('…');for(let i=Math.max(2,cur-1);i<=Math.min(pages-1,cur+1);i++)nums.push(i);if(cur<pages-2)nums.push('…');nums.push(pages)}
   let html='<button type="button" data-page="prev"'+(cur===1?' disabled':'')+'><svg class="ico-svg"><use href="#i-chev-l"/></svg></button>';
@@ -1696,8 +1439,7 @@ function renderPager(total,pages){
   pagerEl.innerHTML=html;
 }
 pagerEl.addEventListener('click',e=>{
-  const btn=e.target.closest('[data-page]');
-  if(!btn||btn.disabled)return;
+  const btn=e.target.closest('[data-page]');if(!btn||btn.disabled)return;
   const v=btn.dataset.page;
   const pages=Math.max(1,Math.ceil(RESULT.length/PER));
   if(v==='prev')state.page=Math.max(1,state.page-1);
@@ -1716,146 +1458,148 @@ gridEl.addEventListener('click',e=>{
     const id=parseInt(fav.dataset.fav,10);
     if(FAVS.has(id))FAVS.delete(id);else FAVS.add(id);
     fav.classList.toggle('is-on',FAVS.has(id));
-    saveFavs();updateFavCount();
-    return;
+    saveFavs();updateFavCount();return;
   }
   const book=e.target.closest('[data-book]');
   if(book){openModal(parseInt(book.dataset.book,10));return}
   const card=e.target.closest('.card');
   if(card)openDetail(parseInt(card.dataset.id,10));
 });
-function updateFavCount(){
-  const el=$('#favCount');
-  el.textContent=FAVS.size;
-  el.classList.toggle('is-on',FAVS.size>0);
-}
+function updateFavCount(){const el=$('#favCount');el.textContent=FAVS.size;el.classList.toggle('is-on',FAVS.size>0)}
 updateFavCount();
 function update(){state.page=1;syncControls();applyFilters();renderActiveFilters();renderGrid()}
 function applyAndRender(){syncControls();applyFilters();renderActiveFilters();renderGrid()}
 
-/* ===== ЛОГИКА КАРТЫ (ПК) ===== */
+/* ============================================================
+   YANDEX MAP (PC) — настоящая интеграция
+   ============================================================ */
 const catalogLayout = document.getElementById('catalogLayout');
 const viewToggle = document.getElementById('viewToggle');
 const mapView = document.getElementById('mapView');
 const mapInner = document.getElementById('mapInner');
 let mapMode = false;
 
+// Приблизительные центры федеральных округов — для детерминированной
+// генерации координат. Каждый объект попадает в «свой» округ,
+// а точное место внутри него получается хэшем от ID региона.
+const DISTRICT_CENTERS = {
+  cfo: [54.5, 37.5],
+  szfo: [61.0, 35.0],
+  yufo: [45.5, 40.0],
+  skfo: [43.5, 43.5],
+  pfo: [55.0, 49.0],
+  urfo: [58.0, 62.0],
+  sfo: [56.0, 85.0],
+  dfo: [52.0, 135.0]
+};
+function hashStr(s){let h=0;for(let i=0;i<s.length;i++)h=((h<<5)-h+s.charCodeAt(i))|0;return h}
+function getRegionCoords(rgId, dId){
+  const base = DISTRICT_CENTERS[dId] || [55.75, 37.62];
+  const h = hashStr(rgId);
+  const dLat = ((h % 1000) / 1000 - 0.5) * 8;
+  const dLng = (((h >> 10) % 1000) / 1000 - 0.5) * 14;
+  return [base[0] + dLat, base[1] + dLng];
+}
+
+let yandexMap = null;
+let yandexMapReady = false;
+let pendingMarkers = null;
+let yandexTried = false;
+
+function tryInitYandex(){
+  if (yandexTried) return;
+  yandexTried = true;
+  if (!window.ymaps) {
+    // даём скрипту ещё немного времени
+    setTimeout(() => {
+      if (window.ymaps && typeof window.ymaps.ready === 'function') {
+        try { window.ymaps.ready(onYmapsReady); } catch(e) {}
+      } else {
+        showYandexFallback();
+      }
+    }, 800);
+    return;
+  }
+  try { window.ymaps.ready(onYmapsReady); } catch(e) { showYandexFallback(); }
+}
+function onYmapsReady(){
+  yandexMapReady = true;
+  if (pendingMarkers) { renderYandexMarkers(pendingMarkers); pendingMarkers = null; }
+}
+function showYandexFallback(){
+  if (!mapInner) return;
+  mapInner.innerHTML = '<div class="map-fallback">Карта Яндекс недоступна.<br>Пожалуйста, добавьте API-ключ Яндекс.Карт в код страницы.</div>';
+}
+
+function renderYandexMarkers(slice){
+  if (!mapMode) return;
+  if (!yandexMapReady) {
+    pendingMarkers = slice;
+    tryInitYandex();
+    return;
+  }
+  try {
+    if (!yandexMap) {
+      yandexMap = new ymaps.Map('mapInner', {
+        center: [61, 70],
+        zoom: 3,
+        controls: ['zoomControl', 'fullscreenControl']
+      });
+    }
+    yandexMap.geoObjects.removeAll();
+    slice.forEach(d => {
+      const coords = getRegionCoords(d.rg, d.d);
+      const pm = new ymaps.Placemark(coords, {
+        hintContent: d.title + ' — ' + fmt(d.price) + ' ₽ / ночь',
+        balloonContentHeader:
+          '<div style="font-family:Manrope,sans-serif;font-weight:700;font-size:14px;margin-bottom:4px">' + d.title + '</div>',
+        balloonContentBody:
+          '<div style="font-family:Manrope,sans-serif;font-size:12px;color:#666;margin-bottom:8px">' + d.place + '</div>' +
+          '<div style="font-family:Manrope,sans-serif;font-weight:700;font-size:16px;margin-bottom:10px">' + fmt(d.price) + ' ₽ / ночь</div>' +
+          '<button type="button" data-yandex-detail="' + d.id + '" style="width:100%;padding:9px;border:none;border-radius:8px;background:linear-gradient(100deg,#22D3EE,#A78BFA);color:#fff;font-weight:700;cursor:pointer;font-family:inherit">Подробнее</button>'
+      }, {
+        preset: 'islands#violetDotIcon'
+      });
+      pm.events.add('click', () => openDetail(d.id));
+      yandexMap.geoObjects.add(pm);
+    });
+    if (slice.length) {
+      try {
+        const bounds = yandexMap.geoObjects.getBounds();
+        if (bounds) yandexMap.setBounds(bounds, { checkZoomRange: true, zoomMargin: 40, duration: 300 });
+      } catch(e) {}
+    }
+    // подстраховка: если контейнер не имел размеров при инициализации
+    setTimeout(() => { try { yandexMap.container.fitToViewport(); } catch(e) {} }, 80);
+  } catch(e) {
+    console.warn('Yandex map error:', e);
+    showYandexFallback();
+  }
+}
+
+// Клик по кнопке в балуне
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('[data-yandex-detail]');
+  if (!btn) return;
+  const id = parseInt(btn.dataset.yandexDetail, 10);
+  if (id) openDetail(id);
+});
+
 viewToggle.addEventListener('click', () => {
   mapMode = !mapMode;
   catalogLayout.classList.toggle('map-mode', mapMode);
   if (mapMode) {
     viewToggle.innerHTML = '<svg class="ico-svg"><use href="#i-grid"/></svg> Список';
-    renderGrid(); // Вызовет renderMapPins
+    renderGrid();
+    tryInitYandex();
   } else {
     viewToggle.innerHTML = '<svg class="ico-svg"><use href="#i-map"/></svg> Карта';
-    mapInner.innerHTML = '';
   }
 });
 
-function renderMapPins(slice) {
-  if (!mapMode) return;
-  mapInner.innerHTML = '';
-  
-  slice.forEach(d => {
-    // Генерируем стабильные координаты для пина на основе ID
-    const left = 15 + (d.id * 37) % 70;
-    const top = 15 + (d.id * 53) % 70;
-    
-    const pin = document.createElement('div');
-    pin.className = 'map-pin';
-    pin.style.left = left + '%';
-    pin.style.top = top + '%';
-    pin.dataset.id = d.id;
-    pin.innerHTML = `${fmt(d.price)} ₽`;
-    
-    pin.addEventListener('click', (e) => {
-      e.stopPropagation();
-      openMapPopup(d, left, top);
-    });
-    
-    mapInner.appendChild(pin);
-  });
-}
-
-function openMapPopup(d, left, top) {
-  // Удаляем старую всплывашку
-  const existing = mapInner.querySelector('.map-popup');
-  if (existing) existing.remove();
-  
-  const popup = document.createElement('div');
-  popup.className = 'map-popup';
-  // Позиционируем так, чтобы не уходило за края
-  const safeLeft = Math.max(20, Math.min(left, 80));
-  const safeTop = Math.max(25, Math.min(top, 85));
-  
-  popup.style.left = safeLeft + '%';
-  popup.style.top = safeTop + '%';
-  
-  popup.innerHTML = `
-    <div class="map-popup__media">
-      <div class="map-popup__img" style="background-image:url('${d.img}')"></div>
-      <button class="map-popup__close"><svg class="ico-svg"><use href="#i-close"/></svg></button>
-    </div>
-    <div class="map-popup__body">
-      <div class="map-popup__head">
-        <h3>${d.title}</h3>
-        <span><svg class="ico-svg"><use href="#i-star-fill"/></svg>${d.rating}</span>
-      </div>
-      <p>${d.place}</p>
-      <div class="map-popup__price"><b>${fmt(d.price)} ₽</b> / ночь</div>
-      <button class="btn btn--grad btn--sm btn--full" data-book="${d.id}">Забронировать</button>
-    </div>
-  `;
-  
-  popup.querySelector('.map-popup__close').addEventListener('click', (e) => {
-    e.stopPropagation();
-    popup.remove();
-  });
-  
-  popup.querySelector('.map-popup__body').addEventListener('click', (e) => {
-    if (!e.target.closest('.btn')) {
-      openDetail(d.id);
-      popup.remove();
-    }
-  });
-  
-  popup.querySelector('[data-book]').addEventListener('click', (e) => {
-    e.stopPropagation();
-    openModal(d.id);
-  });
-  
-  mapInner.appendChild(popup);
-}
-
-// Перетаскивание карты (симуляция)
-let isMapDragging = false;
-let mapStartX = 0, mapStartY = 0;
-let mapCurrentX = 0, mapCurrentY = 0;
-
-mapView.addEventListener('pointerdown', (e) => {
-  if (e.target.closest('.map-pin') || e.target.closest('.map-popup')) return;
-  isMapDragging = true;
-  mapStartX = e.clientX - mapCurrentX;
-  mapStartY = e.clientY - mapCurrentY;
-  mapInner.style.cursor = 'grabbing';
-});
-
-window.addEventListener('pointermove', (e) => {
-  if (!isMapDragging) return;
-  mapCurrentX = e.clientX - mapStartX;
-  mapCurrentY = e.clientY - mapStartY;
-  // Ограничиваем перетаскивание
-  mapCurrentX = Math.max(-600, Math.min(600, mapCurrentX));
-  mapCurrentY = Math.max(-600, Math.min(600, mapCurrentY));
-  mapInner.style.transform = `translate(${mapCurrentX}px, ${mapCurrentY}px)`;
-});
-
-window.addEventListener('pointerup', () => {
-  isMapDragging = false;
-  if (mapInner) mapInner.style.cursor = 'grab';
-});
-
-
+/* ============================================================
+   BOOKING MODAL
+   ============================================================ */
 const modal=$('#modal');
 const modalTitle=$('#modalTitle');
 const modalPlace=$('#modalPlace');
@@ -1871,15 +1615,13 @@ const isoToday=toISO(today),isoTomorrow=toISO(tomorrow);
 dateIn.value=dateIn.min=isoToday;
 dateOut.value=dateOut.min=isoTomorrow;
 function openModal(id){
-  const item=BY_ID.get(id);
-  if(!item)return;
+  const item=BY_ID.get(id);if(!item)return;
   currentPrice=item.price;
   modalTitle.textContent=item.title;
   modalPlace.textContent=item.place;
   guestsInp.value=Math.min(2,item.guests);
   modal.classList.add('is-open');
-  lockScroll();
-  updateTotal();
+  lockScroll();updateTotal();
 }
 function closeModal(){modal.classList.remove('is-open');unlockScroll()}
 function updateTotal(){
@@ -1900,6 +1642,9 @@ $('#modalSubmit').addEventListener('click',function(){
   setTimeout(()=>{txt.textContent=orig;this.style.pointerEvents='';closeModal()},1600);
 });
 
+/* ============================================================
+   DETAIL MODAL — оптимизировано: мгновенное открытие
+   ============================================================ */
 const detail=$('#detail');
 const detailImg=$('#detailImg');
 const detailBadge=$('#detailBadge');
@@ -1914,6 +1659,7 @@ const detailMap=$('#detailMap');
 const detailReviews=$('#detailReviews');
 const detailPrice=$('#detailPrice');
 let currentDetailId=0;
+let pendingDetailId=0;
 const REVIEW_NAMES=['Анна К.','Дмитрий О.','Мария С.','Игорь В.','Елена Р.','Алексей Н.','Ольга Б.','Сергей М.','Наталья Д.','Павел Т.','Юлия К.','Артём Г.','Виктория Л.','Роман Ж.'];
 const REVIEW_TEXTS=[
   'Отличное место, всё как на фото. Обязательно вернёмся!','Дом очень уютный, чисто, хозяин на связи 24/7. Рекомендую.','Великолепный вид, тишина, природа — что ещё нужно для отдыха.','Были большой компанией, всем хватило места. Баня — огонь!','Идеально для семейного отдыха. Дети в восторге от территории.','Немного далековато от города, но это того стоит. Атмосфера потрясающая.','Всё продумано до мелочей. Кухня полностью оборудована, посуда, техника.','Спасибо консьержу за помощь с трансфером — всё прошло гладко.','Уютно, стильно, с любовью. Фотографии не передают всей красоты.','Второй раз здесь и снова в восторге. Ничего не испортилось.','Хорошее соотношение цены и качества. Хозяева очень отзывчивые.','Тишина, свежий воздух, звёздное небо. Идеально для перезагрузки.'
@@ -1924,8 +1670,7 @@ const DESCR=[
 function getReviews(obj){
   const rnd=mulberry32(obj.id*7919+17);
   const n=3+Math.floor(rnd()*3);
-  const out=[];
-  const usedNames=new Set();
+  const out=[];const usedNames=new Set();
   const months=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
   for(let i=0;i<n;i++){
     let name;let guard=0;
@@ -1945,19 +1690,22 @@ function starsHTML(n){
   for(let i=0;i<5;i++)s+='<svg class="ico-svg" style="'+(i<n?'opacity:1':'opacity:.2')+'"><use href="#i-star-fill"/></svg>';
   return s;
 }
+
 function openDetail(id){
-  const obj=BY_ID.get(id);
-  if(!obj)return;
+  const obj=BY_ID.get(id);if(!obj)return;
   currentDetailId=id;
+
+  // 1. Мгновенно заполняем всё, кроме тяжёлого iframe
   detailImg.style.backgroundImage='url(\''+obj.bigImg+'\')';
-  if(obj.tag){detailBadge.setAttribute('data-t',obj.tag);detailBadge.textContent=obj.tag}
-  else{detailBadge.removeAttribute('data-t');detailBadge.textContent=''}
+  if(obj.tag){detailBadge.setAttribute('data-t',obj.tag);detailBadge.textContent=obj.tag;detailBadge.style.display='inline-block'}
+  else{detailBadge.removeAttribute('data-t');detailBadge.textContent='';detailBadge.style.display='none'}
   detailTitle.textContent=obj.title;
   detailLoc.textContent=obj.place;
   detailRating.textContent=obj.rating.toFixed(1);
   detailReviewsCount.textContent='· '+obj.reviews+' '+revWord(obj.reviews);
   detailPrice.textContent=fmt(obj.price)+' ₽';
   detailDesc.textContent=DESCR[obj.id%DESCR.length];
+
   const specItems=[
     {ico:'i-users',b:obj.guests+' гостей',s:'Вместимость'},
     {ico:'i-bed',b:obj.rooms+' '+roomWord(obj.rooms),s:'Спальни'},
@@ -1968,23 +1716,52 @@ function openDetail(id){
   ];
   detailSpecs.innerHTML=specItems.map(s=>'<div class="detail__spec"><svg class="ico-svg"><use href="#'+s.ico+'"/></svg><div><b>'+s.b+'</b><small>'+s.s+'</small></div></div>').join('');
   detailAmen.innerHTML=obj.am.map(a=>'<span>'+AMEN_MAP[a]+'</span>').join('');
-  const mapQuery=encodeURIComponent(obj.place.split(',')[0].trim()+' '+shortRegion(REGIONS.find(r=>r.id===obj.rg)?.n||''));
-  detailMap.innerHTML='<iframe src="https://yandex.ru/map-widget/v1/?text='+mapQuery+'&z=10" allowfullscreen loading="lazy" title="Карта — '+obj.place+'"></iframe>';
+
   const revs=getReviews(obj);
   detailReviews.innerHTML=revs.map(r=>{
     const letter=r.name.trim().charAt(0).toUpperCase();
     return '<div class="review"><div class="review__head"><div class="review__author"><div class="review__ava">'+letter+'</div><div class="review__name"><b>'+r.name+'</b><span>'+r.date+'</span></div></div><div class="review__stars">'+starsHTML(r.rating)+'</div></div><p>'+r.text+'</p></div>';
   }).join('');
+
+  // 2. Открываем панель — это самая лёгкая операция
   detail.classList.add('is-open');
   detail.setAttribute('aria-hidden','false');
   lockScroll();
-  detail.querySelector('.detail__panel').scrollTop=0;
-}
-function closeDetail(){detail.classList.remove('is-open');detail.setAttribute('aria-hidden','true');unlockScroll()}
-bindClose('[data-close-detail]',closeDetail);
-$('#detailBook').addEventListener('click',()=>{const id=currentDetailId;closeDetail();setTimeout(()=>openModal(id),320)});
-$('#detailTour').addEventListener('click',()=>{const id=currentDetailId;closeDetail();setTimeout(()=>openTour(id),320)});
 
+  // 3. Ставим заглушку карты, а сам iframe — отложенно
+  detailMap.innerHTML = '<div class="detail__map-placeholder">Карта загружается…</div>';
+  const mapQuery = encodeURIComponent(obj.place.split(',')[0].trim() + ' ' + shortRegion(REGIONS.find(r=>r.id===obj.rg)?.n || ''));
+  const iframeSrc = 'https://yandex.ru/map-widget/v1/?text=' + mapQuery + '&z=10';
+  const targetId = id;
+
+  // сбрасываем скролл панели после кадра
+  requestAnimationFrame(() => {
+    const panel = detail.querySelector('.detail__panel');
+    if (panel) panel.scrollTop = 0;
+  });
+
+  // отложенная загрузка iframe — после того как карточка отрисовалась
+  clearTimeout(pendingDetailId);
+  pendingDetailId = setTimeout(() => {
+    if (currentDetailId !== targetId) return;
+    if (!detail.classList.contains('is-open')) return;
+    detailMap.innerHTML = '<iframe src="' + iframeSrc + '" allowfullscreen loading="lazy" title="Карта — ' + obj.place + '"></iframe>';
+  }, 380);
+}
+
+function closeDetail(){
+  detail.classList.remove('is-open');
+  detail.setAttribute('aria-hidden','true');
+  clearTimeout(pendingDetailId);
+  unlockScroll();
+}
+bindClose('[data-close-detail]',closeDetail);
+$('#detailBook').addEventListener('click',()=>{const id=currentDetailId;closeDetail();setTimeout(()=>openModal(id),220)});
+$('#detailTour').addEventListener('click',()=>{const id=currentDetailId;closeDetail();setTimeout(()=>openTour(id),220)});
+
+/* ============================================================
+   3D TOUR
+   ============================================================ */
 const tour=$('#tour');
 const tourViewport=$('#tourViewport');
 const tourPano=$('#tourPano');
@@ -1992,23 +1769,12 @@ const tourCompass=$('#tourCompass');
 const tourTitle=$('#tourTitle');
 const tourAutoBtn=$('#tourAuto');
 const tourClose=$('#tourClose');
-let tourX=0;
-let tourPanoW=0;
-let tourVpW=0;
-let tourDragging=false;
-let tourAuto=true;
-let tourDir=-1;
-let tourStartX=0;
-let tourStartTx=0;
-let tourRAF=null;
-let tourAnimRAF=null;
+let tourX=0,tourPanoW=0,tourVpW=0,tourDragging=false,tourAuto=true,tourDir=-1,tourStartX=0,tourStartTx=0,tourRAF=null,tourAnimRAF=null;
 function layoutTourHotspots(vpH){
   const scale=vpH/1080;
   $$('.tour__hotspot',tourPano).forEach(el=>{
-    const sx=parseFloat(el.dataset.sx);
-    const sy=parseFloat(el.dataset.sy);
-    el.style.left=(sx*scale)+'px';
-    el.style.top=(sy*scale)+'px';
+    const sx=parseFloat(el.dataset.sx);const sy=parseFloat(el.dataset.sy);
+    el.style.left=(sx*scale)+'px';el.style.top=(sy*scale)+'px';
   });
 }
 function tourLayout(){
@@ -2019,8 +1785,7 @@ function tourLayout(){
   tourPano.style.width=tourPanoW+'px';
   tourPano.style.height=vpH+'px';
   layoutTourHotspots(vpH);
-  tourClamp();
-  tourApply();
+  tourClamp();tourApply();
 }
 function tourClamp(){
   const min=Math.min(0,-(tourPanoW-tourVpW));
@@ -2047,9 +1812,7 @@ function tourTick(){
 function animateTourX(target){
   const min=Math.min(0,-(tourPanoW-tourVpW));
   target=Math.max(min,Math.min(0,target));
-  const startX=tourX;
-  const t0=performance.now();
-  const dur=900;
+  const startX=tourX;const t0=performance.now();const dur=900;
   cancelAnimationFrame(tourAnimRAF);
   function step(now){
     const t=Math.min(1,(now-t0)/dur);
@@ -2079,8 +1842,7 @@ function closeTour(){
   tour.setAttribute('aria-hidden','true');
   if(tourRAF){cancelAnimationFrame(tourRAF);tourRAF=null}
   if(tourAnimRAF){cancelAnimationFrame(tourAnimRAF);tourAnimRAF=null}
-  tourDragging=false;
-  tour.classList.remove('is-dragging');
+  tourDragging=false;tour.classList.remove('is-dragging');
   unlockScroll();
 }
 tourClose.addEventListener('click',closeTour);
@@ -2092,9 +1854,7 @@ tourAutoBtn.addEventListener('click',()=>{
 tourViewport.addEventListener('pointerdown',e=>{
   if(e.button&&e.button!==0)return;
   if(e.target.closest('.tour__top, .tour__close, .tour__bottom, .tour__hotspot'))return;
-  tourDragging=true;
-  tourStartX=e.clientX;
-  tourStartTx=tourX;
+  tourDragging=true;tourStartX=e.clientX;tourStartTx=tourX;
   tour.classList.add('is-dragging');
   cancelAnimationFrame(tourAnimRAF);
   try{tourViewport.setPointerCapture(e.pointerId)}catch(err){}
@@ -2102,28 +1862,23 @@ tourViewport.addEventListener('pointerdown',e=>{
 tourViewport.addEventListener('pointermove',e=>{
   if(!tourDragging)return;
   const dx=e.clientX-tourStartX;
-  tourX=tourStartTx+dx;
-  tourClamp();
-  tourApply();
+  tourX=tourStartTx+dx;tourClamp();tourApply();
 });
 function endTourDrag(e){
   if(!tourDragging)return;
-  tourDragging=false;
-  tour.classList.remove('is-dragging');
+  tourDragging=false;tour.classList.remove('is-dragging');
   try{tourViewport.releasePointerCapture(e.pointerId)}catch(err){}
 }
 tourViewport.addEventListener('pointerup',endTourDrag);
 tourViewport.addEventListener('pointercancel',endTourDrag);
 tourPano.addEventListener('click',e=>{
-  const hs=e.target.closest('.tour__hotspot');
-  if(!hs)return;
+  const hs=e.target.closest('.tour__hotspot');if(!hs)return;
   const sx=parseFloat(hs.dataset.sx);
   const vpH=tourViewport.clientHeight||window.innerHeight;
   const scale=vpH/1080;
   const panoX=sx*scale;
   const target=tourVpW/2-panoX;
-  tourAuto=false;
-  tourAutoBtn.classList.remove('is-on');
+  tourAuto=false;tourAutoBtn.classList.remove('is-on');
   animateTourX(target);
 });
 addEventListener('resize',()=>{if(tour.classList.contains('is-open'))tourLayout()});
@@ -2137,6 +1892,7 @@ $('#ctaForm').addEventListener('submit',e=>{
   e.target.querySelector('input').value='';
   setTimeout(()=>{txt.textContent=orig},2200);
 });
+
 $('#statCount').textContent=fmt(DATA.length);
 syncControls();
 applyFilters();
