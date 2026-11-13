@@ -22,10 +22,10 @@
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html[data-theme="dark"]{
-  --c1:#22D3EE;--c1-rgb:34,211,238;
-  --c2:#67E8F9;--c2-rgb:103,232,249;
-  --c3:#A78BFA;--c3-rgb:167,139,250;
-  --c4:#C4B5FD;
+  --c1:#BE185D;--c1-rgb:190,24,93;
+  --c2:#DB2777;--c2-rgb:219,39,119;
+  --c3:#7C3AED;--c3-rgb:124,58,237;
+  --c4:#A78BFA;
   --rose:#FB7185;--rose-rgb:251,113,133;
   --bg:#14161A;--bg-2:#1C1E24;
   --txt:#9CA3AF;--txt-h:#E5E7EB;--mut:#6B7280;
@@ -47,29 +47,29 @@ html[data-theme="dark"]{
   --scrollbar-track:#14161A;--sel-txt:#04060A;
   --grain-opacity:.035;--corner-shadow:rgba(0,0,0,.5);
   --hero-veil-1:rgba(20,22,26,.72);--hero-veil-2:rgba(20,22,26,.36);--hero-veil-edge:rgba(20,22,26,.42);
-  --sc-sky-1:#070b18;--sc-sky-2:#101830;--sc-sky-3:#1a2444;--sc-sky-4:#253660;
-  --sc-star:#ffffff;--sc-constellation:#67E8F9;
-  --sc-aur-cyan:#22D3EE;--sc-aur-emerald:#67E8F9;--sc-aur-violet:#A78BFA;
-  --sc-moon-core:#f0f4ff;--sc-moon-core-2:#dce5ff;
-  --sc-moon-ring-1:#a8c0ff;--sc-moon-ring-2:#8ab4ff;
-  --sc-moon-glow:#7da4ff;--sc-moon-crater:#c4d5ff;
-  --sc-mtn-far-top:#253660;--sc-mtn-far-bot:#0a0f1e;
-  --sc-mtn-mid-top:#1a2444;--sc-mtn-mid-bot:#0a1020;
-  --sc-mtn-near-top:#0d1428;--sc-mtn-near-bot:#05080f;
-  --sc-snow:#e8f0ff;
-  --sc-ground-top:#d0dcf0;--sc-ground-mid:#b8c8e0;--sc-ground-bot:#a0b4d0;
-  --sc-treeline:#0a1a2e;--sc-pine:#051525;--sc-villa-bg:#2a1f15;
-  --sc-window:#FBBF24;--sc-window-stroke:#FCD34D;--sc-smoke:#a7b0c8;--sc-particle:#A78BFA;--sc-horizon:#67E8F9;--sc-mtn-shadow:#05080f;
-  --sc-tree-1:#0d3a2c;--sc-tree-2:#0a4a38;--sc-tree-3:#06614a;
-  --sc-star-top:#FCD34D;--sc-star-top-glow:rgba(252,211,77,.6);--sc-roof-snow:#f0f4ff;
-  --sc-bulb-gold:#FCD34D;--sc-bulb-red:#FB7185;--sc-bulb-blue:#22D3EE;--sc-bulb-violet:#A78BFA;
+  --sc-sky-1:#050310;--sc-sky-2:#0A0614;--sc-sky-3:#120A1E;--sc-sky-4:#170D22;
+  --sc-star:#ffffff;--sc-constellation:#DB2777;
+  --sc-aur-cyan:#BE185D;--sc-aur-emerald:#DB2777;--sc-aur-violet:#A78BFA;
+  --sc-moon-core:#FDF4FF;--sc-moon-core-2:#FAE8FF;
+  --sc-moon-ring-1:#F5D0FE;--sc-moon-ring-2:#F0ABFC;
+  --sc-moon-glow:#E879F9;--sc-moon-crater:#F5D0FE;
+  --sc-mtn-far-top:#3A1F4D;--sc-mtn-far-bot:#14081F;
+  --sc-mtn-mid-top:#1E1030;--sc-mtn-mid-bot:#0D0618;
+  --sc-mtn-near-top:#0A0510;--sc-mtn-near-bot:#05030A;
+  --sc-snow:#FAE8FF;
+  --sc-ground-top:#F0E4F4;--sc-ground-mid:#DCD0E8;--sc-ground-bot:#C4B8D4;
+  --sc-treeline:#0A0510;--sc-pine:#030208;--sc-villa-bg:#2A1F3D;
+  --sc-window:#FBBF24;--sc-window-stroke:#FCD34D;--sc-smoke:#A7ADC2;--sc-particle:#A78BFA;--sc-horizon:#DB2777;--sc-mtn-shadow:#05030A;
+  --sc-tree-1:#4A1462;--sc-tree-2:#5B1878;--sc-tree-3:#6E1E8A;
+  --sc-star-top:#FCD34D;--sc-star-top-glow:rgba(252,211,77,.6);--sc-roof-snow:#FAE8FF;
+  --sc-bulb-gold:#FCD34D;--sc-bulb-red:#FB7185;--sc-bulb-blue:#DB2777;--sc-bulb-violet:#A78BFA;
   --sc-orn-red:#DC2626;--sc-orn-gold:#FCD34D;--sc-orn-violet:#A78BFA;
-  --sc-snowman:#f0f4ff;--sc-snowman-shadow:#b8c8dc;--sc-snowman-nose:#F97316;--sc-snowman-hat:#0a0f1e;--sc-snowman-scarf:#DC2626;
+  --sc-snowman:#F0F4FF;--sc-snowman-shadow:#B8C8DC;--sc-snowman-nose:#F97316;--sc-snowman-hat:#0A0510;--sc-snowman-scarf:#DC2626;
   --sc-garland-wire:#4a3525;
 }
 html[data-theme="light"]{
-  --c1:#0E7490;--c1-rgb:14,116,144;
-  --c2:#06B6D4;--c2-rgb:6,182,212;
+  --c1:#BE185D;--c1-rgb:190,24,93;
+  --c2:#DB2777;--c2-rgb:219,39,119;
   --c3:#7C3AED;--c3-rgb:124,58,237;
   --c4:#A78BFA;
   --rose:#FB7185;--rose-rgb:251,113,133;
@@ -84,7 +84,7 @@ html[data-theme="light"]{
   --ghost-txt:#0A0C13;--ghost-border:rgba(10,12,25,.14);--ghost-bg:#FFFFFF;
   --nav-bg:rgba(255,255,255,.9);
   --section-bg:#EEF1F6;--section-bg-2:#F0F2F7;
-  --cta-bg:linear-gradient(140deg,#F0FDFA,#ECFDF5 45%,#F5F3FF);
+  --cta-bg:linear-gradient(140deg,#FDF2F8,#FAE8FF 45%,#F5F3FF);
   --modal-bg:#FFFFFF;
   --chip-bg:#FFFFFF;--chip-txt:#4B5563;
   --field-txt:#0A0C13;--field-label:#64748B;
@@ -93,25 +93,25 @@ html[data-theme="light"]{
   --scrollbar-track:#F1F5F9;--sel-txt:#fff;
   --grain-opacity:.028;--corner-shadow:rgba(10,12,25,.25);
   --hero-veil-1:rgba(255,255,255,.62);--hero-veil-2:rgba(255,255,255,.32);--hero-veil-edge:rgba(255,255,255,.34);
-  --sc-sky-1:#fef6e8;--sc-sky-2:#fce7f3;--sc-sky-3:#dbeafe;--sc-sky-4:#bfdbfe;
-  --sc-star:#cbd5e1;--sc-constellation:#0E7490;
-  --sc-aur-cyan:#67E8F9;--sc-aur-emerald:#A78BFA;--sc-aur-violet:#C4B5FD;
-  --sc-moon-core:#fff7ed;--sc-moon-core-2:#fef3c7;
-  --sc-moon-ring-1:#fde68a;--sc-moon-ring-2:#fcd34d;
-  --sc-moon-glow:#fde68a;--sc-moon-crater:#fde68a;
-  --sc-mtn-far-top:#94a3b8;--sc-mtn-far-bot:#cbd5e1;
-  --sc-mtn-mid-top:#64748b;--sc-mtn-mid-bot:#94a3b8;
-  --sc-mtn-near-top:#475569;--sc-mtn-near-bot:#334155;
-  --sc-snow:#ffffff;
-  --sc-ground-top:#f8fafc;--sc-ground-mid:#e2e8f0;--sc-ground-bot:#cbd5e1;
-  --sc-treeline:#1e293b;--sc-pine:#0f172a;--sc-villa-bg:#1e293b;
-  --sc-window:#F59E0B;--sc-window-stroke:#D97706;--sc-smoke:#94a3b8;--sc-particle:#7C3AED;--sc-horizon:#0E7490;--sc-mtn-shadow:#64748b;
-  --sc-tree-1:#064e3b;--sc-tree-2:#065f46;--sc-tree-3:#047857;
-  --sc-star-top:#D97706;--sc-star-top-glow:rgba(217,119,6,.5);--sc-roof-snow:#ffffff;
-  --sc-bulb-gold:#D97706;--sc-bulb-red:#DC2626;--sc-bulb-blue:#0891B2;--sc-bulb-violet:#7C3AED;
+  --sc-sky-1:#FDF2F8;--sc-sky-2:#FAE8FF;--sc-sky-3:#F3E8FF;--sc-sky-4:#E9D5FF;
+  --sc-star:#A78BFA;--sc-constellation:#BE185D;
+  --sc-aur-cyan:#DB2777;--sc-aur-emerald:#F472B6;--sc-aur-violet:#C4B5FD;
+  --sc-moon-core:#FDF4FF;--sc-moon-core-2:#FAE8FF;
+  --sc-moon-ring-1:#F5D0FE;--sc-moon-ring-2:#F0ABFC;
+  --sc-moon-glow:#F0ABFC;--sc-moon-crater:#F5D0FE;
+  --sc-mtn-far-top:#C4B5FD;--sc-mtn-far-bot:#DDD6FE;
+  --sc-mtn-mid-top:#A78BFA;--sc-mtn-mid-bot:#C4B5FD;
+  --sc-mtn-near-top:#7C3AED;--sc-mtn-near-bot:#5B21B6;
+  --sc-snow:#FFFFFF;
+  --sc-ground-top:#FAE8FF;--sc-ground-mid:#F5D0FE;--sc-ground-bot:#E9D5FF;
+  --sc-treeline:#4C1D95;--sc-pine:#2E1065;--sc-villa-bg:#4C1D95;
+  --sc-window:#F59E0B;--sc-window-stroke:#D97706;--sc-smoke:#C4B5FD;--sc-particle:#DB2777;--sc-horizon:#BE185D;--sc-mtn-shadow:#7C3AED;
+  --sc-tree-1:#4C1D95;--sc-tree-2:#5B21B6;--sc-tree-3:#6D28D9;
+  --sc-star-top:#F59E0B;--sc-star-top-glow:rgba(245,158,11,.5);--sc-roof-snow:#FFFFFF;
+  --sc-bulb-gold:#D97706;--sc-bulb-red:#DC2626;--sc-bulb-blue:#DB2777;--sc-bulb-violet:#7C3AED;
   --sc-orn-red:#DC2626;--sc-orn-gold:#D97706;--sc-orn-violet:#7C3AED;
-  --sc-snowman:#ffffff;--sc-snowman-shadow:#cbd5e1;--sc-snowman-nose:#EA580C;--sc-snowman-hat:#0f172a;--sc-snowman-scarf:#DC2626;
-  --sc-garland-wire:#334155;
+  --sc-snowman:#FFFFFF;--sc-snowman-shadow:#E9D5FF;--sc-snowman-nose:#EA580C;--sc-snowman-hat:#2E1065;--sc-snowman-scarf:#DC2626;
+  --sc-garland-wire:#6D28D9;
 }
 :root{
   --f-h:'Unbounded',sans-serif;
@@ -497,7 +497,7 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.2)}
 .detail__contact a{font-family:var(--f-h);font-size:14px;font-weight:700;color:var(--c2);transition:color .3s}
 .detail__contact a:hover{color:var(--c1)}
 
-.tour{position:fixed;inset:0;z-index:9700;opacity:0;visibility:hidden;transition:opacity .4s var(--ease),visibility .4s;background:#02040f}
+.tour{position:fixed;inset:0;z-index:9700;opacity:0;visibility:hidden;transition:opacity .4s var(--ease),visibility .4s;background:#0A0510}
 .tour.is-open{opacity:1;visibility:visible}
 .tour__viewport{position:absolute;inset:0;overflow:hidden;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}
 .tour.is-dragging .tour__viewport{cursor:grabbing}
@@ -559,7 +559,6 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.2)}
   .filters-backdrop.is-open{opacity:1;visibility:visible}
   .page-hero{min-height:auto;padding-top:clamp(120px,15vh,160px)}
 
-  /* ==== DETAIL на мобильных: flex-раскладка, фото фиксировано, скроллится только тело ==== */
   .detail{
     padding:0;
     align-items:stretch;
@@ -916,15 +915,15 @@ html[data-theme="dark"] .card:hover{border-color:rgba(167,139,250,.5);box-shadow
     <div class="tour__pano" id="tourPano">
       <svg class="tour__pano-svg" viewBox="0 0 5760 1080" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
         <defs>
-          <linearGradient id="tSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#02040f"/><stop offset=".4" stop-color="#081229"/><stop offset=".7" stop-color="#152045"/><stop offset="1" stop-color="#2a3a68"/></linearGradient>
-          <linearGradient id="tGround" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c8d6ec"/><stop offset="1" stop-color="#8494b4"/></linearGradient>
+          <linearGradient id="tSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#050310"/><stop offset=".4" stop-color="#0A0614"/><stop offset=".7" stop-color="#120A1E"/><stop offset="1" stop-color="#170D22"/></linearGradient>
+          <linearGradient id="tGround" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F0E4F4"/><stop offset="1" stop-color="#C4B8D4"/></linearGradient>
         </defs>
         <rect width="5760" height="1080" fill="url(#tSky)"/>
         <g fill="#fff">
           <circle cx="180" cy="150" r="1.5" opacity=".7"/><circle cx="500" cy="200" r="1.6" opacity=".8"/><circle cx="850" cy="180" r="1.4" opacity=".7"/><circle cx="1220" cy="220" r="1.5" opacity=".8"/><circle cx="1580" cy="180" r="1.4" opacity=".7"/><circle cx="1950" cy="200" r="1.3" opacity=".8"/><circle cx="2350" cy="170" r="1.5" opacity=".7"/><circle cx="2750" cy="200" r="1.4" opacity=".8"/><circle cx="3150" cy="180" r="1.6" opacity=".7"/><circle cx="3550" cy="220" r="1.4" opacity=".8"/><circle cx="3950" cy="180" r="1.3" opacity=".7"/><circle cx="4350" cy="200" r="1.2" opacity=".8"/><circle cx="4750" cy="180" r="1.5" opacity=".7"/><circle cx="5150" cy="210" r="1.2" opacity=".8"/><circle cx="5550" cy="170" r="1.4" opacity=".7"/>
         </g>
         <path d="M0 940 C 400 920, 800 930, 1200 925 C 1600 920, 2000 930, 2400 925 C 2800 920, 3200 930, 3600 925 C 4000 920, 4400 930, 4800 925 C 5200 920, 5600 930, 5760 925 L5760 1080 L0 1080 Z" fill="url(#tGround)"/>
-        <g fill="#03080f">
+        <g fill="#030208">
           <path d="M80 940 L100 850 L120 940 Z"/><path d="M250 940 L270 870 L290 940 Z"/><path d="M550 940 L570 880 L590 940 Z"/><path d="M900 940 L920 870 L940 940 Z"/><path d="M1250 940 L1280 820 L1310 940 Z"/><path d="M1700 940 L1725 840 L1750 940 Z"/><path d="M2100 940 L2130 830 L2160 940 Z"/><path d="M2600 940 L2625 840 L2650 940 Z"/><path d="M3050 940 L3075 830 L3100 940 Z"/><path d="M3550 940 L3575 840 L3600 940 Z"/><path d="M4150 940 L4175 830 L4200 940 Z"/><path d="M4750 940 L4775 840 L4800 940 Z"/><path d="M5350 940 L5375 840 L5400 940 Z"/>
         </g>
       </svg>
@@ -1182,7 +1181,6 @@ function buildCatalog(){
       const am=[];const pool=AMEN.slice();const nAm=ri(4,7);
       for(let k=0;k<nAm&&pool.length;k++){const a=wpick(pool);am.push(a.id);pool.splice(pool.indexOf(a),1)}
       const rr=rnd();let tag='';if(rr<0.06)tag='ХИТ';else if(rr<0.14)tag='NEW';else if(rr<0.19)tag='−15%';
-      /* ФИКС: одна и та же картинка для карточки и для детального просмотра */
       const imgKey = pick(IMGS);
       out.push({id:id++,title:pick(TYPE_TITLES[type.id]),type:type.id,place:place,rg:reg.id,d:reg.d,price:price,guests:guests,rooms:rooms,rating:rating,reviews:reviews,tag:tag,am:am,img:imgKey,bigImg:imgKey,area:ri(45,380),baths:ri(1,Math.min(4,rooms)),year:ri(2010,2024),score:rating*Math.log(reviews+2)});
     }
@@ -1544,7 +1542,7 @@ function renderYandexMarkers(slice){
         balloonContentHeader: '<div style="font-family:Manrope,sans-serif;font-weight:700;font-size:14px;margin-bottom:4px">' + d.title + '</div>',
         balloonContentBody: '<div style="font-family:Manrope,sans-serif;font-size:12px;color:#666;margin-bottom:8px">' + d.place + '</div>' +
           '<div style="font-family:Manrope,sans-serif;font-weight:700;font-size:16px;margin-bottom:10px">' + fmt(d.price) + ' ₽ / ночь</div>' +
-          '<button type="button" data-yandex-detail="' + d.id + '" style="width:100%;padding:9px;border:none;border-radius:8px;background:linear-gradient(100deg,#22D3EE,#A78BFA);color:#fff;font-weight:700;cursor:pointer;font-family:inherit">Подробнее</button>'
+          '<button type="button" data-yandex-detail="' + d.id + '" style="width:100%;padding:9px;border:none;border-radius:8px;background:linear-gradient(100deg,#DB2777,#A78BFA);color:#fff;font-weight:700;cursor:pointer;font-family:inherit">Подробнее</button>'
       }, { preset: 'islands#violetDotIcon' });
       pm.events.add('click', () => openDetail(d.id));
       yandexMap.geoObjects.add(pm);
@@ -1709,7 +1707,6 @@ function openDetail(id){
   const iframeSrc = 'https://yandex.ru/map-widget/v1/?text=' + mapQuery + '&z=10';
   const targetId = id;
 
-  /* ФИКС: сброс скролла у .detail__body (панель больше не скроллится на мобильных) */
   requestAnimationFrame(() => {
     const body = detail.querySelector('.detail__body');
     if (body) body.scrollTop = 0;
