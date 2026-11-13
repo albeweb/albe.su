@@ -405,14 +405,14 @@ html[data-theme="dark"] .field input{color-scheme:dark}
 .modal__total{display:flex;justify-content:space-between;align-items:center;padding:18px 0;margin:18px 0 22px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:13.5px;color:var(--mut)}
 .modal__total b{font-family:var(--f-h);font-size:20px;font-weight:700;background:var(--grad);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradShift 6s ease infinite}
 
-/* ============ DETAIL MODAL (переделан: без position:fixed body, без выезжания) ============ */
+/* ============ DETAIL MODAL ============ */
 .detail{
   position:fixed;inset:0;z-index:9550;
   display:flex;align-items:center;justify-content:center;
   padding:20px;
   opacity:0;visibility:hidden;
   transition:opacity .22s var(--ease),visibility .22s;
-  pointer-events:none; /* дети включают клики */
+  pointer-events:none;
 }
 .detail.is-open{opacity:1;visibility:visible}
 .detail__backdrop{
@@ -435,12 +435,10 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.2)}
   transform:translateZ(0);
   -webkit-overflow-scrolling:touch;
   pointer-events:auto;
-  /* лёгкий scale без translateY — не выглядит "выезжающим снизу" */
   transition:transform .22s var(--ease);
   will-change:transform;
 }
 .detail.is-open .detail__panel{transform:translateZ(0)}
-/* на десктопе — небольшая «отдача», не выезжание */
 @media(min-width:901px){
   .detail__panel{transform:translateZ(0) scale(.985)}
   .detail.is-open .detail__panel{transform:translateZ(0) scale(1)}
@@ -566,30 +564,46 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.2)}
   .filters-backdrop.is-open{opacity:1;visibility:visible}
   .page-hero{min-height:auto;padding-top:clamp(120px,15vh,160px)}
 
-  /* ==== DETAIL на мобильных: сидит на верхней границе mobile-nav ==== */
+  /* ==== DETAIL на мобильных: на весь экран, перекрывает всё ==== */
   .detail{
     padding:0;
-    align-items:flex-end;
-    padding-bottom:calc(76px + env(safe-area-inset-bottom,0px));
+    align-items:stretch;
     transition:opacity .2s var(--ease),visibility .2s;
   }
   .detail__backdrop{
-    /* не затемняем мобильное меню */
-    bottom:calc(76px + env(safe-area-inset-bottom,0px));
+    bottom:0;
   }
   .detail__panel{
     width:100%;
-    height:calc(100dvh - 76px - env(safe-area-inset-bottom,0px) - 8px);
+    height:100%;
     max-height:none;
-    border-radius:24px 24px 0 0;
-    border-bottom:none;border-left:none;border-right:none;
-    /* НЕТ translateY — карточка просто проявляется */
-    transform:translateZ(0) !important;
+    border-radius:0;
+    border:none;
+    transform:none !important;
+    will-change:auto !important;
   }
-  .detail.is-open .detail__panel{transform:translateZ(0) !important}
-  .detail__handle{display:block}
-  .detail__body{padding:16px 13px}
-  .detail__hero{aspect-ratio:16/9}
+  .detail.is-open .detail__panel{transform:none !important}
+  .detail__handle{display:none}
+  /* Кнопка закрытия — fixed, всегда видна при скролле длинной карточки */
+  .detail__close{
+    position:fixed;
+    top:calc(12px + env(safe-area-inset-top, 0px));
+    right:12px;
+    z-index:9552;
+    background:rgba(5,6,10,.78);
+    -webkit-backdrop-filter:blur(14px);
+    backdrop-filter:blur(14px);
+  }
+  .detail__body{padding:16px 13px calc(20px + env(safe-area-inset-bottom,0px))}
+  /* Hero sticky — фото «прилипает» сверху, скроллится только контент под ним */
+  .detail__hero{
+    position:sticky;
+    top:0;
+    z-index:3;
+    aspect-ratio:16/9;
+    background:var(--bg-2);
+    box-shadow:0 8px 22px -14px rgba(0,0,0,.75);
+  }
 
   .tour__top{top:16px;left:16px;right:76px}
   .tour__close{top:16px;right:16px;width:40px;height:40px}
@@ -1019,7 +1033,7 @@ document.getElementById('mobileProfileBtn')?.addEventListener('click',()=>{
 });
 renderProfileNav();
 
-/* ===== SCROLL LOCK — БЕЗ position:fixed и БЕЗ scrollTo ===== */
+/* ===== SCROLL LOCK ===== */
 function lockScroll(){ document.documentElement.classList.add('is-locked'); }
 function unlockScroll(){
   if (!modal.classList.contains('is-open') &&
@@ -1471,7 +1485,7 @@ function update(){state.page=1;syncControls();applyFilters();renderActiveFilters
 function applyAndRender(){syncControls();applyFilters();renderActiveFilters();renderGrid()}
 
 /* ============================================================
-   YANDEX MAP (PC) — настоящая интеграция
+   YANDEX MAP (PC)
    ============================================================ */
 const catalogLayout = document.getElementById('catalogLayout');
 const viewToggle = document.getElementById('viewToggle');
@@ -1479,9 +1493,6 @@ const mapView = document.getElementById('mapView');
 const mapInner = document.getElementById('mapInner');
 let mapMode = false;
 
-// Приблизительные центры федеральных округов — для детерминированной
-// генерации координат. Каждый объект попадает в «свой» округ,
-// а точное место внутри него получается хэшем от ID региона.
 const DISTRICT_CENTERS = {
   cfo: [54.5, 37.5],
   szfo: [61.0, 35.0],
@@ -1510,7 +1521,6 @@ function tryInitYandex(){
   if (yandexTried) return;
   yandexTried = true;
   if (!window.ymaps) {
-    // даём скрипту ещё немного времени
     setTimeout(() => {
       if (window.ymaps && typeof window.ymaps.ready === 'function') {
         try { window.ymaps.ready(onYmapsReady); } catch(e) {}
@@ -1569,7 +1579,6 @@ function renderYandexMarkers(slice){
         if (bounds) yandexMap.setBounds(bounds, { checkZoomRange: true, zoomMargin: 40, duration: 300 });
       } catch(e) {}
     }
-    // подстраховка: если контейнер не имел размеров при инициализации
     setTimeout(() => { try { yandexMap.container.fitToViewport(); } catch(e) {} }, 80);
   } catch(e) {
     console.warn('Yandex map error:', e);
@@ -1577,7 +1586,6 @@ function renderYandexMarkers(slice){
   }
 }
 
-// Клик по кнопке в балуне
 document.addEventListener('click', (e) => {
   const btn = e.target.closest('[data-yandex-detail]');
   if (!btn) return;
@@ -1643,7 +1651,7 @@ $('#modalSubmit').addEventListener('click',function(){
 });
 
 /* ============================================================
-   DETAIL MODAL — оптимизировано: мгновенное открытие
+   DETAIL MODAL — мгновенное открытие
    ============================================================ */
 const detail=$('#detail');
 const detailImg=$('#detailImg');
@@ -1695,7 +1703,6 @@ function openDetail(id){
   const obj=BY_ID.get(id);if(!obj)return;
   currentDetailId=id;
 
-  // 1. Мгновенно заполняем всё, кроме тяжёлого iframe
   detailImg.style.backgroundImage='url(\''+obj.bigImg+'\')';
   if(obj.tag){detailBadge.setAttribute('data-t',obj.tag);detailBadge.textContent=obj.tag;detailBadge.style.display='inline-block'}
   else{detailBadge.removeAttribute('data-t');detailBadge.textContent='';detailBadge.style.display='none'}
@@ -1723,24 +1730,20 @@ function openDetail(id){
     return '<div class="review"><div class="review__head"><div class="review__author"><div class="review__ava">'+letter+'</div><div class="review__name"><b>'+r.name+'</b><span>'+r.date+'</span></div></div><div class="review__stars">'+starsHTML(r.rating)+'</div></div><p>'+r.text+'</p></div>';
   }).join('');
 
-  // 2. Открываем панель — это самая лёгкая операция
   detail.classList.add('is-open');
   detail.setAttribute('aria-hidden','false');
   lockScroll();
 
-  // 3. Ставим заглушку карты, а сам iframe — отложенно
   detailMap.innerHTML = '<div class="detail__map-placeholder">Карта загружается…</div>';
   const mapQuery = encodeURIComponent(obj.place.split(',')[0].trim() + ' ' + shortRegion(REGIONS.find(r=>r.id===obj.rg)?.n || ''));
   const iframeSrc = 'https://yandex.ru/map-widget/v1/?text=' + mapQuery + '&z=10';
   const targetId = id;
 
-  // сбрасываем скролл панели после кадра
   requestAnimationFrame(() => {
     const panel = detail.querySelector('.detail__panel');
     if (panel) panel.scrollTop = 0;
   });
 
-  // отложенная загрузка iframe — после того как карточка отрисовалась
   clearTimeout(pendingDetailId);
   pendingDetailId = setTimeout(() => {
     if (currentDetailId !== targetId) return;
