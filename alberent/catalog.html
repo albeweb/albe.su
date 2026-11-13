@@ -122,7 +122,6 @@ html[data-theme="light"]{
 }
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scrollbar-gutter:stable}
 body{background:var(--bg);color:var(--txt);font-family:var(--f-b);font-weight:400;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased;transition:background-color .35s var(--ease),color .35s var(--ease)}
-/* ==== SCROLL LOCK: без position:fixed и без scrollTo ==== */
 html.is-locked,
 html.is-locked body{overflow:hidden;overscroll-behavior:contain}
 img{display:block;max-width:100%}
@@ -230,7 +229,6 @@ html[data-theme="light"] .theme-toggle .ico-sun{display:none}
 .catalog-layout.map-mode .results{max-height:calc(100vh - 120px);overflow-y:auto;padding-right:10px}
 .catalog-layout.map-mode .cards-grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
 .catalog-layout.map-mode .map-view{display:block}
-/* ==== Yandex map container ==== */
 .map-view{display:none;position:sticky;top:100px;height:calc(100vh - 120px);border-radius:24px;border:1px solid var(--line);overflow:hidden;background:var(--bg-2);box-shadow:var(--card-shadow);z-index:1}
 .map-inner{position:absolute;inset:0;width:100%;height:100%}
 .map-fallback{display:flex;align-items:center;justify-content:center;height:100%;padding:24px;text-align:center;color:var(--mut);font-size:13px;line-height:1.6}
@@ -432,11 +430,8 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.2)}
   border:1px solid var(--line-2);
   box-shadow:0 40px 90px -30px rgba(0,0,0,.6);
   scrollbar-width:thin;scrollbar-color:var(--line-2) transparent;
-  transform:translateZ(0);
-  -webkit-overflow-scrolling:touch;
   pointer-events:auto;
   transition:transform .22s var(--ease);
-  will-change:transform;
 }
 .detail.is-open .detail__panel{transform:translateZ(0)}
 @media(min-width:901px){
@@ -564,15 +559,13 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.2)}
   .filters-backdrop.is-open{opacity:1;visibility:visible}
   .page-hero{min-height:auto;padding-top:clamp(120px,15vh,160px)}
 
-  /* ==== DETAIL на мобильных: на весь экран, перекрывает всё ==== */
+  /* ==== DETAIL на мобильных: flex-раскладка, фото фиксировано, скроллится только тело ==== */
   .detail{
     padding:0;
     align-items:stretch;
     transition:opacity .2s var(--ease),visibility .2s;
   }
-  .detail__backdrop{
-    bottom:0;
-  }
+  .detail__backdrop{bottom:0}
   .detail__panel{
     width:100%;
     height:100%;
@@ -580,29 +573,34 @@ html[data-theme="light"] .detail__backdrop{background:rgba(10,12,25,.2)}
     border-radius:0;
     border:none;
     transform:none !important;
-    will-change:auto !important;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
   }
   .detail.is-open .detail__panel{transform:none !important}
   .detail__handle{display:none}
-  /* Кнопка закрытия — fixed, всегда видна при скролле длинной карточки */
   .detail__close{
     position:fixed;
-    top:calc(12px + env(safe-area-inset-top, 0px));
+    top:calc(12px + env(safe-area-inset-top,0px));
     right:12px;
     z-index:9552;
     background:rgba(5,6,10,.78);
     -webkit-backdrop-filter:blur(14px);
     backdrop-filter:blur(14px);
   }
-  .detail__body{padding:16px 13px calc(20px + env(safe-area-inset-bottom,0px))}
-  /* Hero sticky — фото «прилипает» сверху, скроллится только контент под ним */
   .detail__hero{
-    position:sticky;
-    top:0;
-    z-index:3;
+    flex-shrink:0;
+    position:relative;
     aspect-ratio:16/9;
+    overflow:hidden;
     background:var(--bg-2);
-    box-shadow:0 8px 22px -14px rgba(0,0,0,.75);
+  }
+  .detail__body{
+    flex:1;
+    min-height:0;
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    padding:16px 13px calc(20px + env(safe-area-inset-bottom,0px));
   }
 
   .tour__top{top:16px;left:16px;right:76px}
@@ -1184,7 +1182,9 @@ function buildCatalog(){
       const am=[];const pool=AMEN.slice();const nAm=ri(4,7);
       for(let k=0;k<nAm&&pool.length;k++){const a=wpick(pool);am.push(a.id);pool.splice(pool.indexOf(a),1)}
       const rr=rnd();let tag='';if(rr<0.06)tag='ХИТ';else if(rr<0.14)tag='NEW';else if(rr<0.19)tag='−15%';
-      out.push({id:id++,title:pick(TYPE_TITLES[type.id]),type:type.id,place:place,rg:reg.id,d:reg.d,price:price,guests:guests,rooms:rooms,rating:rating,reviews:reviews,tag:tag,am:am,img:pick(IMGS),bigImg:pick(IMGS),area:ri(45,380),baths:ri(1,Math.min(4,rooms)),year:ri(2010,2024),score:rating*Math.log(reviews+2)});
+      /* ФИКС: одна и та же картинка для карточки и для детального просмотра */
+      const imgKey = pick(IMGS);
+      out.push({id:id++,title:pick(TYPE_TITLES[type.id]),type:type.id,place:place,rg:reg.id,d:reg.d,price:price,guests:guests,rooms:rooms,rating:rating,reviews:reviews,tag:tag,am:am,img:imgKey,bigImg:imgKey,area:ri(45,380),baths:ri(1,Math.min(4,rooms)),year:ri(2010,2024),score:rating*Math.log(reviews+2)});
     }
   });
   return out;
@@ -1494,14 +1494,8 @@ const mapInner = document.getElementById('mapInner');
 let mapMode = false;
 
 const DISTRICT_CENTERS = {
-  cfo: [54.5, 37.5],
-  szfo: [61.0, 35.0],
-  yufo: [45.5, 40.0],
-  skfo: [43.5, 43.5],
-  pfo: [55.0, 49.0],
-  urfo: [58.0, 62.0],
-  sfo: [56.0, 85.0],
-  dfo: [52.0, 135.0]
+  cfo: [54.5, 37.5],szfo: [61.0, 35.0],yufo: [45.5, 40.0],skfo: [43.5, 43.5],
+  pfo: [55.0, 49.0],urfo: [58.0, 62.0],sfo: [56.0, 85.0],dfo: [52.0, 135.0]
 };
 function hashStr(s){let h=0;for(let i=0;i<s.length;i++)h=((h<<5)-h+s.charCodeAt(i))|0;return h}
 function getRegionCoords(rgId, dId){
@@ -1511,12 +1505,7 @@ function getRegionCoords(rgId, dId){
   const dLng = (((h >> 10) % 1000) / 1000 - 0.5) * 14;
   return [base[0] + dLat, base[1] + dLng];
 }
-
-let yandexMap = null;
-let yandexMapReady = false;
-let pendingMarkers = null;
-let yandexTried = false;
-
+let yandexMap = null, yandexMapReady = false, pendingMarkers = null, yandexTried = false;
 function tryInitYandex(){
   if (yandexTried) return;
   yandexTried = true;
@@ -1524,9 +1513,7 @@ function tryInitYandex(){
     setTimeout(() => {
       if (window.ymaps && typeof window.ymaps.ready === 'function') {
         try { window.ymaps.ready(onYmapsReady); } catch(e) {}
-      } else {
-        showYandexFallback();
-      }
+      } else { showYandexFallback(); }
     }, 800);
     return;
   }
@@ -1540,20 +1527,13 @@ function showYandexFallback(){
   if (!mapInner) return;
   mapInner.innerHTML = '<div class="map-fallback">Карта Яндекс недоступна.<br>Пожалуйста, добавьте API-ключ Яндекс.Карт в код страницы.</div>';
 }
-
 function renderYandexMarkers(slice){
   if (!mapMode) return;
-  if (!yandexMapReady) {
-    pendingMarkers = slice;
-    tryInitYandex();
-    return;
-  }
+  if (!yandexMapReady) { pendingMarkers = slice; tryInitYandex(); return; }
   try {
     if (!yandexMap) {
       yandexMap = new ymaps.Map('mapInner', {
-        center: [61, 70],
-        zoom: 3,
-        controls: ['zoomControl', 'fullscreenControl']
+        center: [61, 70], zoom: 3, controls: ['zoomControl', 'fullscreenControl']
       });
     }
     yandexMap.geoObjects.removeAll();
@@ -1561,15 +1541,11 @@ function renderYandexMarkers(slice){
       const coords = getRegionCoords(d.rg, d.d);
       const pm = new ymaps.Placemark(coords, {
         hintContent: d.title + ' — ' + fmt(d.price) + ' ₽ / ночь',
-        balloonContentHeader:
-          '<div style="font-family:Manrope,sans-serif;font-weight:700;font-size:14px;margin-bottom:4px">' + d.title + '</div>',
-        balloonContentBody:
-          '<div style="font-family:Manrope,sans-serif;font-size:12px;color:#666;margin-bottom:8px">' + d.place + '</div>' +
+        balloonContentHeader: '<div style="font-family:Manrope,sans-serif;font-weight:700;font-size:14px;margin-bottom:4px">' + d.title + '</div>',
+        balloonContentBody: '<div style="font-family:Manrope,sans-serif;font-size:12px;color:#666;margin-bottom:8px">' + d.place + '</div>' +
           '<div style="font-family:Manrope,sans-serif;font-weight:700;font-size:16px;margin-bottom:10px">' + fmt(d.price) + ' ₽ / ночь</div>' +
           '<button type="button" data-yandex-detail="' + d.id + '" style="width:100%;padding:9px;border:none;border-radius:8px;background:linear-gradient(100deg,#22D3EE,#A78BFA);color:#fff;font-weight:700;cursor:pointer;font-family:inherit">Подробнее</button>'
-      }, {
-        preset: 'islands#violetDotIcon'
-      });
+      }, { preset: 'islands#violetDotIcon' });
       pm.events.add('click', () => openDetail(d.id));
       yandexMap.geoObjects.add(pm);
     });
@@ -1580,19 +1556,14 @@ function renderYandexMarkers(slice){
       } catch(e) {}
     }
     setTimeout(() => { try { yandexMap.container.fitToViewport(); } catch(e) {} }, 80);
-  } catch(e) {
-    console.warn('Yandex map error:', e);
-    showYandexFallback();
-  }
+  } catch(e) { console.warn('Yandex map error:', e); showYandexFallback(); }
 }
-
 document.addEventListener('click', (e) => {
   const btn = e.target.closest('[data-yandex-detail]');
   if (!btn) return;
   const id = parseInt(btn.dataset.yandexDetail, 10);
   if (id) openDetail(id);
 });
-
 viewToggle.addEventListener('click', () => {
   mapMode = !mapMode;
   catalogLayout.classList.toggle('map-mode', mapMode);
@@ -1651,7 +1622,7 @@ $('#modalSubmit').addEventListener('click',function(){
 });
 
 /* ============================================================
-   DETAIL MODAL — мгновенное открытие
+   DETAIL MODAL
    ============================================================ */
 const detail=$('#detail');
 const detailImg=$('#detailImg');
@@ -1698,7 +1669,6 @@ function starsHTML(n){
   for(let i=0;i<5;i++)s+='<svg class="ico-svg" style="'+(i<n?'opacity:1':'opacity:.2')+'"><use href="#i-star-fill"/></svg>';
   return s;
 }
-
 function openDetail(id){
   const obj=BY_ID.get(id);if(!obj)return;
   currentDetailId=id;
@@ -1739,7 +1709,10 @@ function openDetail(id){
   const iframeSrc = 'https://yandex.ru/map-widget/v1/?text=' + mapQuery + '&z=10';
   const targetId = id;
 
+  /* ФИКС: сброс скролла у .detail__body (панель больше не скроллится на мобильных) */
   requestAnimationFrame(() => {
+    const body = detail.querySelector('.detail__body');
+    if (body) body.scrollTop = 0;
     const panel = detail.querySelector('.detail__panel');
     if (panel) panel.scrollTop = 0;
   });
@@ -1751,7 +1724,6 @@ function openDetail(id){
     detailMap.innerHTML = '<iframe src="' + iframeSrc + '" allowfullscreen loading="lazy" title="Карта — ' + obj.place + '"></iframe>';
   }, 380);
 }
-
 function closeDetail(){
   detail.classList.remove('is-open');
   detail.setAttribute('aria-hidden','true');
