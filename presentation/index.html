@@ -47,7 +47,6 @@ html[data-theme="dark"]{
   --hero-veil-1:rgba(20,22,26,.72); --hero-veil-2:rgba(20,22,26,.36); --hero-veil-edge:rgba(20,22,26,.42);
   --corner-shadow:rgba(0,0,0,.5);
 
-  /* Яркий вторичный текст для сносок, чтобы читались */
   --muted-strong:#A9B0BF;
 
   --s-spring-sky:#3E5A7A; --s-summer-sky:#1A4060; --s-autumn-sky:#6B3A52;
@@ -122,8 +121,9 @@ html[data-theme="light"]{
   --fs-card-text: clamp(15px, 1.15vw, 17px);
   --fs-small: clamp(13.5px, 1.1vw, 15px);
   --fs-label: clamp(14px, 1.1vw, 16px);
-  --fs-note: clamp(14px, 1.15vw, 16px);   /* сноски, подписи под графиком */
+  --fs-note: clamp(14px, 1.15vw, 16px);
   --fs-value: clamp(32px, 3.6vw, 50px);
+  --fs-value-narrow: clamp(18px, 2.05vw, 30px);
   --gap: clamp(16px, 2vw, 26px);
   --radius: 20px;
   --pad: clamp(22px, 2.4vw, 32px);
@@ -434,6 +434,10 @@ main{overflow-x: clip}
   margin-bottom:12px;
   transition:filter .3s var(--ease);
 }
+.card-value--narrow{
+  font-size:var(--fs-value-narrow);
+  white-space:nowrap;
+}
 .card:hover .card-value{
   filter:drop-shadow(0 0 18px rgba(var(--acc-rgb),.5));
 }
@@ -482,29 +486,53 @@ main{overflow-x: clip}
     radial-gradient(ellipse 100% 40% at 50% 100%, var(--hero-veil-edge), transparent 70%);
 }
 .cover__inner{position:relative;z-index:3;width:100%}
-.cover__eyebrow{
-  display:inline-flex;align-items:center;gap:10px;
-  padding:10px 20px 10px 14px;border-radius:100px;
-  background:var(--panel-bg);border:1px solid var(--line-2);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  font-size:13.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--mut);
-  margin-bottom:28px;
+
+/* Логотип на обложке — только иконка, без текста */
+.cover__logo{
+  display:inline-flex;align-items:center;justify-content:center;
+  margin-bottom:clamp(24px,3vh,40px);
 }
-.cover__eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--c2);box-shadow:0 0 14px var(--c2);animation:pulse 2.2s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.7)}}
-.cover__title{font-family:'Unbounded',sans-serif;font-weight:800;font-size:clamp(46px,7vw,100px);line-height:.94;letter-spacing:-.04em;text-transform:uppercase;color:var(--txt-h);margin-bottom:22px;text-shadow:0 4px 30px rgba(0,0,0,.25);text-wrap:balance}
+.cover__logo-mark{
+  width:clamp(110px,14vw,220px);
+  height:clamp(110px,14vw,220px);
+  flex-shrink:0;
+  filter:drop-shadow(0 18px 48px rgba(var(--c1-rgb),.55)) drop-shadow(0 0 28px rgba(var(--c3-rgb),.35));
+}
+
+.cover__title{font-family:'Unbounded',sans-serif;font-weight:800;font-size:clamp(54px,8.8vw,136px);line-height:.94;letter-spacing:-.045em;text-transform:uppercase;color:var(--txt-h);margin-bottom:22px;text-shadow:0 4px 30px rgba(0,0,0,.25);text-wrap:balance}
 .cover__title em{font-style:normal;font-weight:300;color:var(--c2)}
 .cover__sub{font-size:clamp(16px,1.4vw,19px);color:var(--txt);max-width:680px;margin:0 auto 34px;line-height:1.65;text-shadow:0 1px 14px rgba(0,0,0,.2)}
-.cover__stats{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(28px,4.5vw,60px);max-width:740px;margin:0 auto;padding-top:28px;border-top:1px solid var(--line)}
-.cover__stat{text-align:center}
-.cover__stat b{display:block;font-family:'Unbounded',sans-serif;font-size:clamp(26px,3.2vw,44px);font-weight:700;line-height:1;background:linear-gradient(100deg,var(--c1),var(--c2),var(--c3),var(--c4));background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradShift 8s ease infinite}
-.cover__stat span{display:block;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--txt);margin-top:8px;font-weight:600;opacity:.85}
+
+.cover__stats{
+  display:flex;flex-wrap:nowrap;
+  justify-content:center;align-items:flex-start;
+  gap:clamp(16px,3.6vw,64px);
+  width:100%;
+  margin:0 auto;padding-top:28px;
+  border-top:1px solid var(--line);
+}
+.cover__stat{text-align:center;min-width:0;flex:0 1 auto}
+.cover__stat b{
+  display:block;font-family:'Unbounded',sans-serif;
+  font-size:clamp(26px,4.2vw,64px);font-weight:700;line-height:1.02;
+  white-space:nowrap;
+  background:linear-gradient(100deg,var(--c1),var(--c2),var(--c3),var(--c4));
+  background-size:200%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:gradShift 8s ease infinite;
+}
+.cover__stat span{
+  display:block;font-size:13px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--txt);margin-top:8px;font-weight:600;opacity:.85;
+  white-space:normal;
+}
 .cover__seasons{position:absolute;left:var(--page-x);right:var(--page-x);bottom:clamp(30px,5vh,60px);z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;pointer-events:none}
 .cover__seasons span{font-family:'Unbounded',sans-serif;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--txt);opacity:.8;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px;text-shadow:0 1px 12px rgba(0,0,0,.4)}
 .cover__seasons span::before{content:'';width:28px;height:1px;background:currentColor;opacity:.5}
 .cover__scroll{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--mut);z-index:3}
 .cover__scroll i{width:1px;height:36px;background:linear-gradient(180deg,var(--c2),transparent);animation:scrollLine 2.2s ease-in-out infinite;transform-origin:top}
 @keyframes scrollLine{0%{transform:scaleY(0)}45%{transform:scaleY(1)}100%{transform:scaleY(0);transform-origin:bottom}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.7)}}
 
 .s-tw{transform-box:fill-box;transform-origin:center;animation:twinkle var(--dur,4s) ease-in-out infinite;animation-delay:var(--delay,0s)}
 @keyframes twinkle{0%,100%{opacity:.15;transform:scale(.75)}50%{opacity:1;transform:scale(1.15)}}
@@ -1207,11 +1235,16 @@ main{overflow-x: clip}
     --fs-h2:clamp(24px,6.8vw,34px);
     --fs-h3:clamp(18px,4.8vw,22px);
     --fs-value:clamp(28px,8vw,38px);
+    --fs-value-narrow:clamp(22px,6.4vw,32px);
     --fs-card-text:clamp(15px,4.1vw,16.5px);
     --fs-note:clamp(14px,3.9vw,15.5px);
   }
-  .cover__title{font-size:clamp(38px,11.5vw,64px)}
+  .cover__title{font-size:clamp(40px,12.5vw,74px)}
+  .cover__logo-mark{width:clamp(96px,26vw,150px);height:clamp(96px,26vw,150px)}
   .cover__sub{font-size:clamp(15px,4.2vw,17px);padding:0 4px}
+  .cover__stats{gap:8px}
+  .cover__stat b{font-size:clamp(17px,5.2vw,34px)}
+  .cover__stat span{font-size:10.5px;letter-spacing:.06em;margin-top:6px}
   .office-pin__ico{width:70px;height:70px;border-radius:20px}
   .office-pin__ico svg{width:34px;height:34px}
   .office-pin{padding:12px}
@@ -1321,7 +1354,6 @@ main{overflow-x: clip}
         </linearGradient>
       </defs>
       <path d="M20 2.5 L38 34.5 H29.6 L20 16.8 L10.4 34.5 H2 Z" fill="url(#lg1)"/>
-      <circle cx="20" cy="27.5" r="2.9" fill="var(--bg)"/>
     </svg>
     <span class="logo__text">ALBE<em>RENT</em></span>
   </a>
@@ -1384,7 +1416,19 @@ main{overflow-x: clip}
   </div>
   <div class="cover__veil" aria-hidden="true"></div>
   <div class="cover__inner">
-    <div class="cover__eyebrow"><span class="dot"></span>Инвестиционное предложение · 2026</div>
+
+    <!-- Логотип на обложке: только иконка, без текста, без точки -->
+    <div class="cover__logo">
+      <svg class="cover__logo-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="lgCover" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="var(--c1)"/><stop offset=".48" stop-color="var(--c2)"/><stop offset="1" stop-color="var(--c3)"/>
+          </linearGradient>
+        </defs>
+        <path d="M20 2.5 L38 34.5 H29.6 L20 16.8 L10.4 34.5 H2 Z" fill="url(#lgCover)"/>
+      </svg>
+    </div>
+
     <h1 class="cover__title">ALBE <em>RENT</em></h1>
     <p class="cover__sub">Премиальный сервис бронирования загородной недвижимости по всей России. Средний чек — 25 000 ₽ за ночь. Привлекаем инвестиции для масштабирования — готовая команда, продукт и трафик.</p>
     <div class="cover__stats">
@@ -1422,10 +1466,10 @@ main{overflow-x: clip}
     <h2>Рынок <em>381 млрд ₽</em>, растущий на 22% в год</h2>
     <p class="slide-lead">Посуточная аренда РФ — 381 млрд ₽ в 2025 (+22% г/г), прогноз 549 млрд ₽ к 2028 (Авито Путешествия). Внутренний туризм — 173,9 млн поездок (+7,4%, +43,5% к 2021, Ростуризм). Спрос на загородные дома растёт в 2,1 раза быстрее предложения. Премиальный сегмент — самый быстрорастущий: чек за ночь на топовых объектах превышает 25 000 ₽.</p>
     <div class="grid grid--4">
-      <div class="card" data-reveal><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-chart"/></svg></div><div class="card-value">381 млрд ₽</div><div class="card-label">рынок посуточной аренды РФ · 2025</div></div>
-      <div class="card" data-reveal style="--d:.08s"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-trend"/></svg></div><div class="card-value">×2,1</div><div class="card-label">рост спроса на загородные дома за год</div></div>
-      <div class="card" data-reveal style="--d:.16s"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-ruble"/></svg></div><div class="card-value" style="font-size:clamp(22px,2.6vw,34px)">25 000 ₽</div><div class="card-label">чек ALBE за ночь · рынок — 11 800 ₽</div></div>
-      <div class="card" data-reveal style="--d:.24s"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-target"/></svg></div><div class="card-value">71%</div><div class="card-label">загрузка у управляющих компаний</div></div>
+      <div class="card" data-reveal><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-chart"/></svg></div><div class="card-value card-value--narrow">381 млрд ₽</div><div class="card-label">рынок посуточной аренды РФ · 2025</div></div>
+      <div class="card" data-reveal style="--d:.08s"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-trend"/></svg></div><div class="card-value card-value--narrow">×2,1</div><div class="card-label">рост спроса на загородные дома за год</div></div>
+      <div class="card" data-reveal style="--d:.16s"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-ruble"/></svg></div><div class="card-value card-value--narrow">25 000 ₽</div><div class="card-label">чек ALBE за ночь · рынок — 11 800 ₽</div></div>
+      <div class="card" data-reveal style="--d:.24s"><div class="card-ico"><svg class="ico-svg"><use href="#i-prem-target"/></svg></div><div class="card-value card-value--narrow">71%</div><div class="card-label">загрузка у управляющих компаний</div></div>
     </div>
     <div class="trends-grid">
       <div class="trend-card" data-reveal style="--d:.3s">
