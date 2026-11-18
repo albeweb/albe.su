@@ -843,16 +843,15 @@ html,body{height:100%;background:var(--bg);overflow:hidden;font-family:'Manrope'
       <span class="word-part accent-violet">России</span>
     </div>
     <div class="story-detail detail-villas accent-pink" id="detailVillas">Виллы</div>
-    <div class="story-detail detail-cottages accent-violet" id="detailCottages">Коттеджи</div>
-    <div class="story-detail detail-bases accent-pink" id="detailBases">Базы отдыха</div>
-    <div class="story-detail detail-glamping accent-violet" id="detailGlamping">Глэмпинги</div>
-    <div class="story-detail detail-chalets accent-violet" id="detailChalets">Шале</div>
-    <div class="story-detail detail-eco accent-pink" id="detailEco">Эко-отели</div>
     <div class="story-detail detail-estates accent-pink" id="detailEstates">Усадьбы</div>
-    <div class="story-detail detail-hotels accent-violet" id="detailHotels">Загородные отели</div>
-    <div class="story-detail detail-aframe accent-violet" id="detailAframe">A-frame</div>
+    <div class="story-detail detail-cottages accent-violet" id="detailCottages">Коттеджи</div>
     <div class="story-detail detail-water accent-pink" id="detailWater">Дома у воды</div>
-    <div class="story-detail detail-domes accent-violet" id="detailDomes">Купольные дома</div>
+    <div class="story-detail detail-aframe accent-violet" id="detailAframe">A-frame</div>
+    <div class="story-detail detail-eco accent-pink" id="detailEco">Эко-отели</div>
+    <div class="story-detail detail-bases accent-pink" id="detailBases">Базы отдыха</div>
+    <div class="story-detail detail-hotels accent-violet" id="detailHotels">Загородные отели</div>
+    <div class="story-detail detail-glamping accent-violet" id="detailGlamping">Глэмпинги</div>
+    
     <div class="story-line story-region" id="region">Москва</div>
     <div class="city-list-screen" id="cityList">
       <div class="city-list-heading"><span>85</span> городов России</div>
@@ -985,42 +984,35 @@ const TIMING = {
 
 const PHOTO_POSITIONS = ['photo-left','photo-right','photo-top','photo-bottom'];
 
+// Список ID строго в том порядке, в котором они будут появляться
 const DETAIL_IDS = [
-  'detailVillas','detailCottages','detailBases','detailGlamping',
-  'detailChalets','detailEco','detailEstates','detailHotels',
-  'detailAframe','detailWater','detailDomes'
+  'detailVillas','detailEstates','detailCottages','detailWater',
+  'detailAframe','detailEco','detailBases','detailHotels','detailGlamping'
 ];
 
 const propertyCityPairs = [
-  ['detailVillas','Москва',0],
-  ['detailCottages','Санкт-Петербург',1],
-  ['detailBases','Казань',2],
-  ['detailGlamping','Байкал',3],
-  ['detailChalets','Карелия',4],
-  ['detailEco','Нижний Новгород',5],
-  ['detailEstates','Ярославль',6],
-  ['detailHotels','Екатеринбург',7],
-  ['detailAframe','Калининград',8],
-  ['detailWater','Краснодар',9],
-  ['detailDomes','Сочи',10]
+  ['detailVillas', 'Москва', 0],
+  ['detailEstates', 'Санкт-Петербург', 1],
+  ['detailCottages', 'Казань', 2],
+  ['detailWater', 'Байкал', 3],
+  ['detailAframe', 'Карелия', 4],
+  ['detailEco', 'Нижний Новгород', 5],
+  ['detailBases', 'Ярославль', 6],
+  ['detailHotels', 'Екатеринбург', 7],
+  ['detailGlamping', 'Калининград', 8]
 ];
 
-/* 
-  ВАЖНО: Замените эти пути на свои локальные файлы.
-  Создайте папку "images" рядом с HTML-файлом и поместите туда фотографии.
-*/
+// Ссылки на локальные файлы, которые вы загрузили
 const propertyPhotos = [
-  {id:'detailVillas',    alt:'Современная вилла с бассейном',                 src:'./images/villa.jpg'},
-  {id:'detailCottages',  alt:'Современный коттедж в лесу',                    src:'./images/cottage.jpg'},
-  {id:'detailBases',     alt:'Домики базы отдыха у озера',                    src:'./images/base.jpg'},
-  {id:'detailGlamping',  alt:'Белые купольные палатки',                       src:'./images/glamping.jpg'},
-  {id:'detailChalets',   alt:'Деревянные шале у воды',                        src:'./images/chalet.jpg'},
-  {id:'detailEco',       alt:'Эко-отель в лесу с прудом',                     src:'./images/eco.jpg'},
-  {id:'detailEstates',   alt:'Большая усадьба с вертолетной площадкой',       src:'./images/estate.jpg'},
-  {id:'detailHotels',    alt:'Загородный отель',                              src:'./images/hotel.jpg'}, 
-  {id:'detailAframe',    alt:'Дом A-frame с чаном в лесу',                    src:'./images/aframe.jpg'},
-  {id:'detailWater',     alt:'Дом прямо на воде',                             src:'./images/water.jpg'},
-  {id:'detailDomes',     alt:'Купольные дома в горах',                        src:'./images/dome.jpg'}
+  {id:'detailVillas',    alt:'Вилла', src:'01.jpg'},
+  {id:'detailEstates',   alt:'Усадьба', src:'02.jpg'},
+  {id:'detailCottages',  alt:'Коттедж', src:'03.jpg'},
+  {id:'detailWater',     alt:'Дом у воды', src:'04.jpg'},
+  {id:'detailAframe',    alt:'A-frame', src:'05.jpg'},
+  {id:'detailEco',       alt:'Эко-отель', src:'06.jpg'},
+  {id:'detailBases',     alt:'База отдыха', src:'07.jpg'},
+  {id:'detailHotels',    alt:'Загородный отель', src:'08.jpg'},
+  {id:'detailGlamping',  alt:'Глэмпинг', src:'09.jpg'}
 ];
 
 /* ===================== DOM ===================== */
