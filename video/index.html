@@ -503,13 +503,15 @@ html,body{height:100%;background:var(--bg);overflow:hidden;font-family:'Manrope'
 .story-stat.is-visible{transform:translateX(-50%) scale(1)}
 .story-stat .word-part{display:inline-block;opacity:0;filter:blur(12px);transform:translateY(24px)}
 .story-stat.is-visible .word-part{opacity:1;filter:blur(0);transform:translateY(0);transition:opacity .7s ease,filter .7s ease,transform .8s ease}
-.story-stat.is-visible .word-part:nth-child(2){transition-delay:.55s}
-.story-stat.is-visible .word-part:nth-child(3){transition-delay:1.1s}
-.story-stat.is-visible .word-part:nth-child(4){transition-delay:1.65s}
-.story-stat.is-visible .word-part:nth-child(5){transition-delay:2.2s}
-.story-stat.is-visible .word-part:nth-child(6){transition-delay:2.75s}
-.story-stat.is-visible .word-part:nth-child(7){transition-delay:3.3s}
-.story-stat.is-visible .word-part:nth-child(8){transition-delay:3.85s}
+
+/* РАВНОМЕРНАЯ ЗАДЕРЖКА ДЛЯ ПОЯВЛЕНИЯ СЛОВ (0.4s) */
+.story-stat.is-visible .word-part:nth-of-type(1){transition-delay:0s}
+.story-stat.is-visible .word-part:nth-of-type(2){transition-delay:0.4s}
+.story-stat.is-visible .word-part:nth-of-type(3){transition-delay:0.8s}
+.story-stat.is-visible .word-part:nth-of-type(4){transition-delay:1.2s}
+.story-stat.is-visible .word-part:nth-of-type(5){transition-delay:1.6s}
+.story-stat.is-visible .word-part:nth-of-type(6){transition-delay:2.0s}
+.story-stat.is-visible .word-part:nth-of-type(7){transition-delay:2.4s}
 
 /* ОБНОВЛЕННЫЙ БЛОК .story-detail С ФОНОМ И БЛЮРОМ */
 .story-detail{
@@ -870,16 +872,18 @@ html,body{height:100%;background:var(--bg);overflow:hidden;font-family:'Manrope'
     <div class="story-line story-tagline" id="tagline">
       <span class="typing-target"></span>
     </div>
+    
+    <!-- ОБНОВЛЕННЫЙ ТЕКСТ СТАТИСТИКИ -->
     <div class="story-line story-stat" id="stat">
       <span class="word-part accent-pink">Более</span>
       <span class="word-part accent-violet">10&nbsp;000</span>
       <span class="word-part accent-pink">вариантов</span>
       <span class="word-part accent-violet">жилья</span><br>
-      <span class="word-part accent-pink">в</span>
-      <span class="word-part accent-violet">85</span>
-      <span class="word-part accent-pink">регионах</span>
-      <span class="word-part accent-violet">России</span>
+      <span class="word-part accent-pink">по</span>
+      <span class="word-part accent-violet">всей</span>
+      <span class="word-part accent-pink">России</span>
     </div>
+
     <div class="story-detail detail-villas accent-pink" id="detailVillas">Виллы</div>
     <div class="story-detail detail-estates accent-pink" id="detailEstates">Усадьбы</div>
     <div class="story-detail detail-cottages accent-violet" id="detailCottages">Коттеджи</div>
