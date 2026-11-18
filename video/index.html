@@ -477,7 +477,6 @@ html,body{height:100%;background:var(--bg);overflow:hidden;font-family:'Manrope'
   transition:opacity .8s var(--ease),transform 1s var(--ease),filter .8s ease;
   max-width:none;
   z-index:16;
-  text-shadow:var(--story-shadow);
 }
 .story-line.is-visible,.story-detail.is-visible{opacity:1;filter:blur(0);transform:scale(1)}
 .story-tagline{
@@ -499,6 +498,7 @@ html,body{height:100%;background:var(--bg);overflow:hidden;font-family:'Manrope'
 .story-stat{
   top:13%;left:50%;width:94%;transform:translateX(-50%) scale(.9);
   font-size:clamp(42px,7.6vw,132px);text-align:center;white-space:normal;line-height:1.15;
+  text-shadow:var(--story-shadow);
 }
 .story-stat.is-visible{transform:translateX(-50%) scale(1)}
 .story-stat .word-part{display:inline-block;opacity:0;filter:blur(12px);transform:translateY(24px)}
@@ -510,7 +510,42 @@ html,body{height:100%;background:var(--bg);overflow:hidden;font-family:'Manrope'
 .story-stat.is-visible .word-part:nth-child(6){transition-delay:2.75s}
 .story-stat.is-visible .word-part:nth-child(7){transition-delay:3.3s}
 .story-stat.is-visible .word-part:nth-child(8){transition-delay:3.85s}
-.story-detail{font-size:clamp(34px,5.9vw,112px);white-space:nowrap;letter-spacing:-.05em}
+
+/* ОБНОВЛЕННЫЙ БЛОК .story-detail С ФОНОМ И БЛЮРОМ */
+.story-detail{
+  font-size:clamp(34px,5.9vw,112px);
+  white-space:nowrap;
+  letter-spacing:-.05em;
+  color:#fff !important; /* Строго белый цвет */
+  text-shadow:0 4px 20px rgba(0,0,0,0.6) !important; /* Тень только для объема самого текста */
+  padding: 0.15em 0.45em; /* Отступы для фоновой плашки */
+  border-radius: 24px;
+  z-index: 16;
+}
+.story-detail::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 15, 20, 0.4); /* Полупрозрачный темный фон */
+  backdrop-filter: blur(16px); /* Эффект размытия */
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.15); /* Легкая рамка */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Тень под плашкой */
+  z-index: -1;
+  transition: opacity 0.5s ease;
+  opacity: 0;
+}
+.story-detail.is-visible::before {
+  opacity: 1;
+}
+
+/* Сброс цветов акцентов для плашек, чтобы текст всегда был белым */
+.story-detail.accent-pink,
+.story-detail.accent-violet {
+  color: #fff !important;
+}
+
 .detail-homes{top:38%;left:8%}
 .detail-cottages{top:57%;right:7%}
 .detail-villas{bottom:12%;left:13%}
@@ -523,9 +558,11 @@ html,body{height:100%;background:var(--bg);overflow:hidden;font-family:'Manrope'
 .detail-aframe{top:50%;right:9%}
 .detail-water{top:20%;left:10%}
 .detail-domes{bottom:14%;right:8%}
+
 .story-region{
   font-size:clamp(34px,5.2vw,100px);line-height:1;
   max-width:88%;white-space:normal;
+  text-shadow:var(--story-shadow);
 }
 .story-region.pos-0{top:13%;left:8%}
 .story-region.pos-1{top:27%;right:7%;text-align:right}
@@ -567,13 +604,14 @@ html,body{height:100%;background:var(--bg);overflow:hidden;font-family:'Manrope'
 .city-item:nth-child(4n+2){color:#E9D5FF}
 .city-item:nth-child(4n+3){color:#C4B5FD}
 .city-item:nth-child(4n){color:#FBCFE8}
-.stage.light-theme .story-line,.stage.light-theme .story-detail{color:var(--story-light-color);text-shadow:var(--story-light-shadow)}
+.stage.light-theme .story-line{color:var(--story-light-color);text-shadow:var(--story-light-shadow)}
 .stage.light-theme .accent-pink{color:var(--accent-pink-light)}
 .stage.light-theme .accent-violet{color:var(--accent-violet-light)}
 .stage.light-theme .city-list-heading{color:var(--story-light-color)}
 .stage.light-theme .city-item{color:var(--story-light-color);text-shadow:none}
 .stage.light-theme .city-item:nth-child(4n+1){color:var(--accent-pink-light)}
 .stage.light-theme .city-item:nth-child(4n+3){color:var(--accent-violet-light)}
+
 @media(max-width:700px){
   .story-tagline{font-size:clamp(28px,8vw,56px);width:94%}
   .story-stat{top:12%;font-size:clamp(27px,7.3vw,52px);width:94%}
@@ -984,7 +1022,6 @@ const TIMING = {
 
 const PHOTO_POSITIONS = ['photo-left','photo-right','photo-top','photo-bottom'];
 
-// Список ID строго в том порядке, в котором они будут появляться
 const DETAIL_IDS = [
   'detailVillas','detailEstates','detailCottages','detailWater',
   'detailAframe','detailEco','detailBases','detailHotels','detailGlamping'
@@ -1002,7 +1039,6 @@ const propertyCityPairs = [
   ['detailGlamping', 'Калининград', 8]
 ];
 
-// Ссылки на локальные файлы, которые вы загрузили
 const propertyPhotos = [
   {id:'detailVillas',    alt:'Вилла', src:'01.jpg'},
   {id:'detailEstates',   alt:'Усадьба', src:'02.jpg'},
